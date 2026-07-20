@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Search } from 'lucide-react';
+import gocciaImg from './assets/prodotti/goccia.jpeg';
 
 export default function Catalogo() {
   const [products] = useState([
@@ -11,6 +12,7 @@ export default function Catalogo() {
       materiale: 'Zama / Zinc',
       sottocategoria: 'Maniglie per porte',
       descrizione: 'Maniglia in zama/zinco con design classico.',
+      immagine: gocciaImg,
       varianti: [
         { codice: '130247B05', finitura: 'Cromo satinato', versione: 'Patent' },
         { codice: '130247B04', finitura: 'Cromo lucido', versione: 'Patent' },
@@ -318,6 +320,25 @@ export default function Catalogo() {
               e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
             }}
           >
+            <div style={{
+              height: '160px',
+              backgroundColor: '#f7f7f5',
+              borderBottom: '1px solid #eee',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              {product.immagine ? (
+                <img
+                  src={product.immagine}
+                  alt={product.nome}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              ) : (
+                <span style={{ fontSize: '12px', color: '#bbb' }}>Immagine non disponibile</span>
+              )}
+            </div>
             <div style={{ padding: '1rem', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
               <div>
                 <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 4px', color: '#165096' }}>
