@@ -5,6 +5,7 @@ import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
 import fimetLogo from './assets/fimet-logo.png';
 import italineaLogo from './assets/italinea-logo.svg';
+import formeLogo from './assets/forme-logo.svg';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -65,7 +66,7 @@ const PRODUCTS = [
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
     { codice: '448RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '448RB0880CBO', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Ital Linea', fornitoreLogo: italineaLogo,
+  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Forme', fornitoreLogo: formeLogo,
     immagini: {
       'Cromo satinato': roundCromoSat,
       'Nero opaco': roundNeroOpaco,
