@@ -19,6 +19,9 @@ import angoloBiancoOpaco from './assets/prodotti/angolo-bianco-opaco.jpg';
 import roundCromoSat from './assets/prodotti/round-cromo-satinato.jpg';
 import roundNeroOpaco from './assets/prodotti/round-nero-opaco.jpg';
 import roundBiancoOpaco from './assets/prodotti/round-bianco-opaco.jpg';
+import heliaCromoSat from './assets/prodotti/helia-cromo-satinato.jpg';
+import heliaNero from './assets/prodotti/helia-nero.jpg';
+import voltaCromoSat from './assets/prodotti/volta-cromo-satinato.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -76,10 +79,17 @@ const PRODUCTS = [
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
     { codice: 'A519RTX59OS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
+  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH',
+    immagini: {
+      'Cromo satinato': heliaCromoSat,
+      'Nero': heliaNero
+    }, varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '121RBQNE', finitura: 'Nero', versione: 'Patent' } ] },
-  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
+  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH',
+    immagini: {
+      'Cromo satinato': voltaCromoSat
+    }, varianti: [
     { codice: '122RBTCS', finitura: 'Cromo satinato', versione: 'Patent' } ] },
   { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'ARIENI', varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
