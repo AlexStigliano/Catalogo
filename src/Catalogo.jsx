@@ -14,6 +14,9 @@ import angoloBronzo from './assets/prodotti/angolo-bronzo.jpg';
 import angoloEffCromoSat from './assets/prodotti/angolo-effetto-cromo-satinato.jpg';
 import angoloNeroOpaco from './assets/prodotti/angolo-nero-opaco.jpg';
 import angoloBiancoOpaco from './assets/prodotti/angolo-bianco-opaco.jpg';
+import roundCromoSat from './assets/prodotti/round-cromo-satinato.jpg';
+import roundNeroOpaco from './assets/prodotti/round-nero-opaco.jpg';
+import roundBiancoOpaco from './assets/prodotti/round-bianco-opaco.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -61,7 +64,12 @@ const PRODUCTS = [
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
     { codice: '448RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '448RB0880CBO', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Generico', varianti: [
+  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Generico',
+    immagini: {
+      'Cromo satinato': roundCromoSat,
+      'Nero opaco': roundNeroOpaco,
+      'Bianco opaco': roundBiancoOpaco
+    }, varianti: [
     { codice: 'A519RTX59CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
