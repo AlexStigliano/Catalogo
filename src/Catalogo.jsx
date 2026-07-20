@@ -3,7 +3,10 @@ import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft } from 'lucide-rea
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
-import gocciaImg from './assets/prodotti/goccia.jpeg';
+import fimetLogo from './assets/fimet-logo.png';
+import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
+import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
+import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -19,7 +22,12 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', immagine: gocciaImg, dimensioni: '45x45mm (ø 7mm)', fornitore: 'Generico', varianti: [
+  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '45x45mm (ø 7mm)', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Cromo satinato': gocciaCromoSat,
+      'Cromo lucido': gocciaCromoLuc,
+      'Ottone lucido': gocciaOttoneLuc
+    }, varianti: [
     { codice: '130247B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '130247B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
@@ -83,6 +91,103 @@ const Ghost = () => (
   </svg>
 );
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
+
+/* ---------- Scheda prodotto ---------- */
+function ProductCard({ product: p, idx, isFav, onFav }) {
+  const images = p.immagini || {};
+  const ufins = [...new Set(p.varianti.map(v => v.finitura))];
+  const firstWithImg = p.varianti.find(v => images[v.finitura]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p.varianti[0] && p.varianti[0].finitura));
+  const [open, setOpen] = useState(false);
+
+  const hasImages = Object.keys(images).length > 0;
+  const selImg = images[selFin];
+
+  return (
+    <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
+      <div className="media">
+        <span className="cat-tag">{p.categoria}</span>
+        <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+          aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
+          <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
+        </button>
+        {selImg ? (
+          <>
+            <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
+            <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>
+          </>
+        ) : hasImages ? (
+          <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
+        ) : (
+          <><Ghost /><span className="soon">In arrivo</span></>
+        )}
+      </div>
+      <div className="cbody">
+        <div>
+          <div className="name-row">
+            <h2 className="name">{p.nome}</h2>
+            <span className="mat">{p.materiale}</span>
+          </div>
+          <p className="sub">{p.sottocategoria}</p>
+        </div>
+        <div className="spec">
+          <div><span className="lab">Dimensioni</span><span className="val">{p.dimensioni}</span></div>
+          <div>
+            <span className="lab">Fornitore</span>
+            {p.fornitoreLogo
+              ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
+              : <span className="val">{p.fornitore}</span>}
+          </div>
+        </div>
+        {hasImages ? (
+          <div className="finishes">
+            <div className="fbtns">
+              {ufins.map((f, i) => (
+                <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                  onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                  <Chip finitura={f} />
+                </button>
+              ))}
+            </div>
+            <span className="fhint">Scegli la finitura</span>
+          </div>
+        ) : (
+          <div className="finishes">
+            <span className="chips">{ufins.slice(0, 5).map((f, i) => <Chip key={i} finitura={f} />)}</span>
+            <span className="fcount">{ufins.length} {ufins.length === 1 ? 'finitura' : 'finiture'}</span>
+          </div>
+        )}
+        <button className="expand" aria-expanded={open} onClick={() => setOpen(o => !o)}>
+          <span>Varianti disponibili ({p.varianti.length})</span>
+          <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </button>
+        <div className={`variants-wrap${open ? ' open' : ''}`}>
+          <div className="variants-inner">
+            <table className="variants">
+              <thead>
+                <tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr>
+              </thead>
+              <tbody>
+                {p.varianti.map((v, i) => {
+                  const clickable = !!images[v.finitura];
+                  return (
+                    <tr key={i}
+                      className={`${clickable ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
+                      onClick={clickable ? () => setSelFin(v.finitura) : undefined}>
+                      <td className="code">{v.codice}</td>
+                      <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                      <td className="ver">{v.versione}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 /* ---------- Hash routing ---------- */
 function parseHash() {
@@ -204,7 +309,6 @@ function ProductCatalog({ products }) {
     try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; }
     catch { return []; }
   });
-  const [expanded, setExpanded] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('ferramenta_favorites', JSON.stringify(favorites));
@@ -224,7 +328,6 @@ function ProductCatalog({ products }) {
   });
 
   const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
-  const toggleExp = (id) => setExpanded(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   const resetAll = () => { setQ(''); setMat(''); setFin(''); setFavOnly(false); };
 
   return (
@@ -270,65 +373,10 @@ function ProductCatalog({ products }) {
 
       <div className="shell">
         <div className="gallery">
-          {filtered.map((p, idx) => {
-            const isFav = favorites.includes(p.id);
-            const isOpen = expanded.includes(p.id);
-            const ufins = [...new Set(p.varianti.map(v => v.finitura))];
-            return (
-              <article className="card" key={p.id} style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
-                <div className="media">
-                  <span className="cat-tag">{p.categoria}</span>
-                  <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
-                    aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}
-                    onClick={() => toggleFav(p.id)}>
-                    <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
-                  </button>
-                  {p.immagine
-                    ? <img src={p.immagine} alt={p.nome} loading="lazy" />
-                    : <><Ghost /><span className="soon">In arrivo</span></>}
-                </div>
-                <div className="cbody">
-                  <div>
-                    <div className="name-row">
-                      <h2 className="name">{p.nome}</h2>
-                      <span className="mat">{p.materiale}</span>
-                    </div>
-                    <p className="sub">{p.sottocategoria}</p>
-                  </div>
-                  <div className="spec">
-                    <div><span className="lab">Dimensioni</span><span className="val">{p.dimensioni}</span></div>
-                    <div><span className="lab">Fornitore</span><span className="val">{p.fornitore}</span></div>
-                  </div>
-                  <div className="finishes">
-                    <span className="chips">{ufins.slice(0, 5).map((f, i) => <Chip key={i} finitura={f} />)}</span>
-                    <span className="fcount">{ufins.length} {ufins.length === 1 ? 'finitura' : 'finiture'}</span>
-                  </div>
-                  <button className="expand" aria-expanded={isOpen} onClick={() => toggleExp(p.id)}>
-                    <span>Varianti disponibili ({p.varianti.length})</span>
-                    <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  </button>
-                  <div className={`variants-wrap${isOpen ? ' open' : ''}`}>
-                    <div className="variants-inner">
-                      <table className="variants">
-                        <thead>
-                          <tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr>
-                        </thead>
-                        <tbody>
-                          {p.varianti.map((v, i) => (
-                            <tr key={i}>
-                              <td className="code">{v.codice}</td>
-                              <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
-                              <td className="ver">{v.versione}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+          {filtered.map((p, idx) => (
+            <ProductCard key={p.id} product={p} idx={idx}
+              isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
+          ))}
 
           {filtered.length === 0 && (
             <div className="empty">
