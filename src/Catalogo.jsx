@@ -41,7 +41,8 @@ const PRODUCTS = [
       'Cromo lucido': quadraCromoLuc
     }, varianti: [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' } ] },
+    { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
+    { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
   { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Generico', varianti: [
     { codice: '448RB0880COS', finitura: 'Oro satinato', versione: 'Patent' },
     { codice: '448RB0880CBR', finitura: 'Bronzo', versione: 'Patent' },
