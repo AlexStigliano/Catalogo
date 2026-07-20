@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft, Download } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -111,34 +111,35 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
           <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
         </button>
-        {selImg ? (
-          <>
+        <div className="media-body">
+          {selImg ? (
             <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
-            <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>
-          </>
-        ) : hasImages ? (
-          <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
-        ) : (
-          <><Ghost /><span className="soon">In arrivo</span></>
-        )}
+          ) : hasImages ? (
+            <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
+          ) : (
+            <div className="noimg"><Ghost /><small>In arrivo</small></div>
+          )}
+        </div>
+        {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
       </div>
       <div className="cbody">
-        <div>
-          <div className="name-row">
-            <h2 className="name">{p.nome}</h2>
-            <span className="mat">{p.materiale}</span>
-          </div>
+        <div className="name-row">
+          <h2 className="name">{p.nome}</h2>
+          {p.fornitoreLogo
+            ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
+            : <span className="forn-text">{p.fornitore}</span>}
+        </div>
+        <div className="submeta">
           <p className="sub">{p.sottocategoria}</p>
+          <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
         </div>
-        <div className="spec">
-          <div><span className="lab">Dimensioni</span><span className="val">{p.dimensioni}</span></div>
-          <div>
-            <span className="lab">Fornitore</span>
-            {p.fornitoreLogo
-              ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
-              : <span className="val">{p.fornitore}</span>}
-          </div>
-        </div>
+        {p.scheda
+          ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`}>
+              <Download size={15} /> Scheda tecnica
+            </a>
+          : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo">
+              <Download size={15} /> Scheda tecnica <em>in arrivo</em>
+            </button>}
         {hasImages ? (
           <div className="finishes">
             <div className="fbtns">
@@ -168,18 +169,15 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                 <tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr>
               </thead>
               <tbody>
-                {p.varianti.map((v, i) => {
-                  const clickable = !!images[v.finitura];
-                  return (
-                    <tr key={i}
-                      className={`${clickable ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
-                      onClick={clickable ? () => setSelFin(v.finitura) : undefined}>
-                      <td className="code">{v.codice}</td>
-                      <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
-                      <td className="ver">{v.versione}</td>
-                    </tr>
-                  );
-                })}
+                {p.varianti.map((v, i) => (
+                  <tr key={i}
+                    className={`${hasImages ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
+                    onClick={hasImages ? () => setSelFin(v.finitura) : undefined}>
+                    <td className="code">{v.codice}</td>
+                    <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                    <td className="ver">{v.versione}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

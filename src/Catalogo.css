@@ -221,3 +221,23 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .cat table.variants tbody tr.active .code { color: var(--orange-dark); }
 .cat .forn-logo { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; height: 24px; }
 .cat .forn-logo img { height: 14px; width: auto; display: block; }
+
+/* ===== Fornitore in testata + materiale sotto la linea + scheda tecnica ===== */
+.cat .name-row { align-items: center; }
+.cat .forn-text { flex: none; font-size: 12px; color: var(--ink-soft); font-weight: 700; letter-spacing: 0.02em; }
+.cat .forn-logo { flex: none; }
+.cat .submeta { display: flex; flex-direction: column; gap: 6px; }
+.cat .submeta .sub { margin: 0; }
+.cat .matrow { display: flex; align-items: baseline; gap: 8px; font-size: 13px; }
+.cat .matrow .lab { font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+.cat .matrow .val { color: var(--ink); font-weight: 700; }
+
+.cat .scheda { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 0.55rem 0.95rem; border: 1px solid var(--navy); border-radius: 6px; background: none; color: var(--header-name); font-size: 12.5px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.15s, color 0.15s; }
+.cat .scheda:hover { background: var(--navy); color: #fff; }
+.cat .scheda em { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.cat .scheda.disabled { border-color: var(--line); color: var(--ink-soft); cursor: not-allowed; opacity: 0.85; }
+.cat .scheda.disabled:hover { background: none; color: var(--ink-soft); }
+
+/* media body wrapper (per lo scambio finitura/placeholder) */
+.cat .media-body { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.cat .media-body img { position: static; }
