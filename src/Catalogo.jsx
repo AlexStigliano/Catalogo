@@ -9,6 +9,11 @@ import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
 import quadraCromoSat from './assets/prodotti/quadra-cromo-satinato.jpg';
 import quadraCromoLuc from './assets/prodotti/quadra-cromo-lucido.jpg';
+import angoloOroSat from './assets/prodotti/angolo-oro-satinato.jpg';
+import angoloBronzo from './assets/prodotti/angolo-bronzo.jpg';
+import angoloEffCromoSat from './assets/prodotti/angolo-effetto-cromo-satinato.jpg';
+import angoloNeroOpaco from './assets/prodotti/angolo-nero-opaco.jpg';
+import angoloBiancoOpaco from './assets/prodotti/angolo-bianco-opaco.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -43,7 +48,14 @@ const PRODUCTS = [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
-  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Generico', varianti: [
+  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Ital Linea',
+    immagini: {
+      'Oro satinato': angoloOroSat,
+      'Bronzo': angoloBronzo,
+      'Effetto cromo satinato': angoloEffCromoSat,
+      'Nero opaco': angoloNeroOpaco,
+      'Bianco opaco': angoloBiancoOpaco
+    }, varianti: [
     { codice: '448RB0880COS', finitura: 'Oro satinato', versione: 'Patent' },
     { codice: '448RB0880CBR', finitura: 'Bronzo', versione: 'Patent' },
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
