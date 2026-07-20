@@ -219,8 +219,8 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .cat table.variants tbody tr.vrow:hover { background: rgba(244,130,10,0.08); }
 .cat table.variants tbody tr.active { box-shadow: inset 3px 0 0 var(--orange); }
 .cat table.variants tbody tr.active .code { color: var(--orange-dark); }
-.cat .forn-logo { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; height: 24px; }
-.cat .forn-logo img { height: 14px; width: auto; display: block; }
+.cat .forn-logo { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 4px 9px; }
+.cat .forn-logo img { height: 26px; max-width: 84px; width: auto; object-fit: contain; display: block; }
 
 /* ===== Fornitore in testata + materiale sotto la linea + scheda tecnica ===== */
 .cat .name-row { align-items: center; }
