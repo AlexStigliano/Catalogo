@@ -1,47 +1,61 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Heart, Search } from 'lucide-react';
+import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
+import logoCover from './assets/logo-stigliano-cover.png';
 import gocciaImg from './assets/prodotti/goccia.jpeg';
 
+const CATEGORIES = [
+  { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
+  { id: '02', nome: 'Maniglie e pomoli per mobili' },
+  { id: '03', nome: 'Ferramenta per mobili e cucine' },
+  { id: '04', nome: 'Complementi per arredamento' },
+  { id: '05', nome: 'Ferramenta per porte' },
+  { id: '06', nome: 'Ferramenta per finestre' },
+  { id: '07', nome: 'Sistemi di fissaggio e posa' },
+  { id: '08', nome: 'Utensili, antinfortunistica' },
+  { id: '09', nome: 'Zanzariere oscuranti pensiline' },
+  { id: '10', nome: 'Colori e vernici' }
+];
+
 const PRODUCTS = [
-  { id: 1, nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', immagine: gocciaImg, dimensioni: '45x45mm (ø 7mm)', fornitore: 'Generico', varianti: [
+  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', immagine: gocciaImg, dimensioni: '45x45mm (ø 7mm)', fornitore: 'Generico', varianti: [
     { codice: '130247B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '130247B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
     { codice: '130247B02O', finitura: 'Ottone satinato', versione: 'Patent' },
     { codice: '130247B43', finitura: 'Bronzo', versione: 'Patent' } ] },
-  { id: 2, nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '50x127mm', fornitore: 'Generico', varianti: [
+  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '50x127mm', fornitore: 'Generico', varianti: [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
-  { id: 3, nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Generico', varianti: [
+  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Generico', varianti: [
     { codice: '448RB0880COS', finitura: 'Oro satinato', versione: 'Patent' },
     { codice: '448RB0880CBR', finitura: 'Bronzo', versione: 'Patent' },
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
     { codice: '448RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '448RB0880CBO', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 4, nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Generico', varianti: [
+  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Generico', varianti: [
     { codice: 'A519RTX59CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
     { codice: 'A519RTX59OS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 5, nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
+  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '121RBQNE', finitura: 'Nero', versione: 'Patent' } ] },
-  { id: 6, nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
+  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', varianti: [
     { codice: '122RBTCS', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 7, nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'ARIENI', varianti: [
+  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'ARIENI', varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '9051CS/CL', finitura: 'Bicolore cromo lucido / satinato', versione: 'Patent' } ] },
-  { id: 8, nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'lineacoli', varianti: [
+  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'lineacoli', varianti: [
     { codice: '485RB0880CCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '485RB0880CCL', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '485RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 9, nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
+  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1220213BOS', finitura: 'Ottone satinato', versione: 'Patent' } ] },
-  { id: 10, nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
+  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
     { codice: '1205208BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] }
 ];
@@ -70,7 +84,118 @@ const Ghost = () => (
 );
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
 
-export default function Catalogo() {
+/* ---------- Hash routing ---------- */
+function parseHash() {
+  const h = window.location.hash.replace(/^#\/?/, '');
+  if (!h) return { view: 'cover' };
+  if (h === 'indice') return { view: 'indice' };
+  const m = h.match(/^cat\/(\d{2})$/);
+  if (m) return { view: 'categoria', cat: m[1] };
+  return { view: 'cover' };
+}
+const go = (path) => { window.location.hash = path; };
+
+/* ---------- Copertina ---------- */
+function Cover() {
+  return (
+    <div className="cover">
+      <div className="cover-top">
+        <img className="clogo" src={logoCover} alt="Ferramenta Stigliano — dal 1869" />
+        <h1 className="catgen">Catalogo Generale</h1>
+        <p className="tagline">Ferramenta tecnica per i settori del legno e del vetro. Un catalogo ampio e selezionato, dal 1869.</p>
+        <button className="enter" onClick={() => go('/indice')}>
+          Sfoglia il catalogo <ArrowRight size={18} />
+        </button>
+      </div>
+      <div className="cover-foot">Ferramenta <b>Stigliano</b> · Napoli · dal 1869</div>
+    </div>
+  );
+}
+
+/* ---------- Indice ---------- */
+function Indice() {
+  const count = (id) => PRODUCTS.filter(p => p.categoria === id).length;
+  return (
+    <>
+      <div className="topbar">
+        <div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/')} />
+          <span className="section">Indice</span>
+        </div>
+      </div>
+      <div className="shell">
+        <div className="index-head">
+          <h1>Categorie prodotto</h1>
+          <hr className="rule" />
+        </div>
+        <div className="idx-list">
+          {CATEGORIES.map(c => {
+            const n = count(c.id);
+            return (
+              <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
+                <span className="idx-num">{c.id}</span>
+                <span className="idx-name">{c.nome}</span>
+                <span className="idx-dots" />
+                <span className="idx-meta">
+                  {n > 0
+                    ? <span className="idx-badge">{n} prodotti</span>
+                    : <span className="idx-soon">in arrivo</span>}
+                  <ChevronRight className="idx-arrow" />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+/* ---------- Pagina categoria ---------- */
+function CategoryPage({ cat }) {
+  const info = CATEGORIES.find(c => c.id === cat) || CATEGORIES[0];
+  const products = PRODUCTS.filter(p => p.categoria === cat);
+
+  return (
+    <>
+      <div className="topbar">
+        <div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <span className="section">{info.nome}</span>
+        </div>
+      </div>
+      <div className="shell">
+        <div className="crumbs">
+          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <span className="crumb-sep">/</span>
+          <span className="crumb-now">Categoria {info.id}</span>
+        </div>
+        <div className="intro">
+          <div className="num">{info.id}</div>
+          <h1>{info.nome}</h1>
+          <hr className="rule" />
+        </div>
+      </div>
+      {products.length > 0
+        ? <ProductCatalog products={products} />
+        : (
+          <div className="shell">
+            <div className="prep">
+              <span className="badge">Sezione {info.id}</span>
+              <h2>Sezione in preparazione</h2>
+              <p>Stiamo caricando gli articoli di questa categoria. Torna presto per sfogliarli.</p>
+              <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+            </div>
+          </div>
+        )}
+      <Footer />
+    </>
+  );
+}
+
+/* ---------- Catalogo prodotti (griglia + filtri) ---------- */
+function ProductCatalog({ products }) {
   const [q, setQ] = useState('');
   const [mat, setMat] = useState('');
   const [fin, setFin] = useState('');
@@ -85,11 +210,11 @@ export default function Catalogo() {
     localStorage.setItem('ferramenta_favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const mats = useMemo(() => [...new Set(PRODUCTS.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), []);
-  const fins = useMemo(() => [...new Set(PRODUCTS.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), []);
-  const totalVar = useMemo(() => PRODUCTS.reduce((n, p) => n + p.varianti.length, 0), []);
+  const mats = useMemo(() => [...new Set(products.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const totalVar = useMemo(() => products.reduce((n, p) => n + p.varianti.length, 0), [products]);
 
-  const filtered = PRODUCTS.filter(p => {
+  const filtered = products.filter(p => {
     const t = q.trim().toLowerCase();
     const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
     const okM = !mat || p.materiale === mat;
@@ -103,29 +228,13 @@ export default function Catalogo() {
   const resetAll = () => { setQ(''); setMat(''); setFin(''); setFavOnly(false); };
 
   return (
-    <div className="cat">
-      <div className="topbar">
-        <div className="shell">
-          <img className="logo" src={logo} alt="Ferramenta Stigliano — dal 1869" />
-          <span className="section">Maniglie per porte</span>
-        </div>
-      </div>
-
+    <>
       <div className="shell">
-        <div className="intro">
-          <div className="num">01</div>
-          <h1>Maniglie per porte e per finestre</h1>
-          <hr className="rule" />
-          <p className="lede">
-            Il catalogo delle maniglie: ogni modello con le sue finiture e i codici articolo.
-            Cerca per nome o codice, filtra per materiale e finitura, e salva i tuoi preferiti.
-          </p>
-          <div className="stats">
-            <div className="stat"><span className="n">{PRODUCTS.length}</span><span className="k">Prodotti</span></div>
-            <div className="stat"><span className="n">{totalVar}</span><span className="k">Varianti</span></div>
-            <div className="stat"><span className="n">{fins.length}</span><span className="k">Finiture</span></div>
-            <div className="stat"><span className="n">{favorites.length}</span><span className="k">Preferiti</span></div>
-          </div>
+        <div className="stats">
+          <div className="stat"><span className="n">{products.length}</span><span className="k">Prodotti</span></div>
+          <div className="stat"><span className="n">{totalVar}</span><span className="k">Varianti</span></div>
+          <div className="stat"><span className="n">{fins.length}</span><span className="k">Finiture</span></div>
+          <div className="stat"><span className="n">{favorites.length}</span><span className="k">Preferiti</span></div>
         </div>
       </div>
 
@@ -168,7 +277,7 @@ export default function Catalogo() {
             return (
               <article className="card" key={p.id} style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
                 <div className="media">
-                  <span className="cat-tag">01</span>
+                  <span className="cat-tag">{p.categoria}</span>
                   <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
                     aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}
                     onClick={() => toggleFav(p.id)}>
@@ -230,13 +339,35 @@ export default function Catalogo() {
           )}
         </div>
       </div>
+    </>
+  );
+}
 
-      <footer>
-        <div className="shell">
-          <span>Catalogo Ferramenta <b>Stigliano</b> · <span className="est">dal 1869</span></span>
-          <span>I preferiti restano salvati in questo browser</span>
-        </div>
-      </footer>
+function Footer() {
+  return (
+    <footer>
+      <div className="shell">
+        <span>Catalogo Ferramenta <b>Stigliano</b> · <span className="est">dal 1869</span></span>
+        <span>I preferiti restano salvati in questo browser</span>
+      </div>
+    </footer>
+  );
+}
+
+export default function Catalogo() {
+  const [route, setRoute] = useState(parseHash());
+
+  useEffect(() => {
+    const onHash = () => { setRoute(parseHash()); window.scrollTo(0, 0); };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  return (
+    <div className="cat">
+      {route.view === 'cover' && <Cover />}
+      {route.view === 'indice' && <Indice />}
+      {route.view === 'categoria' && <CategoryPage cat={route.cat} />}
     </div>
   );
 }

@@ -154,3 +154,50 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .cat footer .shell { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 1.6rem clamp(1rem, 4vw, 2.5rem); font-size: 12px; }
 .cat footer b { color: #fff; font-weight: 800; }
 .cat footer .est { color: var(--orange); font-weight: 800; }
+
+/* ===== Copertina ===== */
+.cat .cover { min-height: 100vh; background: #2b2b2b; color: #fff; display: flex; flex-direction: column; }
+.cat .cover .cover-top { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2.5rem; padding: clamp(2rem, 8vw, 6rem) clamp(1.2rem, 6vw, 5rem); max-width: 1100px; margin: 0 auto; width: 100%; }
+.cat .cover img.clogo { width: min(560px, 82vw); height: auto; display: block; }
+.cat .cover .catgen { font-weight: 800; font-size: clamp(2.2rem, 7vw, 4.6rem); color: var(--orange); letter-spacing: 0.01em; line-height: 1; margin: 0; }
+.cat .cover .tagline { color: #c9c9cc; font-size: clamp(14px, 1.8vw, 18px); max-width: 46ch; margin: -1rem 0 0; }
+.cat .cover .enter { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; padding: 0.85rem 1.7rem; background: var(--orange); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.15s, transform 0.15s; }
+.cat .cover .enter:hover { background: var(--orange-dark); transform: translateX(2px); }
+.cat .cover .cover-foot { border-top: 1px solid #3d3d3f; padding: 1.2rem clamp(1.2rem, 6vw, 5rem); color: #9a9a9e; font-size: 12px; max-width: 1100px; margin: 0 auto; width: 100%; }
+.cat .cover .cover-foot b { color: var(--orange); }
+
+/* ===== Header nav ===== */
+.cat .topbar img.logo { cursor: pointer; }
+.cat .crumbs { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 0 0; font-size: 13px; }
+.cat .crumb-link { background: none; border: none; cursor: pointer; color: var(--orange-dark); font-weight: 700; padding: 0; font-size: 13px; display: inline-flex; align-items: center; gap: 0.3rem; }
+.cat .crumb-link:hover { text-decoration: underline; }
+.cat .crumb-sep { color: var(--ink-soft); }
+.cat .crumb-now { color: var(--ink-soft); }
+
+/* ===== Indice ===== */
+.cat .index-head { padding: clamp(2rem, 5vw, 3.4rem) 0 0.5rem; }
+.cat .index-head h1 { font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); color: var(--header-name); margin: 0; letter-spacing: -0.015em; }
+.cat .index-head .rule { height: 3px; background: var(--line); border: none; margin: 1rem 0 0; }
+.cat .idx-list { padding: 1.5rem 0 3.5rem; display: flex; flex-direction: column; }
+.cat .idx-row { display: flex; align-items: center; gap: 1rem; width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 1.05rem 1rem; border-radius: 8px; transition: background 0.15s; position: relative; }
+.cat .idx-row:nth-child(odd) { background: var(--panel); }
+.cat .idx-row::before { content: ""; position: absolute; left: 0; top: 12%; bottom: 12%; width: 4px; border-radius: 4px; background: transparent; transition: background 0.15s; }
+.cat .idx-row:hover { background: var(--panel); }
+.cat .idx-row:hover::before { background: var(--orange); }
+.cat .idx-num { font-weight: 800; font-size: 1.5rem; color: var(--header-name); font-variant-numeric: tabular-nums; min-width: 2.4rem; letter-spacing: -0.01em; }
+.cat .idx-row:hover .idx-num { color: var(--orange); }
+.cat .idx-name { font-weight: 700; font-size: clamp(14px, 1.7vw, 17px); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cat .idx-dots { flex: 1; border-bottom: 2px dotted var(--line); min-width: 20px; align-self: flex-end; margin-bottom: 6px; }
+.cat .idx-meta { font-size: 12px; font-weight: 700; color: var(--ink-soft); white-space: nowrap; display: inline-flex; align-items: center; gap: 0.5rem; }
+.cat .idx-badge { background: var(--navy); color: #fff; border-radius: 100px; padding: 0.15rem 0.6rem; font-size: 11px; font-weight: 800; }
+.cat .idx-soon { color: var(--ink-soft); font-weight: 700; }
+.cat .idx-arrow { width: 14px; height: 14px; color: var(--ink-soft); }
+.cat .idx-row:hover .idx-arrow { color: var(--orange); }
+
+/* ===== Sezione in preparazione ===== */
+.cat .prep { text-align: center; padding: 5rem 1rem 6rem; color: var(--ink-soft); }
+.cat .prep .badge { display: inline-block; background: var(--panel); color: var(--header-name); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 100px; margin-bottom: 1rem; }
+.cat .prep h2 { font-weight: 800; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--header-name); margin: 0 0 0.6rem; }
+.cat .prep p { margin: 0 auto 1.6rem; max-width: 44ch; }
+.cat .prep .back { padding: 0.65rem 1.5rem; border: none; border-radius: 6px; background: var(--orange); color: #fff; font-weight: 800; font-size: 13px; cursor: pointer; }
+.cat .prep .back:hover { background: var(--orange-dark); }
