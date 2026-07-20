@@ -6,6 +6,7 @@ import logoCover from './assets/logo-stigliano-cover.png';
 import fimetLogo from './assets/fimet-logo.png';
 import italineaLogo from './assets/italinea-logo.svg';
 import formeLogo from './assets/forme-logo.svg';
+import adtechLogo from './assets/adtech-logo.png';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -79,14 +80,14 @@ const PRODUCTS = [
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
     { codice: 'A519RTX59OS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH',
+  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': heliaCromoSat,
       'Nero': heliaNero
     }, varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '121RBQNE', finitura: 'Nero', versione: 'Patent' } ] },
-  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH',
+  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': voltaCromoSat
     }, varianti: [
