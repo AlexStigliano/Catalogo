@@ -7,6 +7,9 @@ import fimetLogo from './assets/fimet-logo.png';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
+import quadraCromoSat from './assets/prodotti/quadra-cromo-satinato.jpg';
+import quadraCromoLuc from './assets/prodotti/quadra-cromo-lucido.jpg';
+import quadraOttoneLuc from './assets/prodotti/quadra-ottone-lucido.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -33,7 +36,12 @@ const PRODUCTS = [
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
     { codice: '130247B02O', finitura: 'Ottone satinato', versione: 'Patent' },
     { codice: '130247B43', finitura: 'Bronzo', versione: 'Patent' } ] },
-  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '50x127mm', fornitore: 'Generico', varianti: [
+  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Cromo satinato': quadraCromoSat,
+      'Cromo lucido': quadraCromoLuc,
+      'Ottone lucido': quadraOttoneLuc
+    }, varianti: [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
