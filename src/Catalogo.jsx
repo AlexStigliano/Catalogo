@@ -16,6 +16,8 @@ import trioCromoLuc from './assets/prodotti/trio-cromo-lucido.jpg';
 import trioNeroOpaco from './assets/prodotti/trio-nero-opaco.jpg';
 import aliciaCromoSat from './assets/prodotti/alicia-cromo-satinato.jpg';
 import aliciaOttoneSat from './assets/prodotti/alicia-ottone-satinato.jpg';
+import puntoCromoSat from './assets/prodotti/punto-cromo-satinato.jpg';
+import puntoNeroOpaco from './assets/prodotti/punto-nero-opaco.jpg';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -124,7 +126,11 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1220213BOS', finitura: 'Ottone satinato', versione: 'Patent' } ] },
-  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
+  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Cromo satinato': puntoCromoSat,
+      'Nero opaco': puntoNeroOpaco
+    }, varianti: [
     { codice: '1205208BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] }
 ];
