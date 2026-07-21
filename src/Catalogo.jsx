@@ -70,7 +70,7 @@ const PRODUCTS = [
     { codice: '130247B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '130247B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
-    { codice: '130247B02O', finitura: 'Ottone satinato', versione: 'Patent' },
+    { codice: '130247B02O', finitura: 'Oro satinato', versione: 'Patent' },
     { codice: '130247B43', finitura: 'Bronzo', versione: 'Patent' } ] },
   { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
@@ -134,10 +134,10 @@ const PRODUCTS = [
   { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': aliciaCromoSat,
-      'Ottone satinato': aliciaOttoneSat
+      'Oro satinato': aliciaOttoneSat
     }, varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: '1220213BOS', finitura: 'Ottone satinato', versione: 'Patent' } ] },
+    { codice: '1220213BOS', finitura: 'Oro satinato', versione: 'Patent' } ] },
   { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': puntoCromoSat,
