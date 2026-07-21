@@ -158,7 +158,7 @@ const PRODUCTS = [
     }, varianti: [
     { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
     { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' } ] },
-  { id: 12, categoria: '01', nome: 'RobotRE', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
+  { id: 12, categoria: '01', nome: 'Robotre', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
     immagini: {
       'Cromo satinato': robotreCromoSat
     }, varianti: [
