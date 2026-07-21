@@ -10,6 +10,10 @@ import adtechLogo from './assets/adtech-logo.png';
 import arieniLogo from './assets/arieni-logo.svg';
 import sirioCromoSat from './assets/prodotti/sirio-cromo-satinato.jpg';
 import sirioBicolore from './assets/prodotti/sirio-bicolore.jpg';
+import lineacaliLogo from './assets/lineacali-logo.svg';
+import trioCromoSat from './assets/prodotti/trio-cromo-satinato.jpg';
+import trioCromoLuc from './assets/prodotti/trio-cromo-lucido.jpg';
+import trioNeroOpaco from './assets/prodotti/trio-nero-opaco.jpg';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -102,7 +106,12 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '9051CS/CL', finitura: 'Bicolore cromo lucido / satinato', versione: 'Patent' } ] },
-  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'lineacoli', varianti: [
+  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Linea Calì', fornitoreLogo: lineacaliLogo,
+    immagini: {
+      'Cromo satinato': trioCromoSat,
+      'Cromo lucido': trioCromoLuc,
+      'Nero opaco': trioNeroOpaco
+    }, varianti: [
     { codice: '485RB0880CCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '485RB0880CCL', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '485RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
