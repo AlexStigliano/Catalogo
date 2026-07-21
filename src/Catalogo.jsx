@@ -34,6 +34,9 @@ import roundBiancoOpaco from './assets/prodotti/round-bianco-opaco.jpg';
 import heliaCromoSat from './assets/prodotti/helia-cromo-satinato.jpg';
 import heliaNero from './assets/prodotti/helia-nero.jpg';
 import voltaCromoSat from './assets/prodotti/volta-cromo-satinato.jpg';
+import colomboLogo from './assets/colombo-logo.png';
+import robotCromoSat from './assets/prodotti/robot-cromo-satinato.jpg';
+import robotOroLuc from './assets/prodotti/robot-oro-lucido.jpg';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -144,7 +147,14 @@ const PRODUCTS = [
       'Nero opaco': puntoNeroOpaco
     }, varianti: [
     { codice: '1205208BCS', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] }
+    { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
+  { id: 11, categoria: '01', nome: 'Robot', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo,
+    immagini: {
+      'Cromo satinato': robotCromoSat,
+      'Oro lucido': robotOroLuc
+    }, varianti: [
+    { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
+    { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
@@ -155,6 +165,7 @@ const FINISHES = {
   'Ottone lucido': 'linear-gradient(135deg,#f7e6ac,#cfa544 34%,#8f6a20 52%,#d9b463 70%,#f2dc93)',
   'Ottone satinato': 'linear-gradient(135deg,#e7d199,#b8933f 48%,#d3b168 60%,#a9863a)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
+  'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Bronzo': 'linear-gradient(135deg,#9a774e,#5c3f26 52%,#7d5836 70%,#4d341f)',
   'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Nero': 'linear-gradient(135deg,#38383b,#1c1c1e 60%,#2a2a2c)',
