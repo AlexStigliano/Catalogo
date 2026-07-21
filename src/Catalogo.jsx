@@ -37,6 +37,7 @@ import voltaCromoSat from './assets/prodotti/volta-cromo-satinato.jpg';
 import colomboLogo from './assets/colombo-logo.png';
 import robotCromoSat from './assets/prodotti/robot-cromo-satinato.jpg';
 import robotOroLuc from './assets/prodotti/robot-oro-lucido.jpg';
+import robotScheda from './assets/robot-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -148,7 +149,7 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '1205208BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 11, categoria: '01', nome: 'Robot', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo,
+  { id: 11, categoria: '01', nome: 'Robot', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotScheda,
     immagini: {
       'Cromo satinato': robotCromoSat,
       'Oro lucido': robotOroLuc
