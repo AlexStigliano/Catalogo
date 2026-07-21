@@ -38,6 +38,8 @@ import colomboLogo from './assets/colombo-logo.png';
 import robotCromoSat from './assets/prodotti/robot-cromo-satinato.jpg';
 import robotOroLuc from './assets/prodotti/robot-oro-lucido.jpg';
 import robotScheda from './assets/robot-scheda-tecnica.pdf';
+import robotreCromoSat from './assets/prodotti/robotre-cromo-satinato.jpg';
+import robotreScheda from './assets/robotre-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -155,7 +157,12 @@ const PRODUCTS = [
       'Oro lucido': robotOroLuc
     }, varianti: [
     { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' } ] }
+    { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' } ] },
+  { id: 12, categoria: '01', nome: 'RobotRE', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
+    immagini: {
+      'Cromo satinato': robotreCromoSat
+    }, varianti: [
+    { codice: 'CD91 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
