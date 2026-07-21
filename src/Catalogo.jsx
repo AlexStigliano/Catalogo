@@ -106,10 +106,10 @@ const PRODUCTS = [
   { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': heliaCromoSat,
-      'Nero': heliaNero
+      'Nero opaco': heliaNero
     }, varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: '121RBQNE', finitura: 'Nero', versione: 'Patent' } ] },
+    { codice: '121RBQNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
   { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': voltaCromoSat
