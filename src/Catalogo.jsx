@@ -44,6 +44,8 @@ import roboqCromoSat from './assets/prodotti/roboquattro-cromo-satinato.jpg';
 import roboqOroLuc from './assets/prodotti/roboquattro-oro-lucido.jpg';
 import roboqOroSat from './assets/prodotti/roboquattro-oro-satinato.jpg';
 import roboqScheda from './assets/roboquattro-scheda-tecnica.pdf';
+import roboqsCromoSat from './assets/prodotti/roboquattros-cromo-satinato.jpg';
+import roboqsScheda from './assets/roboquattros-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -175,7 +177,12 @@ const PRODUCTS = [
     }, varianti: [
     { codice: 'ID41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
     { codice: 'ID41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' },
-    { codice: 'ID41 oromat', finitura: 'Oro satinato', versione: 'Rosetta' } ] }
+    { codice: 'ID41 oromat', finitura: 'Oro satinato', versione: 'Rosetta' } ] },
+  { id: 14, categoria: '01', nome: 'RoboquattroS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqsScheda,
+    immagini: {
+      'Cromo satinato': roboqsCromoSat
+    }, varianti: [
+    { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
