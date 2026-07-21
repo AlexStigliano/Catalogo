@@ -46,6 +46,10 @@ import roboqOroSat from './assets/prodotti/roboquattro-oro-satinato.jpg';
 import roboqScheda from './assets/roboquattro-scheda-tecnica.pdf';
 import roboqsCromoSat from './assets/prodotti/roboquattros-cromo-satinato.jpg';
 import roboqsScheda from './assets/roboquattros-scheda-tecnica.pdf';
+import robo5sCromoSat from './assets/prodotti/robocinques-cromo-satinato.jpg';
+import robo5sNeroOpaco from './assets/prodotti/robocinques-nero-opaco.jpg';
+import robo5sGrafiteMat from './assets/prodotti/robocinques-grafite-mat.jpg';
+import robo5sScheda from './assets/robocinques-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -182,7 +186,16 @@ const PRODUCTS = [
     immagini: {
       'Cromo satinato': roboqsCromoSat
     }, varianti: [
-    { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] }
+    { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] },
+  { id: 15, categoria: '01', nome: 'RobocinqueS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robo5sScheda,
+    immagini: {
+      'Cromo satinato': robo5sCromoSat,
+      'Nero opaco': robo5sNeroOpaco,
+      'Grafite mat': robo5sGrafiteMat
+    }, varianti: [
+    { codice: 'ID71 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
+    { codice: 'ID71 neromat', finitura: 'Nero opaco', versione: 'Rosetta' },
+    { codice: 'ID71 grafitemat', finitura: 'Grafite mat', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
@@ -197,6 +210,7 @@ const FINISHES = {
   'Bronzo': 'linear-gradient(135deg,#9a774e,#5c3f26 52%,#7d5836 70%,#4d341f)',
   'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Nero': 'linear-gradient(135deg,#38383b,#1c1c1e 60%,#2a2a2c)',
+  'Grafite mat': 'linear-gradient(135deg,#6a6a6f,#45454a 55%,#565659)',
   'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
   'Bicolore cromo lucido / satinato': 'linear-gradient(90deg,#eef1f3 0%,#c3c9ce 49%,#a7adb2 51%,#cdd2d6 100%)'
 };
