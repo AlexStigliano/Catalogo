@@ -48,8 +48,20 @@ const CATEGORIES = [
   { id: '10', nome: 'Colori e vernici' }
 ];
 
+// Sottocategorie della categoria 01
+const SOTTOCATEGORIE = [
+  { id: 'battenti', nome: 'Maniglie per porte battenti' },
+  { id: 'scorrevoli', nome: 'Maniglie per porte scorrevoli' },
+  { id: 'maniglioni', nome: 'Maniglioni per porte' },
+  { id: 'pomoli', nome: 'Pomoli per porte' },
+  { id: 'finestre', nome: 'Maniglie per finestre' },
+  { id: 'speciali', nome: 'Maniglie speciali per porte e finestre' },
+  { id: 'accessori', nome: 'Accessori e ricambi' }
+];
+const subName = (id) => (SOTTOCATEGORIE.find(s => s.id === id) || {}).nome || id;
+
 const PRODUCTS = [
-  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '45x45mm (ø 7mm)', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '45x45mm (ø 7mm)', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': gocciaCromoSat,
       'Cromo lucido': gocciaCromoLuc,
@@ -60,7 +72,7 @@ const PRODUCTS = [
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
     { codice: '130247B02O', finitura: 'Ottone satinato', versione: 'Patent' },
     { codice: '130247B43', finitura: 'Bronzo', versione: 'Patent' } ] },
-  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': quadraCromoSat,
       'Cromo lucido': quadraCromoLuc
@@ -68,7 +80,7 @@ const PRODUCTS = [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
-  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '144x50mm', fornitore: 'Ital Linea', fornitoreLogo: italineaLogo,
+  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '144x50mm', fornitore: 'Ital Linea', fornitoreLogo: italineaLogo,
     immagini: {
       'Oro satinato': angoloOroSat,
       'Bronzo': angoloBronzo,
@@ -81,7 +93,7 @@ const PRODUCTS = [
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
     { codice: '448RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '448RB0880CBO', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'Maniglie per porte', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Forme', fornitoreLogo: formeLogo,
+  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Forme', fornitoreLogo: formeLogo,
     immagini: {
       'Cromo satinato': roundCromoSat,
       'Nero opaco': roundNeroOpaco,
@@ -91,26 +103,26 @@ const PRODUCTS = [
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
     { codice: 'A519RTX59OS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
+  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': heliaCromoSat,
       'Nero': heliaNero
     }, varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '121RBQNE', finitura: 'Nero', versione: 'Patent' } ] },
-  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
+  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': voltaCromoSat
     }, varianti: [
     { codice: '122RBTCS', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Arieni', fornitoreLogo: arieniLogo,
+  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Arieni', fornitoreLogo: arieniLogo,
     immagini: {
       'Cromo satinato': sirioCromoSat,
       'Bicolore cromo lucido / satinato': sirioBicolore
     }, varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '9051CS/CL', finitura: 'Bicolore cromo lucido / satinato', versione: 'Patent' } ] },
-  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Linea Calì', fornitoreLogo: lineacaliLogo,
+  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Linea Calì', fornitoreLogo: lineacaliLogo,
     immagini: {
       'Cromo satinato': trioCromoSat,
       'Cromo lucido': trioCromoLuc,
@@ -119,14 +131,14 @@ const PRODUCTS = [
     { codice: '485RB0880CCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '485RB0880CCL', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '485RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': aliciaCromoSat,
       'Ottone satinato': aliciaOttoneSat
     }, varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1220213BOS', finitura: 'Ottone satinato', versione: 'Patent' } ] },
-  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': puntoCromoSat,
       'Nero opaco': puntoNeroOpaco
@@ -197,7 +209,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             : <span className="forn-text">{p.fornitore}</span>}
         </div>
         <div className="submeta">
-          <p className="sub">{p.sottocategoria}</p>
+          <p className="sub">{subName(p.sottocategoria)}</p>
           <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
         </div>
         {p.scheda
@@ -325,7 +337,10 @@ function Indice() {
 /* ---------- Pagina categoria ---------- */
 function CategoryPage({ cat }) {
   const info = CATEGORIES.find(c => c.id === cat) || CATEGORIES[0];
-  const products = PRODUCTS.filter(p => p.categoria === cat);
+  const catProducts = PRODUCTS.filter(p => p.categoria === cat);
+  const hasSubs = cat === '01';
+  const [sub, setSub] = useState(SOTTOCATEGORIE[0].id);
+  const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
 
   return (
     <>
@@ -346,19 +361,42 @@ function CategoryPage({ cat }) {
           <h1>{info.nome}</h1>
           <hr className="rule" />
         </div>
-      </div>
-      {products.length > 0
-        ? <ProductCatalog products={products} />
-        : (
-          <div className="shell">
-            <div className="prep">
-              <span className="badge">Sezione {info.id}</span>
-              <h2>Sezione in preparazione</h2>
-              <p>Stiamo caricando gli articoli di questa categoria. Torna presto per sfogliarli.</p>
-              <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
-            </div>
+        {hasSubs && (
+          <div className="subbar" role="tablist" aria-label="Sottocategorie">
+            {SOTTOCATEGORIE.map(s => {
+              const n = catProducts.filter(p => p.sottocategoria === s.id).length;
+              return (
+                <button key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
+                  role="tab" aria-selected={s.id === sub} onClick={() => setSub(s.id)}>
+                  {s.nome}
+                  {n > 0 && <span className="subcount">{n}</span>}
+                </button>
+              );
+            })}
           </div>
         )}
+      </div>
+
+      {catProducts.length === 0 ? (
+        <div className="shell">
+          <div className="prep">
+            <span className="badge">Sezione {info.id}</span>
+            <h2>Sezione in preparazione</h2>
+            <p>Stiamo caricando gli articoli di questa categoria. Torna presto per sfogliarli.</p>
+            <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+          </div>
+        </div>
+      ) : subProducts.length > 0 ? (
+        <ProductCatalog key={sub} products={subProducts} />
+      ) : (
+        <div className="shell">
+          <div className="prep">
+            <span className="badge">{subName(sub)}</span>
+            <h2>Sottocategoria in preparazione</h2>
+            <p>Non ci sono ancora articoli in questa sottocategoria. Presto aggiungeremo nuovi prodotti.</p>
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );
