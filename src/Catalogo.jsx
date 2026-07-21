@@ -14,6 +14,8 @@ import lineacaliLogo from './assets/lineacali-logo.svg';
 import trioCromoSat from './assets/prodotti/trio-cromo-satinato.jpg';
 import trioCromoLuc from './assets/prodotti/trio-cromo-lucido.jpg';
 import trioNeroOpaco from './assets/prodotti/trio-nero-opaco.jpg';
+import aliciaCromoSat from './assets/prodotti/alicia-cromo-satinato.jpg';
+import aliciaOttoneSat from './assets/prodotti/alicia-ottone-satinato.jpg';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -115,7 +117,11 @@ const PRODUCTS = [
     { codice: '485RB0880CCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '485RB0880CCL', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '485RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
+  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Cromo satinato': aliciaCromoSat,
+      'Ottone satinato': aliciaOttoneSat
+    }, varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1220213BOS', finitura: 'Ottone satinato', versione: 'Patent' } ] },
   { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Fimef', varianti: [
