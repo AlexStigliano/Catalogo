@@ -7,6 +7,9 @@ import fimetLogo from './assets/fimet-logo.png';
 import italineaLogo from './assets/italinea-logo.svg';
 import formeLogo from './assets/forme-logo.svg';
 import adtechLogo from './assets/adtech-logo.png';
+import arieniLogo from './assets/arieni-logo.svg';
+import sirioCromoSat from './assets/prodotti/sirio-cromo-satinato.jpg';
+import sirioBicolore from './assets/prodotti/sirio-bicolore.jpg';
 import gocciaCromoSat from './assets/prodotti/goccia-cromo-satinato.jpg';
 import gocciaCromoLuc from './assets/prodotti/goccia-cromo-lucido.jpg';
 import gocciaOttoneLuc from './assets/prodotti/goccia-ottone-lucido.jpg';
@@ -92,7 +95,11 @@ const PRODUCTS = [
       'Cromo satinato': voltaCromoSat
     }, varianti: [
     { codice: '122RBTCS', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'ARIENI', varianti: [
+  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'Arieni', fornitoreLogo: arieniLogo,
+    immagini: {
+      'Cromo satinato': sirioCromoSat,
+      'Bicolore cromo lucido / satinato': sirioBicolore
+    }, varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '9051CS/CL', finitura: 'Bicolore cromo lucido / satinato', versione: 'Patent' } ] },
   { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'Maniglie per porte', dimensioni: 'Standard', fornitore: 'lineacoli', varianti: [
