@@ -176,61 +176,61 @@ const PRODUCTS = [
       'Cromo satinato': robotCromoSat,
       'Oro lucido': robotOroLuc
     }, varianti: [
-    { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' } ] },
+    { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Patent' } ] },
   { id: 12, categoria: '01', nome: 'Robotre', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
     immagini: {
       'Cromo satinato': robotreCromoSat
     }, varianti: [
-    { codice: 'CD91 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] },
+    { codice: 'CD91 cromat', finitura: 'Cromo satinato', versione: 'Patent' } ] },
   { id: 13, categoria: '01', nome: 'Roboquattro', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqScheda,
     immagini: {
       'Cromo satinato': roboqCromoSat,
       'Oro lucido': roboqOroLuc,
       'Oro satinato': roboqOroSat
     }, varianti: [
-    { codice: 'ID41 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'ID41 oroplus', finitura: 'Oro lucido', versione: 'Rosetta' },
-    { codice: 'ID41 oromat', finitura: 'Oro satinato', versione: 'Rosetta' } ] },
+    { codice: 'ID41 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'ID41 oroplus', finitura: 'Oro lucido', versione: 'Patent' },
+    { codice: 'ID41 oromat', finitura: 'Oro satinato', versione: 'Patent' } ] },
   { id: 14, categoria: '01', nome: 'RoboquattroS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqsScheda,
     immagini: {
       'Cromo satinato': roboqsCromoSat
     }, varianti: [
-    { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' } ] },
+    { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Patent' } ] },
   { id: 15, categoria: '01', nome: 'RobocinqueS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robo5sScheda,
     immagini: {
       'Cromo satinato': robo5sCromoSat,
       'Nero opaco': robo5sNeroOpaco,
       'Grafite mat': robo5sGrafiteMat
     }, varianti: [
-    { codice: 'ID71 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'ID71 neromat', finitura: 'Nero opaco', versione: 'Rosetta' },
-    { codice: 'ID71 grafitemat', finitura: 'Grafite mat', versione: 'Rosetta' } ] },
+    { codice: 'ID71 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'ID71 neromat', finitura: 'Nero opaco', versione: 'Patent' },
+    { codice: 'ID71 grafitemat', finitura: 'Grafite mat', versione: 'Patent' } ] },
   { id: 16, categoria: '01', nome: 'Robot6', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6Scheda,
     immagini: {
       'Cromo satinato': robot6CromoSat,
       'Nero opaco': robot6NeroOpaco
     }, varianti: [
-    { codice: 'ID 81 R-RY CM', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'ID 81 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] },
+    { codice: 'ID 81 R-RY CM', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'ID 81 R-RY NM', finitura: 'Nero opaco', versione: 'Patent' } ] },
   { id: 17, categoria: '01', nome: 'Robot6S', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 50×50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6sScheda,
     immagini: {
       'Cromo satinato': robot6sCromoSat,
       'Nero opaco': robot6sNeroOpaco
     }, varianti: [
-    { codice: 'ID 91 R-RY CM', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] },
+    { codice: 'ID 91 R-RY CM', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Patent' } ] },
   { id: 18, categoria: '01', nome: 'Peter', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: peterScheda,
     immagini: {
       'Oro lucido': peterOroLuc
     }, varianti: [
-    { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Rosetta' } ] },
+    { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Patent' } ] },
   { id: 19, categoria: '01', nome: 'Amalfi', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
     immagini: {
       'Oro lucido': amalfiOroLuc
     }, varianti: [
-    { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Rosetta' },
-    { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Rosetta' } ] }
+    { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' },
+    { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Patent' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
