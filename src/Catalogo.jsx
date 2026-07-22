@@ -54,6 +54,8 @@ import robot6CromoSat from './assets/prodotti/robot6-cromo-satinato.jpg';
 import robot6NeroOpaco from './assets/prodotti/robot6-nero-opaco.jpg';
 import robot6sCromoSat from './assets/prodotti/robot6s-cromo-satinato.jpg';
 import robot6sNeroOpaco from './assets/prodotti/robot6s-nero-opaco.jpg';
+import robot6Scheda from './assets/robot6-scheda-tecnica.pdf';
+import robot6sScheda from './assets/robot6s-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -200,20 +202,20 @@ const PRODUCTS = [
     { codice: 'ID71 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
     { codice: 'ID71 neromat', finitura: 'Nero opaco', versione: 'Rosetta' },
     { codice: 'ID71 grafitemat', finitura: 'Grafite mat', versione: 'Rosetta' } ] },
-  { id: 16, categoria: '01', nome: 'Robot6', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo,
+  { id: 16, categoria: '01', nome: 'Robot6', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6Scheda,
     immagini: {
       'Cromo satinato': robot6CromoSat,
       'Nero opaco': robot6NeroOpaco
     }, varianti: [
-    { codice: 'Robot6 cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'Robot6 neromat', finitura: 'Nero opaco', versione: 'Rosetta' } ] },
-  { id: 17, categoria: '01', nome: 'Robot6S', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo,
+    { codice: 'ID 81 R-RY CM', finitura: 'Cromo satinato', versione: 'Rosetta' },
+    { codice: 'ID 81 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] },
+  { id: 17, categoria: '01', nome: 'Robot6S', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 50×50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6sScheda,
     immagini: {
       'Cromo satinato': robot6sCromoSat,
       'Nero opaco': robot6sNeroOpaco
     }, varianti: [
-    { codice: 'Robot6S cromat', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'Robot6S neromat', finitura: 'Nero opaco', versione: 'Rosetta' } ] }
+    { codice: 'ID 91 R-RY CM', finitura: 'Cromo satinato', versione: 'Rosetta' },
+    { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
