@@ -252,3 +252,53 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 :root[data-theme="light"] .cat .subchip.active { background: var(--navy); border-color: var(--navy); }
 .cat .subcount { font-size: 11px; font-weight: 800; background: var(--panel); color: var(--ink-soft); border-radius: 100px; padding: 0.05rem 0.45rem; min-width: 1.3em; text-align: center; }
 .cat .subchip.active .subcount { background: rgba(255,255,255,0.22); color: #fff; }
+
+/* ---------- CTA scheda completa (card) ---------- */
+.cat .media-body.clickable { cursor: pointer; }
+.cat .name.clickable { cursor: pointer; }
+.cat .name.clickable:hover { color: var(--orange-dark); }
+.cat .detail-cta { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.9rem; padding: 0.7rem 1rem; border: none; border-radius: 7px; background: var(--navy); color: #fff; font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; transition: background 0.15s, transform 0.15s; }
+.cat .detail-cta:hover { background: var(--navy-deep); }
+.cat .detail-cta svg { transition: transform 0.15s; }
+.cat .detail-cta:hover svg { transform: translateX(3px); }
+@media (prefers-color-scheme: dark) { .cat .detail-cta { background: var(--blue); } }
+:root[data-theme="dark"] .cat .detail-cta { background: var(--blue); }
+:root[data-theme="light"] .cat .detail-cta { background: var(--navy); }
+
+/* ---------- Pagina prodotto (PDP) ---------- */
+.cat .pdp { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: 1.6rem; align-items: start; }
+.cat .pdp-media { position: sticky; top: 1.2rem; }
+.cat .pdp-media .media { border: 1px solid var(--line); border-radius: 12px; aspect-ratio: 4/3; }
+.cat .pdp-info { min-width: 0; }
+.cat .pdp-name { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--header-name); letter-spacing: -0.015em; line-height: 1.04; margin: 0; }
+.cat .pdp-info .name-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.cat .pdp-sub { color: var(--ink-soft); font-size: 14px; font-weight: 600; margin: 0.5rem 0 0; }
+.cat .pdp-info .rule { height: 3px; width: 100%; background: var(--navy); border: none; margin: 1.1rem 0 1.3rem; }
+.cat .pdp-specs { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.4rem; }
+.cat .pdp-spec { border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.9rem; min-width: 8rem; }
+.cat .pdp-spec .k { display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 700; }
+.cat .pdp-spec .v { display: block; font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 0.15rem; }
+.cat .pdp-finishes { margin: 0 0 1.2rem; }
+.cat .pdp-finishes .fhint { display: block; margin-bottom: 0.55rem; }
+.cat .pdp-info .scheda { display: inline-flex; margin-bottom: 1.5rem; }
+.cat .pdp-variants { margin-top: 0.5rem; }
+.cat .pdp-variants h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 700; margin: 0 0 0.6rem; }
+.cat .pdp-variants .variants { width: 100%; }
+
+/* ---------- Sezioni articoli collegati ---------- */
+.cat .rel-section { margin-top: clamp(2.4rem, 5vw, 3.6rem); }
+.cat .rel-head { display: flex; align-items: baseline; gap: 0.8rem; border-bottom: 2px solid var(--navy); padding-bottom: 0.7rem; margin-bottom: 1.3rem; }
+.cat .rel-head h2 { font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 800; color: var(--header-name); letter-spacing: -0.01em; margin: 0; }
+.cat .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.cat .rel-card { display: flex; align-items: center; gap: 0.85rem; text-align: left; padding: 0.7rem; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+.cat .rel-card:hover { border-color: var(--navy); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.cat .rel-media { width: 64px; height: 64px; flex: none; border-radius: 8px; background: #fff; border: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.cat .rel-media img { width: 100%; height: 100%; object-fit: contain; }
+.cat .rel-body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.cat .rel-name { font-weight: 800; color: var(--header-name); font-size: 15px; }
+.cat .rel-forn { font-size: 12px; color: var(--ink-soft); font-weight: 600; }
+.cat .rel-arrow { color: var(--ink-soft); flex: none; }
+.cat .rel-empty { border: 1.5px dashed var(--line); border-radius: 12px; padding: 1.8rem; text-align: center; background: var(--panel); }
+.cat .rel-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: var(--orange-dark); background: rgba(244,130,10,0.1); padding: 0.3rem 0.8rem; border-radius: 100px; margin-bottom: 0.7rem; }
+.cat .rel-empty p { color: var(--ink-soft); font-size: 14px; margin: 0; }
+@media (max-width: 760px) { .cat .pdp { grid-template-columns: 1fr; } .cat .pdp-media { position: static; } }

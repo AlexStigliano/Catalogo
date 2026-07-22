@@ -297,7 +297,9 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
           <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
         </button>
-        <div className="media-body">
+        <div className="media-body clickable" onClick={() => go('/prodotto/' + p.id)} role="link"
+          tabIndex={0} onKeyDown={e => { if (e.key === 'Enter') go('/prodotto/' + p.id); }}
+          aria-label={`Apri la scheda di ${p.nome}`}>
           {selImg ? (
             <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
           ) : hasImages ? (
@@ -310,7 +312,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
       </div>
       <div className="cbody">
         <div className="name-row">
-          <h2 className="name">{p.nome}</h2>
+          <h2 className="name clickable" onClick={() => go('/prodotto/' + p.id)}>{p.nome}</h2>
           {p.fornitoreLogo
             ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
             : <span className="forn-text">{p.fornitore}</span>}
@@ -344,6 +346,10 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             <span className="fcount">{ufins.length} {ufins.length === 1 ? 'finitura' : 'finiture'}</span>
           </div>
         )}
+        <button className="detail-cta" onClick={() => go('/prodotto/' + p.id)}>
+          Scheda completa
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+        </button>
         <button className="expand" aria-expanded={open} onClick={() => setOpen(o => !o)}>
           <span>Varianti disponibili ({p.varianti.length})</span>
           <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -378,6 +384,8 @@ function parseHash() {
   const h = window.location.hash.replace(/^#\/?/, '');
   if (!h) return { view: 'cover' };
   if (h === 'indice') return { view: 'indice' };
+  const mp = h.match(/^prodotto\/(\d+)$/);
+  if (mp) return { view: 'prodotto', id: Number(mp[1]) };
   const m = h.match(/^cat\/(\d{2})$/);
   if (m) return { view: 'categoria', cat: m[1] };
   return { view: 'cover' };
@@ -612,6 +620,167 @@ function Footer() {
   );
 }
 
+/* ---------- Pagina prodotto dedicata ---------- */
+function RelatedCard({ p }) {
+  const img = p.immagini && p.immagini[Object.keys(p.immagini)[0]];
+  return (
+    <button className="rel-card" onClick={() => go('/prodotto/' + p.id)}>
+      <div className="rel-media">
+        {img ? <img src={img} alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
+      </div>
+      <div className="rel-body">
+        <span className="rel-name">{p.nome}</span>
+        <span className="rel-forn">{p.fornitore}</span>
+      </div>
+      <ChevronRight size={16} className="rel-arrow" />
+    </button>
+  );
+}
+
+function RelatedRow({ title, ids }) {
+  const items = (ids || []).map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  return (
+    <section className="rel-section">
+      <div className="rel-head"><h2>{title}</h2></div>
+      {items.length > 0 ? (
+        <div className="rel-grid">{items.map(p => <RelatedCard key={p.id} p={p} />)}</div>
+      ) : (
+        <div className="rel-empty">
+          <span className="rel-badge">In preparazione</span>
+          <p>Questa sezione verrà presto popolata con gli articoli collegati.</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function ProductDetail({ id }) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const info = CATEGORIES.find(c => c.id === (p && p.categoria)) || CATEGORIES[0];
+  const images = (p && p.immagini) || {};
+  const ufins = p ? [...new Set(p.varianti.map(v => v.finitura))] : [];
+  const firstWithImg = p && p.varianti.find(v => images[v.finitura]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
+  const [favorites, setFavorites] = useState(() => {
+    try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; } catch { return []; }
+  });
+  useEffect(() => { localStorage.setItem('ferramenta_favorites', JSON.stringify(favorites)); }, [favorites]);
+
+  if (!p) {
+    return (
+      <>
+        <div className="topbar"><div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <span className="section">Prodotto</span>
+        </div></div>
+        <div className="shell"><div className="prep">
+          <span className="badge">Prodotto</span>
+          <h2>Prodotto non trovato</h2>
+          <p>La scheda richiesta non è disponibile.</p>
+          <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+        </div></div>
+        <Footer />
+      </>
+    );
+  }
+
+  const hasImages = Object.keys(images).length > 0;
+  const selImg = images[selFin];
+  const isFav = favorites.includes(p.id);
+  const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
+
+  return (
+    <>
+      <div className="topbar"><div className="shell">
+        <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+        <span className="section">{info.nome}</span>
+      </div></div>
+
+      <div className="shell">
+        <div className="crumbs">
+          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <span className="crumb-sep">/</span>
+          <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>Categoria {p.categoria}</button>
+          <span className="crumb-sep">/</span>
+          <span className="crumb-now">{p.nome}</span>
+        </div>
+
+        <div className="pdp">
+          <div className="pdp-media">
+            <div className="media">
+              <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+                aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={toggleFav}>
+                <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
+              </button>
+              <div className="media-body">
+                {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} />
+                  : hasImages ? <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
+                  : <div className="noimg"><Ghost /><small>In arrivo</small></div>}
+              </div>
+              {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
+            </div>
+          </div>
+
+          <div className="pdp-info">
+            <div className="name-row">
+              <h1 className="pdp-name">{p.nome}</h1>
+              {p.fornitoreLogo
+                ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
+                : <span className="forn-text">{p.fornitore}</span>}
+            </div>
+            <p className="pdp-sub">{subName(p.sottocategoria)}</p>
+            <hr className="rule" />
+            <div className="pdp-specs">
+              <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>
+              {p.dimensioni && <div className="pdp-spec"><span className="k">Dimensioni</span><span className="v">{p.dimensioni}</span></div>}
+              <div className="pdp-spec"><span className="k">Fornitore</span><span className="v">{p.fornitore}</span></div>
+            </div>
+
+            {hasImages && (
+              <div className="finishes pdp-finishes">
+                <span className="fhint">Scegli la finitura</span>
+                <div className="fbtns">
+                  {ufins.map((f, i) => (
+                    <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                      onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                      <Chip finitura={f} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {p.scheda
+              ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`}><Download size={15} /> Scheda tecnica</a>
+              : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
+
+            <div className="pdp-variants">
+              <h3>Varianti disponibili ({p.varianti.length})</h3>
+              <table className="variants">
+                <thead><tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr></thead>
+                <tbody>
+                  {p.varianti.map((v, i) => (
+                    <tr key={i} className={`${hasImages ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
+                      onClick={hasImages ? () => setSelFin(v.finitura) : undefined}>
+                      <td className="code">{v.codice}</td>
+                      <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                      <td className="ver">{v.versione}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <RelatedRow title="Articoli abbinati o complementari" ids={p.abbinati} />
+        <RelatedRow title="Articoli necessari" ids={p.necessari} />
+      </div>
+      <Footer />
+    </>
+  );
+}
+
 export default function Catalogo() {
   const [route, setRoute] = useState(parseHash());
 
@@ -626,6 +795,7 @@ export default function Catalogo() {
       {route.view === 'cover' && <Cover />}
       {route.view === 'indice' && <Indice />}
       {route.view === 'categoria' && <CategoryPage cat={route.cat} />}
+      {route.view === 'prodotto' && <ProductDetail id={route.id} />}
     </div>
   );
 }
