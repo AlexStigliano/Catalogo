@@ -63,6 +63,8 @@ import amalfiScheda from './assets/amalfi-scheda-tecnica.pdf';
 import flexaCromoSat from './assets/prodotti/flexa-cromo-satinato.jpg';
 import flexaOroLuc from './assets/prodotti/flexa-oro-lucido.jpg';
 import flexaScheda from './assets/flexa-scheda-tecnica.pdf';
+import pegasoOroLuc from './assets/prodotti/pegaso-oro-lucido.jpg';
+import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -240,7 +242,13 @@ const PRODUCTS = [
       'Oro lucido': flexaOroLuc
     }, varianti: [
     { codice: 'A132 RTX07 C02', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: 'A132 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' } ] }
+    { codice: 'A132 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' } ] },
+  { id: 21, categoria: '01', nome: 'Pegaso', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: pegasoScheda,
+    immagini: {
+      'Oro lucido': pegasoOroLuc
+    }, varianti: [
+    { codice: 'A127 RTX59 L01', finitura: 'Oro lucido', versione: 'Patent' },
+    { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
@@ -257,7 +265,8 @@ const FINISHES = {
   'Nero': 'linear-gradient(135deg,#38383b,#1c1c1e 60%,#2a2a2c)',
   'Grafite mat': 'linear-gradient(135deg,#6a6a6f,#45454a 55%,#565659)',
   'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
-  'Bicolore cromo lucido / satinato': 'linear-gradient(90deg,#eef1f3 0%,#c3c9ce 49%,#a7adb2 51%,#cdd2d6 100%)'
+  'Bicolore cromo lucido / satinato': 'linear-gradient(90deg,#eef1f3 0%,#c3c9ce 49%,#a7adb2 51%,#cdd2d6 100%)',
+  'Bicolore oro lucido / satinato': 'linear-gradient(90deg,#ffefb0 0%,#e6b83f 49%,#c39a3c 51%,#b78e35 100%)'
 };
 const finBg = (f) => FINISHES[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 
