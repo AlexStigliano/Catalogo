@@ -56,6 +56,8 @@ import robot6sCromoSat from './assets/prodotti/robot6s-cromo-satinato.jpg';
 import robot6sNeroOpaco from './assets/prodotti/robot6s-nero-opaco.jpg';
 import robot6Scheda from './assets/robot6-scheda-tecnica.pdf';
 import robot6sScheda from './assets/robot6s-scheda-tecnica.pdf';
+import peterOroLuc from './assets/prodotti/peter-oro-lucido.jpg';
+import peterScheda from './assets/peter-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -215,7 +217,12 @@ const PRODUCTS = [
       'Nero opaco': robot6sNeroOpaco
     }, varianti: [
     { codice: 'ID 91 R-RY CM', finitura: 'Cromo satinato', versione: 'Rosetta' },
-    { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] }
+    { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Rosetta' } ] },
+  { id: 18, categoria: '01', nome: 'Peter', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: peterScheda,
+    immagini: {
+      'Oro lucido': peterOroLuc
+    }, varianti: [
+    { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
