@@ -60,6 +60,9 @@ import peterOroLuc from './assets/prodotti/peter-oro-lucido.jpg';
 import peterScheda from './assets/peter-scheda-tecnica.pdf';
 import amalfiOroLuc from './assets/prodotti/amalfi-oro-lucido.jpg';
 import amalfiScheda from './assets/amalfi-scheda-tecnica.pdf';
+import flexaCromoSat from './assets/prodotti/flexa-cromo-satinato.jpg';
+import flexaOroLuc from './assets/prodotti/flexa-oro-lucido.jpg';
+import flexaScheda from './assets/flexa-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -230,7 +233,14 @@ const PRODUCTS = [
       'Oro lucido': amalfiOroLuc
     }, varianti: [
     { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' },
-    { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Patent' } ] }
+    { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Patent' } ] },
+  { id: 20, categoria: '01', nome: 'Flexa', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: flexaScheda,
+    immagini: {
+      'Cromo satinato': flexaCromoSat,
+      'Oro lucido': flexaOroLuc
+    }, varianti: [
+    { codice: 'A132 RTX07 C02', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: 'A132 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
