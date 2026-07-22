@@ -58,6 +58,8 @@ import robot6Scheda from './assets/robot6-scheda-tecnica.pdf';
 import robot6sScheda from './assets/robot6s-scheda-tecnica.pdf';
 import peterOroLuc from './assets/prodotti/peter-oro-lucido.jpg';
 import peterScheda from './assets/peter-scheda-tecnica.pdf';
+import amalfiOroLuc from './assets/prodotti/amalfi-oro-lucido.jpg';
+import amalfiScheda from './assets/amalfi-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -222,7 +224,13 @@ const PRODUCTS = [
     immagini: {
       'Oro lucido': peterOroLuc
     }, varianti: [
-    { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Rosetta' } ] }
+    { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Rosetta' } ] },
+  { id: 19, categoria: '01', nome: 'Amalfi', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
+    immagini: {
+      'Oro lucido': amalfiOroLuc
+    }, varianti: [
+    { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Rosetta' },
+    { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Rosetta' } ] }
 ];
 
 // Sfondi che simulano il metallo reale di ogni finitura
