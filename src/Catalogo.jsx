@@ -65,6 +65,8 @@ import flexaOroLuc from './assets/prodotti/flexa-oro-lucido.jpg';
 import flexaScheda from './assets/flexa-scheda-tecnica.pdf';
 import pegasoOroLuc from './assets/prodotti/pegaso-oro-lucido.jpg';
 import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
+import easyCromoSat from './assets/prodotti/easy-cromo-satinato.jpg';
+import easyScheda from './assets/easy-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -248,8 +250,22 @@ const PRODUCTS = [
       'Oro lucido': pegasoOroLuc
     }, varianti: [
     { codice: 'A127 RTX59 L01', finitura: 'Oro lucido', versione: 'Patent' },
-    { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] }
+    { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] },
+  { id: 22, categoria: '01', nome: 'Kit Easy', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda,
+    immagini: {
+      'Cromo satinato': easyCromoSat
+    }, varianti: [
+    { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Patent' } ] }
 ];
+
+/* Kit scorrevole abbinato a tutte le maniglie battenti in cromo satinato (bidirezionale) */
+(() => {
+  const KIT = PRODUCTS.find(p => p.id === 22);
+  if (!KIT) return;
+  const matched = PRODUCTS.filter(p => p.sottocategoria === 'battenti' && p.varianti.some(v => v.finitura === 'Cromo satinato'));
+  matched.forEach(p => { p.abbinati = [...(p.abbinati || []), 22]; });
+  KIT.abbinati = matched.map(p => p.id);
+})();
 
 // Sfondi che simulano il metallo reale di ogni finitura
 const FINISHES = {
