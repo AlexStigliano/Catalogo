@@ -65,15 +65,23 @@ import flexaOroLuc from './assets/prodotti/flexa-oro-lucido.jpg';
 import flexaScheda from './assets/flexa-scheda-tecnica.pdf';
 import pegasoOroLuc from './assets/prodotti/pegaso-oro-lucido.jpg';
 import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
-import easyConSerratura from './assets/prodotti/easy-con-serratura.jpg';
-import easySenzaSerratura from './assets/prodotti/easy-senza-serratura.jpg';
 import easyScheda from './assets/easy-scheda-tecnica.pdf';
+import easyQuadroCsCon from './assets/prodotti/easy-quadro-cromo-satinato-con.jpg';
+import easyQuadroCsSenza from './assets/prodotti/easy-quadro-cromo-satinato-senza.jpg';
+import easyQuadroOlCon from './assets/prodotti/easy-quadro-oro-lucido-con.jpg';
+import easyQuadroOlSenza from './assets/prodotti/easy-quadro-oro-lucido-senza.jpg';
+import easyQuadroNoCon from './assets/prodotti/easy-quadro-nero-opaco-con.jpg';
+import easyQuadroNoSenza from './assets/prodotti/easy-quadro-nero-opaco-senza.jpg';
+import easyQuadroBoCon from './assets/prodotti/easy-quadro-bianco-opaco-con.jpg';
+import easyQuadroBoSenza from './assets/prodotti/easy-quadro-bianco-opaco-senza.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
 import easyTondoOlSenza from './assets/prodotti/easy-tondo-oro-lucido-senza.jpg';
 import easyTondoNoCon from './assets/prodotti/easy-tondo-nero-opaco-con.jpg';
 import easyTondoNoSenza from './assets/prodotti/easy-tondo-nero-opaco-senza.jpg';
+import easyTondoBoCon from './assets/prodotti/easy-tondo-bianco-opaco-con.jpg';
+import easyTondoBoSenza from './assets/prodotti/easy-tondo-bianco-opaco-senza.jpg';
 import easyTondoScheda from './assets/easy-tondo-scheda-tecnica.pdf';
 
 const CATEGORIES = [
@@ -259,13 +267,25 @@ const PRODUCTS = [
     }, varianti: [
     { codice: 'A127 RTX59 L01', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] },
-  { id: 22, categoria: '01', nome: 'Kit Easy Quadro', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda, optKey: 'versione',
+  { id: 22, categoria: '01', nome: 'Kit Easy Quadro', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
-      'Con serratura': easyConSerratura,
-      'Senza serratura': easySenzaSerratura
+      'Cromo satinato||Con serratura': easyQuadroCsCon,
+      'Cromo satinato||Senza serratura': easyQuadroCsSenza,
+      'Oro lucido||Con serratura': easyQuadroOlCon,
+      'Oro lucido||Senza serratura': easyQuadroOlSenza,
+      'Nero opaco||Con serratura': easyQuadroNoCon,
+      'Nero opaco||Senza serratura': easyQuadroNoSenza,
+      'Bianco opaco||Con serratura': easyQuadroBoCon,
+      'Bianco opaco||Senza serratura': easyQuadroBoSenza
     }, varianti: [
     { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
-    { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] },
+    { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3667RMQSEIM.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3667RMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3667RMQSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3667RMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3667RMQSEIM.BI.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3667RMQ.BI.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
   { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': easyTondoCsCon,
@@ -273,14 +293,18 @@ const PRODUCTS = [
       'Oro lucido||Con serratura': easyTondoOlCon,
       'Oro lucido||Senza serratura': easyTondoOlSenza,
       'Nero opaco||Con serratura': easyTondoNoCon,
-      'Nero opaco||Senza serratura': easyTondoNoSenza
+      'Nero opaco||Senza serratura': easyTondoNoSenza,
+      'Bianco opaco||Con serratura': easyTondoBoCon,
+      'Bianco opaco||Senza serratura': easyTondoBoSenza
     }, varianti: [
     { codice: '3666RMTSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
     { codice: '3666RMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
     { codice: '3666RMTSEIM.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
     { codice: '3666RMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
-    { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3666RMTSEIM.BI.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3666RMT.BI.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
@@ -895,7 +919,7 @@ export default function Catalogo() {
       {route.view === 'cover' && <Cover />}
       {route.view === 'indice' && <Indice />}
       {route.view === 'categoria' && <CategoryPage cat={route.cat} />}
-      {route.view === 'prodotto' && <ProductDetail id={route.id} />}
+      {route.view === 'prodotto' && <ProductDetail key={route.id} id={route.id} />}
     </div>
   );
 }
