@@ -68,9 +68,12 @@ import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
 import easyConSerratura from './assets/prodotti/easy-con-serratura.jpg';
 import easySenzaSerratura from './assets/prodotti/easy-senza-serratura.jpg';
 import easyScheda from './assets/easy-scheda-tecnica.pdf';
-import easyTondoCromoSat from './assets/prodotti/easy-tondo-cromo-satinato.jpg';
-import easyTondoOttoneLuc from './assets/prodotti/easy-tondo-ottone-lucido.jpg';
-import easyTondoNeroOpaco from './assets/prodotti/easy-tondo-nero-opaco.jpg';
+import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
+import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
+import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
+import easyTondoOlSenza from './assets/prodotti/easy-tondo-oro-lucido-senza.jpg';
+import easyTondoNoCon from './assets/prodotti/easy-tondo-nero-opaco-con.jpg';
+import easyTondoNoSenza from './assets/prodotti/easy-tondo-nero-opaco-senza.jpg';
 import easyTondoScheda from './assets/easy-tondo-scheda-tecnica.pdf';
 
 const CATEGORIES = [
@@ -263,15 +266,21 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
     { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] },
-  { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda,
+  { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
-      'Cromo satinato': easyTondoCromoSat,
-      'Ottone lucido': easyTondoOttoneLuc,
-      'Nero opaco': easyTondoNeroOpaco
+      'Cromo satinato||Con serratura': easyTondoCsCon,
+      'Cromo satinato||Senza serratura': easyTondoCsSenza,
+      'Oro lucido||Con serratura': easyTondoOlCon,
+      'Oro lucido||Senza serratura': easyTondoOlSenza,
+      'Nero opaco||Con serratura': easyTondoNoCon,
+      'Nero opaco||Senza serratura': easyTondoNoSenza
     }, varianti: [
-    { codice: '3666RMTSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Patent' },
-    { codice: '3666RMTSEIM.01.IM', finitura: 'Ottone lucido', versione: 'Patent' },
-    { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Patent' } ] }
+    { codice: '3666RMTSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3666RMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3666RMTSEIM.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3666RMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
@@ -323,13 +332,18 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   const images = p.immagini || {};
   const optKey = p.optKey || 'finitura';
   const isVer = optKey === 'versione';
+  const optKey2 = p.optKey2;
+  const has2 = !!optKey2;
   const ufins = [...new Set(p.varianti.map(v => v[optKey]))];
-  const firstWithImg = p.varianti.find(v => images[v[optKey]]);
+  const uvers = has2 ? [...new Set(p.varianti.map(v => v[optKey2]))] : [];
+  const keyOf = (v) => has2 ? v[optKey] + '||' + v[optKey2] : v[optKey];
+  const firstWithImg = p.varianti.find(v => images[keyOf(v)]);
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg[optKey] : (p.varianti[0] && p.varianti[0][optKey]));
+  const [selVer, setSelVer] = useState(has2 ? (firstWithImg ? firstWithImg[optKey2] : (p.varianti[0] && p.varianti[0][optKey2])) : null);
   const [open, setOpen] = useState(false);
 
   const hasImages = Object.keys(images).length > 0;
-  const selImg = images[selFin];
+  const selImg = images[has2 ? selFin + '||' + selVer : selFin];
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -350,7 +364,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             <div className="noimg"><Ghost /><small>In arrivo</small></div>
           )}
         </div>
-        {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}</span></div>}
+        {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}{has2 ? ' · ' + selVer : ''}</span></div>}
       </div>
       <div className="cbody">
         <div className="name-row">
@@ -371,20 +385,33 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
               <Download size={15} /> Scheda tecnica <em>in arrivo</em>
             </button>}
         {hasImages ? (
-          <div className="finishes">
-            <div className="fbtns">
-              {ufins.map((f, i) => isVer ? (
-                <button key={i} className={`vbtn${f === selFin ? ' active' : ''}`}
-                  onClick={() => setSelFin(f)} aria-pressed={f === selFin}>{f}</button>
-              ) : (
-                <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
-                  onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
-                  <Chip finitura={f} />
-                </button>
-              ))}
+          <>
+            <div className="finishes">
+              <div className="fbtns">
+                {ufins.map((f, i) => isVer ? (
+                  <button key={i} className={`vbtn${f === selFin ? ' active' : ''}`}
+                    onClick={() => setSelFin(f)} aria-pressed={f === selFin}>{f}</button>
+                ) : (
+                  <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                    onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                    <Chip finitura={f} />
+                  </button>
+                ))}
+              </div>
+              <span className="fhint">{isVer ? 'Scegli la versione' : 'Scegli la finitura'}</span>
             </div>
-            <span className="fhint">{isVer ? 'Scegli la versione' : 'Scegli la finitura'}</span>
-          </div>
+            {has2 && (
+              <div className="finishes">
+                <div className="fbtns">
+                  {uvers.map((f, i) => (
+                    <button key={i} className={`vbtn${f === selVer ? ' active' : ''}`}
+                      onClick={() => setSelVer(f)} aria-pressed={f === selVer}>{f}</button>
+                  ))}
+                </div>
+                <span className="fhint">Scegli la versione</span>
+              </div>
+            )}
+          </>
         ) : (
           <div className="finishes">
             <span className="chips">{ufins.slice(0, 5).map((f, i) => <Chip key={i} finitura={f} />)}</span>
@@ -406,15 +433,18 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                 <tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr>
               </thead>
               <tbody>
-                {p.varianti.map((v, i) => (
+                {p.varianti.map((v, i) => {
+                  const active = hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
+                  return (
                   <tr key={i}
-                    className={`${hasImages ? 'vrow' : ''}${v[optKey] === selFin && hasImages ? ' active' : ''}`}
-                    onClick={hasImages ? () => setSelFin(v[optKey]) : undefined}>
+                    className={`${hasImages ? 'vrow' : ''}${active ? ' active' : ''}`}
+                    onClick={hasImages ? () => { setSelFin(v[optKey]); if (has2) setSelVer(v[optKey2]); } : undefined}>
                     <td className="code">{v.codice}</td>
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                     <td className="ver">{v.versione}</td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -705,9 +735,14 @@ function ProductDetail({ id }) {
   const images = (p && p.immagini) || {};
   const optKey = (p && p.optKey) || 'finitura';
   const isVer = optKey === 'versione';
+  const optKey2 = p && p.optKey2;
+  const has2 = !!optKey2;
   const ufins = p ? [...new Set(p.varianti.map(v => v[optKey]))] : [];
-  const firstWithImg = p && p.varianti.find(v => images[v[optKey]]);
+  const uvers = has2 ? [...new Set(p.varianti.map(v => v[optKey2]))] : [];
+  const keyOf = (v) => has2 ? v[optKey] + '||' + v[optKey2] : v[optKey];
+  const firstWithImg = p && p.varianti.find(v => images[keyOf(v)]);
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg[optKey] : (p && p.varianti[0] && p.varianti[0][optKey]));
+  const [selVer, setSelVer] = useState(has2 ? (firstWithImg ? firstWithImg[optKey2] : (p && p.varianti[0] && p.varianti[0][optKey2])) : null);
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; } catch { return []; }
   });
@@ -732,7 +767,7 @@ function ProductDetail({ id }) {
   }
 
   const hasImages = Object.keys(images).length > 0;
-  const selImg = images[selFin];
+  const selImg = images[has2 ? selFin + '||' + selVer : selFin];
   const isFav = favorites.includes(p.id);
   const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
 
@@ -764,7 +799,7 @@ function ProductDetail({ id }) {
                   : hasImages ? <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
                   : <div className="noimg"><Ghost /><small>In arrivo</small></div>}
               </div>
-              {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}</span></div>}
+              {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}{has2 ? ' · ' + selVer : ''}</span></div>}
             </div>
           </div>
 
@@ -800,6 +835,18 @@ function ProductDetail({ id }) {
               </div>
             )}
 
+            {hasImages && has2 && (
+              <div className="finishes pdp-finishes">
+                <span className="fhint">Scegli la versione</span>
+                <div className="fbtns">
+                  {uvers.map((f, i) => (
+                    <button key={i} className={`vbtn${f === selVer ? ' active' : ''}`}
+                      onClick={() => setSelVer(f)} aria-pressed={f === selVer}>{f}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {p.scheda
               ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`}><Download size={15} /> Scheda tecnica</a>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
@@ -809,14 +856,17 @@ function ProductDetail({ id }) {
               <table className="variants">
                 <thead><tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr></thead>
                 <tbody>
-                  {p.varianti.map((v, i) => (
-                    <tr key={i} className={`${hasImages ? 'vrow' : ''}${v[optKey] === selFin && hasImages ? ' active' : ''}`}
-                      onClick={hasImages ? () => setSelFin(v[optKey]) : undefined}>
+                  {p.varianti.map((v, i) => {
+                    const active = hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
+                    return (
+                    <tr key={i} className={`${hasImages ? 'vrow' : ''}${active ? ' active' : ''}`}
+                      onClick={hasImages ? () => { setSelFin(v[optKey]); if (has2) setSelVer(v[optKey2]); } : undefined}>
                       <td className="code">{v.codice}</td>
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                       <td className="ver">{v.versione}</td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
