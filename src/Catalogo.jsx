@@ -284,8 +284,8 @@ const PRODUCTS = [
     { codice: '3667RMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3667RMQSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3667RMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3667RMQSEIM.BI.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3667RMQ.BI.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+    { codice: '3667RMQSEIM.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3667RMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
   { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': easyTondoCsCon,
@@ -303,8 +303,8 @@ const PRODUCTS = [
     { codice: '3666RMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3666RMTSEIM.BI.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3666RMT.BI.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666RMTSEIM.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3666RMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
