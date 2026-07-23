@@ -68,6 +68,10 @@ import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
 import easyConSerratura from './assets/prodotti/easy-con-serratura.jpg';
 import easySenzaSerratura from './assets/prodotti/easy-senza-serratura.jpg';
 import easyScheda from './assets/easy-scheda-tecnica.pdf';
+import easyTondoCromoSat from './assets/prodotti/easy-tondo-cromo-satinato.jpg';
+import easyTondoOttoneLuc from './assets/prodotti/easy-tondo-ottone-lucido.jpg';
+import easyTondoNeroOpaco from './assets/prodotti/easy-tondo-nero-opaco.jpg';
+import easyTondoScheda from './assets/easy-tondo-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -258,19 +262,33 @@ const PRODUCTS = [
       'Senza serratura': easySenzaSerratura
     }, varianti: [
     { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
-    { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] }
+    { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] },
+  { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda,
+    immagini: {
+      'Cromo satinato': easyTondoCromoSat,
+      'Ottone lucido': easyTondoOttoneLuc,
+      'Nero opaco': easyTondoNeroOpaco
+    }, varianti: [
+    { codice: '3666RMTSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Patent' },
+    { codice: '3666RMTSEIM.01.IM', finitura: 'Ottone lucido', versione: 'Patent' },
+    { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Patent' } ] }
 ];
 
-/* Kit scorrevole abbinato a maniglie battenti selezionate (bidirezionale) */
+/* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
 (() => {
-  const KIT = PRODUCTS.find(p => p.id === 22);
-  if (!KIT) return;
-  const abbinateIds = [2, 5, 7, 8, 9]; // Quadra, Hèlia, Sirio, Trio, Alicia
-  abbinateIds.forEach(id => {
-    const p = PRODUCTS.find(x => x.id === id);
-    if (p) p.abbinati = [...(p.abbinati || []), 22];
+  const KITS = [
+    { id: 22, abbinate: [2, 5, 7, 8, 9] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia
+    { id: 23, abbinate: [1, 6, 10, 20] }     // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
+  ];
+  KITS.forEach(({ id: kitId, abbinate }) => {
+    const KIT = PRODUCTS.find(p => p.id === kitId);
+    if (!KIT) return;
+    abbinate.forEach(id => {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (p) p.abbinati = [...(p.abbinati || []), kitId];
+    });
+    KIT.abbinati = abbinate;
   });
-  KIT.abbinati = abbinateIds;
 })();
 
 // Sfondi che simulano il metallo reale di ogni finitura
