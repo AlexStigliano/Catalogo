@@ -65,7 +65,8 @@ import flexaOroLuc from './assets/prodotti/flexa-oro-lucido.jpg';
 import flexaScheda from './assets/flexa-scheda-tecnica.pdf';
 import pegasoOroLuc from './assets/prodotti/pegaso-oro-lucido.jpg';
 import pegasoScheda from './assets/pegaso-scheda-tecnica.pdf';
-import easyCromoSat from './assets/prodotti/easy-cromo-satinato.jpg';
+import easyConSerratura from './assets/prodotti/easy-con-serratura.jpg';
+import easySenzaSerratura from './assets/prodotti/easy-senza-serratura.jpg';
 import easyScheda from './assets/easy-scheda-tecnica.pdf';
 
 const CATEGORIES = [
@@ -251,20 +252,25 @@ const PRODUCTS = [
     }, varianti: [
     { codice: 'A127 RTX59 L01', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] },
-  { id: 22, categoria: '01', nome: 'Kit Easy', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda,
+  { id: 22, categoria: '01', nome: 'Kit Easy Quadro', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda, optKey: 'versione',
     immagini: {
-      'Cromo satinato': easyCromoSat
+      'Con serratura': easyConSerratura,
+      'Senza serratura': easySenzaSerratura
     }, varianti: [
-    { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Patent' } ] }
+    { codice: '3667RMQSEIM.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3667RMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] }
 ];
 
-/* Kit scorrevole abbinato a tutte le maniglie battenti in cromo satinato (bidirezionale) */
+/* Kit scorrevole abbinato a maniglie battenti selezionate (bidirezionale) */
 (() => {
   const KIT = PRODUCTS.find(p => p.id === 22);
   if (!KIT) return;
-  const matched = PRODUCTS.filter(p => p.sottocategoria === 'battenti' && p.varianti.some(v => v.finitura === 'Cromo satinato'));
-  matched.forEach(p => { p.abbinati = [...(p.abbinati || []), 22]; });
-  KIT.abbinati = matched.map(p => p.id);
+  const abbinateIds = [2, 5, 7, 8, 9]; // Quadra, Hèlia, Sirio, Trio, Alicia
+  abbinateIds.forEach(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (p) p.abbinati = [...(p.abbinati || []), 22];
+  });
+  KIT.abbinati = abbinateIds;
 })();
 
 // Sfondi che simulano il metallo reale di ogni finitura
@@ -297,9 +303,11 @@ const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg
 /* ---------- Scheda prodotto ---------- */
 function ProductCard({ product: p, idx, isFav, onFav }) {
   const images = p.immagini || {};
-  const ufins = [...new Set(p.varianti.map(v => v.finitura))];
-  const firstWithImg = p.varianti.find(v => images[v.finitura]);
-  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p.varianti[0] && p.varianti[0].finitura));
+  const optKey = p.optKey || 'finitura';
+  const isVer = optKey === 'versione';
+  const ufins = [...new Set(p.varianti.map(v => v[optKey]))];
+  const firstWithImg = p.varianti.find(v => images[v[optKey]]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg[optKey] : (p.varianti[0] && p.varianti[0][optKey]));
   const [open, setOpen] = useState(false);
 
   const hasImages = Object.keys(images).length > 0;
@@ -324,7 +332,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             <div className="noimg"><Ghost /><small>In arrivo</small></div>
           )}
         </div>
-        {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
+        {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}</span></div>}
       </div>
       <div className="cbody">
         <div className="name-row">
@@ -347,14 +355,17 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         {hasImages ? (
           <div className="finishes">
             <div className="fbtns">
-              {ufins.map((f, i) => (
+              {ufins.map((f, i) => isVer ? (
+                <button key={i} className={`vbtn${f === selFin ? ' active' : ''}`}
+                  onClick={() => setSelFin(f)} aria-pressed={f === selFin}>{f}</button>
+              ) : (
                 <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
                   onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
                   <Chip finitura={f} />
                 </button>
               ))}
             </div>
-            <span className="fhint">Scegli la finitura</span>
+            <span className="fhint">{isVer ? 'Scegli la versione' : 'Scegli la finitura'}</span>
           </div>
         ) : (
           <div className="finishes">
@@ -379,8 +390,8 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
               <tbody>
                 {p.varianti.map((v, i) => (
                   <tr key={i}
-                    className={`${hasImages ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
-                    onClick={hasImages ? () => setSelFin(v.finitura) : undefined}>
+                    className={`${hasImages ? 'vrow' : ''}${v[optKey] === selFin && hasImages ? ' active' : ''}`}
+                    onClick={hasImages ? () => setSelFin(v[optKey]) : undefined}>
                     <td className="code">{v.codice}</td>
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                     <td className="ver">{v.versione}</td>
@@ -674,9 +685,11 @@ function ProductDetail({ id }) {
   const p = PRODUCTS.find(x => x.id === id);
   const info = CATEGORIES.find(c => c.id === (p && p.categoria)) || CATEGORIES[0];
   const images = (p && p.immagini) || {};
-  const ufins = p ? [...new Set(p.varianti.map(v => v.finitura))] : [];
-  const firstWithImg = p && p.varianti.find(v => images[v.finitura]);
-  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
+  const optKey = (p && p.optKey) || 'finitura';
+  const isVer = optKey === 'versione';
+  const ufins = p ? [...new Set(p.varianti.map(v => v[optKey]))] : [];
+  const firstWithImg = p && p.varianti.find(v => images[v[optKey]]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg[optKey] : (p && p.varianti[0] && p.varianti[0][optKey]));
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; } catch { return []; }
   });
@@ -733,7 +746,7 @@ function ProductDetail({ id }) {
                   : hasImages ? <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>
                   : <div className="noimg"><Ghost /><small>In arrivo</small></div>}
               </div>
-              {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
+              {hasImages && <div className="media-cap">{!isVer && <Chip finitura={selFin} />}<span>{selFin}</span></div>}
             </div>
           </div>
 
@@ -754,9 +767,12 @@ function ProductDetail({ id }) {
 
             {hasImages && (
               <div className="finishes pdp-finishes">
-                <span className="fhint">Scegli la finitura</span>
+                <span className="fhint">{isVer ? 'Scegli la versione' : 'Scegli la finitura'}</span>
                 <div className="fbtns">
-                  {ufins.map((f, i) => (
+                  {ufins.map((f, i) => isVer ? (
+                    <button key={i} className={`vbtn${f === selFin ? ' active' : ''}`}
+                      onClick={() => setSelFin(f)} aria-pressed={f === selFin}>{f}</button>
+                  ) : (
                     <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
                       onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
                       <Chip finitura={f} />
@@ -776,8 +792,8 @@ function ProductDetail({ id }) {
                 <thead><tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr></thead>
                 <tbody>
                   {p.varianti.map((v, i) => (
-                    <tr key={i} className={`${hasImages ? 'vrow' : ''}${v.finitura === selFin && hasImages ? ' active' : ''}`}
-                      onClick={hasImages ? () => setSelFin(v.finitura) : undefined}>
+                    <tr key={i} className={`${hasImages ? 'vrow' : ''}${v[optKey] === selFin && hasImages ? ' active' : ''}`}
+                      onClick={hasImages ? () => setSelFin(v[optKey]) : undefined}>
                       <td className="code">{v.codice}</td>
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                       <td className="ver">{v.versione}</td>
