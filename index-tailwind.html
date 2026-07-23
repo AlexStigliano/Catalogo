@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stigliano Ferramenta — Napoli, dal 1869</title>
+<meta name="description" content="Stigliano Ferramenta a Napoli, Via Argine 600. Attività di famiglia dal 1869: ferramenta tecnica per vetro e legno, fai-da-te, edilizia, giardinaggio. Vendita ingrosso e dettaglio, spedizione in giornata.">
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:  '#F6F4EF',
+          panel:  '#FFFFFF',
+          panel2: '#EFEBE2',
+          ink:    '#191B1E',
+          inksoft:'#3C4148',
+          steel:  '#2B3A45',
+          steel2: '#38505E',
+          brass:  '#9E6E1F',
+          brassb: '#B9822F',
+          brasshi:'#D8A24A',
+        },
+        fontFamily: {
+          serif: ['Georgia','Iowan Old Style','Times New Roman','serif'],
+          mono:  ['ui-monospace','SF Mono','Cascadia Code','Menlo','Consolas','monospace'],
+        },
+        maxWidth: { site: '1160px' },
+      }
+    }
+  }
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:currentColor;margin-right:.6em;vertical-align:middle;opacity:.7}
+  .navlink::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:#B9822F;transition:right .22s ease}
+  .navlink:hover::after{right:0}
+  .grid-bg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 90% at 78% 12%,#000 30%,transparent 78%);mask-image:radial-gradient(120% 90% at 78% 12%,#000 30%,transparent 78%)}
+  .drop{float:left;font-size:3.4rem;line-height:.82;font-weight:700;color:#9E6E1F;padding:6px 12px 0 0;font-family:Georgia,serif}
+  .tl::before{content:"";position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:#B9822F;box-shadow:0 0 0 4px #F6F4EF}
+  a:focus-visible,button:focus-visible{outline:2.5px solid #B9822F;outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- NAV -->
+<header class="sticky top-0 z-50 border-b border-[#DED8CC] bg-paper/85 backdrop-blur">
+  <div class="mx-auto max-w-site px-5 h-[68px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 min-w-0" aria-label="Stigliano Ferramenta — home">
+      <svg class="w-9 h-9 text-brassb flex-none" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="35" height="35" rx="7" stroke="currentColor" stroke-width="2.4"/><path d="M13 27l7.2-7.2M20.2 19.8a4.6 4.6 0 10-1.9-6.9l3.2 3.2-2.3 2.3-3.2-3.2a4.6 4.6 0 004.2 4.6z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="28" r="1.6" fill="currentColor"/></svg>
+      <span class="flex flex-col leading-none">
+        <span class="font-extrabold text-[1.06rem] tracking-[.06em] uppercase">Stigliano</span>
+        <span class="font-mono text-[.62rem] tracking-[.18em] text-[#767C82] uppercase mt-[3px] hidden min-[520px]:block">Ferramenta · dal 1869</span>
+      </span>
+    </a>
+    <nav class="hidden min-[900px]:flex items-center gap-8" aria-label="Navigazione principale">
+      <a href="#storia"  class="navlink relative text-[.93rem] font-medium text-inksoft hover:text-ink py-1">Chi siamo</a>
+      <a href="#reparti" class="navlink relative text-[.93rem] font-medium text-inksoft hover:text-ink py-1">Reparti</a>
+      <a href="#servizi" class="navlink relative text-[.93rem] font-medium text-inksoft hover:text-ink py-1">Servizi</a>
+      <a href="#contatti" class="navlink relative text-[.93rem] font-medium text-inksoft hover:text-ink py-1">Contatti</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="tel:+390815614733" class="inline-flex items-center gap-2 font-mono text-[.9rem] font-semibold text-ink">
+        <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="hidden min-[900px]:inline">081 561 4733</span>
+      </a>
+      <a href="#contatti" class="inline-flex items-center gap-2 rounded-full bg-brassb px-5 py-2.5 text-[.95rem] font-semibold text-[#1a1204] shadow-sm transition hover:-translate-y-0.5 hover:bg-brasshi">Vieni in negozio</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="relative overflow-hidden bg-steel text-[#EDE7DA]">
+  <div class="pointer-events-none absolute inset-0 grid-bg"></div>
+  <div class="pointer-events-none absolute -top-[18%] -right-[10%] w-3/5 h-[130%]" style="background:radial-gradient(circle at 60% 40%,rgba(216,162,74,.30),transparent 62%)"></div>
+  <div class="relative mx-auto max-w-site px-5 py-16 md:py-20 grid md:grid-cols-[1.25fr_.95fr] gap-10 md:gap-13 items-center">
+    <div>
+      <span class="eyebrow font-mono text-[.72rem] tracking-[.22em] uppercase font-semibold text-brasshi">Napoli · Via Argine 600</span>
+      <h1 class="mt-4 font-extrabold tracking-[-.025em] leading-[1.06] text-[clamp(2.5rem,5.6vw,4.3rem)] [text-wrap:balance]">La ferramenta di famiglia,<br>a Napoli dal <span class="font-serif italic font-semibold text-brasshi tracking-normal">1869</span>.</h1>
+      <p class="mt-5 text-[1.16rem] text-[#D6CFC1] max-w-[33ch] leading-[1.6]">Quattro generazioni al servizio di artigiani, imprese e appassionati del fai-da-te. Specialisti in ferramenta tecnica per il vetro e il legno — all'ingrosso e al dettaglio.</p>
+      <div class="mt-8 flex flex-wrap gap-3.5">
+        <a href="#contatti" class="inline-flex items-center gap-2 rounded-full bg-brassb px-6 py-3 font-semibold text-[#1a1204] shadow-sm transition hover:-translate-y-0.5 hover:bg-brasshi">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.9"/></svg>Dove siamo</a>
+        <a href="tel:+390815614733" class="inline-flex items-center gap-2 rounded-full border border-[#EDE7DA]/30 px-6 py-3 font-semibold text-[#EDE7DA] transition hover:-translate-y-0.5 hover:border-brasshi hover:text-brasshi">
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Chiamaci ora</a>
+      </div>
+      <div class="mt-9 flex flex-wrap gap-x-6 gap-y-2.5 font-mono text-[.78rem] tracking-[.06em] text-[#B7B0A2]">
+        <span class="inline-flex items-center gap-2"><svg class="w-[15px] h-[15px] text-brasshi" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Lun–Ven 8:00–18:30 · Sab 8:00–12:30</span>
+        <span class="inline-flex items-center gap-2"><svg class="w-[15px] h-[15px] text-brasshi" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ingrosso &amp; dettaglio</span>
+      </div>
+    </div>
+    <aside class="justify-self-start md:justify-self-end w-full max-w-[360px] aspect-[1/1.12] rounded-[18px] border border-[#EDE7DA]/15 flex flex-col items-center justify-center gap-3.5 shadow-2xl" style="background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01))" aria-hidden="true">
+      <svg class="w-[150px] h-[150px] text-brasshi" viewBox="0 0 160 160" fill="none"><circle cx="80" cy="80" r="76" stroke="currentColor" stroke-width="1.2" opacity=".5"/><circle cx="80" cy="80" r="62" stroke="currentColor" stroke-width="1.6"/><path id="cir" d="M80 22a58 58 0 010 116 58 58 0 010-116" fill="none"/><text fill="currentColor" font-family="Georgia,serif" font-size="8.5" letter-spacing="3.4"><textPath href="#cir" startOffset="2%">STIGLIANO · FERRAMENTA · NAPOLI · DAL 1869 ·</textPath></text><path d="M62 98l16-16M78 84a7 7 0 10-3-10.5l4.8 4.8-3.4 3.4-4.8-4.8A7 7 0 0075 84z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="font-mono text-[.66rem] tracking-[.34em] text-[#B7B0A2] uppercase">Casa fondata nel</span>
+      <span class="font-serif text-[3.6rem] font-semibold text-[#EDE7DA] leading-none">1869</span>
+      <span class="text-[.86rem] text-[#C9C2B4] text-center px-5">Una tradizione tramandata di padre in figlio</span>
+    </aside>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-panel border-b border-[#DED8CC]" aria-label="Numeri dell'attività">
+  <div class="mx-auto max-w-site px-5 grid grid-cols-2 md:grid-cols-4">
+    <div class="p-6 md:border-r border-[#DED8CC] border-b md:border-b-0 flex flex-col gap-1"><span class="font-serif text-[1.9rem] font-semibold tabular-nums text-brass">1869</span><span class="font-mono text-[.72rem] tracking-[.12em] uppercase text-[#767C82]">Anno di fondazione</span></div>
+    <div class="p-6 md:border-r border-[#DED8CC] border-b md:border-b-0 flex flex-col gap-1"><span class="font-serif text-[1.9rem] font-semibold tabular-nums">4<span class="text-brass">+</span></span><span class="font-mono text-[.72rem] tracking-[.12em] uppercase text-[#767C82]">Generazioni di famiglia</span></div>
+    <div class="p-6 md:border-r border-[#DED8CC] flex flex-col gap-1"><span class="font-serif text-[1.9rem] font-semibold">Vetro &amp; Legno</span><span class="font-mono text-[.72rem] tracking-[.12em] uppercase text-[#767C82]">Specializzazione tecnica</span></div>
+    <div class="p-6 flex flex-col gap-1"><span class="font-serif text-[1.9rem] font-semibold">In giornata</span><span class="font-mono text-[.72rem] tracking-[.12em] uppercase text-[#767C82]">Spedizione per lo stock</span></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="storia" class="bg-paper py-20 md:py-22">
+  <div class="mx-auto max-w-site px-5">
+    <span class="eyebrow font-mono text-[.72rem] tracking-[.22em] uppercase font-semibold text-brass">Chi siamo</span>
+    <h2 class="mt-4 font-bold text-[clamp(1.9rem,3.6vw,2.7rem)] leading-[1.08] [text-wrap:balance]">Un nome, una tradizione<br>che si tramanda da generazioni.</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-9 md:gap-14 items-start">
+      <p class="font-serif text-[1.42rem] leading-[1.5] text-ink"><span class="drop">S</span>tigliano è un punto di riferimento nel commercio di ferramenta all'ingrosso e al dettaglio a Napoli: un'attività di famiglia nata nel 1869 e cresciuta, di padre in figlio, fino a diventare un'insegna storica della città.</p>
+      <div class="text-inksoft text-[1.04rem] flex flex-col gap-4">
+        <p>Tutto comincia nel 1869, quando il bisnonno <strong>Luigi</strong> apre una piccola bottega di ferramenta per rispondere alle esigenze del quartiere. Da allora l'attività è cresciuta senza mai perdere il legame con le sue origini: la cura del cliente e la competenza artigianale.</p>
+        <p>Oggi Stigliano è specializzata nella <strong>ferramenta tecnica per i settori del vetro e del legno</strong>, con un vasto assortimento che spazia dal fai-da-te all'edilizia, dal giardinaggio alla sicurezza sul lavoro. Un catalogo pensato per l'artigiano come per l'appassionato.</p>
+        <div class="mt-1.5 border-l-2 border-[#DED8CC] pl-6.5 flex flex-col gap-6" style="padding-left:26px">
+          <div class="tl relative"><span class="font-mono text-[.8rem] tracking-[.1em] text-brass font-semibold">1869</span><h4 class="mt-1 mb-1 text-[1.12rem] font-bold">Nasce la bottega</h4><p class="text-inksoft text-[.98rem]">Luigi, bisnonno degli attuali titolari, fonda la ferramenta al servizio del quartiere.</p></div>
+          <div class="tl relative"><span class="font-mono text-[.8rem] tracking-[.1em] text-brass font-semibold">Di padre in figlio</span><h4 class="mt-1 mb-1 text-[1.12rem] font-bold">Quattro generazioni</h4><p class="text-inksoft text-[.98rem]">Il mestiere e la passione per i materiali si tramandano di generazione in generazione.</p></div>
+          <div class="tl relative"><span class="font-mono text-[.8rem] tracking-[.1em] text-brass font-semibold">Oggi</span><h4 class="mt-1 mb-1 text-[1.12rem] font-bold">Punto di riferimento a Napoli</h4><p class="text-inksoft text-[.98rem]">Ingrosso e dettaglio in Via Argine, con specializzazione nel vetro e nel legno.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section id="reparti" class="bg-panel2 py-20 md:py-22">
+  <div class="mx-auto max-w-site px-5">
+    <span class="eyebrow font-mono text-[.72rem] tracking-[.22em] uppercase font-semibold text-brass">I nostri reparti</span>
+    <h2 class="mt-4 font-bold text-[clamp(1.9rem,3.6vw,2.7rem)] leading-[1.08] [text-wrap:balance]">Tutto quello che serve, sotto lo stesso tetto.</h2>
+    <p class="mt-4 text-inksoft text-[1.08rem] max-w-[56ch]">Una gamma vasta e selezionata per soddisfare qualsiasi esigenza: dall'attrezzatura professionale alla minuteria, dalla verniciatura alla sicurezza.</p>
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5" style="gap:18px">
+      <!-- cards -->
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M14.5 3.5l6 6-3 3-1.5-1.5-7 7-2.5-2.5 7-7L12 6.5l3-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 15l-2.5 4.5L8 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Utensili &amp; fai-da-te</h3><p class="text-inksoft text-[.95rem]">Attrezzatura manuale ed elettrica per ogni lavoro, dal professionista all'hobbista.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20h16M9 20v-6h6v6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Edilizia</h3><p class="text-inksoft text-[.95rem]">Materiali e accessori per il cantiere, la ristrutturazione e la piccola opera muraria.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 21c0-5 3-8 8-9-1 5-4 8-8 9zM12 21c0-4-2.5-6.5-6.5-7.5C6.3 17.5 8.7 20 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 21v-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Giardinaggio</h3><p class="text-inksoft text-[.95rem]">Tutto per la cura del verde: dagli attrezzi da taglio all'irrigazione.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9h17M9 3.5v17" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Ferramenta per il vetro</h3><p class="text-inksoft text-[.95rem]">La nostra specialità storica: accessori e minuteria tecnica per il settore vetrario.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".5"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Ferramenta per il legno</h3><p class="text-inksoft text-[.95rem]">Soluzioni tecniche per falegnami e per la lavorazione professionale del legno.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-6 4 12 2-6h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Taglio legno &amp; metallo</h3><p class="text-inksoft text-[.95rem]">Lame, dischi e attrezzature per il taglio preciso di legno e metallo.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><circle cx="7.5" cy="7.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="16.5" cy="16.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 7.5H18M6 9.5v8.5M13.5 16.5H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Viti, bulloni &amp; minuteria</h3><p class="text-inksoft text-[.95rem]">Un assortimento sterminato di fissaggi e minuteria metallica di ogni misura.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Efficienza energetica</h3><p class="text-inksoft text-[.95rem]">Materiali e soluzioni per il risparmio energetico e la casa efficiente.</p>
+      </article>
+      <article class="group bg-panel border border-[#DED8CC] rounded-[14px] p-6 flex flex-col gap-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:border-brassb/40">
+        <span class="w-11 h-11 rounded-[11px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3 class="text-[1.08rem] font-bold">Sicurezza sul lavoro</h3><p class="text-inksoft text-[.95rem]">Dispositivi di protezione e attrezzature per lavorare in sicurezza, ogni giorno.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servizi" class="relative overflow-hidden bg-steel text-[#EDE7DA] py-20 md:py-22">
+  <div class="pointer-events-none absolute inset-0" style="background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 100% at 15% 0%,#000 20%,transparent 70%);mask-image:radial-gradient(120% 100% at 15% 0%,#000 20%,transparent 70%)"></div>
+  <div class="relative mx-auto max-w-site px-5">
+    <span class="eyebrow font-mono text-[.72rem] tracking-[.22em] uppercase font-semibold text-brasshi">Servizi</span>
+    <h2 class="mt-4 font-bold text-[clamp(1.9rem,3.6vw,2.7rem)] leading-[1.08] [text-wrap:balance] text-[#EDE7DA]">Non solo prodotti: un servizio<br>che si sente prima e dopo l'acquisto.</h2>
+    <p class="mt-4 text-[#C7C0B2] text-[1.08rem] max-w-[56ch]">La differenza di una ferramenta storica sta nelle persone. Ti seguiamo dalla scelta del prodotto fino alla consegna.</p>
+    <div class="mt-10 grid md:grid-cols-2 gap-4.5" style="gap:18px">
+      <div class="flex gap-4 p-6 rounded-[14px] border border-[#EDE7DA]/15 bg-white/5"><span class="w-11 h-11 flex-none rounded-[11px] grid place-items-center bg-brasshi/15 text-brasshi"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17" r="1.8" stroke="currentColor" stroke-width="1.7"/></svg></span><div><h3 class="text-[1.1rem] font-bold text-[#EDE7DA]">Spedizione in giornata</h3><p class="mt-1.5 text-[#C7C0B2] text-[.96rem]">Per gli articoli disponibili a magazzino spediamo in giornata con corriere espresso, garantendo puntualità.</p></div></div>
+      <div class="flex gap-4 p-6 rounded-[14px] border border-[#EDE7DA]/15 bg-white/5"><span class="w-11 h-11 flex-none rounded-[11px] grid place-items-center bg-brasshi/15 text-brasshi"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9h6M9 12h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3 class="text-[1.1rem] font-bold text-[#EDE7DA]">Assistenza dedicata</h3><p class="mt-1.5 text-[#C7C0B2] text-[.96rem]">Un'assistenza competente prima, durante e dopo l'acquisto: il consiglio giusto per ogni lavoro.</p></div></div>
+      <div class="flex gap-4 p-6 rounded-[14px] border border-[#EDE7DA]/15 bg-white/5"><span class="w-11 h-11 flex-none rounded-[11px] grid place-items-center bg-brasshi/15 text-brasshi"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="7" height="12" rx="1" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="4" width="7" height="16" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M6.5 12v4M17.5 8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3 class="text-[1.1rem] font-bold text-[#EDE7DA]">Ingrosso &amp; dettaglio</h3><p class="mt-1.5 text-[#C7C0B2] text-[.96rem]">Serviamo tanto il privato quanto imprese e artigiani, con la flessibilità della vendita all'ingrosso.</p></div></div>
+      <div class="flex gap-4 p-6 rounded-[14px] border border-[#EDE7DA]/15 bg-white/5"><span class="w-11 h-11 flex-none rounded-[11px] grid place-items-center bg-brasshi/15 text-brasshi"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8L12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><div><h3 class="text-[1.1rem] font-bold text-[#EDE7DA]">I migliori marchi</h3><p class="mt-1.5 text-[#C7C0B2] text-[.96rem]">Partnership importanti con marchi di primo piano, per offrirti sempre prodotti affidabili e di qualità.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contatti" class="bg-paper py-20 md:py-22">
+  <div class="mx-auto max-w-site px-5">
+    <span class="eyebrow font-mono text-[.72rem] tracking-[.22em] uppercase font-semibold text-brass">Contatti &amp; orari</span>
+    <h2 class="mt-4 font-bold text-[clamp(1.9rem,3.6vw,2.7rem)] leading-[1.08] [text-wrap:balance]">Passa a trovarci in Via Argine.</h2>
+    <p class="mt-4 text-inksoft text-[1.08rem] max-w-[56ch]">Siamo nel cuore della zona orientale di Napoli. Vieni in negozio o contattaci: siamo a tua disposizione.</p>
+    <div class="mt-10 grid md:grid-cols-[1.05fr_1fr] gap-6 items-stretch">
+      <div class="bg-panel border border-[#DED8CC] rounded-[14px] shadow-sm p-7">
+        <h3 class="text-[1.18rem] font-bold flex items-center gap-2"><svg class="w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Orari di apertura</h3>
+        <div class="mt-5">
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Lunedì</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 18:30</span></div>
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Martedì</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 18:30</span></div>
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Mercoledì</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 18:30</span></div>
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Giovedì</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 18:30</span></div>
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Venerdì</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 18:30</span></div>
+          <div class="flex items-center justify-between py-3 border-b border-[#DED8CC]"><span class="font-semibold text-ink">Sabato</span><span class="font-mono text-[.9rem] text-inksoft tabular-nums">08:00 – 12:30</span></div>
+          <div class="flex items-center justify-between py-3"><span class="font-semibold text-ink">Domenica</span><span class="font-mono text-[.9rem] text-[#767C82]">Chiuso</span></div>
+        </div>
+      </div>
+      <div class="bg-panel border border-[#DED8CC] rounded-[14px] shadow-sm p-7 flex flex-col gap-5">
+        <h3 class="text-[1.18rem] font-bold flex items-center gap-2"><svg class="w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg>Dove siamo</h3>
+        <div class="flex flex-col gap-4.5" style="gap:18px">
+          <div class="flex gap-3.5 items-start"><span class="w-[42px] h-[42px] flex-none rounded-[10px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.2" stroke="currentColor" stroke-width="1.8"/></svg></span><div><div class="font-mono text-[.68rem] tracking-[.14em] uppercase text-[#767C82]">Indirizzo</div><div class="text-[1.02rem] text-ink font-medium mt-0.5">Via Argine, 600 — 80147 Napoli (NA)</div></div></div>
+          <div class="flex gap-3.5 items-start"><span class="w-[42px] h-[42px] flex-none rounded-[10px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><div class="font-mono text-[.68rem] tracking-[.14em] uppercase text-[#767C82]">Telefono</div><div class="text-[1.02rem] text-ink font-medium mt-0.5"><a class="hover:text-brass" href="tel:+390815614733">081 561 4733</a> · <a class="hover:text-brass" href="tel:+390815611920">081 561 1920</a><br><a class="hover:text-brass" href="tel:+393456614229">345 661 4229</a></div></div></div>
+          <div class="flex gap-3.5 items-start"><span class="w-[42px] h-[42px] flex-none rounded-[10px] grid place-items-center bg-brassb/15 text-brass"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><div class="font-mono text-[.68rem] tracking-[.14em] uppercase text-[#767C82]">Email</div><div class="text-[1.02rem] text-ink font-medium mt-0.5"><a class="hover:text-brass" href="mailto:stiglianosas@gmail.com">stiglianosas@gmail.com</a></div></div></div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-1">
+          <a class="inline-flex items-center gap-2 rounded-full bg-steel px-5 py-2.5 text-[.95rem] font-semibold text-[#EDE7DA] transition hover:-translate-y-0.5 hover:bg-steel2" href="https://www.google.com/maps/search/?api=1&query=Stigliano+Ferramenta+Via+Argine+600+Napoli" target="_blank" rel="noopener"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.9"/></svg>Apri su Google Maps</a>
+          <a class="inline-flex items-center gap-2 rounded-full border border-[#DED8CC] px-5 py-2.5 text-[.95rem] font-semibold text-ink transition hover:-translate-y-0.5 hover:border-brassb hover:text-brass" href="mailto:stiglianosas@gmail.com">Scrivici una email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="bg-brassb text-[#1a1204]">
+  <div class="mx-auto max-w-site px-5 py-11 flex flex-wrap items-center justify-between gap-6">
+    <div>
+      <h2 class="font-extrabold text-[clamp(1.5rem,3vw,2.1rem)] max-w-[22ch] [text-wrap:balance]">Hai bisogno di un consiglio o di un preventivo?</h2>
+      <p class="mt-2 font-medium text-[#4a3a12] max-w-[44ch]">Chiamaci o vieni a trovarci: mettiamo a disposizione oltre 150 anni di esperienza.</p>
+    </div>
+    <a class="inline-flex items-center gap-2 rounded-full bg-[#1f1608] px-6 py-3 font-semibold text-brasshi transition hover:-translate-y-0.5 hover:bg-black" href="tel:+390815614733"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Chiama 081 561 4733</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-steel text-[#C7C0B2]">
+  <div class="mx-auto max-w-site px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] gap-9 pt-15 pb-8" style="padding-top:60px">
+    <div class="sm:col-span-2 md:col-span-1">
+      <a href="#top" class="flex items-center gap-3">
+        <svg class="w-9 h-9 text-brasshi" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="35" height="35" rx="7" stroke="currentColor" stroke-width="2.4"/><path d="M13 27l7.2-7.2M20.2 19.8a4.6 4.6 0 10-1.9-6.9l3.2 3.2-2.3 2.3-3.2-3.2a4.6 4.6 0 004.2 4.6z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="flex flex-col leading-none"><span class="font-extrabold text-[1.06rem] tracking-[.06em] uppercase text-[#EDE7DA]">Stigliano</span><span class="font-mono text-[.62rem] tracking-[.18em] uppercase text-[#767C82] mt-[3px]">Ferramenta · dal 1869</span></span>
+      </a>
+      <p class="mt-4 text-[.95rem] max-w-[38ch] text-[#B0A996]">Ferramenta di famiglia a Napoli dal 1869. Specialisti in ferramenta tecnica per il vetro e il legno, all'ingrosso e al dettaglio.</p>
+      <div class="flex gap-3 mt-4">
+        <a href="https://www.instagram.com/ferramentastigliano/" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-[10px] border border-[#EDE7DA]/20 grid place-items-center text-[#C7C0B2] transition hover:text-brasshi hover:border-brasshi hover:-translate-y-0.5"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5 class="font-mono text-[.7rem] tracking-[.16em] uppercase text-brasshi font-semibold mb-4">Naviga</h5>
+      <ul class="flex flex-col gap-2.5 text-[.95rem]">
+        <li><a class="hover:text-[#EDE7DA]" href="#storia">Chi siamo</a></li>
+        <li><a class="hover:text-[#EDE7DA]" href="#reparti">I nostri reparti</a></li>
+        <li><a class="hover:text-[#EDE7DA]" href="#servizi">Servizi</a></li>
+        <li><a class="hover:text-[#EDE7DA]" href="#contatti">Contatti &amp; orari</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-mono text-[.7rem] tracking-[.16em] uppercase text-brasshi font-semibold mb-4">Contatti</h5>
+      <ul class="flex flex-col gap-2.5 text-[.95rem]">
+        <li>Via Argine, 600<br>80147 Napoli (NA)</li>
+        <li><a class="hover:text-[#EDE7DA]" href="tel:+390815614733">081 561 4733</a></li>
+        <li><a class="hover:text-[#EDE7DA]" href="mailto:stiglianosas@gmail.com">stiglianosas@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[#EDE7DA]/15">
+    <div class="mx-auto max-w-site px-5 py-5 pb-10 flex flex-wrap justify-between gap-4 font-mono text-[.72rem] tracking-[.05em] text-[#8F887A]">
+      <span>© 2026 Stigliano S.a.s. di Stigliano Errico &amp; C. — P.IVA 06676240630</span>
+      <span>Napoli · Via Argine 600 · dal 1869</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

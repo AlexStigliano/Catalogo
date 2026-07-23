@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stigliano Ferramenta — Napoli, dal 1869</title>
+<meta name="description" content="Stigliano Ferramenta a Napoli, Via Argine 600. Attività di famiglia dal 1869: ferramenta tecnica per vetro e legno, fai-da-te, edilizia, giardinaggio. Vendita ingrosso e dettaglio, spedizione in giornata.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#F6F4EF;        /* warm paper ground */
+  --panel:#FFFFFF;
+  --panel-2:#EFEBE2;
+  --ink:#191B1E;          /* near-black steel */
+  --ink-soft:#3C4148;
+  --muted:#767C82;        /* cool steel grey */
+  --line:#DED8CC;         /* hairline on paper */
+  --steel:#2B3A45;        /* brand deep steel-blue */
+  --steel-2:#38505E;
+  --brass:#9E6E1F;        /* brass accent (text-safe on paper) */
+  --brass-bright:#B9822F;
+  --brass-hi:#D8A24A;
+  --on-steel:#EDE7DA;
+  --shadow:0 1px 2px rgba(20,23,27,.05), 0 12px 28px -18px rgba(20,23,27,.30);
+  --shadow-sm:0 1px 2px rgba(20,23,27,.06);
+  --radius:14px;
+  --radius-sm:10px;
+  --maxw:1160px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#121519;
+    --panel:#191D22;
+    --panel-2:#1F252B;
+    --ink:#ECE9E2;
+    --ink-soft:#C3C7CC;
+    --muted:#8C949B;
+    --line:#2A3138;
+    --steel:#22303A;
+    --steel-2:#2E4450;
+    --brass:#D8A24A;
+    --brass-bright:#D8A24A;
+    --brass-hi:#E9BE72;
+    --on-steel:#EDE7DA;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.7);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121519; --panel:#191D22; --panel-2:#1F252B;
+  --ink:#ECE9E2; --ink-soft:#C3C7CC; --muted:#8C949B; --line:#2A3138;
+  --steel:#22303A; --steel-2:#2E4450;
+  --brass:#D8A24A; --brass-bright:#D8A24A; --brass-hi:#E9BE72; --on-steel:#EDE7DA;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.7);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#F6F4EF; --panel:#FFFFFF; --panel-2:#EFEBE2;
+  --ink:#191B1E; --ink-soft:#3C4148; --muted:#767C82; --line:#DED8CC;
+  --steel:#2B3A45; --steel-2:#38505E;
+  --brass:#9E6E1F; --brass-bright:#B9822F; --brass-hi:#D8A24A; --on-steel:#EDE7DA;
+  --shadow:0 1px 2px rgba(20,23,27,.05), 0 12px 28px -18px rgba(20,23,27,.30);
+  --shadow-sm:0 1px 2px rgba(20,23,27,.06);
+}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.08;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--brass);
+  display:inline-flex;align-items:center;gap:.6em;
+  font-weight:600;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7}
+.serif{font-family:var(--serif)}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--sans);font-weight:650;font-size:.98rem;
+  padding:.82em 1.35em;border-radius:999px;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease, border-color .16s ease;
+  letter-spacing:.01em;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--brass-bright);color:#1a1204;border-color:var(--brass-bright);box-shadow:var(--shadow-sm)}
+.btn-primary:hover{background:var(--brass-hi);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--brass-bright);color:var(--brass);transform:translateY(-2px)}
+.btn-steel{background:var(--steel);color:var(--on-steel);border-color:var(--steel)}
+.btn-steel:hover{background:var(--steel-2);transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(--brass-bright);outline-offset:3px;border-radius:6px}
+
+/* ============ HEADER ============ */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{width:38px;height:38px;flex:none;color:var(--brass-bright)}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-weight:800;font-size:1.06rem;letter-spacing:.06em;text-transform:uppercase}
+.brand-sub{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.93rem;font-weight:550;color:var(--ink-soft);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--brass-bright);transition:right .22s ease}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-phone{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-size:.9rem;font-weight:600;color:var(--ink)}
+.nav-phone svg{width:16px;height:16px;color:var(--brass)}
+@media (max-width:900px){.nav-links{display:none}.nav-phone span.lbl{display:none}}
+@media (max-width:520px){.brand-sub{display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;background:var(--steel);color:var(--on-steel)}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(120% 90% at 78% 12%,#000 30%,transparent 78%);
+}
+.hero::after{
+  content:"";position:absolute;top:-18%;right:-10%;width:60%;height:130%;
+  background:radial-gradient(circle at 60% 40%,rgba(216,162,74,.30),transparent 62%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding:74px 0 84px;display:grid;grid-template-columns:1.25fr .95fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);font-weight:820;letter-spacing:-.025em}
+.hero h1 .yr{font-family:var(--serif);font-weight:600;font-style:italic;color:var(--brass-hi);letter-spacing:0}
+.hero .lead{margin-top:22px;font-size:1.16rem;color:#D6CFC1;max-width:33ch;line-height:1.6}
+.hero .eyebrow{color:var(--brass-hi)}
+.hero .eyebrow::before{background:var(--brass-hi)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-actions .btn-ghost{color:var(--on-steel);border-color:rgba(237,231,218,.28)}
+.hero-actions .btn-ghost:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+.hero-meta{margin-top:38px;display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:#B7B0A2}
+.hero-meta span{display:inline-flex;align-items:center;gap:.5em}
+.hero-meta svg{width:15px;height:15px;color:var(--brass-hi)}
+
+/* hero emblem card */
+.emblem{
+  position:relative;justify-self:end;width:100%;max-width:360px;aspect-ratio:1/1.12;
+  border:1px solid rgba(237,231,218,.16);border-radius:18px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+}
+.emblem .ring{width:150px;height:150px;color:var(--brass-hi)}
+.emblem .est{font-family:var(--mono);font-size:.66rem;letter-spacing:.34em;color:#B7B0A2;text-transform:uppercase}
+.emblem .big-yr{font-family:var(--serif);font-size:3.6rem;font-weight:600;color:var(--on-steel);line-height:1}
+.emblem .est-sub{font-size:.86rem;color:#C9C2B4;letter-spacing:.02em;text-align:center;padding-inline:20px}
+@media (max-width:860px){
+  .hero-inner{grid-template-columns:1fr;gap:38px;padding:56px 0 60px}
+  .emblem{justify-self:start;max-width:300px}
+}
+
+/* ============ STAT STRIP ============ */
+.stats{background:var(--panel);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat{padding:26px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.stat:last-child{border-right:0}
+.stat .n{font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--ink);letter-spacing:0;font-variant-numeric:tabular-nums}
+.stat .n b{color:var(--brass)}
+.stat .l{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:760px){.stats-grid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+/* ============ SECTION SHELL ============ */
+section.block{padding:88px 0}
+.sec-head{max-width:60ch}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:780;margin-top:16px}
+.sec-head p.dek{margin-top:16px;color:var(--ink-soft);font-size:1.08rem;max-width:56ch}
+
+/* ============ STORY ============ */
+.story{background:var(--paper)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:14px}
+.story-lead{font-family:var(--serif);font-size:1.42rem;line-height:1.5;color:var(--ink)}
+.story-lead .drop{float:left;font-size:3.4rem;line-height:.82;font-weight:700;color:var(--brass);padding:6px 12px 0 0;font-family:var(--serif)}
+.story-body{color:var(--ink-soft);font-size:1.04rem;display:flex;flex-direction:column;gap:16px}
+.timeline{margin-top:6px;border-left:2px solid var(--line);padding-left:26px;display:flex;flex-direction:column;gap:26px}
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--brass-bright);box-shadow:0 0 0 4px var(--paper)}
+.tl .y{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;color:var(--brass);font-weight:600}
+.tl h4{margin:4px 0 4px;font-size:1.12rem;font-weight:700}
+.tl p{color:var(--ink-soft);font-size:.98rem}
+@media (max-width:860px){.story-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ============ DEPARTMENTS ============ */
+.depts{background:var(--panel-2)}
+.dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  box-shadow:var(--shadow-sm);
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--brass-bright) 45%,var(--line))}
+.ico{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--brass-bright) 14%,transparent);color:var(--brass);flex:none}
+.ico svg{width:24px;height:24px}
+.card h3{font-size:1.08rem;font-weight:720}
+.card p{color:var(--ink-soft);font-size:.95rem}
+@media (max-width:860px){.dept-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.dept-grid{grid-template-columns:1fr}}
+
+/* ============ SERVICES ============ */
+.services{background:var(--steel);color:var(--on-steel);position:relative;overflow:hidden}
+.services::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(120% 100% at 15% 0%,#000 20%,transparent 70%)}
+.services .eyebrow{color:var(--brass-hi)}.services .eyebrow::before{background:var(--brass-hi)}
+.services .sec-head h2{color:var(--on-steel)}
+.services .sec-head p.dek{color:#C7C0B2}
+.svc-grid{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+.svc{display:flex;gap:16px;padding:24px;border:1px solid rgba(237,231,218,.14);border-radius:var(--radius);background:rgba(255,255,255,.03)}
+.svc .ico{background:rgba(216,162,74,.16);color:var(--brass-hi)}
+.svc h3{font-size:1.1rem;font-weight:720;color:var(--on-steel)}
+.svc p{color:#C7C0B2;font-size:.96rem;margin-top:6px}
+@media (max-width:760px){.svc-grid{grid-template-columns:1fr}}
+
+/* ============ CONTACT / HOURS ============ */
+.contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;margin-top:40px;align-items:stretch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+.hours{padding:30px 30px 26px}
+.hours h3,.info h3{font-size:1.18rem;font-weight:760;display:flex;align-items:center;gap:.55em}
+.hours h3 svg,.info h3 svg{width:20px;height:20px;color:var(--brass)}
+.hours-list{margin-top:20px;display:flex;flex-direction:column}
+.hrow{display:flex;align-items:center;justify-content:space-between;padding:13px 2px;border-bottom:1px solid var(--line);font-size:1rem}
+.hrow:last-child{border-bottom:0}
+.hrow .d{font-weight:600;color:var(--ink)}
+.hrow .t{font-family:var(--mono);font-size:.9rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.hrow.closed .t{color:var(--muted)}
+.hrow.today{position:relative}
+.hrow.today .d{color:var(--brass)}
+.badge-open{margin-left:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#1a1204;background:var(--brass-hi);padding:3px 8px;border-radius:999px;font-weight:700;vertical-align:middle}
+.info{padding:30px;display:flex;flex-direction:column;gap:22px}
+.info-rows{display:flex;flex-direction:column;gap:18px}
+.irow{display:flex;gap:14px;align-items:flex-start}
+.irow .ico{width:42px;height:42px;border-radius:10px}
+.irow .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.irow .v{font-size:1.02rem;color:var(--ink);font-weight:550;margin-top:2px}
+.irow .v a{transition:color .15s ease}
+.irow .v a:hover{color:var(--brass)}
+.info-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* ============ CTA BAND ============ */
+.cta-band{background:var(--brass-bright);color:#1a1204}
+.cta-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:26px;padding:44px 22px;flex-wrap:wrap}
+.cta-band h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;color:#1a1204;max-width:22ch}
+.cta-band p{margin-top:8px;color:#4a3a12;font-weight:550;max-width:44ch}
+.cta-band .btn-steel{background:#1f1608;border-color:#1f1608;color:var(--brass-hi)}
+.cta-band .btn-steel:hover{background:#000}
+
+/* ============ FOOTER ============ */
+footer{background:var(--steel);color:#C7C0B2}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding:60px 0 30px}
+.foot .brand-name{color:var(--on-steel)}
+.foot .brand .mark{color:var(--brass-hi)}
+.foot p.tag{margin-top:16px;font-size:.95rem;max-width:38ch;color:#B0A996}
+.foot h5{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-hi);margin:0 0 16px;font-weight:600}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.foot ul a,.foot ul li{font-size:.95rem;color:#C7C0B2}
+.foot ul a:hover{color:var(--on-steel)}
+.social{display:flex;gap:12px;margin-top:2px}
+.social a{width:40px;height:40px;border-radius:10px;border:1px solid rgba(237,231,218,.2);display:grid;place-items:center;color:#C7C0B2;transition:.16s ease}
+.social a:hover{color:var(--brass-hi);border-color:var(--brass-hi);transform:translateY(-2px)}
+.social svg{width:19px;height:19px}
+.foot-bottom{border-top:1px solid rgba(237,231,218,.14);padding:20px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:#8F887A}
+@media (max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot .brand-block{grid-column:1/-1}}
+@media (max-width:460px){.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Stigliano Ferramenta — home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="35" height="35" rx="7" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M13 27l7.2-7.2M20.2 19.8a4.6 4.6 0 10-1.9-6.9l3.2 3.2-2.3 2.3-3.2-3.2a4.6 4.6 0 004.2 4.6z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="28" r="1.6" fill="currentColor"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Stigliano</span>
+        <span class="brand-sub">Ferramenta · dal 1869</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="#storia">Chi siamo</a>
+      <a href="#reparti">Reparti</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+390815614733"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="lbl">081 561 4733</span></a>
+      <a class="btn btn-primary" href="#contatti">Vieni in negozio</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Napoli · Via Argine 600</span>
+      <h1>La ferramenta di famiglia,<br>a Napoli dal <span class="yr">1869</span>.</h1>
+      <p class="lead">Quattro generazioni al servizio di artigiani, imprese e appassionati del fai-da-te. Specialisti in ferramenta tecnica per il vetro e il legno — all'ingrosso e al dettaglio.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contatti">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.9"/></svg>
+          Dove siamo
+        </a>
+        <a class="btn btn-ghost" href="tel:+390815614733">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Chiamaci ora
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Lun–Ven 8:00–18:30 · Sab 8:00–12:30</span>
+        <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ingrosso &amp; dettaglio</span>
+      </div>
+    </div>
+    <aside class="emblem" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 160 160" fill="none">
+        <circle cx="80" cy="80" r="76" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+        <circle cx="80" cy="80" r="62" stroke="currentColor" stroke-width="1.6"/>
+        <path id="cir" d="M80 22a58 58 0 010 116 58 58 0 010-116" fill="none"/>
+        <text fill="currentColor" font-family="Georgia,serif" font-size="8.5" letter-spacing="3.4">
+          <textPath href="#cir" startOffset="2%">STIGLIANO · FERRAMENTA · NAPOLI · DAL 1869 ·</textPath>
+        </text>
+        <path d="M62 98l16-16M78 84a7 7 0 10-3-10.5l4.8 4.8-3.4 3.4-4.8-4.8A7 7 0 0075 84z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="est">Casa fondata nel</span>
+      <span class="big-yr">1869</span>
+      <span class="est-sub">Una tradizione tramandata di padre in figlio</span>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="Numeri dell'attività">
+  <div class="wrap stats-grid">
+    <div class="stat"><span class="n"><b>1869</b></span><span class="l">Anno di fondazione</span></div>
+    <div class="stat"><span class="n">4<b>+</b></span><span class="l">Generazioni di famiglia</span></div>
+    <div class="stat"><span class="n">Vetro &amp; Legno</span><span class="l">Specializzazione tecnica</span></div>
+    <div class="stat"><span class="n">In giornata</span><span class="l">Spedizione per lo stock</span></div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="block story" id="storia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Chi siamo</span>
+      <h2>Un nome, una tradizione<br>che si tramanda da generazioni.</h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-lead serif">
+        <span class="drop">S</span>tigliano è un punto di riferimento nel commercio di ferramenta all'ingrosso e al dettaglio a Napoli: un'attività di famiglia nata nel 1869 e cresciuta, di padre in figlio, fino a diventare un'insegna storica della città.
+      </div>
+      <div class="story-body">
+        <p>Tutto comincia nel 1869, quando il bisnonno <strong>Luigi</strong> apre una piccola bottega di ferramenta per rispondere alle esigenze del quartiere. Da allora l'attività è cresciuta senza mai perdere il legame con le sue origini: la cura del cliente e la competenza artigianale.</p>
+        <p>Oggi Stigliano è specializzata nella <strong>ferramenta tecnica per i settori del vetro e del legno</strong>, con un vasto assortimento che spazia dal fai-da-te all'edilizia, dal giardinaggio alla sicurezza sul lavoro. Un catalogo pensato per l'artigiano come per l'appassionato.</p>
+        <div class="timeline">
+          <div class="tl">
+            <span class="y">1869</span>
+            <h4>Nasce la bottega</h4>
+            <p>Luigi, bisnonno degli attuali titolari, fonda la ferramenta al servizio del quartiere.</p>
+          </div>
+          <div class="tl">
+            <span class="y">Di padre in figlio</span>
+            <h4>Quattro generazioni</h4>
+            <p>Il mestiere e la passione per i materiali si tramandano di generazione in generazione.</p>
+          </div>
+          <div class="tl">
+            <span class="y">Oggi</span>
+            <h4>Punto di riferimento a Napoli</h4>
+            <p>Ingrosso e dettaglio in Via Argine, con specializzazione nel vetro e nel legno.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTS ============ -->
+<section class="block depts" id="reparti">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">I nostri reparti</span>
+      <h2>Tutto quello che serve, sotto lo stesso tetto.</h2>
+      <p class="dek">Una gamma vasta e selezionata per soddisfare qualsiasi esigenza: dall'attrezzatura professionale alla minuteria, dalla verniciatura alla sicurezza.</p>
+    </div>
+    <div class="dept-grid">
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M14.5 3.5l6 6-3 3-1.5-1.5-7 7-2.5-2.5 7-7L12 6.5l3-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 15l-2.5 4.5L8 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Utensili &amp; fai-da-te</h3>
+        <p>Attrezzatura manuale ed elettrica per ogni lavoro, dal professionista all'hobbista.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20h16M9 20v-6h6v6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <h3>Edilizia</h3>
+        <p>Materiali e accessori per il cantiere, la ristrutturazione e la piccola opera muraria.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21c0-5 3-8 8-9-1 5-4 8-8 9zM12 21c0-4-2.5-6.5-6.5-7.5C6.3 17.5 8.7 20 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 21v-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <h3>Giardinaggio</h3>
+        <p>Tutto per la cura del verde: dagli attrezzi da taglio all'irrigazione.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9h17M9 3.5v17" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <h3>Ferramenta per il vetro</h3>
+        <p>La nostra specialità storica: accessori e minuteria tecnica per il settore vetrario.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".5"/></svg></span>
+        <h3>Ferramenta per il legno</h3>
+        <p>Soluzioni tecniche per falegnami e per la lavorazione professionale del legno.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-6 4 12 2-6h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Taglio legno &amp; metallo</h3>
+        <p>Lame, dischi e attrezzature per il taglio preciso di legno e metallo.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l3 4v3H6V3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 10v3a3 3 0 003 3v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Verniciatura &amp; finiture</h3>
+        <p>Prodotti per la verniciatura e la finitura di ogni tipo di superficie.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4l2 4-2 1a9 9 0 004 4l1-2 4 2v2a2 2 0 01-2 2A13 13 0 015 7a2 2 0 012-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" opacity="0"/><circle cx="7.5" cy="7.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="16.5" cy="16.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 7.5H18M6 9.5v8.5M13.5 16.5H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <h3>Viti, bulloni &amp; minuteria</h3>
+        <p>Un assortimento sterminato di fissaggi e minuteria metallica di ogni misura.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <h3>Efficienza energetica</h3>
+        <p>Materiali e soluzioni per il risparmio energetico e la casa efficiente.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Sicurezza sul lavoro</h3>
+        <p>Dispositivi di protezione e attrezzature per lavorare in sicurezza, ogni giorno.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="block services" id="servizi">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Servizi</span>
+      <h2>Non solo prodotti: un servizio<br>che si sente prima e dopo l'acquisto.</h2>
+      <p class="dek">La differenza di una ferramenta storica sta nelle persone. Ti seguiamo dalla scelta del prodotto fino alla consegna.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17" r="1.8" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <div><h3>Spedizione in giornata</h3><p>Per gli articoli disponibili a magazzino spediamo in giornata con corriere espresso, garantendo puntualità.</p></div>
+      </div>
+
+      <div class="svc">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9h6M9 12h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div><h3>Assistenza dedicata</h3><p>Un'assistenza competente prima, durante e dopo l'acquisto: il consiglio giusto per ogni lavoro.</p></div>
+      </div>
+
+      <div class="svc">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="7" height="12" rx="1" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="4" width="7" height="16" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M6.5 12v4M17.5 8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div><h3>Ingrosso &amp; dettaglio</h3><p>Serviamo tanto il privato quanto imprese e artigiani, con la flessibilità della vendita all'ingrosso.</p></div>
+      </div>
+
+      <div class="svc">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8L12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <div><h3>I migliori marchi</h3><p>Partnership importanti con marchi di primo piano, per offrirti sempre prodotti affidabili e di qualità.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block contact" id="contatti">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contatti &amp; orari</span>
+      <h2>Passa a trovarci in Via Argine.</h2>
+      <p class="dek">Siamo nel cuore della zona orientale di Napoli. Vieni in negozio o contattaci: siamo a tua disposizione.</p>
+    </div>
+    <div class="contact-grid">
+
+      <!-- HOURS -->
+      <div class="panel hours">
+        <h3><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Orari di apertura</h3>
+        <div class="hours-list">
+          <div class="hrow"><span class="d">Lunedì</span><span class="t">08:00 – 18:30</span></div>
+          <div class="hrow"><span class="d">Martedì</span><span class="t">08:00 – 18:30</span></div>
+          <div class="hrow"><span class="d">Mercoledì</span><span class="t">08:00 – 18:30</span></div>
+          <div class="hrow"><span class="d">Giovedì</span><span class="t">08:00 – 18:30</span></div>
+          <div class="hrow"><span class="d">Venerdì</span><span class="t">08:00 – 18:30</span></div>
+          <div class="hrow"><span class="d">Sabato</span><span class="t">08:00 – 12:30</span></div>
+          <div class="hrow closed"><span class="d">Domenica</span><span class="t">Chiuso</span></div>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="panel info">
+        <h3><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg>Dove siamo</h3>
+        <div class="info-rows">
+          <div class="irow">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.2" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <div><div class="k">Indirizzo</div><div class="v">Via Argine, 600 — 80147 Napoli (NA)</div></div>
+          </div>
+          <div class="irow">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <div><div class="k">Telefono</div><div class="v"><a href="tel:+390815614733">081 561 4733</a> · <a href="tel:+390815611920">081 561 1920</a><br><a href="tel:+393456614229">345 661 4229</a></div></div>
+          </div>
+          <div class="irow">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <div><div class="k">Email</div><div class="v"><a href="mailto:stiglianosas@gmail.com">stiglianosas@gmail.com</a></div></div>
+          </div>
+        </div>
+        <div class="info-actions">
+          <a class="btn btn-steel" href="https://www.google.com/maps/search/?api=1&query=Stigliano+Ferramenta+Via+Argine+600+Napoli" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4a6.5 6.5 0 016.5 6.8C18.5 15.4 12 21 12 21z" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="10.6" r="2.3" stroke="currentColor" stroke-width="1.9"/></svg>
+            Apri su Google Maps
+          </a>
+          <a class="btn btn-ghost" href="mailto:stiglianosas@gmail.com">Scrivici una email</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band">
+  <div class="wrap">
+    <div>
+      <h2>Hai bisogno di un consiglio o di un preventivo?</h2>
+      <p>Chiamaci o vieni a trovarci: mettiamo a disposizione oltre 150 anni di esperienza.</p>
+    </div>
+    <a class="btn btn-steel" href="tel:+390815614733">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      Chiama 081 561 4733
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <div class="brand-block">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="35" height="35" rx="7" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M13 27l7.2-7.2M20.2 19.8a4.6 4.6 0 10-1.9-6.9l3.2 3.2-2.3 2.3-3.2-3.2a4.6 4.6 0 004.2 4.6z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-txt"><span class="brand-name">Stigliano</span><span class="brand-sub">Ferramenta · dal 1869</span></span>
+      </a>
+      <p class="tag">Ferramenta di famiglia a Napoli dal 1869. Specialisti in ferramenta tecnica per il vetro e il legno, all'ingrosso e al dettaglio.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/ferramentastigliano/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h5>Naviga</h5>
+      <ul>
+        <li><a href="#storia">Chi siamo</a></li>
+        <li><a href="#reparti">I nostri reparti</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#contatti">Contatti &amp; orari</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contatti</h5>
+      <ul>
+        <li>Via Argine, 600<br>80147 Napoli (NA)</li>
+        <li><a href="tel:+390815614733">081 561 4733</a></li>
+        <li><a href="mailto:stiglianosas@gmail.com">stiglianosas@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Stigliano S.a.s. di Stigliano Errico &amp; C. — P.IVA 06676240630</span>
+    <span>Napoli · Via Argine 600 · dal 1869</span>
+  </div>
+</footer>
+
+</body>
+</html>
