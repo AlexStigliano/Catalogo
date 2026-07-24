@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft, Download } from 'lucide-react';
+import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, SlidersHorizontal } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -317,6 +317,18 @@ const PRODUCTS = [
     { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] }
 ];
 
+/* Forma della rosetta (per il filtro) */
+(() => {
+  const ROS = {
+    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23],
+    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24]
+  };
+  Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (p) p.rosetta = forma;
+  }));
+})();
+
 /* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
 (() => {
   const KITS = [
@@ -495,11 +507,21 @@ function parseHash() {
   if (h === 'indice') return { view: 'indice' };
   const mp = h.match(/^prodotto\/(\d+)$/);
   if (mp) return { view: 'prodotto', id: Number(mp[1]) };
-  const m = h.match(/^cat\/(\d{2})$/);
-  if (m) return { view: 'categoria', cat: m[1] };
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z]+))?$/);
+  if (m) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
-const go = (path) => { window.location.hash = path; };
+/* Memoria della posizione di scroll per ogni schermata, così "Indietro"
+   riporta esattamente dov'eri invece che all'inizio della pagina. */
+const scrollMem = {};
+const go = (path) => {
+  scrollMem[window.location.hash] = window.scrollY;
+  window.location.hash = path;
+};
+const goBack = () => {
+  if (window.history.length > 1) window.history.back();
+  else go('/indice');
+};
 
 /* ---------- Copertina ---------- */
 function Cover() {
@@ -559,11 +581,13 @@ function Indice() {
 }
 
 /* ---------- Pagina categoria ---------- */
-function CategoryPage({ cat }) {
+function CategoryPage({ cat, subParam }) {
   const info = CATEGORIES.find(c => c.id === cat) || CATEGORIES[0];
   const catProducts = PRODUCTS.filter(p => p.categoria === cat);
   const hasSubs = cat === '01';
-  const [sub, setSub] = useState(SOTTOCATEGORIE[0].id);
+  const sub = (hasSubs && subParam && SOTTOCATEGORIE.some(s => s.id === subParam))
+    ? subParam : SOTTOCATEGORIE[0].id;
+  const setSub = (id) => go('/cat/' + cat + '/' + id);
   const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
 
   return (
@@ -631,7 +655,9 @@ function ProductCatalog({ products }) {
   const [q, setQ] = useState('');
   const [mat, setMat] = useState('');
   const [fin, setFin] = useState('');
+  const [ros, setRos] = useState('');
   const [favOnly, setFavOnly] = useState(false);
+  const [fOpen, setFOpen] = useState(false);
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; }
     catch { return []; }
@@ -643,57 +669,80 @@ function ProductCatalog({ products }) {
 
   const mats = useMemo(() => [...new Set(products.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
-  const totalVar = useMemo(() => products.reduce((n, p) => n + p.varianti.length, 0), [products]);
+  const rosOpts = useMemo(() => ['tonda', 'quadra'].filter(r => products.some(p => p.rosetta === r)), [products]);
 
   const filtered = products.filter(p => {
     const t = q.trim().toLowerCase();
     const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
     const okM = !mat || p.materiale === mat;
     const okF = !fin || p.varianti.some(v => v.finitura === fin);
+    const okR = !ros || p.rosetta === ros;
     const okFav = !favOnly || favorites.includes(p.id);
-    return okQ && okM && okF && okFav;
+    return okQ && okM && okF && okR && okFav;
   });
 
+  const activeCount = (q.trim() ? 1 : 0) + (mat ? 1 : 0) + (fin ? 1 : 0) + (ros ? 1 : 0) + (favOnly ? 1 : 0);
+  const rosLabel = (r) => r === 'tonda' ? 'Rosetta tonda' : 'Rosetta quadrata';
   const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
-  const resetAll = () => { setQ(''); setMat(''); setFin(''); setFavOnly(false); };
+  const resetAll = () => { setQ(''); setMat(''); setFin(''); setRos(''); setFavOnly(false); };
 
   return (
     <>
-      <div className="shell">
-        <div className="stats">
-          <div className="stat"><span className="n">{products.length}</span><span className="k">Prodotti</span></div>
-          <div className="stat"><span className="n">{totalVar}</span><span className="k">Varianti</span></div>
-          <div className="stat"><span className="n">{fins.length}</span><span className="k">Finiture</span></div>
-          <div className="stat"><span className="n">{favorites.length}</span><span className="k">Preferiti</span></div>
-        </div>
-      </div>
-
       <div className="toolbar-wrap">
         <div className="shell">
-          <div className="toolbar">
-            <label className="search">
-              <Search size={16} />
-              <input type="text" value={q} onChange={e => setQ(e.target.value)}
-                placeholder="Cerca per nome o codice articolo…" autoComplete="off" aria-label="Cerca" />
-            </label>
-            <div className="selects">
-              <select value={mat} onChange={e => setMat(e.target.value)} aria-label="Materiale">
-                <option value="">Tutti i materiali</option>
-                {mats.map(m => <option key={m} value={m}>{m}</option>)}
-              </select>
-              <select value={fin} onChange={e => setFin(e.target.value)} aria-label="Finitura">
-                <option value="">Tutte le finiture</option>
-                {fins.map(f => <option key={f} value={f}>{f}</option>)}
-              </select>
-            </div>
-            <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}
-              onClick={() => setFavOnly(v => !v)}>
-              <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Preferiti
+          <div className="filterbar">
+            <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
+              onClick={() => setFOpen(o => !o)}>
+              <SlidersHorizontal size={16} />
+              <span>Filtra prodotti</span>
+              {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
+              <ChevronDown className="fchev" size={16} />
             </button>
             <span className="count">
               <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
-              {favorites.length > 0 && <> · <b>{favorites.length}</b> pref.</>}
             </span>
+          </div>
+
+          <div className={`filter-panel${fOpen ? ' open' : ''}`}>
+            <div className="filter-inner">
+              <label className="search">
+                <Search size={16} />
+                <input type="text" value={q} onChange={e => setQ(e.target.value)}
+                  placeholder="Cerca per nome o codice articolo…" autoComplete="off" aria-label="Cerca" />
+              </label>
+              <div className="filter-grid">
+                <label className="fld">
+                  <span className="fld-k">Materiale</span>
+                  <select value={mat} onChange={e => setMat(e.target.value)}>
+                    <option value="">Tutti i materiali</option>
+                    {mats.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </label>
+                <label className="fld">
+                  <span className="fld-k">Finitura</span>
+                  <select value={fin} onChange={e => setFin(e.target.value)}>
+                    <option value="">Tutte le finiture</option>
+                    {fins.map(f => <option key={f} value={f}>{f}</option>)}
+                  </select>
+                </label>
+                {rosOpts.length > 1 && (
+                  <label className="fld">
+                    <span className="fld-k">Rosetta</span>
+                    <select value={ros} onChange={e => setRos(e.target.value)}>
+                      <option value="">Tutte le rosette</option>
+                      {rosOpts.map(r => <option key={r} value={r}>{rosLabel(r)}</option>)}
+                    </select>
+                  </label>
+                )}
+              </div>
+              <div className="filter-actions">
+                <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}
+                  onClick={() => setFavOnly(v => !v)}>
+                  <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Solo preferiti
+                </button>
+                {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -814,7 +863,9 @@ function ProductDetail({ id }) {
 
       <div className="shell">
         <div className="crumbs">
-          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <button className="crumb-back" onClick={goBack}><ChevronLeft size={15} /> Indietro</button>
+          <span className="crumb-sep">/</span>
+          <button className="crumb-link" onClick={() => go('/indice')}>Indice</button>
           <span className="crumb-sep">/</span>
           <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>Categoria {p.categoria}</button>
           <span className="crumb-sep">/</span>
@@ -919,7 +970,17 @@ export default function Catalogo() {
   const [route, setRoute] = useState(parseHash());
 
   useEffect(() => {
-    const onHash = () => { setRoute(parseHash()); window.scrollTo(0, 0); };
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    const onHash = () => {
+      setRoute(parseHash());
+      const saved = scrollMem[window.location.hash];
+      if (saved != null) {
+        delete scrollMem[window.location.hash];
+        requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, saved)));
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
@@ -928,7 +989,7 @@ export default function Catalogo() {
     <div className="cat">
       {route.view === 'cover' && <Cover />}
       {route.view === 'indice' && <Indice />}
-      {route.view === 'categoria' && <CategoryPage cat={route.cat} />}
+      {route.view === 'categoria' && <CategoryPage cat={route.cat} subParam={route.sub} />}
       {route.view === 'prodotto' && <ProductDetail key={route.id} id={route.id} />}
     </div>
   );
