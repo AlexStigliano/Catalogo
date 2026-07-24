@@ -83,6 +83,9 @@ import easyTondoNoSenza from './assets/prodotti/easy-tondo-nero-opaco-senza.jpg'
 import easyTondoBoCon from './assets/prodotti/easy-tondo-bianco-opaco-con.jpg';
 import easyTondoBoSenza from './assets/prodotti/easy-tondo-bianco-opaco-senza.jpg';
 import easyTondoScheda from './assets/easy-tondo-scheda-tecnica.pdf';
+import veraBiancoOpaco from './assets/prodotti/vera-bianco-opaco.jpg';
+import veraNeroOpaco from './assets/prodotti/vera-nero-opaco.jpg';
+import veraScheda from './assets/vera-scheda-tecnica.pdf';
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -304,13 +307,20 @@ const PRODUCTS = [
     { codice: '3666RMTSEIM.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666RMTSEIM.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3666RMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666RMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 24, categoria: '01', nome: 'Vera', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: '147×67mm · Rosetta quadra 50×50', fornitore: 'Arieni', fornitoreLogo: arieniLogo, scheda: veraScheda,
+    immagini: {
+      'Nero opaco': veraNeroOpaco,
+      'Bianco opaco': veraBiancoOpaco
+    }, varianti: [
+    { codice: '4702 NE', finitura: 'Nero opaco', versione: 'Patent' },
+    { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] }
 ];
 
 /* Kit scorrevoli abbinati a maniglie battenti selezionate (bidirezionale) */
 (() => {
   const KITS = [
-    { id: 22, abbinate: [2, 5, 7, 8, 9] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia
+    { id: 22, abbinate: [2, 5, 7, 8, 9, 24] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia, Vera
     { id: 23, abbinate: [1, 6, 10, 20] }     // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
   ];
   KITS.forEach(({ id: kitId, abbinate }) => {
