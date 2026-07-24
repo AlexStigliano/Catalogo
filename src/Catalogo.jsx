@@ -424,7 +424,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
         </div>
         {p.scheda
-          ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`}>
+          ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`} target="_blank" rel="noopener">
               <Download size={15} /> Scheda tecnica
             </a>
           : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo">
@@ -933,7 +933,7 @@ function ProductDetail({ id }) {
             )}
 
             {p.scheda
-              ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`}><Download size={15} /> Scheda tecnica</a>
+              ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`} target="_blank" rel="noopener"><Download size={15} /> Scheda tecnica</a>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
 
             <div className="pdp-variants">
