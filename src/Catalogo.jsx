@@ -86,6 +86,28 @@ import easyTondoScheda from './assets/easy-tondo-scheda-tecnica.pdf';
 import veraBiancoOpaco from './assets/prodotti/vera-bianco-opaco.jpg';
 import veraNeroOpaco from './assets/prodotti/vera-nero-opaco.jpg';
 import veraScheda from './assets/vera-scheda-tecnica.pdf';
+import schRobot from './assets/schede/robot-scheda.png';
+import schRobotre from './assets/schede/robotre-scheda.png';
+import schRoboq from './assets/schede/roboquattro-scheda.png';
+import schRoboqs from './assets/schede/roboquattros-scheda.png';
+import schRobo5s from './assets/schede/robocinques-scheda.png';
+import schRobot6 from './assets/schede/robot6-scheda.png';
+import schRobot6s from './assets/schede/robot6s-scheda.png';
+import schPeter from './assets/schede/peter-scheda.png';
+import schAmalfi from './assets/schede/amalfi-scheda.png';
+import schFlexa from './assets/schede/flexa-scheda.png';
+import schPegaso from './assets/schede/pegaso-scheda.png';
+import schEasyQuadro from './assets/schede/easy-quadro-scheda.jpg';
+import schEasyTondo from './assets/schede/easy-tondo-scheda.jpg';
+import schVera from './assets/schede/vera-scheda.png';
+
+/* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
+const SCHEDA_IMG = {
+  11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
+  16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera
+};
+const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -424,9 +446,9 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
         </div>
         {p.scheda
-          ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`} target="_blank" rel="noopener">
+          ? <button className="scheda" onClick={() => openScheda(p.id)}>
               <Download size={15} /> Scheda tecnica
-            </a>
+            </button>
           : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo">
               <Download size={15} /> Scheda tecnica <em>in arrivo</em>
             </button>}
@@ -656,6 +678,7 @@ function ProductCatalog({ products }) {
   const [mat, setMat] = useState('');
   const [fin, setFin] = useState('');
   const [ros, setRos] = useState('');
+  const [prod, setProd] = useState('');
   const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
   const [favorites, setFavorites] = useState(() => {
@@ -670,6 +693,7 @@ function ProductCatalog({ products }) {
   const mats = useMemo(() => [...new Set(products.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const rosOpts = useMemo(() => ['tonda', 'quadra'].filter(r => products.some(p => p.rosetta === r)), [products]);
+  const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
 
   const filtered = products.filter(p => {
     const t = q.trim().toLowerCase();
@@ -677,14 +701,15 @@ function ProductCatalog({ products }) {
     const okM = !mat || p.materiale === mat;
     const okF = !fin || p.varianti.some(v => v.finitura === fin);
     const okR = !ros || p.rosetta === ros;
+    const okP = !prod || p.fornitore === prod;
     const okFav = !favOnly || favorites.includes(p.id);
-    return okQ && okM && okF && okR && okFav;
+    return okQ && okM && okF && okR && okP && okFav;
   });
 
-  const activeCount = (q.trim() ? 1 : 0) + (mat ? 1 : 0) + (fin ? 1 : 0) + (ros ? 1 : 0) + (favOnly ? 1 : 0);
+  const activeCount = (q.trim() ? 1 : 0) + (mat ? 1 : 0) + (fin ? 1 : 0) + (ros ? 1 : 0) + (prod ? 1 : 0) + (favOnly ? 1 : 0);
   const rosLabel = (r) => r === 'tonda' ? 'Rosetta tonda' : 'Rosetta quadrata';
   const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
-  const resetAll = () => { setQ(''); setMat(''); setFin(''); setRos(''); setFavOnly(false); };
+  const resetAll = () => { setQ(''); setMat(''); setFin(''); setRos(''); setProd(''); setFavOnly(false); };
 
   return (
     <>
@@ -698,6 +723,11 @@ function ProductCatalog({ products }) {
               {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
               <ChevronDown className="fchev" size={16} />
             </button>
+            <label className="search">
+              <Search size={16} />
+              <input type="text" value={q} onChange={e => setQ(e.target.value)}
+                placeholder="Cerca per nome o codice…" autoComplete="off" aria-label="Cerca" />
+            </label>
             <span className="count">
               <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
             </span>
@@ -705,17 +735,19 @@ function ProductCatalog({ products }) {
 
           <div className={`filter-panel${fOpen ? ' open' : ''}`}>
             <div className="filter-inner">
-              <label className="search">
-                <Search size={16} />
-                <input type="text" value={q} onChange={e => setQ(e.target.value)}
-                  placeholder="Cerca per nome o codice articolo…" autoComplete="off" aria-label="Cerca" />
-              </label>
               <div className="filter-grid">
                 <label className="fld">
                   <span className="fld-k">Materiale</span>
                   <select value={mat} onChange={e => setMat(e.target.value)}>
                     <option value="">Tutti i materiali</option>
                     {mats.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </label>
+                <label className="fld">
+                  <span className="fld-k">Produttore</span>
+                  <select value={prod} onChange={e => setProd(e.target.value)}>
+                    <option value="">Tutti i produttori</option>
+                    {prods.map(pr => <option key={pr} value={pr}>{pr}</option>)}
                   </select>
                 </label>
                 <label className="fld">
@@ -933,7 +965,7 @@ function ProductDetail({ id }) {
             )}
 
             {p.scheda
-              ? <a className="scheda" href={p.scheda} download={`scheda-tecnica-${p.nome}.pdf`} target="_blank" rel="noopener"><Download size={15} /> Scheda tecnica</a>
+              ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
 
             <div className="pdp-variants">
@@ -966,6 +998,40 @@ function ProductDetail({ id }) {
   );
 }
 
+/* Visualizzatore scheda tecnica in pagina (immagine a schermo intero):
+   funziona sempre, anche da telefono e dentro l'anteprima protetta. */
+function SchedaViewer() {
+  const [item, setItem] = useState(null);
+  useEffect(() => {
+    const onOpen = (e) => {
+      const p = PRODUCTS.find(x => x.id === e.detail);
+      if (!p || !SCHEDA_IMG[p.id]) return;
+      setItem({ src: SCHEDA_IMG[p.id], title: p.nome, pdf: p.scheda });
+      document.body.style.overflow = 'hidden';
+    };
+    const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
+    window.addEventListener('open-scheda', onOpen);
+    window.addEventListener('keydown', onKey);
+    return () => { window.removeEventListener('open-scheda', onOpen); window.removeEventListener('keydown', onKey); };
+  }, []);
+  if (!item) return null;
+  const close = () => { setItem(null); document.body.style.overflow = ''; };
+  return (
+    <div className="sheet-ov" onClick={close}>
+      <div className="sheet-bar" onClick={e => e.stopPropagation()}>
+        <span className="sheet-title">Scheda tecnica · {item.title}</span>
+        <span className="sheet-actions">
+          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
+          <button className="sheet-x" onClick={close} aria-label="Chiudi">✕</button>
+        </span>
+      </div>
+      <div className="sheet-scroll" onClick={e => e.stopPropagation()}>
+        <img src={item.src} alt={`Scheda tecnica ${item.title}`} />
+      </div>
+    </div>
+  );
+}
+
 export default function Catalogo() {
   const [route, setRoute] = useState(parseHash());
 
@@ -991,6 +1057,7 @@ export default function Catalogo() {
       {route.view === 'indice' && <Indice />}
       {route.view === 'categoria' && <CategoryPage cat={route.cat} subParam={route.sub} />}
       {route.view === 'prodotto' && <ProductDetail key={route.id} id={route.id} />}
+      <SchedaViewer />
     </div>
   );
 }
