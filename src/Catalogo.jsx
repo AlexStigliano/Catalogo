@@ -343,7 +343,7 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '4702 NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 25, categoria: '01', nome: 'Kit Easy Quadro Cieco', materiale: 'Ottone', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm · Trascinatore 30×25', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyCiecoScheda,
+  { id: 25, categoria: '01', nome: 'Kit Easy Quadro Cieco', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm · Trascinatore 30×25', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyCiecoScheda,
     immagini: {
       'Cromo satinato': easyCiecoCs,
       'Oro lucido': easyCiecoOl,
