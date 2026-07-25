@@ -84,6 +84,15 @@ import tondoCiecoOl from './assets/prodotti/easy-tondo-cieco-oro-lucido.jpg';
 import tondoCiecoNo from './assets/prodotti/easy-tondo-cieco-nero-opaco.jpg';
 import tondoCiecoBo from './assets/prodotti/easy-tondo-cieco-bianco-opaco.jpg';
 import tondoCiecoScheda from './assets/easy-tondo-cieco-scheda-tecnica.pdf';
+import qChiaveCsCon from './assets/prodotti/easy-quadro-chiave-cromo-satinato-con.jpg';
+import qChiaveCsSenza from './assets/prodotti/easy-quadro-chiave-cromo-satinato-senza.jpg';
+import qChiaveOlCon from './assets/prodotti/easy-quadro-chiave-oro-lucido-con.jpg';
+import qChiaveOlSenza from './assets/prodotti/easy-quadro-chiave-oro-lucido-senza.jpg';
+import qChiaveNoCon from './assets/prodotti/easy-quadro-chiave-nero-opaco-con.jpg';
+import qChiaveNoSenza from './assets/prodotti/easy-quadro-chiave-nero-opaco-senza.jpg';
+import qChiaveBoCon from './assets/prodotti/easy-quadro-chiave-bianco-opaco-con.jpg';
+import qChiaveBoSenza from './assets/prodotti/easy-quadro-chiave-bianco-opaco-senza.jpg';
+import qChiaveScheda from './assets/easy-quadro-chiave-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -112,12 +121,13 @@ import schEasyTondo from './assets/schede/easy-tondo-scheda.jpg';
 import schVera from './assets/schede/vera-scheda.png';
 import schEasyCieco from './assets/schede/easy-quadro-cieco-scheda.jpg';
 import schTondoCieco from './assets/schede/easy-tondo-cieco-scheda.jpg';
+import schQChiave from './assets/schede/easy-quadro-chiave-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
-  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave
 };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
 
@@ -370,14 +380,33 @@ const PRODUCTS = [
     { codice: '3666CMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
     { codice: '3666CMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3666CMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3666CMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666CMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 27, categoria: '01', nome: 'Kit Easy Quadro Chiave', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qChiaveScheda, optKey: 'finitura', optKey2: 'versione',
+    immagini: {
+      'Cromo satinato||Con serratura': qChiaveCsCon,
+      'Cromo satinato||Senza serratura': qChiaveCsSenza,
+      'Oro lucido||Con serratura': qChiaveOlCon,
+      'Oro lucido||Senza serratura': qChiaveOlSenza,
+      'Nero opaco||Con serratura': qChiaveNoCon,
+      'Nero opaco||Senza serratura': qChiaveNoSenza,
+      'Bianco opaco||Con serratura': qChiaveBoCon,
+      'Bianco opaco||Senza serratura': qChiaveBoSenza
+    }, varianti: [
+    { codice: '3667FMTSE6050C.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3667FMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3667FMTSE6050C.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3667FMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3667FMTSE6050C.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3667FMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3667FMTSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3667FMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
 (() => {
   const ROS = {
     tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26],
-    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25]
+    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25, 27]
   };
   Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
     const p = PRODUCTS.find(x => x.id === id);
@@ -391,7 +420,8 @@ const PRODUCTS = [
     { id: 22, abbinate: [2, 5, 7, 8, 9, 24] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia, Vera
     { id: 23, abbinate: [1, 6, 10, 20] },    // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
     { id: 25, abbinate: [2, 5, 7, 8, 9, 24] },  // Kit Easy Quadro Cieco: stesse maniglie del Quadro
-    { id: 26, abbinate: [1, 6, 10, 20] }      // Kit Easy Tondo Cieco: stesse maniglie del Tondo
+    { id: 26, abbinate: [1, 6, 10, 20] },     // Kit Easy Tondo Cieco: stesse maniglie del Tondo
+    { id: 27, abbinate: [2, 5, 7, 8, 9, 24] }  // Kit Easy Quadro Chiave: stesse maniglie del Quadro
   ];
   KITS.forEach(({ id: kitId, abbinate }) => {
     const KIT = PRODUCTS.find(p => p.id === kitId);
