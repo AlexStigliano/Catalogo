@@ -402,13 +402,13 @@ const PRODUCTS = [
       'Bianco opaco||Con serratura': qChiaveBoCon,
       'Bianco opaco||Senza serratura': qChiaveBoSenza
     }, varianti: [
-    { codice: '3667FMTSE6050C.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3667FMQSE6050C.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
     { codice: '3667FMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
-    { codice: '3667FMTSE6050C.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3667FMQSE6050C.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
     { codice: '3667FMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
-    { codice: '3667FMTSE6050C.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3667FMQSE6050C.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3667FMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3667FMTSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3667FMQSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3667FMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
   { id: 28, categoria: '01', nome: 'Kit Easy Tondo Chiave', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tChiaveScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
