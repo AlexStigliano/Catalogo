@@ -123,6 +123,12 @@ import tYaleScheda from './assets/easy-tondo-yale-scheda-tecnica.pdf';
 import hoppeLogo from './assets/hoppe-logo.png';
 import badenPatent from './assets/prodotti/baden-patent.jpg';
 import badenPatentScheda from './assets/baden-patent-scheda-tecnica.pdf';
+import badenYale from './assets/prodotti/baden-yale.jpg';
+import badenYaleScheda from './assets/baden-yale-scheda-tecnica.pdf';
+import badenWc from './assets/prodotti/baden-wc.jpg';
+import badenWcScheda from './assets/baden-wc-scheda-tecnica.pdf';
+import badenWcSeg from './assets/prodotti/baden-wc-segnalatore.jpg';
+import badenWcSegScheda from './assets/baden-wc-segnalatore-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -156,13 +162,21 @@ import schTChiave from './assets/schede/easy-tondo-chiave-scheda.jpg';
 import schQYale from './assets/schede/easy-quadro-yale-scheda.jpg';
 import schTYale from './assets/schede/easy-tondo-yale-scheda.jpg';
 import schBadenPatent from './assets/schede/baden-patent-scheda.jpg';
+import schBadenYale from './assets/schede/baden-yale-scheda.jpg';
+import schBadenWc from './assets/schede/baden-wc-scheda.jpg';
+import schBadenWcSeg from './assets/schede/baden-wc-segnalatore-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
   21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave, 28: schTChiave, 29: schQYale, 30: schTYale,
-  31: { 'Patent': schBadenPatent }
+  31: {
+    'Patent': schBadenPatent,
+    'Yale': schBadenYale,
+    'WC senza segnalatore': schBadenWc,
+    'WC con segnalatore': schBadenWcSeg
+  }
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -498,11 +512,22 @@ const PRODUCTS = [
     { codice: '3666ZMTSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3666ZMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
   { id: 31, categoria: '01', nome: 'Baden', materiale: 'Acciaio inox', sottocategoria: 'battenti', dimensioni: '139\u00d766mm \u00b7 Rosetta tonda \u00d852', fornitore: 'HOPPE', fornitoreLogo: hoppeLogo, optKey: 'versione',
-    scheda: { 'Patent': badenPatentScheda },
+    scheda: {
+      'Patent': badenPatentScheda,
+      'Yale': badenYaleScheda,
+      'WC senza segnalatore': badenWcScheda,
+      'WC con segnalatore': badenWcSegScheda
+    },
     immagini: {
-      'Patent': badenPatent
+      'Patent': badenPatent,
+      'Yale': badenYale,
+      'WC senza segnalatore': badenWc,
+      'WC con segnalatore': badenWcSeg
     }, varianti: [
-    { codice: '12316064', finitura: 'Acciaio inox satinato', versione: 'Patent' } ] }
+    { codice: '12316064', finitura: 'Acciaio inox satinato', versione: 'Patent' },
+    { codice: '12316088', finitura: 'Acciaio inox satinato', versione: 'Yale' },
+    { codice: '12316095', finitura: 'Acciaio inox satinato', versione: 'WC senza segnalatore' },
+    { codice: '12316143', finitura: 'Acciaio inox satinato', versione: 'WC con segnalatore' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
