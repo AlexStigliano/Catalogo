@@ -1154,7 +1154,6 @@ function ProductDetail({ id }) {
             <hr className="rule" />
             <div className="pdp-specs">
               <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>
-              {p.dimensioni && <div className="pdp-spec"><span className="k">Dimensioni</span><span className="v">{p.dimensioni}</span></div>}
               <div className="pdp-spec"><span className="k">Fornitore</span><span className="v">{p.fornitore}</span></div>
             </div>
 
