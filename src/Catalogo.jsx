@@ -675,10 +675,10 @@ function CategoryPage({ cat, subParam }) {
 /* ---------- Catalogo prodotti (griglia + filtri) ---------- */
 function ProductCatalog({ products }) {
   const [q, setQ] = useState('');
-  const [mat, setMat] = useState('');
-  const [fin, setFin] = useState('');
-  const [ros, setRos] = useState('');
-  const [prod, setProd] = useState('');
+  const [mat, setMat] = useState([]);
+  const [fin, setFin] = useState([]);
+  const [ros, setRos] = useState([]);
+  const [prod, setProd] = useState([]);
   const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
   const [favorites, setFavorites] = useState(() => {
@@ -695,21 +695,50 @@ function ProductCatalog({ products }) {
   const rosOpts = useMemo(() => ['tonda', 'quadra'].filter(r => products.some(p => p.rosetta === r)), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
 
-  const filtered = products.filter(p => {
+  // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
+  // `salta` esclude un filtro dal calcolo: serve per sapere quali opzioni di
+  // quel filtro darebbero ancora risultati (le altre vengono disabilitate).
+  const match = (p, salta) => {
     const t = q.trim().toLowerCase();
     const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
-    const okM = !mat || p.materiale === mat;
-    const okF = !fin || p.varianti.some(v => v.finitura === fin);
-    const okR = !ros || p.rosetta === ros;
-    const okP = !prod || p.fornitore === prod;
+    const okM = salta === 'mat' || !mat.length || mat.includes(p.materiale);
+    const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
+    const okR = salta === 'ros' || !ros.length || ros.includes(p.rosetta);
+    const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
     const okFav = !favOnly || favorites.includes(p.id);
     return okQ && okM && okF && okR && okP && okFav;
-  });
+  };
 
-  const activeCount = (q.trim() ? 1 : 0) + (mat ? 1 : 0) + (fin ? 1 : 0) + (ros ? 1 : 0) + (prod ? 1 : 0) + (favOnly ? 1 : 0);
+  const filtered = products.filter(p => match(p, null));
+
+  // Un'opzione è disponibile se, tenendo fermi gli altri filtri, dà almeno un risultato.
+  const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
+
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + ros.length + prod.length + (favOnly ? 1 : 0);
   const rosLabel = (r) => r === 'tonda' ? 'Rosetta tonda' : 'Rosetta quadrata';
   const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
-  const resetAll = () => { setQ(''); setMat(''); setFin(''); setRos(''); setProd(''); setFavOnly(false); };
+  const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setRos([]); setProd([]); setFavOnly(false); };
+
+  // Gruppo di caselle: le opzioni già scelte restano sempre cliccabili (per poterle togliere).
+  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label }) => (
+    <div className="fld">
+      <span className="fld-k">{etichetta}</span>
+      <div className="fopts">
+        {opzioni.map(o => {
+          const on = scelte.includes(o);
+          const off = !on && !disponibile(campo, p => test(p, o));
+          return (
+            <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
+              <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
+              <span className="fbox" aria-hidden="true" />
+              <span className="ftxt">{label ? label(o) : o}</span>
+            </label>
+          );
+        })}
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -736,35 +765,15 @@ function ProductCatalog({ products }) {
           <div className={`filter-panel${fOpen ? ' open' : ''}`}>
             <div className="filter-inner">
               <div className="filter-grid">
-                <label className="fld">
-                  <span className="fld-k">Materiale</span>
-                  <select value={mat} onChange={e => setMat(e.target.value)}>
-                    <option value="">Tutti i materiali</option>
-                    {mats.map(m => <option key={m} value={m}>{m}</option>)}
-                  </select>
-                </label>
-                <label className="fld">
-                  <span className="fld-k">Produttore</span>
-                  <select value={prod} onChange={e => setProd(e.target.value)}>
-                    <option value="">Tutti i produttori</option>
-                    {prods.map(pr => <option key={pr} value={pr}>{pr}</option>)}
-                  </select>
-                </label>
-                <label className="fld">
-                  <span className="fld-k">Finitura</span>
-                  <select value={fin} onChange={e => setFin(e.target.value)}>
-                    <option value="">Tutte le finiture</option>
-                    {fins.map(f => <option key={f} value={f}>{f}</option>)}
-                  </select>
-                </label>
+                <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
+                  test={(p, o) => p.materiale === o} />
+                <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
+                  test={(p, o) => p.fornitore === o} />
+                <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
+                  test={(p, o) => p.varianti.some(v => v.finitura === o)} />
                 {rosOpts.length > 1 && (
-                  <label className="fld">
-                    <span className="fld-k">Rosetta</span>
-                    <select value={ros} onChange={e => setRos(e.target.value)}>
-                      <option value="">Tutte le rosette</option>
-                      {rosOpts.map(r => <option key={r} value={r}>{rosLabel(r)}</option>)}
-                    </select>
-                  </label>
+                  <Gruppo etichetta="Rosetta" campo="ros" opzioni={rosOpts} scelte={ros} set={setRos}
+                    test={(p, o) => p.rosetta === o} label={rosLabel} />
                 )}
               </div>
               <div className="filter-actions">
