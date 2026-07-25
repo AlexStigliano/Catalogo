@@ -74,6 +74,11 @@ import easyQuadroNoCon from './assets/prodotti/easy-quadro-nero-opaco-con.jpg';
 import easyQuadroNoSenza from './assets/prodotti/easy-quadro-nero-opaco-senza.jpg';
 import easyQuadroBoCon from './assets/prodotti/easy-quadro-bianco-opaco-con.jpg';
 import easyQuadroBoSenza from './assets/prodotti/easy-quadro-bianco-opaco-senza.jpg';
+import easyCiecoCs from './assets/prodotti/easy-quadro-cieco-cromo-satinato.jpg';
+import easyCiecoOl from './assets/prodotti/easy-quadro-cieco-oro-lucido.jpg';
+import easyCiecoNo from './assets/prodotti/easy-quadro-cieco-nero-opaco.jpg';
+import easyCiecoBo from './assets/prodotti/easy-quadro-cieco-bianco-opaco.jpg';
+import easyCiecoScheda from './assets/easy-quadro-cieco-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -100,12 +105,13 @@ import schPegaso from './assets/schede/pegaso-scheda.png';
 import schEasyQuadro from './assets/schede/easy-quadro-scheda.jpg';
 import schEasyTondo from './assets/schede/easy-tondo-scheda.jpg';
 import schVera from './assets/schede/vera-scheda.png';
+import schEasyCieco from './assets/schede/easy-quadro-cieco-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
-  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco
 };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
 
@@ -336,14 +342,25 @@ const PRODUCTS = [
       'Bianco opaco': veraBiancoOpaco
     }, varianti: [
     { codice: '4702 NE', finitura: 'Nero opaco', versione: 'Patent' },
-    { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] }
+    { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] },
+  { id: 25, categoria: '01', nome: 'Kit Easy Quadro Cieco', materiale: 'Ottone', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm · Trascinatore 30×25', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyCiecoScheda,
+    immagini: {
+      'Cromo satinato': easyCiecoCs,
+      'Oro lucido': easyCiecoOl,
+      'Nero opaco': easyCiecoNo,
+      'Bianco opaco': easyCiecoBo
+    }, varianti: [
+    { codice: '3667CMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3667CMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3667CMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3667CMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
 (() => {
   const ROS = {
     tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23],
-    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24]
+    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25]
   };
   Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
     const p = PRODUCTS.find(x => x.id === id);
@@ -355,7 +372,8 @@ const PRODUCTS = [
 (() => {
   const KITS = [
     { id: 22, abbinate: [2, 5, 7, 8, 9, 24] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia, Vera
-    { id: 23, abbinate: [1, 6, 10, 20] }     // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
+    { id: 23, abbinate: [1, 6, 10, 20] },    // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
+    { id: 25, abbinate: [2, 5, 7, 8, 9, 24] }  // Kit Easy Quadro Cieco: stesse maniglie del Quadro
   ];
   KITS.forEach(({ id: kitId, abbinate }) => {
     const KIT = PRODUCTS.find(p => p.id === kitId);
