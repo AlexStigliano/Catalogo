@@ -681,6 +681,7 @@ function ProductCatalog({ products }) {
   const [prod, setProd] = useState([]);
   const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
+  const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem('ferramenta_favorites'); return s ? JSON.parse(s) : []; }
     catch { return []; }
@@ -720,25 +721,40 @@ function ProductCatalog({ products }) {
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
   const resetAll = () => { setQ(''); setMat([]); setFin([]); setRos([]); setProd([]); setFavOnly(false); };
 
-  // Gruppo di caselle: le opzioni già scelte restano sempre cliccabili (per poterle togliere).
-  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label }) => (
-    <div className="fld">
-      <span className="fld-k">{etichetta}</span>
-      <div className="fopts">
-        {opzioni.map(o => {
-          const on = scelte.includes(o);
-          const off = !on && !disponibile(campo, p => test(p, o));
-          return (
-            <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
-              <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
-              <span className="fbox" aria-hidden="true" />
-              <span className="ftxt">{label ? label(o) : o}</span>
-            </label>
-          );
-        })}
+  // Menù a tendina con caselle: le scelte già fatte restano sempre cliccabili (per poterle togliere).
+  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
+    const aperto = drop === campo;
+    const riass = scelte.length === 0 ? tutti
+      : scelte.length === 1 ? (label ? label(scelte[0]) : scelte[0])
+      : scelte.length + ' ' + plurale;
+    return (
+      <div className="fld">
+        <span className="fld-k">{etichetta}</span>
+        <button type="button" className={`fdrop-btn${aperto ? ' open' : ''}${scelte.length ? ' has' : ''}`}
+          aria-expanded={aperto} onClick={() => setDrop(d => d === campo ? null : campo)}>
+          <span className="fdrop-v">{riass}</span>
+          <ChevronDown className="fdrop-chev" size={15} />
+        </button>
+        <div className={`fdrop-menu${aperto ? ' open' : ''}`}>
+          <div className="fdrop-inner">
+            <div className="fdrop-list">
+              {opzioni.map(o => {
+                const on = scelte.includes(o);
+                const off = !on && !disponibile(campo, p => test(p, o));
+                return (
+                  <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
+                    <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
+                    <span className="fbox" aria-hidden="true" />
+                    <span className="ftxt">{label ? label(o) : o}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <>
@@ -746,7 +762,7 @@ function ProductCatalog({ products }) {
         <div className="shell">
           <div className="filterbar">
             <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
-              onClick={() => setFOpen(o => !o)}>
+              onClick={() => { setFOpen(o => !o); setDrop(null); }}>
               <SlidersHorizontal size={16} />
               <span>Filtra prodotti</span>
               {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
@@ -766,14 +782,14 @@ function ProductCatalog({ products }) {
             <div className="filter-inner">
               <div className="filter-grid">
                 <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
-                  test={(p, o) => p.materiale === o} />
+                  test={(p, o) => p.materiale === o} tutti="Tutti i materiali" plurale="materiali" />
                 <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
-                  test={(p, o) => p.fornitore === o} />
+                  test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
                 <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
-                  test={(p, o) => p.varianti.some(v => v.finitura === o)} />
+                  test={(p, o) => p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
                 {rosOpts.length > 1 && (
                   <Gruppo etichetta="Rosetta" campo="ros" opzioni={rosOpts} scelte={ros} set={setRos}
-                    test={(p, o) => p.rosetta === o} label={rosLabel} />
+                    test={(p, o) => p.rosetta === o} label={rosLabel} tutti="Tutte le rosette" plurale="rosette" />
                 )}
               </div>
               <div className="filter-actions">
