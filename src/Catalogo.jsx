@@ -102,6 +102,24 @@ import tChiaveNoSenza from './assets/prodotti/easy-tondo-chiave-nero-opaco-senza
 import tChiaveBoCon from './assets/prodotti/easy-tondo-chiave-bianco-opaco-con.jpg';
 import tChiaveBoSenza from './assets/prodotti/easy-tondo-chiave-bianco-opaco-senza.jpg';
 import tChiaveScheda from './assets/easy-tondo-chiave-scheda-tecnica.pdf';
+import qYaleCsCon from './assets/prodotti/easy-quadro-yale-cromo-satinato-con.jpg';
+import qYaleCsSenza from './assets/prodotti/easy-quadro-yale-cromo-satinato-senza.jpg';
+import qYaleOlCon from './assets/prodotti/easy-quadro-yale-oro-lucido-con.jpg';
+import qYaleOlSenza from './assets/prodotti/easy-quadro-yale-oro-lucido-senza.jpg';
+import qYaleNoCon from './assets/prodotti/easy-quadro-yale-nero-opaco-con.jpg';
+import qYaleNoSenza from './assets/prodotti/easy-quadro-yale-nero-opaco-senza.jpg';
+import qYaleBoCon from './assets/prodotti/easy-quadro-yale-bianco-opaco-con.jpg';
+import qYaleBoSenza from './assets/prodotti/easy-quadro-yale-bianco-opaco-senza.jpg';
+import qYaleScheda from './assets/easy-quadro-yale-scheda-tecnica.pdf';
+import tYaleCsCon from './assets/prodotti/easy-tondo-yale-cromo-satinato-con.jpg';
+import tYaleCsSenza from './assets/prodotti/easy-tondo-yale-cromo-satinato-senza.jpg';
+import tYaleOlCon from './assets/prodotti/easy-tondo-yale-oro-lucido-con.jpg';
+import tYaleOlSenza from './assets/prodotti/easy-tondo-yale-oro-lucido-senza.jpg';
+import tYaleNoCon from './assets/prodotti/easy-tondo-yale-nero-opaco-con.jpg';
+import tYaleNoSenza from './assets/prodotti/easy-tondo-yale-nero-opaco-senza.jpg';
+import tYaleBoCon from './assets/prodotti/easy-tondo-yale-bianco-opaco-con.jpg';
+import tYaleBoSenza from './assets/prodotti/easy-tondo-yale-bianco-opaco-senza.jpg';
+import tYaleScheda from './assets/easy-tondo-yale-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -132,12 +150,14 @@ import schEasyCieco from './assets/schede/easy-quadro-cieco-scheda.jpg';
 import schTondoCieco from './assets/schede/easy-tondo-cieco-scheda.jpg';
 import schQChiave from './assets/schede/easy-quadro-chiave-scheda.jpg';
 import schTChiave from './assets/schede/easy-tondo-chiave-scheda.jpg';
+import schQYale from './assets/schede/easy-quadro-yale-scheda.jpg';
+import schTYale from './assets/schede/easy-tondo-yale-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
-  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave, 28: schTChiave
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave, 28: schTChiave, 29: schQYale, 30: schTYale
 };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
 
@@ -428,14 +448,52 @@ const PRODUCTS = [
     { codice: '3666FMTSE6050C.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3666FMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666FMTSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3666FMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666FMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 29, categoria: '01', nome: 'Kit Easy Quadro Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qYaleScheda, optKey: 'finitura', optKey2: 'versione',
+    immagini: {
+      'Cromo satinato||Con serratura': qYaleCsCon,
+      'Cromo satinato||Senza serratura': qYaleCsSenza,
+      'Oro lucido||Con serratura': qYaleOlCon,
+      'Oro lucido||Senza serratura': qYaleOlSenza,
+      'Nero opaco||Con serratura': qYaleNoCon,
+      'Nero opaco||Senza serratura': qYaleNoSenza,
+      'Bianco opaco||Con serratura': qYaleBoCon,
+      'Bianco opaco||Senza serratura': qYaleBoSenza
+    }, varianti: [
+    { codice: '3667ZMQSE6250.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3667ZMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3667ZMQSE6250.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3667ZMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3667ZMQSE6250.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3667ZMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3667ZMQSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3667ZMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 30, categoria: '01', nome: 'Kit Easy Tondo Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tYaleScheda, optKey: 'finitura', optKey2: 'versione',
+    immagini: {
+      'Cromo satinato||Con serratura': tYaleCsCon,
+      'Cromo satinato||Senza serratura': tYaleCsSenza,
+      'Oro lucido||Con serratura': tYaleOlCon,
+      'Oro lucido||Senza serratura': tYaleOlSenza,
+      'Nero opaco||Con serratura': tYaleNoCon,
+      'Nero opaco||Senza serratura': tYaleNoSenza,
+      'Bianco opaco||Con serratura': tYaleBoCon,
+      'Bianco opaco||Senza serratura': tYaleBoSenza
+    }, varianti: [
+    { codice: '3666ZMTSE6250.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
+    { codice: '3666ZMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3666ZMTSE6250.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
+    { codice: '3666ZMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3666ZMTSE6250.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
+    { codice: '3666ZMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3666ZMTSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
+    { codice: '3666ZMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
 (() => {
   const ROS = {
-    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26, 28],
-    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25, 27]
+    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26, 28, 30],
+    quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25, 27, 29]
   };
   Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
     const p = PRODUCTS.find(x => x.id === id);
@@ -451,7 +509,9 @@ const PRODUCTS = [
     { id: 25, abbinate: [2, 5, 7, 8, 9, 24] },  // Kit Easy Quadro Cieco: stesse maniglie del Quadro
     { id: 26, abbinate: [1, 6, 10, 20] },     // Kit Easy Tondo Cieco: stesse maniglie del Tondo
     { id: 27, abbinate: [2, 5, 7, 8, 9, 24] }, // Kit Easy Quadro Chiave: stesse maniglie del Quadro
-    { id: 28, abbinate: [1, 6, 10, 20] }      // Kit Easy Tondo Chiave: stesse maniglie del Tondo
+    { id: 28, abbinate: [1, 6, 10, 20] },     // Kit Easy Tondo Chiave: stesse maniglie del Tondo
+    { id: 29, abbinate: [2, 5, 7, 8, 9, 24] }, // Kit Easy Quadro Yale: stesse maniglie del Quadro
+    { id: 30, abbinate: [1, 6, 10, 20] }      // Kit Easy Tondo Yale: stesse maniglie del Tondo
   ];
   KITS.forEach(({ id: kitId, abbinate }) => {
     const KIT = PRODUCTS.find(p => p.id === kitId);
