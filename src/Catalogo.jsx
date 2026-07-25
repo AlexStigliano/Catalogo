@@ -79,6 +79,11 @@ import easyCiecoOl from './assets/prodotti/easy-quadro-cieco-oro-lucido.jpg';
 import easyCiecoNo from './assets/prodotti/easy-quadro-cieco-nero-opaco.jpg';
 import easyCiecoBo from './assets/prodotti/easy-quadro-cieco-bianco-opaco.jpg';
 import easyCiecoScheda from './assets/easy-quadro-cieco-scheda-tecnica.pdf';
+import tondoCiecoCs from './assets/prodotti/easy-tondo-cieco-cromo-satinato.jpg';
+import tondoCiecoOl from './assets/prodotti/easy-tondo-cieco-oro-lucido.jpg';
+import tondoCiecoNo from './assets/prodotti/easy-tondo-cieco-nero-opaco.jpg';
+import tondoCiecoBo from './assets/prodotti/easy-tondo-cieco-bianco-opaco.jpg';
+import tondoCiecoScheda from './assets/easy-tondo-cieco-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -106,12 +111,13 @@ import schEasyQuadro from './assets/schede/easy-quadro-scheda.jpg';
 import schEasyTondo from './assets/schede/easy-tondo-scheda.jpg';
 import schVera from './assets/schede/vera-scheda.png';
 import schEasyCieco from './assets/schede/easy-quadro-cieco-scheda.jpg';
+import schTondoCieco from './assets/schede/easy-tondo-cieco-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
-  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco
 };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
 
@@ -353,13 +359,24 @@ const PRODUCTS = [
     { codice: '3667CMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
     { codice: '3667CMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3667CMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3667CMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3667CMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 26, categoria: '01', nome: 'Kit Easy Tondo Cieco', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm · Trascinatore Ø29', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tondoCiecoScheda,
+    immagini: {
+      'Cromo satinato': tondoCiecoCs,
+      'Oro lucido': tondoCiecoOl,
+      'Nero opaco': tondoCiecoNo,
+      'Bianco opaco': tondoCiecoBo
+    }, varianti: [
+    { codice: '3666CMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
+    { codice: '3666CMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
+    { codice: '3666CMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
+    { codice: '3666CMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
 (() => {
   const ROS = {
-    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23],
+    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26],
     quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25]
   };
   Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
@@ -373,7 +390,8 @@ const PRODUCTS = [
   const KITS = [
     { id: 22, abbinate: [2, 5, 7, 8, 9, 24] },   // Kit Easy Quadro: Quadra, Hèlia, Sirio, Trio, Alicia, Vera
     { id: 23, abbinate: [1, 6, 10, 20] },    // Kit Easy Tondo: Goccia, Volta, Punto, Flexa
-    { id: 25, abbinate: [2, 5, 7, 8, 9, 24] }  // Kit Easy Quadro Cieco: stesse maniglie del Quadro
+    { id: 25, abbinate: [2, 5, 7, 8, 9, 24] },  // Kit Easy Quadro Cieco: stesse maniglie del Quadro
+    { id: 26, abbinate: [1, 6, 10, 20] }      // Kit Easy Tondo Cieco: stesse maniglie del Tondo
   ];
   KITS.forEach(({ id: kitId, abbinate }) => {
     const KIT = PRODUCTS.find(p => p.id === kitId);
