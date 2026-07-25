@@ -120,6 +120,9 @@ import tYaleNoSenza from './assets/prodotti/easy-tondo-yale-nero-opaco-senza.jpg
 import tYaleBoCon from './assets/prodotti/easy-tondo-yale-bianco-opaco-con.jpg';
 import tYaleBoSenza from './assets/prodotti/easy-tondo-yale-bianco-opaco-senza.jpg';
 import tYaleScheda from './assets/easy-tondo-yale-scheda-tecnica.pdf';
+import hoppeLogo from './assets/hoppe-logo.png';
+import badenPatent from './assets/prodotti/baden-patent.jpg';
+import badenPatentScheda from './assets/baden-patent-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -152,14 +155,21 @@ import schQChiave from './assets/schede/easy-quadro-chiave-scheda.jpg';
 import schTChiave from './assets/schede/easy-tondo-chiave-scheda.jpg';
 import schQYale from './assets/schede/easy-quadro-yale-scheda.jpg';
 import schTYale from './assets/schede/easy-tondo-yale-scheda.jpg';
+import schBadenPatent from './assets/schede/baden-patent-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
   11: schRobot, 12: schRobotre, 13: schRoboq, 14: schRoboqs, 15: schRobo5s,
   16: schRobot6, 17: schRobot6s, 18: schPeter, 19: schAmalfi, 20: schFlexa,
-  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave, 28: schTChiave, 29: schQYale, 30: schTYale
+  21: schPegaso, 22: schEasyQuadro, 23: schEasyTondo, 24: schVera, 25: schEasyCieco, 26: schTondoCieco, 27: schQChiave, 28: schTChiave, 29: schQYale, 30: schTYale,
+  31: { 'Patent': schBadenPatent }
 };
-const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: id }));
+// La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
+// per versione: in quel caso e' un oggetto { 'Versione': valore }.
+const pickScheda = (val, ver) => (val && typeof val === 'object')
+  ? (val[ver] !== undefined ? val[ver] : Object.values(val)[0])
+  : val;
+const openScheda = (id, ver) => window.dispatchEvent(new CustomEvent('open-scheda', { detail: { id, ver } }));
 
 const CATEGORIES = [
   { id: '01', nome: 'Maniglie per porte e per finestre', attiva: true },
@@ -486,13 +496,19 @@ const PRODUCTS = [
     { codice: '3666ZMTSE6250.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
     { codice: '3666ZMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666ZMTSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3666ZMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] }
+    { codice: '3666ZMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+  { id: 31, categoria: '01', nome: 'Baden', materiale: 'Acciaio inox', sottocategoria: 'battenti', dimensioni: '139\u00d766mm \u00b7 Rosetta tonda \u00d852', fornitore: 'HOPPE', fornitoreLogo: hoppeLogo, optKey: 'versione',
+    scheda: { 'Patent': badenPatentScheda },
+    immagini: {
+      'Patent': badenPatent
+    }, varianti: [
+    { codice: '12316064', finitura: 'Acciaio inox satinato', versione: 'Patent' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
 (() => {
   const ROS = {
-    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26, 28, 30],
+    tonda: [1, 4, 6, 10, 11, 12, 13, 16, 18, 19, 20, 21, 23, 26, 28, 30, 31],
     quadra: [2, 3, 5, 7, 8, 9, 14, 15, 17, 22, 24, 25, 27, 29]
   };
   Object.entries(ROS).forEach(([forma, ids]) => ids.forEach(id => {
@@ -529,6 +545,7 @@ const FINISHES = {
   'Cromo satinato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
   'Cromo lucido': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Effetto cromo satinato': 'linear-gradient(135deg,#e3e6e9,#b2b8bd 45%,#cdd2d6 58%,#a4aab0)',
+  'Acciaio inox satinato': 'linear-gradient(135deg,#dfe2e5,#aeb4b9 45%,#c9ced2 58%,#9ea4a9)',
   'Ottone lucido': 'linear-gradient(135deg,#f7e6ac,#cfa544 34%,#8f6a20 52%,#d9b463 70%,#f2dc93)',
   'Ottone satinato': 'linear-gradient(135deg,#e7d199,#b8933f 48%,#d3b168 60%,#a9863a)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
@@ -602,7 +619,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
         </div>
         {p.scheda
-          ? <button className="scheda" onClick={() => openScheda(p.id)}>
+          ? <button className="scheda" onClick={() => openScheda(p.id, has2 ? selVer : (isVer ? selFin : null))}>
               <Download size={15} /> Scheda tecnica
             </button>
           : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo">
@@ -1146,7 +1163,7 @@ function ProductDetail({ id }) {
             )}
 
             {p.scheda
-              ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+              ? <button className="scheda" onClick={() => openScheda(p.id, has2 ? selVer : (isVer ? selFin : null))}><Download size={15} /> Scheda tecnica</button>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
 
             <div className="pdp-variants">
@@ -1185,9 +1202,12 @@ function SchedaViewer() {
   const [item, setItem] = useState(null);
   useEffect(() => {
     const onOpen = (e) => {
-      const p = PRODUCTS.find(x => x.id === e.detail);
-      if (!p || !SCHEDA_IMG[p.id]) return;
-      setItem({ src: SCHEDA_IMG[p.id], title: p.nome, pdf: p.scheda });
+      const { id, ver } = e.detail || {};
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      const src = pickScheda(SCHEDA_IMG[p.id], ver);
+      if (!src) return;
+      setItem({ src, title: p.nome, ver: pickScheda(p.scheda, ver) !== p.scheda ? ver : null, pdf: pickScheda(p.scheda, ver) });
       document.body.style.overflow = 'hidden';
     };
     const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
@@ -1200,9 +1220,9 @@ function SchedaViewer() {
   return (
     <div className="sheet-ov" onClick={close}>
       <div className="sheet-bar" onClick={e => e.stopPropagation()}>
-        <span className="sheet-title">Scheda tecnica · {item.title}</span>
+        <span className="sheet-title">Scheda tecnica · {item.title}{item.ver ? ' · ' + item.ver : ''}</span>
         <span className="sheet-actions">
-          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
+          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}${item.ver ? '-' + item.ver : ''}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
           <button className="sheet-x" onClick={close} aria-label="Chiudi">✕</button>
         </span>
       </div>
