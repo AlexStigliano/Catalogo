@@ -104,21 +104,11 @@ import tChiaveBoSenza from './assets/prodotti/easy-tondo-chiave-bianco-opaco-sen
 import tChiaveScheda from './assets/easy-tondo-chiave-scheda-tecnica.pdf';
 import qYaleCsCon from './assets/prodotti/easy-quadro-yale-cromo-satinato-con.jpg';
 import qYaleCsSenza from './assets/prodotti/easy-quadro-yale-cromo-satinato-senza.jpg';
-import qYaleOlCon from './assets/prodotti/easy-quadro-yale-oro-lucido-con.jpg';
-import qYaleOlSenza from './assets/prodotti/easy-quadro-yale-oro-lucido-senza.jpg';
-import qYaleNoCon from './assets/prodotti/easy-quadro-yale-nero-opaco-con.jpg';
-import qYaleNoSenza from './assets/prodotti/easy-quadro-yale-nero-opaco-senza.jpg';
-import qYaleBoCon from './assets/prodotti/easy-quadro-yale-bianco-opaco-con.jpg';
-import qYaleBoSenza from './assets/prodotti/easy-quadro-yale-bianco-opaco-senza.jpg';
 import qYaleScheda from './assets/easy-quadro-yale-scheda-tecnica.pdf';
 import tYaleCsCon from './assets/prodotti/easy-tondo-yale-cromo-satinato-con.jpg';
 import tYaleCsSenza from './assets/prodotti/easy-tondo-yale-cromo-satinato-senza.jpg';
 import tYaleOlCon from './assets/prodotti/easy-tondo-yale-oro-lucido-con.jpg';
 import tYaleOlSenza from './assets/prodotti/easy-tondo-yale-oro-lucido-senza.jpg';
-import tYaleNoCon from './assets/prodotti/easy-tondo-yale-nero-opaco-con.jpg';
-import tYaleNoSenza from './assets/prodotti/easy-tondo-yale-nero-opaco-senza.jpg';
-import tYaleBoCon from './assets/prodotti/easy-tondo-yale-bianco-opaco-con.jpg';
-import tYaleBoSenza from './assets/prodotti/easy-tondo-yale-bianco-opaco-senza.jpg';
 import tYaleScheda from './assets/easy-tondo-yale-scheda-tecnica.pdf';
 import hoppeLogo from './assets/hoppe-logo.png';
 import badenPatent from './assets/prodotti/baden-patent.jpg';
@@ -476,41 +466,21 @@ const PRODUCTS = [
   { id: 29, categoria: '01', nome: 'Kit Easy Quadro Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qYaleScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': qYaleCsCon,
-      'Cromo satinato||Senza serratura': qYaleCsSenza,
-      'Oro lucido||Con serratura': qYaleOlCon,
-      'Oro lucido||Senza serratura': qYaleOlSenza,
-      'Nero opaco||Con serratura': qYaleNoCon,
-      'Nero opaco||Senza serratura': qYaleNoSenza,
-      'Bianco opaco||Con serratura': qYaleBoCon,
-      'Bianco opaco||Senza serratura': qYaleBoSenza
+      'Cromo satinato||Senza serratura': qYaleCsSenza
     }, varianti: [
     { codice: '3667ZMQSE6250.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
-    { codice: '3667ZMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
-    { codice: '3667ZMQSE6250.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
-    { codice: '3667ZMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
-    { codice: '3667ZMQSE6250.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
-    { codice: '3667ZMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3667ZMQSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3667ZMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+    { codice: '3667ZMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] },
   { id: 30, categoria: '01', nome: 'Kit Easy Tondo Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tYaleScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': tYaleCsCon,
       'Cromo satinato||Senza serratura': tYaleCsSenza,
       'Oro lucido||Con serratura': tYaleOlCon,
-      'Oro lucido||Senza serratura': tYaleOlSenza,
-      'Nero opaco||Con serratura': tYaleNoCon,
-      'Nero opaco||Senza serratura': tYaleNoSenza,
-      'Bianco opaco||Con serratura': tYaleBoCon,
-      'Bianco opaco||Senza serratura': tYaleBoSenza
+      'Oro lucido||Senza serratura': tYaleOlSenza
     }, varianti: [
     { codice: '3666ZMTSE6250.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
     { codice: '3666ZMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
     { codice: '3666ZMTSE6250.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
-    { codice: '3666ZMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
-    { codice: '3666ZMTSE6250.NO.IM', finitura: 'Nero opaco', versione: 'Con serratura' },
-    { codice: '3666ZMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
-    { codice: '3666ZMTSE6250.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
-    { codice: '3666ZMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
+    { codice: '3666ZMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' } ] },
   { id: 31, categoria: '01', nome: 'Baden', materiale: 'Acciaio inox', sottocategoria: 'battenti', dimensioni: '139\u00d766mm \u00b7 Rosetta tonda \u00d852', fornitore: 'HOPPE', fornitoreLogo: hoppeLogo, optKey: 'versione',
     scheda: {
       'Patent': badenPatentScheda,
