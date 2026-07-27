@@ -119,6 +119,9 @@ import badenWc from './assets/prodotti/baden-wc.jpg';
 import badenWcScheda from './assets/baden-wc-scheda-tecnica.pdf';
 import badenWcSeg from './assets/prodotti/baden-wc-segnalatore.jpg';
 import badenWcSegScheda from './assets/baden-wc-segnalatore-scheda-tecnica.pdf';
+import arizonaInox from './assets/prodotti/arizona-inox-satinato.jpg';
+import arizonaNero from './assets/prodotti/arizona-nero-opaco.jpg';
+import arizonaScheda from './assets/arizona-scheda-tecnica.pdf';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -155,6 +158,7 @@ import schBadenPatent from './assets/schede/baden-patent-scheda.jpg';
 import schBadenYale from './assets/schede/baden-yale-scheda.jpg';
 import schBadenWc from './assets/schede/baden-wc-scheda.jpg';
 import schBadenWcSeg from './assets/schede/baden-wc-segnalatore-scheda.jpg';
+import schArizona from './assets/schede/arizona-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -166,7 +170,8 @@ const SCHEDA_IMG = {
     'Yale': schBadenYale,
     'WC senza segnalatore': schBadenWc,
     'WC con segnalatore': schBadenWcSeg
-  }
+  },
+  32: schArizona
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -497,7 +502,26 @@ const PRODUCTS = [
     { codice: '12316064', finitura: 'Acciaio inox satinato', versione: 'Patent' },
     { codice: '12316088', finitura: 'Acciaio inox satinato', versione: 'Yale' },
     { codice: '12316095', finitura: 'Acciaio inox satinato', versione: 'WC senza segnalatore' },
-    { codice: '12316143', finitura: 'Acciaio inox satinato', versione: 'WC con segnalatore' } ] }
+    { codice: '12316143', finitura: 'Acciaio inox satinato', versione: 'WC con segnalatore' } ] },
+  { id: 32, categoria: '01', nome: 'Arizona 800', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arizonaScheda,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': arizonaInox,
+      'Nero opaco': arizonaNero
+    }, varianti: [
+    { codice: '800.20.500.300', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.700.500', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+    { codice: '800.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+    { codice: '800.30.1000.700', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1000, interasse: 700 },
+    { codice: '800.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+    { codice: '800.30.1500.1300', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+    { codice: '800.25.500.300', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.500.300', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -1073,6 +1097,46 @@ function ProductDetail({ id }) {
   });
   useEffect(() => { localStorage.setItem('ferramenta_favorites', JSON.stringify(favorites)); }, [favorites]);
 
+  /* ---- Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse) ----
+     Ogni asse mostra tutte le misure della finitura scelta; dopo un clic, gli
+     altri assi lasciano selezionabili solo le misure compatibili con quella. */
+  const assi = p && p.assi;
+  const [mis, setMis] = useState(() => {
+    if (!assi || !p || !p.varianti.length) return null;
+    const v0 = p.varianti[0], o = {};
+    assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    return o;
+  });
+  const [ultimoAsse, setUltimoAsse] = useState(null);
+
+  const perFinitura = (v) => v.finitura === selFin;
+  const opzioniAsse = (k) => [...new Set((p ? p.varianti : []).filter(perFinitura).map(v => v[k]))]
+    .sort((a, b) => (typeof a === 'number' ? a - b : String(a).localeCompare(String(b))));
+  const misuraDisponibile = (k, val) => p.varianti.some(v =>
+    perFinitura(v) && v[k] === val &&
+    (!ultimoAsse || ultimoAsse === k || v[ultimoAsse] === mis[ultimoAsse]));
+  const scegliMisura = (k, val) => {
+    const cand = p.varianti.filter(v => perFinitura(v) && v[k] === val);
+    if (!cand.length) return;
+    let best = cand[0], punti = -1;
+    cand.forEach(v => {
+      const s = assi.reduce((acc, a) => acc + (a.chiave !== k && v[a.chiave] === mis[a.chiave] ? 1 : 0), 0);
+      if (s > punti) { punti = s; best = v; }
+    });
+    const o = {}; assi.forEach(a => { o[a.chiave] = best[a.chiave]; });
+    setMis(o); setUltimoAsse(k);
+  };
+  // cambiando finitura, riporta le misure su una combinazione esistente
+  useEffect(() => {
+    if (!assi || !mis || !p) return;
+    const valida = p.varianti.some(v => perFinitura(v) && assi.every(a => v[a.chiave] === mis[a.chiave]));
+    if (valida) return;
+    const v0 = p.varianti.find(perFinitura);
+    if (!v0) return;
+    const o = {}; assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    setMis(o); setUltimoAsse(null);
+  }, [selFin]);
+
   if (!p) {
     return (
       <>
@@ -1173,6 +1237,25 @@ function ProductDetail({ id }) {
               </div>
             )}
 
+            {assi && mis && assi.map(a => (
+              <div className="finishes pdp-finishes" key={a.chiave}>
+                <span className="fhint">{a.etichetta}</span>
+                <div className="fbtns">
+                  {opzioniAsse(a.chiave).map(val => {
+                    const on = mis[a.chiave] === val;
+                    const off = !on && !misuraDisponibile(a.chiave, val);
+                    return (
+                      <button key={String(val)} className={`vbtn${on ? ' active' : ''}${off ? ' off' : ''}`}
+                        aria-pressed={on} onClick={() => scegliMisura(a.chiave, val)}
+                        title={off ? 'Non abbinabile alla misura scelta: clicca per partire da questa' : undefined}>
+                        {val}{a.suffisso || ''}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+
             {p.scheda
               ? <button className="scheda" onClick={() => openScheda(p.id, has2 ? selVer : (isVer ? selFin : null))}><Download size={15} /> Scheda tecnica</button>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
@@ -1180,16 +1263,31 @@ function ProductDetail({ id }) {
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <table className="variants">
-                <thead><tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr></thead>
+                <thead><tr><th>Codice articolo</th><th>Finitura</th>
+                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : <th>Versione</th>}
+                </tr></thead>
                 <tbody>
                   {p.varianti.map((v, i) => {
-                    const active = hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
+                    const active = assi
+                      ? (v.finitura === selFin && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
+                      : hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
+                    const scegliRiga = () => {
+                      if (assi) {
+                        setSelFin(v.finitura);
+                        const o = {}; assi.forEach(a => { o[a.chiave] = v[a.chiave]; });
+                        setMis(o); setUltimoAsse(null);
+                      } else {
+                        setSelFin(v[optKey]); if (has2) setSelVer(v[optKey2]);
+                      }
+                    };
                     return (
                     <tr key={i} className={`${hasImages ? 'vrow' : ''}${active ? ' active' : ''}`}
-                      onClick={hasImages ? () => { setSelFin(v[optKey]); if (has2) setSelVer(v[optKey2]); } : undefined}>
+                      onClick={hasImages ? scegliRiga : undefined}>
                       <td className="code">{v.codice}</td>
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
-                      <td className="ver">{v.versione}</td>
+                      {assi
+                        ? assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)
+                        : <td className="ver">{v.versione}</td>}
                     </tr>
                     );
                   })}
