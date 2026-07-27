@@ -131,6 +131,10 @@ import californiaScheda from './assets/california-scheda-tecnica.pdf';
 import coloradoInox from './assets/prodotti/colorado-inox-satinato.jpg';
 import coloradoNero from './assets/prodotti/colorado-nero-opaco.jpg';
 import coloradoScheda from './assets/colorado-scheda-tecnica.pdf';
+import georgiaQInox from './assets/prodotti/georgia-q-inox-satinato.jpg';
+import georgiaQNero from './assets/prodotti/georgia-q-nero-opaco.jpg';
+import georgiaQPvd from './assets/prodotti/georgia-q-pvd-lucido.jpg';
+import georgiaQScheda from './assets/georgia-q-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -173,6 +177,7 @@ import schArizonaInclinato from './assets/schede/arizona-inclinato-scheda.jpg';
 import schArkansasQ from './assets/schede/arkansas-q-scheda.jpg';
 import schCalifornia from './assets/schede/california-scheda.jpg';
 import schColorado from './assets/schede/colorado-scheda.jpg';
+import schGeorgiaQ from './assets/schede/georgia-q-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -189,7 +194,8 @@ const SCHEDA_IMG = {
   33: schArizonaInclinato,
   34: schArkansasQ,
   35: schCalifornia,
-  36: schColorado
+  36: schColorado,
+  37: schGeorgiaQ
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -585,7 +591,29 @@ const PRODUCTS = [
     { codice: '841S.1000.800.60', finitura: 'Acciaio inox satinato', lunghezza: 1000, interasse: 800 },
     { codice: '841S.1200.900.60', finitura: 'Acciaio inox satinato', lunghezza: 1200, interasse: 900 },
     { codice: '841S.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
-    { codice: '841S.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] }
+    { codice: '841S.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] },
+  { id: 37, categoria: '01', nome: 'Georgia Q', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 20×20 mm nelle misure più corte, 25×25 mm in quelle più lunghe. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: georgiaQScheda,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': georgiaQInox,
+      'Nero opaco': georgiaQNero,
+      'PVD lucido': georgiaQPvd
+    }, varianti: [
+    { codice: '802K.20.220.200.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 220, interasse: 200 },
+    { codice: '802K.20.320.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 320, interasse: 300 },
+    { codice: '802K.25.625.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 625, interasse: 600 },
+    { codice: '802K.25.925.900.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 925, interasse: 900 },
+    { codice: '802K.20.220.200.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 220, interasse: 200 },
+    { codice: '802K.20.320.300.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 320, interasse: 300 },
+    { codice: '802K.25.925.900.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 925, interasse: 900 },
+    { codice: '802K.20.220.200.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 220, interasse: 200 },
+    { codice: '802K.20.320.300.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 320, interasse: 300 },
+    { codice: '802K.25.625.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 625, interasse: 600 },
+    { codice: '802K.20.320.300.18', finitura: 'PVD lucido', diametro: 20, lunghezza: 320, interasse: 300 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -629,6 +657,7 @@ const FINISHES = {
   'Cromo lucido': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Effetto cromo satinato': 'linear-gradient(135deg,#e3e6e9,#b2b8bd 45%,#cdd2d6 58%,#a4aab0)',
   'Acciaio inox satinato': 'linear-gradient(135deg,#dfe2e5,#aeb4b9 45%,#c9ced2 58%,#9ea4a9)',
+  'Inox lucido': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Ottone lucido': 'linear-gradient(135deg,#f7e6ac,#cfa544 34%,#8f6a20 52%,#d9b463 70%,#f2dc93)',
   'Ottone satinato': 'linear-gradient(135deg,#e7d199,#b8933f 48%,#d3b168 60%,#a9863a)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
