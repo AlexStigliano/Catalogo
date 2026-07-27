@@ -530,17 +530,17 @@ const PRODUCTS = [
     immagini: {
       'Acciaio inox satinato': arizonaInox,
       'Nero opaco': arizonaNero,
-      'PVD giallo lucido': arizonaPvd
+      'PVD lucido': arizonaPvd
     }, varianti: [
-    { codice: '800.20.500.300', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
-    { codice: '800.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
-    { codice: '800.25.700.500', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
-    { codice: '800.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
-    { codice: '800.30.1000.700', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1000, interasse: 700 },
-    { codice: '800.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
-    { codice: '800.30.1500.1300', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
-    { codice: '800.25.500.300', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
-    { codice: '800.25.500.300', finitura: 'PVD giallo lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] },
+    { codice: '800.20.500.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+    { codice: '800.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+    { codice: '800.30.1000.700.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1000, interasse: 700 },
+    { codice: '800.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+    { codice: '800.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+    { codice: '800.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '800.25.500.300.18', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] },
   { id: 33, categoria: '01', nome: 'Arizona Inclinato', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arizonaInclinatoScheda,
     assi: [
       { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
@@ -550,9 +550,9 @@ const PRODUCTS = [
     immagini: {
       'Acciaio inox satinato': arizonaInclinatoInox
     }, varianti: [
-    { codice: '810.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
-    { codice: '810.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
-    { codice: '810.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] },
+    { codice: '810.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '810.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+    { codice: '810.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] },
   { id: 34, categoria: '01', nome: 'Arkansas Q', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', dimensioni: 'Ø32mm · 382×350mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arkansasQScheda,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -561,7 +561,7 @@ const PRODUCTS = [
     immagini: {
       'Acciaio inox satinato': arkansasQInox
     }, varianti: [
-    { codice: '816.32.382.350', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 } ] },
+    { codice: '816.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 } ] },
   { id: 35, categoria: '01', nome: 'California', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm, con una curva ampia che dona slancio alla porta. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', dimensioni: 'Ø32mm · 575×500mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: californiaScheda,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -570,7 +570,7 @@ const PRODUCTS = [
     immagini: {
       'Acciaio inox satinato': californiaInox
     }, varianti: [
-    { codice: '817.32.575.500', finitura: 'Acciaio inox satinato', lunghezza: 575, interasse: 500 } ] },
+    { codice: '817.32.575.500.60', finitura: 'Acciaio inox satinato', lunghezza: 575, interasse: 500 } ] },
   { id: 36, categoria: '01', nome: 'Colorado', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro 40×10 mm. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: coloradoScheda,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -580,12 +580,12 @@ const PRODUCTS = [
       'Acciaio inox satinato': coloradoInox,
       'Nero opaco': coloradoNero
     }, varianti: [
-    { codice: '841S.500.300', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
-    { codice: '841S.800.600', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
-    { codice: '841S.1000.800', finitura: 'Acciaio inox satinato', lunghezza: 1000, interasse: 800 },
-    { codice: '841S.1200.900', finitura: 'Acciaio inox satinato', lunghezza: 1200, interasse: 900 },
-    { codice: '841S.500.300', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
-    { codice: '841S.800.600', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] }
+    { codice: '841S.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+    { codice: '841S.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+    { codice: '841S.1000.800.60', finitura: 'Acciaio inox satinato', lunghezza: 1000, interasse: 800 },
+    { codice: '841S.1200.900.60', finitura: 'Acciaio inox satinato', lunghezza: 1200, interasse: 900 },
+    { codice: '841S.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+    { codice: '841S.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -633,7 +633,7 @@ const FINISHES = {
   'Ottone satinato': 'linear-gradient(135deg,#e7d199,#b8933f 48%,#d3b168 60%,#a9863a)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
-  'PVD giallo lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'PVD lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Bronzo': 'linear-gradient(135deg,#9a774e,#5c3f26 52%,#7d5836 70%,#4d341f)',
   'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Nero': 'linear-gradient(135deg,#38383b,#1c1c1e 60%,#2a2a2c)',
