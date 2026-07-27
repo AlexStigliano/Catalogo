@@ -889,9 +889,47 @@ function Cover() {
   );
 }
 
+/* ---------- Ricerca in tutto il catalogo ----------
+   Cerca su nome, codice, produttore, materiale, finiture e reparto, senza
+   badare ad accenti e maiuscole. Con piu' parole le trova tutte (in AND),
+   cosi' "robot nero" restringe invece di allargare. */
+const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const catName = (id) => (CATEGORIES.find(c => c.id === id) || {}).nome || id;
+
+const INDICE_RICERCA = PRODUCTS.map(p => ({
+  p,
+  testo: senzaAccenti([
+    p.nome, p.fornitore, p.materiale, subName(p.sottocategoria), catName(p.categoria),
+    ...p.varianti.map(v => v.codice),
+    ...p.varianti.map(v => v.finitura)
+  ].join(' '))
+}));
+
+const cercaProdotti = (testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  if (!parole.length) return [];
+  return INDICE_RICERCA
+    .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
+    .map(({ p }) => p);
+};
+
+/* Codici che contengono una delle parole cercate: se cerchi un codice,
+   ti mostra subito quale variante corrisponde. */
+const codiciTrovati = (p, testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  const cod = [...new Set(p.varianti.map(v => v.codice))];
+  return cod.filter(c => parole.some(w => senzaAccenti(c).includes(w)));
+};
+
+const primaImmagine = (p) => Object.values(p.immagini || {})[0];
+
 /* ---------- Indice ---------- */
 function Indice() {
   const count = (id) => PRODUCTS.filter(p => p.categoria === id).length;
+  const [q, setQ] = useState('');
+  const testo = q.trim();
+  const risultati = useMemo(() => cercaProdotti(testo), [testo]);
+
   return (
     <>
       <div className="topbar">
@@ -905,24 +943,77 @@ function Indice() {
           <h1>Categorie prodotto</h1>
           <hr className="rule" />
         </div>
-        <div className="idx-list">
-          {CATEGORIES.map(c => {
-            const n = count(c.id);
-            return (
-              <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
-                <span className="idx-num">{c.id}</span>
-                <span className="idx-name">{c.nome}</span>
-                <span className="idx-dots" />
-                <span className="idx-meta">
-                  {n > 0
-                    ? <span className="idx-badge">{n} prodotti</span>
-                    : <span className="idx-soon">in arrivo</span>}
-                  <ChevronRight className="idx-arrow" />
-                </span>
-              </button>
-            );
-          })}
+
+        <div className="idx-search">
+          <label className="search big">
+            <Search size={18} />
+            <input type="text" value={q} onChange={e => setQ(e.target.value)}
+              placeholder="Cerca un articolo per nome, codice o finitura…"
+              autoComplete="off" aria-label="Cerca in tutto il catalogo" />
+            {testo && (
+              <button type="button" className="search-clear" onClick={() => setQ('')}
+                aria-label="Cancella la ricerca">×</button>
+            )}
+          </label>
         </div>
+
+        {!testo ? (
+          <div className="idx-list">
+            {CATEGORIES.map(c => {
+              const n = count(c.id);
+              return (
+                <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
+                  <span className="idx-num">{c.id}</span>
+                  <span className="idx-name">{c.nome}</span>
+                  <span className="idx-dots" />
+                  <span className="idx-meta">
+                    {n > 0
+                      ? <span className="idx-badge">{n} prodotti</span>
+                      : <span className="idx-soon">in arrivo</span>}
+                    <ChevronRight className="idx-arrow" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ) : risultati.length > 0 ? (
+          <>
+            <p className="res-count">
+              <b>{risultati.length}</b> {risultati.length === 1 ? 'articolo trovato' : 'articoli trovati'}
+            </p>
+            <div className="res-list">
+              {risultati.map(p => {
+                const img = primaImmagine(p);
+                const codici = codiciTrovati(p, testo);
+                return (
+                  <button className="res-row" key={p.id} onClick={() => go(`/prodotto/${p.id}`)}>
+                    <span className="res-thumb">
+                      {img ? <img src={img} alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
+                    </span>
+                    <span className="res-body">
+                      <span className="res-name">{p.nome}</span>
+                      <span className="res-meta">
+                        {subName(p.sottocategoria)} · {p.fornitore}
+                      </span>
+                      {codici.length > 0 && (
+                        <span className="res-codes">
+                          {codici.slice(0, 3).join(' · ')}
+                          {codici.length > 3 && ` +${codici.length - 3}`}
+                        </span>
+                      )}
+                    </span>
+                    <ChevronRight className="res-arrow" />
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="res-empty">
+            <h2>Nessun articolo trovato</h2>
+            <p>Nessun risultato per “{testo}”. Prova con il nome del modello, un codice o una finitura.</p>
+          </div>
+        )}
       </div>
       <Footer />
     </>

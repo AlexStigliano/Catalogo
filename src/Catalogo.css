@@ -273,6 +273,67 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .idx-arrow { width: 14px; height: 14px; color: var(--ink-soft); }
 .cat .idx-row:hover .idx-arrow { color: var(--orange); }
 
+/* ===== Ricerca in tutto il catalogo ===== */
+.cat .idx-search { padding: 1.5rem 0 0; }
+.cat .search.big { display: block; width: 100%; flex: none; }
+.cat .search.big svg { left: 14px; width: 18px; height: 18px; }
+.cat .search.big input { padding: 0.85rem 2.8rem 0.85rem 2.7rem; font-size: 15px; border-radius: 8px; }
+.cat .search-clear {
+  position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
+  border: none; background: none; color: var(--ink-soft); font-size: 21px; line-height: 1;
+  cursor: pointer; padding: 0.15rem 0.45rem 0.3rem; border-radius: 6px;
+}
+.cat .search-clear:hover { background: var(--panel); color: var(--ink); }
+
+.cat .res-count { font-size: 13px; font-weight: 700; color: var(--ink-soft); margin: 1.4rem 0 0.3rem; }
+.cat .res-count b { color: var(--header-name); }
+.cat .res-list { padding: 0 0 3.5rem; display: flex; flex-direction: column; }
+.cat .res-row {
+  display: flex; align-items: center; gap: 0.95rem; width: 100%; text-align: left;
+  background: none; border: none; cursor: pointer; padding: 0.7rem 1rem; border-radius: 8px;
+  transition: background 0.15s; position: relative;
+}
+.cat .res-row:nth-child(odd) { background: var(--panel); }
+.cat .res-row::before {
+  content: ""; position: absolute; left: 0; top: 12%; bottom: 12%; width: 4px;
+  border-radius: 4px; background: transparent; transition: background 0.15s;
+}
+.cat .res-row:hover { background: var(--panel); }
+.cat .res-row:hover::before { background: var(--orange); }
+.cat .res-thumb {
+  width: 64px; height: 50px; flex: none; border-radius: 6px; overflow: hidden;
+  background: var(--tile); border: 1px solid var(--tile-edge);
+  display: flex; align-items: center; justify-content: center;
+}
+/* Le foto prodotto hanno margini bianchi: un leggero zoom li ritaglia
+   e rende l'articolo leggibile anche in miniatura. */
+.cat .res-thumb img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.35); }
+.cat .res-noimg { font-size: 13px; font-weight: 700; color: #9a9a9f; }
+.cat .res-body { flex: 1; min-width: 0; }
+.cat .res-name {
+  display: block; font-weight: 700; font-size: clamp(14px, 1.6vw, 16px); color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cat .res-row:hover .res-name { color: var(--orange); }
+.cat .res-meta {
+  display: block; font-size: 12px; font-weight: 600; color: var(--ink-soft); margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cat .res-codes {
+  display: block; font-size: 11px; font-weight: 700; color: var(--header-name); margin-top: 3px;
+  font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cat .res-arrow { width: 14px; height: 14px; flex: none; color: var(--ink-soft); }
+.cat .res-row:hover .res-arrow { color: var(--orange); }
+.cat .res-empty { text-align: center; padding: 3.5rem 1rem 5rem; color: var(--ink-soft); }
+.cat .res-empty h2 { font-weight: 800; font-size: clamp(1.2rem, 2.6vw, 1.7rem); color: var(--header-name); margin: 0 0 0.5rem; }
+.cat .res-empty p { margin: 0 auto; max-width: 46ch; }
+
+@media (max-width: 520px) {
+  .cat .res-row { gap: 0.7rem; padding: 0.6rem 0.7rem; }
+  .cat .res-thumb { width: 52px; height: 42px; }
+}
+
 /* ===== Sezione in preparazione ===== */
 .cat .prep { text-align: center; padding: 5rem 1rem 6rem; color: var(--ink-soft); }
 .cat .prep .badge { display: inline-block; background: var(--panel); color: var(--header-name); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 100px; margin-bottom: 1rem; }
