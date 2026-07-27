@@ -368,6 +368,21 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .rel-section { margin-top: clamp(2.4rem, 5vw, 3.6rem); }
 .cat .rel-head { display: flex; align-items: baseline; gap: 0.8rem; border-bottom: 2px solid var(--navy); padding-bottom: 0.7rem; margin-bottom: 1.3rem; }
 .cat .rel-head h2 { font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 800; color: var(--header-name); letter-spacing: -0.01em; margin: 0; }
+
+/* Sezioni a tendina (Descrizione, articoli abbinati, articoli necessari) */
+.cat .rel-toggle { width: 100%; background: none; text-align: left; cursor: pointer; border: none; border-bottom: 2px solid var(--navy); align-items: center; margin-bottom: 0; font-family: inherit; transition: opacity 0.15s; }
+.cat .rel-toggle:hover { opacity: 0.72; }
+.cat .rel-badge-n { flex: none; display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 7px; border-radius: 100px; background: var(--panel); color: var(--ink-soft); font-size: 12px; font-weight: 800; }
+.cat .rel-chev { flex: none; margin-left: auto; color: var(--navy); transition: transform 0.25s; }
+.cat .rel-toggle.open .rel-chev { transform: rotate(180deg); }
+.cat .rel-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s cubic-bezier(0.4,0,0.2,1); }
+.cat .rel-wrap.open { grid-template-rows: 1fr; }
+.cat .rel-inner { overflow: hidden; }
+.cat .rel-wrap.open .rel-inner { padding-top: 1.3rem; }
+.cat .rel-testo { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink); max-width: 78ch; }
+@media (prefers-color-scheme: dark) { .cat .rel-chev { color: #cdd8f0; } }
+:root[data-theme="dark"] .cat .rel-chev { color: #cdd8f0; }
+:root[data-theme="light"] .cat .rel-chev { color: var(--navy); }
 .cat .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
 .cat .rel-card { display: flex; align-items: center; gap: 0.85rem; text-align: left; padding: 0.7rem; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
 .cat .rel-card:hover { border-color: var(--navy); box-shadow: var(--shadow-hover); transform: translateY(-2px); }

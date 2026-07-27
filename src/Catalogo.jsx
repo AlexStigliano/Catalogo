@@ -201,7 +201,7 @@ const SOTTOCATEGORIE = [
 const subName = (id) => (SOTTOCATEGORIE.find(s => s.id === id) || {}).nome || id;
 
 const PRODUCTS = [
-  { id: 1, categoria: '01', nome: 'Goccia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '45x45mm (ø 7mm)', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 1, categoria: '01', nome: 'Goccia', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: 45x45mm (ø 7mm). Prodotta da Fimet. Disponibile in 5 finiture: cromo satinato, cromo lucido, ottone lucido, oro satinato e bronzo.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '45x45mm (ø 7mm)', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': gocciaCromoSat,
       'Cromo lucido': gocciaCromoLuc,
@@ -212,7 +212,7 @@ const PRODUCTS = [
     { codice: '130247B01', finitura: 'Ottone lucido', versione: 'Patent' },
     { codice: '130247B02O', finitura: 'Oro satinato', versione: 'Patent' },
     { codice: '130247B43', finitura: 'Bronzo', versione: 'Patent' } ] },
-  { id: 2, categoria: '01', nome: 'Quadra', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 2, categoria: '01', nome: 'Quadra', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta quadra. Misure: 50x127mm. Prodotta da Fimet. Disponibile in 3 finiture: cromo satinato, cromo lucido e ottone lucido.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: '50x127mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': quadraCromoSat,
       'Cromo lucido': quadraCromoLuc
@@ -220,7 +220,7 @@ const PRODUCTS = [
     { codice: '168201B05', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '168201B04', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '168201B01', finitura: 'Ottone lucido', versione: 'Patent' } ] },
-  { id: 3, categoria: '01', nome: 'Angolo', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '144x50mm', fornitore: 'Ital Linea', fornitoreLogo: italineaLogo,
+  { id: 3, categoria: '01', nome: 'Angolo', descrizione: 'Maniglia per porte interne battenti in alluminio, con rosetta quadra. Misure: 144x50mm. Prodotta da Ital Linea. Disponibile in 5 finiture: oro satinato, bronzo, effetto cromo satinato, nero opaco e bianco opaco.', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '144x50mm', fornitore: 'Ital Linea', fornitoreLogo: italineaLogo,
     immagini: {
       'Oro satinato': angoloOroSat,
       'Bronzo': angoloBronzo,
@@ -233,7 +233,7 @@ const PRODUCTS = [
     { codice: '448RB0880CCS', finitura: 'Effetto cromo satinato', versione: 'Patent' },
     { codice: '448RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '448RB0880CBO', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 4, categoria: '01', nome: 'Round', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Forme', fornitoreLogo: formeLogo,
+  { id: 4, categoria: '01', nome: 'Round', descrizione: 'Maniglia per porte interne battenti in alluminio, con rosetta tonda. Misure: 142x50mm (ø 50mm). Prodotta da Forme. Disponibile in 4 finiture: cromo satinato, nero opaco, bianco opaco e oro satinato.', materiale: 'Alluminio', sottocategoria: 'battenti', dimensioni: '142x50mm (ø 50mm)', fornitore: 'Forme', fornitoreLogo: formeLogo,
     immagini: {
       'Cromo satinato': roundCromoSat,
       'Nero opaco': roundNeroOpaco,
@@ -243,26 +243,26 @@ const PRODUCTS = [
     { codice: 'A519RTX59NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'A519RTX59BO', finitura: 'Bianco opaco', versione: 'Patent' },
     { codice: 'A519RTX59OS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 5, categoria: '01', nome: 'Hèlia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
+  { id: 5, categoria: '01', nome: 'Hèlia', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta quadra. Misure: Standard. Prodotta da AD-TECH. Disponibile in 2 finiture: cromo satinato e nero opaco.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': heliaCromoSat,
       'Nero opaco': heliaNero
     }, varianti: [
     { codice: '121RBQCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '121RBQNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 6, categoria: '01', nome: 'Volta', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
+  { id: 6, categoria: '01', nome: 'Volta', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: Standard. Prodotta da AD-TECH. Disponibile nella finitura cromo satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'AD-TECH', fornitoreLogo: adtechLogo,
     immagini: {
       'Cromo satinato': voltaCromoSat
     }, varianti: [
     { codice: '122RBTCS', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 7, categoria: '01', nome: 'Sirio', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Arieni', fornitoreLogo: arieniLogo,
+  { id: 7, categoria: '01', nome: 'Sirio', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta quadra. Misure: Standard. Prodotta da Arieni. Disponibile in 2 finiture: cromo satinato e bicolore cromo lucido / satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Arieni', fornitoreLogo: arieniLogo,
     immagini: {
       'Cromo satinato': sirioCromoSat,
       'Bicolore cromo lucido / satinato': sirioBicolore
     }, varianti: [
     { codice: '9051CS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '9051CS/CL', finitura: 'Bicolore cromo lucido / satinato', versione: 'Patent' } ] },
-  { id: 8, categoria: '01', nome: 'Trio', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Linea Calì', fornitoreLogo: lineacaliLogo,
+  { id: 8, categoria: '01', nome: 'Trio', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta quadra. Misure: Standard. Prodotta da Linea Calì. Disponibile in 3 finiture: cromo satinato, cromo lucido e nero opaco.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Linea Calì', fornitoreLogo: lineacaliLogo,
     immagini: {
       'Cromo satinato': trioCromoSat,
       'Cromo lucido': trioCromoLuc,
@@ -271,33 +271,33 @@ const PRODUCTS = [
     { codice: '485RB0880CCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '485RB0880CCL', finitura: 'Cromo lucido', versione: 'Patent' },
     { codice: '485RB0880CNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 9, categoria: '01', nome: 'Alicia', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 9, categoria: '01', nome: 'Alicia', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta quadra. Misure: Standard. Prodotta da Fimet. Disponibile in 2 finiture: cromo satinato e oro satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': aliciaCromoSat,
       'Oro satinato': aliciaOttoneSat
     }, varianti: [
     { codice: '1220213BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1220213BOS', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 10, categoria: '01', nome: 'Punto', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+  { id: 10, categoria: '01', nome: 'Punto', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: Standard. Prodotta da Fimet. Disponibile in 2 finiture: cromo satinato e nero opaco.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Standard', fornitore: 'Fimet', fornitoreLogo: fimetLogo,
     immagini: {
       'Cromo satinato': puntoCromoSat,
       'Nero opaco': puntoNeroOpaco
     }, varianti: [
     { codice: '1205208BCS', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: '1205208BNE', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 11, categoria: '01', nome: 'Robot', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotScheda,
+  { id: 11, categoria: '01', nome: 'Robot', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta tonda. Misure: Rosetta Ø50. Prodotta da Colombo Design. Disponibile in 2 finiture: cromo satinato e oro lucido.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotScheda,
     immagini: {
       'Cromo satinato': robotCromoSat,
       'Oro lucido': robotOroLuc
     }, varianti: [
     { codice: 'CD41 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'CD41 oroplus', finitura: 'Oro lucido', versione: 'Patent' } ] },
-  { id: 12, categoria: '01', nome: 'Robotre', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
+  { id: 12, categoria: '01', nome: 'Robotre', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta tonda. Misure: Rosetta Ø50. Prodotta da Colombo Design. Disponibile nella finitura cromo satinato.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robotreScheda,
     immagini: {
       'Cromo satinato': robotreCromoSat
     }, varianti: [
     { codice: 'CD91 cromat', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 13, categoria: '01', nome: 'Roboquattro', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqScheda,
+  { id: 13, categoria: '01', nome: 'Roboquattro', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta tonda. Misure: Rosetta Ø50. Prodotta da Colombo Design. Disponibile in 3 finiture: cromo satinato, oro lucido e oro satinato.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqScheda,
     immagini: {
       'Cromo satinato': roboqCromoSat,
       'Oro lucido': roboqOroLuc,
@@ -306,12 +306,12 @@ const PRODUCTS = [
     { codice: 'ID41 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'ID41 oroplus', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'ID41 oromat', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 14, categoria: '01', nome: 'RoboquattroS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqsScheda,
+  { id: 14, categoria: '01', nome: 'RoboquattroS', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta quadra. Misure: Rosetta 52×52. Prodotta da Colombo Design. Disponibile nella finitura cromo satinato.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: roboqsScheda,
     immagini: {
       'Cromo satinato': roboqsCromoSat
     }, varianti: [
     { codice: 'ID51 cromat', finitura: 'Cromo satinato', versione: 'Patent' } ] },
-  { id: 15, categoria: '01', nome: 'RobocinqueS', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robo5sScheda,
+  { id: 15, categoria: '01', nome: 'RobocinqueS', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta quadra. Misure: Rosetta 52×52. Prodotta da Colombo Design. Disponibile in 3 finiture: cromo satinato, nero opaco e grafite mat.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 52×52', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robo5sScheda,
     immagini: {
       'Cromo satinato': robo5sCromoSat,
       'Nero opaco': robo5sNeroOpaco,
@@ -320,45 +320,45 @@ const PRODUCTS = [
     { codice: 'ID71 cromat', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'ID71 neromat', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: 'ID71 grafitemat', finitura: 'Grafite mat', versione: 'Patent' } ] },
-  { id: 16, categoria: '01', nome: 'Robot6', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6Scheda,
+  { id: 16, categoria: '01', nome: 'Robot6', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta tonda. Misure: Rosetta Ø50. Prodotta da Colombo Design. Disponibile in 2 finiture: cromo satinato e nero opaco.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6Scheda,
     immagini: {
       'Cromo satinato': robot6CromoSat,
       'Nero opaco': robot6NeroOpaco
     }, varianti: [
     { codice: 'ID 81 R-RY CM', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'ID 81 R-RY NM', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 17, categoria: '01', nome: 'Robot6S', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 50×50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6sScheda,
+  { id: 17, categoria: '01', nome: 'Robot6S', descrizione: 'Maniglia per porte interne battenti in Chromall®, con rosetta quadra. Misure: Rosetta 50×50. Prodotta da Colombo Design. Disponibile in 2 finiture: cromo satinato e nero opaco.', materiale: 'Chromall®', sottocategoria: 'battenti', dimensioni: 'Rosetta 50×50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: robot6sScheda,
     immagini: {
       'Cromo satinato': robot6sCromoSat,
       'Nero opaco': robot6sNeroOpaco
     }, varianti: [
     { codice: 'ID 91 R-RY CM', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'ID 91 R-RY NM', finitura: 'Nero opaco', versione: 'Patent' } ] },
-  { id: 18, categoria: '01', nome: 'Peter', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: peterScheda,
+  { id: 18, categoria: '01', nome: 'Peter', descrizione: 'Maniglia per porte interne battenti in ottone, con rosetta tonda. Misure: Rosetta Ø50. Prodotta da Colombo Design. Disponibile nella finitura oro lucido.', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta Ø50', fornitore: 'Colombo Design', fornitoreLogo: colomboLogo, scheda: peterScheda,
     immagini: {
       'Oro lucido': peterOroLuc
     }, varianti: [
     { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Patent' } ] },
-  { id: 19, categoria: '01', nome: 'Amalfi', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
+  { id: 19, categoria: '01', nome: 'Amalfi', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: Rosetta tonda Ø50. Prodotta da Forme. Disponibile in 2 finiture: oro lucido e oro satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
     immagini: {
       'Oro lucido': amalfiOroLuc
     }, varianti: [
     { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 20, categoria: '01', nome: 'Flexa', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: flexaScheda,
+  { id: 20, categoria: '01', nome: 'Flexa', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: Rosetta tonda Ø50. Prodotta da Forme. Disponibile in 2 finiture: cromo satinato e oro lucido.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: flexaScheda,
     immagini: {
       'Cromo satinato': flexaCromoSat,
       'Oro lucido': flexaOroLuc
     }, varianti: [
     { codice: 'A132 RTX07 C02', finitura: 'Cromo satinato', versione: 'Patent' },
     { codice: 'A132 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' } ] },
-  { id: 21, categoria: '01', nome: 'Pegaso', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: pegasoScheda,
+  { id: 21, categoria: '01', nome: 'Pegaso', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda. Misure: Rosetta tonda Ø50. Prodotta da Forme. Disponibile in 2 finiture: oro lucido e bicolore oro lucido / satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: pegasoScheda,
     immagini: {
       'Oro lucido': pegasoOroLuc
     }, varianti: [
     { codice: 'A127 RTX59 L01', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'A127 RTX59 L01/L02', finitura: 'Bicolore oro lucido / satinato', versione: 'Patent' } ] },
-  { id: 22, categoria: '01', nome: 'Kit Easy Quadro', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 22, categoria: '01', nome: 'Kit Easy Quadro', descrizione: 'Kit per porte scorrevoli a scomparsa con nicchie quadre a filo porta. Comprende il paio di nicchie con foro WC e nottolino ribassato più il trascinatore; nella versione con serratura è inclusa la serratura WC. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': easyQuadroCsCon,
       'Cromo satinato||Senza serratura': easyQuadroCsSenza,
@@ -377,7 +377,7 @@ const PRODUCTS = [
     { codice: '3667RMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3667RMQSEIM.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3667RMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 23, categoria: '01', nome: 'Kit Easy Tondo', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 23, categoria: '01', nome: 'Kit Easy Tondo', descrizione: 'Kit per porte scorrevoli a scomparsa con nicchie tonde a filo porta. Comprende il paio di nicchie con foro WC e nottolino ribassato più il trascinatore; nella versione con serratura è inclusa la serratura WC. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyTondoScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': easyTondoCsCon,
       'Cromo satinato||Senza serratura': easyTondoCsSenza,
@@ -396,14 +396,14 @@ const PRODUCTS = [
     { codice: '3666RMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666RMTSEIM.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3666RMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 24, categoria: '01', nome: 'Vera', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: '147×67mm · Rosetta quadra 50×50', fornitore: 'Arieni', fornitoreLogo: arieniLogo, scheda: veraScheda,
+  { id: 24, categoria: '01', nome: 'Vera', descrizione: 'Maniglia per porte interne battenti in ottone, con rosetta quadra. Misure: 147×67mm · Rosetta quadra 50×50. Prodotta da Arieni. Disponibile in 2 finiture: nero opaco e bianco opaco.', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: '147×67mm · Rosetta quadra 50×50', fornitore: 'Arieni', fornitoreLogo: arieniLogo, scheda: veraScheda,
     immagini: {
       'Nero opaco': veraNeroOpaco,
       'Bianco opaco': veraBiancoOpaco
     }, varianti: [
     { codice: '4702 NE', finitura: 'Nero opaco', versione: 'Patent' },
     { codice: '4702 BNC', finitura: 'Bianco opaco', versione: 'Patent' } ] },
-  { id: 25, categoria: '01', nome: 'Kit Easy Quadro Cieco', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm · Trascinatore 30×25', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyCiecoScheda,
+  { id: 25, categoria: '01', nome: 'Kit Easy Quadro Cieco', descrizione: 'Variante cieca del Kit Easy Quadro, senza foro né serratura: comprende il paio di nicchie quadre cieche e il trascinatore. Adatta alle porte scorrevoli che non richiedono chiusura. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53×53 · foro ø48 mm · Trascinatore 30×25', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: easyCiecoScheda,
     immagini: {
       'Cromo satinato': easyCiecoCs,
       'Oro lucido': easyCiecoOl,
@@ -414,7 +414,7 @@ const PRODUCTS = [
     { codice: '3667CMQ.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3667CMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3667CMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 26, categoria: '01', nome: 'Kit Easy Tondo Cieco', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm · Trascinatore Ø29', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tondoCiecoScheda,
+  { id: 26, categoria: '01', nome: 'Kit Easy Tondo Cieco', descrizione: 'Variante cieca del Kit Easy Tondo, senza foro né serratura: comprende il paio di nicchie tonde cieche e il trascinatore. Adatta alle porte scorrevoli che non richiedono chiusura. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia Ø57 · foro ø48 mm · Trascinatore Ø29', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tondoCiecoScheda,
     immagini: {
       'Cromo satinato': tondoCiecoCs,
       'Oro lucido': tondoCiecoOl,
@@ -425,7 +425,7 @@ const PRODUCTS = [
     { codice: '3666CMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' },
     { codice: '3666CMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666CMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 27, categoria: '01', nome: 'Kit Easy Quadro Chiave', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qChiaveScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 27, categoria: '01', nome: 'Kit Easy Quadro Chiave', descrizione: 'Kit per porte scorrevoli con nicchie quadre a foro chiave. Comprende il paio di nicchie e il trascinatore; nella versione con serratura sono incluse la serratura a chiave e la chiave. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qChiaveScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': qChiaveCsCon,
       'Cromo satinato||Senza serratura': qChiaveCsSenza,
@@ -444,7 +444,7 @@ const PRODUCTS = [
     { codice: '3667FMQ.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3667FMQSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3667FMQ.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 28, categoria: '01', nome: 'Kit Easy Tondo Chiave', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tChiaveScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 28, categoria: '01', nome: 'Kit Easy Tondo Chiave', descrizione: 'Kit per porte scorrevoli con nicchie tonde a foro chiave. Comprende il paio di nicchie e il trascinatore; nella versione con serratura sono incluse la serratura a chiave e la chiave. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 4 finiture: cromo satinato, oro lucido, nero opaco e bianco opaco.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tChiaveScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': tChiaveCsCon,
       'Cromo satinato||Senza serratura': tChiaveCsSenza,
@@ -463,14 +463,14 @@ const PRODUCTS = [
     { codice: '3666FMT.NO.IM', finitura: 'Nero opaco', versione: 'Senza serratura' },
     { codice: '3666FMTSE6050C.BO.IM', finitura: 'Bianco opaco', versione: 'Con serratura' },
     { codice: '3666FMT.BO.IM', finitura: 'Bianco opaco', versione: 'Senza serratura' } ] },
-  { id: 29, categoria: '01', nome: 'Kit Easy Quadro Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qYaleScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 29, categoria: '01', nome: 'Kit Easy Quadro Yale', descrizione: 'Kit per porte scorrevoli con nicchie quadre a foro cilindro (yale). Comprende il paio di nicchie e il trascinatore; nella versione con serratura è inclusa la serratura predisposta per cilindro, da ordinare a parte. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile nella finitura cromo satinato.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia 53\u00d753 \u00b7 foro \u00f848 mm \u00b7 Trascinatore 30\u00d725', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: qYaleScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': qYaleCsCon,
       'Cromo satinato||Senza serratura': qYaleCsSenza
     }, varianti: [
     { codice: '3667ZMQSE6250.05.IM', finitura: 'Cromo satinato', versione: 'Con serratura' },
     { codice: '3667ZMQ.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' } ] },
-  { id: 30, categoria: '01', nome: 'Kit Easy Tondo Yale', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tYaleScheda, optKey: 'finitura', optKey2: 'versione',
+  { id: 30, categoria: '01', nome: 'Kit Easy Tondo Yale', descrizione: 'Kit per porte scorrevoli con nicchie tonde a foro cilindro (yale). Comprende il paio di nicchie e il trascinatore; nella versione con serratura è inclusa la serratura predisposta per cilindro, da ordinare a parte. Richiede una fresatura sulla porta di ø48 mm. Prodotto da Fimet. Disponibile in 2 finiture: cromo satinato e oro lucido.', materiale: 'Zama / Zinc', sottocategoria: 'scorrevoli', dimensioni: 'Nicchia \u00d857 \u00b7 foro \u00f848 mm \u00b7 Trascinatore \u00d829', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: tYaleScheda, optKey: 'finitura', optKey2: 'versione',
     immagini: {
       'Cromo satinato||Con serratura': tYaleCsCon,
       'Cromo satinato||Senza serratura': tYaleCsSenza,
@@ -481,7 +481,7 @@ const PRODUCTS = [
     { codice: '3666ZMT.05.IM', finitura: 'Cromo satinato', versione: 'Senza serratura' },
     { codice: '3666ZMTSE6250.01.IM', finitura: 'Oro lucido', versione: 'Con serratura' },
     { codice: '3666ZMT.01.IM', finitura: 'Oro lucido', versione: 'Senza serratura' } ] },
-  { id: 31, categoria: '01', nome: 'Baden', materiale: 'Acciaio inox', sottocategoria: 'battenti', dimensioni: '139\u00d766mm \u00b7 Rosetta tonda \u00d852', fornitore: 'HOPPE', fornitoreLogo: hoppeLogo, optKey: 'versione',
+  { id: 31, categoria: '01', nome: 'Baden', descrizione: 'Guarnitura HOPPE con rosetta e bocchetta in acciaio inox per porte interne, modello E1388Z/17K/17KS della linea duranorm. Maniglie sciolte con molle di richiamo reversibili ambidestre e anelli di guida esenti da manutenzione; quadro a profilo HOPPE da 8 mm, per porte di spessore da 35 a 54 mm. Disponibile in quattro versioni di foro: patent, yale e nottolino WC con o senza segnalatore di libero/occupato. Prodotto da HOPPE. Disponibile nella finitura acciaio inox satinato.', materiale: 'Acciaio inox', sottocategoria: 'battenti', dimensioni: '139\u00d766mm \u00b7 Rosetta tonda \u00d852', fornitore: 'HOPPE', fornitoreLogo: hoppeLogo, optKey: 'versione',
     scheda: {
       'Patent': badenPatentScheda,
       'Yale': badenYaleScheda,
@@ -1020,11 +1020,28 @@ function RelatedCard({ p }) {
   );
 }
 
+/* Sezione a tendina: chiusa di default, si apre al clic sul titolo. */
+function SezioneTendina({ title, badge, aperta = false, children }) {
+  const [open, setOpen] = useState(aperta);
+  return (
+    <section className="rel-section">
+      <button type="button" className={`rel-head rel-toggle${open ? ' open' : ''}`}
+        aria-expanded={open} onClick={() => setOpen(o => !o)}>
+        <h2>{title}</h2>
+        {badge != null && <span className="rel-badge-n">{badge}</span>}
+        <ChevronDown className="rel-chev" size={18} />
+      </button>
+      <div className={`rel-wrap${open ? ' open' : ''}`}>
+        <div className="rel-inner">{children}</div>
+      </div>
+    </section>
+  );
+}
+
 function RelatedRow({ title, ids }) {
   const items = (ids || []).map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   return (
-    <section className="rel-section">
-      <div className="rel-head"><h2>{title}</h2></div>
+    <SezioneTendina title={title} badge={items.length}>
       {items.length > 0 ? (
         <div className="rel-grid">{items.map(p => <RelatedCard key={p.id} p={p} />)}</div>
       ) : (
@@ -1033,7 +1050,7 @@ function RelatedRow({ title, ids }) {
           <p>Questa sezione verrà presto popolata con gli articoli collegati.</p>
         </div>
       )}
-    </section>
+    </SezioneTendina>
   );
 }
 
@@ -1182,6 +1199,11 @@ function ProductDetail({ id }) {
           </div>
         </div>
 
+        {p.descrizione && (
+          <SezioneTendina title="Descrizione" aperta>
+            <p className="rel-testo">{p.descrizione}</p>
+          </SezioneTendina>
+        )}
         <RelatedRow title="Articoli abbinati o complementari" ids={p.abbinati} />
         <RelatedRow title="Articoli necessari" ids={p.necessari} />
       </div>
