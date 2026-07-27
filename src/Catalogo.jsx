@@ -126,6 +126,8 @@ import arizonaInclinatoInox from './assets/prodotti/arizona-inclinato-inox-satin
 import arizonaInclinatoScheda from './assets/arizona-inclinato-scheda-tecnica.pdf';
 import arkansasQInox from './assets/prodotti/arkansas-q-inox-satinato.jpg';
 import arkansasQScheda from './assets/arkansas-q-scheda-tecnica.pdf';
+import californiaInox from './assets/prodotti/california-inox-satinato.jpg';
+import californiaScheda from './assets/california-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -166,6 +168,7 @@ import schBadenWcSeg from './assets/schede/baden-wc-segnalatore-scheda.jpg';
 import schArizona from './assets/schede/arizona-scheda.jpg';
 import schArizonaInclinato from './assets/schede/arizona-inclinato-scheda.jpg';
 import schArkansasQ from './assets/schede/arkansas-q-scheda.jpg';
+import schCalifornia from './assets/schede/california-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -180,7 +183,8 @@ const SCHEDA_IMG = {
   },
   32: schArizona,
   33: schArizonaInclinato,
-  34: schArkansasQ
+  34: schArkansasQ,
+  35: schCalifornia
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -545,10 +549,23 @@ const PRODUCTS = [
     { codice: '810.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
     { codice: '810.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] },
   { id: 34, categoria: '01', nome: 'Arkansas Q', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', dimensioni: 'Ø32mm · 382×350mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arkansasQScheda,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
     immagini: {
       'Acciaio inox satinato': arkansasQInox
     }, varianti: [
-    { codice: '816.32.382.350', finitura: 'Acciaio inox satinato' } ] }
+    { codice: '816.32.382.350', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 } ] },
+  { id: 35, categoria: '01', nome: 'California', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm, con una curva ampia che dona slancio alla porta. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', dimensioni: 'Ø32mm · 575×500mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: californiaScheda,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': californiaInox
+    }, varianti: [
+    { codice: '817.32.575.500', finitura: 'Acciaio inox satinato', lunghezza: 575, interasse: 500 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
