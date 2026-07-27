@@ -122,6 +122,8 @@ import badenWcSegScheda from './assets/baden-wc-segnalatore-scheda-tecnica.pdf';
 import arizonaInox from './assets/prodotti/arizona-inox-satinato.jpg';
 import arizonaNero from './assets/prodotti/arizona-nero-opaco.jpg';
 import arizonaScheda from './assets/arizona-scheda-tecnica.pdf';
+import arizonaInclinatoInox from './assets/prodotti/arizona-inclinato-inox-satinato.jpg';
+import arizonaInclinatoScheda from './assets/arizona-inclinato-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -160,6 +162,7 @@ import schBadenYale from './assets/schede/baden-yale-scheda.jpg';
 import schBadenWc from './assets/schede/baden-wc-scheda.jpg';
 import schBadenWcSeg from './assets/schede/baden-wc-segnalatore-scheda.jpg';
 import schArizona from './assets/schede/arizona-scheda.jpg';
+import schArizonaInclinato from './assets/schede/arizona-inclinato-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -172,7 +175,8 @@ const SCHEDA_IMG = {
     'WC senza segnalatore': schBadenWc,
     'WC con segnalatore': schBadenWcSeg
   },
-  32: schArizona
+  32: schArizona,
+  33: schArizonaInclinato
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -523,7 +527,19 @@ const PRODUCTS = [
     { codice: '800.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
     { codice: '800.30.1500.1300', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
     { codice: '800.25.500.300', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
-    { codice: '800.25.500.300', finitura: 'PVD giallo lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] }
+    { codice: '800.25.500.300', finitura: 'PVD giallo lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] },
+  { id: 33, categoria: '01', nome: 'Arizona Inclinato', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arizonaInclinatoScheda,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': arizonaInclinatoInox
+    }, varianti: [
+    { codice: '810.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '810.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+    { codice: '810.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
