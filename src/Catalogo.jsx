@@ -368,13 +368,13 @@ const PRODUCTS = [
       'Oro lucido': peterOroLuc
     }, varianti: [
     { codice: 'ID 11 R-RY OL', finitura: 'Oro lucido', versione: 'Patent' } ] },
-  { id: 19, categoria: '01', nome: 'Amalfi', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda Ø50. Disponibile in 2 finiture: oro lucido e oro satinato.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
+  { id: 19, categoria: '01', nome: 'Amalfi', descrizione: 'Maniglia per porte interne battenti in ottone, con rosetta tonda Ø50. Disponibile in 2 finiture: oro lucido e oro satinato.', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: amalfiScheda,
     immagini: {
       'Oro lucido': amalfiOroLuc
     }, varianti: [
     { codice: 'A118 RTX07 L01', finitura: 'Oro lucido', versione: 'Patent' },
     { codice: 'A118 RTX07 L02', finitura: 'Oro satinato', versione: 'Patent' } ] },
-  { id: 20, categoria: '01', nome: 'Flexa', descrizione: 'Maniglia per porte interne battenti in zama, con rosetta tonda Ø50. Disponibile in 2 finiture: cromo satinato e oro lucido. Si coordina con Kit Easy Tondo, Kit Easy Tondo Cieco, Kit Easy Tondo Chiave e Kit Easy Tondo Yale per le porte scorrevoli.', materiale: 'Zama / Zinc', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: flexaScheda,
+  { id: 20, categoria: '01', nome: 'Flexa', descrizione: 'Maniglia per porte interne battenti in ottone, con rosetta tonda Ø50. Disponibile in 2 finiture: cromo satinato e oro lucido. Si coordina con Kit Easy Tondo, Kit Easy Tondo Cieco, Kit Easy Tondo Chiave e Kit Easy Tondo Yale per le porte scorrevoli.', materiale: 'Ottone', sottocategoria: 'battenti', dimensioni: 'Rosetta tonda Ø50', fornitore: 'Forme', fornitoreLogo: formeLogo, scheda: flexaScheda,
     immagini: {
       'Cromo satinato': flexaCromoSat,
       'Oro lucido': flexaOroLuc
