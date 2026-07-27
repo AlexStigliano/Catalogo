@@ -122,6 +122,7 @@ import badenWcSegScheda from './assets/baden-wc-segnalatore-scheda-tecnica.pdf';
 import arizonaInox from './assets/prodotti/arizona-inox-satinato.jpg';
 import arizonaNero from './assets/prodotti/arizona-nero-opaco.jpg';
 import arizonaScheda from './assets/arizona-scheda-tecnica.pdf';
+import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
 import easyTondoOlCon from './assets/prodotti/easy-tondo-oro-lucido-con.jpg';
@@ -511,7 +512,8 @@ const PRODUCTS = [
     ],
     immagini: {
       'Acciaio inox satinato': arizonaInox,
-      'Nero opaco': arizonaNero
+      'Nero opaco': arizonaNero,
+      'PVD giallo lucido': arizonaPvd
     }, varianti: [
     { codice: '800.20.500.300', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
     { codice: '800.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
@@ -521,7 +523,7 @@ const PRODUCTS = [
     { codice: '800.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
     { codice: '800.30.1500.1300', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
     { codice: '800.25.500.300', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
-    { codice: '800.25.500.300', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] }
+    { codice: '800.25.500.300', finitura: 'PVD giallo lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -604,6 +606,11 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
 
   const hasImages = Object.keys(images).length > 0;
   const selImg = images[has2 ? selFin + '||' + selVer : selFin];
+
+  /* Misure a piu' assi (es. maniglioni): qui, nella card, la tabella si limita
+     a mostrare le colonne corrette — la scelta della misura resta nella pagina
+     prodotto completa. */
+  const assi = p.assi;
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -690,18 +697,24 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <div className="variants-inner">
             <table className="variants">
               <thead>
-                <tr><th>Codice articolo</th><th>Finitura</th><th>Versione</th></tr>
+                <tr><th>Codice articolo</th><th>Finitura</th>
+                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : <th>Versione</th>}
+                </tr>
               </thead>
               <tbody>
                 {p.varianti.map((v, i) => {
-                  const active = hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
+                  const active = assi
+                    ? v.finitura === selFin
+                    : hasImages && v[optKey] === selFin && (!has2 || v[optKey2] === selVer);
                   return (
                   <tr key={i}
                     className={`${hasImages ? 'vrow' : ''}${active ? ' active' : ''}`}
-                    onClick={hasImages ? () => { setSelFin(v[optKey]); if (has2) setSelVer(v[optKey2]); } : undefined}>
+                    onClick={hasImages ? () => { setSelFin(assi ? v.finitura : v[optKey]); if (has2) setSelVer(v[optKey2]); } : undefined}>
                     <td className="code">{v.codice}</td>
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
-                    <td className="ver">{v.versione}</td>
+                    {assi
+                      ? assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)
+                      : <td className="ver">{v.versione}</td>}
                   </tr>
                   );
                 })}
