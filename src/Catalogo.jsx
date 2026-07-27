@@ -137,6 +137,8 @@ import georgiaQPvd from './assets/prodotti/georgia-q-pvd-lucido.jpg';
 import georgiaQScheda from './assets/georgia-q-scheda-tecnica.pdf';
 import cubaBicolore from './assets/prodotti/cuba-bicolore-inox.jpg';
 import cubaScheda from './assets/cuba-scheda-tecnica.pdf';
+import minnesotaInox from './assets/prodotti/minnesota-inox-satinato.jpg';
+import minnesotaScheda from './assets/minnesota-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -181,6 +183,7 @@ import schCalifornia from './assets/schede/california-scheda.jpg';
 import schColorado from './assets/schede/colorado-scheda.jpg';
 import schGeorgiaQ from './assets/schede/georgia-q-scheda.jpg';
 import schCuba from './assets/schede/cuba-scheda.jpg';
+import schMinnesota from './assets/schede/minnesota-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -199,7 +202,8 @@ const SCHEDA_IMG = {
   35: schCalifornia,
   36: schColorado,
   37: schGeorgiaQ,
-  38: schCuba
+  38: schCuba,
+  39: schMinnesota
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -626,7 +630,18 @@ const PRODUCTS = [
     immagini: {
       'Bicolore inox satinato / lucido': cubaBicolore
     }, varianti: [
-    { codice: '849L.25.450.350.63', finitura: 'Bicolore inox satinato / lucido', lunghezza: 450, interasse: 350 } ] }
+    { codice: '849L.25.450.350.63', finitura: 'Bicolore inox satinato / lucido', lunghezza: 450, interasse: 350 } ] },
+  { id: 39, categoria: '01', nome: 'Minnesota', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: minnesotaScheda,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': minnesotaInox
+    }, varianti: [
+    { codice: '839.25.275.250.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 275, interasse: 250 },
+    { codice: '839.32.382.350.60', finitura: 'Acciaio inox satinato', diametro: 32, lunghezza: 382, interasse: 350 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
