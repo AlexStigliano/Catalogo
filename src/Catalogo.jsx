@@ -124,6 +124,8 @@ import arizonaNero from './assets/prodotti/arizona-nero-opaco.jpg';
 import arizonaScheda from './assets/arizona-scheda-tecnica.pdf';
 import arizonaInclinatoInox from './assets/prodotti/arizona-inclinato-inox-satinato.jpg';
 import arizonaInclinatoScheda from './assets/arizona-inclinato-scheda-tecnica.pdf';
+import arkansasQInox from './assets/prodotti/arkansas-q-inox-satinato.jpg';
+import arkansasQScheda from './assets/arkansas-q-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -163,6 +165,7 @@ import schBadenWc from './assets/schede/baden-wc-scheda.jpg';
 import schBadenWcSeg from './assets/schede/baden-wc-segnalatore-scheda.jpg';
 import schArizona from './assets/schede/arizona-scheda.jpg';
 import schArizonaInclinato from './assets/schede/arizona-inclinato-scheda.jpg';
+import schArkansasQ from './assets/schede/arkansas-q-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -176,7 +179,8 @@ const SCHEDA_IMG = {
     'WC con segnalatore': schBadenWcSeg
   },
   32: schArizona,
-  33: schArizonaInclinato
+  33: schArizonaInclinato,
+  34: schArkansasQ
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -539,7 +543,12 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '810.25.500.300', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
     { codice: '810.30.800.600', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
-    { codice: '810.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] }
+    { codice: '810.30.1200.900', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 } ] },
+  { id: 34, categoria: '01', nome: 'Arkansas Q', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', dimensioni: 'Ø32mm · 382×350mm', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arkansasQScheda,
+    immagini: {
+      'Acciaio inox satinato': arkansasQInox
+    }, varianti: [
+    { codice: '816.32.382.350', finitura: 'Acciaio inox satinato' } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -628,6 +637,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
      a mostrare le colonne corrette — la scelta della misura resta nella pagina
      prodotto completa. */
   const assi = p.assi;
+  const haVer = p.varianti.some(v => v.versione !== undefined);
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -715,7 +725,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             <table className="variants">
               <thead>
                 <tr><th>Codice articolo</th><th>Finitura</th>
-                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : <th>Versione</th>}
+                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : (haVer && <th>Versione</th>)}
                 </tr>
               </thead>
               <tbody>
@@ -731,7 +741,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                     {assi
                       ? assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)
-                      : <td className="ver">{v.versione}</td>}
+                      : (haVer && <td className="ver">{v.versione}</td>)}
                   </tr>
                   );
                 })}
@@ -1131,6 +1141,7 @@ function ProductDetail({ id }) {
      Ogni asse mostra tutte le misure della finitura scelta; dopo un clic, gli
      altri assi lasciano selezionabili solo le misure compatibili con quella. */
   const assi = p && p.assi;
+  const haVer = p ? p.varianti.some(v => v.versione !== undefined) : false;
   const [mis, setMis] = useState(() => {
     if (!assi || !p || !p.varianti.length) return null;
     const v0 = p.varianti[0], o = {};
@@ -1294,7 +1305,7 @@ function ProductDetail({ id }) {
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <table className="variants">
                 <thead><tr><th>Codice articolo</th><th>Finitura</th>
-                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : <th>Versione</th>}
+                  {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : (haVer && <th>Versione</th>)}
                 </tr></thead>
                 <tbody>
                   {p.varianti.map((v, i) => {
@@ -1317,7 +1328,7 @@ function ProductDetail({ id }) {
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                       {assi
                         ? assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)
-                        : <td className="ver">{v.versione}</td>}
+                        : (haVer && <td className="ver">{v.versione}</td>)}
                     </tr>
                     );
                   })}
