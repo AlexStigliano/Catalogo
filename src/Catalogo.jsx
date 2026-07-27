@@ -571,6 +571,7 @@ const FINISHES = {
   'Ottone satinato': 'linear-gradient(135deg,#e7d199,#b8933f 48%,#d3b168 60%,#a9863a)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'PVD giallo lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Bronzo': 'linear-gradient(135deg,#9a774e,#5c3f26 52%,#7d5836 70%,#4d341f)',
   'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Nero': 'linear-gradient(135deg,#38383b,#1c1c1e 60%,#2a2a2c)',
