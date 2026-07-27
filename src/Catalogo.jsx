@@ -135,6 +135,8 @@ import georgiaQInox from './assets/prodotti/georgia-q-inox-satinato.jpg';
 import georgiaQNero from './assets/prodotti/georgia-q-nero-opaco.jpg';
 import georgiaQPvd from './assets/prodotti/georgia-q-pvd-lucido.jpg';
 import georgiaQScheda from './assets/georgia-q-scheda-tecnica.pdf';
+import cubaBicolore from './assets/prodotti/cuba-bicolore-inox.jpg';
+import cubaScheda from './assets/cuba-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -178,6 +180,7 @@ import schArkansasQ from './assets/schede/arkansas-q-scheda.jpg';
 import schCalifornia from './assets/schede/california-scheda.jpg';
 import schColorado from './assets/schede/colorado-scheda.jpg';
 import schGeorgiaQ from './assets/schede/georgia-q-scheda.jpg';
+import schCuba from './assets/schede/cuba-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -195,7 +198,8 @@ const SCHEDA_IMG = {
   34: schArkansasQ,
   35: schCalifornia,
   36: schColorado,
-  37: schGeorgiaQ
+  37: schGeorgiaQ,
+  38: schCuba
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -613,7 +617,16 @@ const PRODUCTS = [
     { codice: '802K.20.220.200.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 220, interasse: 200 },
     { codice: '802K.20.320.300.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 320, interasse: 300 },
     { codice: '802K.25.625.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 625, interasse: 600 },
-    { codice: '802K.20.320.300.18', finitura: 'PVD lucido', diametro: 20, lunghezza: 320, interasse: 300 } ] }
+    { codice: '802K.20.320.300.18', finitura: 'PVD lucido', diametro: 20, lunghezza: 320, interasse: 300 } ] },
+  { id: 38, categoria: '01', nome: 'Cuba', descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø25 mm, con una riga centrale a contrasto tra satinato e lucido. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: cubaScheda,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Bicolore inox satinato / lucido': cubaBicolore
+    }, varianti: [
+    { codice: '849L.25.450.350.63', finitura: 'Bicolore inox satinato / lucido', lunghezza: 450, interasse: 350 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
@@ -669,7 +682,8 @@ const FINISHES = {
   'Grafite mat': 'linear-gradient(135deg,#6a6a6f,#45454a 55%,#565659)',
   'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
   'Bicolore cromo lucido / satinato': 'linear-gradient(90deg,#eef1f3 0%,#c3c9ce 49%,#a7adb2 51%,#cdd2d6 100%)',
-  'Bicolore oro lucido / satinato': 'linear-gradient(90deg,#ffefb0 0%,#e6b83f 49%,#c39a3c 51%,#b78e35 100%)'
+  'Bicolore oro lucido / satinato': 'linear-gradient(90deg,#ffefb0 0%,#e6b83f 49%,#c39a3c 51%,#b78e35 100%)',
+  'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)'
 };
 const finBg = (f) => FINISHES[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 
