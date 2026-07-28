@@ -431,6 +431,12 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .pdp { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: 1.6rem; align-items: start; }
 .cat .pdp-media { position: sticky; top: 1.2rem; }
 .cat .pdp-media .media { border: 1px solid var(--line); border-radius: 12px; aspect-ratio: 4/3; }
+/* Miniature per prodotti con più foto (es. vista montata + esploso) */
+.cat .pdp-thumbs { display: flex; gap: 0.6rem; margin-top: 0.7rem; }
+.cat .pdp-thumb { width: 64px; height: 64px; padding: 2px; border: 2px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer; flex: none; }
+.cat .pdp-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.cat .pdp-thumb.active { border-color: var(--orange); }
+.cat .pdp-thumb:hover { border-color: var(--navy); }
 .cat .pdp-info { min-width: 0; }
 .cat .pdp-name { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--header-name); letter-spacing: -0.015em; line-height: 1.04; margin: 0; }
 .cat .pdp-info .name-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }

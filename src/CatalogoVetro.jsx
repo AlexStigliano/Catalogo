@@ -6,6 +6,7 @@ import logoCover from './assets/logo-stigliano-cover.png';
 import fermavetroInox from './assets/vetro/prodotti/fermavetro-regolabile-inox-satinato.jpg';
 import fermavetroNero from './assets/vetro/prodotti/fermavetro-regolabile-nero-opaco.jpg';
 import fermavetroOro from './assets/vetro/prodotti/fermavetro-regolabile-oro.jpg';
+import fermavetroEsploso from './assets/vetro/prodotti/fermavetro-regolabile-esploso.jpg';
 import fermavetroScheda from './assets/vetro/fermavetro-regolabile-scheda-tecnica.pdf';
 import fermavetroSchedaImg from './assets/vetro/schede/fermavetro-regolabile-scheda.jpg';
 
@@ -47,9 +48,9 @@ const PRODOTTI_VETRO = [
     fornitore: 'Inoxdesign',
     scheda: fermavetroScheda,
     immagini: {
-      'Inox satinato': fermavetroInox,
-      'Nero opaco': fermavetroNero,
-      'Oro': fermavetroOro,
+      'Inox satinato': [fermavetroInox, fermavetroEsploso],
+      'Nero opaco': [fermavetroNero],
+      'Oro': [fermavetroOro],
     },
     varianti: [
       { codice: 'IN109-250', finitura: 'Inox satinato' },
@@ -228,7 +229,7 @@ function ProductCard({ product: p, idx }) {
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : p.varianti[0].finitura);
   const [open, setOpen] = useState(false);
   const hasImages = Object.keys(images).length > 0;
-  const selImg = images[selFin];
+  const selImg = (images[selFin] || [])[0];
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -317,6 +318,8 @@ function ProductDetail({ id }) {
   const images = (p && p.immagini) || {};
   const firstWithImg = p && p.varianti.find(v => images[v.finitura]);
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
+  const [imgIdx, setImgIdx] = useState(0);
+  useEffect(() => { setImgIdx(0); }, [selFin]);
 
   if (!p) {
     return (
@@ -337,7 +340,8 @@ function ProductDetail({ id }) {
   }
 
   const ufins = [...new Set(p.varianti.map(v => v.finitura))];
-  const selImg = images[selFin];
+  const gallery = images[selFin] || [];
+  const selImg = gallery[imgIdx] || gallery[0];
 
   return (
     <>
@@ -364,6 +368,16 @@ function ProductDetail({ id }) {
               </div>
               <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>
             </div>
+            {gallery.length > 1 && (
+              <div className="pdp-thumbs">
+                {gallery.map((img, i) => (
+                  <button key={i} className={`pdp-thumb${i === imgIdx ? ' active' : ''}`}
+                    onClick={() => setImgIdx(i)} aria-label={`Foto ${i + 1}`} aria-pressed={i === imgIdx}>
+                    <img src={img} alt={`${p.nome} — vista ${i + 1}`} />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="pdp-info">
