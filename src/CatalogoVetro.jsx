@@ -21,13 +21,23 @@ const CATEGORIE_VETRO = [
   { id: '10', nome: 'Accessori e utensili' },
 ];
 
+// Sottocategorie della categoria 01 (Parapetti e pensiline)
+const SOTTOCATEGORIE_VETRO = [
+  { id: 'balaustre', nome: 'Profili per balaustre' },
+  { id: 'puntuali', nome: 'Attacchi puntuali' },
+  { id: 'pensiline', nome: 'Profili per pensiline' },
+  { id: 'tiranti', nome: 'Tiranti per pensiline' },
+  { id: 'morsetti', nome: 'Morsetti' },
+  { id: 'fermavetri', nome: 'Fermavetri' },
+];
+
 /* ---------- Hash routing (indipendente dal Catalogo Generale) ---------- */
 function parseHash() {
   const h = window.location.hash.replace(/^#\/?/, '');
   if (!h) return { view: 'cover' };
   if (h === 'indice') return { view: 'indice' };
-  const m = h.match(/^cat\/(\d{2})$/);
-  if (m && CATEGORIE_VETRO.some(c => c.id === m[1])) return { view: 'categoria', cat: m[1] };
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z]+))?$/);
+  if (m && CATEGORIE_VETRO.some(c => c.id === m[1])) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
 const go = (path) => { window.location.hash = path; };
@@ -84,8 +94,13 @@ function Indice() {
 }
 
 /* ---------- Pagina categoria ---------- */
-function CategoryPage({ cat }) {
+function CategoryPage({ cat, subParam }) {
   const info = CATEGORIE_VETRO.find(c => c.id === cat) || CATEGORIE_VETRO[0];
+  const hasSubs = cat === '01';
+  const sub = hasSubs
+    ? (subParam && SOTTOCATEGORIE_VETRO.some(s => s.id === subParam) ? subParam : SOTTOCATEGORIE_VETRO[0].id)
+    : null;
+  const setSub = (id) => go('/cat/' + cat + '/' + id);
   return (
     <>
       <div className="topbar">
@@ -105,6 +120,16 @@ function CategoryPage({ cat }) {
           <h1>{info.nome}</h1>
           <hr className="rule" />
         </div>
+        {hasSubs && (
+          <div className="subbar" role="tablist" aria-label="Sottocategorie">
+            {SOTTOCATEGORIE_VETRO.map(s => (
+              <button key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
+                role="tab" aria-selected={s.id === sub} onClick={() => setSub(s.id)}>
+                {s.nome}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="prep">
           <span className="badge">Sezione {info.id}</span>
           <h2>Sezione in preparazione</h2>
@@ -141,7 +166,7 @@ export default function CatalogoVetro() {
     <div className="cat">
       {route.view === 'cover' && <Cover />}
       {route.view === 'indice' && <Indice />}
-      {route.view === 'categoria' && <CategoryPage cat={route.cat} />}
+      {route.view === 'categoria' && <CategoryPage cat={route.cat} subParam={route.sub} />}
     </div>
   );
 }
