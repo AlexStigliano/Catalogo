@@ -14,6 +14,7 @@ import asolaInoxVista2 from './assets/vetro/prodotti/fermavetro-asola-inox-satin
 import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
 import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
 import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
+import inoxdesignLogo from './assets/vetro/inoxdesign-logo.png';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -58,7 +59,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Attacco puntuale a vite per vetro con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
-    fornitore: 'Inoxdesign',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-regolabile-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [fermavetroInox, fermavetroEsploso],
@@ -77,7 +78,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Attacco puntuale a vite per vetro con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
-    fornitore: 'Inoxdesign',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-asola-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [asolaInox, asolaInoxVista2, asolaInoxFrontale],
@@ -625,7 +626,14 @@ function ProductDetail({ id }) {
             <div className="pdp-specs">
               <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>
               <div className="pdp-spec"><span className="k">Misure</span><span className="v">{p.dimensioni}</span></div>
-              <div className="pdp-spec"><span className="k">Fornitore</span><span className="v">{p.fornitore}</span></div>
+              <div className="pdp-spec">
+                <span className="k">Fornitore</span>
+                <span className="v">
+                  {p.fornitoreLogo
+                    ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
+                    : p.fornitore}
+                </span>
+              </div>
             </div>
 
             <div className="finishes pdp-finishes">
