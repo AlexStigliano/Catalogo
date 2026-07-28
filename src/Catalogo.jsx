@@ -146,6 +146,9 @@ import nevadaQNero from './assets/prodotti/nevada-q-nero-opaco.jpg';
 import nevadaQScheda from './assets/nevada-q-scheda-tecnica.pdf';
 import oregonInox from './assets/prodotti/oregon-inox-satinato.jpg';
 import oregonScheda from './assets/oregon-scheda-tecnica.pdf';
+import texasInox from './assets/prodotti/texas-inox-satinato.jpg';
+import texasNero from './assets/prodotti/texas-nero-opaco.jpg';
+import texasScheda from './assets/texas-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -194,6 +197,7 @@ import schMinnesota from './assets/schede/minnesota-scheda.jpg';
 import schNevada from './assets/schede/nevada-scheda.jpg';
 import schNevadaQ from './assets/schede/nevada-q-scheda.jpg';
 import schOregon from './assets/schede/oregon-scheda.jpg';
+import schTexas from './assets/schede/texas-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -216,7 +220,8 @@ const SCHEDA_IMG = {
   39: schMinnesota,
   40: schNevada,
   41: schNevadaQ,
-  42: schOregon
+  42: schOregon,
+  43: schTexas
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -687,7 +692,32 @@ const PRODUCTS = [
     { codice: '841Z.600.400.60', finitura: 'Acciaio inox satinato', lunghezza: 600, interasse: 400 },
     { codice: '841Z.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
     { codice: '841Z.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
-    { codice: '841Z.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] }
+    { codice: '841Z.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] },
+  { id: 43, categoria: '01', nome: 'Texas', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 25×25 mm nella maggior parte delle misure, 30×30 mm in quella più lunga. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: texasScheda,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': texasInox,
+      'Nero opaco': texasNero
+    }, varianti: [
+    { codice: '831.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '831.25.600.400.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 600, interasse: 400 },
+    { codice: '831.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+    { codice: '831.25.800.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 800, interasse: 600 },
+    { codice: '831.25.1000.800.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1000, interasse: 800 },
+    { codice: '831.25.1200.1000.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1200, interasse: 1000 },
+    { codice: '831.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+    { codice: '831.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '831.25.800.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 800, interasse: 600 },
+    { codice: '831.25.1000.700.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1000, interasse: 700 },
+    { codice: '831.25.1200.1000.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1200, interasse: 1000 },
+    { codice: '831.25.1500.1300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1500, interasse: 1300 },
+    { codice: '831.25.500.300.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '831.25.500.300.BO', finitura: 'Bianco opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+    { codice: '831.25.500.300.02O', finitura: 'Oro satinato', diametro: 25, lunghezza: 500, interasse: 300 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
