@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -7,15 +7,21 @@ import fermavetroInox from './assets/vetro/prodotti/fermavetro-regolabile-inox-s
 import fermavetroNero from './assets/vetro/prodotti/fermavetro-regolabile-nero-opaco.jpg';
 import fermavetroOro from './assets/vetro/prodotti/fermavetro-regolabile-oro.jpg';
 import fermavetroEsploso from './assets/vetro/prodotti/fermavetro-regolabile-esploso.jpg';
-import fermavetroScheda from './assets/vetro/fermavetro-regolabile-scheda-tecnica.pdf';
 import fermavetroSchedaImg from './assets/vetro/schede/fermavetro-regolabile-scheda.jpg';
 import asolaInox from './assets/vetro/prodotti/fermavetro-asola-inox-satinato.jpg';
 import asolaInoxFrontale from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-frontale.jpg';
 import asolaInoxVista2 from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-vista2.jpg';
 import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
 import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
-import asolaScheda from './assets/vetro/fermavetro-asola-scheda-tecnica.pdf';
 import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
+
+/* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
+   impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
+   solo su GitHub e vengono scaricate al volo da lì quando serve — per questo
+   ci vuole una connessione, ma il sito pubblicato resta leggero.
+   NB: quando questo branch verrà unito a main, cambiare REPO_BRANCH in 'main'. */
+const REPO_BRANCH = 'claude/catalogo-vetro-copertina-p5608g';
+const schedaUrl = (file) => `https://raw.githubusercontent.com/AlexStigliano/Catalogo/${REPO_BRANCH}/src/assets/vetro/${file}`;
 
 /* Catalogo Vetro: progetto a sé, con la stessa identità visiva del
    Catalogo Generale (Catalogo.css) ma dati e routing propri. Le
@@ -53,7 +59,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign',
-    scheda: fermavetroScheda,
+    scheda: schedaUrl('fermavetro-regolabile-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [fermavetroInox, fermavetroEsploso],
       'Nero opaco': [fermavetroNero],
@@ -72,7 +78,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign',
-    scheda: asolaScheda,
+    scheda: schedaUrl('fermavetro-asola-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [asolaInox, asolaInoxVista2, asolaInoxFrontale],
       'Nero opaco': [asolaNero],
@@ -87,6 +93,41 @@ const PRODOTTI_VETRO = [
 ];
 const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id } }));
+const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
+
+/* ---------- Ricerca in tutto il catalogo vetro ---------- */
+const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
+const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
+
+const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
+  p,
+  testo: normalizzaTesto([
+    p.nome, p.fornitore, p.materiale, subName(p.sottocategoria), catName(p.categoria),
+    p.descrizione || '',
+    ...p.varianti.map(v => v.codice),
+    ...p.varianti.map(v => v.finitura)
+  ].join(' '))
+}));
+
+const cercaProdottiVetro = (testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
+  if (!parole.length) return [];
+  return INDICE_RICERCA_VETRO
+    .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
+    .map(({ p }) => p);
+};
+
+const codiciTrovati = (p, testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  const cod = [...new Set(p.varianti.map(v => v.codice))];
+  return cod.filter(c => parole.some(w => senzaAccenti(c).includes(w)));
+};
+
+const primaImmagine = (p) => {
+  const arr = Object.values(p.immagini || {})[0];
+  return Array.isArray(arr) ? arr[0] : arr;
+};
 
 const FINISHES_VETRO = {
   'Inox satinato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
@@ -135,6 +176,10 @@ function Cover() {
 /* ---------- Indice ---------- */
 function Indice() {
   const count = (id) => PRODOTTI_VETRO.filter(p => p.categoria === id).length;
+  const [q, setQ] = useState('');
+  const testo = q.trim();
+  const risultati = useMemo(() => cercaProdottiVetro(testo), [testo]);
+
   return (
     <>
       <div className="topbar">
@@ -148,24 +193,75 @@ function Indice() {
           <h1>Categorie prodotto</h1>
           <hr className="rule" />
         </div>
-        <div className="idx-list">
-          {CATEGORIE_VETRO.map(c => {
-            const n = count(c.id);
-            return (
-              <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
-                <span className="idx-num">{c.id}</span>
-                <span className="idx-name">{c.nome}</span>
-                <span className="idx-dots" />
-                <span className="idx-meta">
-                  {n > 0
-                    ? <span className="idx-badge">{n} {n === 1 ? 'prodotto' : 'prodotti'}</span>
-                    : <span className="idx-soon">in arrivo</span>}
-                  <ChevronRight className="idx-arrow" />
-                </span>
-              </button>
-            );
-          })}
+
+        <div className="idx-search">
+          <label className="search big">
+            <Search size={18} />
+            <input type="text" value={q} onChange={e => setQ(e.target.value)}
+              placeholder="Cerca un articolo per nome, codice o finitura…"
+              autoComplete="off" aria-label="Cerca in tutto il catalogo" />
+            {testo && (
+              <button type="button" className="search-clear" onClick={() => setQ('')}
+                aria-label="Cancella la ricerca">×</button>
+            )}
+          </label>
         </div>
+
+        {!testo ? (
+          <div className="idx-list">
+            {CATEGORIE_VETRO.map(c => {
+              const n = count(c.id);
+              return (
+                <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
+                  <span className="idx-num">{c.id}</span>
+                  <span className="idx-name">{c.nome}</span>
+                  <span className="idx-dots" />
+                  <span className="idx-meta">
+                    {n > 0
+                      ? <span className="idx-badge">{n} {n === 1 ? 'prodotto' : 'prodotti'}</span>
+                      : <span className="idx-soon">in arrivo</span>}
+                    <ChevronRight className="idx-arrow" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ) : risultati.length > 0 ? (
+          <>
+            <p className="res-count">
+              <b>{risultati.length}</b> {risultati.length === 1 ? 'articolo trovato' : 'articoli trovati'}
+            </p>
+            <div className="res-list">
+              {risultati.map(p => {
+                const img = primaImmagine(p);
+                const codici = codiciTrovati(p, testo);
+                return (
+                  <button className="res-row" key={p.id} onClick={() => go(`/prodotto/${p.id}`)}>
+                    <span className="res-thumb">
+                      {img ? <img src={img} alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
+                    </span>
+                    <span className="res-body">
+                      <span className="res-name">{p.nome}</span>
+                      <span className="res-meta">{subName(p.sottocategoria)}</span>
+                      {codici.length > 0 && (
+                        <span className="res-codes">
+                          {codici.slice(0, 3).join(' · ')}
+                          {codici.length > 3 && ` +${codici.length - 3}`}
+                        </span>
+                      )}
+                    </span>
+                    <ChevronRight className="res-arrow" />
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="res-empty">
+            <h2>Nessun articolo trovato</h2>
+            <p>Nessun risultato per “{testo}”. Prova con il nome del modello, un codice o una finitura.</p>
+          </div>
+        )}
       </div>
       <Footer />
     </>
@@ -228,11 +324,7 @@ function CategoryPage({ cat, subParam }) {
           </div>
         </div>
       ) : subProducts.length > 0 ? (
-        <div className="shell">
-          <div className="gallery">
-            {subProducts.map((p, idx) => <ProductCard key={p.id} product={p} idx={idx} />)}
-          </div>
-        </div>
+        <ProductCatalog products={subProducts} />
       ) : (
         <div className="shell">
           <div className="prep">
@@ -243,6 +335,125 @@ function CategoryPage({ cat, subParam }) {
         </div>
       )}
       <Footer />
+    </>
+  );
+}
+
+/* ---------- Catalogo prodotti (griglia + ricerca + filtri) ---------- */
+function ProductCatalog({ products }) {
+  const [q, setQ] = useState('');
+  const [mat, setMat] = useState([]);
+  const [fin, setFin] = useState([]);
+  const [prod, setProd] = useState([]);
+  const [fOpen, setFOpen] = useState(false);
+  const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
+
+  const mats = useMemo(() => [...new Set(products.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+
+  // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
+  const match = (p, salta) => {
+    const t = q.trim().toLowerCase();
+    const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
+    const okM = salta === 'mat' || !mat.length || mat.includes(p.materiale);
+    const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
+    const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
+    return okQ && okM && okF && okP;
+  };
+  const filtered = products.filter(p => match(p, null));
+  const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length;
+  const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); };
+
+  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
+    const aperto = drop === campo;
+    const riass = scelte.length === 0 ? tutti
+      : scelte.length === 1 ? (label ? label(scelte[0]) : scelte[0])
+      : scelte.length + ' ' + plurale;
+    return (
+      <div className="fld">
+        <span className="fld-k">{etichetta}</span>
+        <button type="button" className={`fdrop-btn${aperto ? ' open' : ''}${scelte.length ? ' has' : ''}`}
+          aria-expanded={aperto} onClick={() => setDrop(d => d === campo ? null : campo)}>
+          <span className="fdrop-v">{riass}</span>
+          <ChevronDown className="fdrop-chev" size={15} />
+        </button>
+        <div className={`fdrop-menu${aperto ? ' open' : ''}`}>
+          <div className="fdrop-inner">
+            <div className="fdrop-list">
+              {opzioni.map(o => {
+                const on = scelte.includes(o);
+                const off = !on && !disponibile(campo, p => test(p, o));
+                return (
+                  <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
+                    <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
+                    <span className="fbox" aria-hidden="true" />
+                    <span className="ftxt">{label ? label(o) : o}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <div className="toolbar-wrap">
+        <div className="shell">
+          <div className="filterbar">
+            <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
+              onClick={() => { setFOpen(o => !o); setDrop(null); }}>
+              <SlidersHorizontal size={16} />
+              <span>Filtra prodotti</span>
+              {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
+              <ChevronDown className="fchev" size={16} />
+            </button>
+            <label className="search">
+              <Search size={16} />
+              <input type="text" value={q} onChange={e => setQ(e.target.value)}
+                placeholder="Cerca per nome o codice…" autoComplete="off" aria-label="Cerca" />
+            </label>
+            <span className="count">
+              <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+            </span>
+          </div>
+
+          <div className={`filter-panel${fOpen ? ' open' : ''}`}>
+            <div className="filter-inner">
+              <div className="filter-grid">
+                <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
+                  test={(p, o) => p.materiale === o} tutti="Tutti i materiali" plurale="materiali" />
+                <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
+                  test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
+                <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
+                  test={(p, o) => p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
+              </div>
+              <div className="filter-actions">
+                {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="shell">
+        <div className="gallery">
+          {filtered.map((p, idx) => <ProductCard key={p.id} product={p} idx={idx} />)}
+
+          {filtered.length === 0 && (
+            <div className="empty">
+              <p className="big">Nessun risultato</p>
+              <p>Nessun prodotto corrisponde ai filtri selezionati.</p>
+              <button className="reset" onClick={resetAll}>Azzera filtri</button>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 }
@@ -272,7 +483,6 @@ function ProductCard({ product: p, idx }) {
       <div className="cbody">
         <div className="name-row">
           <h2 className="name clickable" onClick={() => go('/prodotto/' + p.id)}>{p.nome}</h2>
-          <span className="forn-text">{p.fornitore}</span>
         </div>
         <div className="submeta">
           <p className="sub">{subName(p.sottocategoria)}</p>
@@ -409,7 +619,6 @@ function ProductDetail({ id }) {
           <div className="pdp-info">
             <div className="name-row">
               <h1 className="pdp-name">{p.nome}</h1>
-              <span className="forn-text">{p.fornitore}</span>
             </div>
             <p className="pdp-sub">{subName(p.sottocategoria)}</p>
             <hr className="rule" />
