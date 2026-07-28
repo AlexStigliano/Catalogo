@@ -896,17 +896,43 @@ function Cover() {
 const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const catName = (id) => (CATEGORIES.find(c => c.id === id) || {}).nome || id;
 
+/* Riduce un singolare/plurale regolare alla stessa radice togliendo la
+   vocale finale (maniglia/maniglie -> manigli, maniglione/maniglioni ->
+   maniglion, chiave/chiavi -> chiav): copre la stragrande maggioranza delle
+   coppie italiane senza bisogno di un dizionario. Parole di 3 lettere o
+   meno restano intatte per non rovinare codici e termini corti. */
+const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
+const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
+
+/* Parole chiave extra desunte dalle schede tecniche dei fornitori: termini
+   che un cliente potrebbe usare al posto del nome tecnico del prodotto, e
+   che nemmeno la descrizione riporta. Baden e i due kit base parlano di
+   "WC" ma mai di "bagno", che e' come lo cercherebbe la maggior parte dei
+   clienti. */
+const PAROLE_CHIAVE = {
+  31: 'bagno',           // Baden: guarnitura per porte WC
+  22: 'bagno',           // Kit Easy Quadro: nicchie con foro WC
+  23: 'bagno'            // Kit Easy Tondo: nicchie con foro WC
+};
+
+/* Nella descrizione, la frase finale che rimanda ai kit/maniglie abbinati
+   parla di ALTRI articoli, non di questo: se restasse indicizzata, cercare
+   "chiave" o "kit" tirerebbe dentro anche le maniglie che li nominano solo
+   di striscio come compatibili. */
+const senzaAbbinamenti = (s) => s.replace(/ Si (?:abbina alle maniglie|coordina con) [^.]*\./, '');
+
 const INDICE_RICERCA = PRODUCTS.map(p => ({
   p,
-  testo: senzaAccenti([
+  testo: normalizzaTesto([
     p.nome, p.fornitore, p.materiale, subName(p.sottocategoria), catName(p.categoria),
+    senzaAbbinamenti(p.descrizione || ''), PAROLE_CHIAVE[p.id] || '',
     ...p.varianti.map(v => v.codice),
     ...p.varianti.map(v => v.finitura)
   ].join(' '))
 }));
 
 const cercaProdotti = (testo) => {
-  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
   if (!parole.length) return [];
   return INDICE_RICERCA
     .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
