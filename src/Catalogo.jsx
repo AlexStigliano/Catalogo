@@ -141,6 +141,9 @@ import minnesotaInox from './assets/prodotti/minnesota-inox-satinato.jpg';
 import minnesotaScheda from './assets/minnesota-scheda-tecnica.pdf';
 import nevadaInox from './assets/prodotti/nevada-inox-satinato.jpg';
 import nevadaScheda from './assets/nevada-scheda-tecnica.pdf';
+import nevadaQInox from './assets/prodotti/nevada-q-inox-satinato.jpg';
+import nevadaQNero from './assets/prodotti/nevada-q-nero-opaco.jpg';
+import nevadaQScheda from './assets/nevada-q-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -187,6 +190,7 @@ import schGeorgiaQ from './assets/schede/georgia-q-scheda.jpg';
 import schCuba from './assets/schede/cuba-scheda.jpg';
 import schMinnesota from './assets/schede/minnesota-scheda.jpg';
 import schNevada from './assets/schede/nevada-scheda.jpg';
+import schNevadaQ from './assets/schede/nevada-q-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -207,7 +211,8 @@ const SCHEDA_IMG = {
   37: schGeorgiaQ,
   38: schCuba,
   39: schMinnesota,
-  40: schNevada
+  40: schNevada,
+  41: schNevadaQ
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -654,7 +659,18 @@ const PRODUCTS = [
     immagini: {
       'Acciaio inox satinato': nevadaInox
     }, varianti: [
-    { codice: '838.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 } ] }
+    { codice: '838.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 } ] },
+  { id: 41, categoria: '01', nome: 'Nevada Q', descrizione: 'Maniglione con supporti a squadra e profilo quadro 25×25 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: nevadaQScheda,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': nevadaQInox,
+      'Nero opaco': nevadaQNero
+    }, varianti: [
+    { codice: '838Q.25.375.350.60', finitura: 'Acciaio inox satinato', lunghezza: 375, interasse: 350 },
+    { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
