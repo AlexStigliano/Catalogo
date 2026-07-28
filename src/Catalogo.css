@@ -62,6 +62,12 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .topbar .shell { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.6rem clamp(1rem, 4vw, 2.5rem); }
 .cat .topbar img.logo { height: 56px; width: auto; display: block; }
 .cat .topbar .section { color: #fff; font-weight: 700; font-size: clamp(13px, 1.6vw, 17px); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+/* Su schermi stretti il titolo di sezione può essere lungo (es. nomi di categoria):
+   va a capo invece di uscire dallo schermo. */
+@media (max-width: 600px) {
+  .cat .topbar img.logo { height: 40px; flex: none; }
+  .cat .topbar .section { white-space: normal; text-align: right; flex: 1 1 auto; min-width: 0; line-height: 1.3; font-size: clamp(11px, 3.2vw, 14px); }
+}
 
 /* Title block */
 .cat .intro { padding: clamp(2rem, 5vw, 3.4rem) 0 1.2rem; }
@@ -271,6 +277,22 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .idx-badge { background: var(--navy); color: #fff; border-radius: 100px; padding: 0.15rem 0.6rem; font-size: 11px; font-weight: 800; }
 .cat .idx-soon { color: var(--ink-soft); font-weight: 700; }
 .cat .idx-arrow { width: 14px; height: 14px; color: var(--ink-soft); }
+/* Su smartphone il nome intero va a capo invece di essere troncato:
+   numero e nome sulla prima riga, badge e freccia sotto, allineati a destra. */
+@media (max-width: 600px) {
+  .cat .idx-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "num name" "meta meta";
+    column-gap: 0.8rem;
+    row-gap: 0.5rem;
+    align-items: start;
+  }
+  .cat .idx-num { grid-area: num; }
+  .cat .idx-name { grid-area: name; white-space: normal; overflow: visible; text-overflow: clip; }
+  .cat .idx-dots { display: none; }
+  .cat .idx-meta { grid-area: meta; justify-self: end; }
+}
 .cat .idx-row:hover .idx-arrow { color: var(--orange); }
 
 /* ===== Ricerca in tutto il catalogo ===== */
