@@ -9,6 +9,13 @@ import fermavetroOro from './assets/vetro/prodotti/fermavetro-regolabile-oro.jpg
 import fermavetroEsploso from './assets/vetro/prodotti/fermavetro-regolabile-esploso.jpg';
 import fermavetroScheda from './assets/vetro/fermavetro-regolabile-scheda-tecnica.pdf';
 import fermavetroSchedaImg from './assets/vetro/schede/fermavetro-regolabile-scheda.jpg';
+import asolaInox from './assets/vetro/prodotti/fermavetro-asola-inox-satinato.jpg';
+import asolaInoxFrontale from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-frontale.jpg';
+import asolaInoxVista2 from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-vista2.jpg';
+import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
+import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
+import asolaScheda from './assets/vetro/fermavetro-asola-scheda-tecnica.pdf';
+import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
 
 /* Catalogo Vetro: progetto a sé, con la stessa identità visiva del
    Catalogo Generale (Catalogo.css) ma dati e routing propri. Le
@@ -58,8 +65,27 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-250-OL', finitura: 'Oro' },
     ],
   },
+  {
+    id: 2, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro regolabile con asola',
+    descrizione: 'Attacco puntuale a vite per vetro con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
+    fornitore: 'Inoxdesign',
+    scheda: asolaScheda,
+    immagini: {
+      'Inox satinato': [asolaInox, asolaInoxVista2, asolaInoxFrontale],
+      'Nero opaco': [asolaNero],
+      'Oro': [asolaOro],
+    },
+    varianti: [
+      { codice: 'IN109-255', finitura: 'Inox satinato' },
+      { codice: 'IN109-255-NE', finitura: 'Nero opaco' },
+      { codice: 'IN109-255-OL', finitura: 'Oro' },
+    ],
+  },
 ];
-const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg };
+const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg };
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id } }));
 
 const FINISHES_VETRO = {
