@@ -144,6 +144,8 @@ import nevadaScheda from './assets/nevada-scheda-tecnica.pdf';
 import nevadaQInox from './assets/prodotti/nevada-q-inox-satinato.jpg';
 import nevadaQNero from './assets/prodotti/nevada-q-nero-opaco.jpg';
 import nevadaQScheda from './assets/nevada-q-scheda-tecnica.pdf';
+import oregonInox from './assets/prodotti/oregon-inox-satinato.jpg';
+import oregonScheda from './assets/oregon-scheda-tecnica.pdf';
 import arizonaPvd from './assets/prodotti/arizona-pvd-giallo-lucido.jpg';
 import easyTondoCsCon from './assets/prodotti/easy-tondo-cromo-satinato-con.jpg';
 import easyTondoCsSenza from './assets/prodotti/easy-tondo-cromo-satinato-senza.jpg';
@@ -191,6 +193,7 @@ import schCuba from './assets/schede/cuba-scheda.jpg';
 import schMinnesota from './assets/schede/minnesota-scheda.jpg';
 import schNevada from './assets/schede/nevada-scheda.jpg';
 import schNevadaQ from './assets/schede/nevada-q-scheda.jpg';
+import schOregon from './assets/schede/oregon-scheda.jpg';
 
 /* Anteprima immagine della scheda tecnica (per la visualizzazione in pagina, a prova di mobile) */
 const SCHEDA_IMG = {
@@ -212,7 +215,8 @@ const SCHEDA_IMG = {
   38: schCuba,
   39: schMinnesota,
   40: schNevada,
-  41: schNevadaQ
+  41: schNevadaQ,
+  42: schOregon
 };
 // La scheda (pdf e anteprima) puo' essere unica per il prodotto oppure diversa
 // per versione: in quel caso e' un oggetto { 'Versione': valore }.
@@ -670,7 +674,20 @@ const PRODUCTS = [
       'Nero opaco': nevadaQNero
     }, varianti: [
     { codice: '838Q.25.375.350.60', finitura: 'Acciaio inox satinato', lunghezza: 375, interasse: 350 },
-    { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 } ] }
+    { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 } ] },
+  { id: 42, categoria: '01', nome: 'Oregon', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: oregonScheda,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
+    ],
+    immagini: {
+      'Acciaio inox satinato': oregonInox
+    }, varianti: [
+    { codice: '841Z.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+    { codice: '841Z.600.400.60', finitura: 'Acciaio inox satinato', lunghezza: 600, interasse: 400 },
+    { codice: '841Z.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+    { codice: '841Z.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+    { codice: '841Z.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 } ] }
 ];
 
 /* Forma della rosetta (per il filtro) */
