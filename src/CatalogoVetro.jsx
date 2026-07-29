@@ -15,6 +15,10 @@ import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
 import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
 import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
 import fermavetro30SchedaImg from './assets/vetro/schede/fermavetro-30-scheda.jpg';
+import fermavetro30Inox from './assets/vetro/prodotti/fermavetro-30-inox-satinato.jpg';
+import fermavetro30Esploso from './assets/vetro/prodotti/fermavetro-30-esploso.jpg';
+import fermavetro30Vista2 from './assets/vetro/prodotti/fermavetro-30-vista2.jpg';
+import fermavetro30Frontale from './assets/vetro/prodotti/fermavetro-30-frontale.jpg';
 import inoxdesignLogo from './assets/vetro/inoxdesign-logo.png';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -101,7 +105,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-30-scheda-tecnica.pdf'),
-    immagini: {},
+    immagini: {
+      'Inox satinato': [fermavetro30Inox, fermavetro30Esploso, fermavetro30Vista2, fermavetro30Frontale],
+    },
     varianti: [
       { codice: 'IN109-010', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304' },
       { codice: 'IN109-010-0F', finitura: 'Inox satinato', materiale: 'Zama' },
