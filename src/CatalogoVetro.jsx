@@ -74,6 +74,7 @@ const PRODOTTI_VETRO = [
     nome: 'Vite fermavetro regolabile Ø52mm',
     descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-regolabile-scheda-tecnica.pdf'),
@@ -93,6 +94,7 @@ const PRODOTTI_VETRO = [
     nome: 'Vite fermavetro regolabile con asola Ø52mm',
     descrizione: 'Attacco puntuale a vite per vetro Ø52mm con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-asola-scheda-tecnica.pdf'),
@@ -108,11 +110,28 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 5, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro Ø52mm',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità e calotta Ø18mm, attacco diritto. Adatto a spessori vetro da 8 a 30mm (vite M10x40). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · calotta Ø18mm · vite M10x40 · spessore vetro 8-30mm · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('fermavetro-230-scheda-tecnica.pdf'),
+    immagini: {
+      'Inox satinato': [fermavetro230Inox, fermavetro230Vista2, fermavetro230Frontale],
+    },
+    varianti: [
+      { codice: 'IN109-230', finitura: 'Inox satinato' },
+    ],
+  },
+  {
     id: 3, categoria: '01', sottocategoria: 'puntuali',
     nome: 'Vite fermavetro Ø30mm',
     descrizione: 'Attacco puntuale a vite per vetro con attacco diritto. Adatto a spessori vetro da 6 a 14mm (vite M8x45). Foro in vetro Ø15mm. Prodotto da Inoxdesign, disponibile in due versioni con la stessa finitura inox satinato: in acciaio inox AISI 304 oppure in zama.',
     materiale: 'Acciaio inox AISI 304 o zama',
     materiali: ['Acciaio inox AISI 304', 'Zama'],
+    diametro: 'Ø30mm',
     dimensioni: 'Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fermavetro-30-scheda-tecnica.pdf'),
@@ -129,6 +148,7 @@ const PRODOTTI_VETRO = [
     nome: 'Fissaggio puntuale Ø30mm',
     descrizione: 'Fissaggio puntuale con filetto fisso M8x45 per vetro, testa Ø30mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 2 finiture: inox satinato e nero opaco.',
     materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø30mm',
     dimensioni: 'Testa Ø30mm · calotta Ø13mm · altezza 6,3mm · filetto M8x45 fisso · foro Ø15mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fissaggio-puntuale-scheda-tecnica.pdf'),
@@ -139,21 +159,6 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'IN109-792', finitura: 'Inox satinato' },
       { codice: 'IN109-792-NE', finitura: 'Nero opaco' },
-    ],
-  },
-  {
-    id: 5, categoria: '01', sottocategoria: 'puntuali',
-    nome: 'Vite fermavetro Ø52mm',
-    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità e calotta Ø18mm, attacco diritto. Adatto a spessori vetro da 8 a 30mm (vite M10x40). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.',
-    materiale: 'Acciaio inox AISI 304',
-    dimensioni: 'Disco Ø52mm · calotta Ø18mm · vite M10x40 · spessore vetro 8-30mm · foro Ø25mm',
-    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-230-scheda-tecnica.pdf'),
-    immagini: {
-      'Inox satinato': [fermavetro230Inox, fermavetro230Vista2, fermavetro230Frontale],
-    },
-    varianti: [
-      { codice: 'IN109-230', finitura: 'Inox satinato' },
     ],
   },
 ];
@@ -427,12 +432,15 @@ function ProductCatalog({ products }) {
   const [mat, setMat] = useState([]);
   const [fin, setFin] = useState([]);
   const [prod, setProd] = useState([]);
+  const [diam, setDiam] = useState([]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
 
   const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const diams = useMemo(() => [...new Set(products.map(p => p.diametro).filter(Boolean))]
+    .sort((a, b) => parseFloat(a) - parseFloat(b)), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const match = (p, salta) => {
@@ -441,13 +449,14 @@ function ProductCatalog({ products }) {
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
-    return okQ && okM && okF && okP;
+    const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
+    return okQ && okM && okF && okP && okD;
   };
   const filtered = products.filter(p => match(p, null));
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
-  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length;
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length;
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
-  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); };
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); };
 
   const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
     const aperto = drop === campo;
@@ -514,6 +523,10 @@ function ProductCatalog({ products }) {
                   test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
                 <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
                   test={(p, o) => p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
+                {diams.length > 1 && (
+                  <Gruppo etichetta="Diametro" campo="diam" opzioni={diams} scelte={diam} set={setDiam}
+                    test={(p, o) => p.diametro === o} tutti="Tutti i diametri" plurale="diametri" />
+                )}
               </div>
               <div className="filter-actions">
                 {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
