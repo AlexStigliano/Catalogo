@@ -61,7 +61,7 @@ const PRODOTTI_VETRO = [
   {
     id: 1, categoria: '01', sottocategoria: 'puntuali',
     nome: 'Vite fermavetro regolabile',
-    descrizione: 'Attacco puntuale a vite per vetro con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
@@ -80,7 +80,7 @@ const PRODOTTI_VETRO = [
   {
     id: 2, categoria: '01', sottocategoria: 'puntuali',
     nome: 'Vite fermavetro regolabile con asola',
-    descrizione: 'Attacco puntuale a vite per vetro con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
