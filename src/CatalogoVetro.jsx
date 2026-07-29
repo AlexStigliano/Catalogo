@@ -14,6 +14,7 @@ import asolaInoxVista2 from './assets/vetro/prodotti/fermavetro-asola-inox-satin
 import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
 import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
 import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
+import fermavetro30SchedaImg from './assets/vetro/schede/fermavetro-30-scheda.jpg';
 import inoxdesignLogo from './assets/vetro/inoxdesign-logo.png';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -91,8 +92,28 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-255-OL', finitura: 'Oro' },
     ],
   },
+  {
+    id: 3, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro Ø30mm',
+    descrizione: 'Attacco puntuale a vite per vetro con attacco diritto. Adatto a spessori vetro da 6 a 14mm (vite M8x45). Foro in vetro Ø15mm. Prodotto da Inoxdesign, disponibile in due versioni con la stessa finitura inox satinato: in acciaio inox AISI 304 oppure in zama.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    dimensioni: 'Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('fermavetro-30-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN109-010', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304' },
+      { codice: 'IN109-010-0F', finitura: 'Inox satinato', materiale: 'Zama' },
+    ],
+  },
 ];
-const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg };
+const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg };
+
+/* Un articolo può esistere in materiali diversi a parità di finitura (es. la
+   stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
+   opzioni per i filtri, mentre `materiale` resta la dicitura da mostrare. */
+const materialiDi = (p) => p.materiali || [p.materiale];
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id } }));
 const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
 
@@ -106,12 +127,14 @@ const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(
 const PAROLE_CHIAVE_VETRO = {
   1: 'distanziatore',
   2: 'distanziatore',
+  3: 'distanziatore',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
   p,
   testo: normalizzaTesto([
-    p.nome, p.fornitore, p.materiale, subName(p.sottocategoria), catName(p.categoria),
+    p.nome, p.fornitore, subName(p.sottocategoria), catName(p.categoria),
+    ...materialiDi(p),
     p.descrizione || '', PAROLE_CHIAVE_VETRO[p.id] || '',
     ...p.varianti.map(v => v.codice),
     ...p.varianti.map(v => v.finitura)
@@ -356,7 +379,7 @@ function ProductCatalog({ products }) {
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
 
-  const mats = useMemo(() => [...new Set(products.map(p => p.materiale))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
 
@@ -364,7 +387,7 @@ function ProductCatalog({ products }) {
   const match = (p, salta) => {
     const t = q.trim().toLowerCase();
     const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
-    const okM = salta === 'mat' || !mat.length || mat.includes(p.materiale);
+    const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
     return okQ && okM && okF && okP;
@@ -435,7 +458,7 @@ function ProductCatalog({ products }) {
             <div className="filter-inner">
               <div className="filter-grid">
                 <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
-                  test={(p, o) => p.materiale === o} tutti="Tutti i materiali" plurale="materiali" />
+                  test={(p, o) => materialiDi(p).includes(o)} tutti="Tutti i materiali" plurale="materiali" />
                 <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
                   test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
                 <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
@@ -475,6 +498,10 @@ function ProductCard({ product: p, idx }) {
   const [open, setOpen] = useState(false);
   const hasImages = Object.keys(images).length > 0;
   const selImg = (images[selFin] || [])[0];
+  // Con una sola finitura non c'e' niente da scegliere: il selettore sparisce.
+  const sceltaFin = ufins.length > 1;
+  // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
+  const colMat = p.varianti.some(v => v.materiale);
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -499,17 +526,24 @@ function ProductCard({ product: p, idx }) {
         {p.scheda
           ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
           : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
-        <div className="finishes">
-          <div className="fbtns">
-            {ufins.map((f, i) => (
-              <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
-                onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
-                <Chip finitura={f} />
-              </button>
-            ))}
+        {sceltaFin ? (
+          <div className="finishes">
+            <div className="fbtns">
+              {ufins.map((f, i) => (
+                <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                  onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                  <Chip finitura={f} />
+                </button>
+              ))}
+            </div>
+            <span className="fhint">Scegli la finitura</span>
           </div>
-          <span className="fhint">Scegli la finitura</span>
-        </div>
+        ) : (
+          <div className="finishes">
+            <span className="chips"><Chip finitura={selFin} /></span>
+            <span className="fcount">{selFin}</span>
+          </div>
+        )}
         <button className="detail-cta" onClick={() => go('/prodotto/' + p.id)}>
           Scheda completa
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -521,13 +555,14 @@ function ProductCard({ product: p, idx }) {
         <div className={`variants-wrap${open ? ' open' : ''}`}>
           <div className="variants-inner">
             <table className="variants">
-              <thead><tr><th>Codice articolo</th><th>Finitura</th></tr></thead>
+              <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}</tr></thead>
               <tbody>
                 {p.varianti.map((v, i) => (
-                  <tr key={i} className={`vrow${v.finitura === selFin ? ' active' : ''}`}
-                    onClick={() => setSelFin(v.finitura)}>
+                  <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
+                    onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
                     <td className="code">{v.codice}</td>
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                    {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
                   </tr>
                 ))}
               </tbody>
@@ -586,6 +621,8 @@ function ProductDetail({ id }) {
   const ufins = [...new Set(p.varianti.map(v => v.finitura))];
   const gallery = images[selFin] || [];
   const selImg = gallery[imgIdx] || gallery[0];
+  const sceltaFin = ufins.length > 1;
+  const colMat = p.varianti.some(v => v.materiale);
 
   return (
     <>
@@ -644,14 +681,16 @@ function ProductDetail({ id }) {
             </div>
 
             <div className="finishes pdp-finishes">
-              <span className="fhint">Scegli la finitura</span>
+              <span className="fhint">{sceltaFin ? 'Scegli la finitura' : 'Finitura'}</span>
               <div className="fbtns">
-                {ufins.map((f, i) => (
+                {sceltaFin ? ufins.map((f, i) => (
                   <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
                     onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
                     <Chip finitura={f} />
                   </button>
-                ))}
+                )) : (
+                  <span className="fin-cell"><Chip finitura={selFin} />{selFin}</span>
+                )}
               </div>
             </div>
 
@@ -662,13 +701,14 @@ function ProductDetail({ id }) {
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <table className="variants">
-                <thead><tr><th>Codice articolo</th><th>Finitura</th></tr></thead>
+                <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}</tr></thead>
                 <tbody>
                   {p.varianti.map((v, i) => (
-                    <tr key={i} className={`vrow${v.finitura === selFin ? ' active' : ''}`}
-                      onClick={() => setSelFin(v.finitura)}>
+                    <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
+                      onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
                       <td className="code">{v.codice}</td>
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                      {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
                     </tr>
                   ))}
                 </tbody>
