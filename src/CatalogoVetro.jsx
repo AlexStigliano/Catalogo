@@ -20,6 +20,11 @@ import fermavetro30Esploso from './assets/vetro/prodotti/fermavetro-30-esploso.j
 import fermavetro30Vista2 from './assets/vetro/prodotti/fermavetro-30-vista2.jpg';
 import fermavetro30Frontale from './assets/vetro/prodotti/fermavetro-30-frontale.jpg';
 import inoxdesignLogo from './assets/vetro/inoxdesign-logo.png';
+import fissaggioInox from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato.jpg';
+import fissaggioInoxFrontale from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato-frontale.jpg';
+import fissaggioInoxVista2 from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato-vista2.jpg';
+import fissaggioEsploso from './assets/vetro/prodotti/fissaggio-puntuale-esploso.jpg';
+import fissaggioSchedaImg from './assets/vetro/schede/fissaggio-puntuale-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -113,8 +118,23 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-010-0F', finitura: 'Inox satinato', materiale: 'Zama' },
     ],
   },
+  {
+    id: 4, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Fissaggio puntuale Ø30mm',
+    descrizione: 'Fissaggio puntuale con filetto fisso M8x45 per vetro, testa Ø30mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 2 finiture: inox satinato e nero opaco.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Testa Ø30mm · calotta Ø13mm · altezza 6,3mm · filetto M8x45 fisso · foro Ø15mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('fissaggio-puntuale-scheda-tecnica.pdf'),
+    immagini: {
+      'Inox satinato': [fissaggioInox, fissaggioEsploso, fissaggioInoxVista2, fissaggioInoxFrontale],
+    },
+    varianti: [
+      { codice: 'IN109-792', finitura: 'Inox satinato' },
+    ],
+  },
 ];
-const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg };
+const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
    stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
@@ -134,6 +154,7 @@ const PAROLE_CHIAVE_VETRO = {
   1: 'distanziatore',
   2: 'distanziatore',
   3: 'distanziatore',
+  4: 'distanziatore',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
