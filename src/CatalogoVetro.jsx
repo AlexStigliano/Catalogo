@@ -31,6 +31,10 @@ import fermavetro230SchedaImg from './assets/vetro/schede/fermavetro-230-scheda.
 import fermavetro230Inox from './assets/vetro/prodotti/fermavetro-230-inox-satinato.jpg';
 import fermavetro230Vista2 from './assets/vetro/prodotti/fermavetro-230-vista2.jpg';
 import fermavetro230Frontale from './assets/vetro/prodotti/fermavetro-230-frontale.jpg';
+import fermavetro220SchedaImg from './assets/vetro/schede/fermavetro-220-scheda.jpg';
+import fermavetro220Inox from './assets/vetro/prodotti/fermavetro-220-inox-satinato.jpg';
+import fermavetro220Esploso from './assets/vetro/prodotti/fermavetro-220-esploso.jpg';
+import fermavetro220Vista2 from './assets/vetro/prodotti/fermavetro-220-vista2.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -167,8 +171,24 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-792-NE', finitura: 'Nero opaco' },
     ],
   },
+  {
+    id: 6, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Calotta fermavetro Ø52mm',
+    descrizione: 'Calotta superiore per attacco puntuale, Ø52mm, con gommine e filetto interno M10, altezza 11mm. Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Calotta Ø52mm · altezza 11mm · filetto M10 · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('fermavetro-220-scheda-tecnica.pdf'),
+    immagini: {
+      'Inox satinato': [fermavetro220Inox, fermavetro220Esploso, fermavetro220Vista2],
+    },
+    varianti: [
+      { codice: 'IN109-220', finitura: 'Inox satinato' },
+    ],
+  },
 ];
-const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg };
+const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
    stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
@@ -190,6 +210,7 @@ const PAROLE_CHIAVE_VETRO = {
   3: 'distanziatore',
   4: 'distanziatore',
   5: 'distanziatore',
+  6: 'distanziatore',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
