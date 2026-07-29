@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -39,6 +39,12 @@ import fermavetro230Frontale from './assets/vetro/prodotti/fermavetro-230-fronta
    NB: quando questo branch verrà unito a main, cambiare REPO_BRANCH in 'main'. */
 const REPO_BRANCH = 'claude/catalogo-vetro-copertina-p5608g';
 const schedaUrl = (file) => `https://raw.githubusercontent.com/AlexStigliano/Catalogo/${REPO_BRANCH}/src/assets/vetro/${file}`;
+
+/* Chiave dedicata (diversa da quella del Catalogo Generale) così i
+   preferiti dei due cataloghi non si mescolano: gli id prodotto si
+   ripetono da 1 in entrambi. Vale per tutti i prodotti, presenti e
+   futuri, dato che si basa solo sull'id. */
+const FAVORITI_KEY_VETRO = 'ferramenta_favorites_vetro';
 
 /* Catalogo Vetro: progetto a sé, con la stessa identità visiva del
    Catalogo Generale (Catalogo.css) ma dati e routing propri. Le
@@ -433,8 +439,17 @@ function ProductCatalog({ products }) {
   const [fin, setFin] = useState([]);
   const [prod, setProd] = useState([]);
   const [diam, setDiam] = useState([]);
+  const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
+  const [favorites, setFavorites] = useState(() => {
+    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
+  useEffect(() => {
+    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
+  }, [favorites]);
+  const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
 
   const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
@@ -450,13 +465,14 @@ function ProductCatalog({ products }) {
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
     const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
-    return okQ && okM && okF && okP && okD;
+    const okFav = !favOnly || favorites.includes(p.id);
+    return okQ && okM && okF && okP && okD && okFav;
   };
   const filtered = products.filter(p => match(p, null));
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
-  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length;
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + (favOnly ? 1 : 0);
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
-  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); };
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setFavOnly(false); };
 
   const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
     const aperto = drop === campo;
@@ -529,6 +545,10 @@ function ProductCatalog({ products }) {
                 )}
               </div>
               <div className="filter-actions">
+                <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}
+                  onClick={() => setFavOnly(v => !v)}>
+                  <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Solo preferiti
+                </button>
                 {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
               </div>
             </div>
@@ -538,7 +558,10 @@ function ProductCatalog({ products }) {
 
       <div className="shell">
         <div className="gallery">
-          {filtered.map((p, idx) => <ProductCard key={p.id} product={p} idx={idx} />)}
+          {filtered.map((p, idx) => (
+            <ProductCard key={p.id} product={p} idx={idx}
+              isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
+          ))}
 
           {filtered.length === 0 && (
             <div className="empty">
@@ -554,7 +577,7 @@ function ProductCatalog({ products }) {
 }
 
 /* ---------- Scheda prodotto (card griglia) ---------- */
-function ProductCard({ product: p, idx }) {
+function ProductCard({ product: p, idx, isFav, onFav }) {
   const images = p.immagini || {};
   const ufins = [...new Set(p.varianti.map(v => v.finitura))];
   const firstWithImg = p.varianti.find(v => images[v.finitura]);
@@ -571,6 +594,10 @@ function ProductCard({ product: p, idx }) {
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
       <div className="media">
         <span className="cat-tag">{p.categoria}</span>
+        <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+          aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
+          <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
+        </button>
         <div className="media-body clickable" onClick={() => go('/prodotto/' + p.id)} role="link"
           tabIndex={0} onKeyDown={e => { if (e.key === 'Enter') go('/prodotto/' + p.id); }}
           aria-label={`Apri la scheda di ${p.nome}`}>
@@ -663,6 +690,13 @@ function ProductDetail({ id }) {
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
   const [imgIdx, setImgIdx] = useState(0);
   useEffect(() => { setImgIdx(0); }, [selFin]);
+  const [favorites, setFavorites] = useState(() => {
+    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
+  useEffect(() => {
+    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
+  }, [favorites]);
 
   if (!p) {
     return (
@@ -687,6 +721,8 @@ function ProductDetail({ id }) {
   const selImg = gallery[imgIdx] || gallery[0];
   const sceltaFin = ufins.length > 1;
   const colMat = p.varianti.some(v => v.materiale);
+  const isFav = favorites.includes(p.id);
+  const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
 
   return (
     <>
@@ -707,6 +743,10 @@ function ProductDetail({ id }) {
         <div className="pdp">
           <div className="pdp-media">
             <div className="media">
+              <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+                aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={toggleFav}>
+                <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
+              </button>
               <div className="media-body">
                 {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} />
                   : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
