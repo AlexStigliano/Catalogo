@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -780,6 +780,8 @@ function ProductCatalog({ products }) {
   const [fin, setFin] = useState([]);
   const [prod, setProd] = useState([]);
   const [diam, setDiam] = useState([]);
+  const [lung, setLung] = useState([]);
+  const [inter, setInter] = useState([]);
   const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
@@ -792,11 +794,24 @@ function ProductCatalog({ products }) {
   }, [favorites]);
   const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
 
+  // Vista a griglia sul cellulare (1 o 2 colonne): la scelta resta ricordata.
+  const [mobileView, setMobileView] = useState(() => {
+    try { return localStorage.getItem('ferramenta_vetro_mobile_view') || 'list'; }
+    catch { return 'list'; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem('ferramenta_vetro_mobile_view', mobileView); } catch {}
+  }, [mobileView]);
+
   const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const diams = useMemo(() => [...new Set(products.map(p => p.diametro).filter(Boolean))]
     .sort((a, b) => parseFloat(a) - parseFloat(b)), [products]);
+  const lunghezze = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.lunghezza).filter(v => v != null)))]
+    .sort((a, b) => a - b), [products]);
+  const interassi = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.interasse).filter(v => v != null)))]
+    .sort((a, b) => a - b), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const match = (p, salta) => {
@@ -806,14 +821,16 @@ function ProductCatalog({ products }) {
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
     const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
+    const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
+    const okI = salta === 'inter' || !inter.length || p.varianti.some(v => inter.includes(v.interasse));
     const okFav = !favOnly || favorites.includes(p.id);
-    return okQ && okM && okF && okP && okD && okFav;
+    return okQ && okM && okF && okP && okD && okL && okI && okFav;
   };
   const filtered = products.filter(p => match(p, null));
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
-  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + (favOnly ? 1 : 0);
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + (favOnly ? 1 : 0);
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
-  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setFavOnly(false); };
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setLung([]); setInter([]); setFavOnly(false); };
 
   const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
     const aperto = drop === campo;
@@ -869,6 +886,18 @@ function ProductCatalog({ products }) {
             <span className="count">
               <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
             </span>
+            <div className="mobile-view-toggle" role="group" aria-label="Visualizzazione">
+              <button type="button" className={mobileView === 'list' ? 'active' : ''}
+                aria-pressed={mobileView === 'list'} aria-label="Vista a elenco"
+                onClick={() => setMobileView('list')}>
+                <List size={16} />
+              </button>
+              <button type="button" className={mobileView === 'grid2' ? 'active' : ''}
+                aria-pressed={mobileView === 'grid2'} aria-label="Vista a griglia doppia"
+                onClick={() => setMobileView('grid2')}>
+                <LayoutGrid size={16} />
+              </button>
+            </div>
           </div>
 
           <div className={`filter-panel${fOpen ? ' open' : ''}`}>
@@ -884,6 +913,16 @@ function ProductCatalog({ products }) {
                   <Gruppo etichetta="Diametro" campo="diam" opzioni={diams} scelte={diam} set={setDiam}
                     test={(p, o) => p.diametro === o} tutti="Tutti i diametri" plurale="diametri" />
                 )}
+                {lunghezze.length > 1 && (
+                  <Gruppo etichetta="Lunghezza" campo="lung" opzioni={lunghezze} scelte={lung} set={setLung}
+                    test={(p, o) => p.varianti.some(v => v.lunghezza === o)} tutti="Tutte le lunghezze" plurale="lunghezze"
+                    label={(o) => o + ' mm'} />
+                )}
+                {interassi.length > 1 && (
+                  <Gruppo etichetta="Interasse" campo="inter" opzioni={interassi} scelte={inter} set={setInter}
+                    test={(p, o) => p.varianti.some(v => v.interasse === o)} tutti="Tutti gli interassi" plurale="interassi"
+                    label={(o) => o + ' mm'} />
+                )}
               </div>
               <div className="filter-actions">
                 <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}
@@ -898,7 +937,7 @@ function ProductCatalog({ products }) {
       </div>
 
       <div className="shell">
-        <div className="gallery">
+        <div className={`gallery${mobileView === 'grid2' ? ' compact-2col' : ''}`}>
           {filtered.map((p, idx) => (
             <ProductCard key={p.id} product={p} idx={idx}
               isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
