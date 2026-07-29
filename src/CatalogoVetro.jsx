@@ -35,6 +35,38 @@ import fermavetro220SchedaImg from './assets/vetro/schede/fermavetro-220-scheda.
 import fermavetro220Inox from './assets/vetro/prodotti/fermavetro-220-inox-satinato.jpg';
 import fermavetro220Esploso from './assets/vetro/prodotti/fermavetro-220-esploso.jpg';
 import fermavetro220Vista2 from './assets/vetro/prodotti/fermavetro-220-vista2.jpg';
+import fimetLogo from './assets/fimet-logo.png';
+import arizonaInox from './assets/vetro/prodotti/arizona-inox-satinato.jpg';
+import arizonaNero from './assets/vetro/prodotti/arizona-nero-opaco.jpg';
+import arizonaPvd from './assets/vetro/prodotti/arizona-pvd-giallo-lucido.jpg';
+import schArizona from './assets/vetro/schede/arizona-scheda.jpg';
+import arizonaInclinatoInox from './assets/vetro/prodotti/arizona-inclinato-inox-satinato.jpg';
+import schArizonaInclinato from './assets/vetro/schede/arizona-inclinato-scheda.jpg';
+import arkansasQInox from './assets/vetro/prodotti/arkansas-q-inox-satinato.jpg';
+import schArkansasQ from './assets/vetro/schede/arkansas-q-scheda.jpg';
+import californiaInox from './assets/vetro/prodotti/california-inox-satinato.jpg';
+import schCalifornia from './assets/vetro/schede/california-scheda.jpg';
+import coloradoInox from './assets/vetro/prodotti/colorado-inox-satinato.jpg';
+import coloradoNero from './assets/vetro/prodotti/colorado-nero-opaco.jpg';
+import schColorado from './assets/vetro/schede/colorado-scheda.jpg';
+import georgiaQInox from './assets/vetro/prodotti/georgia-q-inox-satinato.jpg';
+import georgiaQNero from './assets/vetro/prodotti/georgia-q-nero-opaco.jpg';
+import georgiaQPvd from './assets/vetro/prodotti/georgia-q-pvd-lucido.jpg';
+import schGeorgiaQ from './assets/vetro/schede/georgia-q-scheda.jpg';
+import cubaBicolore from './assets/vetro/prodotti/cuba-bicolore-inox.jpg';
+import schCuba from './assets/vetro/schede/cuba-scheda.jpg';
+import minnesotaInox from './assets/vetro/prodotti/minnesota-inox-satinato.jpg';
+import schMinnesota from './assets/vetro/schede/minnesota-scheda.jpg';
+import nevadaInox from './assets/vetro/prodotti/nevada-inox-satinato.jpg';
+import schNevada from './assets/vetro/schede/nevada-scheda.jpg';
+import nevadaQInox from './assets/vetro/prodotti/nevada-q-inox-satinato.jpg';
+import nevadaQNero from './assets/vetro/prodotti/nevada-q-nero-opaco.jpg';
+import schNevadaQ from './assets/vetro/schede/nevada-q-scheda.jpg';
+import oregonInox from './assets/vetro/prodotti/oregon-inox-satinato.jpg';
+import schOregon from './assets/vetro/schede/oregon-scheda.jpg';
+import texasInox from './assets/vetro/prodotti/texas-inox-satinato.jpg';
+import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
+import schTexas from './assets/vetro/schede/texas-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -75,6 +107,9 @@ const SOTTOCATEGORIE_VETRO = [
   { id: 'tiranti', nome: 'Tiranti per pensiline' },
   { id: 'morsetti', nome: 'Morsetti' },
   { id: 'fermavetri', nome: 'Fermavetri' },
+  // Non è una sottocategoria con tab (quelle valgono solo per la 01): serve solo
+  // come etichetta per subName() sotto il nome prodotto nella categoria 04.
+  { id: 'maniglioni', nome: 'Maniglioni per porte' },
 ];
 const subName = (id) => (SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}).nome || id;
 
@@ -187,8 +222,287 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-220', finitura: 'Inox satinato' },
     ],
   },
+  {
+    id: 7, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arizona',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('arizona-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arizonaInox],
+      'Nero opaco': [arizonaNero],
+      'PVD lucido': [arizonaPvd],
+    },
+    varianti: [
+      { codice: '800.20.500.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+      { codice: '800.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+      { codice: '800.30.1000.700.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1000, interasse: 700 },
+      { codice: '800.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+      { codice: '800.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+      { codice: '800.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.500.300.18', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 },
+    ],
+  },
+  {
+    id: 8, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arizona Inclinato',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('arizona-inclinato-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arizonaInclinatoInox],
+    },
+    varianti: [
+      { codice: '810.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '810.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+      { codice: '810.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+    ],
+  },
+  {
+    id: 9, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arkansas Q',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Ø32mm · 382×350mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('arkansas-q-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arkansasQInox],
+    },
+    varianti: [
+      { codice: '816.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 10, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'California',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm, con una curva ampia che dona slancio alla porta. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Ø32mm · 575×500mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('california-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [californiaInox],
+    },
+    varianti: [
+      { codice: '817.32.575.500.60', finitura: 'Acciaio inox satinato', lunghezza: 575, interasse: 500 },
+    ],
+  },
+  {
+    id: 11, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Colorado',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro 40×10 mm. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('colorado-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [coloradoInox],
+      'Nero opaco': [coloradoNero],
+    },
+    varianti: [
+      { codice: '841S.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+      { codice: '841S.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+      { codice: '841S.1000.800.60', finitura: 'Acciaio inox satinato', lunghezza: 1000, interasse: 800 },
+      { codice: '841S.1200.900.60', finitura: 'Acciaio inox satinato', lunghezza: 1200, interasse: 900 },
+      { codice: '841S.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+      { codice: '841S.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 },
+    ],
+  },
+  {
+    id: 12, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Georgia Q',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 20×20 mm nelle misure più corte, 25×25 mm in quelle più lunghe. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('georgia-q-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [georgiaQInox],
+      'Nero opaco': [georgiaQNero],
+      'PVD lucido': [georgiaQPvd],
+    },
+    varianti: [
+      { codice: '802K.20.220.200.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.625.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 625, interasse: 600 },
+      { codice: '802K.25.925.900.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 925, interasse: 900 },
+      { codice: '802K.20.220.200.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.925.900.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 925, interasse: 900 },
+      { codice: '802K.20.220.200.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.625.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 625, interasse: 600 },
+      { codice: '802K.20.320.300.18', finitura: 'PVD lucido', diametro: 20, lunghezza: 320, interasse: 300 },
+    ],
+  },
+  {
+    id: 13, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Cuba',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø25 mm, con una riga centrale a contrasto tra satinato e lucido. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('cuba-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Bicolore inox satinato / lucido': [cubaBicolore],
+    },
+    varianti: [
+      { codice: '849L.25.450.350.63', finitura: 'Bicolore inox satinato / lucido', lunghezza: 450, interasse: 350 },
+    ],
+  },
+  {
+    id: 14, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Minnesota',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('minnesota-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [minnesotaInox],
+    },
+    varianti: [
+      { codice: '839.25.275.250.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 275, interasse: 250 },
+      { codice: '839.32.382.350.60', finitura: 'Acciaio inox satinato', diametro: 32, lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 15, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Nevada',
+    descrizione: 'Maniglione con supporti a squadra e profilo tondo Ø32 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('nevada-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [nevadaInox],
+    },
+    varianti: [
+      { codice: '838.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 16, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Nevada Q',
+    descrizione: 'Maniglione con supporti a squadra e profilo quadro 25×25 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('nevada-q-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [nevadaQInox],
+      'Nero opaco': [nevadaQNero],
+    },
+    varianti: [
+      { codice: '838Q.25.375.350.60', finitura: 'Acciaio inox satinato', lunghezza: 375, interasse: 350 },
+      { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 },
+    ],
+  },
+  {
+    id: 17, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Oregon',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('oregon-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [oregonInox],
+    },
+    varianti: [
+      { codice: '841Z.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+      { codice: '841Z.600.400.60', finitura: 'Acciaio inox satinato', lunghezza: 600, interasse: 400 },
+      { codice: '841Z.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+      { codice: '841Z.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+      { codice: '841Z.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 },
+    ],
+  },
+  {
+    id: 18, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Texas',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 25×25 mm nella maggior parte delle misure, 30×30 mm in quella più lunga. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('texas-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [texasInox],
+      'Nero opaco': [texasNero],
+    },
+    varianti: [
+      { codice: '831.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.600.400.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 600, interasse: 400 },
+      { codice: '831.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+      { codice: '831.25.800.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 800, interasse: 600 },
+      { codice: '831.25.1000.800.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1000, interasse: 800 },
+      { codice: '831.25.1200.1000.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1200, interasse: 1000 },
+      { codice: '831.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+      { codice: '831.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.800.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 800, interasse: 600 },
+      { codice: '831.25.1000.700.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1000, interasse: 700 },
+      { codice: '831.25.1200.1000.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1200, interasse: 1000 },
+      { codice: '831.25.1500.1300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1500, interasse: 1300 },
+      { codice: '831.25.500.300.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.500.300.BO', finitura: 'Bianco opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.500.300.02O', finitura: 'Oro satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    ],
+  },
 ];
-const SCHEDA_IMG_VETRO = { 1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg };
+const SCHEDA_IMG_VETRO = {
+  1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
+  7: schArizona, 8: schArizonaInclinato, 9: schArkansasQ, 10: schCalifornia, 11: schColorado, 12: schGeorgiaQ,
+  13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
+};
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
    stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
@@ -247,6 +561,12 @@ const FINISHES_VETRO = {
   'Inox satinato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
   'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Oro': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Acciaio inox satinato': 'linear-gradient(135deg,#dfe2e5,#aeb4b9 45%,#c9ced2 58%,#9ea4a9)',
+  'Inox lucido': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
+  'PVD lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
+  'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
+  'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
@@ -610,6 +930,10 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   const sceltaFin = ufins.length > 1;
   // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
   const colMat = p.varianti.some(v => v.materiale);
+  // Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse): qui, nella
+  // card, la tabella si limita a mostrare le colonne — la scelta della misura resta
+  // nella pagina prodotto completa.
+  const assi = p.assi;
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
@@ -667,7 +991,9 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         <div className={`variants-wrap${open ? ' open' : ''}`}>
           <div className="variants-inner">
             <table className="variants">
-              <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}</tr></thead>
+              <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}
+                {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
+              </tr></thead>
               <tbody>
                 {p.varianti.map((v, i) => (
                   <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
@@ -675,6 +1001,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                     <td className="code">{v.codice}</td>
                     <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                     {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
+                    {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
                   </tr>
                 ))}
               </tbody>
@@ -718,6 +1045,46 @@ function ProductDetail({ id }) {
   useEffect(() => {
     localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
   }, [favorites]);
+
+  /* ---- Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse) ----
+     Ogni asse mostra tutte le misure della finitura scelta; dopo un clic, gli
+     altri assi lasciano selezionabili solo le misure compatibili con quella. */
+  const assi = p && p.assi;
+  const [mis, setMis] = useState(() => {
+    if (!assi || !p || !p.varianti.length) return null;
+    const v0 = p.varianti[0], o = {};
+    assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    return o;
+  });
+  const [ultimoAsse, setUltimoAsse] = useState(null);
+
+  const perFinitura = (v) => v.finitura === selFin;
+  const opzioniAsse = (k) => [...new Set((p ? p.varianti : []).filter(perFinitura).map(v => v[k]))]
+    .sort((a, b) => (typeof a === 'number' ? a - b : String(a).localeCompare(String(b))));
+  const misuraDisponibile = (k, val) => p.varianti.some(v =>
+    perFinitura(v) && v[k] === val &&
+    (!ultimoAsse || ultimoAsse === k || v[ultimoAsse] === mis[ultimoAsse]));
+  const scegliMisura = (k, val) => {
+    const cand = p.varianti.filter(v => perFinitura(v) && v[k] === val);
+    if (!cand.length) return;
+    let best = cand[0], punti = -1;
+    cand.forEach(v => {
+      const s = assi.reduce((acc, a) => acc + (a.chiave !== k && v[a.chiave] === mis[a.chiave] ? 1 : 0), 0);
+      if (s > punti) { punti = s; best = v; }
+    });
+    const o = {}; assi.forEach(a => { o[a.chiave] = best[a.chiave]; });
+    setMis(o); setUltimoAsse(k);
+  };
+  // cambiando finitura, riporta le misure su una combinazione esistente
+  useEffect(() => {
+    if (!assi || !mis || !p) return;
+    const valida = p.varianti.some(v => perFinitura(v) && assi.every(a => v[a.chiave] === mis[a.chiave]));
+    if (valida) return;
+    const v0 = p.varianti.find(perFinitura);
+    if (!v0) return;
+    const o = {}; assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    setMis(o); setUltimoAsse(null);
+  }, [selFin]);
 
   if (!p) {
     return (
@@ -794,7 +1161,7 @@ function ProductDetail({ id }) {
             <hr className="rule" />
             <div className="pdp-specs">
               <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>
-              <div className="pdp-spec"><span className="k">Misure</span><span className="v">{p.dimensioni}</span></div>
+              {p.dimensioni && <div className="pdp-spec"><span className="k">Misure</span><span className="v">{p.dimensioni}</span></div>}
               <div className="pdp-spec">
                 <span className="k">Fornitore</span>
                 <span className="v">
@@ -819,6 +1186,25 @@ function ProductDetail({ id }) {
               </div>
             </div>
 
+            {assi && mis && assi.map(a => (
+              <div className="finishes pdp-finishes" key={a.chiave}>
+                <span className="fhint">{a.etichetta}</span>
+                <div className="fbtns">
+                  {opzioniAsse(a.chiave).map(val => {
+                    const on = mis[a.chiave] === val;
+                    const off = !on && !misuraDisponibile(a.chiave, val);
+                    return (
+                      <button key={String(val)} className={`vbtn${on ? ' active' : ''}${off ? ' off' : ''}`}
+                        aria-pressed={on} onClick={() => scegliMisura(a.chiave, val)}
+                        title={off ? 'Non abbinabile alla misura scelta: clicca per partire da questa' : undefined}>
+                        {val}{a.suffisso || ''}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+
             {p.scheda
               ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
               : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
@@ -826,16 +1212,33 @@ function ProductDetail({ id }) {
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <table className="variants">
-                <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}</tr></thead>
+                <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}
+                  {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
+                </tr></thead>
                 <tbody>
-                  {p.varianti.map((v, i) => (
-                    <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
-                      onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
+                  {p.varianti.map((v, i) => {
+                    const active = assi
+                      ? (v.finitura === selFin && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
+                      : sceltaFin && v.finitura === selFin;
+                    const scegliRiga = () => {
+                      if (assi) {
+                        setSelFin(v.finitura);
+                        const o = {}; assi.forEach(a => { o[a.chiave] = v[a.chiave]; });
+                        setMis(o); setUltimoAsse(null);
+                      } else if (sceltaFin) {
+                        setSelFin(v.finitura);
+                      }
+                    };
+                    return (
+                    <tr key={i} className={`${(sceltaFin || assi) ? 'vrow' : ''}${active ? ' active' : ''}`}
+                      onClick={(sceltaFin || assi) ? scegliRiga : undefined}>
                       <td className="code">{v.codice}</td>
                       <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
                       {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
+                      {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
