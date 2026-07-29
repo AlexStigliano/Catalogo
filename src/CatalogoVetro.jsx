@@ -107,11 +107,16 @@ const SOTTOCATEGORIE_VETRO = [
   { id: 'tiranti', nome: 'Tiranti per pensiline' },
   { id: 'morsetti', nome: 'Morsetti' },
   { id: 'fermavetri', nome: 'Fermavetri' },
-  // Non è una sottocategoria con tab (quelle valgono solo per la 01): serve solo
-  // come etichetta per subName() sotto il nome prodotto nella categoria 04.
+];
+// Etichette di sottocategoria fuori dalla 01 (niente tab: solo il testo
+// mostrato sotto il nome prodotto, es. nella categoria 04 Maniglie e maniglioni).
+const ALTRE_SOTTOCATEGORIE_VETRO = [
   { id: 'maniglioni', nome: 'Maniglioni per porte' },
 ];
-const subName = (id) => (SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}).nome || id;
+const subName = (id) => (
+  SOTTOCATEGORIE_VETRO.find(s => s.id === id) ||
+  ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
+).nome || id;
 
 const PRODOTTI_VETRO = [
   {
