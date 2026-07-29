@@ -25,6 +25,8 @@ import fissaggioInoxFrontale from './assets/vetro/prodotti/fissaggio-puntuale-in
 import fissaggioInoxVista2 from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato-vista2.jpg';
 import fissaggioEsploso from './assets/vetro/prodotti/fissaggio-puntuale-esploso.jpg';
 import fissaggioSchedaImg from './assets/vetro/schede/fissaggio-puntuale-scheda.jpg';
+import fissaggioNero from './assets/vetro/prodotti/fissaggio-puntuale-nero-opaco.jpg';
+import fissaggioNeroVista2 from './assets/vetro/prodotti/fissaggio-puntuale-nero-opaco-vista2.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -128,9 +130,11 @@ const PRODOTTI_VETRO = [
     scheda: schedaUrl('fissaggio-puntuale-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [fissaggioInox, fissaggioEsploso, fissaggioInoxVista2, fissaggioInoxFrontale],
+      'Nero opaco': [fissaggioNero, fissaggioNeroVista2],
     },
     varianti: [
       { codice: 'IN109-792', finitura: 'Inox satinato' },
+      { codice: 'IN109-792-NE', finitura: 'Nero opaco' },
     ],
   },
 ];
