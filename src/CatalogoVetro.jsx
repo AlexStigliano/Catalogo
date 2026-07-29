@@ -101,11 +101,18 @@ const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').t
 const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
 const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
 
+/* Termini generici che un cliente potrebbe usare al posto del nome tecnico
+   del prodotto, e che nemmeno la descrizione riporta. */
+const PAROLE_CHIAVE_VETRO = {
+  1: 'distanziatore',
+  2: 'distanziatore',
+};
+
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
   p,
   testo: normalizzaTesto([
     p.nome, p.fornitore, p.materiale, subName(p.sottocategoria), catName(p.categoria),
-    p.descrizione || '',
+    p.descrizione || '', PAROLE_CHIAVE_VETRO[p.id] || '',
     ...p.varianti.map(v => v.codice),
     ...p.varianti.map(v => v.finitura)
   ].join(' '))
