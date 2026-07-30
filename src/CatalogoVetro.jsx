@@ -86,6 +86,13 @@ import tgs52Tappo from './assets/vetro/prodotti/tgs52-tappo.jpg';
 import schTgs52 from './assets/vetro/schede/tgs52-scheda.jpg';
 import tgs53Chiave from './assets/vetro/prodotti/tgs53-chiave.jpg';
 import schTgs53 from './assets/vetro/schede/tgs53-scheda.jpg';
+import tg200Render from './assets/vetro/prodotti/tg200-render.jpg';
+import tg200Sezione from './assets/vetro/prodotti/tg200-sezione.jpg';
+import tg200Fori from './assets/vetro/prodotti/tg200-fori.jpg';
+import schTg200 from './assets/vetro/schede/tg200-scheda.jpg';
+import tg202Tappo from './assets/vetro/prodotti/tg202-tappo.jpg';
+import tg202Quote from './assets/vetro/prodotti/tg202-quote.jpg';
+import schTg202 from './assets/vetro/schede/tg202-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -522,6 +529,81 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 26, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra 8+8',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass TG 200R. Soluzione a pavimento e sopramuretto, con profilo di chiusura a scatto che copre il fissaggio a posa finita. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×118 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 200R), 24 fori in quella da 6000 mm (TG 201R). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8+8'],
+    dimensioni: 'Sezione 73×118 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tg-200-scheda-tecnica.pdf'),
+    // Rapporto di prova Istituto Giordano n. 351022: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: schedaUrl('tg-200-rapporto-di-prova.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg200Render, tg200Sezione, tg200Fori],
+    },
+    varianti: [
+      { codice: 'TG 200R', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 201R', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [27],
+    facoltativi: [21],
+  },
+  {
+    id: 27, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TG 202',
+    descrizione: 'Tappo di chiusura laterale per i profili balaustra TG 200R e TG 201R, completo di viti. Se lo spazio laterale è poco e a fine posa non si riesce ad avvitarlo, va montato prima di fissare la barra, dopo aver inserito mezzaluna, guarnizione e piattelli. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Altezza 118 mm · larghezza 73 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tg-200-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tg202Tappo, tg202Quote],
+    },
+    varianti: [
+      { codice: 'TG 202', finitura: 'Argento' },
+    ],
+    facoltativi: [21],
+  },
+  {
+    id: 21, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo scarico acque TG 203 / TG 204',
+    descrizione: 'Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e aggiunge 15 mm alla quota totale. Compatibile sia con i profili TG 200R / TG 201R sia con i TG 1000 / TG 1001. Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Altezza 15 mm · fori Ø14 mm · interasse 250 mm · 12 fori nella barra da 3000 mm, 24 in quella da 6000 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg203Profilo],
+    },
+    varianti: [
+      { codice: 'TG 203', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 204', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [22],
+  },
+  {
+    id: 22, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo per profilo scarico acque TG 205',
+    descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tg205Tappo],
+    },
+    varianti: [
+      { codice: 'TG 205', finitura: 'Argento' },
+    ],
+  },
+  {
     id: 19, categoria: '01', sottocategoria: 'balaustre',
     nome: 'Profilo balaustra muretto 8+8',
     descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
@@ -559,40 +641,6 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 1004', finitura: 'Argento' },
     ],
     facoltativi: [21],
-  },
-  {
-    id: 21, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Profilo scarico acque TG 203 / TG 204',
-    descrizione: 'Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e porta la quota totale da 82 a 97 mm (15 mm di profilo). Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.',
-    materiale: 'Alluminio',
-    dimensioni: 'Larghezza 73 mm · altezza 15 mm (97 mm con il supporto) · fori Ø14 mm · interasse 250 mm',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
-    assi: [
-      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
-    ],
-    immagini: {
-      'Argento': [tg203Profilo],
-    },
-    varianti: [
-      { codice: 'TG 203', finitura: 'Argento', lunghezza: 3000 },
-      { codice: 'TG 204', finitura: 'Argento', lunghezza: 6000 },
-    ],
-    essenziali: [22],
-  },
-  {
-    id: 22, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Tappo per profilo scarico acque TG 205',
-    descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
-    materiale: 'Alluminio',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
-    immagini: {
-      'Argento': [tg205Tappo],
-    },
-    varianti: [
-      { codice: 'TG 205', finitura: 'Argento' },
-    ],
   },
   {
     id: 23, categoria: '01', sottocategoria: 'balaustre',
@@ -651,6 +699,7 @@ const SCHEDA_IMG_VETRO = {
   13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
   23: schTgs50, 24: schTgs52, 25: schTgs53,
+  26: schTg200, 27: schTg202,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
