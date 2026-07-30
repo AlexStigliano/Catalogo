@@ -67,6 +67,16 @@ import schOregon from './assets/vetro/schede/oregon-scheda.jpg';
 import texasInox from './assets/vetro/prodotti/texas-inox-satinato.jpg';
 import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
 import schTexas from './assets/vetro/schede/texas-scheda.jpg';
+import tg1000Render from './assets/vetro/prodotti/tg1000-render.jpg';
+import tg1000Sezione from './assets/vetro/prodotti/tg1000-sezione.jpg';
+import tg1000Ambiente from './assets/vetro/prodotti/tg1000-ambiente.jpg';
+import schTg1000 from './assets/vetro/schede/tg1000-scheda.jpg';
+import tg1004Tappo from './assets/vetro/prodotti/tg1004-tappo.jpg';
+import schTg1004 from './assets/vetro/schede/tg1004-scheda.jpg';
+import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
+import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
+import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
+import schTg205 from './assets/vetro/schede/tg205-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -502,11 +512,84 @@ const PRODOTTI_VETRO = [
       { codice: '831.25.500.300.02O', finitura: 'Oro satinato', diametro: 25, lunghezza: 500, interasse: 300 },
     ],
   },
+  {
+    id: 19, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo a pavimento TG 1000 / TG 1001',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
+    fornitore: 'Compas',
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    // Il rapporto di prova del produttore: in attesa del PDF da caricare.
+    rapporto: null,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg1000Render, tg1000Sezione, tg1000Ambiente],
+    },
+    varianti: [
+      { codice: 'TG 1000', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 1001', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [20],
+    facoltativi: [21],
+  },
+  {
+    id: 20, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TG 1004',
+    descrizione: 'Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas',
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tg1004Tappo],
+    },
+    varianti: [
+      { codice: 'TG 1004', finitura: 'Argento' },
+    ],
+    facoltativi: [21],
+  },
+  {
+    id: 21, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo scarico acque TG 203 / TG 204',
+    descrizione: 'Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e porta la quota totale da 82 a 97 mm (15 mm di profilo). Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Larghezza 73 mm · altezza 15 mm (97 mm con il supporto) · fori Ø14 mm · interasse 250 mm',
+    fornitore: 'Compas',
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg203Profilo],
+    },
+    varianti: [
+      { codice: 'TG 203', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 204', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [22],
+  },
+  {
+    id: 22, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo per profilo scarico acque TG 205',
+    descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas',
+    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tg205Tappo],
+    },
+    varianti: [
+      { codice: 'TG 205', finitura: 'Argento' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
   7: schArizona, 8: schArizonaInclinato, 9: schArkansasQ, 10: schCalifornia, 11: schColorado, 12: schGeorgiaQ,
   13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
+  19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -572,6 +655,7 @@ const FINISHES_VETRO = {
   'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
   'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
+  'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
@@ -1057,19 +1141,51 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   );
 }
 
-function SezioneTendina({ title, aperta = false, children }) {
+function SezioneTendina({ title, badge, aperta = false, children }) {
   const [open, setOpen] = useState(aperta);
   return (
     <section className="rel-section">
       <button type="button" className={`rel-head rel-toggle${open ? ' open' : ''}`}
         aria-expanded={open} onClick={() => setOpen(o => !o)}>
         <h2>{title}</h2>
+        {badge != null && <span className="rel-badge-n">{badge}</span>}
         <ChevronDown className="rel-chev" size={18} />
       </button>
       <div className={`rel-wrap${open ? ' open' : ''}`}>
         <div className="rel-inner">{children}</div>
       </div>
     </section>
+  );
+}
+
+/* Articoli collegati: quelli indispensabili per montare il pezzo
+   ("essenziali") e quelli che possono servire ma non sono obbligatori
+   ("facoltativi"). Entrambe le sezioni compaiono solo se il prodotto ne
+   elenca almeno uno, così le schede senza collegamenti restano pulite. */
+function RelatedCard({ p }) {
+  const img = (p.immagini && (p.immagini[Object.keys(p.immagini)[0]] || [])[0]) || null;
+  return (
+    <button className="rel-card" onClick={() => go('/prodotto/' + p.id)}>
+      <div className="rel-media">
+        {img ? <img src={img} alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
+      </div>
+      <div className="rel-body">
+        <span className="rel-name">{p.nome}</span>
+        <span className="rel-forn">{p.varianti.map(v => v.codice).join(' · ')}</span>
+      </div>
+      <ChevronRight size={16} className="rel-arrow" />
+    </button>
+  );
+}
+
+function RelatedRow({ title, ids, nota }) {
+  const items = (ids || []).map(id => PRODOTTI_VETRO.find(p => p.id === id)).filter(Boolean);
+  if (!items.length) return null;
+  return (
+    <SezioneTendina title={title} badge={items.length}>
+      {nota && <p className="rel-testo">{nota}</p>}
+      <div className="rel-grid">{items.map(p => <RelatedCard key={p.id} p={p} />)}</div>
+    </SezioneTendina>
   );
 }
 
@@ -1249,9 +1365,22 @@ function ProductDetail({ id }) {
               </div>
             ))}
 
-            {p.scheda
-              ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
-              : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
+            <div className="pdp-docs">
+              {p.scheda
+                ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+                : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
+              {/* Il rapporto di prova esiste solo per gli articoli certificati:
+                  dove manca del tutto non mostriamo nulla. */}
+              {p.rapporto !== undefined && (
+                p.rapporto
+                  ? <a className="scheda" href={p.rapporto} target="_blank" rel="noopener">
+                      <Download size={15} /> Rapporto di prova
+                    </a>
+                  : <button className="scheda disabled" disabled title="Rapporto di prova in arrivo">
+                      <Download size={15} /> Rapporto di prova <em>in arrivo</em>
+                    </button>
+              )}
+            </div>
 
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
@@ -1294,6 +1423,10 @@ function ProductDetail({ id }) {
             <p className="rel-testo">{p.descrizione}</p>
           </SezioneTendina>
         )}
+        <RelatedRow title="Articoli essenziali" ids={p.essenziali}
+          nota="Servono per completare il montaggio di questo articolo e si ordinano a parte." />
+        <RelatedRow title="Articoli facoltativi" ids={p.facoltativi}
+          nota="Non sono obbligatori: si aggiungono solo se servono all'installazione." />
       </div>
       <Footer />
     </>
