@@ -78,6 +78,14 @@ import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
 import schTg205 from './assets/vetro/schede/tg205-scheda.jpg';
+import tgs50Render from './assets/vetro/prodotti/tgs50-render.jpg';
+import tgs50Sezione from './assets/vetro/prodotti/tgs50-sezione.jpg';
+import tgs50Quote from './assets/vetro/prodotti/tgs50-quote.jpg';
+import schTgs50 from './assets/vetro/schede/tgs50-scheda.jpg';
+import tgs52Tappo from './assets/vetro/prodotti/tgs52-tappo.jpg';
+import schTgs52 from './assets/vetro/schede/tgs52-scheda.jpg';
+import tgs53Chiave from './assets/vetro/prodotti/tgs53-chiave.jpg';
+import schTgs53 from './assets/vetro/schede/tgs53-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -538,6 +546,57 @@ const PRODOTTI_VETRO = [
     facoltativi: [21],
   },
   {
+    id: 23, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra muretto 6+6',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass Speedy TGS 50. Linea super compatta pensata per il fissaggio sopra muretto, dove la muratura esistente è già alta e il parapetto in vetro resta entro i 500 mm di altezza. Adatto a vetri stratificati e temperati da 6+1.52+6 mm (va bene anche il 5+1.52+5). Sezione 58×76 mm, con fori asolati 8,5×12 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 50), 24 fori in quella da 6000 mm (TGS 51). Profilo progettato per ancorante M8; la barra filettata non deve sporgere più di 12 mm. I profili vengono forniti completi di guarnizioni e accessori per il montaggio. Disponibile in alluminio finitura argento. Per la barra da 6000 mm il trasporto è a cura del cliente.',
+    materiale: 'Alluminio',
+    spessoreVetro: '6+6',
+    dimensioni: 'Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tgs50Render, tgs50Sezione, tgs50Quote],
+    },
+    varianti: [
+      { codice: 'TGS 50', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TGS 51', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [24],
+    facoltativi: [25],
+  },
+  {
+    id: 24, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TGS 52',
+    descrizione: 'Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tgs52Tappo],
+    },
+    varianti: [
+      { codice: 'TGS 52', finitura: 'Argento' },
+    ],
+    facoltativi: [25],
+  },
+  {
+    id: 25, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Chiave ergonomica TGS 53',
+    descrizione: 'Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tgs53Chiave],
+    },
+    varianti: [
+      { codice: 'TGS 53', finitura: 'Argento' },
+    ],
+  },
+  {
     id: 20, categoria: '01', sottocategoria: 'balaustre',
     nome: 'Tappo laterale TG 1004',
     descrizione: 'Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
@@ -592,6 +651,7 @@ const SCHEDA_IMG_VETRO = {
   7: schArizona, 8: schArizonaInclinato, 9: schArkansasQ, 10: schCalifornia, 11: schColorado, 12: schGeorgiaQ,
   13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
+  23: schTgs50, 24: schTgs52, 25: schTgs53,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
