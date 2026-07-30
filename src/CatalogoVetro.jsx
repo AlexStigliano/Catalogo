@@ -612,8 +612,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
-    // Il rapporto di prova del produttore: in attesa del PDF da caricare.
-    rapporto: null,
+    // Rapporto di prova Istituto Giordano n. 376073: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: schedaUrl('tg-1000-rapporto-di-prova.pdf'),
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
