@@ -76,6 +76,9 @@ import tg1004Tappo from './assets/vetro/prodotti/tg1004-tappo.jpg';
 import schTg1004 from './assets/vetro/schede/tg1004-scheda.jpg';
 import tg409Chiave from './assets/vetro/prodotti/tg409-chiave.jpg';
 import tg409Uso from './assets/vetro/prodotti/tg409-uso.jpg';
+import tg311Render from './assets/vetro/prodotti/tg311-render.jpg';
+import tg311Sezione from './assets/vetro/prodotti/tg311-sezione.jpg';
+import tg311Foto from './assets/vetro/prodotti/tg311-foto.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -552,7 +555,7 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 201R', finitura: 'Argento', lunghezza: 6000 },
     ],
     essenziali: [27],
-    facoltativi: [21, 28],
+    facoltativi: [21, 28, 29],
   },
   {
     id: 27, categoria: '01', sottocategoria: 'balaustre',
@@ -627,7 +630,7 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 1001', finitura: 'Argento', lunghezza: 6000 },
     ],
     essenziali: [20],
-    facoltativi: [21, 28],
+    facoltativi: [21, 28, 29],
   },
   {
     id: 20, categoria: '01', sottocategoria: 'balaustre',
@@ -677,7 +680,7 @@ const PRODOTTI_VETRO = [
       { codice: 'TGS 51', finitura: 'Argento', lunghezza: 6000 },
     ],
     essenziali: [24],
-    facoltativi: [25],
+    facoltativi: [25, 29],
   },
   {
     id: 24, categoria: '01', sottocategoria: 'balaustre',
@@ -705,6 +708,20 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'TGS 53', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 29, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo portaled TG 311',
+    descrizione: 'Piastrina per striscia LED, da inserire nel profilo di chiusura del parapetto per illuminare il bordo del vetro. Compatibile con tutti i profili balaustra Total Glass. Disponibile solo in barra da 3 m.',
+    dimensioni: 'Lunghezza barra 3 m',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
+    immagini: {
+      'Argento': [tg311Render, tg311Sezione, tg311Foto],
+    },
+    varianti: [
+      { codice: 'TG 311', finitura: 'Argento' },
     ],
   },
 ];
