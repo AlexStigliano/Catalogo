@@ -515,7 +515,7 @@ const PRODOTTI_VETRO = [
   {
     id: 19, categoria: '01', sottocategoria: 'balaustre',
     nome: 'Profilo a pavimento TG 1000 / TG 1001',
-    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
     materiale: 'Alluminio',
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas',
