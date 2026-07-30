@@ -515,9 +515,10 @@ const PRODOTTI_VETRO = [
   },
   {
     id: 19, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Profilo a pavimento TG 1000 / TG 1001',
+    nome: 'Profilo balaustra muretto 8+8',
     descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
     materiale: 'Alluminio',
+    spessoreVetro: '8+8',
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
@@ -872,6 +873,7 @@ function ProductCatalog({ products }) {
   const [diam, setDiam] = useState([]);
   const [lung, setLung] = useState([]);
   const [inter, setInter] = useState([]);
+  const [vetro, setVetro] = useState([]);
   const [favOnly, setFavOnly] = useState(false);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
@@ -902,6 +904,8 @@ function ProductCatalog({ products }) {
     .sort((a, b) => a - b), [products]);
   const interassi = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.interasse).filter(v => v != null)))]
     .sort((a, b) => a - b), [products]);
+  const vetri = useMemo(() => [...new Set(products.map(p => p.spessoreVetro).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, 'it', { numeric: true })), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const match = (p, salta) => {
@@ -913,14 +917,15 @@ function ProductCatalog({ products }) {
     const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
     const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
     const okI = salta === 'inter' || !inter.length || p.varianti.some(v => inter.includes(v.interasse));
+    const okV = salta === 'vetro' || !vetro.length || vetro.includes(p.spessoreVetro);
     const okFav = !favOnly || favorites.includes(p.id);
-    return okQ && okM && okF && okP && okD && okL && okI && okFav;
+    return okQ && okM && okF && okP && okD && okL && okI && okV && okFav;
   };
   const filtered = products.filter(p => match(p, null));
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
-  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + (favOnly ? 1 : 0);
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + vetro.length + (favOnly ? 1 : 0);
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
-  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setLung([]); setInter([]); setFavOnly(false); };
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setLung([]); setInter([]); setVetro([]); setFavOnly(false); };
 
   const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
     const aperto = drop === campo;
@@ -1012,6 +1017,10 @@ function ProductCatalog({ products }) {
                   <Gruppo etichetta="Interasse" campo="inter" opzioni={interassi} scelte={inter} set={setInter}
                     test={(p, o) => p.varianti.some(v => v.interasse === o)} tutti="Tutti gli interassi" plurale="interassi"
                     label={(o) => o + ' mm'} />
+                )}
+                {vetri.length > 1 && (
+                  <Gruppo etichetta="Spessore vetro" campo="vetro" opzioni={vetri} scelte={vetro} set={setVetro}
+                    test={(p, o) => p.spessoreVetro === o} tutti="Tutti gli spessori" plurale="spessori" />
                 )}
               </div>
               <div className="filter-actions">
