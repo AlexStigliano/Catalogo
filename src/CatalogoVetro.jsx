@@ -526,7 +526,7 @@ const PRODOTTI_VETRO = [
     nome: 'Profilo balaustra muretto 8+8',
     descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
     materiale: 'Alluminio',
-    spessoreVetro: '8+8',
+    spessoriVetro: ['8+8'],
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
@@ -544,57 +544,6 @@ const PRODOTTI_VETRO = [
     ],
     essenziali: [20],
     facoltativi: [21],
-  },
-  {
-    id: 23, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Profilo balaustra muretto 6+6',
-    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass Speedy TGS 50. Linea super compatta pensata per il fissaggio sopra muretto, dove la muratura esistente è già alta e il parapetto in vetro resta entro i 500 mm di altezza. Adatto a vetri stratificati e temperati da 6+1.52+6 mm (va bene anche il 5+1.52+5). Sezione 58×76 mm, con fori asolati 8,5×12 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 50), 24 fori in quella da 6000 mm (TGS 51). Profilo progettato per ancorante M8; la barra filettata non deve sporgere più di 12 mm. I profili vengono forniti completi di guarnizioni e accessori per il montaggio. Disponibile in alluminio finitura argento. Per la barra da 6000 mm il trasporto è a cura del cliente.',
-    materiale: 'Alluminio',
-    spessoreVetro: '6+6',
-    dimensioni: 'Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
-    assi: [
-      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
-    ],
-    immagini: {
-      'Argento': [tgs50Render, tgs50Sezione, tgs50Quote],
-    },
-    varianti: [
-      { codice: 'TGS 50', finitura: 'Argento', lunghezza: 3000 },
-      { codice: 'TGS 51', finitura: 'Argento', lunghezza: 6000 },
-    ],
-    essenziali: [24],
-    facoltativi: [25],
-  },
-  {
-    id: 24, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Tappo laterale TGS 52',
-    descrizione: 'Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
-    materiale: 'Alluminio',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
-    immagini: {
-      'Argento': [tgs52Tappo],
-    },
-    varianti: [
-      { codice: 'TGS 52', finitura: 'Argento' },
-    ],
-    facoltativi: [25],
-  },
-  {
-    id: 25, categoria: '01', sottocategoria: 'balaustre',
-    nome: 'Chiave ergonomica TGS 53',
-    descrizione: 'Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.',
-    materiale: 'Alluminio',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
-    immagini: {
-      'Argento': [tgs53Chiave],
-    },
-    varianti: [
-      { codice: 'TGS 53', finitura: 'Argento' },
-    ],
   },
   {
     id: 20, categoria: '01', sottocategoria: 'balaustre',
@@ -645,6 +594,56 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 205', finitura: 'Argento' },
     ],
   },
+  {
+    id: 23, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra muretto 6+6',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass Speedy TGS 50. Linea super compatta pensata per il fissaggio sopra muretto, dove la muratura esistente è già alta e il parapetto in vetro resta entro i 500 mm di altezza. Adatto a vetri stratificati e temperati da 6+1.52+6 mm (va bene anche il 5+1.52+5). Sezione 58×76 mm, con fori asolati 8,5×12 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 50), 24 fori in quella da 6000 mm (TGS 51). Profilo progettato per ancorante M8; la barra filettata non deve sporgere più di 12 mm. I profili vengono forniti completi di guarnizioni e accessori per il montaggio. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['6+6', '5+5'],
+    dimensioni: 'Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm (va bene anche 5+1.52+5) · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tgs50Render, tgs50Sezione, tgs50Quote],
+    },
+    varianti: [
+      { codice: 'TGS 50', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TGS 51', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [24],
+    facoltativi: [25],
+  },
+  {
+    id: 24, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TGS 52',
+    descrizione: 'Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tgs52Tappo],
+    },
+    varianti: [
+      { codice: 'TGS 52', finitura: 'Argento' },
+    ],
+    facoltativi: [25],
+  },
+  {
+    id: 25, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Chiave ergonomica TGS 53',
+    descrizione: 'Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tgs53Chiave],
+    },
+    varianti: [
+      { codice: 'TGS 53', finitura: 'Argento' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -657,7 +656,7 @@ const SCHEDA_IMG_VETRO = {
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
    stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
    opzioni per i filtri, mentre `materiale` resta la dicitura da mostrare. */
-const materialiDi = (p) => p.materiali || [p.materiale];
+const materialiDi = (p) => p.materiali || (p.materiale ? [p.materiale] : []);
 const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id } }));
 const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
 
@@ -964,7 +963,7 @@ function ProductCatalog({ products }) {
     .sort((a, b) => a - b), [products]);
   const interassi = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.interasse).filter(v => v != null)))]
     .sort((a, b) => a - b), [products]);
-  const vetri = useMemo(() => [...new Set(products.map(p => p.spessoreVetro).filter(Boolean))]
+  const vetri = useMemo(() => [...new Set(products.flatMap(p => p.spessoriVetro || []))]
     .sort((a, b) => a.localeCompare(b, 'it', { numeric: true })), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
@@ -977,7 +976,7 @@ function ProductCatalog({ products }) {
     const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
     const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
     const okI = salta === 'inter' || !inter.length || p.varianti.some(v => inter.includes(v.interasse));
-    const okV = salta === 'vetro' || !vetro.length || vetro.includes(p.spessoreVetro);
+    const okV = salta === 'vetro' || !vetro.length || (p.spessoriVetro || []).some(v => vetro.includes(v));
     const okFav = !favOnly || favorites.includes(p.id);
     return okQ && okM && okF && okP && okD && okL && okI && okV && okFav;
   };
@@ -1080,7 +1079,7 @@ function ProductCatalog({ products }) {
                 )}
                 {vetri.length > 1 && (
                   <Gruppo etichetta="Spessore vetro" campo="vetro" opzioni={vetri} scelte={vetro} set={setVetro}
-                    test={(p, o) => p.spessoreVetro === o} tutti="Tutti gli spessori" plurale="spessori" />
+                    test={(p, o) => (p.spessoriVetro || []).includes(o)} tutti="Tutti gli spessori" plurale="spessori" />
                 )}
               </div>
               <div className="filter-actions">
@@ -1155,7 +1154,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         </div>
         <div className="submeta">
           <p className="sub">{subName(p.sottocategoria)}</p>
-          <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>
+          {p.materiale && <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>}
         </div>
         {p.scheda
           ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
@@ -1390,7 +1389,7 @@ function ProductDetail({ id }) {
             <p className="pdp-sub">{subName(p.sottocategoria)}</p>
             <hr className="rule" />
             <div className="pdp-specs">
-              <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>
+              {p.materiale && <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>}
               {p.dimensioni && <div className="pdp-spec"><span className="k">Misure</span><span className="v">{p.dimensioni}</span></div>}
               <div className="pdp-spec">
                 <span className="k">Fornitore</span>
