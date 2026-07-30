@@ -67,6 +67,7 @@ import schOregon from './assets/vetro/schede/oregon-scheda.jpg';
 import texasInox from './assets/vetro/prodotti/texas-inox-satinato.jpg';
 import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
 import schTexas from './assets/vetro/schede/texas-scheda.jpg';
+import compasLogo from './assets/vetro/compas-logo.svg';
 import tg1000Render from './assets/vetro/prodotti/tg1000-render.jpg';
 import tg1000Sezione from './assets/vetro/prodotti/tg1000-sezione.jpg';
 import tg1000Ambiente from './assets/vetro/prodotti/tg1000-ambiente.jpg';
@@ -518,7 +519,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
     materiale: 'Alluminio',
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
-    fornitore: 'Compas',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
     // Il rapporto di prova del produttore: in attesa del PDF da caricare.
     rapporto: null,
@@ -540,7 +541,7 @@ const PRODOTTI_VETRO = [
     nome: 'Tappo laterale TG 1004',
     descrizione: 'Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
     materiale: 'Alluminio',
-    fornitore: 'Compas',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
     immagini: {
       'Argento': [tg1004Tappo],
@@ -556,7 +557,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e porta la quota totale da 82 a 97 mm (15 mm di profilo). Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.',
     materiale: 'Alluminio',
     dimensioni: 'Larghezza 73 mm · altezza 15 mm (97 mm con il supporto) · fori Ø14 mm · interasse 250 mm',
-    fornitore: 'Compas',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
@@ -575,7 +576,7 @@ const PRODOTTI_VETRO = [
     nome: 'Tappo per profilo scarico acque TG 205',
     descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
     materiale: 'Alluminio',
-    fornitore: 'Compas',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
     immagini: {
       'Argento': [tg205Tappo],
