@@ -74,6 +74,8 @@ import tg1000Ambiente from './assets/vetro/prodotti/tg1000-ambiente.jpg';
 import schTg1000 from './assets/vetro/schede/tg1000-scheda.jpg';
 import tg1004Tappo from './assets/vetro/prodotti/tg1004-tappo.jpg';
 import schTg1004 from './assets/vetro/schede/tg1004-scheda.jpg';
+import tg409Chiave from './assets/vetro/prodotti/tg409-chiave.jpg';
+import tg409Uso from './assets/vetro/prodotti/tg409-uso.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -85,7 +87,6 @@ import schTgs50 from './assets/vetro/schede/tgs50-scheda.jpg';
 import tgs52Tappo from './assets/vetro/prodotti/tgs52-tappo.jpg';
 import schTgs52 from './assets/vetro/schede/tgs52-scheda.jpg';
 import tgs53Chiave from './assets/vetro/prodotti/tgs53-chiave.jpg';
-import schTgs53 from './assets/vetro/schede/tgs53-scheda.jpg';
 import tg200Render from './assets/vetro/prodotti/tg200-render.jpg';
 import tg200Sezione from './assets/vetro/prodotti/tg200-sezione.jpg';
 import tg200Fori from './assets/vetro/prodotti/tg200-fori.jpg';
@@ -551,7 +552,7 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 201R', finitura: 'Argento', lunghezza: 6000 },
     ],
     essenziali: [27],
-    facoltativi: [21],
+    facoltativi: [21, 28],
   },
   {
     id: 27, categoria: '01', sottocategoria: 'balaustre',
@@ -626,7 +627,7 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 1001', finitura: 'Argento', lunghezza: 6000 },
     ],
     essenziali: [20],
-    facoltativi: [21],
+    facoltativi: [21, 28],
   },
   {
     id: 20, categoria: '01', sottocategoria: 'balaustre',
@@ -642,6 +643,19 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 1004', finitura: 'Argento' },
     ],
     facoltativi: [21],
+  },
+  {
+    id: 28, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Chiave ergonomica TG 409',
+    descrizione: 'Chiave sagomata per stringere comodamente i piattelli esagonali di serraggio del vetro. Compatibile con tutti i supporti Total Glass ad eccezione delle serie TG 300 e TG 600.',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
+    immagini: {
+      'Argento': [tg409Chiave, tg409Uso],
+    },
+    varianti: [
+      { codice: 'TG 409', finitura: 'Argento' },
+    ],
   },
   {
     id: 23, categoria: '01', sottocategoria: 'balaustre',
@@ -685,7 +699,7 @@ const PRODOTTI_VETRO = [
     nome: 'Chiave ergonomica TGS 53',
     descrizione: 'Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
     immagini: {
       'Argento': [tgs53Chiave],
     },
@@ -699,7 +713,7 @@ const SCHEDA_IMG_VETRO = {
   7: schArizona, 8: schArizonaInclinato, 9: schArkansasQ, 10: schCalifornia, 11: schColorado, 12: schGeorgiaQ,
   13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
-  23: schTgs50, 24: schTgs52, 25: schTgs53,
+  23: schTgs50, 24: schTgs52,
   26: schTg200, 27: schTg202,
 };
 
@@ -1206,9 +1220,11 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <p className="sub">{subName(p.sottocategoria)}</p>
           {p.materiale && <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>}
         </div>
-        {p.scheda
-          ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
-          : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
+        {p.scheda !== undefined && (
+          p.scheda
+            ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+            : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
+        )}
         {sceltaFin ? (
           <div className="finishes">
             <div className="fbtns">
@@ -1485,9 +1501,13 @@ function ProductDetail({ id }) {
             ))}
 
             <div className="pdp-docs">
-              {p.scheda
-                ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
-                : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>}
+              {/* Niente scheda tecnica (undefined) per gli articoli che non ne hanno una,
+                  come le chiavi ergonomiche: qui il tasto non compare proprio. */}
+              {p.scheda !== undefined && (
+                p.scheda
+                  ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+                  : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
+              )}
               {/* Il rapporto di prova esiste solo per gli articoli certificati:
                   dove manca del tutto non mostriamo nulla. */}
               {p.rapporto !== undefined && (
