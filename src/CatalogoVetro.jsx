@@ -92,6 +92,9 @@ import schDist20 from './assets/vetro/schede/distanziale-052-20mm-scheda.jpg';
 import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
 import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
 import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
+import distanzialeVista1 from './assets/vetro/prodotti/distanziale-052-vista1.jpg';
+import distanzialeVista2 from './assets/vetro/prodotti/distanziale-052-vista2.jpg';
+import distanzialeVista3 from './assets/vetro/prodotti/distanziale-052-vista3.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -290,7 +293,7 @@ const PRODOTTI_VETRO = [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
     ],
     immagini: {
-      // In attesa delle 3 foto prodotto (uguali per tutte le misure).
+      'Inox satinato': [distanzialeVista1, distanzialeVista2, distanzialeVista3],
     },
     varianti: [
       { codice: 'IN109-239', finitura: 'Inox satinato', lunghezza: 5 },
