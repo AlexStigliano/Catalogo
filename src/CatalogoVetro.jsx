@@ -93,6 +93,10 @@ import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
 import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
 import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
 import schTenditore1000 from './assets/vetro/schede/tenditore-010-1000mm-scheda.jpg';
+import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
+import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
+import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
+import tenditoreAmbiente from './assets/vetro/prodotti/tenditore-010-ambiente.jpg';
 import distanzialeVista1 from './assets/vetro/prodotti/distanziale-052-vista1.jpg';
 import distanzialeVista2 from './assets/vetro/prodotti/distanziale-052-vista2.jpg';
 import distanzialeVista3 from './assets/vetro/prodotti/distanziale-052-vista3.jpg';
@@ -812,7 +816,7 @@ const PRODOTTI_VETRO = [
   {
     id: 33, categoria: '01', sottocategoria: 'pensiline',
     nome: 'Tenditore a barra tonda Ø10mm per pensilina',
-    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Viene fornito completo di attacco a muro e attacco a vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Lunghezza totale 1000mm · tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
@@ -821,7 +825,7 @@ const PRODOTTI_VETRO = [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
     ],
     immagini: {
-      // In attesa delle foto prodotto (uguali per tutte le misure).
+      'Inox satinato': [tenditoreVista1, tenditoreVista2, tenditoreEsploso, tenditoreAmbiente],
     },
     varianti: [
       { codice: 'IN112-110', finitura: 'Inox satinato', lunghezza: 1000 },
