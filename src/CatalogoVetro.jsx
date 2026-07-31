@@ -740,8 +740,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Sezione 125×104 mm · fori Ø14 mm · interasse 250 mm · vetro 10+1.52+10 mm · barra filettata M12, sporgenza max 22 mm · inclinazione 1,5° · sbalzo vetro max 1500 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
     scheda: schedaUrl('tgs-500-scheda-tecnica.pdf'),
-    // Il rapporto di prova del produttore: in attesa del PDF da caricare.
-    rapporto: null,
+    // Rapporto di prova Istituto Giordano n. 358697: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: schedaUrl('tgs-500-rapporto-di-prova.pdf'),
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
