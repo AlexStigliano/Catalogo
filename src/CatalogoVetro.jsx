@@ -91,6 +91,7 @@ import schDist10 from './assets/vetro/schede/distanziale-052-10mm-scheda.jpg';
 import schDist20 from './assets/vetro/schede/distanziale-052-20mm-scheda.jpg';
 import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
 import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
+import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -272,7 +273,7 @@ const PRODOTTI_VETRO = [
   {
     id: 32, categoria: '01', sottocategoria: 'puntuali',
     nome: 'Distanziale per vite fermavetro Ø52mm',
-    descrizione: 'Distanziale a rondella per attacchi puntuali a vite Ø52mm, da inserire fra vetro e supporto per ottenere l’interspazio desiderato. Foro centrale Ø10,5mm per vite M10. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato. Disponibile nelle lunghezze 5, 10, 20, 30 e 40mm.',
+    descrizione: 'Distanziale a rondella per attacchi puntuali a vite Ø52mm, da inserire fra vetro e supporto per ottenere l’interspazio desiderato. Foro centrale Ø10,5mm per vite M10. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato. Disponibile nelle lunghezze 5, 10, 20, 30, 40 e 50mm.',
     materiale: 'Acciaio inox AISI 304',
     diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · foro Ø10,5mm',
@@ -283,6 +284,7 @@ const PRODOTTI_VETRO = [
       'IN109-241': schedaUrl('distanziale-052-20mm-scheda-tecnica.pdf'),
       'IN109-242': schedaUrl('distanziale-052-30mm-scheda-tecnica.pdf'),
       'IN109-243': schedaUrl('distanziale-052-40mm-scheda-tecnica.pdf'),
+      'IN109-244': schedaUrl('distanziale-052-50mm-scheda-tecnica.pdf'),
     },
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
@@ -296,6 +298,7 @@ const PRODOTTI_VETRO = [
       { codice: 'IN109-241', finitura: 'Inox satinato', lunghezza: 20 },
       { codice: 'IN109-242', finitura: 'Inox satinato', lunghezza: 30 },
       { codice: 'IN109-243', finitura: 'Inox satinato', lunghezza: 40 },
+      { codice: 'IN109-244', finitura: 'Inox satinato', lunghezza: 50 },
     ],
   },
   {
@@ -811,7 +814,7 @@ const SCHEDA_IMG_VETRO = {
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
   23: schTgs50, 24: schTgs52,
   26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
-  32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40 },
+  32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
