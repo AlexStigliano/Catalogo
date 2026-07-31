@@ -92,6 +92,7 @@ import schDist20 from './assets/vetro/schede/distanziale-052-20mm-scheda.jpg';
 import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
 import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
 import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
+import schTenditore1000 from './assets/vetro/schede/tenditore-010-1000mm-scheda.jpg';
 import distanzialeVista1 from './assets/vetro/prodotti/distanziale-052-vista1.jpg';
 import distanzialeVista2 from './assets/vetro/prodotti/distanziale-052-vista2.jpg';
 import distanzialeVista3 from './assets/vetro/prodotti/distanziale-052-vista3.jpg';
@@ -808,6 +809,24 @@ const PRODOTTI_VETRO = [
       { codice: 'TGS 502', finitura: 'Argento' },
     ],
   },
+  {
+    id: 33, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Tenditore a barra tonda Ø10mm per pensilina',
+    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Lunghezza totale 1000mm · tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('tenditore-010-1000mm-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      // In attesa delle foto prodotto (uguali per tutte le misure).
+    },
+    varianti: [
+      { codice: 'IN112-110', finitura: 'Inox satinato', lunghezza: 1000 },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -817,6 +836,7 @@ const SCHEDA_IMG_VETRO = {
   23: schTgs50, 24: schTgs52,
   26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
   32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
+  33: schTenditore1000,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
