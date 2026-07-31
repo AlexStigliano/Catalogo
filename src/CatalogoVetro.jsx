@@ -94,6 +94,7 @@ import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
 import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
 import schTenditore1000 from './assets/vetro/schede/tenditore-010-1000mm-scheda.jpg';
 import schTenditore830 from './assets/vetro/schede/tenditore-010-830mm-scheda.jpg';
+import schTenditore910 from './assets/vetro/schede/tenditore-010-910mm-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -823,6 +824,7 @@ const PRODOTTI_VETRO = [
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: {
       'IN112-108': schedaUrl('tenditore-010-830mm-scheda-tecnica.pdf'),
+      'IN112-109': schedaUrl('tenditore-010-910mm-scheda-tecnica.pdf'),
       'IN112-110': schedaUrl('tenditore-010-1000mm-scheda-tecnica.pdf'),
     },
     assi: [
@@ -833,6 +835,7 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'IN112-108', finitura: 'Inox satinato', lunghezza: 830 },
+      { codice: 'IN112-109', finitura: 'Inox satinato', lunghezza: 910 },
       { codice: 'IN112-110', finitura: 'Inox satinato', lunghezza: 1000 },
     ],
   },
@@ -845,7 +848,7 @@ const SCHEDA_IMG_VETRO = {
   23: schTgs50, 24: schTgs52,
   26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
   32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
-  33: { 'IN112-108': schTenditore830, 'IN112-110': schTenditore1000 },
+  33: { 'IN112-108': schTenditore830, 'IN112-109': schTenditore910, 'IN112-110': schTenditore1000 },
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
