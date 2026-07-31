@@ -149,8 +149,7 @@ const CATEGORIE_VETRO = [
 const SOTTOCATEGORIE_VETRO = [
   { id: 'balaustre', nome: 'Profili per balaustre' },
   { id: 'puntuali', nome: 'Attacchi puntuali' },
-  { id: 'pensiline', nome: 'Profili per pensiline' },
-  { id: 'tiranti', nome: 'Tiranti per pensiline' },
+  { id: 'pensiline', nome: 'Pensiline' },
   { id: 'morsetti', nome: 'Morsetti' },
   { id: 'fermavetri', nome: 'Fermavetri' },
 ];
