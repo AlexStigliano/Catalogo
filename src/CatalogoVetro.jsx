@@ -79,6 +79,13 @@ import tg409Uso from './assets/vetro/prodotti/tg409-uso.jpg';
 import tg311Render from './assets/vetro/prodotti/tg311-render.jpg';
 import tg311Sezione from './assets/vetro/prodotti/tg311-sezione.jpg';
 import tg311Foto from './assets/vetro/prodotti/tg311-foto.jpg';
+import tgs500Foto from './assets/vetro/prodotti/tgs500-foto.jpg';
+import tgs500Sezione from './assets/vetro/prodotti/tgs500-sezione.jpg';
+import tgs500Quote from './assets/vetro/prodotti/tgs500-quote.jpg';
+import tgs500Fori from './assets/vetro/prodotti/tgs500-fori.jpg';
+import schTgs500 from './assets/vetro/schede/tgs500-scheda.jpg';
+import tgs502Tappo from './assets/vetro/prodotti/tgs502-tappo.jpg';
+import schTgs502 from './assets/vetro/schede/tgs502-scheda.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -724,6 +731,43 @@ const PRODOTTI_VETRO = [
       { codice: 'TG 311', finitura: 'Argento' },
     ],
   },
+  {
+    id: 30, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Profilo pensilina 10+10',
+    descrizione: 'Profilo a muro per pensiline in vetro, serie Total Glass Speedy TGS 500. Solo per vetro stratificato e temperato 10+1.52+10, testato al carico neve e vento di zona alpina (165 kg/m²). Dotato di perni di sicurezza per la ritenuta del vetro e predisposto per l’illuminazione LED. Sezione 125×104 mm, con inclinazione di 1,5° che fa defluire l’acqua piovana e guarnizione impermeabilizzante contro le infiltrazioni fra muro e supporto. Fori Ø14 mm per il fissaggio a muro a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 500), 24 fori in quella da 6000 mm (TGS 501). Si fissa con barre filettate M12, lasciandole sporgere al massimo 22 mm. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['10+10'],
+    dimensioni: 'Sezione 125×104 mm · fori Ø14 mm · interasse 250 mm · vetro 10+1.52+10 mm · barra filettata M12, sporgenza max 22 mm · inclinazione 1,5° · sbalzo vetro max 1500 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-500-scheda-tecnica.pdf'),
+    // Il rapporto di prova del produttore: in attesa del PDF da caricare.
+    rapporto: null,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tgs500Foto, tgs500Sezione, tgs500Quote, tgs500Fori],
+    },
+    varianti: [
+      { codice: 'TGS 500', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TGS 501', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [31],
+  },
+  {
+    id: 31, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Tappo per pensilina TGS 502',
+    descrizione: 'Tappo di chiusura laterale per i profili pensilina della serie Total Glass Speedy TGS 500, completo di guarnizione in gomma anti infiltrazione e viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('tgs-500-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [tgs502Tappo],
+    },
+    varianti: [
+      { codice: 'TGS 502', finitura: 'Argento' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -731,7 +775,7 @@ const SCHEDA_IMG_VETRO = {
   13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
   23: schTgs50, 24: schTgs52,
-  26: schTg200, 27: schTg202,
+  26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
