@@ -86,6 +86,11 @@ import tgs500Fori from './assets/vetro/prodotti/tgs500-fori.jpg';
 import schTgs500 from './assets/vetro/schede/tgs500-scheda.jpg';
 import tgs502Tappo from './assets/vetro/prodotti/tgs502-tappo.jpg';
 import schTgs502 from './assets/vetro/schede/tgs502-scheda.jpg';
+import schDist5 from './assets/vetro/schede/distanziale-052-5mm-scheda.jpg';
+import schDist10 from './assets/vetro/schede/distanziale-052-10mm-scheda.jpg';
+import schDist20 from './assets/vetro/schede/distanziale-052-20mm-scheda.jpg';
+import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
+import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
 import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
 import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
 import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
@@ -262,6 +267,35 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'IN109-220', finitura: 'Inox satinato' },
+    ],
+  },
+  {
+    id: 32, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Distanziale per vite fermavetro Ø52mm',
+    descrizione: 'Distanziale a rondella per attacchi puntuali a vite Ø52mm, da inserire fra vetro e supporto per ottenere l’interspazio desiderato. Foro centrale Ø10,5mm per vite M10. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato. Disponibile nelle lunghezze 5, 10, 20, 30 e 40mm.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · foro Ø10,5mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: {
+      'IN109-239': schedaUrl('distanziale-052-5mm-scheda-tecnica.pdf'),
+      'IN109-240': schedaUrl('distanziale-052-10mm-scheda-tecnica.pdf'),
+      'IN109-241': schedaUrl('distanziale-052-20mm-scheda-tecnica.pdf'),
+      'IN109-242': schedaUrl('distanziale-052-30mm-scheda-tecnica.pdf'),
+      'IN109-243': schedaUrl('distanziale-052-40mm-scheda-tecnica.pdf'),
+    },
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      // In attesa delle 3 foto prodotto (uguali per tutte le misure).
+    },
+    varianti: [
+      { codice: 'IN109-239', finitura: 'Inox satinato', lunghezza: 5 },
+      { codice: 'IN109-240', finitura: 'Inox satinato', lunghezza: 10 },
+      { codice: 'IN109-241', finitura: 'Inox satinato', lunghezza: 20 },
+      { codice: 'IN109-242', finitura: 'Inox satinato', lunghezza: 30 },
+      { codice: 'IN109-243', finitura: 'Inox satinato', lunghezza: 40 },
     ],
   },
   {
@@ -777,13 +811,20 @@ const SCHEDA_IMG_VETRO = {
   19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
   23: schTgs50, 24: schTgs52,
   26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
+  32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40 },
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
    stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
    opzioni per i filtri, mentre `materiale` resta la dicitura da mostrare. */
 const materialiDi = (p) => p.materiali || (p.materiale ? [p.materiale] : []);
-const openScheda = (id) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id } }));
+// La scheda (pdf e anteprima) può essere unica per il prodotto oppure diversa
+// per variante (es. un distanziale con una scheda tecnica per ogni lunghezza):
+// in quel caso è un oggetto { 'codice variante': valore }.
+const pickScheda = (val, key) => (val && typeof val === 'object')
+  ? (val[key] !== undefined ? val[key] : Object.values(val)[0])
+  : val;
+const openScheda = (id, key) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id, key } }));
 const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
 
 /* ---------- Ricerca in tutto il catalogo vetro ---------- */
@@ -1284,7 +1325,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         </div>
         {p.scheda !== undefined && (
           p.scheda
-            ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+            ? <button className="scheda" onClick={() => openScheda(p.id, selFin)}><Download size={15} /> Scheda tecnica</button>
             : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
         )}
         {sceltaFin ? (
@@ -1466,6 +1507,13 @@ function ProductDetail({ id }) {
   const selImg = gallery[imgIdx] || gallery[0];
   const sceltaFin = ufins.length > 1;
   const colMat = p.varianti.some(v => v.materiale);
+  // Codice della variante attualmente selezionata: serve per aprire la scheda
+  // giusta quando ogni misura ha la propria (es. un distanziale venduto in
+  // piu' lunghezze, ciascuna con la sua scheda tecnica).
+  const varianteAttiva = assi
+    ? p.varianti.find(v => perFinitura(v) && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
+    : p.varianti.find(perFinitura);
+  const codiceAttivo = (varianteAttiva || p.varianti[0]).codice;
   const isFav = favorites.includes(p.id);
   const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
 
@@ -1567,7 +1615,7 @@ function ProductDetail({ id }) {
                   come le chiavi ergonomiche: qui il tasto non compare proprio. */}
               {p.scheda !== undefined && (
                 p.scheda
-                  ? <button className="scheda" onClick={() => openScheda(p.id)}><Download size={15} /> Scheda tecnica</button>
+                  ? <button className="scheda" onClick={() => openScheda(p.id, codiceAttivo)}><Download size={15} /> Scheda tecnica</button>
                   : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
               )}
               {/* Il rapporto di prova esiste solo per gli articoli certificati:
@@ -1639,11 +1687,11 @@ function SchedaViewer() {
   const [item, setItem] = useState(null);
   useEffect(() => {
     const onOpen = (e) => {
-      const { id } = e.detail || {};
+      const { id, key } = e.detail || {};
       const p = PRODOTTI_VETRO.find(x => x.id === id);
-      const src = SCHEDA_IMG_VETRO[id];
+      const src = pickScheda(SCHEDA_IMG_VETRO[id], key);
       if (!p || !src) return;
-      setItem({ src, title: p.nome, pdf: p.scheda });
+      setItem({ src, title: p.nome, pdf: pickScheda(p.scheda, key) });
       document.body.style.overflow = 'hidden';
     };
     const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
