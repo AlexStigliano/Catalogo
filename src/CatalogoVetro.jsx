@@ -105,6 +105,10 @@ import schLamieraU from './assets/vetro/schede/lamiera-u-1676-3000-scheda.jpg';
 import lamieraURender from './assets/vetro/prodotti/lamiera-u-1676-3000-render.jpg';
 import lamieraUSezione from './assets/vetro/prodotti/lamiera-u-1676-3000-sezione.jpg';
 import schMorsettoM032 from './assets/vetro/schede/morsetto-m032-scheda.jpg';
+import morsettoM032Vista1 from './assets/vetro/prodotti/morsetto-m032-vista1.jpg';
+import morsettoM032Vista2 from './assets/vetro/prodotti/morsetto-m032-vista2.jpg';
+import morsettoM032Sezione from './assets/vetro/prodotti/morsetto-m032-sezione.jpg';
+import morsettoM032Esploso from './assets/vetro/prodotti/morsetto-m032-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -900,7 +904,10 @@ const PRODOTTI_VETRO = [
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
-    immagini: {},
+    immagini: {
+      'Inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
+      'Finitura inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
+    },
     varianti: [
       { codice: 'M032-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
       { codice: 'M032-0876', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
