@@ -104,6 +104,7 @@ import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda
 import schLamieraU from './assets/vetro/schede/lamiera-u-1676-3000-scheda.jpg';
 import lamieraURender from './assets/vetro/prodotti/lamiera-u-1676-3000-render.jpg';
 import lamieraUSezione from './assets/vetro/prodotti/lamiera-u-1676-3000-sezione.jpg';
+import schMorsettoM032 from './assets/vetro/schede/morsetto-m032-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -884,6 +885,35 @@ const PRODOTTI_VETRO = [
       { codice: 'IN600-233', finitura: 'Inox satinato', lunghezza: 3000 },
     ],
   },
+  {
+    id: 36, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 03 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 45×45mm · profondità 26mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m032-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M032-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M032-0876', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M032-1000', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M032-1076', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M032-NE0800', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M032-NE0876', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M032-NE1000', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M032-NE1076', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M03F0800', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 8 },
+      { codice: 'M03F0876', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
+      { codice: 'M03F1000', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 10 },
+      { codice: 'M03F1076', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -896,6 +926,7 @@ const SCHEDA_IMG_VETRO = {
   33: { 'IN112-108': schTenditore830, 'IN112-109': schTenditore910, 'IN112-110': schTenditore1000, 'IN112-111': schTenditore1150, 'IN112-112': schTenditore1300 },
   34: schFissaggioMuro100,
   35: schLamieraU,
+  36: schMorsettoM032,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
