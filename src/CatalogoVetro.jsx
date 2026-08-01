@@ -97,6 +97,8 @@ import schTenditore830 from './assets/vetro/schede/tenditore-010-830mm-scheda.jp
 import schTenditore910 from './assets/vetro/schede/tenditore-010-910mm-scheda.jpg';
 import schTenditore1150 from './assets/vetro/schede/tenditore-010-1150mm-scheda.jpg';
 import schTenditore1300 from './assets/vetro/schede/tenditore-010-1300mm-scheda.jpg';
+import fissaggioMuro100Render from './assets/vetro/prodotti/fissaggio-muro-100-render.jpg';
+import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -844,6 +846,22 @@ const PRODOTTI_VETRO = [
       { codice: 'IN112-111', finitura: 'Inox satinato', lunghezza: 1150 },
       { codice: 'IN112-112', finitura: 'Inox satinato', lunghezza: 1300 },
     ],
+    facoltativi: [34],
+  },
+  {
+    id: 34, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Fissaggio a muro Ø100mm per pensilina',
+    descrizione: 'Attacco a muro snodabile per tenditori di pensiline in vetro, piastra Ø100mm con foro Ø22mm per l’innesto della barra e regolazione per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra Ø100mm (interasse fori 74mm, fori Ø13mm) · innesto barra Ø22mm · spessore vetro 12-24mm · foro vetro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('fissaggio-muro-100-scheda-tecnica.pdf'),
+    immagini: {
+      'Inox satinato': [fissaggioMuro100Render],
+    },
+    varianti: [
+      { codice: 'IN112-120', finitura: 'Inox satinato' },
+    ],
   },
 ];
 const SCHEDA_IMG_VETRO = {
@@ -855,6 +873,7 @@ const SCHEDA_IMG_VETRO = {
   26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
   32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
   33: { 'IN112-108': schTenditore830, 'IN112-109': schTenditore910, 'IN112-110': schTenditore1000, 'IN112-111': schTenditore1150, 'IN112-112': schTenditore1300 },
+  34: schFissaggioMuro100,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
