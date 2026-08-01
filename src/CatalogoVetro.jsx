@@ -102,6 +102,8 @@ import fissaggioMuro100Vista2 from './assets/vetro/prodotti/fissaggio-muro-100-v
 import fissaggioMuro100Esploso from './assets/vetro/prodotti/fissaggio-muro-100-esploso.jpg';
 import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda.jpg';
 import schLamieraU from './assets/vetro/schede/lamiera-u-1676-3000-scheda.jpg';
+import lamieraURender from './assets/vetro/prodotti/lamiera-u-1676-3000-render.jpg';
+import lamieraUSezione from './assets/vetro/prodotti/lamiera-u-1676-3000-sezione.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -875,7 +877,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Sezione 21×20mm · spessore lamiera 1,50mm · larghezza gola 18mm · lunghezza barra 3000mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('lamiera-u-1676-3000-scheda-tecnica.pdf'),
-    immagini: {},
+    immagini: {
+      'Inox satinato': [lamieraURender, lamieraUSezione],
+    },
     varianti: [
       { codice: 'IN600-233', finitura: 'Inox satinato', lunghezza: 3000 },
     ],
@@ -891,6 +895,7 @@ const SCHEDA_IMG_VETRO = {
   32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
   33: { 'IN112-108': schTenditore830, 'IN112-109': schTenditore910, 'IN112-110': schTenditore1000, 'IN112-111': schTenditore1150, 'IN112-112': schTenditore1300 },
   34: schFissaggioMuro100,
+  35: schLamieraU,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
