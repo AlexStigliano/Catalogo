@@ -113,6 +113,7 @@ import morsettoM032NeroVista1 from './assets/vetro/prodotti/morsetto-m032-nero-v
 import morsettoM032NeroVista2 from './assets/vetro/prodotti/morsetto-m032-nero-vista2.jpg';
 import morsettoM032NeroSezione from './assets/vetro/prodotti/morsetto-m032-nero-sezione.jpg';
 import morsettoM032NeroEsploso from './assets/vetro/prodotti/morsetto-m032-nero-esploso.jpg';
+import schMorsettoM042 from './assets/vetro/schede/morsetto-m042-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -928,6 +929,29 @@ const PRODOTTI_VETRO = [
       { codice: 'M03F-1076', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
     ],
   },
+  {
+    id: 37, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 04 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['13.52', '17.52'],
+    dimensioni: 'Corpo 65×37,5mm · profondità 55mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m042-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M042-1352', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 13.52 },
+      { codice: 'M042-1752', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 17.52 },
+      { codice: 'M042-NE-1352', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 13.52 },
+      { codice: 'M042-NE-1752', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 17.52 },
+      { codice: 'M04F-1352', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 13.52 },
+      { codice: 'M04F-1752', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 17.52 },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -941,6 +965,7 @@ const SCHEDA_IMG_VETRO = {
   34: schFissaggioMuro100,
   35: schLamieraU,
   36: schMorsettoM032,
+  37: schMorsettoM042,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
