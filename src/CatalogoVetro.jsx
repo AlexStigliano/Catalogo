@@ -97,7 +97,9 @@ import schTenditore830 from './assets/vetro/schede/tenditore-010-830mm-scheda.jp
 import schTenditore910 from './assets/vetro/schede/tenditore-010-910mm-scheda.jpg';
 import schTenditore1150 from './assets/vetro/schede/tenditore-010-1150mm-scheda.jpg';
 import schTenditore1300 from './assets/vetro/schede/tenditore-010-1300mm-scheda.jpg';
-import fissaggioMuro100Render from './assets/vetro/prodotti/fissaggio-muro-100-render.jpg';
+import fissaggioMuro100Vista1 from './assets/vetro/prodotti/fissaggio-muro-100-vista1.jpg';
+import fissaggioMuro100Vista2 from './assets/vetro/prodotti/fissaggio-muro-100-vista2.jpg';
+import fissaggioMuro100Esploso from './assets/vetro/prodotti/fissaggio-muro-100-esploso.jpg';
 import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
@@ -857,7 +859,7 @@ const PRODOTTI_VETRO = [
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('fissaggio-muro-100-scheda-tecnica.pdf'),
     immagini: {
-      'Inox satinato': [fissaggioMuro100Render],
+      'Inox satinato': [fissaggioMuro100Vista1, fissaggioMuro100Vista2, fissaggioMuro100Esploso],
     },
     varianti: [
       { codice: 'IN112-120', finitura: 'Inox satinato' },
