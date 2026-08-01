@@ -889,6 +889,8 @@ const PRODOTTI_VETRO = [
     id: 36, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Morsetto per vetro mod. 03 con attacco diritto',
     descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato.',
+    // La "finitura inox satinato" dello zama e' un aspetto cromato diverso
+    // dall'inox satinato vero: finitura separata, non da confondere col colore.
     materiale: 'Acciaio inox AISI 304 o zama',
     materiali: ['Acciaio inox AISI 304', 'Zama'],
     spessoriVetro: ['8', '8.76', '10', '10.76'],
@@ -908,10 +910,10 @@ const PRODOTTI_VETRO = [
       { codice: 'M032-NE0876', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
       { codice: 'M032-NE1000', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
       { codice: 'M032-NE1076', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
-      { codice: 'M03F0800', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 8 },
-      { codice: 'M03F0876', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
-      { codice: 'M03F1000', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 10 },
-      { codice: 'M03F1076', finitura: 'Inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
+      { codice: 'M03F0800', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8 },
+      { codice: 'M03F0876', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
+      { codice: 'M03F1000', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10 },
+      { codice: 'M03F1076', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
     ],
   },
 ];
@@ -999,6 +1001,7 @@ const FINISHES_VETRO = {
   'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
   'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
   'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
+  'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
