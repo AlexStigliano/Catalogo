@@ -109,6 +109,10 @@ import morsettoM032Vista1 from './assets/vetro/prodotti/morsetto-m032-vista1.jpg
 import morsettoM032Vista2 from './assets/vetro/prodotti/morsetto-m032-vista2.jpg';
 import morsettoM032Sezione from './assets/vetro/prodotti/morsetto-m032-sezione.jpg';
 import morsettoM032Esploso from './assets/vetro/prodotti/morsetto-m032-esploso.jpg';
+import morsettoM032NeroVista1 from './assets/vetro/prodotti/morsetto-m032-nero-vista1.jpg';
+import morsettoM032NeroVista2 from './assets/vetro/prodotti/morsetto-m032-nero-vista2.jpg';
+import morsettoM032NeroSezione from './assets/vetro/prodotti/morsetto-m032-nero-sezione.jpg';
+import morsettoM032NeroEsploso from './assets/vetro/prodotti/morsetto-m032-nero-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -892,7 +896,7 @@ const PRODOTTI_VETRO = [
   {
     id: 36, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Morsetto per vetro mod. 03 con attacco diritto',
-    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato.',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
     // La "finitura inox satinato" dello zama e' un aspetto cromato diverso
     // dall'inox satinato vero: finitura separata, non da confondere col colore.
     materiale: 'Acciaio inox AISI 304 o zama',
@@ -907,6 +911,7 @@ const PRODOTTI_VETRO = [
     immagini: {
       'Inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
       'Finitura inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
+      'Nero opaco': [morsettoM032NeroVista1, morsettoM032NeroVista2, morsettoM032NeroSezione, morsettoM032NeroEsploso],
     },
     varianti: [
       { codice: 'M032-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
