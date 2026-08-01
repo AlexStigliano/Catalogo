@@ -118,6 +118,10 @@ import morsettoM042Vista1 from './assets/vetro/prodotti/morsetto-m042-vista1.jpg
 import morsettoM042Vista2 from './assets/vetro/prodotti/morsetto-m042-vista2.jpg';
 import morsettoM042Sezione from './assets/vetro/prodotti/morsetto-m042-sezione.jpg';
 import morsettoM042Esploso from './assets/vetro/prodotti/morsetto-m042-esploso.jpg';
+import morsettoM042NeroVista1 from './assets/vetro/prodotti/morsetto-m042-nero-vista1.jpg';
+import morsettoM042NeroVista2 from './assets/vetro/prodotti/morsetto-m042-nero-vista2.jpg';
+import morsettoM042NeroSezione from './assets/vetro/prodotti/morsetto-m042-nero-sezione.jpg';
+import morsettoM042NeroEsploso from './assets/vetro/prodotti/morsetto-m042-nero-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -949,6 +953,7 @@ const PRODOTTI_VETRO = [
     immagini: {
       'Inox satinato': [morsettoM042Vista1, morsettoM042Vista2, morsettoM042Sezione, morsettoM042Esploso],
       'Finitura inox satinato': [morsettoM042Vista1, morsettoM042Vista2, morsettoM042Sezione, morsettoM042Esploso],
+      'Nero opaco': [morsettoM042NeroVista1, morsettoM042NeroVista2, morsettoM042NeroSezione, morsettoM042NeroEsploso],
     },
     varianti: [
       { codice: 'M042-1352', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 13.52 },
