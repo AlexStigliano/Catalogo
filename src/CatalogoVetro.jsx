@@ -820,7 +820,7 @@ const PRODOTTI_VETRO = [
   {
     id: 33, categoria: '01', sottocategoria: 'pensiline',
     nome: 'Tenditore a barra tonda Ø10mm per pensilina',
-    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Viene fornito completo di attacco a muro e attacco a vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Viene fornito completo di attacco a muro e attacco a vetro. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
