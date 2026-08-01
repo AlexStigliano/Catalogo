@@ -101,6 +101,7 @@ import fissaggioMuro100Vista1 from './assets/vetro/prodotti/fissaggio-muro-100-v
 import fissaggioMuro100Vista2 from './assets/vetro/prodotti/fissaggio-muro-100-vista2.jpg';
 import fissaggioMuro100Esploso from './assets/vetro/prodotti/fissaggio-muro-100-esploso.jpg';
 import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda.jpg';
+import schLamieraU from './assets/vetro/schede/lamiera-u-1676-3000-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -848,7 +849,7 @@ const PRODOTTI_VETRO = [
       { codice: 'IN112-111', finitura: 'Inox satinato', lunghezza: 1150 },
       { codice: 'IN112-112', finitura: 'Inox satinato', lunghezza: 1300 },
     ],
-    facoltativi: [34],
+    facoltativi: [34, 35],
   },
   {
     id: 34, categoria: '01', sottocategoria: 'pensiline',
@@ -863,6 +864,20 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'IN112-120', finitura: 'Inox satinato' },
+    ],
+  },
+  {
+    id: 35, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Lamiera piegata a U per vetro 16.76-17.52mm',
+    descrizione: 'Profilo a U in lamiera piegata, per il contenimento del bordo del vetro nelle pensiline sostenute da tiranti. Adatto a vetri stratificati e temperati di spessore 16,76-17,52mm. Disponibile in barra da 3000mm, in acciaio inox AISI 304, finitura satinata.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Sezione 21×20mm · spessore lamiera 1,50mm · larghezza gola 18mm · lunghezza barra 3000mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('lamiera-u-1676-3000-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN600-233', finitura: 'Inox satinato', lunghezza: 3000 },
     ],
   },
 ];
