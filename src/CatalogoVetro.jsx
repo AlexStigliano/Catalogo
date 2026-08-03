@@ -141,6 +141,9 @@ import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pav
 import supportoQuadroIn610020SatVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista1.jpg';
 import supportoQuadroIn610020SatVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista2.jpg';
 import supportoQuadroIn610020SatEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-esploso.jpg';
+import supportoQuadroIn610020LucVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-vista1.jpg';
+import supportoQuadroIn610020LucVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-vista2.jpg';
+import supportoQuadroIn610020LucEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1044,6 +1047,7 @@ const PRODOTTI_VETRO = [
     scheda: schedaUrl('supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [supportoQuadroIn610020SatVista1, supportoQuadroIn610020SatVista2, supportoQuadroIn610020SatEsploso],
+      'Inox lucido': [supportoQuadroIn610020LucVista1, supportoQuadroIn610020LucVista2, supportoQuadroIn610020LucEsploso],
     },
     varianti: [
       { codice: 'IN610-020-04', finitura: 'Inox satinato' },
