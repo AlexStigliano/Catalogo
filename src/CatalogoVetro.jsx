@@ -137,6 +137,7 @@ import supportoTondoIn610015SatEsploso from './assets/vetro/prodotti/supporto-to
 import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista1.jpg';
 import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
+import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1029,6 +1030,21 @@ const PRODOTTI_VETRO = [
       { codice: 'IN610-015-04-L', finitura: 'Inox lucido' },
     ],
   },
+  {
+    id: 41, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto quadro a pavimento vetro 16,76-17,52mm',
+    descrizione: 'Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Altezza 180mm · palo 48,5×48,5mm · base 108×108mm (piastra 100×100mm) · foro vetro Ø15mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN610-020-04', finitura: 'Inox satinato' },
+      { codice: 'IN610-020-04-L', finitura: 'Inox lucido' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1046,6 +1062,7 @@ const SCHEDA_IMG_VETRO = {
   38: schSupportoTondoIn610,
   39: schSupportoQuadroIn610,
   40: schSupportoTondoIn610015,
+  41: schSupportoQuadroIn610020,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
