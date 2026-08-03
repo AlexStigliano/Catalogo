@@ -126,6 +126,7 @@ import schSupportoTondoIn610 from './assets/vetro/schede/supporto-tondo-paviment
 import supportoTondoIn610Vista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-vista1.jpg';
 import supportoTondoIn610Vista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-vista2.jpg';
 import supportoTondoIn610Esploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-esploso.jpg';
+import schSupportoQuadroIn610 from './assets/vetro/schede/supporto-quadro-pavimento-in610-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -984,6 +985,20 @@ const PRODOTTI_VETRO = [
       { codice: 'IN610-005-04-L', finitura: 'Inox lucido' },
     ],
   },
+  {
+    id: 39, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto quadro a pavimento vetro 12-12,76mm',
+    descrizione: 'Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['12', '12.76'],
+    dimensioni: 'Altezza 64,7mm · palo 48,2×48,2mm · base 104×104mm (piastra 100×100mm) · fori Ø7mm per viti Ø14mm, interasse diagonale 76,5mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('supporto-quadro-pavimento-in610-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN610-010-04-L', finitura: 'Inox lucido' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -999,6 +1014,7 @@ const SCHEDA_IMG_VETRO = {
   36: schMorsettoM032,
   37: schMorsettoM042,
   38: schSupportoTondoIn610,
+  39: schSupportoQuadroIn610,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
