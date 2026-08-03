@@ -134,6 +134,9 @@ import schSupportoTondoIn610015 from './assets/vetro/schede/supporto-tondo-pavim
 import supportoTondoIn610015SatVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista1.jpg';
 import supportoTondoIn610015SatVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista2.jpg';
 import supportoTondoIn610015SatEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-esploso.jpg';
+import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista1.jpg';
+import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
+import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1019,6 +1022,7 @@ const PRODOTTI_VETRO = [
     scheda: schedaUrl('supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf'),
     immagini: {
       'Inox satinato': [supportoTondoIn610015SatVista1, supportoTondoIn610015SatVista2, supportoTondoIn610015SatEsploso],
+      'Inox lucido': [supportoTondoIn610015LucVista1, supportoTondoIn610015LucVista2, supportoTondoIn610015LucEsploso],
     },
     varianti: [
       { codice: 'IN610-015-04', finitura: 'Inox satinato' },
