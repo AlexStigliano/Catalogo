@@ -131,6 +131,9 @@ import supportoQuadroIn610Vista1 from './assets/vetro/prodotti/supporto-quadro-p
 import supportoQuadroIn610Vista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista2.jpg';
 import supportoQuadroIn610Esploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-esploso.jpg';
 import schSupportoTondoIn610015 from './assets/vetro/schede/supporto-tondo-pavimento-in610-015-scheda.jpg';
+import supportoTondoIn610015SatVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista1.jpg';
+import supportoTondoIn610015SatVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista2.jpg';
+import supportoTondoIn610015SatEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1014,7 +1017,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Altezza 180mm · palo Ø44,4mm · base Ø105mm · foro vetro Ø15mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf'),
-    immagini: {},
+    immagini: {
+      'Inox satinato': [supportoTondoIn610015SatVista1, supportoTondoIn610015SatVista2, supportoTondoIn610015SatEsploso],
+    },
     varianti: [
       { codice: 'IN610-015-04', finitura: 'Inox satinato' },
       { codice: 'IN610-015-04-L', finitura: 'Inox lucido' },
