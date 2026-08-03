@@ -130,6 +130,7 @@ import schSupportoQuadroIn610 from './assets/vetro/schede/supporto-quadro-pavime
 import supportoQuadroIn610Vista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista1.jpg';
 import supportoQuadroIn610Vista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista2.jpg';
 import supportoQuadroIn610Esploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-esploso.jpg';
+import schSupportoTondoIn610015 from './assets/vetro/schede/supporto-tondo-pavimento-in610-015-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1004,6 +1005,21 @@ const PRODOTTI_VETRO = [
       { codice: 'IN610-010-04-L', finitura: 'Inox lucido' },
     ],
   },
+  {
+    id: 40, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto tondo a pavimento vetro 16,76-17,52mm',
+    descrizione: 'Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Altezza 180mm · palo Ø44,4mm · base Ø105mm · foro vetro Ø15mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN610-015-04', finitura: 'Inox satinato' },
+      { codice: 'IN610-015-04-L', finitura: 'Inox lucido' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1020,6 +1036,7 @@ const SCHEDA_IMG_VETRO = {
   37: schMorsettoM042,
   38: schSupportoTondoIn610,
   39: schSupportoQuadroIn610,
+  40: schSupportoTondoIn610015,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
