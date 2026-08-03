@@ -127,6 +127,9 @@ import supportoTondoIn610Vista1 from './assets/vetro/prodotti/supporto-tondo-pav
 import supportoTondoIn610Vista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-vista2.jpg';
 import supportoTondoIn610Esploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-esploso.jpg';
 import schSupportoQuadroIn610 from './assets/vetro/schede/supporto-quadro-pavimento-in610-scheda.jpg';
+import supportoQuadroIn610Vista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista1.jpg';
+import supportoQuadroIn610Vista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista2.jpg';
+import supportoQuadroIn610Esploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -994,7 +997,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Altezza 64,7mm · palo 48,2×48,2mm · base 104×104mm (piastra 100×100mm) · fori Ø7mm per viti Ø14mm, interasse diagonale 76,5mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('supporto-quadro-pavimento-in610-scheda-tecnica.pdf'),
-    immagini: {},
+    immagini: {
+      'Inox lucido': [supportoQuadroIn610Vista1, supportoQuadroIn610Vista2, supportoQuadroIn610Esploso],
+    },
     varianti: [
       { codice: 'IN610-010-04-L', finitura: 'Inox lucido' },
     ],
