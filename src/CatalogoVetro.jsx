@@ -122,6 +122,7 @@ import morsettoM042NeroVista1 from './assets/vetro/prodotti/morsetto-m042-nero-v
 import morsettoM042NeroVista2 from './assets/vetro/prodotti/morsetto-m042-nero-vista2.jpg';
 import morsettoM042NeroSezione from './assets/vetro/prodotti/morsetto-m042-nero-sezione.jpg';
 import morsettoM042NeroEsploso from './assets/vetro/prodotti/morsetto-m042-nero-esploso.jpg';
+import schSupportoTondoIn610 from './assets/vetro/schede/supporto-tondo-pavimento-in610-scheda.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -964,6 +965,20 @@ const PRODOTTI_VETRO = [
       { codice: 'M04F-1752', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 17.52 },
     ],
   },
+  {
+    id: 38, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto tondo a pavimento con rosetta',
+    descrizione: 'Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['12', '12.76'],
+    dimensioni: 'Altezza 160mm · base Ø100mm, altezza base 60,5mm · palo Ø50mm · fori base Ø7mm per viti Ø13mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('supporto-tondo-pavimento-in610-scheda-tecnica.pdf'),
+    immagini: {},
+    varianti: [
+      { codice: 'IN610-005-04-L', finitura: 'Inox lucido' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -978,6 +993,7 @@ const SCHEDA_IMG_VETRO = {
   35: schLamieraU,
   36: schMorsettoM032,
   37: schMorsettoM042,
+  38: schSupportoTondoIn610,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
