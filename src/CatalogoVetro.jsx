@@ -138,6 +138,9 @@ import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
+import supportoQuadroIn610020SatVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista1.jpg';
+import supportoQuadroIn610020SatVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista2.jpg';
+import supportoQuadroIn610020SatEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-esploso.jpg';
 import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
@@ -1039,7 +1042,9 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Altezza 180mm · palo 48,5×48,5mm · base 108×108mm (piastra 100×100mm) · foro vetro Ø15mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: schedaUrl('supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf'),
-    immagini: {},
+    immagini: {
+      'Inox satinato': [supportoQuadroIn610020SatVista1, supportoQuadroIn610020SatVista2, supportoQuadroIn610020SatEsploso],
+    },
     varianti: [
       { codice: 'IN610-020-04', finitura: 'Inox satinato' },
       { codice: 'IN610-020-04-L', finitura: 'Inox lucido' },
