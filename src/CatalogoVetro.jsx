@@ -148,6 +148,7 @@ import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
 import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
 import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
 import tenditoreAmbiente from './assets/vetro/prodotti/tenditore-010-ambiente.jpg';
+import tenditoreSchema from './assets/vetro/prodotti/tenditore-010-schema-dimensioni.jpg';
 import distanzialeVista1 from './assets/vetro/prodotti/distanziale-052-vista1.jpg';
 import distanzialeVista2 from './assets/vetro/prodotti/distanziale-052-vista2.jpg';
 import distanzialeVista3 from './assets/vetro/prodotti/distanziale-052-vista3.jpg';
@@ -882,7 +883,7 @@ const PRODOTTI_VETRO = [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
     ],
     immagini: {
-      'Inox satinato': [tenditoreVista1, tenditoreVista2, tenditoreEsploso, tenditoreAmbiente],
+      'Inox satinato': [tenditoreVista1, tenditoreVista2, tenditoreEsploso, tenditoreAmbiente, tenditoreSchema],
     },
     varianti: [
       { codice: 'IN112-108', finitura: 'Inox satinato', lunghezza: 830 },
