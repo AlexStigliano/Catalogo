@@ -139,6 +139,7 @@ import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
+import schMorsettoM092 from './assets/vetro/schede/morsetto-m092-scheda.jpg';
 import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
 import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
 import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
@@ -1108,6 +1109,24 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 47, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 09 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 20,76 e 21,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['20.76', '21.52'],
+    dimensioni: 'Corpo 70×60mm · profondità 44,5mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m092-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M092-2076', finitura: 'Inox satinato', spessoreVetro: 20.76 },
+      { codice: 'M092-2152', finitura: 'Inox satinato', spessoreVetro: 21.52 },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1193,6 +1212,7 @@ const SCHEDA_IMG_VETRO = {
   40: schSupportoTondoIn610015,
   41: schSupportoQuadroIn610020,
   42: schMorsettoM062,
+  47: schMorsettoM092,
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
