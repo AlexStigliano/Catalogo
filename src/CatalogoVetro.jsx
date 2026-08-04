@@ -138,6 +138,7 @@ import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
+import schMorsettoM012 from './assets/vetro/schede/morsetto-m012-scheda.jpg';
 import schMorsettoM022 from './assets/vetro/schede/morsetto-m022-scheda.jpg';
 import morsettoM022Vista1 from './assets/vetro/prodotti/morsetto-m022-vista1.jpg';
 import morsettoM022Vista2 from './assets/vetro/prodotti/morsetto-m022-vista2.jpg';
@@ -967,6 +968,31 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 49, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 01 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 45×45mm · profondità 27mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m012-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M012-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M012-0876', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M012-1000', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M012-1076', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M01F-0800', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8 },
+      { codice: 'M01F-0876', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
+      { codice: 'M01F-1000', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10 },
+      { codice: 'M01F-1076', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
+    ],
+  },
+  {
     id: 48, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Morsetto per vetro mod. 02 con attacco diritto',
     descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
@@ -1247,6 +1273,7 @@ const SCHEDA_IMG_VETRO = {
   42: schMorsettoM062,
   47: schMorsettoM092,
   48: schMorsettoM022,
+  49: schMorsettoM012,
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
