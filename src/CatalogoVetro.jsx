@@ -144,6 +144,9 @@ import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
 import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
 import fs880NeroRender from './assets/vetro/prodotti/fs880-nero-render.jpg';
 import meroniLogo from './assets/vetro/meroni-logo.png';
+import schFs890 from './assets/vetro/schede/fs890-scheda.jpg';
+import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
+import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1105,6 +1108,21 @@ const PRODOTTI_VETRO = [
       { codice: 'DAFS880NE', finitura: 'Nero opaco' },
     ],
   },
+  {
+    id: 44, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera chiudiporta a pavimento FS890',
+    descrizione: 'Versione maggiorata del chiudiporta FS880: chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa, senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN5. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG890) e perno per cerniera (DAPF880).',
+    materiale: 'Acciaio',
+    dimensioni: 'Larghezza massima porta 1100-1250mm · spessore vetro 10-15mm · cerniera (carter incluso) 197,5×80×45mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: schedaUrl('fs890-scheda-tecnica.pdf'),
+    immagini: {
+      'Acciaio satinato': [fs890Render, fs890Ambiente],
+    },
+    varianti: [
+      { codice: 'DAFS890AS', finitura: 'Acciaio satinato' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1125,6 +1143,7 @@ const SCHEDA_IMG_VETRO = {
   41: schSupportoQuadroIn610020,
   42: schMorsettoM062,
   43: schFs880,
+  44: schFs890,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
