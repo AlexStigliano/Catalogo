@@ -150,6 +150,7 @@ import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
 import schGaha1st from './assets/vetro/schede/gaha1st-scheda.jpg';
 import gaha1stRender from './assets/vetro/prodotti/gaha1st-render.jpg';
 import gaha1stAmbiente from './assets/vetro/prodotti/gaha1st-ambiente.jpg';
+import gaha1stNeroRender from './assets/vetro/prodotti/gaha1st-nero-render.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1130,20 +1131,18 @@ const PRODOTTI_VETRO = [
   {
     id: 45, categoria: '03', sottocategoria: 'cerniere-muro',
     nome: 'Cerniera a braccio per porta in vetro Gliss GAHA1ST',
-    descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Disponibile con braccio normale (distanza perno-vetro 22,5mm) o braccio lungo (distanza perno-vetro 28mm, +5,5mm rispetto al normale). Prodotto da Meroni in alluminio.',
+    descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
     materiale: 'Alluminio',
-    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm',
+    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm · distanza perno-vetro 22,5mm',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
     scheda: schedaUrl('gaha1st-scheda-tecnica.pdf'),
-    assi: [
-      { chiave: 'braccio', etichetta: 'Braccio', suffisso: '' },
-    ],
     immagini: {
       'Cromo opaco': [gaha1stRender, gaha1stAmbiente],
+      'Nero opaco': [gaha1stNeroRender],
     },
     varianti: [
-      { codice: 'GAHA1ST6D', finitura: 'Cromo opaco', braccio: 'Normale' },
-      { codice: 'GAHA1L6D', finitura: 'Cromo opaco', braccio: 'Lungo' },
+      { codice: 'GAHA1ST6D', finitura: 'Cromo opaco' },
+      { codice: 'GAHA1STNE', finitura: 'Nero opaco' },
     ],
   },
 ];
