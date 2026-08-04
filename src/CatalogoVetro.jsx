@@ -138,6 +138,7 @@ import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
+import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
 import supportoQuadroIn610020SatVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista1.jpg';
 import supportoQuadroIn610020SatVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista2.jpg';
 import supportoQuadroIn610020SatEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-esploso.jpg';
@@ -1055,6 +1056,25 @@ const PRODOTTI_VETRO = [
       { codice: 'IN610-020-04-L', finitura: 'Inox lucido' },
     ],
   },
+  {
+    id: 42, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 06 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8.76', '10.76', '12.76'],
+    dimensioni: 'Corpo 52×52mm · profondità 32,5mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m062-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M062-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M062-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+      { codice: 'M062-1276', finitura: 'Inox satinato', spessoreVetro: 12.76 },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1073,6 +1093,7 @@ const SCHEDA_IMG_VETRO = {
   39: schSupportoQuadroIn610,
   40: schSupportoTondoIn610015,
   41: schSupportoQuadroIn610020,
+  42: schMorsettoM062,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
