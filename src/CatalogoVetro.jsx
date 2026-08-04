@@ -1149,6 +1149,23 @@ const PRODOTTI_VETRO = [
       { codice: 'GAHA1STNE', finitura: 'Nero opaco' },
     ],
   },
+  {
+    id: 46, categoria: '03', sottocategoria: 'cerniere-muro',
+    nome: 'Cerniera a braccio per porta in vetro AirHinge',
+    descrizione: 'Cerniera a muro per porte in vetro a battente, design abbinabile alla maniglia AirHandle. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Prodotto da Meroni in alluminio, disponibile nelle finiture argento e nero.',
+    materiale: 'Alluminio',
+    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-42mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: schedaUrl('airhinge-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [airhingeArgentoAmbiente],
+      'Nero opaco': [airhingeNeroRender, airhingeNeroAmbiente],
+    },
+    varianti: [
+      { codice: 'GAHA2ST6D', finitura: 'Argento' },
+      { codice: 'GAHA2STNE', finitura: 'Nero opaco' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1171,6 +1188,7 @@ const SCHEDA_IMG_VETRO = {
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
+  46: schAirhinge,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
