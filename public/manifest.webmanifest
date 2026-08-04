@@ -4,7 +4,7 @@
   "start_url": "/Catalogo/index.html",
   "scope": "/Catalogo/",
   "display": "standalone",
-  "background_color": "#0a2d6e",
+  "background_color": "#ffffff",
   "theme_color": "#0a2d6e",
   "icons": [
     { "src": "/Catalogo/icon-192.png", "sizes": "192x192", "type": "image/png" },
