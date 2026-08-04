@@ -1674,7 +1674,6 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
       <div className="media">
-        <span className="cat-tag">{p.categoria}</span>
         <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
           aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
           <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
