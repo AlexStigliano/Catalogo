@@ -1094,7 +1094,8 @@ const PRODOTTI_VETRO = [
     video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
     immagini: {},
     varianti: [
-      { codice: 'FS880', finitura: 'Cromo satinato' },
+      { codice: 'DAFS880AS', finitura: 'Acciaio satinato' },
+      { codice: 'DAFS880NE', finitura: 'Nero opaco' },
     ],
   },
 ];
@@ -1190,7 +1191,7 @@ const FINISHES_VETRO = {
   'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
   'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
   'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
-  'Cromo satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
+  'Acciaio satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
