@@ -223,23 +223,30 @@ const CATEGORIE_VETRO = [
   { id: '10', nome: 'Accessori e utensili' },
 ];
 
-// Sottocategorie della categoria 01 (Parapetti e pensiline)
-const SOTTOCATEGORIE_VETRO = [
-  { id: 'balaustre', nome: 'Profili per balaustre' },
-  { id: 'puntuali', nome: 'Attacchi puntuali' },
-  { id: 'pensiline', nome: 'Pensiline' },
-  { id: 'morsetti', nome: 'Morsetti' },
-  { id: 'fermavetri', nome: 'Fermavetri' },
-];
-// Etichette di sottocategoria fuori dalla 01 (niente tab: solo il testo
-// mostrato sotto il nome prodotto, es. nella categoria 04 Maniglie e maniglioni).
+// Sottocategorie con tab, per categoria. Le categorie assenti da questa
+// mappa non mostrano tab (vedi ALTRE_SOTTOCATEGORIE_VETRO più sotto).
+const SOTTOCATEGORIE_PER_CATEGORIA = {
+  '01': [
+    { id: 'balaustre', nome: 'Profili per balaustre' },
+    { id: 'puntuali', nome: 'Attacchi puntuali' },
+    { id: 'pensiline', nome: 'Pensiline' },
+    { id: 'morsetti', nome: 'Morsetti' },
+    { id: 'fermavetri', nome: 'Fermavetri' },
+  ],
+  '03': [
+    { id: 'chiudiporta', nome: 'Chiudiporta' },
+    { id: 'cerniere', nome: 'Cerniere' },
+    { id: 'serrature', nome: 'Serrature' },
+  ],
+};
+// Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
+// solo il testo mostrato sotto il nome prodotto, es. nella categoria 04
+// Maniglie e maniglioni).
 const ALTRE_SOTTOCATEGORIE_VETRO = [
   { id: 'maniglioni', nome: 'Maniglioni per porte' },
-  { id: 'chiudiporta', nome: 'Chiudiporta a pavimento' },
-  { id: 'cerniere-muro', nome: 'Cerniere a muro' },
 ];
 const subName = (id) => (
-  SOTTOCATEGORIE_VETRO.find(s => s.id === id) ||
+  Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
 ).nome || id;
 
@@ -1133,7 +1140,7 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
-    id: 45, categoria: '03', sottocategoria: 'cerniere-muro',
+    id: 45, categoria: '03', sottocategoria: 'cerniere',
     nome: 'Cerniera a braccio per porta in vetro Gliss',
     descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
     materiale: 'Alluminio',
@@ -1150,7 +1157,7 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
-    id: 46, categoria: '03', sottocategoria: 'cerniere-muro',
+    id: 46, categoria: '03', sottocategoria: 'cerniere',
     nome: 'Cerniera a braccio per porta in vetro AirHinge',
     descrizione: 'Cerniera a muro per porte in vetro a battente, design abbinabile alla maniglia AirHandle. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Prodotto da Meroni in alluminio, disponibile nelle finiture argento e nero.',
     materiale: 'Alluminio',
@@ -1402,9 +1409,10 @@ function Indice() {
 /* ---------- Pagina categoria ---------- */
 function CategoryPage({ cat, subParam }) {
   const info = CATEGORIE_VETRO.find(c => c.id === cat) || CATEGORIE_VETRO[0];
-  const hasSubs = cat === '01';
+  const sottocategorie = SOTTOCATEGORIE_PER_CATEGORIA[cat];
+  const hasSubs = !!sottocategorie;
   const sub = hasSubs
-    ? (subParam && SOTTOCATEGORIE_VETRO.some(s => s.id === subParam) ? subParam : SOTTOCATEGORIE_VETRO[0].id)
+    ? (subParam && sottocategorie.some(s => s.id === subParam) ? subParam : sottocategorie[0].id)
     : null;
   const setSub = (id) => go('/cat/' + cat + '/' + id);
   const catProducts = PRODOTTI_VETRO.filter(p => p.categoria === cat);
@@ -1431,7 +1439,7 @@ function CategoryPage({ cat, subParam }) {
         </div>
         {hasSubs && (
           <div className="subbar" role="tablist" aria-label="Sottocategorie">
-            {SOTTOCATEGORIE_VETRO.map(s => {
+            {sottocategorie.map(s => {
               const n = catProducts.filter(p => p.sottocategoria === s.id).length;
               return (
                 <button key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
