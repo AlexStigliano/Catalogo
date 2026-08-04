@@ -147,6 +147,9 @@ import meroniLogo from './assets/vetro/meroni-logo.png';
 import schFs890 from './assets/vetro/schede/fs890-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
+import schGaha1st from './assets/vetro/schede/gaha1st-scheda.jpg';
+import gaha1stRender from './assets/vetro/prodotti/gaha1st-render.jpg';
+import gaha1stAmbiente from './assets/vetro/prodotti/gaha1st-ambiente.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -228,6 +231,7 @@ const SOTTOCATEGORIE_VETRO = [
 const ALTRE_SOTTOCATEGORIE_VETRO = [
   { id: 'maniglioni', nome: 'Maniglioni per porte' },
   { id: 'chiudiporta', nome: 'Chiudiporta a pavimento' },
+  { id: 'cerniere-muro', nome: 'Cerniere a muro' },
 ];
 const subName = (id) => (
   SOTTOCATEGORIE_VETRO.find(s => s.id === id) ||
@@ -1123,6 +1127,25 @@ const PRODOTTI_VETRO = [
       { codice: 'DAFS890AS', finitura: 'Acciaio satinato' },
     ],
   },
+  {
+    id: 45, categoria: '03', sottocategoria: 'cerniere-muro',
+    nome: 'Cerniera a braccio per porta in vetro Gliss GAHA1ST',
+    descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Disponibile con braccio normale (distanza perno-vetro 22,5mm) o braccio lungo (distanza perno-vetro 28mm, +5,5mm rispetto al normale). Prodotto da Meroni in alluminio.',
+    materiale: 'Alluminio',
+    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: schedaUrl('gaha1st-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'braccio', etichetta: 'Braccio', suffisso: '' },
+    ],
+    immagini: {
+      'Cromo opaco': [gaha1stRender, gaha1stAmbiente],
+    },
+    varianti: [
+      { codice: 'GAHA1ST6D', finitura: 'Cromo opaco', braccio: 'Normale' },
+      { codice: 'GAHA1L6D', finitura: 'Cromo opaco', braccio: 'Lungo' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1144,6 +1167,7 @@ const SCHEDA_IMG_VETRO = {
   42: schMorsettoM062,
   43: schFs880,
   44: schFs890,
+  45: schGaha1st,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -1218,6 +1242,7 @@ const FINISHES_VETRO = {
   'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
   'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
   'Acciaio satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
+  'Cromo opaco': 'linear-gradient(135deg,#e3e6e8,#a9afb4 42%,#cfd4d7 56%,#8d949a 74%,#dfe3e5)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
