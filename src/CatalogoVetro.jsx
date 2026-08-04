@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid, PlayCircle } from 'lucide-react';
 import './Catalogo.css';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -139,6 +139,7 @@ import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
+import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -219,6 +220,7 @@ const SOTTOCATEGORIE_VETRO = [
 // mostrato sotto il nome prodotto, es. nella categoria 04 Maniglie e maniglioni).
 const ALTRE_SOTTOCATEGORIE_VETRO = [
   { id: 'maniglioni', nome: 'Maniglioni per porte' },
+  { id: 'chiudiporta', nome: 'Chiudiporta a pavimento' },
 ];
 const subName = (id) => (
   SOTTOCATEGORIE_VETRO.find(s => s.id === id) ||
@@ -1081,6 +1083,20 @@ const PRODOTTI_VETRO = [
       { codice: 'M062-1276', finitura: 'Inox satinato', spessoreVetro: 12.76 },
     ],
   },
+  {
+    id: 43, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera chiudiporta a pavimento FS880',
+    descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
+    materiale: 'Acciaio',
+    dimensioni: 'Larghezza porta 850-950mm · peso porta max 100kg · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm · peso 2,10kg (con confezione) · temperatura d\'esercizio -20°C/+50°C',
+    fornitore: 'Meroni',
+    scheda: schedaUrl('fs880-scheda-tecnica.pdf'),
+    video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
+    immagini: {},
+    varianti: [
+      { codice: 'FS880', finitura: 'Cromo satinato' },
+    ],
+  },
 ];
 const SCHEDA_IMG_VETRO = {
   1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
@@ -1100,6 +1116,7 @@ const SCHEDA_IMG_VETRO = {
   40: schSupportoTondoIn610015,
   41: schSupportoQuadroIn610020,
   42: schMorsettoM062,
+  43: schFs880,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -1173,6 +1190,7 @@ const FINISHES_VETRO = {
   'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
   'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
   'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
+  'Cromo satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
@@ -1950,6 +1968,12 @@ function ProductDetail({ id }) {
                   : <button className="scheda disabled" disabled title="Rapporto di prova in arrivo">
                       <Download size={15} /> Rapporto di prova <em>in arrivo</em>
                     </button>
+              )}
+              {/* Video tutorial di montaggio: presente solo per gli articoli che ne hanno uno. */}
+              {p.video && (
+                <a className="scheda" href={p.video} target="_blank" rel="noopener">
+                  <PlayCircle size={15} /> Video tutorial montaggio
+                </a>
               )}
             </div>
 
