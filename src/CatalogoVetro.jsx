@@ -1704,7 +1704,6 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : p.varianti[0].finitura);
   const [open, setOpen] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
-  const hasImages = Object.keys(images).length > 0;
   const gallery = images[selFin] || [];
   const selImg = gallery[imgIdx] || gallery[0];
   // Cambiando finitura si riparte dalla prima foto della nuova galleria.
@@ -1760,7 +1759,6 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             </div>
           </>
         )}
-        {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
       </div>
       <div className="cbody">
         <div className="name-row">

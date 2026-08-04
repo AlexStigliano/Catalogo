@@ -3,7 +3,7 @@
   "short_name": "Catalogo Vetro",
   "start_url": "/Catalogo/vetro.html",
   "scope": "/Catalogo/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#ffffff",
   "theme_color": "#0a2d6e",
   "icons": [
