@@ -1130,7 +1130,7 @@ const PRODOTTI_VETRO = [
   },
   {
     id: 45, categoria: '03', sottocategoria: 'cerniere-muro',
-    nome: 'Cerniera a braccio per porta in vetro Gliss GAHA1ST',
+    nome: 'Cerniera a braccio per porta in vetro Gliss',
     descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
     materiale: 'Alluminio',
     dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm · distanza perno-vetro 22,5mm',
