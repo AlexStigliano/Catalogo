@@ -1577,8 +1577,22 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   const firstWithImg = p.varianti.find(v => images[v.finitura]);
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : p.varianti[0].finitura);
   const [open, setOpen] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
   const hasImages = Object.keys(images).length > 0;
-  const selImg = (images[selFin] || [])[0];
+  const gallery = images[selFin] || [];
+  const selImg = gallery[imgIdx] || gallery[0];
+  // Cambiando finitura si riparte dalla prima foto della nuova galleria.
+  useEffect(() => { setImgIdx(0); }, [selFin]);
+  const prevImg = e => { e.stopPropagation(); setImgIdx(i => (i - 1 + gallery.length) % gallery.length); };
+  const nextImg = e => { e.stopPropagation(); setImgIdx(i => (i + 1) % gallery.length); };
+  const touchX = React.useRef(null);
+  const onTouchStart = e => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = e => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) (dx < 0 ? nextImg : prevImg)(e);
+    touchX.current = null;
+  };
   // Con una sola finitura non c'e' niente da scegliere: il selettore sparisce.
   const sceltaFin = ufins.length > 1;
   // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
@@ -1598,10 +1612,29 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         </button>
         <div className="media-body clickable" onClick={() => go('/prodotto/' + p.id)} role="link"
           tabIndex={0} onKeyDown={e => { if (e.key === 'Enter') go('/prodotto/' + p.id); }}
-          aria-label={`Apri la scheda di ${p.nome}`}>
+          aria-label={`Apri la scheda di ${p.nome}`}
+          onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
+          onTouchEnd={gallery.length > 1 ? onTouchEnd : undefined}>
           {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
             : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
         </div>
+        {gallery.length > 1 && (
+          <>
+            <button className="media-nav prev" aria-label="Foto precedente" onClick={prevImg}>
+              <ChevronLeft size={18} />
+            </button>
+            <button className="media-nav next" aria-label="Foto successiva" onClick={nextImg}>
+              <ChevronRight size={18} />
+            </button>
+            <div className="media-dots">
+              {gallery.map((_, i) => (
+                <button key={i} className={`media-dot${i === imgIdx ? ' active' : ''}`}
+                  aria-label={`Foto ${i + 1}`} aria-pressed={i === imgIdx}
+                  onClick={e => { e.stopPropagation(); setImgIdx(i); }} />
+              ))}
+            </div>
+          </>
+        )}
         {hasImages && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
       </div>
       <div className="cbody">
