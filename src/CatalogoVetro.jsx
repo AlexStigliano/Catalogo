@@ -155,6 +155,7 @@ import schAirhinge from './assets/vetro/schede/airhinge-scheda.jpg';
 import airhingeNeroRender from './assets/vetro/prodotti/airhinge-nero-render.jpg';
 import airhingeNeroAmbiente from './assets/vetro/prodotti/airhinge-nero-ambiente.jpg';
 import airhingeArgentoAmbiente from './assets/vetro/prodotti/airhinge-argento-ambiente.jpg';
+import airhingeArgentoRender from './assets/vetro/prodotti/airhinge-argento-render.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1165,7 +1166,7 @@ const PRODOTTI_VETRO = [
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
     scheda: schedaUrl('airhinge-scheda-tecnica.pdf'),
     immagini: {
-      'Argento': [airhingeArgentoAmbiente],
+      'Argento': [airhingeArgentoRender, airhingeArgentoAmbiente],
       'Nero opaco': [airhingeNeroRender, airhingeNeroAmbiente],
     },
     varianti: [
