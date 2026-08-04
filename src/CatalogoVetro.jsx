@@ -143,6 +143,7 @@ import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
 import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
 import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
 import fs880NeroRender from './assets/vetro/prodotti/fs880-nero-render.jpg';
+import meroniLogo from './assets/vetro/meroni-logo.png';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1092,7 +1093,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
     materiale: 'Acciaio',
     dimensioni: 'Larghezza massima porta 850-950mm · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm',
-    fornitore: 'Meroni',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
     scheda: schedaUrl('fs880-scheda-tecnica.pdf'),
     video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
     immagini: {
