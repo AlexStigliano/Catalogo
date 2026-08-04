@@ -142,6 +142,7 @@ import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
 import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
 import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
 import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
+import fs880NeroRender from './assets/vetro/prodotti/fs880-nero-render.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1090,12 +1091,13 @@ const PRODOTTI_VETRO = [
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
     materiale: 'Acciaio',
-    dimensioni: 'Larghezza porta 850-950mm · peso porta max 100kg · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm · peso 2,10kg (con confezione) · temperatura d\'esercizio -20°C/+50°C',
+    dimensioni: 'Larghezza porta 850-950mm · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm',
     fornitore: 'Meroni',
     scheda: schedaUrl('fs880-scheda-tecnica.pdf'),
     video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
     immagini: {
       'Acciaio satinato': [fs880Render, fs880Ambiente],
+      'Nero opaco': [fs880NeroRender],
     },
     varianti: [
       { codice: 'DAFS880AS', finitura: 'Acciaio satinato' },
