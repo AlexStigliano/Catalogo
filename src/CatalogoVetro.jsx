@@ -254,13 +254,15 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
     { id: 'cerniere', nome: 'Cerniere' },
     { id: 'serrature', nome: 'Serrature' },
   ],
+  '04': [
+    { id: 'maniglie-scorrevoli', nome: 'Maniglie per porte scorrevoli' },
+    { id: 'maniglie-battenti', nome: 'Maniglie per porte battenti' },
+    { id: 'maniglioni', nome: 'Maniglioni' },
+  ],
 };
 // Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
-// solo il testo mostrato sotto il nome prodotto, es. nella categoria 04
-// Maniglie e maniglioni).
-const ALTRE_SOTTOCATEGORIE_VETRO = [
-  { id: 'maniglioni', nome: 'Maniglioni per porte' },
-];
+// solo il testo mostrato sotto il nome prodotto).
+const ALTRE_SOTTOCATEGORIE_VETRO = [];
 const subName = (id) => (
   Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
