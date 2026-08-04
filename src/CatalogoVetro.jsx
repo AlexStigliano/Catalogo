@@ -140,6 +140,8 @@ import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-to
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
 import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
+import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
+import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1092,7 +1094,9 @@ const PRODOTTI_VETRO = [
     fornitore: 'Meroni',
     scheda: schedaUrl('fs880-scheda-tecnica.pdf'),
     video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
-    immagini: {},
+    immagini: {
+      'Acciaio satinato': [fs880Render, fs880Ambiente],
+    },
     varianti: [
       { codice: 'DAFS880AS', finitura: 'Acciaio satinato' },
       { codice: 'DAFS880NE', finitura: 'Nero opaco' },
