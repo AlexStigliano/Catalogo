@@ -240,6 +240,8 @@ import e07Quote from './assets/vetro/prodotti/e07-quote.jpg';
 import e07LavorazioneVetro from './assets/vetro/prodotti/e07-lavorazione-vetro.jpg';
 import ternoLogo from './assets/vetro/terno-scorrevoli-logo.png';
 import magic2VetroArgento from './assets/vetro/prodotti/magic2-vetro-argento.jpg';
+import magic2VetroAmbienteUfficio from './assets/vetro/prodotti/magic2-vetro-ambiente-ufficio.jpg';
+import magic2VetroAmbienteBoutique from './assets/vetro/prodotti/magic2-vetro-ambiente-boutique.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1405,8 +1407,8 @@ const PRODOTTI_VETRO = [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
     immagini: {
-      'Argento spazzolato': [magic2VetroArgento],
-      'Nero spazzolato': [magic2VetroArgento],
+      'Argento spazzolato': [magic2VetroAmbienteUfficio, magic2VetroAmbienteBoutique, magic2VetroArgento],
+      'Nero spazzolato': [magic2VetroAmbienteUfficio, magic2VetroAmbienteBoutique, magic2VetroArgento],
     },
     varianti: [
       { codice: 'K.0041.1.02', finitura: 'Argento spazzolato', lunghezza: 1100, spessoreVetro: 8 },
