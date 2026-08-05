@@ -1507,7 +1507,7 @@ function parseHash() {
   if (h === 'indice') return { view: 'indice' };
   const mp = h.match(/^prodotto\/(\d+)$/);
   if (mp) return { view: 'prodotto', id: Number(mp[1]) };
-  const m = h.match(/^cat\/(\d{2})(?:\/([a-z]+))?$/);
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z-]+))?$/);
   if (m && CATEGORIE_VETRO.some(c => c.id === m[1])) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
