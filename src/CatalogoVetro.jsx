@@ -242,6 +242,10 @@ import ternoLogo from './assets/vetro/terno-scorrevoli-logo.png';
 import magic2VetroArgento from './assets/vetro/prodotti/magic2-vetro-argento.jpg';
 import magic2VetroAmbienteUfficio from './assets/vetro/prodotti/magic2-vetro-ambiente-ufficio.jpg';
 import magic2VetroAmbienteBoutique from './assets/vetro/prodotti/magic2-vetro-ambiente-boutique.jpg';
+import magic2FrameNeroAperta from './assets/vetro/prodotti/magic2-frame-nero-aperta.jpg';
+import magic2FrameNeroChiusa from './assets/vetro/prodotti/magic2-frame-nero-chiusa.jpg';
+import magic2FrameNero from './assets/vetro/prodotti/magic2-frame-nero.jpg';
+import schMagic2Frame from './assets/vetro/schede/magic2-frame-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1431,6 +1435,32 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 59, categoria: '02',
+    nome: 'Magic2 Frame',
+    descrizione: 'Sistema scorrevole a scomparsa esterno muro con telaio in alluminio Universal, pluribrevettato e 100% Made in Italy: nessun binario, fermo o carrello visibile. Il telaio è adatto a pareti in mattoni pieni, forati, cemento e cartongesso (con ancoraggi specifici), e ospita vetri monolitici o stratificati con spessore da 5 a 8,5mm. Fermi ammortizzati Fluid con doppie molle di ritorno per una frenata fluida e silenziosa. Prodotto da Terno Scorrevoli in alluminio e acciaio.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['5', '8.5'],
+    dimensioni: 'Kit 1500×3000mm · peso porta max 80kg · spessore vetro 5-8,5mm · luce inferiore 10mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('magic2-frame-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('magic2-frame-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Ruote inferiori brevettate', testo: 'Scaricano completamente il peso della porta sul pavimento senza lasciare segni, anche dopo anni di utilizzo. Un paraurti integrato assorbe le irregolarità del pavimento, come le fughe delle piastrelle.' },
+      { titolo: 'Fermi ammortizzati Fluid', testo: 'L’ultima generazione di ammortizzatori a chiusura rallentata di Terno Scorrevoli, con doppie molle di ritorno, per una frenata sempre fluida e silenziosa.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'La guida superiore integra due elementi rotanti con leve di sicurezza ben visibili, per rimuovere la porta dopo l’installazione senza bisogno di utensili.' },
+      { titolo: 'Design essenziale e resistente', testo: 'Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione. I profili si tagliano a misura senza forature o fresature aggiuntive.' },
+      { titolo: 'Adatto a diverse pareti', testo: 'Mattoni pieni, mattoni forati, cemento e cartongesso, purché vengano usati gli ancoraggi specifici e l’installazione sia eseguita con cura.' },
+      { titolo: 'Certificato fino a 100.000 cicli', testo: 'Prestazioni testate nei laboratori Terno Scorrevoli (T-Lab) fino a 100.000 cicli di apertura della porta.' },
+      { titolo: 'Soluzioni per pavimenti in moquette', testo: 'Un profilo in alluminio e adesivo dedicato adatta il sistema anche ai pavimenti in moquette, garantendo la migliore scorrevolezza possibile.' },
+    ],
+    immagini: {
+      'Nero spazzolato': [magic2FrameNeroAperta, magic2FrameNeroChiusa, magic2FrameNero],
+    },
+    varianti: [
+      { codice: 'K.0461.1.3.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1530,6 +1560,7 @@ const SCHEDA_IMG_VETRO = {
   45: schGaha1st,
   46: schAirhinge,
   58: schMagic2Vetro,
+  59: schMagic2Frame,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
