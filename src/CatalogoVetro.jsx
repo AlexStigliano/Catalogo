@@ -234,6 +234,10 @@ import parisNeroOpaco from './assets/vetro/prodotti/paris-nero-opaco.jpg';
 import schParisNero from './assets/vetro/schede/paris-nero-scheda.jpg';
 import incontroHcsSbaFoto from './assets/vetro/prodotti/incontro-hcs-sba-foto.jpg';
 import incontroHcsSbaQuote from './assets/vetro/prodotti/incontro-hcs-sba-quote.jpg';
+import gfsLogo from './assets/vetro/gfs-logo.png';
+import e07CromoLucido from './assets/vetro/prodotti/e07-cromo-lucido.jpg';
+import e07Quote from './assets/vetro/prodotti/e07-quote.jpg';
+import e07LavorazioneVetro from './assets/vetro/prodotti/e07-lavorazione-vetro.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -1360,6 +1364,26 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 57, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Maniglia a scomparsa per porta scorrevole',
+    // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
+    // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
+    descrizione: 'Maniglia a scomparsa per porta scorrevole in vetro, a incasso interno muro, in ottone. Adatta a spessori vetro 8-10mm. Prodotta da GFS, disponibile in 4 finiture: cromo lucido, cromo opaco, simil inox e oro lucido; disponibile anche in nero opaco.',
+    materiale: 'Ottone',
+    dimensioni: 'Piastra 70×100mm · profondità 18mm · spessore vetro 8-10mm · lavorazione vetro 58×73mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    immagini: {
+      'Cromo lucido': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+    },
+    varianti: [
+      { codice: 'E07M02715', finitura: 'Cromo lucido' },
+      { codice: 'E07M02716', finitura: 'Cromo opaco' },
+      { codice: 'E07M02720', finitura: 'Simil inox' },
+      { codice: 'E07M02713', finitura: 'Oro lucido' },
+      { codice: 'E07M027NE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1537,6 +1561,8 @@ const FINISHES_VETRO = {
   'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
   'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
   'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
+  'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
