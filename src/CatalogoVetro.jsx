@@ -238,6 +238,9 @@ import gfsLogo from './assets/vetro/gfs-logo.png';
 import e07CromoLucido from './assets/vetro/prodotti/e07-cromo-lucido.jpg';
 import e07Quote from './assets/vetro/prodotti/e07-quote.jpg';
 import e07LavorazioneVetro from './assets/vetro/prodotti/e07-lavorazione-vetro.jpg';
+import ternoLogo from './assets/vetro/terno-scorrevoli-logo.png';
+import magic2VetroArgento from './assets/vetro/prodotti/magic2-vetro-argento.jpg';
+import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -1388,6 +1391,35 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 58, categoria: '02',
+    nome: 'Magic2 Vetro',
+    descrizione: 'Sistema scorrevole a scomparsa esterno muro per porte in vetro, con fermi ammortizzati (soft-closing) e brevetto originale. Il sistema si fissa tramite borchie o fascia a vista ed è adatto a vetri monolitici o stratificati. Kit completo disponibile in due lunghezze, per porte fino a 80kg. Prodotto da Terno Scorrevoli in alluminio e acciaio, disponibile in 2 finiture: argento spazzolato e nero spazzolato.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['8', '10'],
+    dimensioni: 'Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('magic2-vetro-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('magic2-vetro-istruzioni-montaggio.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza kit', suffisso: ' mm' },
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento spazzolato': [magic2VetroArgento],
+      'Nero spazzolato': [magic2VetroArgento],
+    },
+    varianti: [
+      { codice: 'K.0041.1.02', finitura: 'Argento spazzolato', lunghezza: 1100, spessoreVetro: 8 },
+      { codice: 'K.0041.2.02', finitura: 'Argento spazzolato', lunghezza: 1100, spessoreVetro: 10 },
+      { codice: 'K.0042.1.02', finitura: 'Argento spazzolato', lunghezza: 1800, spessoreVetro: 8 },
+      { codice: 'K.0042.2.02', finitura: 'Argento spazzolato', lunghezza: 1800, spessoreVetro: 10 },
+      { codice: 'K.0041.1.15', finitura: 'Nero spazzolato', lunghezza: 1100, spessoreVetro: 8 },
+      { codice: 'K.0041.2.15', finitura: 'Nero spazzolato', lunghezza: 1100, spessoreVetro: 10 },
+      { codice: 'K.0042.1.15', finitura: 'Nero spazzolato', lunghezza: 1800, spessoreVetro: 8 },
+      { codice: 'K.0042.2.15', finitura: 'Nero spazzolato', lunghezza: 1800, spessoreVetro: 10 },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1486,6 +1518,7 @@ const SCHEDA_IMG_VETRO = {
   44: schFs890,
   45: schGaha1st,
   46: schAirhinge,
+  58: schMagic2Vetro,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -1567,6 +1600,8 @@ const FINISHES_VETRO = {
   'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
+  'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
+  'Nero spazzolato': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
@@ -2347,6 +2382,13 @@ function ProductDetail({ id }) {
               {p.video && (
                 <a className="scheda" href={p.video} target="_blank" rel="noopener">
                   <PlayCircle size={15} /> Video tutorial montaggio
+                </a>
+              )}
+              {/* Istruzioni di montaggio in PDF: un documento a parte dalla scheda
+                  tecnica, presente solo per gli articoli che ce l'hanno. */}
+              {p.istruzioni && (
+                <a className="scheda" href={p.istruzioni} target="_blank" rel="noopener">
+                  <Download size={15} /> Istruzioni di montaggio
                 </a>
               )}
             </div>
