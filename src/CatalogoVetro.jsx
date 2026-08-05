@@ -1319,7 +1319,7 @@ const PRODOTTI_VETRO = [
   },
   {
     id: 55, categoria: '04', sottocategoria: 'maniglie-battenti',
-    nome: 'Paris',
+    nome: 'HCS Paris con chiave e nottolino',
     descrizione: 'Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, finitura alluminio aspetto argento opaco.',
     materiale: 'Alluminio',
     dimensioni: 'Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm',
