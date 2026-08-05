@@ -225,6 +225,8 @@ import schTg202 from './assets/vetro/schede/tg202-scheda.jpg';
 import dallagoLogo from './assets/vetro/dallago-logo.png';
 import morsettoPiccoloCromoLucido from './assets/vetro/prodotti/morsetto-piccolo-cromo-lucido.jpg';
 import schMorsettoPiccolo from './assets/vetro/schede/morsetto-piccolo-scheda.jpg';
+import morsettoGrandeCromoLucido from './assets/vetro/prodotti/morsetto-grande-cromo-lucido.jpg';
+import schMorsettoGrande from './assets/vetro/schede/morsetto-grande-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
