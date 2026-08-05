@@ -227,6 +227,9 @@ import morsettoPiccoloCromoLucido from './assets/vetro/prodotti/morsetto-piccolo
 import schMorsettoPiccolo from './assets/vetro/schede/morsetto-piccolo-scheda.jpg';
 import morsettoGrandeCromoLucido from './assets/vetro/prodotti/morsetto-grande-cromo-lucido.jpg';
 import schMorsettoGrande from './assets/vetro/schede/morsetto-grande-scheda.jpg';
+import hoppeLogo from './assets/hoppe-logo.png';
+import parisArgentoOpaco from './assets/vetro/prodotti/paris-argento-opaco.jpg';
+import schParis from './assets/vetro/schede/paris-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -1315,6 +1318,21 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 55, categoria: '04', sottocategoria: 'maniglie-battenti',
+    nome: 'Paris',
+    descrizione: 'Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, finitura alluminio aspetto argento opaco.',
+    materiale: 'Alluminio',
+    dimensioni: 'Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm',
+    fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
+    scheda: schedaUrl('paris-scheda-tecnica.pdf'),
+    immagini: {
+      'Alluminio argento opaco': [parisArgentoOpaco],
+    },
+    varianti: [
+      { codice: '2574008', finitura: 'Alluminio argento opaco' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1403,6 +1421,7 @@ const SCHEDA_IMG_VETRO = {
   47: schMorsettoM092,
   53: schMorsettoPiccolo,
   54: schMorsettoGrande,
+  55: schParis,
   48: schMorsettoM022,
   49: schMorsettoM012,
   50: schMorsettoM032042,
@@ -1490,6 +1509,7 @@ const FINISHES_VETRO = {
   'Cromo lucido': 'linear-gradient(135deg,#ffffff,#c9ced2 30%,#6f777e 50%,#d4d8db 68%,#ffffff)',
   'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
   'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
+  'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
