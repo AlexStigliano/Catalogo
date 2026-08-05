@@ -1282,7 +1282,7 @@ const PRODOTTI_VETRO = [
     nome: 'Morsetto piccolo per vetro',
     // Spessore vetro compatibile ancora da confermare: aggiungerlo agli
     // "assi" (come negli altri morsetti) quando arriva il dato.
-    descrizione: 'Morsetto piccolo per vetro, corpo 50×30mm e spessore 23mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 3 finiture: cromo lucido, cromo perla e nichel satinato.',
+    descrizione: 'Morsetto piccolo per vetro, corpo 50×30mm e spessore 23mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 2 finiture: cromo lucido e nichel satinato.',
     materiale: 'Zama',
     dimensioni: 'Corpo 50×30mm · spessore 23mm',
     fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
@@ -1292,7 +1292,6 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'STIGLIMOP/CRL', finitura: 'Cromo lucido' },
-      { codice: 'STIGLIMOP/CRPERL', finitura: 'Cromo perla' },
       { codice: 'STIGLIMOP/NIKSAT', finitura: 'Nichel satinato' },
     ],
   },
