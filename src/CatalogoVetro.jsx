@@ -140,6 +140,7 @@ import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-to
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM032042 from './assets/vetro/schede/morsetto-m032-042-scheda.jpg';
 import schMorsettoM042042 from './assets/vetro/schede/morsetto-m042-042-scheda.jpg';
+import schMorsettoM062042 from './assets/vetro/schede/morsetto-m062-042-scheda.jpg';
 import morsettoM042042Vista1 from './assets/vetro/prodotti/morsetto-m042-042-vista1.jpg';
 import morsettoM042042Vista2 from './assets/vetro/prodotti/morsetto-m042-042-vista2.jpg';
 import morsettoM042042Sezione from './assets/vetro/prodotti/morsetto-m042-042-sezione.jpg';
@@ -1227,6 +1228,25 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 52, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 06 con attacco per tubo Ø42,4mm',
+    descrizione: 'Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8.76', '10.76', '12.76'],
+    dimensioni: 'Corpo 52×52mm · profondità 32,5mm · attacco tubo Ø42,4mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m062-042-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M062-042-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M062-042-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+      { codice: 'M062-042-1276', finitura: 'Inox satinato', spessoreVetro: 12.76 },
+    ],
+  },
+  {
     id: 47, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Morsetto per vetro mod. 09 con attacco diritto',
     descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 20,76 e 21,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
@@ -1337,6 +1357,7 @@ const SCHEDA_IMG_VETRO = {
   49: schMorsettoM012,
   50: schMorsettoM032042,
   51: schMorsettoM042042,
+  52: schMorsettoM062042,
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
