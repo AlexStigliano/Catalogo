@@ -230,6 +230,8 @@ import schMorsettoGrande from './assets/vetro/schede/morsetto-grande-scheda.jpg'
 import hoppeLogo from './assets/hoppe-logo.png';
 import parisArgentoOpaco from './assets/vetro/prodotti/paris-argento-opaco.jpg';
 import schParis from './assets/vetro/schede/paris-scheda.jpg';
+import parisNeroOpaco from './assets/vetro/prodotti/paris-nero-opaco.jpg';
+import schParisNero from './assets/vetro/schede/paris-nero-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -1320,16 +1322,22 @@ const PRODOTTI_VETRO = [
   {
     id: 55, categoria: '04', sottocategoria: 'maniglie-battenti',
     nome: 'HCS Paris con chiave e nottolino',
-    descrizione: 'Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, finitura alluminio aspetto argento opaco.',
-    materiale: 'Alluminio',
+    descrizione: 'Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, disponibile in 2 finiture: alluminio aspetto argento opaco e resina nero intenso opaco.',
+    materiale: 'Alluminio o resina',
+    materiali: ['Alluminio', 'Resina'],
     dimensioni: 'Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm',
     fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
-    scheda: schedaUrl('paris-scheda-tecnica.pdf'),
+    scheda: {
+      '2574008': schedaUrl('paris-scheda-tecnica.pdf'),
+      '783748': schedaUrl('paris-nero-scheda-tecnica.pdf'),
+    },
     immagini: {
       'Alluminio argento opaco': [parisArgentoOpaco],
+      'Nero opaco': [parisNeroOpaco],
     },
     varianti: [
-      { codice: '2574008', finitura: 'Alluminio argento opaco' },
+      { codice: '2574008', finitura: 'Alluminio argento opaco', materiale: 'Alluminio' },
+      { codice: '783748', finitura: 'Nero opaco', materiale: 'Resina' },
     ],
   },
   {
@@ -1421,7 +1429,7 @@ const SCHEDA_IMG_VETRO = {
   47: schMorsettoM092,
   53: schMorsettoPiccolo,
   54: schMorsettoGrande,
-  55: schParis,
+  55: { '2574008': schParis, '783748': schParisNero },
   48: schMorsettoM022,
   49: schMorsettoM012,
   50: schMorsettoM032042,
