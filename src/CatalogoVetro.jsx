@@ -232,6 +232,8 @@ import parisArgentoOpaco from './assets/vetro/prodotti/paris-argento-opaco.jpg';
 import schParis from './assets/vetro/schede/paris-scheda.jpg';
 import parisNeroOpaco from './assets/vetro/prodotti/paris-nero-opaco.jpg';
 import schParisNero from './assets/vetro/schede/paris-nero-scheda.jpg';
+import incontroHcsSbaFoto from './assets/vetro/prodotti/incontro-hcs-sba-foto.jpg';
+import incontroHcsSbaQuote from './assets/vetro/prodotti/incontro-hcs-sba-quote.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -287,7 +289,9 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
 };
 // Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
 // solo il testo mostrato sotto il nome prodotto).
-const ALTRE_SOTTOCATEGORIE_VETRO = [];
+const ALTRE_SOTTOCATEGORIE_VETRO = [
+  { id: 'contropiastre', nome: 'Contropiastre e incontri' },
+];
 const subName = (id) => (
   Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
@@ -1338,6 +1342,23 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: '2574008', finitura: 'Alluminio argento opaco', materiale: 'Alluminio' },
       { codice: '783748', finitura: 'Nero opaco', materiale: 'Resina' },
+    ],
+    essenziali: [56],
+  },
+  {
+    id: 56, categoria: '10', sottocategoria: 'contropiastre',
+    nome: 'Incontro HCS-SB-A',
+    // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
+    // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
+    descrizione: 'Contropiastra (incontro) del sistema HCS in acciaio inox, per porte complanari, fissaggio con viti multiuso. Si abbina alla maniglia con serratura HCS Paris. Prodotta da HOPPE.',
+    materiale: 'Acciaio inox',
+    dimensioni: '70×38,5mm',
+    fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
+    immagini: {
+      'Acciaio inox': [incontroHcsSbaFoto, incontroHcsSbaQuote],
+    },
+    varianti: [
+      { codice: '658206', finitura: 'Acciaio inox' },
     ],
   },
   {
