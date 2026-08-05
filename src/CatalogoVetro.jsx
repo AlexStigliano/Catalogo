@@ -1368,12 +1368,16 @@ const PRODOTTI_VETRO = [
     nome: 'Maniglia a scomparsa per porta scorrevole',
     // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
     // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
-    descrizione: 'Maniglia a scomparsa per porta scorrevole in vetro, a incasso interno muro, in ottone. Adatta a spessori vetro 8-10mm. Prodotta da GFS, disponibile in 4 finiture: cromo lucido, cromo opaco, simil inox e oro lucido; disponibile anche in nero opaco.',
+    descrizione: 'Maniglia a scomparsa per porta scorrevole in vetro, a incasso interno muro, in ottone. Adatta a spessori vetro 8-10mm. Prodotta da GFS, disponibile in 5 finiture: cromo lucido, cromo opaco, simil inox, oro lucido e nero opaco.',
     materiale: 'Ottone',
     dimensioni: 'Piastra 70×100mm · profondità 18mm · spessore vetro 8-10mm · lavorazione vetro 58×73mm',
     fornitore: 'GFS', fornitoreLogo: gfsLogo,
     immagini: {
       'Cromo lucido': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Cromo opaco': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Simil inox': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Oro lucido': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Nero opaco': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
     },
     varianti: [
       { codice: 'E07M02715', finitura: 'Cromo lucido' },
