@@ -222,6 +222,9 @@ import schTg200 from './assets/vetro/schede/tg200-scheda.jpg';
 import tg202Tappo from './assets/vetro/prodotti/tg202-tappo.jpg';
 import tg202Quote from './assets/vetro/prodotti/tg202-quote.jpg';
 import schTg202 from './assets/vetro/schede/tg202-scheda.jpg';
+import dallagoLogo from './assets/vetro/dallago-logo.png';
+import morsettoPiccoloCromoLucido from './assets/vetro/prodotti/morsetto-piccolo-cromo-lucido.jpg';
+import schMorsettoPiccolo from './assets/vetro/schede/morsetto-piccolo-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
    impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
@@ -1273,6 +1276,25 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 53, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto piccolo per vetro',
+    // Spessore vetro compatibile ancora da confermare: aggiungerlo agli
+    // "assi" (come negli altri morsetti) quando arriva il dato.
+    descrizione: 'Morsetto piccolo per vetro, corpo 50×30mm e spessore 23mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 3 finiture: cromo lucido, cromo perla e nichel satinato.',
+    materiale: 'Zama',
+    dimensioni: 'Corpo 50×30mm · spessore 23mm',
+    fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
+    scheda: schedaUrl('morsetto-piccolo-scheda-tecnica.pdf'),
+    immagini: {
+      'Cromo lucido': [morsettoPiccoloCromoLucido],
+    },
+    varianti: [
+      { codice: 'STIGLIMOP/CRL', finitura: 'Cromo lucido' },
+      { codice: 'STIGLIMOP/CRPERL', finitura: 'Cromo perla' },
+      { codice: 'STIGLIMOP/NIKSAT', finitura: 'Nichel satinato' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1359,6 +1381,7 @@ const SCHEDA_IMG_VETRO = {
   41: schSupportoQuadroIn610020,
   42: schMorsettoM062,
   47: schMorsettoM092,
+  53: schMorsettoPiccolo,
   48: schMorsettoM022,
   49: schMorsettoM012,
   50: schMorsettoM032042,
@@ -1443,6 +1466,9 @@ const FINISHES_VETRO = {
   'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
   'Acciaio satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
   'Cromo opaco': 'linear-gradient(135deg,#e3e6e8,#a9afb4 42%,#cfd4d7 56%,#8d949a 74%,#dfe3e5)',
+  'Cromo lucido': 'linear-gradient(135deg,#ffffff,#c9ced2 30%,#6f777e 50%,#d4d8db 68%,#ffffff)',
+  'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
+  'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
 };
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
