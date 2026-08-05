@@ -139,6 +139,10 @@ import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM032042 from './assets/vetro/schede/morsetto-m032-042-scheda.jpg';
+import morsettoM032042Vista1 from './assets/vetro/prodotti/morsetto-m032-042-vista1.jpg';
+import morsettoM032042Vista2 from './assets/vetro/prodotti/morsetto-m032-042-vista2.jpg';
+import morsettoM032042Sezione from './assets/vetro/prodotti/morsetto-m032-042-sezione.jpg';
+import morsettoM032042Esploso from './assets/vetro/prodotti/morsetto-m032-042-esploso.jpg';
 import schMorsettoM012 from './assets/vetro/schede/morsetto-m012-scheda.jpg';
 import morsettoM012Vista1 from './assets/vetro/prodotti/morsetto-m012-vista1.jpg';
 import morsettoM012Vista2 from './assets/vetro/prodotti/morsetto-m012-vista2.jpg';
@@ -1071,7 +1075,9 @@ const PRODOTTI_VETRO = [
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
-    immagini: {},
+    immagini: {
+      'Inox satinato': [morsettoM032042Vista1, morsettoM032042Vista2, morsettoM032042Sezione, morsettoM032042Esploso],
+    },
     varianti: [
       { codice: 'M032-042-0800', finitura: 'Inox satinato', spessoreVetro: 8 },
       { codice: 'M032-042-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
