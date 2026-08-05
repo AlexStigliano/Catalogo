@@ -1395,13 +1395,22 @@ const PRODOTTI_VETRO = [
   {
     id: 58, categoria: '02',
     nome: 'Magic2 Vetro',
-    descrizione: 'Sistema scorrevole a scomparsa esterno muro per porte in vetro, con fermi ammortizzati (soft-closing) e brevetto originale. Il sistema si fissa tramite borchie o fascia a vista ed è adatto a vetri monolitici o stratificati. Kit completo disponibile in due lunghezze, per porte fino a 80kg. Prodotto da Terno Scorrevoli in alluminio e acciaio, disponibile in 2 finiture: argento spazzolato e nero spazzolato.',
+    descrizione: 'Sistema scorrevole a scomparsa esterno muro per porte in vetro, pluribrevettato e 100% Made in Italy: lo scorrevole invisibile originale. Fermi ammortizzati ad aria con oltre 50mm di frenatura e sistema brevettato di regolazione micrometrica. Il sistema si fissa tramite borchie o fascia a vista ed è adatto a vetri monolitici o stratificati. Kit completo disponibile in due lunghezze, per porte fino a 80kg. Prodotto da Terno Scorrevoli in alluminio e acciaio, disponibile in 2 finiture: argento spazzolato e nero spazzolato.',
     materiale: 'Alluminio e acciaio',
     spessoriVetro: ['8', '10'],
-    dimensioni: 'Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm',
+    dimensioni: 'Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm · luce inferiore 10mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
     scheda: schedaUrl('magic2-vetro-scheda-tecnica.pdf'),
     istruzioni: schedaUrl('magic2-vetro-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Oltre 50mm di frenatura', testo: 'Fermi ammortizzati brevettati che garantiscono oltre 50mm di frenatura, mantenendo gli stessi ingombri della porta.' },
+      { titolo: 'Fermi con posizione regolabile', testo: 'Indipendenti dal distanziale: si possono spostare, se necessario, per regolare la posizione della porta.' },
+      { titolo: 'Ruote distanziali', testo: 'Posizionate alle estremità della porta, la proteggono da contatti con la parete in caso di muri con superfici irregolari.' },
+      { titolo: 'Sistema brevettato di regolazione', testo: 'Regolazione dell’altezza della porta dal pavimento e regolazione micrometrica di distanza e parallelismo dalla parete, per compensare eventuali irregolarità del muro. Tutte le regolazioni si effettuano dall’alto, senza sganciare la porta.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'Due elementi rotanti con leve di sicurezza ben visibili, per l’antisganciamento della porta senza bisogno di utensili.' },
+      { titolo: 'Guida inferiore silenziosa', testo: 'Rinforzata in zama, resistente e versatile, scorre in un profilo che riduce al minimo il rumore.' },
+      { titolo: 'Ruote inferiori brevettate', testo: 'Molleggio brevettato, diametro, cuscinetti e perni in acciaio maggiorati, rivestimento in gomma raddoppiato: più forza e scorrevolezza, senza lasciare tracce sulle superfici e senza deformarsi nel tempo.' },
+    ],
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza kit', suffisso: ' mm' },
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
@@ -2434,6 +2443,18 @@ function ProductDetail({ id }) {
         {p.descrizione && (
           <SezioneTendina title="Descrizione" aperta>
             <p className="rel-testo">{p.descrizione}</p>
+          </SezioneTendina>
+        )}
+        {p.caratteristiche && p.caratteristiche.length > 0 && (
+          <SezioneTendina title="Caratteristiche" badge={p.caratteristiche.length}>
+            <dl className="carat-list">
+              {p.caratteristiche.map((c, i) => (
+                <div className="carat-item" key={i}>
+                  <dt className="carat-title">{c.titolo}</dt>
+                  <dd className="carat-text">{c.testo}</dd>
+                </div>
+              ))}
+            </dl>
           </SezioneTendina>
         )}
         <RelatedRow title="Articoli essenziali" ids={p.essenziali}
