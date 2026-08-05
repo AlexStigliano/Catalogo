@@ -139,6 +139,7 @@ import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-ton
 import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
 import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
 import schMorsettoM032042 from './assets/vetro/schede/morsetto-m032-042-scheda.jpg';
+import schMorsettoM042042 from './assets/vetro/schede/morsetto-m042-042-scheda.jpg';
 import morsettoM032042Vista1 from './assets/vetro/prodotti/morsetto-m032-042-vista1.jpg';
 import morsettoM032042Vista2 from './assets/vetro/prodotti/morsetto-m032-042-vista2.jpg';
 import morsettoM032042Sezione from './assets/vetro/prodotti/morsetto-m032-042-sezione.jpg';
@@ -1113,6 +1114,24 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 51, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 04 con attacco per tubo Ø42,4mm',
+    descrizione: 'Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['13.52', '17.52'],
+    dimensioni: 'Corpo 65×37,5mm · profondità 55mm · attacco tubo Ø42,4mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: schedaUrl('morsetto-m042-042-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {},
+    varianti: [
+      { codice: 'M042-042-1352', finitura: 'Inox satinato', spessoreVetro: 13.52 },
+      { codice: 'M042-042-1752', finitura: 'Inox satinato', spessoreVetro: 17.52 },
+    ],
+  },
+  {
     id: 38, categoria: '01', sottocategoria: 'fermavetri',
     nome: 'Supporto tondo a pavimento vetro 12-12,76mm',
     descrizione: 'Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.',
@@ -1311,6 +1330,7 @@ const SCHEDA_IMG_VETRO = {
   48: schMorsettoM022,
   49: schMorsettoM012,
   50: schMorsettoM032042,
+  51: schMorsettoM042042,
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
