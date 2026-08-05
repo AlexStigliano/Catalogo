@@ -1297,6 +1297,25 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 54, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto grande per vetro',
+    // Spessore vetro compatibile ancora da confermare: aggiungerlo agli
+    // "assi" (come negli altri morsetti) quando arriva il dato.
+    descrizione: 'Morsetto grande per vetro, corpo 70×35mm e spessore 20mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 3 finiture: cromo lucido, cromo perla e nichel satinato.',
+    materiale: 'Zama',
+    dimensioni: 'Corpo 70×35mm · spessore 20mm',
+    fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
+    scheda: schedaUrl('morsetto-grande-scheda-tecnica.pdf'),
+    immagini: {
+      'Cromo lucido': [morsettoGrandeCromoLucido],
+    },
+    varianti: [
+      { codice: 'STIGLIMORS/CRL', finitura: 'Cromo lucido' },
+      { codice: 'STIGLIMORS/CRPERL', finitura: 'Cromo perla' },
+      { codice: 'STIGLIMORS/NIKSAT', finitura: 'Nichel satinato' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1384,6 +1403,7 @@ const SCHEDA_IMG_VETRO = {
   42: schMorsettoM062,
   47: schMorsettoM092,
   53: schMorsettoPiccolo,
+  54: schMorsettoGrande,
   48: schMorsettoM022,
   49: schMorsettoM012,
   50: schMorsettoM032042,
