@@ -289,9 +289,7 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
 };
 // Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
 // solo il testo mostrato sotto il nome prodotto).
-const ALTRE_SOTTOCATEGORIE_VETRO = [
-  { id: 'contropiastre', nome: 'Contropiastre e incontri' },
-];
+const ALTRE_SOTTOCATEGORIE_VETRO = [];
 const subName = (id) => (
   Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
@@ -1346,7 +1344,7 @@ const PRODOTTI_VETRO = [
     essenziali: [56],
   },
   {
-    id: 56, categoria: '10', sottocategoria: 'contropiastre',
+    id: 56, categoria: '04', sottocategoria: 'maniglie-battenti',
     nome: 'Incontro HCS-SB-A',
     // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
     // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
