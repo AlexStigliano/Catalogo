@@ -252,6 +252,8 @@ import universalDettaglio from './assets/vetro/prodotti/universal-dettaglio.jpg'
 import schUniversal from './assets/vetro/schede/universal-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
+import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
+import schFimet3921 from './assets/vetro/schede/fimet-3921-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1514,6 +1516,24 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 62, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Maniglia ad incasso quadra per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Maniglia a incasso quadra per porta scorrevole in vetro, in acciaio inox, finitura satinata. Foro nel vetro Ø18mm. Prodotta da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: '52×52mm · profondità 30mm · foro vetro Ø18mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-3921-scheda-tecnica.pdf'),
+    immagini: {
+      'Acciaio inox satinato': [fimet3921],
+    },
+    varianti: [
+      { codice: '3921', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1616,6 +1636,7 @@ const SCHEDA_IMG_VETRO = {
   59: schMagic2Frame,
   60: schUniversal,
   61: schFimet3904,
+  62: schFimet3921,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
