@@ -246,6 +246,10 @@ import magic2FrameNeroAperta from './assets/vetro/prodotti/magic2-frame-nero-ape
 import magic2FrameNeroChiusa from './assets/vetro/prodotti/magic2-frame-nero-chiusa.jpg';
 import magic2FrameNero from './assets/vetro/prodotti/magic2-frame-nero.jpg';
 import schMagic2Frame from './assets/vetro/schede/magic2-frame-scheda.jpg';
+import universalAmbienteSoggiorno from './assets/vetro/prodotti/universal-ambiente-soggiorno.jpg';
+import universalAmbienteCabina from './assets/vetro/prodotti/universal-ambiente-cabina.jpg';
+import universalDettaglio from './assets/vetro/prodotti/universal-dettaglio.jpg';
+import schUniversal from './assets/vetro/schede/universal-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1461,6 +1465,35 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 60, categoria: '02',
+    nome: 'Universal',
+    // Sistema molto modulare (telaio + binario Eclettica o Evolution + ante
+    // scorrevoli/fisse in vetro, legno o alluminio, in tante combinazioni):
+    // teniamo a magazzino un solo kit, scheda tecnica e brochure servono a
+    // mostrare il prodotto. Per configurazioni diverse si valuta caso per
+    // caso in base alle esigenze del cliente.
+    descrizione: 'Telaio in alluminio Universal per porte scorrevoli e pareti, in vetro, legno o alluminio: profili tubolari, giunti metallici e guarnizione biestrusa per la massima resistenza. Si abbina ai sistemi di scorrimento Eclettica Fluid ed Evolution Fluid, con installazione a parete, soffitto o controsoffitto. Un sistema molto versatile, che consente numerose configurazioni — anta singola, abbinata a elementi fissi, ante doppie — e diverse finiture: la combinazione esatta di telaio, binario, ante e accessori va valutata caso per caso in base alle tue esigenze. Contattaci per individuare gli articoli giusti per la tua porta: qui trovi la scheda tecnica completa e il kit che teniamo pronto a magazzino. Prodotto da Terno Scorrevoli in alluminio e acciaio.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['5', '8.5'],
+    dimensioni: 'Porta fino a 1500×3000mm (max) · peso max 80kg · vetro 5-8,5mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('universal-scheda-tecnica.pdf'),
+    caratteristiche: [
+      { titolo: 'Design essenziale e resistente', testo: 'Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione.' },
+      { titolo: 'Flessibilità nei materiali', testo: 'Permette di realizzare porte in vetro con telaio in alluminio e di integrarle con porte in legno a tutto spessore, per configurazioni miste.' },
+      { titolo: 'Configurazioni multiple', testo: 'Dall’anta singola scorrevole, alla porta abbinata a due o tre elementi fissi, alle ante doppie. Le configurazioni con più ante non hanno movimento sincronizzato.' },
+      { titolo: 'Si abbina a Eclettica ed Evolution', testo: 'Con Eclettica Fluid la porta si installa a parete, soffitto o controsoffitto con la copertura allineata alla maniglia. Con Evolution Fluid la porta si inserisce tra le due coperture, a scomparsa completa.' },
+      { titolo: 'Tante finiture disponibili', testo: 'Argento spazzolato, nero spazzolato, nichel spazzolato, grigio metallizzato e grafite.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra telaio, binario, ante e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Nero spazzolato': [universalAmbienteSoggiorno, universalAmbienteCabina, universalDettaglio],
+    },
+    varianti: [
+      { codice: 'K.0421.2.3.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1561,6 +1594,7 @@ const SCHEDA_IMG_VETRO = {
   46: schAirhinge,
   58: schMagic2Vetro,
   59: schMagic2Frame,
+  60: schUniversal,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
