@@ -254,6 +254,18 @@ import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
 import schFimet3921 from './assets/vetro/schede/fimet-3921-scheda.jpg';
+import fimetManiglioneArgento from './assets/vetro/prodotti/fimet-maniglione-argento.jpg';
+import fimetManiglioneNero from './assets/vetro/prodotti/fimet-maniglione-nero.jpg';
+import schFimetManiglione from './assets/vetro/schede/fimet-maniglione-adesivo-scheda.jpg';
+import fimet3931Argento from './assets/vetro/prodotti/fimet-3931-argento.jpg';
+import fimet3931Nero from './assets/vetro/prodotti/fimet-3931-nero.jpg';
+import schFimet3931 from './assets/vetro/schede/fimet-3931-scheda.jpg';
+import fimet3932Argento from './assets/vetro/prodotti/fimet-3932-argento.jpg';
+import fimet3932Nero from './assets/vetro/prodotti/fimet-3932-nero.jpg';
+import schFimet3932 from './assets/vetro/schede/fimet-3932-scheda.jpg';
+import fimet3933Argento from './assets/vetro/prodotti/fimet-3933-argento.jpg';
+import fimet3933Nero from './assets/vetro/prodotti/fimet-3933-nero.jpg';
+import schFimet3933 from './assets/vetro/schede/fimet-3933-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1534,6 +1546,91 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 63, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Coppia maniglioni adesivi per porte in vetro',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Coppia di maniglioni per porte in vetro in alluminio, ad applicazione adesiva: si fissano direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido, profilo quadro 11×18mm. Disponibili in due lunghezze e nelle finiture argento e nero opaco. Prodotti da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: 'Sezione 11×18mm · lunghezze 300mm e 700mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-maniglione-adesivo-scheda-tecnica.pdf'),
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [fimetManiglioneArgento],
+      'Nero opaco': [fimetManiglioneNero],
+    },
+    varianti: [
+      { codice: '805300128', finitura: 'Argento', lunghezza: 300 },
+      { codice: '805700128', finitura: 'Argento', lunghezza: 700 },
+      { codice: '805300NO', finitura: 'Nero opaco', lunghezza: 300 },
+      { codice: '805700NO', finitura: 'Nero opaco', lunghezza: 700 },
+    ],
+  },
+  {
+    id: 64, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva quadra per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso quadra per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: '58×58mm · altezza 9mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-3931-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [fimet3931Argento],
+      'Nero opaco': [fimet3931Nero],
+    },
+    varianti: [
+      { codice: '3931', finitura: 'Argento' },
+      { codice: '3931NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 65, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva rettangolare per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso rettangolare per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: '58×115mm · altezza 9mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-3932-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [fimet3932Argento],
+      'Nero opaco': [fimet3932Nero],
+    },
+    varianti: [
+      { codice: '3932', finitura: 'Argento' },
+      { codice: '3932NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 66, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva tonda per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso tonda per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: 'Ø60mm · altezza 10mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-3933-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [fimet3933Argento],
+      'Nero opaco': [fimet3933Nero],
+    },
+    varianti: [
+      { codice: '3933', finitura: 'Argento' },
+      { codice: '3933NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1637,6 +1734,10 @@ const SCHEDA_IMG_VETRO = {
   60: schUniversal,
   61: schFimet3904,
   62: schFimet3921,
+  63: schFimetManiglione,
+  64: schFimet3931,
+  65: schFimet3932,
+  66: schFimet3933,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
