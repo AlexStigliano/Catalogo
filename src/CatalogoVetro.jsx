@@ -1616,7 +1616,7 @@ const PRODOTTI_VETRO = [
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
     // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
     // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
-    descrizione: 'Nicchia a incasso tonda per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    descrizione: 'Nicchia a incasso tonda per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento, nero opaco e bianco opaco. Prodotta da Fimet.',
     materiale: 'Alluminio',
     dimensioni: 'Ø60mm · altezza 10mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
@@ -1628,6 +1628,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: '3933', finitura: 'Argento' },
       { codice: '3933NO', finitura: 'Nero opaco' },
+      { codice: '3933BO', finitura: 'Bianco opaco' },
     ],
   },
   {
