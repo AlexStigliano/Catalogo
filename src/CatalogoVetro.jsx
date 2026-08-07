@@ -186,6 +186,12 @@ import airhingeNeroRender from './assets/vetro/prodotti/airhinge-nero-render.jpg
 import airhingeNeroAmbiente from './assets/vetro/prodotti/airhinge-nero-ambiente.jpg';
 import airhingeArgentoAmbiente from './assets/vetro/prodotti/airhinge-argento-ambiente.jpg';
 import airhingeArgentoRender from './assets/vetro/prodotti/airhinge-argento-render.jpg';
+import airhandleArgentoRender from './assets/vetro/prodotti/airhandle-argento-render.jpg';
+import airhandleArgentoVetro from './assets/vetro/prodotti/airhandle-argento-vetro.jpg';
+import airhandleNeroRender from './assets/vetro/prodotti/airhandle-nero-render.jpg';
+import airhandleNeroVetro from './assets/vetro/prodotti/airhandle-nero-vetro.jpg';
+import airhandleNeroAmbiente from './assets/vetro/prodotti/airhandle-nero-ambiente.jpg';
+import schAirhandle from './assets/vetro/schede/airhandle-scheda.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
 import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
@@ -1400,6 +1406,45 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 69, categoria: '04', sottocategoria: 'maniglie-battenti',
+    nome: 'Maniglia con serratura AirHandle L13',
+    // Della gamma AirDoor trattiamo solo la funzione L13 e solo la versione
+    // per porte in vetro: i codici delle altre funzioni (L11 passaggio, L12
+    // bagno) e della versione per porte in legno non sono elencati qui.
+    descrizione: 'Maniglia con serratura integrata per porte a battente in vetro, funzione L13: all’esterno si chiude a chiave, all’interno c’è un pomolo girevole per la modalità privacy. Fa parte della linea AirDoor e condivide design, forme e finiture con la cerniera AirHinge, così tutta la porta resta coordinata. Adatta a vetri da 8 a 12mm, si fissa con tiranti sfruttando le lavorazioni già presenti nel vetro. Sistema anti-panico integrato: dall’interno la leva sblocca sempre la serratura. Cilindro a lamelle con testa piatta e chiave coordinata alla finitura. Prodotta da Meroni in alluminio 100% riciclabile, disponibile in alluminio naturale e nero opaco, sia nella versione a spingere che in quella a tirare.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '10', '12'],
+    dimensioni: 'Spessore vetro 8-12mm · albero 8mm ad espansione · rosetta quadra',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: schedaUrl('airhandle-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('airhandle-istruzioni.pdf'),
+    caratteristiche: [
+      { titolo: 'Serratura integrata nella maniglia', testo: 'Il cilindro è dentro la maniglia stessa: non serve una serratura separata nel vetro, l’ingombro sulla porta resta minimo.' },
+      { titolo: 'Chiave fuori, privacy dentro', testo: 'La funzione L13 chiude a chiave dall’esterno e ha un pomolo girevole all’interno per la modalità privacy: pensata per ingressi e uffici.' },
+      { titolo: 'Sistema anti-panico', testo: 'Abbassando la leva della maniglia interna la serratura si sblocca sempre in automatico, anche quando è chiusa a chiave.' },
+      { titolo: 'A spingere o a tirare', testo: 'Due versioni a seconda del verso di apertura della porta: cambia il lato su cui va montato lo scrocco per il vetro.' },
+      { titolo: 'Abbinabile alla cerniera AirHinge', testo: 'Maniglia e cerniera sono della stessa linea AirDoor: stesso design essenziale, stesse finiture, stesso impatto visivo ridotto.' },
+      { titolo: 'Chiave in tinta', testo: 'Cilindro a lamelle con testa piatta e chiave coordinata alla finitura della maniglia.' },
+      { titolo: 'Alluminio riciclabile', testo: 'Realizzata interamente in alluminio 100% riciclabile.' },
+    ],
+    assi: [
+      { chiave: 'apertura', etichetta: 'Verso di apertura' },
+    ],
+    immagini: {
+      'Alluminio naturale': [airhandleArgentoRender, airhandleArgentoVetro],
+      'Nero opaco': [airhandleNeroRender, airhandleNeroVetro, airhandleNeroAmbiente],
+    },
+    varianti: [
+      { codice: 'L13NAGL', finitura: 'Alluminio naturale', apertura: 'A spingere' },
+      { codice: 'L13NAGT', finitura: 'Alluminio naturale', apertura: 'A tirare' },
+      { codice: 'L13NEGL', finitura: 'Nero opaco', apertura: 'A spingere' },
+      { codice: 'L13NEGT', finitura: 'Nero opaco', apertura: 'A tirare' },
+    ],
+    // La cerniera AirHinge non serve per montare la maniglia: è l'articolo
+    // della stessa linea AirDoor con cui si abbina esteticamente.
+    facoltativi: [46],
+  },
+  {
     id: 57, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia a scomparsa per porta scorrevole',
     // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
@@ -1740,6 +1785,8 @@ const PRODOTTI_VETRO = [
       { codice: 'GAHA2ST6D', finitura: 'Cromo opaco' },
       { codice: 'GAHA2STNE', finitura: 'Nero opaco' },
     ],
+    // Stessa linea AirDoor: la maniglia con cui la cerniera si abbina.
+    facoltativi: [69],
   },
 ];
 const SCHEDA_IMG_VETRO = {
@@ -1772,7 +1819,7 @@ const SCHEDA_IMG_VETRO = {
   43: schFs880,
   44: schFs890,
   45: schGaha1st,
-  46: schAirhinge,
+  46: schAirhinge, 69: schAirhandle,
   58: schMagic2Vetro,
   59: schMagic2Frame,
   60: schUniversal,
@@ -1863,6 +1910,7 @@ const FINISHES_VETRO = {
   'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
   'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
   'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
+  'Alluminio naturale': 'linear-gradient(135deg,#e4e6e7,#b4b9bc 42%,#d0d4d6 56%,#9ba0a4 74%,#dfe1e2)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
