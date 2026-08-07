@@ -278,6 +278,26 @@ import fimetEquadorInoxSatinato from './assets/vetro/prodotti/fimet-equador-850-
 import fimetEquadorInoxLucido from './assets/vetro/prodotti/fimet-equador-850-inox-lucido.jpg';
 import fimetEquadorNero from './assets/vetro/prodotti/fimet-equador-850-nero.jpg';
 import schFimetEquador from './assets/vetro/schede/fimet-equador-850-scheda.jpg';
+/* Kit di fissaggio per maniglioni: non esiste una scheda tecnica del singolo
+   articolo, solo la tavola del catalogo Fimet "Schede tecniche maniglioni" da
+   cui abbiamo ritagliato il disegno con le quote (vedi "immagini", non
+   "scheda"). La tavola intera e' una striscia molto larga e alla dimensione a
+   cui la galleria la mostra le quote non si leggono: dopo la vista d'insieme
+   mettiamo quindi i dettagli, ritagliati dalla stessa tavola. */
+import fimetFiss03 from './assets/vetro/prodotti/fimet-fiss-03-quote.jpg';
+import fimetFiss03Fori from './assets/vetro/prodotti/fimet-fiss-03-fori.jpg';
+import fimetFiss03Componenti from './assets/vetro/prodotti/fimet-fiss-03-componenti.jpg';
+import fimetFiss03Montaggio from './assets/vetro/prodotti/fimet-fiss-03-montaggio.jpg';
+import fimetFiss05m6 from './assets/vetro/prodotti/fimet-fiss-05m6-quote.jpg';
+import fimetFiss05m6Foro from './assets/vetro/prodotti/fimet-fiss-05m6-foro.jpg';
+import fimetFiss05m6Vite from './assets/vetro/prodotti/fimet-fiss-05m6-vite.jpg';
+import fimetFiss05m6Montaggio from './assets/vetro/prodotti/fimet-fiss-05m6-montaggio.jpg';
+import fimetFiss06 from './assets/vetro/prodotti/fimet-fiss-06-quote.jpg';
+import fimetFiss06Componenti from './assets/vetro/prodotti/fimet-fiss-06-componenti.jpg';
+import fimetFiss06Montaggio from './assets/vetro/prodotti/fimet-fiss-06-montaggio.jpg';
+import fimetFiss07 from './assets/vetro/prodotti/fimet-fiss-07-quote.jpg';
+import fimetFiss07Componenti from './assets/vetro/prodotti/fimet-fiss-07-componenti.jpg';
+import fimetFiss07Montaggio from './assets/vetro/prodotti/fimet-fiss-07-montaggio.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1723,6 +1743,63 @@ const PRODOTTI_VETRO = [
       { codice: '850.35.1250.1000.60', finitura: 'Acciaio inox satinato' },
       { codice: '850.35.1250.1000.61', finitura: 'Inox lucido' },
       { codice: '850.35.1250.1000.NO', finitura: 'Nero opaco' },
+    ],
+  },
+  /* I quattro kit di fissaggio qui sotto vengono dalla tavola "Accessori di
+     montaggio" del catalogo Fimet: quella pagina non indica ne' il materiale
+     ne' le finiture disponibili, percio' il campo "materiale" e' assente e la
+     finitura resta generica. Tutte le quote riportate sono quelle del disegno,
+     che e' allegato per intero nella galleria. */
+  {
+    id: 70, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio passante FISS 03',
+    descrizione: 'Kit di fissaggio passante per maniglione singolo, per porte in legno, alluminio e vetro. La barra filettata attraversa l’anta da parte a parte e si avvita nel supporto del maniglione. Foro nell’anta Ø9mm su legno e alluminio, Ø13mm sul vetro: sulle porte in vetro si montano le bussole Ø12 H10 con foro 8,2mm, che isolano la barra dalla lastra. Il kit comprende le barre filettate M8×110 e M8×30, le molle, le bussole e i distanziali tondi Ø28mm da 8mm di spessore. Prodotto da Fimet.',
+    dimensioni: 'Foro legno e alluminio Ø9mm · foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · barre filettate M8×110 e M8×30 · distanziali Ø28mm spessore 8mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Standard': [fimetFiss03, fimetFiss03Fori, fimetFiss03Componenti, fimetFiss03Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 03', finitura: 'Standard' },
+    ],
+  },
+  {
+    id: 71, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio singolo M6 FISS 05M6',
+    descrizione: 'Kit di fissaggio singolo M6 per maniglioni su porte in vetro. La vite a testa tonda passa nel foro della lastra e si avvita nel supporto del maniglione. Foro nel vetro Ø13mm, con bussole Ø12 H10 e foro 8,2mm a protezione della lastra. Vite con testa Ø20mm da 3mm di spessore e gambo filettato M6 lungo 26mm. Prodotto da Fimet.',
+    dimensioni: 'Foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · vite testa Ø20mm spessore 3mm · filetto M6 lunghezza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Standard': [fimetFiss05m6, fimetFiss05m6Foro, fimetFiss05m6Vite, fimetFiss05m6Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 05M6', finitura: 'Standard' },
+    ],
+  },
+  {
+    id: 72, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio con rosetta tonda FISS 06',
+    descrizione: 'Kit di fissaggio singolo con rosetta tonda e piastrina, per maniglioni con supporto tondo diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta tonda Ø50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. Prodotto da Fimet.',
+    dimensioni: 'Rosetta tonda Ø50mm · perno filettato M8 · sporgenza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Standard': [fimetFiss06, fimetFiss06Componenti, fimetFiss06Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 06', finitura: 'Standard' },
+    ],
+  },
+  {
+    id: 73, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio con rosetta quadra FISS 07',
+    descrizione: 'Kit di fissaggio singolo con rosetta quadra e piastrina, per maniglioni con supporto quadro diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta quadra 50×50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. Prodotto da Fimet.',
+    dimensioni: 'Rosetta quadra 50×50mm · perno filettato M8 · sporgenza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Standard': [fimetFiss07, fimetFiss07Componenti, fimetFiss07Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 07', finitura: 'Standard' },
     ],
   },
   {
