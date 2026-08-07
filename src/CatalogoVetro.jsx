@@ -1411,13 +1411,18 @@ const PRODOTTI_VETRO = [
     // Della gamma AirDoor trattiamo solo la funzione L13 e solo la versione
     // per porte in vetro: i codici delle altre funzioni (L11 passaggio, L12
     // bagno) e della versione per porte in legno non sono elencati qui.
-    descrizione: 'Maniglia con serratura integrata per porte a battente in vetro, funzione L13: all’esterno si chiude a chiave, all’interno c’è un pomolo girevole per la modalità privacy. Fa parte della linea AirDoor e condivide design, forme e finiture con la cerniera AirHinge, così tutta la porta resta coordinata. Adatta a vetri da 8 a 12mm, si fissa con tiranti sfruttando le lavorazioni già presenti nel vetro. Sistema anti-panico integrato: dall’interno la leva sblocca sempre la serratura. Cilindro a lamelle con testa piatta e chiave coordinata alla finitura. Prodotta da Meroni in alluminio 100% riciclabile, disponibile in alluminio naturale e nero opaco, sia nella versione a spingere che in quella a tirare.',
+    descrizione: 'Maniglia con serratura integrata per porte a battente in vetro, funzione L13: all’esterno si chiude a chiave, all’interno c’è un pomolo girevole per la modalità privacy. Fa parte della linea AirDoor e condivide design, forme e finiture con la cerniera AirHinge, così tutta la porta resta coordinata. Adatta a vetri da 8 a 12mm, si fissa con tiranti sfruttando le lavorazioni già presenti nel vetro. Sistema anti-panico integrato: dall’interno la leva sblocca sempre la serratura. Cilindro a lamelle con testa piatta e chiave coordinata alla finitura. Prodotta da Meroni in alluminio 100% riciclabile, disponibile in cromo opaco e nero opaco, sia nella versione a spingere che in quella a tirare.',
     materiale: 'Alluminio',
     spessoriVetro: ['8', '10', '12'],
     dimensioni: 'Spessore vetro 8-12mm · albero 8mm ad espansione · rosetta quadra',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
     scheda: schedaUrl('airhandle-scheda-tecnica.pdf'),
     istruzioni: schedaUrl('airhandle-istruzioni.pdf'),
+    // Un video per verso di apertura: il montaggio dello scrocco cambia.
+    video: [
+      { etichetta: 'a spingere', url: 'https://youtube.com/shorts/weY1w8maktk' },
+      { etichetta: 'a tirare', url: 'https://youtube.com/shorts/WTF9-g-a4ww' },
+    ],
     caratteristiche: [
       { titolo: 'Serratura integrata nella maniglia', testo: 'Il cilindro è dentro la maniglia stessa: non serve una serratura separata nel vetro, l’ingombro sulla porta resta minimo.' },
       { titolo: 'Chiave fuori, privacy dentro', testo: 'La funzione L13 chiude a chiave dall’esterno e ha un pomolo girevole all’interno per la modalità privacy: pensata per ingressi e uffici.' },
@@ -1431,12 +1436,12 @@ const PRODOTTI_VETRO = [
       { chiave: 'apertura', etichetta: 'Verso di apertura' },
     ],
     immagini: {
-      'Alluminio naturale': [airhandleArgentoRender, airhandleArgentoVetro],
+      'Cromo opaco': [airhandleArgentoRender, airhandleArgentoVetro],
       'Nero opaco': [airhandleNeroRender, airhandleNeroVetro, airhandleNeroAmbiente],
     },
     varianti: [
-      { codice: 'L13NAGL', finitura: 'Alluminio naturale', apertura: 'A spingere' },
-      { codice: 'L13NAGT', finitura: 'Alluminio naturale', apertura: 'A tirare' },
+      { codice: 'L13NAGL', finitura: 'Cromo opaco', apertura: 'A spingere' },
+      { codice: 'L13NAGT', finitura: 'Cromo opaco', apertura: 'A tirare' },
       { codice: 'L13NEGL', finitura: 'Nero opaco', apertura: 'A spingere' },
       { codice: 'L13NEGT', finitura: 'Nero opaco', apertura: 'A tirare' },
     ],
@@ -1910,7 +1915,6 @@ const FINISHES_VETRO = {
   'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
   'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
   'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
-  'Alluminio naturale': 'linear-gradient(135deg,#e4e6e7,#b4b9bc 42%,#d0d4d6 56%,#9ba0a4 74%,#dfe1e2)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
@@ -2691,12 +2695,14 @@ function ProductDetail({ id }) {
                       <Download size={15} /> Rapporto di prova <em>in arrivo</em>
                     </button>
               )}
-              {/* Video tutorial di montaggio: presente solo per gli articoli che ne hanno uno. */}
-              {p.video && (
-                <a className="scheda" href={p.video} target="_blank" rel="noopener">
-                  <PlayCircle size={15} /> Video tutorial montaggio
+              {/* Video tutorial di montaggio: presente solo per gli articoli che
+                  ne hanno uno. Puo' essere un solo link oppure piu' video con
+                  etichetta, quando il montaggio cambia da versione a versione. */}
+              {p.video && (Array.isArray(p.video) ? p.video : [{ url: p.video }]).map((v, i) => (
+                <a className="scheda" key={i} href={v.url} target="_blank" rel="noopener">
+                  <PlayCircle size={15} /> {v.etichetta ? `Video montaggio · ${v.etichetta}` : 'Video tutorial montaggio'}
                 </a>
-              )}
+              ))}
               {/* Istruzioni di montaggio in PDF: un documento a parte dalla scheda
                   tecnica, presente solo per gli articoli che ce l'hanno. */}
               {p.istruzioni && (
