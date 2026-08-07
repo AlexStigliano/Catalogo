@@ -1436,8 +1436,10 @@ const PRODOTTI_VETRO = [
       { chiave: 'apertura', etichetta: 'Verso di apertura' },
     ],
     immagini: {
-      'Cromo opaco': [airhandleArgentoRender, airhandleArgentoVetro],
-      'Nero opaco': [airhandleNeroRender, airhandleNeroVetro, airhandleNeroAmbiente],
+      // Prima le foto sulla porta in vetro, che e' la versione che trattiamo;
+      // poi il render con la cerniera AirHinge accanto.
+      'Cromo opaco': [airhandleArgentoVetro, airhandleArgentoRender],
+      'Nero opaco': [airhandleNeroVetro, airhandleNeroRender, airhandleNeroAmbiente],
     },
     varianti: [
       { codice: 'L13NAGL', finitura: 'Cromo opaco', apertura: 'A spingere' },
