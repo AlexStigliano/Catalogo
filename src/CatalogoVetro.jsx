@@ -190,7 +190,6 @@ import airhandleArgentoRender from './assets/vetro/prodotti/airhandle-argento-re
 import airhandleArgentoVetro from './assets/vetro/prodotti/airhandle-argento-vetro.jpg';
 import airhandleNeroRender from './assets/vetro/prodotti/airhandle-nero-render.jpg';
 import airhandleNeroVetro from './assets/vetro/prodotti/airhandle-nero-vetro.jpg';
-import airhandleNeroAmbiente from './assets/vetro/prodotti/airhandle-nero-ambiente.jpg';
 import schAirhandle from './assets/vetro/schede/airhandle-scheda.jpg';
 import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
 import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
@@ -1439,7 +1438,7 @@ const PRODOTTI_VETRO = [
       // Prima le foto sulla porta in vetro, che e' la versione che trattiamo;
       // poi il render con la cerniera AirHinge accanto.
       'Cromo opaco': [airhandleArgentoVetro, airhandleArgentoRender],
-      'Nero opaco': [airhandleNeroVetro, airhandleNeroRender, airhandleNeroAmbiente],
+      'Nero opaco': [airhandleNeroVetro, airhandleNeroRender],
     },
     varianti: [
       { codice: 'L13NAGL', finitura: 'Cromo opaco', apertura: 'A spingere' },
