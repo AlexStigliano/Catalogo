@@ -266,6 +266,9 @@ import schFimet3932 from './assets/vetro/schede/fimet-3932-scheda.jpg';
 import fimet3933Argento from './assets/vetro/prodotti/fimet-3933-argento.jpg';
 import fimet3933Nero from './assets/vetro/prodotti/fimet-3933-nero.jpg';
 import schFimet3933 from './assets/vetro/schede/fimet-3933-scheda.jpg';
+import fimetBrasileInox from './assets/vetro/prodotti/fimet-brasile-852-inox.jpg';
+import fimetBrasileNero from './assets/vetro/prodotti/fimet-brasile-852-nero.jpg';
+import schFimetBrasile from './assets/vetro/schede/fimet-brasile-852-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1632,6 +1635,23 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 67, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Brasile 852',
+    descrizione: 'Maniglione a doppia barra parallela per porte in vetro, sezione quadra 25×38mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60) e nero opaco RAL9005 (FNO). Prodotto da Fimet.',
+    materiale: 'Acciaio inox AISI304',
+    dimensioni: 'Sezione 25×38mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-brasile-852-scheda-tecnica.pdf'),
+    immagini: {
+      'Acciaio inox satinato': [fimetBrasileInox],
+      'Nero opaco': [fimetBrasileNero],
+    },
+    varianti: [
+      { codice: '852.2538.1250.1000.60', finitura: 'Acciaio inox satinato' },
+      { codice: '852.2538.1250.1000.NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1739,6 +1759,7 @@ const SCHEDA_IMG_VETRO = {
   64: schFimet3931,
   65: schFimet3932,
   66: schFimet3933,
+  67: schFimetBrasile,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
