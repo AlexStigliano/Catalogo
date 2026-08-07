@@ -1420,8 +1420,8 @@ const PRODOTTI_VETRO = [
     istruzioni: schedaUrl('airhandle-istruzioni.pdf'),
     // Un video per verso di apertura: il montaggio dello scrocco cambia.
     video: [
-      { etichetta: 'a spingere', url: 'https://youtube.com/shorts/weY1w8maktk' },
-      { etichetta: 'a tirare', url: 'https://youtube.com/shorts/WTF9-g-a4ww' },
+      { etichetta: 'a spingere', url: 'https://youtube.com/shorts/WTF9-g-a4ww' },
+      { etichetta: 'a tirare', url: 'https://youtube.com/shorts/weY1w8maktk' },
     ],
     caratteristiche: [
       { titolo: 'Serratura integrata nella maniglia', testo: 'Il cilindro è dentro la maniglia stessa: non serve una serratura separata nel vetro, l’ingombro sulla porta resta minimo.' },
