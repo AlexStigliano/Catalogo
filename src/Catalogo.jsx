@@ -932,7 +932,7 @@ function parseHash() {
   if (h === 'indice') return { view: 'indice' };
   const mp = h.match(/^prodotto\/(\d+)$/);
   if (mp) return { view: 'prodotto', id: Number(mp[1]) };
-  const m = h.match(/^cat\/(\d{2})(?:\/([a-z]+))?$/);
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z-]+))?$/);
   if (m) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
@@ -1591,6 +1591,7 @@ function ProductDetail({ id }) {
 
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
+              <div className="variants-scroll">
               <table className="variants">
                 <thead><tr><th>Codice articolo</th><th>Finitura</th>
                   {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : (haVer && <th>Versione</th>)}
@@ -1622,6 +1623,7 @@ function ProductDetail({ id }) {
                   })}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
