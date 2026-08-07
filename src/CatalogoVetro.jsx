@@ -269,6 +269,10 @@ import schFimet3933 from './assets/vetro/schede/fimet-3933-scheda.jpg';
 import fimetBrasileInox from './assets/vetro/prodotti/fimet-brasile-852-inox.jpg';
 import fimetBrasileNero from './assets/vetro/prodotti/fimet-brasile-852-nero.jpg';
 import schFimetBrasile from './assets/vetro/schede/fimet-brasile-852-scheda.jpg';
+import fimetEquadorInoxSatinato from './assets/vetro/prodotti/fimet-equador-850-inox-satinato.jpg';
+import fimetEquadorInoxLucido from './assets/vetro/prodotti/fimet-equador-850-inox-lucido.jpg';
+import fimetEquadorNero from './assets/vetro/prodotti/fimet-equador-850-nero.jpg';
+import schFimetEquador from './assets/vetro/schede/fimet-equador-850-scheda.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
 /* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
@@ -1652,6 +1656,25 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 68, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Equador 850',
+    descrizione: 'Maniglione a doppia barra parallela con serratura a chiave integrata, per porte in vetro, profilo tondo Ø35mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60), inox lucido (F61) e nero opaco RAL9005 (FNO). Prodotto da Fimet.',
+    materiale: 'Acciaio inox AISI304',
+    dimensioni: 'Ø35mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: schedaUrl('fimet-equador-850-scheda-tecnica.pdf'),
+    immagini: {
+      'Acciaio inox satinato': [fimetEquadorInoxSatinato],
+      'Inox lucido': [fimetEquadorInoxLucido],
+      'Nero opaco': [fimetEquadorNero],
+    },
+    varianti: [
+      { codice: '850.35.1250.1000.60', finitura: 'Acciaio inox satinato' },
+      { codice: '850.35.1250.1000.61', finitura: 'Inox lucido' },
+      { codice: '850.35.1250.1000.NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
     id: 43, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Cerniera chiudiporta a pavimento FS880',
     descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
@@ -1760,6 +1783,7 @@ const SCHEDA_IMG_VETRO = {
   65: schFimet3932,
   66: schFimet3933,
   67: schFimetBrasile,
+  68: schFimetEquador,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
