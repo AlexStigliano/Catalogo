@@ -260,6 +260,10 @@ import universalAmbienteSoggiorno from './assets/vetro/prodotti/universal-ambien
 import universalAmbienteCabina from './assets/vetro/prodotti/universal-ambiente-cabina.jpg';
 import universalDettaglio from './assets/vetro/prodotti/universal-dettaglio.jpg';
 import schUniversal from './assets/vetro/schede/universal-scheda.jpg';
+import solovetroAmbienteUfficio from './assets/vetro/prodotti/solovetro-ambiente-ufficio.jpg';
+import solovetroDettaglio from './assets/vetro/prodotti/solovetro-dettaglio.jpg';
+import solovetroEsploso from './assets/vetro/prodotti/solovetro-esploso.jpg';
+import schSolovetro from './assets/vetro/schede/solovetro-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1609,6 +1613,31 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 75, categoria: '02',
+    nome: 'Solo Vetro',
+    descrizione: 'Sistema di scorrevoli invisibili per porte interamente in vetro: le pinze di scorrimento sono completamente nascoste all\'interno del profilo binario in alluminio, per una resa estetica pulita e senza elementi a vista sul vetro. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Disponibile in configurazione standard ad anta singola oppure Sync, con apertura simultanea sincronizzata per porte a due ante. Fissaggio a parete o a soffitto, portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a parete o soffitto',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('solovetro-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('solovetro-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, per una porta in vetro senza elementi di scorrimento a vista.' },
+      { titolo: 'Apertura singola o Sync sincronizzata', testo: 'Il sistema prevede la configurazione per anta singola oppure, con la versione Sync, per due ante con apertura simultanea e movimento sincronizzato.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati.' },
+      { titolo: 'Fermi ammortizzati inclusi', testo: 'Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa.' },
+      { titolo: 'Fissaggio a parete o a soffitto', testo: 'Il profilo binario si installa sia a parete che a soffitto, in base alle esigenze dell\'ambiente.' },
+      { titolo: 'Due finiture disponibili', testo: 'Argento anodizzato e argento spazzolato anodizzato.' },
+    ],
+    immagini: {
+      'Argento': [solovetroDettaglio, solovetroAmbienteUfficio, solovetroEsploso],
+    },
+    varianti: [
+      { codice: 'K.0272.5', finitura: 'Argento' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -1932,6 +1961,7 @@ const SCHEDA_IMG_VETRO = {
   58: schMagic2Vetro,
   59: schMagic2Frame,
   60: schUniversal,
+  75: schSolovetro,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
