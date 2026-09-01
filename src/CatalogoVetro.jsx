@@ -264,6 +264,10 @@ import solovetroAmbienteUfficio from './assets/vetro/prodotti/solovetro-ambiente
 import solovetroDettaglio from './assets/vetro/prodotti/solovetro-dettaglio.jpg';
 import solovetroEsploso from './assets/vetro/prodotti/solovetro-esploso.jpg';
 import schSolovetro from './assets/vetro/schede/solovetro-scheda.jpg';
+import solovetroLightAmbienteCucina from './assets/vetro/prodotti/solovetro-light-ambiente-cucina.jpg';
+import solovetroLightDettaglio from './assets/vetro/prodotti/solovetro-light-dettaglio.jpg';
+import solovetroLightEsploso from './assets/vetro/prodotti/solovetro-light-esploso.jpg';
+import schSolovetroLight from './assets/vetro/schede/solovetro-light-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1638,6 +1642,31 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 76, categoria: '02',
+    nome: 'Solo Vetro Light',
+    descrizione: 'Sistema di scorrevoli invisibili per porte interamente in vetro, dedicato ai controsoffitti in cartongesso: le pinze di scorrimento sono completamente nascoste all\'interno del profilo binario in alluminio, integrabile a filo del controsoffitto. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm, in configurazione porta singola, singola con fisso, doppia o doppia con fisso. Sistema di antisganciamento e portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Fissaggio a soffitto pieno, a soffitto vuoto (controsoffitto) o a parete. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a soffitto (pieno o vuoto) o a parete',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('solovetro-light-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('solovetro-light-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, a filo del controsoffitto in cartongesso.' },
+      { titolo: 'Dedicato ai controsoffitti', testo: 'Pensato per l\'installazione su pareti e controsoffitti in cartongesso, con fissaggio a soffitto pieno, a soffitto vuoto o a parete.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'Un sistema dedicato impedisce lo sganciamento accidentale dei carrelli dal binario durante lo scorrimento.' },
+      { titolo: 'Configurazioni multiple', testo: 'Porta singola, porta singola con elemento fisso, porta doppia e porta doppia con elemento fisso.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati.' },
+      { titolo: 'Fermi ammortizzati inclusi', testo: 'Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa.' },
+    ],
+    immagini: {
+      'Argento': [solovetroLightAmbienteCucina, solovetroLightDettaglio, solovetroLightEsploso],
+    },
+    varianti: [
+      { codice: 'K.0281.5', finitura: 'Argento' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -1962,6 +1991,7 @@ const SCHEDA_IMG_VETRO = {
   59: schMagic2Frame,
   60: schUniversal,
   75: schSolovetro,
+  76: schSolovetroLight,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
