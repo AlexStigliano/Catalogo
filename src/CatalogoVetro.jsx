@@ -1679,7 +1679,7 @@ const PRODOTTI_VETRO = [
     // quindi niente varianti con SKU reali (richiesta esplicita del cliente).
     // Descrizione, immagini e scheda tecnica completa bastano a presentare
     // il prodotto; la configurazione esatta si valuta caso per caso.
-    descrizione: 'Sistema di scorrevoli brevettato per ante in vetro senza forature: la pinza alta 40mm serra il bordo del vetro senza bisogno di praticare fori sulla lastra. Disponibile con pinza standard (Clamp 200) o con pinza lunga per ante più ampie, ed è configurabile con fermi ammortizzati Fluid opzionali (portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm). Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Il binario in alluminio è disponibile in diverse lunghezze standard (da 600 a 1500mm), con o senza copertura, ed è estendibile con appositi kit per controtelai. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza, fermi e accessori va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    descrizione: 'Sistema di scorrevoli brevettato per ante in vetro senza forature: la pinza alta 40mm serra il bordo del vetro senza bisogno di praticare fori sulla lastra. Disponibile con pinza standard (Clamp 200) o con pinza lunga per ante più ampie, ed è configurabile con fermi ammortizzati Fluid opzionali (portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm). Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Il binario in alluminio è disponibile in diverse lunghezze standard (da 600 a 1500mm), con o senza copertura, ed è estendibile con appositi kit per controtelai. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza, fermi e accessori va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
     materiale: 'Alluminio',
     spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
     dimensioni: 'Pinza alta 40mm senza forature vetro · portata 80-120kg per anta secondo pinza e fermi · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · binario da 600 a 1500mm',
@@ -1696,11 +1696,9 @@ const PRODOTTI_VETRO = [
       { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza, fermi e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
     ],
     immagini: {
-      'Argento': [vetro40AmbientePorteLegno, vetro40Dettaglio, vetro40Esploso],
       'Argento spazzolato': [vetro40AmbientePorteLegno, vetro40Dettaglio, vetro40Esploso],
     },
     varianti: [
-      { codice: 'Su misura', finitura: 'Argento' },
       { codice: 'Su misura', finitura: 'Argento spazzolato' },
     ],
   },
