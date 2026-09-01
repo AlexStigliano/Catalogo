@@ -1712,7 +1712,7 @@ const PRODOTTI_VETRO = [
     // Come Vetro 40: troppe combinazioni possibili (configurazione a piu' ante,
     // spessore vetro, finitura) per un codice fisso a catalogo, quindi niente
     // varianti con SKU reali (richiesta esplicita del cliente).
-    descrizione: 'Sistema di scorrevoli brevettato per porte in vetro a trascinamento manuale, con pinza ad altezza ridotta (solo 40mm) senza forature sulla lastra. La pinza è a tutta lunghezza e può essere tagliata a misura in cantiere. Il sistema integra i carrelli con tecnologia Fluid, per un movimento estremamente morbido in apertura e chiusura, ed è disponibile in configurazioni a più ante (fino a 4 ante, combinabili nelle configurazioni F-A-B-C). Adatto a vetri monolitici o stratificati, con spessore 8-8,7 o 10-10,7mm. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza e configurazione ante va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    descrizione: 'Sistema di scorrevoli brevettato per porte in vetro a trascinamento manuale, con pinza ad altezza ridotta (solo 40mm) senza forature sulla lastra. La pinza è a tutta lunghezza e può essere tagliata a misura in cantiere. Il sistema integra i carrelli con tecnologia Fluid, per un movimento estremamente morbido in apertura e chiusura, ed è disponibile in configurazioni a più ante (fino a 4 ante, combinabili nelle configurazioni F-A-B-C). Adatto a vetri monolitici o stratificati, con spessore 8-8,7 o 10-10,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza e configurazione ante va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
     materiale: 'Alluminio',
     spessoriVetro: ['8', '8.7', '10', '10.7'],
     dimensioni: 'Pinza alta 40mm senza forature vetro, tagliabile a misura · portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7mm',
@@ -1728,11 +1728,9 @@ const PRODOTTI_VETRO = [
       { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza e configurazione ante, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
     ],
     immagini: {
-      'Argento': [vetro40dragAmbienteUfficio, vetro40dragDettaglio, vetro40dragEsploso],
       'Argento spazzolato': [vetro40dragAmbienteUfficio, vetro40dragDettaglio, vetro40dragEsploso],
     },
     varianti: [
-      { codice: 'Su misura', finitura: 'Argento' },
       { codice: 'Su misura', finitura: 'Argento spazzolato' },
     ],
   },
