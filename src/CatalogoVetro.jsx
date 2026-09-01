@@ -1631,7 +1631,7 @@ const PRODOTTI_VETRO = [
       { titolo: 'Due finiture disponibili', testo: 'Argento anodizzato e argento spazzolato anodizzato.' },
     ],
     immagini: {
-      'Argento': [solovetroDettaglio, solovetroAmbienteUfficio, solovetroEsploso],
+      'Argento': [solovetroAmbienteUfficio, solovetroDettaglio, solovetroEsploso],
     },
     varianti: [
       { codice: 'K.0272.5', finitura: 'Argento' },
