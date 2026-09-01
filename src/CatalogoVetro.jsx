@@ -1696,8 +1696,8 @@ const PRODOTTI_VETRO = [
       { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza, fermi e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
     ],
     immagini: {
-      'Argento': [vetro40Dettaglio, vetro40AmbientePorteLegno, vetro40Esploso],
-      'Argento spazzolato': [vetro40Dettaglio, vetro40AmbientePorteLegno, vetro40Esploso],
+      'Argento': [vetro40AmbientePorteLegno, vetro40Dettaglio, vetro40Esploso],
+      'Argento spazzolato': [vetro40AmbientePorteLegno, vetro40Dettaglio, vetro40Esploso],
     },
     varianti: [
       { codice: 'Su misura', finitura: 'Argento' },
