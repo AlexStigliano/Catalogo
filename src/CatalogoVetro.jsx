@@ -272,6 +272,10 @@ import vetro40AmbientePorteLegno from './assets/vetro/prodotti/vetro40-ambiente-
 import vetro40Dettaglio from './assets/vetro/prodotti/vetro40-dettaglio.jpg';
 import vetro40Esploso from './assets/vetro/prodotti/vetro40-esploso.jpg';
 import schVetro40 from './assets/vetro/schede/vetro40-scheda.jpg';
+import vetro40dragAmbienteUfficio from './assets/vetro/prodotti/vetro40drag-ambiente-ufficio.jpg';
+import vetro40dragDettaglio from './assets/vetro/prodotti/vetro40drag-dettaglio.jpg';
+import vetro40dragEsploso from './assets/vetro/prodotti/vetro40drag-esploso.jpg';
+import schVetro40drag from './assets/vetro/schede/vetro40drag-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1703,6 +1707,36 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 78, categoria: '02',
+    nome: 'Vetro 40 Drag',
+    // Come Vetro 40: troppe combinazioni possibili (configurazione a piu' ante,
+    // spessore vetro, finitura) per un codice fisso a catalogo, quindi niente
+    // varianti con SKU reali (richiesta esplicita del cliente).
+    descrizione: 'Sistema di scorrevoli brevettato per porte in vetro a trascinamento manuale, con pinza ad altezza ridotta (solo 40mm) senza forature sulla lastra. La pinza è a tutta lunghezza e può essere tagliata a misura in cantiere. Il sistema integra i carrelli con tecnologia Fluid, per un movimento estremamente morbido in apertura e chiusura, ed è disponibile in configurazioni a più ante (fino a 4 ante, combinabili nelle configurazioni F-A-B-C). Adatto a vetri monolitici o stratificati, con spessore 8-8,7 o 10-10,7mm. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza e configurazione ante va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7'],
+    dimensioni: 'Pinza alta 40mm senza forature vetro, tagliabile a misura · portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('vetro40drag-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('vetro40drag-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori.' },
+      { titolo: 'Pinza tagliabile a misura', testo: 'La pinza a tutta lunghezza si taglia a misura direttamente in cantiere, in base alla larghezza dell\'anta.' },
+      { titolo: 'Carrelli con tecnologia Fluid', testo: 'Il movimento risulta estremamente morbido, sia in apertura che in chiusura, su cuscinetti a sfera.' },
+      { titolo: 'Porte a trascinamento a più ante', testo: 'Configurazioni combinabili fino a 4 ante (F-A-B-C), per porte a trascinamento manuale con più elementi scorrevoli.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm e 10-10,7mm.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza e configurazione ante, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Argento': [vetro40dragAmbienteUfficio, vetro40dragDettaglio, vetro40dragEsploso],
+      'Argento spazzolato': [vetro40dragAmbienteUfficio, vetro40dragDettaglio, vetro40dragEsploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento' },
+      { codice: 'Su misura', finitura: 'Argento spazzolato' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2029,6 +2063,7 @@ const SCHEDA_IMG_VETRO = {
   75: schSolovetro,
   76: schSolovetroLight,
   77: schVetro40,
+  78: schVetro40drag,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
