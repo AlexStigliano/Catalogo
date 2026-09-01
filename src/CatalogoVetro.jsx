@@ -68,6 +68,7 @@ import texasInox from './assets/vetro/prodotti/texas-inox-satinato.jpg';
 import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
 import schTexas from './assets/vetro/schede/texas-scheda.jpg';
 import compasLogo from './assets/vetro/compas-logo.svg';
+import ra462Foto from './assets/vetro/prodotti/ra462-foto.jpg';
 import ra462Render from './assets/vetro/prodotti/ra462-render.jpg';
 import ra462QuoteFronte from './assets/vetro/prodotti/ra462-quote-fronte.jpg';
 import ra462QuoteLato from './assets/vetro/prodotti/ra462-quote-lato.jpg';
@@ -1120,25 +1121,6 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
-    id: 74, categoria: '01', sottocategoria: 'morsetti',
-    // L'immagine "render" viene dalla scheda tecnica Compas (disegno CAD in
-    // scala di grigi): se il cliente ci invia la foto del prodotto reale
-    // allegata in chat, va sostituita con quella non appena disponibile come file.
-    nome: 'Supporto a pinza RA 462',
-    descrizione: 'Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, finitura argento.',
-    materiale: 'Alluminio',
-    spessoriVetro: ['8', '8.76'],
-    dimensioni: 'Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm',
-    fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('ra462-scheda-tecnica.pdf'),
-    immagini: {
-      'Argento': [ra462Render, ra462QuoteFronte, ra462QuoteLato],
-    },
-    varianti: [
-      { codice: 'RA 462', finitura: 'Argento' },
-    ],
-  },
-  {
     id: 36, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Morsetto per vetro mod. 03 con attacco diritto',
     descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
@@ -1407,6 +1389,22 @@ const PRODOTTI_VETRO = [
       { codice: 'STIGLIMORS/CRL', finitura: 'Cromo lucido' },
       { codice: 'STIGLIMORS/CRPERL', finitura: 'Cromo perla' },
       { codice: 'STIGLIMORS/NIKSAT', finitura: 'Nichel satinato' },
+    ],
+  },
+  {
+    id: 74, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Supporto a pinza RA 462',
+    descrizione: 'Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.76'],
+    dimensioni: 'Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: schedaUrl('ra462-scheda-tecnica.pdf'),
+    immagini: {
+      'Argento': [ra462Foto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
+    },
+    varianti: [
+      { codice: 'RA 462', finitura: 'Argento' },
     ],
   },
   {
