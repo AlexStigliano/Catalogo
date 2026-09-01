@@ -268,6 +268,10 @@ import solovetroLightAmbienteCucina from './assets/vetro/prodotti/solovetro-ligh
 import solovetroLightDettaglio from './assets/vetro/prodotti/solovetro-light-dettaglio.jpg';
 import solovetroLightEsploso from './assets/vetro/prodotti/solovetro-light-esploso.jpg';
 import schSolovetroLight from './assets/vetro/schede/solovetro-light-scheda.jpg';
+import vetro40AmbientePorteLegno from './assets/vetro/prodotti/vetro40-ambiente-porte-legno.jpg';
+import vetro40Dettaglio from './assets/vetro/prodotti/vetro40-dettaglio.jpg';
+import vetro40Esploso from './assets/vetro/prodotti/vetro40-esploso.jpg';
+import schVetro40 from './assets/vetro/schede/vetro40-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1667,6 +1671,40 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 77, categoria: '02',
+    nome: 'Vetro 40',
+    // Sistema brevettato configurabile su moltissimi assi (lunghezza binario,
+    // tipo di pinza, fermi Fluid, spessore vetro, finitura, kit con/senza
+    // copertura...): troppe combinazioni per un codice fisso a catalogo,
+    // quindi niente varianti con SKU reali (richiesta esplicita del cliente).
+    // Descrizione, immagini e scheda tecnica completa bastano a presentare
+    // il prodotto; la configurazione esatta si valuta caso per caso.
+    descrizione: 'Sistema di scorrevoli brevettato per ante in vetro senza forature: la pinza alta 40mm serra il bordo del vetro senza bisogno di praticare fori sulla lastra. Disponibile con pinza standard (Clamp 200) o con pinza lunga per ante più ampie, ed è configurabile con fermi ammortizzati Fluid opzionali (portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm). Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Il binario in alluminio è disponibile in diverse lunghezze standard (da 600 a 1500mm), con o senza copertura, ed è estendibile con appositi kit per controtelai. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza, fermi e accessori va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Pinza alta 40mm senza forature vetro · portata 80-120kg per anta secondo pinza e fermi · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · binario da 600 a 1500mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('vetro40-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('vetro40-istruzioni-montaggio.pdf'),
+    caratteristiche: [
+      { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori: l\'anta resta un vetro pulito e integro.' },
+      { titolo: 'Due tipi di pinza', testo: 'Pinza standard Clamp 200 oppure pinza lunga (Long Clamp), per ante più ampie o più pesanti.' },
+      { titolo: 'Fermi ammortizzati Fluid opzionali', testo: 'Portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm, su cuscinetti a sfera, per una chiusura frenata e silenziosa.' },
+      { titolo: 'Blocco di sicurezza', testo: 'Il sistema di aggancio del carrello include un blocco di sicurezza che impedisce lo sganciamento accidentale dell\'anta dal binario.' },
+      { titolo: 'Binario configurabile', testo: 'Lunghezze standard da 600 a 1500mm, con o senza copertura, estendibile con kit dedicati per l\'installazione su controtelai.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza, fermi e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Argento': [vetro40Dettaglio, vetro40AmbientePorteLegno, vetro40Esploso],
+      'Argento spazzolato': [vetro40Dettaglio, vetro40AmbientePorteLegno, vetro40Esploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento' },
+      { codice: 'Su misura', finitura: 'Argento spazzolato' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -1992,6 +2030,7 @@ const SCHEDA_IMG_VETRO = {
   60: schUniversal,
   75: schSolovetro,
   76: schSolovetroLight,
+  77: schVetro40,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
