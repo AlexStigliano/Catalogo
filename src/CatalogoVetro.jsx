@@ -284,6 +284,10 @@ import gridAmbienteCabina from './assets/vetro/prodotti/grid-ambiente-cabina-arm
 import gridPortaUniversal from './assets/vetro/prodotti/grid-porta-universal.jpg';
 import gridComponenti from './assets/vetro/prodotti/grid-componenti.jpg';
 import schGrid from './assets/vetro/schede/grid-scheda.jpg';
+import clearAmbienteBagno from './assets/vetro/prodotti/clear-ambiente-bagno.jpg';
+import clearDettaglio from './assets/vetro/prodotti/clear-dettaglio.jpg';
+import clearEsploso from './assets/vetro/prodotti/clear-esploso.jpg';
+import schClear from './assets/vetro/schede/clear-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1800,6 +1804,38 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 81, categoria: '06',
+    nome: 'Clear',
+    // Il catalogo Terno prevede anche il binario da 3000mm e vende il binario
+    // a parte (blister B.0412/B.0413): noi lo trattiamo come un kit unico con
+    // il binario da 2000mm, che e' l'unica versione che teniamo, nelle due
+    // finiture che ci ha confermato il cliente (brill .07 e nero .15).
+    descrizione: 'Sistema scorrevole studiato appositamente per i box doccia, con cuscinetti in acciaio inox che lo rendono estremamente resistente all\'umidità e all\'uso quotidiano. È un sistema molto versatile: permette la posa in nicchia (configurazione parete-parete), la posa in luce (vetro-vetro) e la posa ad angolo (parete-vetro). Adatto a vetri con spessore 8-8,7 o 10-10,7mm, con portata 40kg e larghezza anta fino a 1000mm. Lo forniamo come kit unico completo di binario da 2000mm, in 2 finiture: alluminio lucido (brill) e nero. Prodotto da Terno Scorrevoli in alluminio con cuscinetti in acciaio inox.',
+    materiale: 'Alluminio e acciaio inox',
+    spessoriVetro: ['8', '8.7', '10', '10.7'],
+    dimensioni: 'Binario 2000mm · portata 40kg per anta · larghezza anta max 1000mm · spessore vetro 8-8,7 / 10-10,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('clear-scheda-tecnica.pdf'),
+    istruzioni: schedaUrl('clear-istruzioni-montaggio.pdf'),
+    video: 'https://www.youtube.com/watch?v=9GCIVxI6tkI',
+    caratteristiche: [
+      { titolo: 'Nato per il box doccia', testo: 'I cuscinetti sono realizzati in acciaio inox: il sistema regge l\'umidità e l\'uso quotidiano del bagno senza perdere scorrevolezza.' },
+      { titolo: 'Tre configurazioni di posa', testo: 'Posa in nicchia (parete-parete), posa in luce (vetro-vetro) e posa ad angolo (parete-vetro), con lo stesso kit.' },
+      { titolo: 'Kit completo di binario', testo: 'Lo forniamo già completo del binario da 2000mm: un solo articolo, senza dover ordinare il binario a parte.' },
+      { titolo: 'Adatto a due spessori di vetro', testo: 'Compatibile con vetri da 8-8,7mm e da 10-10,7mm, con i profili di tenuta dedicati per ciascuno spessore.' },
+      { titolo: 'Portata 40kg', testo: 'Ogni anta può pesare fino a 40kg, con larghezza massima 1000mm.' },
+      { titolo: 'Video tutorial di montaggio', testo: 'Oltre alle istruzioni in PDF trovi il video ufficiale Terno Scorrevoli che mostra passo passo il montaggio del sistema.' },
+    ],
+    immagini: {
+      'Alluminio lucido': [clearAmbienteBagno, clearDettaglio, clearEsploso],
+      'Nero spazzolato': [clearAmbienteBagno, clearDettaglio, clearEsploso],
+    },
+    varianti: [
+      { codice: 'K.0411.4.07', finitura: 'Alluminio lucido' },
+      { codice: 'K.0411.4.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2129,6 +2165,7 @@ const SCHEDA_IMG_VETRO = {
   78: schVetro40drag,
   79: schVetrofisso,
   80: schGrid,
+  81: schClear,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
@@ -2216,6 +2253,8 @@ const FINISHES_VETRO = {
   'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
   'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
   'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
+  // Alluminio anodizzato lucido: la finitura che Terno chiama "Brill" (suffisso 07).
+  'Alluminio lucido': 'linear-gradient(135deg,#fbfcfd,#d2d7da 30%,#8b9298 50%,#dadee0 68%,#fafbfc)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
