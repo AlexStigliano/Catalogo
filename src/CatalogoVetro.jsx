@@ -1756,17 +1756,21 @@ const PRODOTTI_VETRO = [
     scheda: null,
     istruzioni: schedaUrl('grid-istruzioni-montaggio.pdf'),
     caratteristiche: [
-      { titolo: 'Sviluppato sui tuoi disegni', testo: 'Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell\'ambiente. Contattaci con il tuo progetto e prepariamo insieme la configurazione.' },
+      { titolo: 'Sviluppato sui tuoi disegni', testo: 'Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell\'ambiente. Anche la finitura si sceglie in fase di progetto, tra quelle disponibili. Contattaci con il tuo progetto e prepariamo insieme la configurazione.' },
       { titolo: 'Parete attrezzabile', testo: 'I pali cremagliera permettono di agganciare mensole, appenderie, cassettiere e piani lungo tutta l\'altezza, e di riposizionarli anche in un secondo momento.' },
       { titolo: 'Composizione modulare', testo: 'Partenze a muro, tratte fisse in vetro, angoli a L e a T, pali di giunzione accessoriabili e pali terminali: la parete si chiude su più lati seguendo la pianta dell\'ambiente.' },
       { titolo: 'Porte integrate nella struttura', testo: 'La stessa struttura ospita la porta a battente Pivot e la porta scorrevole Universal, senza bisogno di telai aggiuntivi.' },
       { titolo: 'Modulo standard da 900mm', testo: 'Il modulo attrezzabile standard è da 900mm, ma le tratte possono essere realizzate su misura variabile in base allo spazio disponibile.' },
     ],
+    // La finitura non la dichiariamo: il sistema ne prevede diverse e la
+    // sceglie il cliente insieme al resto della configurazione. La chiave
+    // 'Unica' serve solo a tenere insieme la galleria, non viene mai mostrata.
+    senzaFinitura: true,
     immagini: {
-      'Nero opaco': [gridAmbienteCabina, gridPortaUniversal, gridComponenti],
+      'Unica': [gridAmbienteCabina, gridPortaUniversal, gridComponenti],
     },
     varianti: [
-      { codice: 'Su misura', finitura: 'Nero opaco' },
+      { codice: 'Su misura', finitura: 'Unica' },
     ],
   },
   {
@@ -2454,7 +2458,9 @@ function ProductCatalog({ products }) {
   }, [mobileView]);
 
   const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
-  const fins = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  // I prodotti senza finitura (senzaFinitura: la sceglie il cliente, non la
+  // dichiariamo noi) restano fuori sia dall'elenco delle finiture sia dal filtro.
+  const fins = useMemo(() => [...new Set(products.filter(p => !p.senzaFinitura).flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const diams = useMemo(() => [...new Set(products.map(p => p.diametro).filter(Boolean))]
     .sort((a, b) => parseFloat(a) - parseFloat(b)), [products]);
@@ -2470,7 +2476,7 @@ function ProductCatalog({ products }) {
     const t = q.trim().toLowerCase();
     const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
-    const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
+    const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
     const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
     const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
@@ -2561,7 +2567,7 @@ function ProductCatalog({ products }) {
                 <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
                   test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
                 <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
-                  test={(p, o) => p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
+                  test={(p, o) => !p.senzaFinitura && p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
                 {diams.length > 1 && (
                   <Gruppo etichetta="Diametro" campo="diam" opzioni={diams} scelte={diam} set={setDiam}
                     test={(p, o) => p.diametro === o} tutti="Tutti i diametri" plurale="diametri" />
@@ -2637,6 +2643,9 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
   };
   // Con una sola finitura non c'e' niente da scegliere: il selettore sparisce.
   const sceltaFin = ufins.length > 1;
+  // Prodotti su misura in cui la finitura la sceglie il cliente: non ne
+  // dichiariamo nessuna, quindi pastiglia e colonna finitura spariscono.
+  const senzaFin = !!p.senzaFinitura;
   // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
   const colMat = p.varianti.some(v => v.materiale);
   // Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse): qui, nella
@@ -2690,7 +2699,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
             ? <button className="scheda" onClick={() => openScheda(p.id, selFin)}><Download size={15} /> Scheda tecnica</button>
             : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
         )}
-        {sceltaFin ? (
+        {senzaFin ? null : sceltaFin ? (
           <div className="finishes">
             <div className="fbtns">
               {ufins.map((f, i) => (
@@ -2719,7 +2728,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
         <div className={`variants-wrap${open ? ' open' : ''}`}>
           <div className="variants-inner">
             <table className="variants">
-              <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}
+              <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
                 {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
               </tr></thead>
               <tbody>
@@ -2727,7 +2736,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                   <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
                     onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
                     <td className="code">{v.codice}</td>
-                    <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                    {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
                     {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
                     {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
                   </tr>
@@ -2868,6 +2877,7 @@ function ProductDetail({ id }) {
   const gallery = images[selFin] || [];
   const selImg = gallery[imgIdx] || gallery[0];
   const sceltaFin = ufins.length > 1;
+  const senzaFin = !!p.senzaFinitura;
   const colMat = p.varianti.some(v => v.materiale);
   // Codice della variante attualmente selezionata: serve per aprire la scheda
   // giusta quando ogni misura ha la propria (es. un distanziale venduto in
@@ -2906,7 +2916,7 @@ function ProductDetail({ id }) {
                 {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} />
                   : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
               </div>
-              <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>
+              {!senzaFin && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
             </div>
             {gallery.length > 1 && (
               <div className="pdp-thumbs">
@@ -2939,7 +2949,7 @@ function ProductDetail({ id }) {
               </div>
             </div>
 
-            <div className="finishes pdp-finishes">
+            {!senzaFin && <div className="finishes pdp-finishes">
               <span className="fhint">{sceltaFin ? 'Scegli la finitura' : 'Finitura'}</span>
               <div className="fbtns">
                 {sceltaFin ? ufins.map((f, i) => (
@@ -2951,7 +2961,7 @@ function ProductDetail({ id }) {
                   <span className="fin-cell"><Chip finitura={selFin} />{selFin}</span>
                 )}
               </div>
-            </div>
+            </div>}
 
             {assi && mis && assi.map(a => (
               <div className="finishes pdp-finishes" key={a.chiave}>
@@ -3012,7 +3022,7 @@ function ProductDetail({ id }) {
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <div className="variants-scroll">
               <table className="variants">
-                <thead><tr><th>Codice articolo</th><th>Finitura</th>{colMat && <th>Materiale</th>}
+                <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
                   {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
                 </tr></thead>
                 <tbody>
@@ -3033,7 +3043,7 @@ function ProductDetail({ id }) {
                     <tr key={i} className={`${(sceltaFin || assi) ? 'vrow' : ''}${active ? ' active' : ''}`}
                       onClick={(sceltaFin || assi) ? scegliRiga : undefined}>
                       <td className="code">{v.codice}</td>
-                      <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>
+                      {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
                       {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
                       {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
                     </tr>

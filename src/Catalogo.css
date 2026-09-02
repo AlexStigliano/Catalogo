@@ -247,6 +247,9 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat table.variants { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 12px; margin-top: 0.7rem; border-radius: 6px; overflow: hidden; }
 .cat table.variants thead th { background: var(--navy); color: #fff; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0.6rem; text-align: left; }
 .cat table.variants thead th:last-child { text-align: right; }
+/* Tabella a una sola colonna (prodotti su misura senza finitura): l'intestazione
+   resta allineata a sinistra come la cella sotto. */
+.cat table.variants thead th:only-child { text-align: left; }
 .cat table.variants tbody td { padding: 0.5rem 0.6rem; }
 .cat table.variants tbody tr:nth-child(odd) { background: var(--panel); }
 .cat .code { font-weight: 800; color: var(--ink); white-space: nowrap; }
