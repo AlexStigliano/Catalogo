@@ -283,6 +283,7 @@ import schVetrofisso from './assets/vetro/schede/vetrofisso-scheda.jpg';
 import gridAmbienteCabina from './assets/vetro/prodotti/grid-ambiente-cabina-armadio.jpg';
 import gridPortaUniversal from './assets/vetro/prodotti/grid-porta-universal.jpg';
 import gridComponenti from './assets/vetro/prodotti/grid-componenti.jpg';
+import schGrid from './assets/vetro/schede/grid-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1746,21 +1747,20 @@ const PRODOTTI_VETRO = [
     nome: 'Grid',
     // Sistema completamente su misura: non esiste un kit a catalogo, gli
     // articoli vengono definiti da Terno sul progetto del cliente. Niente
-    // codici nelle varianti (richiesta esplicita del cliente). La brochure
-    // ufficiale non e' raggiungibile da qui: la scheda tecnica resta "in
-    // arrivo" finche' non ci viene allegata come file.
-    descrizione: 'Sistema modulare di profili in alluminio per realizzare pareti e partizioni in vetro attrezzabili: cabine armadio, uffici, spazi retail e zone giorno. La struttura è composta da pali cremagliera, ai quali si agganciano mensole, appenderie, cassettiere e piani lungo tutta l\'altezza, e da tratte in vetro fisse, con angoli a L e a T per chiudere l\'ambiente su più lati. Nella stessa struttura si integrano la porta a battente Pivot e la porta scorrevole Universal. Il modulo standard attrezzabile è da 900mm, ma le tratte sono di misura variabile. Attenzione: Grid non è un kit a catalogo — il sistema, cioè l\'elenco degli articoli necessari, viene sviluppato su richiesta a partire dai disegni del cliente. Inviaci il progetto o le misure del tuo ambiente e prepariamo insieme la configurazione. Prodotto da Terno Scorrevoli in alluminio.',
+    // codici nelle varianti (richiesta esplicita del cliente).
+    descrizione: 'Sistema modulare di profili in alluminio per realizzare pareti e partizioni attrezzate: cabine armadio, uffici, spazi retail e zone giorno, con altezza fino a 3 metri. La struttura è composta da pali cremagliera, ai quali si agganciano mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l\'altezza, e da tratte con pannellatura in vetro o in legno, con angoli a L e a T per chiudere l\'ambiente su più lati. Nella stessa struttura si integrano la porta a battente Pivot, con apertura fino a 180°, e la porta scorrevole Universal. Il modulo standard attrezzabile è da 900mm, ma le tratte sono di misura variabile. È inoltre un sistema aperto: oltre ai moduli a catalogo se ne possono realizzare di propri, rispettando le specifiche costruttive dei manuali tecnici. Attenzione: Grid non è un kit a catalogo — il sistema, cioè l\'elenco degli articoli necessari, viene sviluppato su richiesta a partire dai disegni del cliente. Inviaci il progetto o le misure del tuo ambiente e prepariamo insieme la configurazione. Prodotto da Terno Scorrevoli in alluminio.',
     materiale: 'Alluminio',
-    dimensioni: 'Modulo standard attrezzabile 900mm · tratte di misura variabile · partenze a muro, angoli a L e a T, pali cremagliera e pali terminali',
+    dimensioni: 'Altezza fino a 3 metri · modulo standard attrezzabile 900mm · tratte di misura variabile · pannellatura in vetro o legno · partenze a muro, angoli a L e a T, pali cremagliera e pali terminali',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: null,
+    scheda: schedaUrl('grid-scheda-tecnica.pdf'),
     istruzioni: schedaUrl('grid-istruzioni-montaggio.pdf'),
     caratteristiche: [
       { titolo: 'Sviluppato sui tuoi disegni', testo: 'Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell\'ambiente. Anche la finitura si sceglie in fase di progetto, tra quelle disponibili. Contattaci con il tuo progetto e prepariamo insieme la configurazione.' },
-      { titolo: 'Parete attrezzabile', testo: 'I pali cremagliera permettono di agganciare mensole, appenderie, cassettiere e piani lungo tutta l\'altezza, e di riposizionarli anche in un secondo momento.' },
-      { titolo: 'Composizione modulare', testo: 'Partenze a muro, tratte fisse in vetro, angoli a L e a T, pali di giunzione accessoriabili e pali terminali: la parete si chiude su più lati seguendo la pianta dell\'ambiente.' },
-      { titolo: 'Porte integrate nella struttura', testo: 'La stessa struttura ospita la porta a battente Pivot e la porta scorrevole Universal, senza bisogno di telai aggiuntivi.' },
-      { titolo: 'Modulo standard da 900mm', testo: 'Il modulo attrezzabile standard è da 900mm, ma le tratte possono essere realizzate su misura variabile in base allo spazio disponibile.' },
+      { titolo: 'Parete attrezzabile', testo: 'I pali cremagliera permettono di agganciare mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l\'altezza, e di riposizionarli anche in un secondo momento.' },
+      { titolo: 'Composizione modulare', testo: 'Partenze a muro, tratte fisse, angoli a L e a T, pali di giunzione accessoriabili e pali terminali: la parete si chiude su più lati seguendo la pianta dell\'ambiente, fino a 3 metri di altezza.' },
+      { titolo: 'Pannellature in vetro o in legno', testo: 'La struttura in alluminio si abbina a pannellature in vetro o in legno, a seconda delle esigenze del progetto: con il vetro l\'ambiente resta luminoso e si sfrutta più a lungo la luce naturale.' },
+      { titolo: 'Porte integrate nella struttura', testo: 'La stessa struttura ospita la porta a battente Pivot, con cerniera ad asse decentrato e apertura fino a 180°, e la porta scorrevole Universal, senza bisogno di telai aggiuntivi.' },
+      { titolo: 'Un sistema aperto', testo: 'Oltre ai moduli già a catalogo, progettisti e costruttori possono realizzare moduli propri rispettando le specifiche costruttive dei manuali tecnici.' },
     ],
     // La finitura non la dichiariamo: il sistema ne prevede diverse e la
     // sceglie il cliente insieme al resto della configurazione. La chiave
@@ -2128,6 +2128,7 @@ const SCHEDA_IMG_VETRO = {
   77: schVetro40,
   78: schVetro40drag,
   79: schVetrofisso,
+  80: schGrid,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
