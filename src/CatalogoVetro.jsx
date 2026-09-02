@@ -276,6 +276,10 @@ import vetro40dragAmbienteUfficio from './assets/vetro/prodotti/vetro40drag-ambi
 import vetro40dragDettaglio from './assets/vetro/prodotti/vetro40drag-dettaglio.jpg';
 import vetro40dragEsploso from './assets/vetro/prodotti/vetro40drag-esploso.jpg';
 import schVetro40drag from './assets/vetro/schede/vetro40drag-scheda.jpg';
+import vetrofissoAmbienteUfficio from './assets/vetro/prodotti/vetrofisso-ambiente-ufficio.jpg';
+import vetrofissoDettaglio from './assets/vetro/prodotti/vetrofisso-dettaglio.jpg';
+import vetrofissoEsploso from './assets/vetro/prodotti/vetrofisso-esploso.jpg';
+import schVetrofisso from './assets/vetro/schede/vetrofisso-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1735,6 +1739,32 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 79, categoria: '05',
+    nome: 'Vetro Fisso',
+    // Sistema di profili componibili con moltissime combinazioni (altezza
+    // profilo, spessore vetro, tipo di giunzione): troppe combinazioni per
+    // un codice fisso a catalogo, quindi niente varianti con SKU reali
+    // (richiesta esplicita del cliente).
+    descrizione: 'Sistema di profili e accessori in alluminio per la realizzazione di vetrate fisse e vani fissi, per pareti e partizioni in vetro. Disponibile in due altezze di profilo (27mm e 30mm), per vetri con spessore da 8-8,7 a 12-12,7mm. Comprende anche una linea di profili con adesivo per la giunzione diretta vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo, per spessori vetro da 10 a 12,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato. Il sistema è molto modulare: la combinazione esatta di profili e giunzioni va valutata caso per caso in base alla tua vetrata — contattaci per individuare gli articoli giusti per il tuo progetto.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Profili fissavetro altezza 27 o 30mm · profili adesivi per vetro 10-12,7mm · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: schedaUrl('vetrofisso-scheda-tecnica.pdf'),
+    caratteristiche: [
+      { titolo: 'Due altezze di profilo', testo: 'Profili fissavetro disponibili in altezza 27mm o 30mm, per vetri con spessore da 8-8,7 a 12-12,7mm.' },
+      { titolo: 'Giunzioni vetro su vetro', testo: 'Profili con adesivo per unire i pannelli direttamente vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo.' },
+      { titolo: 'Adatto a vetrate e compartimentazioni', testo: 'Pensato per realizzare pareti fisse in vetro e vani fissi in ambienti ufficio e open space.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra profili, altezze e giunzioni, scegliamo insieme gli articoli giusti in base alla tua vetrata: contattaci per il tuo progetto.' },
+    ],
+    immagini: {
+      'Argento': [vetrofissoAmbienteUfficio, vetrofissoDettaglio, vetrofissoEsploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2062,6 +2092,7 @@ const SCHEDA_IMG_VETRO = {
   76: schSolovetroLight,
   77: schVetro40,
   78: schVetro40drag,
+  79: schVetrofisso,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
