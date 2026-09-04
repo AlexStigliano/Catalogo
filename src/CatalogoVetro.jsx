@@ -295,6 +295,7 @@ import guarnizionePinnaScorrevoleQuote from './assets/vetro/prodotti/guarnizione
 import guarnizionePinnaBattenteQuote from './assets/vetro/prodotti/guarnizione-pinna-battente-quote.jpg';
 import guarnizioneCalamitataFrontaleQuote from './assets/vetro/prodotti/guarnizione-calamitata-frontale-quote.jpg';
 import guarnizioneCalamitata45Quote from './assets/vetro/prodotti/guarnizione-calamitata-45-quote.jpg';
+import guarnizioneCalamitata45InvQuote from './assets/vetro/prodotti/guarnizione-calamitata-45-inv-quote.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -482,6 +483,13 @@ const subName = (id) => (
   Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
 ).nome || id;
+
+/* Le guarnizioni calamitate si vendono sempre a due a due e quale coppia serve
+   dipende da come chiudono le ante, non dall'articolo: la regola vale per tutte
+   e tre, quindi sta scritta qui una volta sola. */
+const ABBINAMENTO_CALAMITATE = [
+  { titolo: 'Come si abbinano', testo: 'Servono sempre due guarnizioni, una per anta. Se le ante chiudono in linea vanno due guarnizioni con la stessa polarizzazione; se chiudono ad angolo ne servono due con polarizzazione opposta.' },
+];
 
 const PRODOTTI_VETRO = [
   {
@@ -1997,11 +2005,12 @@ const PRODOTTI_VETRO = [
     id: 86, categoria: '06',
     nome: 'Guarnizione calamitata frontale',
     // Art. 411 della serie "400": per noi art. 411.2500.
-    descrizione: 'Guarnizione calamitata frontale per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il magnete annegato nella base tiene chiusa l\'anta contro quella a fianco. Si monta in coppia, una per anta, con le due basi che si affacciano. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il magnete, annegato nella base piatta e frontale, tiene chiusa l\'anta contro quella a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
     materiale: 'PVC coestruso',
     spessoriVetro: ['6', '8'],
     dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete frontale · spessore vetro 6-8mm',
     fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
     immagini: {
       'Trasparente': [guarnizioneCalamitataFrontaleQuote],
     },
@@ -2012,19 +2021,38 @@ const PRODOTTI_VETRO = [
   {
     id: 87, categoria: '06',
     nome: 'Guarnizione calamitata a 45°',
-    // Art. 412 della serie "400": per noi art. 412.2500. Il magnete e'
-    // polarizzato N-S e la controparte speculare e' l'art. 412.INV (S-N),
-    // che per ora non teniamo.
-    descrizione: 'Guarnizione calamitata a 45° per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il magnete, alloggiato su una base inclinata a 45°, tiene chiusa l\'anta contro quella a fianco. È la versione per le chiusure ad angolo, dove le due ante non si affacciano ma si incontrano di spigolo. Il magnete è polarizzato N-S e va abbinato alla versione speculare S-N sull\'altra anta. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    // Art. 412 della serie "400": per noi art. 412.2500. Stessa guarnizione
+    // dell'art. 412.INV qui sotto, ma con la polarizzazione opposta.
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l\'anta contro quella a fianco. Il magnete è polarizzato N-S. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
     materiale: 'PVC coestruso',
     spessoriVetro: ['6', '8'],
     dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità N-S · spessore vetro 6-8mm',
     fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
     immagini: {
       'Trasparente': [guarnizioneCalamitata45Quote],
     },
     varianti: [
       { codice: '412.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 88, categoria: '06',
+    nome: 'Guarnizione calamitata a 45° invertita',
+    // Art. 412.INV della serie "400": per noi art. 412.INV.2500. Identica
+    // all'art. 412, con la polarizzazione girata: e' la controparte da montare
+    // sull'altra anta quando la chiusura e' ad angolo.
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l\'anta contro quella a fianco. È identica alla guarnizione calamitata a 45°, ma con la polarizzazione girata: il magnete è polarizzato S-N. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità S-N · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
+    immagini: {
+      'Trasparente': [guarnizioneCalamitata45InvQuote],
+    },
+    varianti: [
+      { codice: '412.INV.2500', finitura: 'Trasparente' },
     ],
   },
   {
