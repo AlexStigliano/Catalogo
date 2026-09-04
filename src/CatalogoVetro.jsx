@@ -291,6 +291,8 @@ import schClear from './assets/vetro/schede/clear-scheda.jpg';
 import trafiloLogo from './assets/vetro/trafilo-logo.png';
 import guarnizionePalloncinoQuote from './assets/vetro/prodotti/guarnizione-palloncino-quote.jpg';
 import guarnizioneDoppiaPinnaQuote from './assets/vetro/prodotti/guarnizione-doppia-pinna-quote.jpg';
+import guarnizionePinnaScorrevoleQuote from './assets/vetro/prodotti/guarnizione-pinna-scorrevole-quote.jpg';
+import guarnizionePinnaBattenteQuote from './assets/vetro/prodotti/guarnizione-pinna-battente-quote.jpg';
 // Un'unica tavola per tutta la serie 400: la condividono tutti gli articoli.
 import schTrafilo400 from './assets/vetro/schede/trafilo-serie-400-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
@@ -1877,6 +1879,40 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 84, categoria: '06',
+    nome: 'Guarnizione pinna laterale per scorrevole',
+    // Art. 404 della stessa tavola serie "400": per noi art. 404.2500.
+    descrizione: 'Guarnizione a pinna laterale per box doccia scorrevoli, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna diritta, che sporge di lato, va a coprire la luce fra l\'anta scorrevole e il fisso a fianco. La pinna si taglia a misura da 5 a 30mm, in base alla sovrapposizione fra le ante. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinna da 5 a 30mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    scheda: schedaUrl('trafilo-serie-400-scheda-tecnica.pdf'),
+    immagini: {
+      'Trasparente': [guarnizionePinnaScorrevoleQuote],
+    },
+    varianti: [
+      { codice: '404.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 85, categoria: '06',
+    nome: 'Guarnizione pinna laterale per battente',
+    // Art. 405 della stessa tavola serie "400": per noi art. 405.2500.
+    descrizione: 'Guarnizione a pinna laterale per box doccia a battente, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna morbida e curva, lunga da 10 a 22mm, appoggia sull\'anta o sul fisso a fianco seguendo il movimento della porta. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinna da 10 a 22mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    scheda: schedaUrl('trafilo-serie-400-scheda-tecnica.pdf'),
+    immagini: {
+      'Trasparente': [guarnizionePinnaBattenteQuote],
+    },
+    varianti: [
+      { codice: '405.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2209,6 +2245,8 @@ const SCHEDA_IMG_VETRO = {
   81: schClear,
   82: schTrafilo400,
   83: schTrafilo400,
+  84: schTrafilo400,
+  85: schTrafilo400,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
