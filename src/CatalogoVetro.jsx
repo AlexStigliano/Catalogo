@@ -338,13 +338,96 @@ import fimetFiss07Componenti from './assets/vetro/prodotti/fimet-fiss-07-compone
 import fimetFiss07Montaggio from './assets/vetro/prodotti/fimet-fiss-07-montaggio.jpg';
 import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 
-/* Le schede tecniche in PDF sono la parte più pesante del catalogo: invece di
-   impacchettarle nel sito (che gonfierebbe il pacchetto pubblicato), restano
-   solo su GitHub e vengono scaricate al volo da lì quando serve — per questo
-   ci vuole una connessione, ma il sito pubblicato resta leggero.
-   NB: quando questo branch verrà unito a main, cambiare REPO_BRANCH in 'main'. */
-const REPO_BRANCH = 'claude/catalogo-vetro-copertina-p5608g';
-const schedaUrl = (file) => `https://raw.githubusercontent.com/AlexStigliano/Catalogo/${REPO_BRANCH}/src/assets/vetro/${file}`;
+/* Schede tecniche, istruzioni di montaggio e rapporti di prova: pubblicati
+   insieme al sito, cosi' arrivano dallo stesso dominio e come veri PDF. */
+import pdfAirhandleIstruzioni from './assets/vetro/airhandle-istruzioni.pdf';
+import pdfAirhandleSchedaTecnica from './assets/vetro/airhandle-scheda-tecnica.pdf';
+import pdfAirhingeSchedaTecnica from './assets/vetro/airhinge-scheda-tecnica.pdf';
+import pdfArizonaInclinatoSchedaTecnica from './assets/vetro/arizona-inclinato-scheda-tecnica.pdf';
+import pdfArizonaSchedaTecnica from './assets/vetro/arizona-scheda-tecnica.pdf';
+import pdfArkansasQSchedaTecnica from './assets/vetro/arkansas-q-scheda-tecnica.pdf';
+import pdfCaliforniaSchedaTecnica from './assets/vetro/california-scheda-tecnica.pdf';
+import pdfClearIstruzioniMontaggio from './assets/vetro/clear-istruzioni-montaggio.pdf';
+import pdfClearSchedaTecnica from './assets/vetro/clear-scheda-tecnica.pdf';
+import pdfColoradoSchedaTecnica from './assets/vetro/colorado-scheda-tecnica.pdf';
+import pdfCubaSchedaTecnica from './assets/vetro/cuba-scheda-tecnica.pdf';
+import pdfDistanziale05210mmSchedaTecnica from './assets/vetro/distanziale-052-10mm-scheda-tecnica.pdf';
+import pdfDistanziale05220mmSchedaTecnica from './assets/vetro/distanziale-052-20mm-scheda-tecnica.pdf';
+import pdfDistanziale05230mmSchedaTecnica from './assets/vetro/distanziale-052-30mm-scheda-tecnica.pdf';
+import pdfDistanziale05240mmSchedaTecnica from './assets/vetro/distanziale-052-40mm-scheda-tecnica.pdf';
+import pdfDistanziale05250mmSchedaTecnica from './assets/vetro/distanziale-052-50mm-scheda-tecnica.pdf';
+import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5mm-scheda-tecnica.pdf';
+import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
+import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
+import pdfFermavetro30SchedaTecnica from './assets/vetro/fermavetro-30-scheda-tecnica.pdf';
+import pdfFermavetroAsolaSchedaTecnica from './assets/vetro/fermavetro-asola-scheda-tecnica.pdf';
+import pdfFermavetroRegolabileSchedaTecnica from './assets/vetro/fermavetro-regolabile-scheda-tecnica.pdf';
+import pdfFimet3904SchedaTecnica from './assets/vetro/fimet-3904-scheda-tecnica.pdf';
+import pdfFimet3921SchedaTecnica from './assets/vetro/fimet-3921-scheda-tecnica.pdf';
+import pdfFimet3931SchedaTecnica from './assets/vetro/fimet-3931-scheda-tecnica.pdf';
+import pdfFimet3932SchedaTecnica from './assets/vetro/fimet-3932-scheda-tecnica.pdf';
+import pdfFimet3933SchedaTecnica from './assets/vetro/fimet-3933-scheda-tecnica.pdf';
+import pdfFimetBrasile852SchedaTecnica from './assets/vetro/fimet-brasile-852-scheda-tecnica.pdf';
+import pdfFimetEquador850SchedaTecnica from './assets/vetro/fimet-equador-850-scheda-tecnica.pdf';
+import pdfFimetManiglioneAdesivoSchedaTecnica from './assets/vetro/fimet-maniglione-adesivo-scheda-tecnica.pdf';
+import pdfFissaggioMuro100SchedaTecnica from './assets/vetro/fissaggio-muro-100-scheda-tecnica.pdf';
+import pdfFissaggioPuntualeSchedaTecnica from './assets/vetro/fissaggio-puntuale-scheda-tecnica.pdf';
+import pdfFs880SchedaTecnica from './assets/vetro/fs880-scheda-tecnica.pdf';
+import pdfFs890SchedaTecnica from './assets/vetro/fs890-scheda-tecnica.pdf';
+import pdfGaha1stSchedaTecnica from './assets/vetro/gaha1st-scheda-tecnica.pdf';
+import pdfGeorgiaQSchedaTecnica from './assets/vetro/georgia-q-scheda-tecnica.pdf';
+import pdfGridIstruzioniMontaggio from './assets/vetro/grid-istruzioni-montaggio.pdf';
+import pdfGridSchedaTecnica from './assets/vetro/grid-scheda-tecnica.pdf';
+import pdfLamieraU16763000SchedaTecnica from './assets/vetro/lamiera-u-1676-3000-scheda-tecnica.pdf';
+import pdfMagic2FrameIstruzioniMontaggio from './assets/vetro/magic2-frame-istruzioni-montaggio.pdf';
+import pdfMagic2FrameSchedaTecnica from './assets/vetro/magic2-frame-scheda-tecnica.pdf';
+import pdfMagic2VetroIstruzioniMontaggio from './assets/vetro/magic2-vetro-istruzioni-montaggio.pdf';
+import pdfMagic2VetroSchedaTecnica from './assets/vetro/magic2-vetro-scheda-tecnica.pdf';
+import pdfMinnesotaSchedaTecnica from './assets/vetro/minnesota-scheda-tecnica.pdf';
+import pdfMorsettoGrandeSchedaTecnica from './assets/vetro/morsetto-grande-scheda-tecnica.pdf';
+import pdfMorsettoM012SchedaTecnica from './assets/vetro/morsetto-m012-scheda-tecnica.pdf';
+import pdfMorsettoM022SchedaTecnica from './assets/vetro/morsetto-m022-scheda-tecnica.pdf';
+import pdfMorsettoM032042SchedaTecnica from './assets/vetro/morsetto-m032-042-scheda-tecnica.pdf';
+import pdfMorsettoM032SchedaTecnica from './assets/vetro/morsetto-m032-scheda-tecnica.pdf';
+import pdfMorsettoM042042SchedaTecnica from './assets/vetro/morsetto-m042-042-scheda-tecnica.pdf';
+import pdfMorsettoM042SchedaTecnica from './assets/vetro/morsetto-m042-scheda-tecnica.pdf';
+import pdfMorsettoM062042SchedaTecnica from './assets/vetro/morsetto-m062-042-scheda-tecnica.pdf';
+import pdfMorsettoM062SchedaTecnica from './assets/vetro/morsetto-m062-scheda-tecnica.pdf';
+import pdfMorsettoM092SchedaTecnica from './assets/vetro/morsetto-m092-scheda-tecnica.pdf';
+import pdfMorsettoPiccoloSchedaTecnica from './assets/vetro/morsetto-piccolo-scheda-tecnica.pdf';
+import pdfNevadaQSchedaTecnica from './assets/vetro/nevada-q-scheda-tecnica.pdf';
+import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
+import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
+import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.pdf';
+import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
+import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
+import pdfSolovetroIstruzioniMontaggio from './assets/vetro/solovetro-istruzioni-montaggio.pdf';
+import pdfSolovetroLightIstruzioniMontaggio from './assets/vetro/solovetro-light-istruzioni-montaggio.pdf';
+import pdfSolovetroLightSchedaTecnica from './assets/vetro/solovetro-light-scheda-tecnica.pdf';
+import pdfSolovetroSchedaTecnica from './assets/vetro/solovetro-scheda-tecnica.pdf';
+import pdfSupportoQuadroPavimentoIn610020SchedaTecnica from './assets/vetro/supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf';
+import pdfSupportoQuadroPavimentoIn610SchedaTecnica from './assets/vetro/supporto-quadro-pavimento-in610-scheda-tecnica.pdf';
+import pdfSupportoTondoPavimentoIn610015SchedaTecnica from './assets/vetro/supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf';
+import pdfSupportoTondoPavimentoIn610SchedaTecnica from './assets/vetro/supporto-tondo-pavimento-in610-scheda-tecnica.pdf';
+import pdfTenditore0101000mmSchedaTecnica from './assets/vetro/tenditore-010-1000mm-scheda-tecnica.pdf';
+import pdfTenditore0101150mmSchedaTecnica from './assets/vetro/tenditore-010-1150mm-scheda-tecnica.pdf';
+import pdfTenditore0101300mmSchedaTecnica from './assets/vetro/tenditore-010-1300mm-scheda-tecnica.pdf';
+import pdfTenditore010830mmSchedaTecnica from './assets/vetro/tenditore-010-830mm-scheda-tecnica.pdf';
+import pdfTenditore010910mmSchedaTecnica from './assets/vetro/tenditore-010-910mm-scheda-tecnica.pdf';
+import pdfTexasSchedaTecnica from './assets/vetro/texas-scheda-tecnica.pdf';
+import pdfTg1000RapportoDiProva from './assets/vetro/tg-1000-rapporto-di-prova.pdf';
+import pdfTg1000SchedaTecnica from './assets/vetro/tg-1000-scheda-tecnica.pdf';
+import pdfTg200RapportoDiProva from './assets/vetro/tg-200-rapporto-di-prova.pdf';
+import pdfTg200SchedaTecnica from './assets/vetro/tg-200-scheda-tecnica.pdf';
+import pdfTgs50SchedaTecnica from './assets/vetro/tgs-50-scheda-tecnica.pdf';
+import pdfTgs500RapportoDiProva from './assets/vetro/tgs-500-rapporto-di-prova.pdf';
+import pdfTgs500SchedaTecnica from './assets/vetro/tgs-500-scheda-tecnica.pdf';
+import pdfUniversalSchedaTecnica from './assets/vetro/universal-scheda-tecnica.pdf';
+import pdfVetro40IstruzioniMontaggio from './assets/vetro/vetro40-istruzioni-montaggio.pdf';
+import pdfVetro40SchedaTecnica from './assets/vetro/vetro40-scheda-tecnica.pdf';
+import pdfVetro40dragIstruzioniMontaggio from './assets/vetro/vetro40drag-istruzioni-montaggio.pdf';
+import pdfVetro40dragSchedaTecnica from './assets/vetro/vetro40drag-scheda-tecnica.pdf';
+import pdfVetrofissoSchedaTecnica from './assets/vetro/vetrofisso-scheda-tecnica.pdf';
 
 /* Chiave dedicata (diversa da quella del Catalogo Generale) così i
    preferiti dei due cataloghi non si mescolano: gli id prodotto si
@@ -407,7 +490,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-regolabile-scheda-tecnica.pdf'),
+    scheda: pdfFermavetroRegolabileSchedaTecnica,
     immagini: {
       'Inox satinato': [fermavetroInox, fermavetroEsploso],
       'Nero opaco': [fermavetroNero],
@@ -427,7 +510,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-asola-scheda-tecnica.pdf'),
+    scheda: pdfFermavetroAsolaSchedaTecnica,
     immagini: {
       'Inox satinato': [asolaInox, asolaInoxVista2, asolaInoxFrontale],
       'Nero opaco': [asolaNero],
@@ -447,7 +530,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø52mm',
     dimensioni: 'Disco Ø52mm · calotta Ø18mm · vite M10x40 · spessore vetro 8-30mm · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-230-scheda-tecnica.pdf'),
+    scheda: pdfFermavetro230SchedaTecnica,
     immagini: {
       'Inox satinato': [fermavetro230Inox, fermavetro230Vista2, fermavetro230Frontale],
     },
@@ -464,7 +547,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø30mm',
     dimensioni: 'Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-30-scheda-tecnica.pdf'),
+    scheda: pdfFermavetro30SchedaTecnica,
     immagini: {
       'Inox satinato': [fermavetro30Inox, fermavetro30Esploso, fermavetro30Vista2, fermavetro30Frontale],
     },
@@ -481,7 +564,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø30mm',
     dimensioni: 'Testa Ø30mm · calotta Ø13mm · altezza 6,3mm · filetto M8x45 fisso · foro Ø15mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fissaggio-puntuale-scheda-tecnica.pdf'),
+    scheda: pdfFissaggioPuntualeSchedaTecnica,
     immagini: {
       'Inox satinato': [fissaggioInox, fissaggioEsploso, fissaggioInoxVista2, fissaggioInoxFrontale],
       'Nero opaco': [fissaggioNero, fissaggioNeroVista2],
@@ -499,7 +582,7 @@ const PRODOTTI_VETRO = [
     diametro: 'Ø52mm',
     dimensioni: 'Calotta Ø52mm · altezza 11mm · filetto M10 · foro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fermavetro-220-scheda-tecnica.pdf'),
+    scheda: pdfFermavetro220SchedaTecnica,
     immagini: {
       'Inox satinato': [fermavetro220Inox, fermavetro220Esploso, fermavetro220Vista2],
     },
@@ -516,12 +599,12 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Disco Ø52mm · foro Ø10,5mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: {
-      'IN109-239': schedaUrl('distanziale-052-5mm-scheda-tecnica.pdf'),
-      'IN109-240': schedaUrl('distanziale-052-10mm-scheda-tecnica.pdf'),
-      'IN109-241': schedaUrl('distanziale-052-20mm-scheda-tecnica.pdf'),
-      'IN109-242': schedaUrl('distanziale-052-30mm-scheda-tecnica.pdf'),
-      'IN109-243': schedaUrl('distanziale-052-40mm-scheda-tecnica.pdf'),
-      'IN109-244': schedaUrl('distanziale-052-50mm-scheda-tecnica.pdf'),
+      'IN109-239': pdfDistanziale0525mmSchedaTecnica,
+      'IN109-240': pdfDistanziale05210mmSchedaTecnica,
+      'IN109-241': pdfDistanziale05220mmSchedaTecnica,
+      'IN109-242': pdfDistanziale05230mmSchedaTecnica,
+      'IN109-243': pdfDistanziale05240mmSchedaTecnica,
+      'IN109-244': pdfDistanziale05250mmSchedaTecnica,
     },
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
@@ -544,7 +627,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('arizona-scheda-tecnica.pdf'),
+    scheda: pdfArizonaSchedaTecnica,
     assi: [
       { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -573,7 +656,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('arizona-inclinato-scheda-tecnica.pdf'),
+    scheda: pdfArizonaInclinatoSchedaTecnica,
     assi: [
       { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -595,7 +678,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Ø32mm · 382×350mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('arkansas-q-scheda-tecnica.pdf'),
+    scheda: pdfArkansasQSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -614,7 +697,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Ø32mm · 575×500mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('california-scheda-tecnica.pdf'),
+    scheda: pdfCaliforniaSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -632,7 +715,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro 40×10 mm. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('colorado-scheda-tecnica.pdf'),
+    scheda: pdfColoradoSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -656,7 +739,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 20×20 mm nelle misure più corte, 25×25 mm in quelle più lunghe. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('georgia-q-scheda-tecnica.pdf'),
+    scheda: pdfGeorgiaQSchedaTecnica,
     assi: [
       { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -687,7 +770,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø25 mm, con una riga centrale a contrasto tra satinato e lucido. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('cuba-scheda-tecnica.pdf'),
+    scheda: pdfCubaSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -705,7 +788,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('minnesota-scheda-tecnica.pdf'),
+    scheda: pdfMinnesotaSchedaTecnica,
     assi: [
       { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -725,7 +808,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione con supporti a squadra e profilo tondo Ø32 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('nevada-scheda-tecnica.pdf'),
+    scheda: pdfNevadaSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -743,7 +826,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione con supporti a squadra e profilo quadro 25×25 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('nevada-q-scheda-tecnica.pdf'),
+    scheda: pdfNevadaQSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -763,7 +846,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('oregon-scheda-tecnica.pdf'),
+    scheda: pdfOregonSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
@@ -785,7 +868,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 25×25 mm nella maggior parte delle misure, 30×30 mm in quella più lunga. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
     materiale: 'Acciaio inox AISI 304',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('texas-scheda-tecnica.pdf'),
+    scheda: pdfTexasSchedaTecnica,
     assi: [
       { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -821,10 +904,10 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8+8'],
     dimensioni: 'Sezione 73×118 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-200-scheda-tecnica.pdf'),
+    scheda: pdfTg200SchedaTecnica,
     // Rapporto di prova Istituto Giordano n. 351022: documento di terzi,
     // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
-    rapporto: schedaUrl('tg-200-rapporto-di-prova.pdf'),
+    rapporto: pdfTg200RapportoDiProva,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
@@ -845,7 +928,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Altezza 118 mm · larghezza 73 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-200-scheda-tecnica.pdf'),
+    scheda: pdfTg200SchedaTecnica,
     immagini: {
       'Argento': [tg202Tappo, tg202Quote],
     },
@@ -861,7 +944,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Altezza 15 mm · fori Ø14 mm · interasse 250 mm · 12 fori nella barra da 3000 mm, 24 in quella da 6000 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    scheda: pdfTg1000SchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
@@ -880,7 +963,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
     materiale: 'Alluminio',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    scheda: pdfTg1000SchedaTecnica,
     immagini: {
       'Argento': [tg205Tappo],
     },
@@ -896,10 +979,10 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8+8'],
     dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    scheda: pdfTg1000SchedaTecnica,
     // Rapporto di prova Istituto Giordano n. 376073: documento di terzi,
     // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
-    rapporto: schedaUrl('tg-1000-rapporto-di-prova.pdf'),
+    rapporto: pdfTg1000RapportoDiProva,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
@@ -919,7 +1002,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
     materiale: 'Alluminio',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tg-1000-scheda-tecnica.pdf'),
+    scheda: pdfTg1000SchedaTecnica,
     immagini: {
       'Argento': [tg1004Tappo],
     },
@@ -949,7 +1032,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['6+6', '5+5'],
     dimensioni: 'Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm (va bene anche 5+1.52+5) · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    scheda: pdfTgs50SchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
@@ -969,7 +1052,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
     materiale: 'Alluminio',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-50-scheda-tecnica.pdf'),
+    scheda: pdfTgs50SchedaTecnica,
     immagini: {
       'Argento': [tgs52Tappo],
     },
@@ -1013,10 +1096,10 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['10+10'],
     dimensioni: 'Sezione 125×104 mm · fori Ø14 mm · interasse 250 mm · vetro 10+1.52+10 mm · barra filettata M12, sporgenza max 22 mm · inclinazione 1,5° · sbalzo vetro max 1500 mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-500-scheda-tecnica.pdf'),
+    scheda: pdfTgs500SchedaTecnica,
     // Rapporto di prova Istituto Giordano n. 358697: documento di terzi,
     // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
-    rapporto: schedaUrl('tgs-500-rapporto-di-prova.pdf'),
+    rapporto: pdfTgs500RapportoDiProva,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
     ],
@@ -1035,7 +1118,7 @@ const PRODOTTI_VETRO = [
     descrizione: 'Tappo di chiusura laterale per i profili pensilina della serie Total Glass Speedy TGS 500, completo di guarnizione in gomma anti infiltrazione e viti. In alluminio finitura argento.',
     materiale: 'Alluminio',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('tgs-500-scheda-tecnica.pdf'),
+    scheda: pdfTgs500SchedaTecnica,
     immagini: {
       'Argento': [tgs502Tappo],
     },
@@ -1051,11 +1134,11 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
     scheda: {
-      'IN112-108': schedaUrl('tenditore-010-830mm-scheda-tecnica.pdf'),
-      'IN112-109': schedaUrl('tenditore-010-910mm-scheda-tecnica.pdf'),
-      'IN112-110': schedaUrl('tenditore-010-1000mm-scheda-tecnica.pdf'),
-      'IN112-111': schedaUrl('tenditore-010-1150mm-scheda-tecnica.pdf'),
-      'IN112-112': schedaUrl('tenditore-010-1300mm-scheda-tecnica.pdf'),
+      'IN112-108': pdfTenditore010830mmSchedaTecnica,
+      'IN112-109': pdfTenditore010910mmSchedaTecnica,
+      'IN112-110': pdfTenditore0101000mmSchedaTecnica,
+      'IN112-111': pdfTenditore0101150mmSchedaTecnica,
+      'IN112-112': pdfTenditore0101300mmSchedaTecnica,
     },
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
@@ -1079,7 +1162,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Piastra Ø100mm (interasse fori 74mm, fori Ø13mm) · innesto barra Ø22mm · spessore vetro 12-24mm · foro vetro Ø25mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('fissaggio-muro-100-scheda-tecnica.pdf'),
+    scheda: pdfFissaggioMuro100SchedaTecnica,
     immagini: {
       'Inox satinato': [fissaggioMuro100Vista1, fissaggioMuro100Vista2, fissaggioMuro100Esploso],
     },
@@ -1095,7 +1178,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['16.76', '17.52'],
     dimensioni: 'Sezione 21×20mm · spessore lamiera 1,50mm · larghezza gola 18mm · lunghezza barra 3000mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('lamiera-u-1676-3000-scheda-tecnica.pdf'),
+    scheda: pdfLamieraU16763000SchedaTecnica,
     immagini: {
       'Inox satinato': [lamieraURender, lamieraUSezione],
     },
@@ -1112,7 +1195,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.76', '10', '10.76'],
     dimensioni: 'Corpo 45×45mm · profondità 27mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m012-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM012SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1139,7 +1222,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.76', '10', '10.76'],
     dimensioni: 'Corpo 63×48mm · profondità 28mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m022-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM022SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1164,7 +1247,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.76', '10', '10.76'],
     dimensioni: 'Corpo 45×45mm · profondità 26mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m032-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM032SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1196,7 +1279,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.76', '10', '10.76'],
     dimensioni: 'Corpo 45×45mm · profondità 26mm · attacco tubo Ø42,4mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m032-042-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM032042SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1219,7 +1302,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['13.52', '17.52'],
     dimensioni: 'Corpo 65×37,5mm · profondità 55mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m042-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM042SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1245,7 +1328,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['13.52', '17.52'],
     dimensioni: 'Corpo 65×37,5mm · profondità 55mm · attacco tubo Ø42,4mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m042-042-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM042042SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1265,7 +1348,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['12', '12.76'],
     dimensioni: 'Altezza 160mm · base Ø100mm, altezza base 60,5mm · palo Ø50mm · fori base Ø7mm per viti Ø13mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('supporto-tondo-pavimento-in610-scheda-tecnica.pdf'),
+    scheda: pdfSupportoTondoPavimentoIn610SchedaTecnica,
     immagini: {
       'Inox lucido': [supportoTondoIn610Vista1, supportoTondoIn610Vista2, supportoTondoIn610Esploso],
     },
@@ -1281,7 +1364,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['12', '12.76'],
     dimensioni: 'Altezza 64,7mm · palo 48,2×48,2mm · base 104×104mm (piastra 100×100mm) · fori Ø7mm per viti Ø14mm, interasse diagonale 76,5mm',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('supporto-quadro-pavimento-in610-scheda-tecnica.pdf'),
+    scheda: pdfSupportoQuadroPavimentoIn610SchedaTecnica,
     immagini: {
       'Inox lucido': [supportoQuadroIn610Vista1, supportoQuadroIn610Vista2, supportoQuadroIn610Esploso],
     },
@@ -1297,7 +1380,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['16.76', '17.52'],
     dimensioni: 'Altezza 180mm · palo Ø44,4mm · base Ø105mm · foro vetro Ø15mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf'),
+    scheda: pdfSupportoTondoPavimentoIn610015SchedaTecnica,
     immagini: {
       'Inox satinato': [supportoTondoIn610015SatVista1, supportoTondoIn610015SatVista2, supportoTondoIn610015SatEsploso],
       'Inox lucido': [supportoTondoIn610015LucVista1, supportoTondoIn610015LucVista2, supportoTondoIn610015LucEsploso],
@@ -1315,7 +1398,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['16.76', '17.52'],
     dimensioni: 'Altezza 180mm · palo 48,5×48,5mm · base 108×108mm (piastra 100×100mm) · foro vetro Ø15mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf'),
+    scheda: pdfSupportoQuadroPavimentoIn610020SchedaTecnica,
     immagini: {
       'Inox satinato': [supportoQuadroIn610020SatVista1, supportoQuadroIn610020SatVista2, supportoQuadroIn610020SatEsploso],
       'Inox lucido': [supportoQuadroIn610020LucVista1, supportoQuadroIn610020LucVista2, supportoQuadroIn610020LucEsploso],
@@ -1333,7 +1416,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8.76', '10.76', '12.76'],
     dimensioni: 'Corpo 52×52mm · profondità 32,5mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m062-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM062SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1354,7 +1437,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8.76', '10.76', '12.76'],
     dimensioni: 'Corpo 52×52mm · profondità 32,5mm · attacco tubo Ø42,4mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m062-042-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM062042SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1375,7 +1458,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['20.76', '21.52'],
     dimensioni: 'Corpo 70×60mm · profondità 44,5mm · vite M8',
     fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
-    scheda: schedaUrl('morsetto-m092-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoM092SchedaTecnica,
     assi: [
       { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
     ],
@@ -1396,7 +1479,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Zama',
     dimensioni: 'Corpo 50×30mm · spessore 23mm',
     fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
-    scheda: schedaUrl('morsetto-piccolo-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoPiccoloSchedaTecnica,
     immagini: {
       'Cromo lucido': [morsettoPiccoloCromoLucido],
     },
@@ -1414,7 +1497,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Zama',
     dimensioni: 'Corpo 70×35mm · spessore 20mm',
     fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
-    scheda: schedaUrl('morsetto-grande-scheda-tecnica.pdf'),
+    scheda: pdfMorsettoGrandeSchedaTecnica,
     immagini: {
       'Cromo lucido': [morsettoGrandeCromoLucido],
     },
@@ -1432,7 +1515,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.76'],
     dimensioni: 'Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm',
     fornitore: 'Compas', fornitoreLogo: compasLogo,
-    scheda: schedaUrl('ra462-scheda-tecnica.pdf'),
+    scheda: pdfRa462SchedaTecnica,
     immagini: {
       'Argento': [ra462Foto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
     },
@@ -1449,8 +1532,8 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm',
     fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
     scheda: {
-      '2574008': schedaUrl('paris-scheda-tecnica.pdf'),
-      '783748': schedaUrl('paris-nero-scheda-tecnica.pdf'),
+      '2574008': pdfParisSchedaTecnica,
+      '783748': pdfParisNeroSchedaTecnica,
     },
     immagini: {
       'Alluminio argento opaco': [parisArgentoOpaco],
@@ -1489,8 +1572,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '10', '12'],
     dimensioni: 'Spessore vetro 8-12mm · albero 8mm ad espansione · rosetta quadra',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
-    scheda: schedaUrl('airhandle-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('airhandle-istruzioni.pdf'),
+    scheda: pdfAirhandleSchedaTecnica,
+    istruzioni: pdfAirhandleIstruzioni,
     // Un video per verso di apertura: il montaggio dello scrocco cambia.
     video: [
       { etichetta: 'a spingere', url: 'https://youtube.com/shorts/WTF9-g-a4ww' },
@@ -1556,8 +1639,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '10'],
     dimensioni: 'Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm · luce inferiore 10mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('magic2-vetro-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('magic2-vetro-istruzioni-montaggio.pdf'),
+    scheda: pdfMagic2VetroSchedaTecnica,
+    istruzioni: pdfMagic2VetroIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Oltre 50mm di frenatura', testo: 'Fermi ammortizzati brevettati che garantiscono oltre 50mm di frenatura, mantenendo gli stessi ingombri della porta.' },
       { titolo: 'Fermi con posizione regolabile', testo: 'Indipendenti dal distanziale: si possono spostare, se necessario, per regolare la posizione della porta.' },
@@ -1594,8 +1677,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['5', '8.5'],
     dimensioni: 'Kit 1500×3000mm · peso porta max 80kg · spessore vetro 5-8,5mm · luce inferiore 10mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('magic2-frame-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('magic2-frame-istruzioni-montaggio.pdf'),
+    scheda: pdfMagic2FrameSchedaTecnica,
+    istruzioni: pdfMagic2FrameIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Ruote inferiori brevettate', testo: 'Scaricano completamente il peso della porta sul pavimento senza lasciare segni, anche dopo anni di utilizzo. Un paraurti integrato assorbe le irregolarità del pavimento, come le fughe delle piastrelle.' },
       { titolo: 'Fermi ammortizzati Fluid', testo: 'L’ultima generazione di ammortizzatori a chiusura rallentata di Terno Scorrevoli, con doppie molle di ritorno, per una frenata sempre fluida e silenziosa.' },
@@ -1625,7 +1708,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['5', '8.5'],
     dimensioni: 'Porta fino a 1500×3000mm (max) · peso max 80kg · vetro 5-8,5mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('universal-scheda-tecnica.pdf'),
+    scheda: pdfUniversalSchedaTecnica,
     caratteristiche: [
       { titolo: 'Design essenziale e resistente', testo: 'Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione.' },
       { titolo: 'Flessibilità nei materiali', testo: 'Permette di realizzare porte in vetro con telaio in alluminio e di integrarle con porte in legno a tutto spessore, per configurazioni miste.' },
@@ -1649,8 +1732,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
     dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a parete o soffitto',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('solovetro-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('solovetro-istruzioni-montaggio.pdf'),
+    scheda: pdfSolovetroSchedaTecnica,
+    istruzioni: pdfSolovetroIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, per una porta in vetro senza elementi di scorrimento a vista.' },
       { titolo: 'Apertura singola o Sync sincronizzata', testo: 'Il sistema prevede la configurazione per anta singola oppure, con la versione Sync, per due ante con apertura simultanea e movimento sincronizzato.' },
@@ -1674,8 +1757,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
     dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a soffitto (pieno o vuoto) o a parete',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('solovetro-light-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('solovetro-light-istruzioni-montaggio.pdf'),
+    scheda: pdfSolovetroLightSchedaTecnica,
+    istruzioni: pdfSolovetroLightIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, a filo del controsoffitto in cartongesso.' },
       { titolo: 'Dedicato ai controsoffitti', testo: 'Pensato per l\'installazione su pareti e controsoffitti in cartongesso, con fissaggio a soffitto pieno, a soffitto vuoto o a parete.' },
@@ -1705,8 +1788,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
     dimensioni: 'Pinza alta 40mm senza forature vetro · portata 80-120kg per anta secondo pinza e fermi · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · binario da 600 a 1500mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('vetro40-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('vetro40-istruzioni-montaggio.pdf'),
+    scheda: pdfVetro40SchedaTecnica,
+    istruzioni: pdfVetro40IstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori: l\'anta resta un vetro pulito e integro.' },
       { titolo: 'Due tipi di pinza', testo: 'Pinza standard Clamp 200 oppure pinza lunga (Long Clamp), per ante più ampie o più pesanti.' },
@@ -1734,8 +1817,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7'],
     dimensioni: 'Pinza alta 40mm senza forature vetro, tagliabile a misura · portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('vetro40drag-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('vetro40drag-istruzioni-montaggio.pdf'),
+    scheda: pdfVetro40dragSchedaTecnica,
+    istruzioni: pdfVetro40dragIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori.' },
       { titolo: 'Pinza tagliabile a misura', testo: 'La pinza a tutta lunghezza si taglia a misura direttamente in cantiere, in base alla larghezza dell\'anta.' },
@@ -1761,8 +1844,8 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Altezza fino a 3 metri · modulo standard attrezzabile 900mm · tratte di misura variabile · pannellatura in vetro o legno · partenze a muro, angoli a L e a T, pali cremagliera e pali terminali',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('grid-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('grid-istruzioni-montaggio.pdf'),
+    scheda: pdfGridSchedaTecnica,
+    istruzioni: pdfGridIstruzioniMontaggio,
     caratteristiche: [
       { titolo: 'Sviluppato sui tuoi disegni', testo: 'Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell\'ambiente. Anche la finitura si sceglie in fase di progetto, tra quelle disponibili. Contattaci con il tuo progetto e prepariamo insieme la configurazione.' },
       { titolo: 'Parete attrezzabile', testo: 'I pali cremagliera permettono di agganciare mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l\'altezza, e di riposizionarli anche in un secondo momento.' },
@@ -1794,7 +1877,7 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
     dimensioni: 'Profili fissavetro altezza 27 o 30mm · profili adesivi per vetro 10-12,7mm · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('vetrofisso-scheda-tecnica.pdf'),
+    scheda: pdfVetrofissoSchedaTecnica,
     caratteristiche: [
       { titolo: 'Due altezze di profilo', testo: 'Profili fissavetro disponibili in altezza 27mm o 30mm, per vetri con spessore da 8-8,7 a 12-12,7mm.' },
       { titolo: 'Giunzioni vetro su vetro', testo: 'Profili con adesivo per unire i pannelli direttamente vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo.' },
@@ -1820,8 +1903,8 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['8', '8.7', '10', '10.7'],
     dimensioni: 'Binario 2000mm · portata 40kg per anta · larghezza anta max 1000mm · spessore vetro 8-8,7 / 10-10,7mm',
     fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
-    scheda: schedaUrl('clear-scheda-tecnica.pdf'),
-    istruzioni: schedaUrl('clear-istruzioni-montaggio.pdf'),
+    scheda: pdfClearSchedaTecnica,
+    istruzioni: pdfClearIstruzioniMontaggio,
     video: 'https://www.youtube.com/watch?v=9GCIVxI6tkI',
     caratteristiche: [
       { titolo: 'Nato per il box doccia', testo: 'I cuscinetti sono realizzati in acciaio inox: il sistema regge l\'umidità e l\'uso quotidiano del bagno senza perdere scorrevolezza.' },
@@ -1918,7 +2001,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox',
     dimensioni: 'Ø59mm · profondità 32mm · foro vetro Ø40mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-3904-scheda-tecnica.pdf'),
+    scheda: pdfFimet3904SchedaTecnica,
     immagini: {
       'Acciaio inox satinato': [fimet3904],
     },
@@ -1936,7 +2019,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox',
     dimensioni: '52×52mm · profondità 30mm · foro vetro Ø18mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-3921-scheda-tecnica.pdf'),
+    scheda: pdfFimet3921SchedaTecnica,
     immagini: {
       'Acciaio inox satinato': [fimet3921],
     },
@@ -1954,7 +2037,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Sezione 11×18mm · lunghezze 300mm e 700mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-maniglione-adesivo-scheda-tecnica.pdf'),
+    scheda: pdfFimetManiglioneAdesivoSchedaTecnica,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
     ],
@@ -1979,7 +2062,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: '58×58mm · altezza 9mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-3931-scheda-tecnica.pdf'),
+    scheda: pdfFimet3931SchedaTecnica,
     immagini: {
       'Argento': [fimet3931Argento],
       'Nero opaco': [fimet3931Nero],
@@ -1999,7 +2082,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: '58×115mm · altezza 9mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-3932-scheda-tecnica.pdf'),
+    scheda: pdfFimet3932SchedaTecnica,
     immagini: {
       'Argento': [fimet3932Argento],
       'Nero opaco': [fimet3932Nero],
@@ -2019,7 +2102,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Ø60mm · altezza 10mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-3933-scheda-tecnica.pdf'),
+    scheda: pdfFimet3933SchedaTecnica,
     immagini: {
       'Argento': [fimet3933Argento],
       'Nero opaco': [fimet3933Nero],
@@ -2037,7 +2120,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI304',
     dimensioni: 'Sezione 25×38mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-brasile-852-scheda-tecnica.pdf'),
+    scheda: pdfFimetBrasile852SchedaTecnica,
     immagini: {
       'Acciaio inox satinato': [fimetBrasileInox],
       'Nero opaco': [fimetBrasileNero],
@@ -2054,7 +2137,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio inox AISI304',
     dimensioni: 'Ø35mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
     fornitore: 'Fimet', fornitoreLogo: fimetLogo,
-    scheda: schedaUrl('fimet-equador-850-scheda-tecnica.pdf'),
+    scheda: pdfFimetEquador850SchedaTecnica,
     immagini: {
       'Acciaio inox satinato': [fimetEquadorInoxSatinato],
       'Inox lucido': [fimetEquadorInoxLucido],
@@ -2134,7 +2217,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio',
     dimensioni: 'Larghezza massima porta 850-950mm · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
-    scheda: schedaUrl('fs880-scheda-tecnica.pdf'),
+    scheda: pdfFs880SchedaTecnica,
     video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
     immagini: {
       'Acciaio satinato': [fs880Render, fs880Ambiente],
@@ -2152,7 +2235,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Acciaio',
     dimensioni: 'Larghezza massima porta 1100-1250mm · spessore vetro 10-15mm · cerniera (carter incluso) 197,5×80×45mm',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
-    scheda: schedaUrl('fs890-scheda-tecnica.pdf'),
+    scheda: pdfFs890SchedaTecnica,
     immagini: {
       'Acciaio satinato': [fs890Render, fs890Ambiente],
     },
@@ -2167,7 +2250,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm · distanza perno-vetro 22,5mm',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
-    scheda: schedaUrl('gaha1st-scheda-tecnica.pdf'),
+    scheda: pdfGaha1stSchedaTecnica,
     immagini: {
       'Cromo opaco': [gaha1stRender, gaha1stAmbiente],
       'Nero opaco': [gaha1stNeroRender],
@@ -2184,7 +2267,7 @@ const PRODOTTI_VETRO = [
     materiale: 'Alluminio',
     dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-42mm',
     fornitore: 'Meroni', fornitoreLogo: meroniLogo,
-    scheda: schedaUrl('airhinge-scheda-tecnica.pdf'),
+    scheda: pdfAirhingeSchedaTecnica,
     immagini: {
       'Cromo opaco': [airhingeArgentoRender, airhingeArgentoAmbiente],
       'Nero opaco': [airhingeNeroRender, airhingeNeroAmbiente],
@@ -3226,7 +3309,10 @@ function SchedaViewer() {
       <div className="sheet-bar" onClick={e => e.stopPropagation()}>
         <span className="sheet-title">Scheda tecnica · {item.title}{item.ver ? ' · ' + item.ver : ''}</span>
         <span className="sheet-actions">
-          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}${item.ver ? '-' + item.ver : ''}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
+          {/* Niente attributo download: così il PDF si apre nel visualizzatore
+              del browser (su iPhone a tutta pagina, con salva e condividi a
+              portata di mano) invece di finire dritto fra i file scaricati. */}
+          {item.pdf && <a className="sheet-dl" href={item.pdf} target="_blank" rel="noopener">Scarica PDF</a>}
           <button className="sheet-x" onClick={close} aria-label="Chiudi">✕</button>
         </span>
       </div>
