@@ -3132,7 +3132,11 @@ function SchedaViewer() {
       const p = PRODOTTI_VETRO.find(x => x.id === id);
       const src = pickScheda(SCHEDA_IMG_VETRO[id], key);
       if (!p || !src) return;
-      setItem({ src, title: p.nome, pdf: pickScheda(p.scheda, key) });
+      // Prodotti con una scheda per variante (es. il distanziale, una per
+      // lunghezza): titolo e nome del file dicono quale si sta guardando,
+      // altrimenti le schede scaricate sono tutte uguali e non si distinguono.
+      const perVariante = p.scheda && typeof p.scheda === 'object' && p.scheda[key] !== undefined;
+      setItem({ src, title: p.nome, ver: perVariante ? key : null, pdf: pickScheda(p.scheda, key) });
       document.body.style.overflow = 'hidden';
     };
     const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
@@ -3145,9 +3149,9 @@ function SchedaViewer() {
   return (
     <div className="sheet-ov" onClick={close}>
       <div className="sheet-bar" onClick={e => e.stopPropagation()}>
-        <span className="sheet-title">Scheda tecnica · {item.title}</span>
+        <span className="sheet-title">Scheda tecnica · {item.title}{item.ver ? ' · ' + item.ver : ''}</span>
         <span className="sheet-actions">
-          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
+          {item.pdf && <a className="sheet-dl" href={item.pdf} download={`scheda-tecnica-${item.title}${item.ver ? '-' + item.ver : ''}.pdf`} target="_blank" rel="noopener">Scarica PDF</a>}
           <button className="sheet-x" onClick={close} aria-label="Chiudi">✕</button>
         </span>
       </div>
