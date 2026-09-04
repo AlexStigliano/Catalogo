@@ -290,7 +290,9 @@ import clearEsploso from './assets/vetro/prodotti/clear-esploso.jpg';
 import schClear from './assets/vetro/schede/clear-scheda.jpg';
 import trafiloLogo from './assets/vetro/trafilo-logo.png';
 import guarnizionePalloncinoQuote from './assets/vetro/prodotti/guarnizione-palloncino-quote.jpg';
-import schGuarnizionePalloncino from './assets/vetro/schede/guarnizione-palloncino-scheda.jpg';
+import guarnizioneDoppiaPinnaQuote from './assets/vetro/prodotti/guarnizione-doppia-pinna-quote.jpg';
+// Un'unica tavola per tutta la serie 400: la condividono tutti gli articoli.
+import schTrafilo400 from './assets/vetro/schede/trafilo-serie-400-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -1849,12 +1851,29 @@ const PRODOTTI_VETRO = [
     spessoriVetro: ['6', '8'],
     dimensioni: 'Asta da 2500mm · profilo alto 13mm · palloncino Ø6,5mm · spessore vetro 6-8mm',
     fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
-    scheda: schedaUrl('guarnizione-palloncino-scheda-tecnica.pdf'),
+    scheda: schedaUrl('trafilo-serie-400-scheda-tecnica.pdf'),
     immagini: {
       'Trasparente': [guarnizionePalloncinoQuote],
     },
     varianti: [
       { codice: '401.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 83, categoria: '06',
+    nome: 'Guarnizione doppia pinna',
+    // Art. 402 della stessa tavola serie "400": per noi art. 402.2500.
+    descrizione: 'Guarnizione a doppia pinna per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e sotto porta due pinne, una diritta da 12mm e una inclinata da 10mm, che fanno tenuta contro il piatto doccia o l\'anta a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinne da 12 e 10mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    scheda: schedaUrl('trafilo-serie-400-scheda-tecnica.pdf'),
+    immagini: {
+      'Trasparente': [guarnizioneDoppiaPinnaQuote],
+    },
+    varianti: [
+      { codice: '402.2500', finitura: 'Trasparente' },
     ],
   },
   {
@@ -2188,7 +2207,8 @@ const SCHEDA_IMG_VETRO = {
   79: schVetrofisso,
   80: schGrid,
   81: schClear,
-  82: schGuarnizionePalloncino,
+  82: schTrafilo400,
+  83: schTrafilo400,
   61: schFimet3904,
   62: schFimet3921,
   63: schFimetManiglione,
