@@ -475,6 +475,10 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
     { id: 'maniglie-battenti', nome: 'Maniglie per porte battenti' },
     { id: 'maniglioni', nome: 'Maniglioni' },
   ],
+  '09': [
+    { id: 'siliconi-sigillanti', nome: 'Siliconi e sigillanti' },
+    { id: 'tasselli', nome: 'Tasselli' },
+  ],
 };
 // Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
 // solo il testo mostrato sotto il nome prodotto).
