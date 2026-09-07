@@ -1015,6 +1015,13 @@ const cercaProdotti = (testo) => {
     .map(({ p }) => p);
 };
 
+/* Su cosa lavora la barra di ricerca dentro una categoria: il nome
+   dell'articolo, il fornitore e le parole chiave qui sopra. Gli accenti si
+   ignorano, cosi' il fornitore si trova anche scrivendolo senza. */
+const testoCercabile = (p) => senzaAccenti(
+  [p.nome, p.fornitore, PAROLE_CHIAVE[p.id] || ''].join(' ')
+);
+
 /* Codici che contengono una delle parole cercate: se cerchi un codice,
    ti mostra subito quale variante corrisponde. */
 const codiciTrovati = (p, testo) => {
@@ -1220,8 +1227,8 @@ function ProductCatalog({ products }) {
   // `salta` esclude un filtro dal calcolo: serve per sapere quali opzioni di
   // quel filtro darebbero ancora risultati (le altre vengono disabilitate).
   const match = (p, salta) => {
-    const t = q.trim().toLowerCase();
-    const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
+    const t = senzaAccenti(q.trim());
+    const okQ = !t || testoCercabile(p).includes(t) || p.varianti.some(v => senzaAccenti(v.codice).includes(t));
     const okM = salta === 'mat' || !mat.length || mat.includes(p.materiale);
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okR = salta === 'ros' || !ros.length || ros.includes(p.rosetta);
