@@ -2575,8 +2575,10 @@ const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').t
 const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
 const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
 
-/* Termini generici che un cliente potrebbe usare al posto del nome tecnico
-   del prodotto, e che nemmeno la descrizione riporta. */
+/* Termini che un cliente potrebbe usare al posto del nome con cui l'articolo
+   sta in catalogo, e che nemmeno la descrizione riporta: parole generiche
+   oppure il nome commerciale del produttore, per gli articoli che da noi si
+   chiamano in un altro modo. */
 const PAROLE_CHIAVE_VETRO = {
   1: 'distanziatore',
   2: 'distanziatore',
@@ -2584,6 +2586,12 @@ const PAROLE_CHIAVE_VETRO = {
   4: 'distanziatore',
   5: 'distanziatore',
   6: 'distanziatore',
+  89: 'Silirub AC',
+  // Sotto al "Silicone neutro" ci sono due prodotti Soudal diversi: chi cerca
+  // l'uno o l'altro nome deve arrivare lo stesso alla nostra scheda.
+  90: 'Silirub N2 Soudasil 400',
+  91: 'Edilacril',
+  92: 'Alcosil',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -2604,6 +2612,13 @@ const cercaProdottiVetro = (testo) => {
     .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
     .map(({ p }) => p);
 };
+
+/* Su cosa lavora la barra di ricerca dentro una categoria: il nome con cui
+   l'articolo sta in catalogo, il fornitore e i termini alternativi qui sopra.
+   Gli accenti si ignorano, altrimenti "trafilo" non troverebbe Tràfilo. */
+const testoCercabile = (p) => senzaAccenti(
+  [p.nome, p.fornitore, PAROLE_CHIAVE_VETRO[p.id] || ''].join(' ')
+);
 
 const codiciTrovati = (p, testo) => {
   const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
@@ -2904,8 +2919,8 @@ function ProductCatalog({ products }) {
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const match = (p, salta) => {
-    const t = q.trim().toLowerCase();
-    const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
+    const t = senzaAccenti(q.trim());
+    const okQ = !t || testoCercabile(p).includes(t) || p.varianti.some(v => senzaAccenti(v.codice).includes(t));
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
