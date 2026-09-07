@@ -296,6 +296,9 @@ import guarnizionePinnaBattenteQuote from './assets/vetro/prodotti/guarnizione-p
 import guarnizioneCalamitataFrontaleQuote from './assets/vetro/prodotti/guarnizione-calamitata-frontale-quote.jpg';
 import guarnizioneCalamitata45Quote from './assets/vetro/prodotti/guarnizione-calamitata-45-quote.jpg';
 import guarnizioneCalamitata45InvQuote from './assets/vetro/prodotti/guarnizione-calamitata-45-inv-quote.jpg';
+import soudalLogo from './assets/vetro/soudal-logo.png';
+import silirubAcCartuccia from './assets/vetro/prodotti/silirub-ac-cartuccia.jpg';
+import schSilirubAc from './assets/vetro/schede/silirub-ac-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -404,6 +407,7 @@ import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
 import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.pdf';
 import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
 import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
+import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
 import pdfSolovetroIstruzioniMontaggio from './assets/vetro/solovetro-istruzioni-montaggio.pdf';
 import pdfSolovetroLightIstruzioniMontaggio from './assets/vetro/solovetro-light-istruzioni-montaggio.pdf';
 import pdfSolovetroLightSchedaTecnica from './assets/vetro/solovetro-light-scheda-tecnica.pdf';
@@ -2060,6 +2064,34 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 89, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silirub AC',
+    // Formato della cartuccia e codici articolo ce li ha dati il cliente: la
+    // scheda tecnica per colori e confezioni rimanda al catalogo Soudal.
+    descrizione: 'Silicone acetico monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai materiali da costruzione comuni. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. Buona resistenza ai raggi UV. Ha il tipico odore acetico e non è verniciabile; non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE, PVC e supporti bituminosi. In cartuccia da 280 ml, trasparente o bianco. Prodotto da Soudal.',
+    materiale: 'Silicone acetico (polisilossano)',
+    dimensioni: 'Cartuccia da 280 ml · giunti da 5 a 10mm di larghezza · profondità minima 5mm',
+    fornitore: 'Soudal', fornitoreLogo: soudalLogo,
+    scheda: pdfSilirubAcSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Resta elastico', testo: 'Recupero elastico oltre il 90% e allungamento a rottura intorno all’800%: segue i movimenti del giunto invece di strapparsi. Deformazione massima ammessa ±25%.' },
+      { titolo: 'Pelle in 17 minuti', testo: 'Forma la pelle in circa 17 minuti e indurisce di circa 2mm ogni 24 ore. Tempi indicativi: cambiano con temperatura, umidità e tipo di supporto.' },
+      { titolo: 'La regola del giunto', testo: 'Larghezza minima 5mm e massima 10mm, profondità minima 5mm. Nei lavori di sigillatura la profondità va tenuta uguale alla larghezza.' },
+      { titolo: 'Attenzione alle vetrate isolanti', testo: 'Va evitato il contatto diretto con la sigillatura secondaria del vetrocamera e con la pellicola PVB dei vetri stratificati di sicurezza.' },
+      { titolo: 'Non verniciabile', testo: 'Le vernici non tengono sulla superficie: se il giunto va tinteggiato serve un sigillante di altro tipo.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, regge da -60 a +120°C.' },
+    ],
+    // La cartuccia è identica nei due colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Trasparente': [silirubAcCartuccia],
+      'Bianco': [silirubAcCartuccia],
+    },
+    varianti: [
+      { codice: '112215', finitura: 'Trasparente' },
+      { codice: '124103', finitura: 'Bianco' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2398,6 +2430,7 @@ const SCHEDA_IMG_VETRO = {
   66: schFimet3933,
   67: schFimetBrasile,
   68: schFimetEquador,
+  89: schSilirubAc,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2481,6 +2514,8 @@ const FINISHES_VETRO = {
   'Alluminio lucido': 'linear-gradient(135deg,#fbfcfd,#d2d7da 30%,#8b9298 50%,#dadee0 68%,#fafbfc)',
   // PVC trasparente: appena velato, con il riflesso del vetro.
   'Trasparente': 'linear-gradient(135deg,#ffffff,#eef5f6 34%,#d9e7e9 55%,#f2f8f9 76%,#ffffff)',
+  // Il bianco dei sigillanti: opaco e pieno, senza il riflesso delle vernici.
+  'Bianco': 'linear-gradient(135deg,#ffffff,#f4f4f1 55%,#e8e8e3)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
