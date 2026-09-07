@@ -306,6 +306,8 @@ import schSoudasil400 from './assets/vetro/schede/soudasil400-scheda.jpg';
 import zucchiniLogo from './assets/vetro/zucchini-logo.png';
 import edilacrilCartuccia from './assets/vetro/prodotti/edilacril-cartuccia.jpg';
 import schEdilacril from './assets/vetro/schede/edilacril-scheda.jpg';
+import alcosilCartuccia from './assets/vetro/prodotti/alcosil-cartuccia.jpg';
+import schAlcosil from './assets/vetro/schede/alcosil-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -356,6 +358,7 @@ import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
 import pdfAirhandleIstruzioni from './assets/vetro/airhandle-istruzioni.pdf';
 import pdfAirhandleSchedaTecnica from './assets/vetro/airhandle-scheda-tecnica.pdf';
 import pdfAirhingeSchedaTecnica from './assets/vetro/airhinge-scheda-tecnica.pdf';
+import pdfAlcosilSchedaTecnica from './assets/vetro/alcosil-scheda-tecnica.pdf';
 import pdfArizonaInclinatoSchedaTecnica from './assets/vetro/arizona-inclinato-scheda-tecnica.pdf';
 import pdfArizonaSchedaTecnica from './assets/vetro/arizona-scheda-tecnica.pdf';
 import pdfArkansasQSchedaTecnica from './assets/vetro/arkansas-q-scheda-tecnica.pdf';
@@ -2176,6 +2179,32 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 92, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silicone neutro per specchi',
+    // Alcosil di Fratelli Zucchini. Sta a parte dagli altri neutri perche'
+    // e' quello che si puo' usare dietro allo specchio: i siliconi acetici
+    // corrodono l'argentatura, e anche fra i neutri non tutti sono dati per
+    // quell'impiego. La scheda tecnica lo elenca esplicitamente.
+    descrizione: 'Sigillante siliconico neutro monocomponente ad alta velocità di reticolazione, indicato anche per il montaggio degli specchi. Basso modulo ed elevata capacità di assorbire le deformazioni, non cola, quindi va bene sia sui giunti orizzontali che verticali, e ha un ampio tempo aperto che lascia lisciare il cordolo con comodo. Adatto alla sigillatura delle superfici vetrate di finestre e facciate continue, ai giunti perimetrali di serramenti in metallo, legno e PVC rigido, alle pareti divisorie e pannellature, a lucernari e coperture in vetro, e agli ambienti chiusi dove serve un prodotto a basso odore. Aderisce a cemento, mattone, ceramica, porcellana, alluminio anodizzato, legno e molte materie plastiche. Non è verniciabile; non va usato come sigillante secondario del vetrocamera né come adesivo strutturale, è sconsigliato per gli acquari e per i giunti immersi di continuo nell\'acqua, e su marmo e pietra naturale va provato prima. In cartuccia da 310 ml, trasparente. Prodotto da Fratelli Zucchini.',
+    materiale: 'Silicone neutro alcossilico',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfAlcosilSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Si può usare sugli specchi', testo: 'La scheda tecnica lo indica per il montaggio degli specchi: è il motivo per cui lo teniamo a parte dagli altri neutri. Un silicone acetico, in quella posizione, attaccherebbe l\'argentatura.' },
+      { titolo: 'Indurisce in fretta', testo: 'Fuori polvere in 20 minuti, vulcanizzazione completa in 1-5 giorni secondo temperatura, umidità e sezione del cordolo. La lisciatura va fatta entro 10 minuti dall\'applicazione.' },
+      { titolo: 'Basso modulo, molto elastico', testo: 'Allungamento a rottura fino al 550% e modulo al 100% di 0,30 N/mm²: assorbe deformazioni ampie senza tirare sui bordi del giunto. Durezza 20 Shore A.' },
+      { titolo: 'La regola del giunto', testo: 'Profondità del sigillante fra 5 e 10mm, e sempre inferiore alla larghezza del giunto. Sul fondo va messo un profilo antiaderente come il Filtene.' },
+      { titolo: 'Certificato per le vetrate', testo: 'Conforme a EN 15651-1 per i giunti di facciata e EN 15651-2 per le vetrate, ISO 11600 classe 25 LM. Emissioni molto basse: EC 1 PLUS, Indoor Air Comfort Gold, Blue Angel.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +40°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Trasparente': [alcosilCartuccia],
+    },
+    varianti: [
+      { codice: '1006788', finitura: 'Trasparente' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2525,6 +2554,7 @@ const SCHEDA_IMG_VETRO = {
     'Testa di moro': schSoudasil400, '175062': schSoudasil400,
   },
   91: schEdilacril,
+  92: schAlcosil,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
