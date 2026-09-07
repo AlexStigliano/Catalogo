@@ -2070,7 +2070,8 @@ const PRODOTTI_VETRO = [
     // scheda tecnica per colori e confezioni rimanda al catalogo Soudal.
     descrizione: 'Silicone acetico monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai materiali da costruzione comuni. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. Buona resistenza ai raggi UV. Ha il tipico odore acetico e non è verniciabile; non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE, PVC e supporti bituminosi. In cartuccia da 280 ml, trasparente o bianco. Prodotto da Soudal.',
     materiale: 'Silicone acetico (polisilossano)',
-    dimensioni: 'Cartuccia da 280 ml · giunti da 5 a 10mm di larghezza · profondità minima 5mm',
+    // Niente riquadro misure: il formato della cartuccia sta nella descrizione
+    // e le misure del giunto nella caratteristica "La regola del giunto".
     fornitore: 'Soudal', fornitoreLogo: soudalLogo,
     scheda: pdfSilirubAcSchedaTecnica,
     caratteristiche: [
