@@ -299,6 +299,9 @@ import guarnizioneCalamitata45InvQuote from './assets/vetro/prodotti/guarnizione
 import soudalLogo from './assets/vetro/soudal-logo.png';
 import silirubAcCartuccia from './assets/vetro/prodotti/silirub-ac-cartuccia.jpg';
 import schSilirubAc from './assets/vetro/schede/silirub-ac-scheda.jpg';
+import silirubN2Cartuccia from './assets/vetro/prodotti/silirub-n2-cartuccia.jpg';
+import schSilirubN2 from './assets/vetro/schede/silirub-n2-scheda.jpg';
+import schSoudasil400 from './assets/vetro/schede/soudasil400-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -408,6 +411,8 @@ import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.
 import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
 import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
 import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
+import pdfSilirubN2SchedaTecnica from './assets/vetro/silirub-n2-scheda-tecnica.pdf';
+import pdfSoudasil400SchedaTecnica from './assets/vetro/soudasil400-scheda-tecnica.pdf';
 import pdfSolovetroIstruzioniMontaggio from './assets/vetro/solovetro-istruzioni-montaggio.pdf';
 import pdfSolovetroLightIstruzioniMontaggio from './assets/vetro/solovetro-light-istruzioni-montaggio.pdf';
 import pdfSolovetroLightSchedaTecnica from './assets/vetro/solovetro-light-scheda-tecnica.pdf';
@@ -2093,6 +2098,52 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 90, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silicone neutro',
+    // I sette colori in realta' sono due prodotti Soudal diversi (Silirub N2
+    // per trasparente/bianco/avorio 1013, Soudasil 400 per gli altri quattro):
+    // stesso silicone neutro, stessi dati tecnici, ma la scheda tecnica che si
+    // scarica varia con la finitura. Vedi la mappa "scheda" piu' sotto.
+    descrizione: 'Silicone neutro monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai principali materiali da costruzione, vetro compreso. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. A differenza dei sigillanti acetici non ha l\'odore acetico e non rischia di intaccare i metalli. Buona resistenza ai raggi UV e all\'invecchiamento; non è verniciabile e non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE e supporti bituminosi. In cartuccia da 300 ml, nei colori trasparente, bianco, avorio 1013, nero, alluminio, grigio metallizzato e testa di moro. Prodotto da Soudal.',
+    materiale: 'Silicone neutro (polisilossano)',
+    fornitore: 'Soudal', fornitoreLogo: soudalLogo,
+    scheda: {
+      'Trasparente': pdfSilirubN2SchedaTecnica, '135680': pdfSilirubN2SchedaTecnica,
+      'Bianco': pdfSilirubN2SchedaTecnica, '135679': pdfSilirubN2SchedaTecnica,
+      'Avorio 1013': pdfSilirubN2SchedaTecnica, '135676': pdfSilirubN2SchedaTecnica,
+      'Nero': pdfSoudasil400SchedaTecnica, '175060': pdfSoudasil400SchedaTecnica,
+      'Alluminio': pdfSoudasil400SchedaTecnica, '175059': pdfSoudasil400SchedaTecnica,
+      'Grigio metallizzato': pdfSoudasil400SchedaTecnica, '175055': pdfSoudasil400SchedaTecnica,
+      'Testa di moro': pdfSoudasil400SchedaTecnica, '175062': pdfSoudasil400SchedaTecnica,
+    },
+    caratteristiche: [
+      { titolo: 'Resta elastico', testo: 'Recupero elastico oltre l\'80% e allungamento a rottura oltre il 700%: segue i movimenti del giunto invece di strapparsi. Deformazione massima ammessa ±25%.' },
+      { titolo: 'Pelle in 7 minuti', testo: 'Forma la pelle in circa 7 minuti e indurisce di circa 2mm ogni 24 ore. Tempi indicativi: cambiano con temperatura, umidità e tipo di supporto.' },
+      { titolo: 'La regola del giunto', testo: 'Larghezza minima 5mm e massima 30mm, profondità minima 5mm. Nei lavori di sigillatura la larghezza del giunto va tenuta doppia della profondità.' },
+      { titolo: 'Non verniciabile', testo: 'Le vernici non tengono sulla superficie: se il giunto va tinteggiato serve un sigillante di altro tipo.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste almeno fra -40 e +180°C.' },
+    ],
+    // La cartuccia e' identica in tutti i colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Trasparente': [silirubN2Cartuccia],
+      'Bianco': [silirubN2Cartuccia],
+      'Avorio 1013': [silirubN2Cartuccia],
+      'Nero': [silirubN2Cartuccia],
+      'Alluminio': [silirubN2Cartuccia],
+      'Grigio metallizzato': [silirubN2Cartuccia],
+      'Testa di moro': [silirubN2Cartuccia],
+    },
+    varianti: [
+      { codice: '135680', finitura: 'Trasparente' },
+      { codice: '135679', finitura: 'Bianco' },
+      { codice: '135676', finitura: 'Avorio 1013' },
+      { codice: '175060', finitura: 'Nero' },
+      { codice: '175059', finitura: 'Alluminio' },
+      { codice: '175055', finitura: 'Grigio metallizzato' },
+      { codice: '175062', finitura: 'Testa di moro' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2432,6 +2483,15 @@ const SCHEDA_IMG_VETRO = {
   67: schFimetBrasile,
   68: schFimetEquador,
   89: schSilirubAc,
+  90: {
+    'Trasparente': schSilirubN2, '135680': schSilirubN2,
+    'Bianco': schSilirubN2, '135679': schSilirubN2,
+    'Avorio 1013': schSilirubN2, '135676': schSilirubN2,
+    'Nero': schSoudasil400, '175060': schSoudasil400,
+    'Alluminio': schSoudasil400, '175059': schSoudasil400,
+    'Grigio metallizzato': schSoudasil400, '175055': schSoudasil400,
+    'Testa di moro': schSoudasil400, '175062': schSoudasil400,
+  },
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2517,6 +2577,12 @@ const FINISHES_VETRO = {
   'Trasparente': 'linear-gradient(135deg,#ffffff,#eef5f6 34%,#d9e7e9 55%,#f2f8f9 76%,#ffffff)',
   // Il bianco dei sigillanti: opaco e pieno, senza il riflesso delle vernici.
   'Bianco': 'linear-gradient(135deg,#ffffff,#f4f4f1 55%,#e8e8e3)',
+  'Avorio 1013': 'linear-gradient(135deg,#f5f1de,#e7e0bf 55%,#f0eace)',
+  // Nero e alluminio "da sigillante": pasta opaca, non una finitura metallica.
+  'Nero': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
+  'Alluminio': 'linear-gradient(135deg,#c9cbcd,#9a9ca0 55%,#c2c4c6)',
+  'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
+  'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
   'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
   'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
