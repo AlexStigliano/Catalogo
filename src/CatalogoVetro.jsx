@@ -2065,7 +2065,7 @@ const PRODOTTI_VETRO = [
   },
   {
     id: 89, categoria: '09', sottocategoria: 'siliconi-sigillanti',
-    nome: 'Silirub AC',
+    nome: 'Silicone acetico',
     // Formato della cartuccia e codici articolo ce li ha dati il cliente: la
     // scheda tecnica per colori e confezioni rimanda al catalogo Soudal.
     descrizione: 'Silicone acetico monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai materiali da costruzione comuni. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. Buona resistenza ai raggi UV. Ha il tipico odore acetico e non è verniciabile; non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE, PVC e supporti bituminosi. In cartuccia da 280 ml, trasparente o bianco. Prodotto da Soudal.',
