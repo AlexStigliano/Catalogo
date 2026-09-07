@@ -69,6 +69,7 @@ import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
 import schTexas from './assets/vetro/schede/texas-scheda.jpg';
 import compasLogo from './assets/vetro/compas-logo.svg';
 import ra462Foto from './assets/vetro/prodotti/ra462-foto.jpg';
+import ra462NeroFoto from './assets/vetro/prodotti/ra462-nero-foto.jpg';
 import ra462Render from './assets/vetro/prodotti/ra462-render.jpg';
 import ra462QuoteFronte from './assets/vetro/prodotti/ra462-quote-fronte.jpg';
 import ra462QuoteLato from './assets/vetro/prodotti/ra462-quote-lato.jpg';
@@ -1533,7 +1534,7 @@ const PRODOTTI_VETRO = [
   {
     id: 74, categoria: '01', sottocategoria: 'morsetti',
     nome: 'Supporto a pinza RA 462',
-    descrizione: 'Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, finitura argento.',
+    descrizione: 'Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, disponibile nelle finiture argento e nero.',
     materiale: 'Alluminio',
     spessoriVetro: ['8', '8.76'],
     dimensioni: 'Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm',
@@ -1541,9 +1542,11 @@ const PRODOTTI_VETRO = [
     scheda: pdfRa462SchedaTecnica,
     immagini: {
       'Argento': [ra462Foto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
+      'Nero opaco': [ra462NeroFoto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
     },
     varianti: [
-      { codice: 'RA 462', finitura: 'Argento' },
+      { codice: 'RA-462-X2', finitura: 'Argento' },
+      { codice: 'RA-462-NE', finitura: 'Nero opaco' },
     ],
   },
   {
