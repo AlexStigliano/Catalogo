@@ -308,6 +308,8 @@ import edilacrilCartuccia from './assets/vetro/prodotti/edilacril-cartuccia.jpg'
 import schEdilacril from './assets/vetro/schede/edilacril-scheda.jpg';
 import alcosilCartuccia from './assets/vetro/prodotti/alcosil-cartuccia.jpg';
 import schAlcosil from './assets/vetro/schede/alcosil-scheda.jpg';
+import msSuperCartuccia from './assets/vetro/prodotti/ms-super-cartuccia.jpg';
+import schMsSuper from './assets/vetro/schede/ms-super-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -412,6 +414,7 @@ import pdfMorsettoM062042SchedaTecnica from './assets/vetro/morsetto-m062-042-sc
 import pdfMorsettoM062SchedaTecnica from './assets/vetro/morsetto-m062-scheda-tecnica.pdf';
 import pdfMorsettoM092SchedaTecnica from './assets/vetro/morsetto-m092-scheda-tecnica.pdf';
 import pdfMorsettoPiccoloSchedaTecnica from './assets/vetro/morsetto-piccolo-scheda-tecnica.pdf';
+import pdfMsSuperSchedaTecnica from './assets/vetro/ms-super-scheda-tecnica.pdf';
 import pdfNevadaQSchedaTecnica from './assets/vetro/nevada-q-scheda-tecnica.pdf';
 import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
 import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
@@ -2205,6 +2208,37 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 93, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo strutturale',
+    // MS Super di Fratelli Zucchini. A differenza degli altri sigillanti qui
+    // dentro non e' solo un giunto: la scheda tecnica lo classifica anche
+    // come adesivo, con una resistenza al taglio che lo rende adatto agli
+    // incollaggi in carrozzeria e carpenteria metallica.
+    descrizione: 'Sigillante adesivo monocomponente neutro a rapida polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Elasticità e flessibilità permanenti, ottima adesione su una grande varietà di superfici ed elevata coesione: adatto a sigillature e giunzioni adesive elastiche dalle alte prestazioni, come carrozzeria e carpenteria metallica, sigillature tra lamiere saldate e sovrapposte, incollaggi elastici tra legno e metallo, assemblaggio di pannelli isolanti, incollaggi e sigillature su acciaio, alluminio, legno e materie plastiche esposti a vibrazioni, e sigillature metallo-vetro in cabine di verniciatura. Reazione neutra, senza odore, solventi né isocianati; sovraverniciabile subito dopo la formazione di pelle. Non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti; su marmi, graniti e arenarie va provato prima. In cartuccia da 290 ml, nei colori bianco, grigio e nero. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsSuperSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Anche adesivo strutturale', testo: 'Resistenza al taglio di 10-15 N/mm: oltre a sigillare, incolla con tenuta elevata lamiere, profili e pannelli, non solo giunti passanti.' },
+      { titolo: 'Pelle in 10 minuti', testo: 'Forma la pelle in circa 10 minuti e indurisce di 3-4mm ogni 24 ore: fra i più rapidi della gamma, pensato per i ritmi della carrozzeria.' },
+      { titolo: 'Sovraverniciabile subito', testo: 'Si può verniciare già 30 minuti dopo l\'applicazione, senza ritardare l\'indurimento del sigillante né alterare la vernice. Risultati migliori entro 6 ore dall\'applicazione.' },
+      { titolo: 'Resiste alle vibrazioni', testo: 'Elevata elasticità e coesione, pensate per incollaggi e sigillature soggetti a vibrazioni continue: autobus, furgoni, camper, caravan e imbarcazioni.' },
+      { titolo: 'Attenzione al rame e alla piscina', testo: 'Da evitare sul rame naturale e nei giunti a contatto continuo con l\'acqua di piscina; su marmo, graniti e arenarie va sempre fatta una prova preventiva.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +120°C.' },
+    ],
+    // La cartuccia e' identica nei tre colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Bianco': [msSuperCartuccia],
+      'Grigio': [msSuperCartuccia],
+      'Nero': [msSuperCartuccia],
+    },
+    varianti: [
+      { codice: '1004113', finitura: 'Bianco' },
+      { codice: '1004112', finitura: 'Grigio' },
+      { codice: '1004124', finitura: 'Nero' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2555,6 +2589,7 @@ const SCHEDA_IMG_VETRO = {
   },
   91: schEdilacril,
   92: schAlcosil,
+  93: schMsSuper,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2592,6 +2627,7 @@ const PAROLE_CHIAVE_VETRO = {
   90: 'Silirub N2 Soudasil 400',
   91: 'Edilacril',
   92: 'Alcosil',
+  93: 'MS Super',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -2659,6 +2695,7 @@ const FINISHES_VETRO = {
   // Nero e alluminio "da sigillante": pasta opaca, non una finitura metallica.
   'Nero': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Alluminio': 'linear-gradient(135deg,#c9cbcd,#9a9ca0 55%,#c2c4c6)',
+  'Grigio': 'linear-gradient(135deg,#b7b9bb,#8a8c8e 55%,#b0b2b4)',
   'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
   'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
