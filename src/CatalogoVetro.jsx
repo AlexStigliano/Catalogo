@@ -321,6 +321,11 @@ import gbLogo from './assets/vetro/gb-logo.png';
 import shPro410Cartuccia from './assets/vetro/prodotti/sh-pro-410-cartuccia.jpg';
 import shPro300Cartuccia from './assets/vetro/prodotti/sh-pro-300-cartuccia.jpg';
 import schShProSuperHybrid from './assets/vetro/schede/sh-pro-super-hybrid-scheda.jpg';
+import fischerLogo from './assets/vetro/fischer-logo.png';
+import duopowerRender from './assets/vetro/prodotti/duopower-render.jpg';
+import duopowerAmbienteMensole from './assets/vetro/prodotti/duopower-ambiente-mensole.jpg';
+import duopowerAmbienteStaffaTv from './assets/vetro/prodotti/duopower-ambiente-staffa-tv.jpg';
+import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -386,6 +391,7 @@ import pdfDistanziale05230mmSchedaTecnica from './assets/vetro/distanziale-052-3
 import pdfDistanziale05240mmSchedaTecnica from './assets/vetro/distanziale-052-40mm-scheda-tecnica.pdf';
 import pdfDistanziale05250mmSchedaTecnica from './assets/vetro/distanziale-052-50mm-scheda-tecnica.pdf';
 import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5mm-scheda-tecnica.pdf';
+import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2366,6 +2372,37 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 98, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello bimateriale Duopower',
+    // DuoPower di fischer: primo prodotto della sottocategoria "Tasselli".
+    // Noi teniamo le tre misure senza vite (6x30, 8x40 e 10x50): il catalogo
+    // fischer elenca anche le versioni lunghe, quelle con vite inclusa
+    // (codici che finiscono per S) e quelle con gancio o occhiolo.
+    descrizione: 'Tassello universale bimateriale in nylon e TPE, per il fissaggio su quasi tutti i materiali da costruzione. I due materiali lavorano in modo diverso a seconda del supporto: nel pieno il tassello si espande, nel forato si piega, nel cartongesso si annoda, così una sola misura copre situazioni molto diverse. Adatto a calcestruzzo, mattone pieno e semipieno in laterizio o silicato di calcio, blocchi in calcestruzzo alleggerito, calcestruzzo cellulare, cartongesso e lastre in fibra di gesso, pietra naturale, pannelli truciolari e solai cavi. Il collare sottile impedisce al tassello di scivolare dentro al foro e le alette antirotazione ne evitano la rotazione durante l\'avvitamento. Va installato con viti da legno o truciolari (o a doppia filettatura): la vite deve essere lunga almeno quanto il tassello più lo spessore dell\'oggetto da fissare più il diametro della vite. Idoneo al montaggio passante e non passante. Nelle misure 6×30, 8×40 e 10×50, fornito senza vite. Prodotto da fischer.',
+    materiale: 'Nylon e TPE',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuopowerSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Forniti senza vite', testo: 'Le tre misure che teniamo sono le versioni senza vite: la vite va presa a parte, da legno o truciolare, nel diametro indicato per la misura scelta.' },
+      { titolo: 'Due materiali, tre modi di lavorare', testo: 'Nel supporto pieno si espande, nel forato si piega, nel cartongesso si annoda: è il motivo per cui tiene bene su materiali molto diversi fra loro.' },
+      { titolo: 'Si sente quando è a posto', testo: 'Il tassello dà un riscontro netto durante il serraggio: si percepisce con chiarezza il momento in cui il fissaggio è installato correttamente.' },
+      { titolo: 'Fori corti', testo: 'La lunghezza ridotta del tassello velocizza la posa e non richiede forature profonde: 40mm per il 6×30, 50mm per l\'8×40, 70mm per il 10×50.' },
+      { titolo: 'Che vite serve', testo: 'Viti da legno o truciolari Ø4-5mm per il 6×30, Ø4,5-6mm per l\'8×40 e Ø6-8mm per il 10×50. La distanza dal bordo deve essere almeno pari alla lunghezza del tassello.' },
+      { titolo: 'Anche su cartongesso', testo: 'Con lastra singola da 12,5mm regge fino a 0,15kN e con lastra doppia fino a 0,30kN, secondo la misura: utile per mensole, quadri e accessori bagno su parete leggera.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duopowerRender, duopowerAmbienteMensole, duopowerAmbienteStaffaTv],
+    },
+    varianti: [
+      { codice: '537640', finitura: 'Grigio e rosso', misura: '6 × 30mm' },
+      { codice: '537641', finitura: 'Grigio e rosso', misura: '8 × 40mm' },
+      { codice: '537644', finitura: 'Grigio e rosso', misura: '10 × 50mm' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2721,6 +2758,7 @@ const SCHEDA_IMG_VETRO = {
   95: schMsTechnoLight,
   96: schPolyMaxHighTackExpress,
   97: schShProSuperHybrid,
+  98: schDuopower,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2763,6 +2801,7 @@ const PAROLE_CHIAVE_VETRO = {
   95: 'MS Techno Light',
   96: 'Poly Max High Tack Express',
   97: 'SH-PRO Super Hybrid ancorante chimico',
+  98: 'DuoPower Duo Power tassello universale',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -2838,6 +2877,8 @@ const FINISHES_VETRO = {
   // Il grigio cemento degli ancoranti chimici: piu' caldo e opaco del
   // "Grigio" dei sigillanti, come la resina indurita.
   'Grigio cemento': 'linear-gradient(135deg,#c7c3ba,#9a958a 55%,#c0bbb0)',
+  // I tasselli bimateriale: nylon grigio e TPE rosso, divisi a meta'.
+  'Grigio e rosso': 'linear-gradient(120deg,#d7d9db 0%,#a9adb1 46%,#d42b20 54%,#9e1a12 100%)',
   'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
   'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
@@ -3454,7 +3495,7 @@ function ProductDetail({ id }) {
 
   const perFinitura = (v) => v.finitura === selFin;
   const opzioniAsse = (k) => [...new Set((p ? p.varianti : []).filter(perFinitura).map(v => v[k]))]
-    .sort((a, b) => (typeof a === 'number' ? a - b : String(a).localeCompare(String(b))));
+    .sort((a, b) => (typeof a === 'number' ? a - b : String(a).localeCompare(String(b), 'it', { numeric: true })));
   const misuraDisponibile = (k, val) => p.varianti.some(v =>
     perFinitura(v) && v[k] === val &&
     (!ultimoAsse || ultimoAsse === k || v[ultimoAsse] === mis[ultimoAsse]));
