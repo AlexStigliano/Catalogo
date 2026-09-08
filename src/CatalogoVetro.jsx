@@ -2154,31 +2154,6 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
-    id: 91, categoria: '09', sottocategoria: 'siliconi-sigillanti',
-    nome: 'Sigillante acrilico',
-    // Edilacril di Fratelli Zucchini. Il codice 1007530 e' il bianco in
-    // cartuccia da 310 ml: la scheda tecnica lo elenca fra le forme
-    // commerciali, insieme a grigio, marrone e ai sacchetti da 600 ml.
-    descrizione: 'Sigillante acrilico monocomponente in dispersione acquosa, plastoelastico: a differenza dei siliconi è verniciabile e si liscia a umido, quindi il giunto sparisce sotto la tinteggiatura. Adatto ai giunti interni ed esterni con movimenti di media entità: giunzioni tra pannelli in cartongesso, travi, rivestimenti in legno e muratura, giunti perimetrali di porte e finestre in legno, fessure tra battiscopa, gradini e muratura. Aderisce a cemento, intonaco, legno e molte superfici verniciate; una volta essiccato resiste alle intemperie, all\'acqua, ai raggi UV e all\'invecchiamento. Non va applicato con pioggia in arrivo e non è adatto ai giunti esposti di continuo all\'acqua, né a PE, PP, PMMA, PTFE, neoprene e giunti bituminosi. In cartuccia da 310 ml, bianco. Prodotto da Fratelli Zucchini.',
-    materiale: 'Resine acriliche in dispersione acquosa',
-    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
-    scheda: pdfEdilacrilSchedaTecnica,
-    caratteristiche: [
-      { titolo: 'Verniciabile', testo: 'Si copre con pitture murali e smalti, ed è la differenza che conta rispetto ai siliconi: sul giunto tinteggiato non resta la riga. Meglio comunque una prova preliminare.' },
-      { titolo: 'Si liscia a umido', testo: 'La pasta è tissotropica e non cola; il cordolo si rifinisce con un utensile bagnato e si pulisce con acqua finché è fresco. Da polimerizzato si toglie solo meccanicamente.' },
-      { titolo: 'La regola del giunto', testo: 'Dimensione massima 20×10mm. Sui giunti in movimento la sollecitazione in estensione non deve superare il 15%; sul fondo va messo un profilo antiaderente in polietilene espanso.' },
-      { titolo: 'Tempi', testo: 'Forma la pelle in 15-30 minuti, ma la polimerizzazione completa richiede da 1 a 4 settimane secondo temperatura, umidità e sezione del cordolo. Nelle prime 6 ore teme la pioggia.' },
-      { titolo: 'Emissioni molto basse', testo: 'Classificato EC 1 PLUS e conforme alla norma EN 15651-1 per i giunti di facciata, all\'interno e all\'esterno.' },
-      { titolo: 'Temperature', testo: 'Si applica fra +5 e +50°C e, una volta indurito, resiste da -25 a +80°C.' },
-    ],
-    immagini: {
-      'Bianco': [edilacrilCartuccia],
-    },
-    varianti: [
-      { codice: '1007530', finitura: 'Bianco' },
-    ],
-  },
-  {
     id: 92, categoria: '09', sottocategoria: 'siliconi-sigillanti',
     nome: 'Silicone neutro per specchi',
     // Alcosil di Fratelli Zucchini. Sta a parte dagli altri neutri perche'
@@ -2202,6 +2177,31 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: '1006788', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 91, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante acrilico',
+    // Edilacril di Fratelli Zucchini. Il codice 1007530 e' il bianco in
+    // cartuccia da 310 ml: la scheda tecnica lo elenca fra le forme
+    // commerciali, insieme a grigio, marrone e ai sacchetti da 600 ml.
+    descrizione: 'Sigillante acrilico monocomponente in dispersione acquosa, plastoelastico: a differenza dei siliconi è verniciabile e si liscia a umido, quindi il giunto sparisce sotto la tinteggiatura. Adatto ai giunti interni ed esterni con movimenti di media entità: giunzioni tra pannelli in cartongesso, travi, rivestimenti in legno e muratura, giunti perimetrali di porte e finestre in legno, fessure tra battiscopa, gradini e muratura. Aderisce a cemento, intonaco, legno e molte superfici verniciate; una volta essiccato resiste alle intemperie, all\'acqua, ai raggi UV e all\'invecchiamento. Non va applicato con pioggia in arrivo e non è adatto ai giunti esposti di continuo all\'acqua, né a PE, PP, PMMA, PTFE, neoprene e giunti bituminosi. In cartuccia da 310 ml, bianco. Prodotto da Fratelli Zucchini.',
+    materiale: 'Resine acriliche in dispersione acquosa',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfEdilacrilSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Verniciabile', testo: 'Si copre con pitture murali e smalti, ed è la differenza che conta rispetto ai siliconi: sul giunto tinteggiato non resta la riga. Meglio comunque una prova preliminare.' },
+      { titolo: 'Si liscia a umido', testo: 'La pasta è tissotropica e non cola; il cordolo si rifinisce con un utensile bagnato e si pulisce con acqua finché è fresco. Da polimerizzato si toglie solo meccanicamente.' },
+      { titolo: 'La regola del giunto', testo: 'Dimensione massima 20×10mm. Sui giunti in movimento la sollecitazione in estensione non deve superare il 15%; sul fondo va messo un profilo antiaderente in polietilene espanso.' },
+      { titolo: 'Tempi', testo: 'Forma la pelle in 15-30 minuti, ma la polimerizzazione completa richiede da 1 a 4 settimane secondo temperatura, umidità e sezione del cordolo. Nelle prime 6 ore teme la pioggia.' },
+      { titolo: 'Emissioni molto basse', testo: 'Classificato EC 1 PLUS e conforme alla norma EN 15651-1 per i giunti di facciata, all\'interno e all\'esterno.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +50°C e, una volta indurito, resiste da -25 a +80°C.' },
+    ],
+    immagini: {
+      'Bianco': [edilacrilCartuccia],
+    },
+    varianti: [
+      { codice: '1007530', finitura: 'Bianco' },
     ],
   },
   {
