@@ -323,6 +323,7 @@ import shPro300Cartuccia from './assets/vetro/prodotti/sh-pro-300-cartuccia.jpg'
 import schShProSuperHybrid from './assets/vetro/schede/sh-pro-super-hybrid-scheda.jpg';
 import fischerLogo from './assets/vetro/fischer-logo.png';
 import duopowerRender from './assets/vetro/prodotti/duopower-render.jpg';
+import duopowerSRender from './assets/vetro/prodotti/duopower-s-render.jpg';
 import duopowerAmbienteMensole from './assets/vetro/prodotti/duopower-ambiente-mensole.jpg';
 import duopowerAmbienteStaffaTv from './assets/vetro/prodotti/duopower-ambiente-staffa-tv.jpg';
 import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
@@ -2424,8 +2425,10 @@ const PRODOTTI_VETRO = [
     assi: [
       { chiave: 'misura', etichetta: 'Misura' },
     ],
+    // La prima foto e' quella del tassello con la sua vite: e' l'unica
+    // differenza visibile rispetto alla versione base, quindi va per prima.
     immagini: {
-      'Grigio e rosso': [duopowerRender, duopowerAmbienteMensole, duopowerAmbienteStaffaTv],
+      'Grigio e rosso': [duopowerSRender, duopowerAmbienteMensole, duopowerAmbienteStaffaTv],
     },
     varianti: [
       { codice: '537646', finitura: 'Grigio e rosso', misura: '6 × 30mm' },
