@@ -312,6 +312,8 @@ import msSuperCartuccia from './assets/vetro/prodotti/ms-super-cartuccia.jpg';
 import schMsSuper from './assets/vetro/schede/ms-super-scheda.jpg';
 import msSuperfastCartuccia from './assets/vetro/prodotti/ms-superfast-cartuccia.jpg';
 import schMsSuperfast from './assets/vetro/schede/ms-superfast-scheda.jpg';
+import msTechnoLightCartuccia from './assets/vetro/prodotti/ms-techno-light-cartuccia.jpg';
+import schMsTechnoLight from './assets/vetro/schede/ms-techno-light-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -418,6 +420,7 @@ import pdfMorsettoM092SchedaTecnica from './assets/vetro/morsetto-m092-scheda-te
 import pdfMorsettoPiccoloSchedaTecnica from './assets/vetro/morsetto-piccolo-scheda-tecnica.pdf';
 import pdfMsSuperSchedaTecnica from './assets/vetro/ms-super-scheda-tecnica.pdf';
 import pdfMsSuperfastSchedaTecnica from './assets/vetro/ms-superfast-scheda-tecnica.pdf';
+import pdfMsTechnoLightSchedaTecnica from './assets/vetro/ms-techno-light-scheda-tecnica.pdf';
 import pdfNevadaQSchedaTecnica from './assets/vetro/nevada-q-scheda-tecnica.pdf';
 import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
 import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
@@ -2268,6 +2271,32 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 95, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo cristallino',
+    // MS Techno Light di Fratelli Zucchini. Il cliente ci tiene a far
+    // risaltare che e' completamente cristallino, non solo "trasparente"
+    // come il PVC del Trasparente generico: per questo ha una finitura sua,
+    // "Cristallino", con una resa piu' limpida invece del velo delle altre.
+    descrizione: 'Sigillante monocomponente neutro a rapida polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Trasparente cristallino anche in spessore, senza la velatura tipica dei sigillanti trasparenti: alta elasticità e coesione, aderisce a una grande varietà di superfici. L\'elevata forza coesiva ne consente l\'uso anche come adesivo per incollaggi pressoché invisibili, con buona capacità di riempimento. Adatto a incollaggi e sigillature di vetro, ceramica, porcellana, cristallo, alluminio, acciaio inox, ottone, legno, tessuti, vetroresina e molti altri materiali porosi da costruzione; non idoneo su PE, PP e Teflon. Pensato anche per le sigillature e gli incollaggi invisibili nell\'arredamento, per accoppiare elementi in vetro tra loro o al metallo nella produzione di tavoli, ante e decorazioni vitree, e per oggetti in cristallo, cornici e insegne. Verniciabile, senza solventi, isocianati né siliconi. Non idoneo per l\'esterno senza protezione dai raggi UV, che possono ingiallirlo in superficie; non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti. In cartuccia da 290 ml, trasparente cristallino. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsTechnoLightSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Cristallino, non solo trasparente', testo: 'Resta limpido anche in spessore, senza la velatura tipica di molti sigillanti trasparenti: pensato apposta per le sigillature e gli incollaggi a vista.' },
+      { titolo: 'Anche adesivo, quasi invisibile', testo: 'L\'elevata forza coesiva permette di usarlo per incollaggi poco visibili e con buona capacità di riempimento, non solo per sigillare i giunti.' },
+      { titolo: 'Pensato anche per l\'arredamento', testo: 'Accoppia elementi in vetro tra loro o al metallo per tavoli, ante, decorazioni vitree, cornici, insegne e oggetti in cristallo, oltre ai normali impieghi edili.' },
+      { titolo: 'Attenzione al sole', testo: 'Buona resistenza ai raggi UV solo in esposizione indiretta: all\'aperto e alla luce diretta può ingiallire in superficie, va sempre protetto.' },
+      { titolo: 'Non su PE, PP e Teflon', testo: 'Aderisce alla maggior parte dei materiali da costruzione ma non a queste plastiche; da evitare anche sul rame naturale.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Cristallino': [msTechnoLightCartuccia],
+    },
+    varianti: [
+      { codice: '1004440', finitura: 'Cristallino' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2620,6 +2649,7 @@ const SCHEDA_IMG_VETRO = {
   92: schAlcosil,
   93: schMsSuper,
   94: schMsSuperfast,
+  95: schMsTechnoLight,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2659,6 +2689,7 @@ const PAROLE_CHIAVE_VETRO = {
   92: 'Alcosil',
   93: 'MS Super',
   94: 'MS Super Fast MS Superfast',
+  95: 'MS Techno Light',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -2720,6 +2751,10 @@ const FINISHES_VETRO = {
   'Alluminio lucido': 'linear-gradient(135deg,#fbfcfd,#d2d7da 30%,#8b9298 50%,#dadee0 68%,#fafbfc)',
   // PVC trasparente: appena velato, con il riflesso del vetro.
   'Trasparente': 'linear-gradient(135deg,#ffffff,#eef5f6 34%,#d9e7e9 55%,#f2f8f9 76%,#ffffff)',
+  // Cristallino: piu' luminoso e contrastato del "Trasparente" velato qui
+  // sopra, per far vedere a colpo d'occhio che questo sigillante non vela
+  // per niente, resta limpido come il vetro.
+  'Cristallino': 'linear-gradient(135deg,#ffffff,#f7fdff 18%,#c9eef5 34%,#ffffff 48%,#eafbfd 62%,#a9e4ee 78%,#ffffff)',
   // Il bianco dei sigillanti: opaco e pieno, senza il riflesso delle vernici.
   'Bianco': 'linear-gradient(135deg,#ffffff,#f4f4f1 55%,#e8e8e3)',
   'Avorio 1013': 'linear-gradient(135deg,#f5f1de,#e7e0bf 55%,#f0eace)',
