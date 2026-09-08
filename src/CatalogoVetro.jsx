@@ -310,6 +310,8 @@ import alcosilCartuccia from './assets/vetro/prodotti/alcosil-cartuccia.jpg';
 import schAlcosil from './assets/vetro/schede/alcosil-scheda.jpg';
 import msSuperCartuccia from './assets/vetro/prodotti/ms-super-cartuccia.jpg';
 import schMsSuper from './assets/vetro/schede/ms-super-scheda.jpg';
+import msSuperfastCartuccia from './assets/vetro/prodotti/ms-superfast-cartuccia.jpg';
+import schMsSuperfast from './assets/vetro/schede/ms-superfast-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -415,6 +417,7 @@ import pdfMorsettoM062SchedaTecnica from './assets/vetro/morsetto-m062-scheda-te
 import pdfMorsettoM092SchedaTecnica from './assets/vetro/morsetto-m092-scheda-tecnica.pdf';
 import pdfMorsettoPiccoloSchedaTecnica from './assets/vetro/morsetto-piccolo-scheda-tecnica.pdf';
 import pdfMsSuperSchedaTecnica from './assets/vetro/ms-super-scheda-tecnica.pdf';
+import pdfMsSuperfastSchedaTecnica from './assets/vetro/ms-superfast-scheda-tecnica.pdf';
 import pdfNevadaQSchedaTecnica from './assets/vetro/nevada-q-scheda-tecnica.pdf';
 import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
 import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
@@ -2239,6 +2242,32 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 94, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo strutturale rapido',
+    // MS Super Fast di Fratelli Zucchini: la versione rapida dell'MS Super,
+    // pensata per l'incollaggio sotto tensione immediata piu' che per la
+    // sigillatura. Noi lo teniamo solo bianco, anche se la scheda tecnica
+    // elenca il nero nella forma commerciale.
+    descrizione: 'Sigillante adesivo monocomponente neutro a rapidissima polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Elevata presa e forza iniziale fin dalle prime fasi dopo l\'applicazione: progettato per il fissaggio rapido in incollaggi sotto tensione immediata, con le parti movimentabili dopo poche ore. Eccellente adesione a vetro e alle lamiere usate in carrozzeria, acciaio galvanizzato, alluminio e PVC rigido; ottima resistenza all\'invecchiamento e ai raggi UV, verniciabile (da verificare la compatibilità). Adatto a incollaggi di nervature di rinforzo su pannelli di lamiera o vetroresina, profili metallici e vetroresina nell\'assemblaggio di container, camper e caravan, pannelli isolanti, sormonti tra lamiere dove non è possibile saldare, e profili a U su cristalli e lastre nell\'industria del freddo. Reazione neutra, senza odore, solventi né isocianati. Non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti. In cartuccia da 290 ml, bianco. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsSuperfastSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Presa fulminea', testo: 'Progettato per il fissaggio sotto tensione immediata: alta coesione già nelle prime fasi dopo l\'applicazione, con le parti incollate movimentabili dopo poche ore.' },
+      { titolo: 'Pelle in 7 minuti', testo: 'Forma la pelle in circa 7 minuti e indurisce di 4mm ogni 24 ore: rispetto all\'MS Super è la versione pensata per chi non può aspettare.' },
+      { titolo: 'Più adesivo che sigillante', testo: 'Resistenza al taglio di 18-20 N/mm, superiore a quella dell\'MS Super: qui la sigillatura è secondaria, il prodotto nasce per incollare.' },
+      { titolo: 'Si applica su un solo lato', testo: 'Va steso su una sola delle due superfici da incollare e le parti vanno accoppiate entro 5 minuti, con uno spessore finale di almeno 1-2mm.' },
+      { titolo: 'Serve la pistola giusta', testo: 'Con le pistole manuali o ad aria tradizionali l\'erogazione risulta difficoltosa: la scheda tecnica consiglia una pistola pneumatica a pistone telescopico o elettrica.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +120°C.' },
+    ],
+    immagini: {
+      'Bianco': [msSuperfastCartuccia],
+    },
+    varianti: [
+      { codice: '1004951', finitura: 'Bianco' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2590,6 +2619,7 @@ const SCHEDA_IMG_VETRO = {
   91: schEdilacril,
   92: schAlcosil,
   93: schMsSuper,
+  94: schMsSuperfast,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2628,6 +2658,7 @@ const PAROLE_CHIAVE_VETRO = {
   91: 'Edilacril',
   92: 'Alcosil',
   93: 'MS Super',
+  94: 'MS Super Fast MS Superfast',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
