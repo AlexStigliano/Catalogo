@@ -317,6 +317,10 @@ import schMsTechnoLight from './assets/vetro/schede/ms-techno-light-scheda.jpg';
 import bostikLogo from './assets/vetro/bostik-logo.png';
 import polyMaxHighTackExpressCartuccia from './assets/vetro/prodotti/poly-max-high-tack-express-cartuccia.jpg';
 import schPolyMaxHighTackExpress from './assets/vetro/schede/poly-max-high-tack-express-scheda.jpg';
+import gbLogo from './assets/vetro/gb-logo.png';
+import shPro410Cartuccia from './assets/vetro/prodotti/sh-pro-410-cartuccia.jpg';
+import shPro300Cartuccia from './assets/vetro/prodotti/sh-pro-300-cartuccia.jpg';
+import schShProSuperHybrid from './assets/vetro/schede/sh-pro-super-hybrid-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -431,6 +435,7 @@ import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.
 import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
 import pdfPolyMaxHighTackExpressSchedaTecnica from './assets/vetro/poly-max-high-tack-express-scheda-tecnica.pdf';
 import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
+import pdfShProSuperHybridSchedaTecnica from './assets/vetro/sh-pro-super-hybrid-scheda-tecnica.pdf';
 import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
 import pdfSilirubN2SchedaTecnica from './assets/vetro/silirub-n2-scheda-tecnica.pdf';
 import pdfSoudasil400SchedaTecnica from './assets/vetro/soudasil400-scheda-tecnica.pdf';
@@ -2328,6 +2333,39 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 97, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Ancorante chimico ibrido',
+    // SH-PRO Super Hybrid di G&B Fissaggi: primo tassello/ancorante chimico
+    // del catalogo vetro, apre la sottocategoria "Tasselli". Teniamo solo il
+    // grigio cemento, nei due formati da 410 e 300 ml: la scheda tecnica
+    // elenca anche il beige "ton pierre" e il kit bicomponente, che non
+    // trattiamo.
+    descrizione: 'Ancorante chimico monocomponente a base di resina ibrida senza stirene, per il fissaggio di barre filettate e ferri d\'armatura su calcestruzzo, anche non fessurato, e su murature piene e forate con l\'apposita bussola in plastica. Certificato ETA secondo le norme europee, sia per il calcestruzzo (EAD 330499-02-0601) sia per la muratura (EAD 330076-01-0604), utilizzabile anche su supporti bagnati o con i fori pieni d\'acqua. Tempo di lavorabilità e tempi di applicazione del carico variano con la temperatura del supporto, da 90 minuti a -5°C fino a pochi minuti sopra i 30°C; resiste a temperature di esercizio comprese fra -40°C e +80°C. Emissioni molto basse, classe A+ e conforme ai requisiti LEED. Si eroga con normale pistola per cartucce tramite miscelatore statico M17. In cartuccia da 410 ml (art. CC01) o da 300 ml (art. CC02), colore grigio cemento. Prodotto da G&B Fissaggi.',
+    materiale: 'Resina ibrida senza stirene',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfShProSuperHybridSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Doppia certificazione ETA', testo: 'ETA 25/1044 per il calcestruzzo non fessurato con barra filettata, ed ETA 25/1045 per muratura piena e forata con bussola in plastica: coprono la maggior parte dei fissaggi strutturali di cantiere.' },
+      { titolo: 'Anche su supporti bagnati', testo: 'Si usa su calcestruzzo asciutto, bagnato o con i fori pieni d\'acqua, oltre che su muratura bagnata: non serve aspettare che il supporto sia perfettamente asciutto.' },
+      { titolo: 'Tempi legati alla temperatura', testo: 'Tempo di lavorabilità e applicazione del carico variano molto con la temperatura del supporto: da 90 minuti a -5°C fino a soli 2 minuti sopra i 35°C.' },
+      { titolo: 'Senza stirene, emissioni bassissime', testo: 'Formulazione ibrida senza stirene, classe A+ per le emissioni di COV e conforme ai requisiti LEED: adatto anche ai fissaggi in ambienti abitati.' },
+      { titolo: 'Serve il miscelatore giusto', testo: 'Le cartucce monocomponente da 410 e 300 ml si erogano con normale pistola per cartucce e miscelatore statico M17, non compreso nella confezione.' },
+      { titolo: 'Temperature', testo: 'Si posa fra -5 e +39°C e, una volta indurito, resiste da -40°C fino a +80°C secondo la temperatura di esercizio.' },
+    ],
+    // La cartuccia cambia formato ma non colore: stesso grigio cemento nei
+    // due formati, con le rispettive foto.
+    assi: [
+      { chiave: 'formato', etichetta: 'Formato', suffisso: ' ml' },
+    ],
+    immagini: {
+      'Grigio cemento': [shPro410Cartuccia, shPro300Cartuccia],
+    },
+    varianti: [
+      { codice: 'CC01', finitura: 'Grigio cemento', formato: 410 },
+      { codice: 'CC02', finitura: 'Grigio cemento', formato: 300 },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2682,6 +2720,7 @@ const SCHEDA_IMG_VETRO = {
   94: schMsSuperfast,
   95: schMsTechnoLight,
   96: schPolyMaxHighTackExpress,
+  97: schShProSuperHybrid,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2723,6 +2762,7 @@ const PAROLE_CHIAVE_VETRO = {
   94: 'MS Super Fast MS Superfast',
   95: 'MS Techno Light',
   96: 'Poly Max High Tack Express',
+  97: 'SH-PRO Super Hybrid ancorante chimico',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -2795,6 +2835,9 @@ const FINISHES_VETRO = {
   'Nero': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
   'Alluminio': 'linear-gradient(135deg,#c9cbcd,#9a9ca0 55%,#c2c4c6)',
   'Grigio': 'linear-gradient(135deg,#b7b9bb,#8a8c8e 55%,#b0b2b4)',
+  // Il grigio cemento degli ancoranti chimici: piu' caldo e opaco del
+  // "Grigio" dei sigillanti, come la resina indurita.
+  'Grigio cemento': 'linear-gradient(135deg,#c7c3ba,#9a958a 55%,#c0bbb0)',
   'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
   'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
