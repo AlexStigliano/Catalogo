@@ -2403,6 +2403,38 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 99, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello bimateriale Duopower con vite',
+    // DuoPower S: stesso tassello del 98, ma con la vite gia' inclusa. Sta a
+    // parte perche' le misure non coincidono (qui c'e' anche il 6x50, che
+    // senza vite non teniamo) e perche' le profondita' di foratura cambiano
+    // fra le due versioni. La scheda tecnica invece e' la stessa.
+    descrizione: 'Tassello universale bimateriale in nylon e TPE fornito con la vite già inclusa, per il fissaggio su quasi tutti i materiali da costruzione. È lo stesso tassello della versione senza vite: i due materiali lavorano in modo diverso a seconda del supporto, espandendosi nel pieno, piegandosi nel forato e annodandosi nel cartongesso, così una sola misura copre situazioni molto diverse. Adatto a calcestruzzo, mattone pieno e semipieno in laterizio o silicato di calcio, blocchi in calcestruzzo alleggerito, calcestruzzo cellulare, cartongesso e lastre in fibra di gesso, pietra naturale, pannelli truciolari e solai cavi. Ogni misura arriva con la sua vite truciolare a impronta PZ2, già dimensionata sul tassello, e permette di fissare oggetti fino a 5mm di spessore. Il collare sottile impedisce al tassello di scivolare dentro al foro e le alette antirotazione ne evitano la rotazione durante l\'avvitamento. Idoneo al montaggio passante e non passante. Nelle misure 6×30, 6×50, 8×40 e 10×50. Prodotto da fischer.',
+    materiale: 'Nylon e TPE',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuopowerSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'A differenza della versione base, qui la vite è compresa nella confezione e arriva già della misura giusta per il tassello: non serve prenderla a parte.' },
+      { titolo: 'Quale vite trovi dentro', testo: 'Vite 4,5 × 40mm con il 6×30, 4,5 × 70mm con il 6×50, 5 × 50mm con l\'8×40 e 7 × 60mm con il 10×50. Tutte a impronta PZ2, per oggetti fino a 5mm di spessore.' },
+      { titolo: 'Due materiali, tre modi di lavorare', testo: 'Nel supporto pieno si espande, nel forato si piega, nel cartongesso si annoda: è il motivo per cui tiene bene su materiali molto diversi fra loro.' },
+      { titolo: 'Profondità di foratura', testo: 'Foro minimo 45mm per il 6×30, 60mm per il 6×50, 55mm per l\'8×40 e 65mm per il 10×50: qualche millimetro in più della versione senza vite, perché la vite fornita è più lunga.' },
+      { titolo: 'Il 6×50 tiene di più', testo: 'La versione lunga da 6×50 ha una profondità di ancoraggio maggiore: è quella da preferire sui materiali cavi, sul calcestruzzo cellulare e dove c\'è molto intonaco da attraversare.' },
+      { titolo: 'Anche su cartongesso', testo: 'Con la vite in dotazione regge fino a 0,12kN sul 6×30 e 0,15kN su 8×40 e 10×50 con lastra singola da 12,5mm: utile per mensole, quadri e accessori bagno su parete leggera.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duopowerRender, duopowerAmbienteMensole, duopowerAmbienteStaffaTv],
+    },
+    varianti: [
+      { codice: '537646', finitura: 'Grigio e rosso', misura: '6 × 30mm' },
+      { codice: '538255', finitura: 'Grigio e rosso', misura: '6 × 50mm' },
+      { codice: '537647', finitura: 'Grigio e rosso', misura: '8 × 40mm' },
+      { codice: '537648', finitura: 'Grigio e rosso', misura: '10 × 50mm' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2759,6 +2791,7 @@ const SCHEDA_IMG_VETRO = {
   96: schPolyMaxHighTackExpress,
   97: schShProSuperHybrid,
   98: schDuopower,
+  99: schDuopower,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2802,6 +2835,7 @@ const PAROLE_CHIAVE_VETRO = {
   96: 'Poly Max High Tack Express',
   97: 'SH-PRO Super Hybrid ancorante chimico',
   98: 'DuoPower Duo Power tassello universale',
+  99: 'DuoPower S Duo Power tassello universale con vite',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
