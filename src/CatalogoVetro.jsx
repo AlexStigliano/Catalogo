@@ -2333,10 +2333,10 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
-    id: 97, categoria: '09', sottocategoria: 'tasselli',
+    id: 97, categoria: '09', sottocategoria: 'siliconi-sigillanti',
     nome: 'Ancorante chimico ibrido',
-    // SH-PRO Super Hybrid di G&B Fissaggi: primo tassello/ancorante chimico
-    // del catalogo vetro, apre la sottocategoria "Tasselli". Teniamo solo il
+    // SH-PRO Super Hybrid di G&B Fissaggi. Il cliente lo vuole comunque
+    // dentro "Siliconi e sigillanti", non in "Tasselli". Teniamo solo il
     // grigio cemento, nei due formati da 410 e 300 ml: la scheda tecnica
     // elenca anche il beige "ton pierre" e il kit bicomponente, che non
     // trattiamo.
