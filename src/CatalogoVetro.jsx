@@ -314,6 +314,9 @@ import msSuperfastCartuccia from './assets/vetro/prodotti/ms-superfast-cartuccia
 import schMsSuperfast from './assets/vetro/schede/ms-superfast-scheda.jpg';
 import msTechnoLightCartuccia from './assets/vetro/prodotti/ms-techno-light-cartuccia.jpg';
 import schMsTechnoLight from './assets/vetro/schede/ms-techno-light-scheda.jpg';
+import bostikLogo from './assets/vetro/bostik-logo.png';
+import polyMaxHighTackExpressCartuccia from './assets/vetro/prodotti/poly-max-high-tack-express-cartuccia.jpg';
+import schPolyMaxHighTackExpress from './assets/vetro/schede/poly-max-high-tack-express-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -426,6 +429,7 @@ import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
 import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
 import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.pdf';
 import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
+import pdfPolyMaxHighTackExpressSchedaTecnica from './assets/vetro/poly-max-high-tack-express-scheda-tecnica.pdf';
 import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
 import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
 import pdfSilirubN2SchedaTecnica from './assets/vetro/silirub-n2-scheda-tecnica.pdf';
@@ -2297,6 +2301,33 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 96, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Adesivo e sigillante universale',
+    // Bostik Poly Max High Tack Express: primo prodotto di un fornitore
+    // nuovo per questa categoria (finora solo Soudal e Fratelli Zucchini).
+    // A base di polimero SMP come i sigillanti Zucchini, ma qui il cliente
+    // lo vuole soprattutto come colla universale ad alta presa iniziale,
+    // non come sigillante per giunti.
+    descrizione: 'Adesivo e sigillante universale monocomponente per costruzioni, a base di polimero SMP, con elevatissima forza di adesione iniziale e rapida costituzione della forza finale. Incolla, fissa, ripara e sigilla quasi tutti i materiali da costruzione su superfici lisce, porose e non porose, anche leggermente umide, senza bisogno di primer. Adatto a incollare vetro, pietra, pietra naturale, calcestruzzo, intonaco, materiali sintetici, legno, truciolato, metalli come ferro, alluminio, zinco, acciaio e acciaio inox, piastrelle ceramiche, sughero e specchi; a fissare e riparare battiscopa, dogati e perlinati, davanzali, soglie d\'ingresso, bordi di tetti, pannelli da costruzione, materiali isolanti, pannelli in gesso e cornici decorative; e a sigillare battiscopa in materiale sintetico, telai di finestre, gradini di scale, davanzali, soglie e pannelli in cartongesso, comprese le crepe su pareti e soffitti. Permanentemente elastico, resistente ai raggi UV, all\'acqua e alle intemperie, verniciabile previo test, privo di solventi e inodore. Non idoneo per PE, PP, PTFE e bitume; sulla plastica va sempre fatta una prova di adesione preliminare. In cartuccia da 440 g, bianco. Prodotto da Bostik.',
+    materiale: 'Polimero SMP',
+    fornitore: 'Bostik', fornitoreLogo: bostikLogo,
+    scheda: pdfPolyMaxHighTackExpressSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Presa fulminea', testo: 'Initial tack estremamente alto, già forte dopo appena 10 secondi: l\'effetto ventosa iniziale arriva a 100 N/cm² in soli 30 minuti dall\'applicazione.' },
+      { titolo: 'Colla e sigilla allo stesso tempo', testo: 'Nasce come adesivo universale ad alta presa, non solo come sigillante: pensato per incollare e fissare, oltre che per stuccare i giunti.' },
+      { titolo: 'Tiene anche sull\'umido', testo: 'Aderisce anche su superfici leggermente umide, senza bisogno di primer: non serve aspettare che siano perfettamente asciutte.' },
+      { titolo: 'Zero ritiro', testo: 'Adesività del 100%, senza fenomeni di ritiro o espansione: il volume applicato resta quello anche dopo l\'indurimento completo.' },
+      { titolo: 'Non su PE, PP, PTFE e bitume', testo: 'Da evitare su queste superfici; sulla plastica in generale va sempre fatta una prova preliminare, perché l\'adesione varia con il tipo di resina.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +40°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Bianco': [polyMaxHighTackExpressCartuccia],
+    },
+    varianti: [
+      { codice: '6316017', finitura: 'Bianco' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2650,6 +2681,7 @@ const SCHEDA_IMG_VETRO = {
   93: schMsSuper,
   94: schMsSuperfast,
   95: schMsTechnoLight,
+  96: schPolyMaxHighTackExpress,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2690,6 +2722,7 @@ const PAROLE_CHIAVE_VETRO = {
   93: 'MS Super',
   94: 'MS Super Fast MS Superfast',
   95: 'MS Techno Light',
+  96: 'Poly Max High Tack Express',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
