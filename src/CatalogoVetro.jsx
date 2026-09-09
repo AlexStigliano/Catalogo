@@ -340,6 +340,9 @@ import schGlNylon from './assets/vetro/schede/gl-nylon-scheda.jpg';
 import casaNylonGancioRender from './assets/vetro/prodotti/casa-nylon-gancio-render.jpg';
 import casaNylonViteRender from './assets/vetro/prodotti/casa-nylon-vite-render.jpg';
 import schCasaNylon from './assets/vetro/schede/casa-nylon-scheda.jpg';
+import gxlNylonRender from './assets/vetro/prodotti/gxl-nylon-render.jpg';
+import gxlNylonTassello from './assets/vetro/prodotti/gxl-nylon-tassello.jpg';
+import schGxlNylon from './assets/vetro/schede/gxl-nylon-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -411,6 +414,7 @@ import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
 import pdfDuobladeSchedaTecnica from './assets/vetro/duoblade-scheda-tecnica.pdf';
 import pdfGlNylonSchedaTecnica from './assets/vetro/gl-nylon-scheda-tecnica.pdf';
 import pdfCasaNylonSchedaTecnica from './assets/vetro/casa-nylon-scheda-tecnica.pdf';
+import pdfGxlNylonSchedaTecnica from './assets/vetro/gxl-nylon-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2670,6 +2674,43 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 107, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato GX-L Nylon',
+    // GX-L Nylon con vite TPS TORX zincata bianca: le otto misure che
+    // teniamo sono tutte di questa famiglia, quindi stanno su una scheda
+    // sola. La scheda tecnica elenca anche le versioni con vite esagonale
+    // flangiata, testa larga, anti-intrusione VAST e quelle in inox A4,
+    // oltre alle misure lunghe fino a 260mm, che non trattiamo.
+    descrizione: 'Ancorante prolungato multifunzione in nylon con vite a testa svasata piana e impronta TORX, zincata bianca, per fissaggio passante su calcestruzzo e muratura. Il corpo lungo espande su tutta la profondità del foro e distribuisce il carico, il che lo rende adatto sia ai materiali pieni sia a quelli forati, dove si ancora dietro le pareti delle cavità. Uso certificato ETA su calcestruzzo, mattoni pieni, semipieni e forati; uso specifico su pietra compatta e blocchi forati in calcestruzzo; si adatta anche a cartongesso e calcestruzzo cellulare. Il foro si fa dello stesso diametro del tassello e il fissaggio si serra a coppia controllata: 8Nm per il Ø8 e 16,5Nm per il Ø10. Nelle misure Ø6 da 60mm, Ø8 da 80, 100 e 120mm e Ø10 da 80, 100, 120 e 140mm, con vite TORX T20, T30 o T40 secondo il diametro. Corpo in poliammide grigio RAL 7035. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfGxlNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Ogni misura arriva con la sua vite a testa svasata piana e impronta TORX, zincata bianca: T20 sul Ø6, T30 sul Ø8 e T40 sul Ø10, sempre della lunghezza giusta per il tassello.' },
+      { titolo: 'Certificato ETA', testo: 'ETA-12/0261 per uso multiplo su calcestruzzo e muratura. Il Ø10 ha anche resistenza al fuoco dichiarata di 90 minuti. Fa eccezione il Ø6 da 60mm, che resta fuori dalla certificazione CE.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Il corpo lungo espande per tutta la profondità e si ancora dietro le pareti delle cavità: la scheda tecnica dichiara i carichi su mattone forato, a fori verticali e silico-calcareo, non solo sul pieno.' },
+      { titolo: 'Lo spessore fissabile cresce con la lunghezza', testo: 'A parità di diametro, la profondità di ancoraggio resta la stessa e ad allungarsi è la parte fuori dal muro: dai 10mm di spessore fissabile del Ø8 da 80mm si arriva ai 70mm del Ø10 da 140mm.' },
+      { titolo: 'Che foro fare', testo: 'Foro dello stesso diametro del tassello: 6mm profondo almeno 50mm, 8 e 10mm profondi almeno 80mm. Su mattone forato in laterizio va forato a rotazione, senza percussione.' },
+      { titolo: 'Quanto regge', testo: 'Carico raccomandato a trazione su calcestruzzo C16/20 di circa 79kg per il Ø8 e 119kg per il Ø10. Su mattone pieno in laterizio si scende a 43kg e 34kg: i valori completi per ogni supporto sono nella scheda tecnica.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [gxlNylonRender, gxlNylonTassello],
+    },
+    varianti: [
+      { codice: '97258', finitura: 'Grigio', misura: '6 × 60mm' },
+      { codice: '97005', finitura: 'Grigio', misura: '8 × 80mm' },
+      { codice: '97006', finitura: 'Grigio', misura: '8 × 100mm' },
+      { codice: '97007', finitura: 'Grigio', misura: '8 × 120mm' },
+      { codice: '97008', finitura: 'Grigio', misura: '10 × 80mm' },
+      { codice: '97009', finitura: 'Grigio', misura: '10 × 100mm' },
+      { codice: '97010', finitura: 'Grigio', misura: '10 × 120mm' },
+      { codice: '97011', finitura: 'Grigio', misura: '10 × 140mm' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -3034,6 +3075,7 @@ const SCHEDA_IMG_VETRO = {
   104: schGlNylon,
   105: schCasaNylon,
   106: schCasaNylon,
+  107: schGxlNylon,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -3085,6 +3127,7 @@ const PAROLE_CHIAVE_VETRO = {
   104: 'GL Nylon tassello multiuso',
   105: 'Casa Nylon gancio a L reggimensola',
   106: 'Casa Nylon vite TSC taglio combinato',
+  107: 'GX-L Nylon GXL ancorante prolungato multifunzione',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
