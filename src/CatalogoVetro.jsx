@@ -2554,15 +2554,6 @@ const PRODOTTI_VETRO = [
       { titolo: 'Su gessofibra serve il preforo', testo: 'Il gessofibra è troppo duro perché la punta lo attraversi da sola: in quel caso va fatto prima un foro da 8mm.' },
       { titolo: 'Quanto regge', testo: 'Da 0,10kN su cartongesso da 12,5mm fino a 0,20kN su lastra doppia e 0,34kN su gessofibra, con viti da 4 a 5mm.' },
     ],
-    // Ricavate dalla sequenza "Installazione" della scheda tecnica.
-    montaggio: [
-      'Controlla che dietro la lastra ci siano almeno 50mm di vuoto: il tassello è lungo 44mm e deve entrare tutto. Su gessofibra fai prima un foro da 8mm.',
-      'Appoggia la punta del tassello sulla lastra nel punto scelto, tenendolo perpendicolare alla superficie.',
-      'Avvita il tassello con un inserto PZ2: la punta fora la lastra e l\'elica lo tira dentro da sola.',
-      'Fermati quando il collare del tassello arriva a filo della lastra, senza forzare oltre.',
-      'Appoggia l\'oggetto da fissare e avvita la vite in dotazione, sempre con l\'inserto PZ2. Entrando, la vite espelle la punta metallica, che cade dietro la lastra.',
-      'Serra la vite fino a bloccare l\'oggetto: le lamelle anti-rotazione tengono fermo il tassello mentre il nylon si espande contro la lastra.',
-    ],
     immagini: {
       'Grigio e rosso': [duobladeRender],
     },
@@ -3915,15 +3906,6 @@ function ProductDetail({ id }) {
                 </div>
               ))}
             </dl>
-          </SezioneTendina>
-        )}
-        {p.montaggio && p.montaggio.length > 0 && (
-          <SezioneTendina title="Istruzioni di montaggio">
-            <ol className="montaggio-list">
-              {p.montaggio.map((passo, i) => (
-                <li className="montaggio-item" key={i}>{passo}</li>
-              ))}
-            </ol>
           </SezioneTendina>
         )}
         <RelatedRow title="Articoli essenziali" ids={p.essenziali}
