@@ -326,6 +326,7 @@ import duopowerRender from './assets/vetro/prodotti/duopower-render.jpg';
 import duopowerSRender from './assets/vetro/prodotti/duopower-s-render.jpg';
 import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
 import duoxpandRender from './assets/vetro/prodotti/duoxpand-render.jpg';
+import duoxpandFusRender from './assets/vetro/prodotti/duoxpand-fus-render.jpg';
 import schDuoxpand from './assets/vetro/schede/duoxpand-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
@@ -2438,12 +2439,13 @@ const PRODOTTI_VETRO = [
   },
   {
     id: 100, categoria: '09', sottocategoria: 'tasselli',
-    nome: 'Tassello prolungato bimateriale Duoxpand',
-    // DuoXpand-T di fischer. Teniamo solo la versione "T" (vite a testa
-    // svasata piana, per il legno) in acciaio zincato: la scheda tecnica
-    // elenca anche la versione FUS con vite esagonale flangiata (per il
-    // metallo) e le versioni in acciaio inox, che non trattiamo.
-    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa svasata piana e impronta Torx, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. Pensato per serramenti e portoncini, pergole, tettoie e verande, sottostrutture per facciate e coperture, staffe metalliche, ringhiere, cancelli, inferriate e balaustre. Nelle misure 8×80mm e 8×100mm, con vite Torx T30, e 10×100mm e 10×120mm, con vite Torx T40; vite in acciaio zincato. Prodotto da fischer.',
+    nome: 'Tassello prolungato bimateriale Duoxpand T',
+    // DuoXpand-T di fischer, vite a testa svasata piana per il legno. Sta a
+    // parte dal DuoXpand FUS (id 101, vite esagonale flangiata per il
+    // metallo): stessa scheda tecnica, stesso tassello, cambia solo la vite
+    // e quindi l'impiego consigliato. Teniamo solo la versione in acciaio
+    // zincato, non quella in acciaio inox che la scheda elenca per alcune misure.
+    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa svasata piana e impronta Torx, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. La testa svasata piana affonda a filo nel materiale, il che rende questa versione "T" indicata soprattutto per fissare strutture in legno su muratura o calcestruzzo: serramenti e portoncini, pergole, tettoie e verande, sottostrutture per facciate e coperture. Per il fissaggio di strutture metalliche fischer propone invece la versione FUS, con vite a testa esagonale flangiata. Nelle misure 8×80mm e 8×100mm, con vite Torx T30, e 10×100mm e 10×120mm, con vite Torx T40; vite in acciaio zincato. Prodotto da fischer.',
     materiale: 'Nylon e TPE, vite in acciaio zincato',
     fornitore: 'fischer', fornitoreLogo: fischerLogo,
     scheda: pdfDuoxpandSchedaTecnica,
@@ -2451,7 +2453,7 @@ const PRODOTTI_VETRO = [
       { titolo: 'Vite già inclusa', testo: 'Come nel DuoPower S, la vite di sicurezza arriva premontata sul tassello: non va acquistata a parte e si adatta esattamente alla misura scelta.' },
       { titolo: 'Espansione adattiva', testo: 'Le lamelle si aprono in modo diverso a seconda del materiale, distribuendo il carico senza spaccare i supporti cavi o porosi, e permettono di ancorare anche vicino ai bordi.' },
       { titolo: 'Solo per installazioni passanti', testo: 'A differenza del DuoPower, il DuoXpand attraversa l\'oggetto da fissare e si ancora solo nel materiale di supporto dietro.' },
-      { titolo: 'Testa svasata, per il legno', testo: 'La vite a testa svasata piana affonda a filo ed è indicata per fissare strutture in legno su muratura o calcestruzzo. Per il metallo fischer propone la versione FUS a testa esagonale, che non teniamo.' },
+      { titolo: 'Testa svasata, per il legno', testo: 'La vite a testa svasata piana affonda a filo ed è indicata per fissare strutture in legno su muratura o calcestruzzo. Per il metallo c\'è la versione FUS a testa esagonale flangiata.' },
       { titolo: 'Certificato ETA per più materiali', testo: 'ETA-21/0324 copre calcestruzzo, laterizio, silicato di calcio, calcestruzzo alleggerito e cellulare, con un carico ammissibile dichiarato per ciascun materiale.' },
       { titolo: 'Lo spessore dipende dalla profondità', testo: 'Aumentando la profondità di ancoraggio (hnom) diminuisce lo spessore fissabile: con l\'8×100 si arriva a 50mm con hnom 50mm, o a 30mm con hnom 70mm.' },
     ],
@@ -2466,6 +2468,38 @@ const PRODOTTI_VETRO = [
       { codice: '562150', finitura: 'Grigio e rosso', misura: '8 × 100mm' },
       { codice: '562156', finitura: 'Grigio e rosso', misura: '10 × 100mm' },
       { codice: '562157', finitura: 'Grigio e rosso', misura: '10 × 120mm' },
+    ],
+  },
+  {
+    id: 101, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato bimateriale Duoxpand FUS',
+    // DuoXpand-FUS di fischer: stesso tassello e stessa scheda tecnica del
+    // Duoxpand T (id 100), ma con vite a testa esagonale flangiata invece
+    // che svasata, pensata per il metallo. Teniamo solo il diametro 10, in
+    // acciaio zincato.
+    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa esagonale flangiata e ampio collarino, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. La testa esagonale flangiata, con impronta Torx e chiave, e l\'ampio collarino che evita la corrosione da contatto rendono questa versione "FUS" indicata per fissare strutture metalliche: staffe, ringhiere, cancelli, inferriate e balaustre. Per il fissaggio di strutture in legno fischer propone invece la versione T, con vite a testa svasata piana. Nelle misure 10×100mm, 10×120mm, 10×140mm e 10×160mm, con vite Torx T40 e chiave SW13, in acciaio zincato. Prodotto da fischer.',
+    materiale: 'Nylon e TPE, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuoxpandSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'La vite di sicurezza arriva premontata sul tassello: non va acquistata a parte e si adatta esattamente alla misura scelta.' },
+      { titolo: 'Testa esagonale, per il metallo', testo: 'Testa esagonale flangiata con ampio collarino, che evita la corrosione da contatto: indicata per fissare staffe, ringhiere, cancelli e altre strutture metalliche. Per il legno c\'è la versione T a testa svasata.' },
+      { titolo: 'Doppia impronta', testo: 'Si avvita sia con inserto Torx T40 sia con chiave fissa o a bussola SW13, comoda quando serve più coppia di serraggio o non si ha un avvitatore a portata di mano.' },
+      { titolo: 'Espansione adattiva', testo: 'Le lamelle si aprono in modo diverso a seconda del materiale, distribuendo il carico senza spaccare i supporti cavi o porosi, e permettono di ancorare anche vicino ai bordi.' },
+      { titolo: 'Solo per installazioni passanti', testo: 'Come il Duoxpand T, attraversa l\'oggetto da fissare e si ancora solo nel materiale di supporto dietro: non va installato da solo nel muro per una vite successiva.' },
+      { titolo: 'Certificato ETA per più materiali', testo: 'ETA-21/0324 copre calcestruzzo, laterizio, silicato di calcio, calcestruzzo alleggerito e cellulare, con un carico ammissibile dichiarato per ciascun materiale.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duoxpandFusRender],
+    },
+    varianti: [
+      { codice: '562168', finitura: 'Grigio e rosso', misura: '10 × 100mm' },
+      { codice: '562169', finitura: 'Grigio e rosso', misura: '10 × 120mm' },
+      { codice: '562170', finitura: 'Grigio e rosso', misura: '10 × 140mm' },
+      { codice: '562171', finitura: 'Grigio e rosso', misura: '10 × 160mm' },
     ],
   },
   {
@@ -2827,6 +2861,7 @@ const SCHEDA_IMG_VETRO = {
   98: schDuopower,
   99: schDuopower,
   100: schDuoxpand,
+  101: schDuoxpand,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2871,7 +2906,8 @@ const PAROLE_CHIAVE_VETRO = {
   97: 'SH-PRO Super Hybrid ancorante chimico',
   98: 'DuoPower Duo Power tassello universale',
   99: 'DuoPower S Duo Power tassello universale con vite',
-  100: 'DuoXpand Duo Xpand tassello prolungato',
+  100: 'DuoXpand T Duo Xpand tassello prolungato',
+  101: 'DuoXpand FUS Duo Xpand tassello prolungato',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
