@@ -334,6 +334,9 @@ import duotecInstall2 from './assets/vetro/prodotti/duotec-install-2.jpg';
 import schDuotec from './assets/vetro/schede/duotec-scheda.jpg';
 import duobladeRender from './assets/vetro/prodotti/duoblade-render.jpg';
 import schDuoblade from './assets/vetro/schede/duoblade-scheda.jpg';
+import glNylonRender from './assets/vetro/prodotti/gl-nylon-render.jpg';
+import glNylonConViteRender from './assets/vetro/prodotti/gl-nylon-con-vite-render.jpg';
+import schGlNylon from './assets/vetro/schede/gl-nylon-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -403,6 +406,7 @@ import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf
 import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf';
 import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
 import pdfDuobladeSchedaTecnica from './assets/vetro/duoblade-scheda-tecnica.pdf';
+import pdfGlNylonSchedaTecnica from './assets/vetro/gl-nylon-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2562,6 +2566,45 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 104, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello multiuso GL Nylon',
+    // GL Nylon di G&B Fissaggi, nelle scatole. Qui, a differenza del
+    // DuoPower, la versione con vite e quella senza coprono le stesse
+    // quattro misure e hanno gli stessi dati di foratura: stanno quindi
+    // sulla stessa scheda, con "Vite" come secondo asse. La scheda tecnica
+    // elenca anche le misure 5, 10, 12 e 14 e le versioni con gancio,
+    // occhiolo, testa larga e vite TE, che non teniamo.
+    descrizione: 'Tassello multiuso in nylon con corpo a quattro settori, per fissaggio sia passante sia non passante. I quattro settori si espandono in modo indipendente e si adattano al supporto, il che lo rende adatto tanto ai materiali pieni quanto a quelli forati. Uso specifico su calcestruzzo, pietra compatta, mattone pieno e mattone semipieno; si adatta anche a mattone forato, blocchi vuoti in calcestruzzo, cartongesso e calcestruzzo cellulare. Funziona sia con viti truciolari sia con viti metriche. Nelle misure 6×30mm e 8×40mm, più le versioni prolungate 6×45mm e 8×50mm che aumentano la profondità di ancoraggio e lo spessore fissabile. Ogni misura è disponibile sia da sola sia già abbinata alla sua vite truciolare a testa svasata piana con impronta a croce, zincata bianca. Corpo in poliammide grigio RAL 7035, viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfGlNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Con o senza vite', testo: 'Ogni misura si può prendere sfusa, se le viti le hai già, oppure nella versione che include la vite truciolare giusta: 4,5 × 40mm sul 6×30, 4,5 × 50mm sul 6×45, 5 × 50mm sull\'8×40 e 5 × 60mm sull\'8×50.' },
+      { titolo: 'Passante e non passante', testo: 'Si può inserire nel foro e poi avvitare, oppure attraversare l\'oggetto da fissare e forare tutto insieme: la scheda tecnica riporta le due modalità con le rispettive lunghezze minime della vite.' },
+      { titolo: 'Corpo a quattro settori', testo: 'I settori si aprono in modo indipendente e si adattano al materiale: tengono nel pieno come nel forato, dove si deformano invece di spaccare il supporto.' },
+      { titolo: 'Le versioni prolungate tengono di più', testo: 'Il 6×45 e l\'8×50 ancorano più in profondità e permettono di fissare spessori fino a 20mm invece di 10mm, a parità di diametro del foro.' },
+      { titolo: 'Che vite serve', testo: 'Se prendi la versione sfusa: viti da 4 a 5mm di diametro per il 6, da 4,5 a 6mm per l\'8. Vanno bene sia truciolari sia metriche.' },
+      { titolo: 'Quanto regge', testo: 'Carico raccomandato di circa 50kg su calcestruzzo e 27kg su mattone pieno per la misura 6, che salgono a 54kg e 36kg con la misura 8. Su mattone forato e cellulare i valori scendono: vedi la scheda tecnica.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+      { chiave: 'vite', etichetta: 'Vite' },
+    ],
+    immagini: {
+      'Grigio': [glNylonRender, glNylonConViteRender],
+    },
+    varianti: [
+      { codice: '65002', finitura: 'Grigio', misura: '6 × 30mm', vite: 'Senza vite' },
+      { codice: '65115', finitura: 'Grigio', misura: '6 × 45mm', vite: 'Senza vite' },
+      { codice: '65003', finitura: 'Grigio', misura: '8 × 40mm', vite: 'Senza vite' },
+      { codice: '65116', finitura: 'Grigio', misura: '8 × 50mm', vite: 'Senza vite' },
+      { codice: '65006', finitura: 'Grigio', misura: '6 × 30mm', vite: 'Con vite' },
+      { codice: '65119', finitura: 'Grigio', misura: '6 × 45mm', vite: 'Con vite' },
+      { codice: '65007', finitura: 'Grigio', misura: '8 × 40mm', vite: 'Con vite' },
+      { codice: '65120', finitura: 'Grigio', misura: '8 × 50mm', vite: 'Con vite' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2923,6 +2966,7 @@ const SCHEDA_IMG_VETRO = {
   101: schDuoxpand,
   102: schDuotec,
   103: schDuoblade,
+  104: schGlNylon,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2971,6 +3015,7 @@ const PAROLE_CHIAVE_VETRO = {
   101: 'DuoXpand FUS Duo Xpand tassello prolungato',
   102: 'DuoTec Duo Tec fissaggio basculante',
   103: 'DuoBlade Duo Blade tassello autoforante cartongesso',
+  104: 'GL Nylon tassello multiuso',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
