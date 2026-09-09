@@ -325,6 +325,8 @@ import fischerLogo from './assets/vetro/fischer-logo.png';
 import duopowerRender from './assets/vetro/prodotti/duopower-render.jpg';
 import duopowerSRender from './assets/vetro/prodotti/duopower-s-render.jpg';
 import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
+import duoxpandRender from './assets/vetro/prodotti/duoxpand-render.jpg';
+import schDuoxpand from './assets/vetro/schede/duoxpand-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -391,6 +393,7 @@ import pdfDistanziale05240mmSchedaTecnica from './assets/vetro/distanziale-052-4
 import pdfDistanziale05250mmSchedaTecnica from './assets/vetro/distanziale-052-50mm-scheda-tecnica.pdf';
 import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5mm-scheda-tecnica.pdf';
 import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf';
+import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2434,6 +2437,38 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 100, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato bimateriale Duoxpand',
+    // DuoXpand-T di fischer. Teniamo solo la versione "T" (vite a testa
+    // svasata piana, per il legno) in acciaio zincato: la scheda tecnica
+    // elenca anche la versione FUS con vite esagonale flangiata (per il
+    // metallo) e le versioni in acciaio inox, che non trattiamo.
+    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa svasata piana e impronta Torx, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. Pensato per serramenti e portoncini, pergole, tettoie e verande, sottostrutture per facciate e coperture, staffe metalliche, ringhiere, cancelli, inferriate e balaustre. Nelle misure 8×80mm e 8×100mm, con vite Torx T30, e 10×100mm e 10×120mm, con vite Torx T40; vite in acciaio zincato. Prodotto da fischer.',
+    materiale: 'Nylon e TPE, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuoxpandSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Come nel DuoPower S, la vite di sicurezza arriva premontata sul tassello: non va acquistata a parte e si adatta esattamente alla misura scelta.' },
+      { titolo: 'Espansione adattiva', testo: 'Le lamelle si aprono in modo diverso a seconda del materiale, distribuendo il carico senza spaccare i supporti cavi o porosi, e permettono di ancorare anche vicino ai bordi.' },
+      { titolo: 'Solo per installazioni passanti', testo: 'A differenza del DuoPower, il DuoXpand attraversa l\'oggetto da fissare e si ancora solo nel materiale di supporto dietro.' },
+      { titolo: 'Testa svasata, per il legno', testo: 'La vite a testa svasata piana affonda a filo ed è indicata per fissare strutture in legno su muratura o calcestruzzo. Per il metallo fischer propone la versione FUS a testa esagonale, che non teniamo.' },
+      { titolo: 'Certificato ETA per più materiali', testo: 'ETA-21/0324 copre calcestruzzo, laterizio, silicato di calcio, calcestruzzo alleggerito e cellulare, con un carico ammissibile dichiarato per ciascun materiale.' },
+      { titolo: 'Lo spessore dipende dalla profondità', testo: 'Aumentando la profondità di ancoraggio (hnom) diminuisce lo spessore fissabile: con l\'8×100 si arriva a 50mm con hnom 50mm, o a 30mm con hnom 70mm.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duoxpandRender],
+    },
+    varianti: [
+      { codice: '562149', finitura: 'Grigio e rosso', misura: '8 × 80mm' },
+      { codice: '562150', finitura: 'Grigio e rosso', misura: '8 × 100mm' },
+      { codice: '562156', finitura: 'Grigio e rosso', misura: '10 × 100mm' },
+      { codice: '562157', finitura: 'Grigio e rosso', misura: '10 × 120mm' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2791,6 +2826,7 @@ const SCHEDA_IMG_VETRO = {
   97: schShProSuperHybrid,
   98: schDuopower,
   99: schDuopower,
+  100: schDuoxpand,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2835,6 +2871,7 @@ const PAROLE_CHIAVE_VETRO = {
   97: 'SH-PRO Super Hybrid ancorante chimico',
   98: 'DuoPower Duo Power tassello universale',
   99: 'DuoPower S Duo Power tassello universale con vite',
+  100: 'DuoXpand Duo Xpand tassello prolungato',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
