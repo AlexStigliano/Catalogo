@@ -337,6 +337,9 @@ import schDuoblade from './assets/vetro/schede/duoblade-scheda.jpg';
 import glNylonRender from './assets/vetro/prodotti/gl-nylon-render.jpg';
 import glNylonConViteRender from './assets/vetro/prodotti/gl-nylon-con-vite-render.jpg';
 import schGlNylon from './assets/vetro/schede/gl-nylon-scheda.jpg';
+import casaNylonGancioRender from './assets/vetro/prodotti/casa-nylon-gancio-render.jpg';
+import casaNylonViteRender from './assets/vetro/prodotti/casa-nylon-vite-render.jpg';
+import schCasaNylon from './assets/vetro/schede/casa-nylon-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -407,6 +410,7 @@ import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf
 import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
 import pdfDuobladeSchedaTecnica from './assets/vetro/duoblade-scheda-tecnica.pdf';
 import pdfGlNylonSchedaTecnica from './assets/vetro/gl-nylon-scheda-tecnica.pdf';
+import pdfCasaNylonSchedaTecnica from './assets/vetro/casa-nylon-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2605,6 +2609,67 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 105, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello con gancio Casa Nylon',
+    // Casa Nylon con gancio corto. G&B mette tutta la famiglia su un'unica
+    // scheda tecnica, ma i vari accessori premontati sono prodotti diversi
+    // per funzione: questo appende, il "con vite" (id 106) fissa. Teniamo
+    // solo il gancio corto, non quello medio, lungo, gli occhioli o i
+    // paracolpi che la scheda elenca.
+    descrizione: 'Tassello in nylon con gancio a L in acciaio già premontato, per appendere direttamente a muro senza dover montare nulla: si fora, si inserisce il tassello e si avvita il gancio, che stringe le alette contro il supporto. La rondella incorporata nasconde il bordo del foro e distribuisce la pressione. Adatto a calcestruzzo, pietra compatta, mattone pieno, mattone forato e blocchi vuoti in calcestruzzo. Pensato per appendere quadri, specchi, lampade, mensole leggere e tutto quello che sta su un gancio. Nelle misure 9 × 40mm, con vite M4 e gancio da 8mm di apertura, e 12 × 45mm, con vite M5 e gancio da 8mm. Corpo in poliammide grigio RAL 7035, gancio e viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), gancio in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfCasaNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Gancio già montato', testo: 'Il gancio a L arriva premontato sul tassello con la sua rondella: non serve comprare nulla a parte e non c\'è niente da assemblare prima di posare.' },
+      { titolo: 'Rondella incorporata', testo: 'La rondella in nylon copre il bordo del foro e distribuisce la pressione sul supporto: il fissaggio resta pulito a vista anche se il foro non è perfetto.' },
+      { titolo: 'Il carico dipende dal gancio', testo: 'Carico raccomandato di 14kg sul 9 × 40mm e 27kg sul 12 × 45mm su calcestruzzo. Il limite è il piegamento del gancio, non la tenuta del tassello.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Le alette laterali si aprono contro le pareti della cavità: funziona su mattone forato e blocchi vuoti in calcestruzzo, oltre che nei materiali pieni.' },
+      { titolo: 'Che foro fare', testo: 'Punta da 9mm con profondità minima 50mm per la misura piccola, punta da 12mm e 55mm di profondità per quella grande.' },
+      { titolo: 'Se devi fissare, non appendere', testo: 'Per fissare un oggetto contro il muro invece che appenderlo c\'è la versione con vite TSC, stesso tassello ma con vite a testa svasata al posto del gancio.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [casaNylonGancioRender],
+    },
+    varianti: [
+      { codice: 'HTS01', finitura: 'Grigio', misura: '9 × 40mm' },
+      { codice: 'HTL01', finitura: 'Grigio', misura: '12 × 45mm' },
+    ],
+  },
+  {
+    id: 106, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello con vite Casa Nylon',
+    // Casa Nylon con vite TSC e taglio combinato: stessa scheda tecnica del
+    // gancio (id 105), stesso tassello, ma qui l'accessorio premontato e'
+    // una vite a testa svasata, quindi serve a fissare invece che ad
+    // appendere. Teniamo solo le due misure corte.
+    descrizione: 'Tassello in nylon con vite a testa svasata già premontata, a taglio combinato (cacciavite piatto o a croce), per fissare a muro oggetti che appoggiano contro il supporto. Si fora, si inserisce il tassello e si avvita: le alette si aprono e bloccano il fissaggio, mentre la rondella incorporata distribuisce la pressione e nasconde il bordo del foro. Adatto a calcestruzzo, pietra compatta, mattone pieno, mattone forato e blocchi vuoti in calcestruzzo. Nelle misure 9 × 40mm, con vite M4 da 50mm, e 12 × 45mm, con vite M5 da 55mm. Corpo in poliammide grigio RAL 7035, viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfCasaNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già montata', testo: 'La vite a testa svasata arriva premontata sul tassello con la sua rondella: si posa tutto in un pezzo solo, senza accoppiare vite e tassello.' },
+      { titolo: 'Taglio combinato', testo: 'La testa accetta sia il cacciavite piatto sia quello a croce: si avvita con quello che si ha in mano.' },
+      { titolo: 'Regge più del gancio', testo: 'Carico raccomandato di 39kg sul 9 × 40mm e 50kg sul 12 × 45mm su calcestruzzo, contro i 14 e 27kg della versione con gancio: qui non c\'è un accessorio che si piega.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Le alette laterali si aprono contro le pareti della cavità: funziona su mattone forato e blocchi vuoti in calcestruzzo, oltre che nei materiali pieni.' },
+      { titolo: 'Che foro fare', testo: 'Punta da 9mm con profondità minima 50mm per la misura piccola, punta da 12mm e 55mm di profondità per quella grande.' },
+      { titolo: 'Se devi appendere, non fissare', testo: 'Per appendere qualcosa invece che fissarla contro il muro c\'è la versione con gancio a L, stesso tassello ma con il gancio al posto della vite.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [casaNylonViteRender],
+    },
+    varianti: [
+      { codice: 'HTS07', finitura: 'Grigio', misura: '9 × 40mm' },
+      { codice: 'HTL07', finitura: 'Grigio', misura: '12 × 45mm' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2967,6 +3032,8 @@ const SCHEDA_IMG_VETRO = {
   102: schDuotec,
   103: schDuoblade,
   104: schGlNylon,
+  105: schCasaNylon,
+  106: schCasaNylon,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -3016,6 +3083,8 @@ const PAROLE_CHIAVE_VETRO = {
   102: 'DuoTec Duo Tec fissaggio basculante',
   103: 'DuoBlade Duo Blade tassello autoforante cartongesso',
   104: 'GL Nylon tassello multiuso',
+  105: 'Casa Nylon gancio a L reggimensola',
+  106: 'Casa Nylon vite TSC taglio combinato',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
