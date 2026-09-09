@@ -341,7 +341,6 @@ import casaNylonGancioRender from './assets/vetro/prodotti/casa-nylon-gancio-ren
 import casaNylonViteRender from './assets/vetro/prodotti/casa-nylon-vite-render.jpg';
 import schCasaNylon from './assets/vetro/schede/casa-nylon-scheda.jpg';
 import gxlNylonRender from './assets/vetro/prodotti/gxl-nylon-render.jpg';
-import gxlNylonTassello from './assets/vetro/prodotti/gxl-nylon-tassello.jpg';
 import schGxlNylon from './assets/vetro/schede/gxl-nylon-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
@@ -2697,7 +2696,7 @@ const PRODOTTI_VETRO = [
       { chiave: 'misura', etichetta: 'Misura' },
     ],
     immagini: {
-      'Grigio': [gxlNylonRender, gxlNylonTassello],
+      'Grigio': [gxlNylonRender],
     },
     varianti: [
       { codice: '97258', finitura: 'Grigio', misura: '6 × 60mm' },
