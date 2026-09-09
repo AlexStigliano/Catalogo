@@ -328,6 +328,10 @@ import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
 import duoxpandRender from './assets/vetro/prodotti/duoxpand-render.jpg';
 import duoxpandFusRender from './assets/vetro/prodotti/duoxpand-fus-render.jpg';
 import schDuoxpand from './assets/vetro/schede/duoxpand-scheda.jpg';
+import duotecRender from './assets/vetro/prodotti/duotec-render.jpg';
+import duotecInstall1 from './assets/vetro/prodotti/duotec-install-1.jpg';
+import duotecInstall2 from './assets/vetro/prodotti/duotec-install-2.jpg';
+import schDuotec from './assets/vetro/schede/duotec-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -395,6 +399,7 @@ import pdfDistanziale05250mmSchedaTecnica from './assets/vetro/distanziale-052-5
 import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5mm-scheda-tecnica.pdf';
 import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf';
 import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf';
+import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2503,6 +2508,31 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 102, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Fissaggio basculante Duotec con vite',
+    // DuoTec 10 S di fischer, l'unica versione che teniamo: arriva con la
+    // vite gia' inclusa (a testa svasata piana, impronta PZ), a differenza
+    // della DuoTec 10 base che va comprata a parte dalla vite.
+    descrizione: 'Fissaggio basculante in nylon rinforzato con fibra di vetro, per pareti e pannelli cavi come cartongesso, fibra di gesso, pannelli in legno (OSB, truciolare, MDF), lamiere in acciaio e pannelli in plastica; utilizzabile anche come tassello a espansione tradizionale in materiali pieni come calcestruzzo e legno. L\'elemento ad ancora, rinforzato con componenti metalliche interne, ruota automaticamente dietro il pannello dopo l\'inserimento nel foro e si blocca avvitando la vite in dotazione, a testa svasata piana con impronta PZ. Il diametro del foro ridotto (10mm) e la lunghezza contenuta dell\'ancora permettono l\'installazione anche in intercapedini strette o isolate con lana minerale, e la bandella inferiore millimetrata funge da sonda per verificare la profondità della cavità prima di serrare. Il dispositivo di bloccaggio flessibile in acciaio inossidabile consente di svitare e riavvitare la vite più volte. Adatto a mobiletti, armadietti, ripiani, armadi, corrimano, quadri, specchi, lampadari, canaline elettriche e collari per tubi. Installazione non passante. Vite inclusa: testa svasata piana Ø5mm, lunga 50mm. Prodotto da fischer.',
+    materiale: 'Nylon rinforzato con fibra di vetro, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuotecSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Arriva completo della sua vite a testa svasata piana, impronta PZ, Ø5×50mm: non va comprata a parte, a differenza della versione base senza vite.' },
+      { titolo: 'Si riavvita più volte', testo: 'Il dispositivo di bloccaggio flessibile in acciaio inossidabile permette di svitare e riavvitare la vite più volte, utile per smontare e rimontare l\'oggetto fissato.' },
+      { titolo: 'Foro piccolo, ancora corta', testo: 'Basta un foro da 10mm e l\'elemento ad ancora è lungo appena 39mm: entra anche in intercapedini strette o isolate con lana minerale.' },
+      { titolo: 'Funziona anche nei materiali pieni', testo: 'Oltre che nei pannelli cavi, si può usare come tassello a espansione tradizionale in calcestruzzo o legno pieno.' },
+      { titolo: 'La bandella fa anche da sonda', testo: 'La bandella inferiore millimetrata dell\'ancora permette di controllare a occhio la profondità della cavità prima di serrare la vite.' },
+      { titolo: 'Quanto regge', testo: 'Su cartongesso da 12,5mm regge da 0,20 a 0,36kN a seconda dell\'interasse tra i montanti; il carico massimo dichiarato arriva a 0,75kN su pannello OSB da 18mm.' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duotecRender, duotecInstall1, duotecInstall2],
+    },
+    varianti: [
+      { codice: '540178', finitura: 'Grigio e rosso' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2862,6 +2892,7 @@ const SCHEDA_IMG_VETRO = {
   99: schDuopower,
   100: schDuoxpand,
   101: schDuoxpand,
+  102: schDuotec,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2908,6 +2939,7 @@ const PAROLE_CHIAVE_VETRO = {
   99: 'DuoPower S Duo Power tassello universale con vite',
   100: 'DuoXpand T Duo Xpand tassello prolungato',
   101: 'DuoXpand FUS Duo Xpand tassello prolungato',
+  102: 'DuoTec Duo Tec fissaggio basculante',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
