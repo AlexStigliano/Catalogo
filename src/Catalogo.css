@@ -511,6 +511,11 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .carat-item { margin: 0; }
 .cat .carat-title { font-weight: 800; font-size: 14.5px; color: var(--header-name); margin: 0 0 0.3rem; }
 .cat .carat-text { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
+/* Istruzioni di montaggio: passi numerati, con il numero fuori dal testo
+   così le righe restano allineate anche quando il passo va a capo. */
+.cat .montaggio-list { margin: 0; padding: 0; list-style: none; counter-reset: passo; display: grid; gap: 0.9rem; max-width: 74ch; }
+.cat .montaggio-item { counter-increment: passo; position: relative; padding-left: 2.4rem; font-size: 14.5px; line-height: 1.6; color: var(--ink); }
+.cat .montaggio-item::before { content: counter(passo); position: absolute; left: 0; top: -1px; width: 1.65rem; height: 1.65rem; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12.5px; font-weight: 800; }
 @media (prefers-color-scheme: dark) { .cat .rel-chev { color: #cdd8f0; } }
 :root[data-theme="dark"] .cat .rel-chev { color: #cdd8f0; }
 :root[data-theme="light"] .cat .rel-chev { color: var(--navy); }

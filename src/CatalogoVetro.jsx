@@ -332,6 +332,8 @@ import duotecRender from './assets/vetro/prodotti/duotec-render.jpg';
 import duotecInstall1 from './assets/vetro/prodotti/duotec-install-1.jpg';
 import duotecInstall2 from './assets/vetro/prodotti/duotec-install-2.jpg';
 import schDuotec from './assets/vetro/schede/duotec-scheda.jpg';
+import duobladeRender from './assets/vetro/prodotti/duoblade-render.jpg';
+import schDuoblade from './assets/vetro/schede/duoblade-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -400,6 +402,7 @@ import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5m
 import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf';
 import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf';
 import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
+import pdfDuobladeSchedaTecnica from './assets/vetro/duoblade-scheda-tecnica.pdf';
 import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
 import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
 import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
@@ -2533,6 +2536,41 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 103, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello autoforante per cartongesso Duoblade con viti',
+    // DuoBlade S di fischer (art. 545678): la versione che arriva con le
+    // viti. La scheda elenca anche il DuoBlade "nudo" (art. 545677), da
+    // abbinare a viti proprie, che non teniamo. Le istruzioni di montaggio
+    // sono ricavate dalla sequenza di installazione della scheda tecnica.
+    descrizione: 'Tassello autoforante bimateriale in nylon e fibra di vetro per lastre in cartongesso, con punta metallica già preinstallata: non serve forare prima, si avvita direttamente sulla lastra. La punta autoforante e centrante attraversa anche i materiali rigidi e l\'elica rinforzata tira dentro il tassello fino a battuta, mentre le lamelle anti-rotazione lo tengono fermo quando si avvita la vite. All\'inserimento della vite la punta metallica viene espulsa e cade nel vuoto dietro la lastra. L\'impronta PZ2 è la stessa sul tassello e sulla vite, quindi si monta tutto senza cambiare inserto. Adatto a cartongesso in lastra singola e doppia, gessofibra e lastre di cemento alleggerito; pensato per rilevatori di fumo, specchi, impianti elettrici, lampade, quadri e accessori vari. Installazione non passante: dietro la lastra servono almeno 50mm di vuoto. Fornito con le viti a testa svasata piana da 4,5 × 40mm, per fissare oggetti fino a 12mm di spessore. Prodotto da fischer.',
+    materiale: 'Nylon e fibra di vetro, punta e viti in acciaio',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuobladeSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Viti già incluse', testo: 'La confezione comprende le viti a testa svasata piana da 4,5 × 40mm: la versione base del DuoBlade arriva senza, da abbinare a viti da legno, autofilettanti o truciolari da 4 a 5mm.' },
+      { titolo: 'Non serve forare prima', testo: 'La punta metallica è già montata sul tassello: si appoggia alla lastra e si avvita, senza trapano e senza punta da muro. È il motivo per cui è il più rapido da posare.' },
+      { titolo: 'Un solo inserto per tutto', testo: 'Impronta PZ2 sia sul tassello sia sulla vite: si monta senza cambiare inserto all\'avvitatore.' },
+      { titolo: 'La punta si sfila da sola', testo: 'Quando si avvita la vite, la punta metallica viene spinta fuori e cade nell\'intercapedine dietro la lastra: è il funzionamento previsto, non un pezzo che si rompe.' },
+      { titolo: 'Su gessofibra serve il preforo', testo: 'Il gessofibra è troppo duro perché la punta lo attraversi da sola: in quel caso va fatto prima un foro da 8mm.' },
+      { titolo: 'Quanto regge', testo: 'Da 0,10kN su cartongesso da 12,5mm fino a 0,20kN su lastra doppia e 0,34kN su gessofibra, con viti da 4 a 5mm.' },
+    ],
+    // Ricavate dalla sequenza "Installazione" della scheda tecnica.
+    montaggio: [
+      'Controlla che dietro la lastra ci siano almeno 50mm di vuoto: il tassello è lungo 44mm e deve entrare tutto. Su gessofibra fai prima un foro da 8mm.',
+      'Appoggia la punta del tassello sulla lastra nel punto scelto, tenendolo perpendicolare alla superficie.',
+      'Avvita il tassello con un inserto PZ2: la punta fora la lastra e l\'elica lo tira dentro da sola.',
+      'Fermati quando il collare del tassello arriva a filo della lastra, senza forzare oltre.',
+      'Appoggia l\'oggetto da fissare e avvita la vite in dotazione, sempre con l\'inserto PZ2. Entrando, la vite espelle la punta metallica, che cade dietro la lastra.',
+      'Serra la vite fino a bloccare l\'oggetto: le lamelle anti-rotazione tengono fermo il tassello mentre il nylon si espande contro la lastra.',
+    ],
+    immagini: {
+      'Grigio e rosso': [duobladeRender],
+    },
+    varianti: [
+      { codice: '545678', finitura: 'Grigio e rosso' },
+    ],
+  },
+  {
     id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
     nome: 'Maniglia ad incasso tonda per porta scorrevole',
     // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
@@ -2893,6 +2931,7 @@ const SCHEDA_IMG_VETRO = {
   100: schDuoxpand,
   101: schDuoxpand,
   102: schDuotec,
+  103: schDuoblade,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -2940,6 +2979,7 @@ const PAROLE_CHIAVE_VETRO = {
   100: 'DuoXpand T Duo Xpand tassello prolungato',
   101: 'DuoXpand FUS Duo Xpand tassello prolungato',
   102: 'DuoTec Duo Tec fissaggio basculante',
+  103: 'DuoBlade Duo Blade tassello autoforante cartongesso',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
@@ -3875,6 +3915,15 @@ function ProductDetail({ id }) {
                 </div>
               ))}
             </dl>
+          </SezioneTendina>
+        )}
+        {p.montaggio && p.montaggio.length > 0 && (
+          <SezioneTendina title="Istruzioni di montaggio">
+            <ol className="montaggio-list">
+              {p.montaggio.map((passo, i) => (
+                <li className="montaggio-item" key={i}>{passo}</li>
+              ))}
+            </ol>
           </SezioneTendina>
         )}
         <RelatedRow title="Articoli essenziali" ids={p.essenziali}
