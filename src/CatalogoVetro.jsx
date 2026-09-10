@@ -2409,6 +2409,7 @@ const PRODOTTI_VETRO = [
     // scaricabile: i dati vengono dalla pagina di catalogo del fornitore.
     descrizione: 'Nastro biadesivo in schiuma acrilica per il fissaggio di specchi, profili per finestre in PVC ed elementi su piastrelle. Aderisce sia su fondi lisci sia su fondi ruvidi, attenua le vibrazioni e lavora anche come elemento di compensazione fra le due superfici. Resistente ai raggi UV, con temperatura di utilizzo da -40°C a +95°C; la stabilità finale si raggiunge dopo 24 ore. Adesivo in colla acrilica bianca: l\'azzurro del rotolo è solo la pellicola di protezione, che si toglie in posa, quindi il nastro montato resta completamente bianco. Le strisce vanno applicate solo in senso verticale. Rotolo singolo da 50 metri, spessore 1,5mm, nelle larghezze 19 e 25mm. Prodotto da Häfele.',
     materiale: 'Schiuma acrilica con colla acrilica bianca',
+    dimensioni: 'Larghezza 19 e 25mm · spessore 1,5mm · rotolo da 50m',
     fornitore: 'Häfele',
     caratteristiche: [
       { titolo: 'Si applica solo in verticale', testo: 'Le strisce vanno messe in senso verticale, mai orizzontale: il disegno di montaggio in galleria mostra la posa corretta e quella sbagliata.' },
@@ -2440,6 +2441,7 @@ const PRODOTTI_VETRO = [
     // bianco da 1,5m, quindi niente assi.
     descrizione: 'Nastro biadesivo universale in schiuma PE con adesivo in gomma sintetica, per montare oggetti senza forare. Presa immediata e resistenza finale dopo circa 24 ore, fino a 150kg per rotolo secondo la norma Afera 5012. Adatto al montaggio di oggetti lisci o leggermente ruvidi come rilevatori d\'incendio, appendiabiti, cornici, specchi, piccoli accessori da cucina e da bagno, targhette e numeri civici; aderisce su metallo, vetro, piastrelle, plastica rigida, legno, pietra e superfici verniciate. Utilizzabile sia all\'interno sia all\'esterno, con resistenza da -10 a +75°C una volta montato. Non adatto alle superfici delicate come le carte da parati, ai rivestimenti antiaderenti tipo PTFE e ai luoghi permanentemente umidi. Spessore 0,98mm, colore bianco, blister da 1,5 metri. Prodotto da Bostik.',
     materiale: 'Schiuma PE con adesivo in gomma sintetica',
+    dimensioni: 'Spessore 0,98mm · rotolo da 1,5m',
     fornitore: 'Bostik', fornitoreLogo: bostikLogo,
     scheda: pdfPolyMaxHighTackExpressBiadesivoSchedaTecnica,
     caratteristiche: [
