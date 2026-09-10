@@ -540,6 +540,7 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
   ],
   '09': [
     { id: 'siliconi-sigillanti', nome: 'Siliconi e sigillanti' },
+    { id: 'nastri-biadesivi', nome: 'Nastri biadesivi' },
     { id: 'tasselli', nome: 'Tasselli' },
   ],
 };
