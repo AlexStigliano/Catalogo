@@ -344,6 +344,8 @@ import gxlNylonRender from './assets/vetro/prodotti/gxl-nylon-render.jpg';
 import schGxlNylon from './assets/vetro/schede/gxl-nylon-scheda.jpg';
 import nastroSpecchiRotolo from './assets/vetro/prodotti/nastro-specchi-rotolo.jpg';
 import nastroSpecchiMontaggio from './assets/vetro/prodotti/nastro-specchi-montaggio.jpg';
+import polyMaxHighTackExpressBiadesivo from './assets/vetro/prodotti/poly-max-high-tack-express-biadesivo.jpg';
+import schPolyMaxHighTackExpressBiadesivo from './assets/vetro/schede/poly-max-high-tack-express-biadesivo-scheda.jpg';
 import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
 import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
 import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
@@ -464,6 +466,7 @@ import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
 import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.pdf';
 import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
 import pdfPolyMaxHighTackExpressSchedaTecnica from './assets/vetro/poly-max-high-tack-express-scheda-tecnica.pdf';
+import pdfPolyMaxHighTackExpressBiadesivoSchedaTecnica from './assets/vetro/poly-max-high-tack-express-biadesivo-scheda-tecnica.pdf';
 import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
 import pdfShProSuperHybridSchedaTecnica from './assets/vetro/sh-pro-super-hybrid-scheda-tecnica.pdf';
 import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
@@ -542,8 +545,8 @@ const SOTTOCATEGORIE_PER_CATEGORIA = {
   ],
   '09': [
     { id: 'siliconi-sigillanti', nome: 'Siliconi e sigillanti' },
-    { id: 'nastri-biadesivi', nome: 'Nastri biadesivi' },
     { id: 'tasselli', nome: 'Tasselli' },
+    { id: 'nastri-biadesivi', nome: 'Nastri biadesivi' },
   ],
 };
 // Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
@@ -2429,6 +2432,33 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 109, categoria: '09', sottocategoria: 'nastri-biadesivi',
+    nome: 'Nastro biadesivo universale',
+    // Poly Max High Tack Express in versione nastro: stesso nome
+    // commerciale dell'adesivo in cartuccia (id 96), ma e' un prodotto
+    // diverso, un biadesivo in schiuma PE. Un solo codice, il blister
+    // bianco da 1,5m, quindi niente assi.
+    descrizione: 'Nastro biadesivo universale in schiuma PE con adesivo in gomma sintetica, per montare oggetti senza forare. Presa immediata e resistenza finale dopo circa 24 ore, fino a 150kg per rotolo secondo la norma Afera 5012. Adatto al montaggio di oggetti lisci o leggermente ruvidi come rilevatori d\'incendio, appendiabiti, cornici, specchi, piccoli accessori da cucina e da bagno, targhette e numeri civici; aderisce su metallo, vetro, piastrelle, plastica rigida, legno, pietra e superfici verniciate. Utilizzabile sia all\'interno sia all\'esterno, con resistenza da -10 a +75°C una volta montato. Non adatto alle superfici delicate come le carte da parati, ai rivestimenti antiaderenti tipo PTFE e ai luoghi permanentemente umidi. Spessore 0,98mm, colore bianco, blister da 1,5 metri. Prodotto da Bostik.',
+    materiale: 'Schiuma PE con adesivo in gomma sintetica',
+    fornitore: 'Bostik', fornitoreLogo: bostikLogo,
+    scheda: pdfPolyMaxHighTackExpressBiadesivoSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Fino a 150kg per rotolo', testo: 'Il dato è misurato secondo la norma Afera 5012 in condizioni ideali, con superfici piane e pulite: la tenuta reale dipende dal materiale e dalla planarità dell\'oggetto, e può calare nel tempo.' },
+      { titolo: 'Fissa senza forare', testo: 'Niente trapano e niente viti: utile su piastrelle, vetro e tutte le superfici che non si vogliono bucare.' },
+      { titolo: 'Come si applica', testo: 'Si stende il nastro su tutta la lunghezza dell\'oggetto premendo dieci secondi, poi si toglie la pellicola senza toccare l\'adesivo e si preme con forza altri dieci secondi. Più pressione si fa, più tiene.' },
+      { titolo: 'Si applica fra +15 e +30°C', testo: 'Fuori da questo intervallo l\'adesivo non fa la presa che dovrebbe. A montaggio fatto, invece, regge da -10 fino a +75°C, anche all\'aperto.' },
+      { titolo: 'Tiene di più sul liscio', testo: 'L\'adesione massima si ottiene su oggetti metallici piatti, di spessore inferiore a 10mm, applicati su superfici metalliche lisce. Entrambe le parti devono essere solide, asciutte e prive di polvere e grasso.' },
+      { titolo: 'Dove non usarlo', testo: 'Da evitare su carte da parati e altre superfici delicate, sui rivestimenti antiaderenti come il PTFE e negli ambienti permanentemente umidi. Sui materiali dubbi conviene provare prima su un campione.' },
+      { titolo: 'Resistenza finale dopo 24 ore', testo: 'Il nastro tiene subito, ma arriva a piena forza dopo circa un giorno. Gli eventuali residui si tolgono con acqua ragia.' },
+    ],
+    immagini: {
+      'Bianco': [polyMaxHighTackExpressBiadesivo],
+    },
+    varianti: [
+      { codice: '7007812', finitura: 'Bianco' },
+    ],
+  },
+  {
     id: 98, categoria: '09', sottocategoria: 'tasselli',
     nome: 'Tassello bimateriale Duopower',
     // DuoPower di fischer: primo prodotto della sottocategoria "Tasselli".
@@ -3110,6 +3140,7 @@ const SCHEDA_IMG_VETRO = {
   105: schCasaNylon,
   106: schCasaNylon,
   107: schGxlNylon,
+  109: schPolyMaxHighTackExpressBiadesivo,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -3163,6 +3194,7 @@ const PAROLE_CHIAVE_VETRO = {
   106: 'Casa Nylon vite TSC taglio combinato',
   107: 'GX-L Nylon GXL ancorante prolungato multifunzione',
   108: 'nastro biadesivo doppio adesivo specchi specchio schiuma acrilica Hafele',
+  109: 'nastro biadesivo doppio adesivo Poly Max High Tack Express universale senza forare',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
