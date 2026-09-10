@@ -2404,11 +2404,12 @@ const PRODOTTI_VETRO = [
     // quelli da 1,5mm (003.58.212 e 003.58.213); gli altri due, 003.58.210 e
     // 003.58.211 da 1mm, non li trattiamo. Non esiste una scheda tecnica
     // scaricabile: i dati vengono dalla pagina di catalogo del fornitore.
-    descrizione: 'Nastro biadesivo in schiuma acrilica per il fissaggio di specchi, profili per finestre in PVC ed elementi su piastrelle. Aderisce sia su fondi lisci sia su fondi ruvidi, attenua le vibrazioni e lavora anche come elemento di compensazione fra le due superfici. Resistente ai raggi UV, con temperatura di utilizzo da -40°C a +95°C; la stabilità finale si raggiunge dopo 24 ore. Adesivo in colla acrilica bianca, protetto da una pellicola azzurra da togliere al momento della posa. Le strisce vanno applicate solo in senso verticale. Rotolo singolo da 50 metri, spessore 1,5mm, nelle larghezze 19 e 25mm. Prodotto da Häfele.',
+    descrizione: 'Nastro biadesivo in schiuma acrilica per il fissaggio di specchi, profili per finestre in PVC ed elementi su piastrelle. Aderisce sia su fondi lisci sia su fondi ruvidi, attenua le vibrazioni e lavora anche come elemento di compensazione fra le due superfici. Resistente ai raggi UV, con temperatura di utilizzo da -40°C a +95°C; la stabilità finale si raggiunge dopo 24 ore. Adesivo in colla acrilica bianca: l\'azzurro del rotolo è solo la pellicola di protezione, che si toglie in posa, quindi il nastro montato resta completamente bianco. Le strisce vanno applicate solo in senso verticale. Rotolo singolo da 50 metri, spessore 1,5mm, nelle larghezze 19 e 25mm. Prodotto da Häfele.',
     materiale: 'Schiuma acrilica con colla acrilica bianca',
     fornitore: 'Häfele',
     caratteristiche: [
-      { titolo: 'Si applica solo in verticale', testo: 'Le strisce vanno messe in senso verticale, mai orizzontale: il disegno di montaggio in galleria mostra la posa corretta e quella sbagliata, con le quote da rispettare.' },
+      { titolo: 'Si applica solo in verticale', testo: 'Le strisce vanno messe in senso verticale, mai orizzontale: il disegno di montaggio in galleria mostra la posa corretta e quella sbagliata.' },
+      { titolo: 'Montato è tutto bianco', testo: 'Sul rotolo si vede azzurro, ma quello è solo il film di protezione: una volta staccato resta la schiuma acrilica bianca, uguale su tutte e due le facce.' },
       { titolo: 'Tiene anche sui fondi ruvidi', testo: 'Il millimetro e mezzo di schiuma acrilica compensa le irregolarità del supporto, quindi il nastro lavora sia su superfici lisce sia su fondi non perfettamente in piano.' },
       { titolo: 'Attenua le vibrazioni', testo: 'Fa da elemento di compensazione fra specchio e parete: assorbe i movimenti invece di trasmetterli al vetro.' },
       { titolo: 'Stabilità finale dopo 24 ore', testo: 'La presa è immediata, ma la tenuta arriva a pieno regime dopo un giorno: fino ad allora conviene non sollecitare il pezzo incollato.' },
@@ -2420,11 +2421,11 @@ const PRODOTTI_VETRO = [
       { chiave: 'larghezza', etichetta: 'Larghezza' },
     ],
     immagini: {
-      'Bianco e azzurro': [nastroSpecchiRotolo, nastroSpecchiMontaggio],
+      'Bianco': [nastroSpecchiRotolo, nastroSpecchiMontaggio],
     },
     varianti: [
-      { codice: '003.58.212', finitura: 'Bianco e azzurro', larghezza: '19mm' },
-      { codice: '003.58.213', finitura: 'Bianco e azzurro', larghezza: '25mm' },
+      { codice: '003.58.212', finitura: 'Bianco', larghezza: '19mm' },
+      { codice: '003.58.213', finitura: 'Bianco', larghezza: '25mm' },
     ],
   },
   {
@@ -3239,9 +3240,6 @@ const FINISHES_VETRO = {
   'Grigio cemento': 'linear-gradient(135deg,#c7c3ba,#9a958a 55%,#c0bbb0)',
   // I tasselli bimateriale: nylon grigio e TPE rosso, divisi a meta'.
   'Grigio e rosso': 'linear-gradient(120deg,#d7d9db 0%,#a9adb1 46%,#d42b20 54%,#9e1a12 100%)',
-  // Il nastro biadesivo per specchi: schiuma acrilica bianca sotto la
-  // pellicola azzurra di protezione, divise a meta' come nei bimateriale.
-  'Bianco e azzurro': 'linear-gradient(120deg,#ffffff 0%,#eceae4 46%,#7cc3e0 54%,#4a9ec5 100%)',
   'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
   'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
   'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
