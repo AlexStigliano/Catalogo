@@ -181,6 +181,9 @@ import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
 import fs880NeroRender from './assets/vetro/prodotti/fs880-nero-render.jpg';
 import meroniLogo from './assets/vetro/meroni-logo.png';
 import schFs890 from './assets/vetro/schede/fs890-scheda.jpg';
+import dormakabaLogo from './assets/vetro/dormakaba-logo.png';
+import bts75vRender from './assets/vetro/prodotti/bts75v-render.jpg';
+import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
 import schGaha1st from './assets/vetro/schede/gaha1st-scheda.jpg';
@@ -436,6 +439,7 @@ import pdfFissaggioMuro100SchedaTecnica from './assets/vetro/fissaggio-muro-100-
 import pdfFissaggioPuntualeSchedaTecnica from './assets/vetro/fissaggio-puntuale-scheda-tecnica.pdf';
 import pdfFs880SchedaTecnica from './assets/vetro/fs880-scheda-tecnica.pdf';
 import pdfFs890SchedaTecnica from './assets/vetro/fs890-scheda-tecnica.pdf';
+import pdfBts75vSchedaTecnica from './assets/vetro/bts75v-scheda-tecnica.pdf';
 import pdfGaha1stSchedaTecnica from './assets/vetro/gaha1st-scheda-tecnica.pdf';
 import pdfGeorgiaQSchedaTecnica from './assets/vetro/georgia-q-scheda-tecnica.pdf';
 import pdfGridIstruzioniMontaggio from './assets/vetro/grid-istruzioni-montaggio.pdf';
@@ -3029,6 +3033,38 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 110, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Chiudiporta a pavimento BTS 75 V',
+    // dormakaba BTS 75 V, primo articolo di questo fornitore in catalogo.
+    // L'opuscolo tecnico copre sia il BTS 80 sia il BTS 75 V: la scheda
+    // allegata e' quella, i dati qui sotto sono solo della colonna 75 V.
+    // Noi teniamo una sola esecuzione, quella con blocco costante a 90'.
+    descrizione: 'Chiudiporta a pavimento universale secondo EN 1154, con il corpo incassato nel pavimento e a vista solo la piastra di copertura: niente braccio né gruppo sopra la porta. Una sola esecuzione serve porte DIN a sinistra, DIN a destra e a vento, perché il verso si imposta al montaggio. Regge porte fino a 120kg di peso e 1100mm di larghezza, con forza di chiusura regolabile in modo continuo nella gamma EN 1–4. La velocità di chiusura si registra tramite valvola su due campi indipendenti, da 175° a 15° e da 15° a 0°, così si può rallentare il solo tratto finale senza toccare il resto della corsa. L\'apertura ammortizzata meccanica entra in funzione da circa 70° e protegge muro e porta dalle aperture violente. Questa esecuzione monta il blocco costante a 90°, che tiene la porta ferma in apertura e che per contro ne esclude l\'impiego su porte tagliafuoco e tagliafumo. Corpo da 285×82×50mm, peso 3kg. Fornito completo di piastra di copertura e accessori. Prodotto da dormakaba.',
+    materiale: 'Acciaio',
+    dimensioni: 'Corpo 285×82×50mm · larghezza porta max 1100mm · peso porta max 120kg · forza di chiusura EN 1–4 · peso 3kg',
+    fornitore: 'dormakaba', fornitoreLogo: dormakabaLogo,
+    scheda: pdfBts75vSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Forza regolabile EN 1–4', testo: 'Non è a forza fissa: la chiusura si tara in modo continuo fra EN 1 ed EN 4, quindi lo stesso chiudiporta copre porte molto diverse e si regola in opera.' },
+      { titolo: 'Destra, sinistra e porte a vento', testo: 'L\'esecuzione è una sola e va bene per porte DIN a sinistra, DIN a destra e a vento: non serve ordinare la versione per il verso giusto.' },
+      { titolo: 'Due campi di velocità indipendenti', testo: 'La chiusura si regola separatamente da 175° a 15° e da 15° a 0°: si può rallentare solo l\'ultimo tratto, vicino alla battuta, lasciando più rapido il resto della corsa.' },
+      { titolo: 'Blocco costante a 90°', testo: 'Questa esecuzione tiene la porta aperta ferma a 90°. Il blocco costante però esclude l\'impiego su porte tagliafuoco e tagliafumo: lì serve la versione senza blocco.' },
+      { titolo: 'Apertura ammortizzata', testo: 'Da circa 70° di apertura interviene l\'ammortizzatore meccanico, che frena la porta e protegge il muro quando qualcuno la spalanca.' },
+      { titolo: 'Sparisce nel pavimento', testo: 'Il corpo va annegato nella scatola a cementare e resta in vista solo la piastra di copertura, fissata al chiudiporta e non alla scatola.' },
+      { titolo: 'Distanza dal pavimento regolabile', testo: 'Gli assi d\'innesto sono sostituibili anche in un secondo momento, con prolunghe da 5 a 50mm: utile su porte con soglia, moquette o pavimenti rialzati.' },
+    ],
+    // Il chiudiporta sta sotto il pavimento e la finitura riguarda solo la
+    // piastra di copertura, che qui arriva gia' nel kit: non c'e' una scelta
+    // da offrire, quindi la colonna finitura resta nascosta.
+    senzaFinitura: true,
+    immagini: {
+      'Unica': [bts75vRender],
+    },
+    varianti: [
+      { codice: '61801201', finitura: 'Unica' },
+    ],
+  },
+  {
     id: 45, categoria: '03', sottocategoria: 'cerniere',
     nome: 'Cerniera a braccio per porta in vetro Gliss',
     descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
@@ -3143,6 +3179,7 @@ const SCHEDA_IMG_VETRO = {
   106: schCasaNylon,
   107: schGxlNylon,
   109: schPolyMaxHighTackExpressBiadesivo,
+  110: schBts75v,
 };
 
 /* Un articolo può esistere in materiali diversi a parità di finitura (es. la
@@ -3197,6 +3234,7 @@ const PAROLE_CHIAVE_VETRO = {
   107: 'GX-L Nylon GXL ancorante prolungato multifunzione',
   108: 'nastro biadesivo doppio adesivo specchi specchio schiuma acrilica Hafele',
   109: 'nastro biadesivo doppio adesivo Poly Max High Tack Express universale senza forare',
+  110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
