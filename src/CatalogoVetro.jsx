@@ -189,6 +189,10 @@ import gfs020Foto from './assets/vetro/prodotti/gfs020-foto.jpg';
 import gfs020Misure from './assets/vetro/prodotti/gfs020-misure.jpg';
 import gfs010Foto from './assets/vetro/prodotti/gfs010-foto.jpg';
 import gfs010Misure from './assets/vetro/prodotti/gfs010-misure.jpg';
+import pilettaGfs010Foto from './assets/vetro/prodotti/piletta-gfs010-foto.jpg';
+import pilettaGfs010Misure from './assets/vetro/prodotti/piletta-gfs010-misure.jpg';
+import pilettaGfs117pFoto from './assets/vetro/prodotti/piletta-gfs117p-foto.jpg';
+import pilettaGfs117pMisure from './assets/vetro/prodotti/piletta-gfs117p-misure.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -3098,7 +3102,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'GFS01001810', finitura: 'Acciaio satinato' },
     ],
-    facoltativi: [110, 111],
+    facoltativi: [110, 111, 113, 114],
   },
   {
     id: 111, categoria: '03', sottocategoria: 'chiudiporta',
@@ -3124,6 +3128,59 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 113, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piletta a pavimento per cerniera GFS 010',
+    // L'alternativa al chiudiporta incassato: la porta gira e basta,
+    // niente richiusura. Si incassa nel pavimento e fa da perno alla
+    // cerniera bassa GFS 010. Niente scheda tecnica: quote e limiti
+    // vengono dalla pagina di catalogo, il cui disegno e' la seconda
+    // immagine. GFS la fa anche lucida, nero opaco e oro lucido.
+    descrizione: 'Piletta a pavimento che fa da perno alla cerniera bassa GFS 010, da usare quando la porta non monta un chiudiporta incassato: si annega nel pavimento e l\'anta ruota su di essa, ma non si richiude da sola. Acciaio inox AISI 304, con il piattello a vista da Ø51mm e il corpo incassato da Ø20mm, profondo 23mm. Per porte fino a 80kg di peso e 1100mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piattello Ø51mm · corpo incassato Ø20mm, profondità 23mm · peso porta max 80kg · larghezza porta max 1100mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Al posto del chiudiporta', testo: 'Si usa quando il chiudiporta incassato non si vuole o non serve: la porta gira sul perno della piletta, ma va richiusa a mano.' },
+      { titolo: 'Va sotto la cerniera bassa', testo: 'È il perno su cui si innesta la cerniera bassa GFS 010: le due si ordinano insieme, la trovi collegata qui sotto.' },
+      { titolo: 'Fino a 80kg e 1100mm', testo: 'Sono limiti più bassi di quelli della cerniera, che regge 100kg e 1200mm: con questa piletta è lei a fissare il tetto di peso e larghezza della porta.' },
+      { titolo: 'Incasso ridotto', testo: 'Nel pavimento serve una sede da Ø20mm profonda 23mm, molto meno di una scatola a cementare: si recupera anche dove il massetto è sottile.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [pilettaGfs010Foto, pilettaGfs010Misure],
+    },
+    varianti: [
+      { codice: 'E06H01002', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 114, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piletta a pavimento per forti portate GFS 117-P',
+    // La versione a piastra avvitata, per le ante pesanti: 150kg contro
+    // gli 80 della piletta tonda. Stessa funzione, stesso abbinamento
+    // con la cerniera bassa. Niente scheda tecnica: dati dalla pagina
+    // di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Piletta a pavimento con perno italiano per forti portate, da usare al posto del chiudiporta incassato quando l\'anta è pesante: la porta ruota sul perno e va richiusa a mano. Piastra in acciaio inox AISI 304 da 102×40mm con tre fori di fissaggio a vite, perno quadro di tipo italiano e boccola da Ø30mm sotto la piastra. Per porte fino a 150kg di peso e 1200mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra 102×40mm · perno quadro italiano · boccola Ø30mm · peso porta max 150kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Al posto del chiudiporta, sulle ante pesanti', testo: 'Come la piletta tonda serve a far girare la porta senza chiudiporta incassato, ma regge molto di più: 150kg contro 80. La porta comunque non si richiude da sola.' },
+      { titolo: 'Perno quadro italiano', testo: 'Monta il perno quadro di tipo italiano, quello su cui si innesta la cerniera bassa GFS 010: la trovi collegata qui sotto.' },
+      { titolo: 'Si avvita, non si incassa', testo: 'La piastra si fissa a vite sul pavimento con tre viti e sotto serve solo la sede per la boccola da Ø30mm: niente incasso profondo.' },
+      { titolo: 'Fino a 150kg e 1200mm', testo: 'È la soluzione per le ante più impegnative: qui il limite non lo pone più la piletta, ma la cerniera bassa, che si ferma a 100kg.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [pilettaGfs117pFoto, pilettaGfs117pMisure],
+    },
+    varianti: [
+      { codice: 'GFS11701810', finitura: 'Acciaio satinato' },
     ],
     facoltativi: [112],
   },
@@ -3300,6 +3357,8 @@ const PAROLE_CHIAVE_VETRO = {
   110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba DORMA porte a doppia azione a vento',
   111: 'GFS 020 GFS020 cerniera alta superiore perno morsetto porta in vetro battente',
   112: 'GFS 010 GFS010 cerniera bassa inferiore morsetto perno porta in vetro battente',
+  113: 'piletta a pavimento perno pivot per cerniera bassa GFS 010 senza chiudiporta',
+  114: 'GFS 117-P GFS117P piletta a pavimento perno italiano quadro forti portate porte pesanti',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
