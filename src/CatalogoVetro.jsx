@@ -183,6 +183,8 @@ import meroniLogo from './assets/vetro/meroni-logo.png';
 import schFs890 from './assets/vetro/schede/fs890-scheda.jpg';
 import dormakabaLogo from './assets/vetro/dormakaba-logo.png';
 import bts75vRender from './assets/vetro/prodotti/bts75v-render.jpg';
+import bts75vMeccanismo from './assets/vetro/prodotti/bts75v-meccanismo.jpg';
+import bts75vScatola from './assets/vetro/prodotti/bts75v-scatola.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -3059,7 +3061,7 @@ const PRODOTTI_VETRO = [
     // da offrire, quindi la colonna finitura resta nascosta.
     senzaFinitura: true,
     immagini: {
-      'Unica': [bts75vRender],
+      'Unica': [bts75vRender, bts75vMeccanismo, bts75vScatola],
     },
     varianti: [
       { codice: '61801201', finitura: 'Unica' },
