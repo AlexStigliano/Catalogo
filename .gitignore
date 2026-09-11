@@ -1,3 +1,6 @@
 node_modules
 dist
+# Cartella d'appoggio per servire la build in locale: contiene solo un
+# link simbolico Catalogo -> dist, usato per le verifiche col browser.
+dist_serve
 .DS_Store

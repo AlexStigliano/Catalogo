@@ -1,0 +1,4505 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid, PlayCircle } from 'lucide-react';
+import './Catalogo.css';
+import logo from './assets/logo-stigliano.png';
+import logoCover from './assets/logo-stigliano-cover.png';
+import fermavetroInox from './assets/vetro/prodotti/fermavetro-regolabile-inox-satinato.jpg';
+import fermavetroNero from './assets/vetro/prodotti/fermavetro-regolabile-nero-opaco.jpg';
+import fermavetroOro from './assets/vetro/prodotti/fermavetro-regolabile-oro.jpg';
+import fermavetroEsploso from './assets/vetro/prodotti/fermavetro-regolabile-esploso.jpg';
+import fermavetroSchedaImg from './assets/vetro/schede/fermavetro-regolabile-scheda.jpg';
+import asolaInox from './assets/vetro/prodotti/fermavetro-asola-inox-satinato.jpg';
+import asolaInoxFrontale from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-frontale.jpg';
+import asolaInoxVista2 from './assets/vetro/prodotti/fermavetro-asola-inox-satinato-vista2.jpg';
+import asolaOro from './assets/vetro/prodotti/fermavetro-asola-oro.jpg';
+import asolaNero from './assets/vetro/prodotti/fermavetro-asola-nero-opaco.jpg';
+import asolaSchedaImg from './assets/vetro/schede/fermavetro-asola-scheda.jpg';
+import fermavetro30SchedaImg from './assets/vetro/schede/fermavetro-30-scheda.jpg';
+import fermavetro30Inox from './assets/vetro/prodotti/fermavetro-30-inox-satinato.jpg';
+import fermavetro30Esploso from './assets/vetro/prodotti/fermavetro-30-esploso.jpg';
+import fermavetro30Vista2 from './assets/vetro/prodotti/fermavetro-30-vista2.jpg';
+import fermavetro30Frontale from './assets/vetro/prodotti/fermavetro-30-frontale.jpg';
+import inoxdesignLogo from './assets/vetro/inoxdesign-logo.png';
+import fissaggioInox from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato.jpg';
+import fissaggioInoxFrontale from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato-frontale.jpg';
+import fissaggioInoxVista2 from './assets/vetro/prodotti/fissaggio-puntuale-inox-satinato-vista2.jpg';
+import fissaggioEsploso from './assets/vetro/prodotti/fissaggio-puntuale-esploso.jpg';
+import fissaggioSchedaImg from './assets/vetro/schede/fissaggio-puntuale-scheda.jpg';
+import fissaggioNero from './assets/vetro/prodotti/fissaggio-puntuale-nero-opaco.jpg';
+import fissaggioNeroVista2 from './assets/vetro/prodotti/fissaggio-puntuale-nero-opaco-vista2.jpg';
+import fermavetro230SchedaImg from './assets/vetro/schede/fermavetro-230-scheda.jpg';
+import fermavetro230Inox from './assets/vetro/prodotti/fermavetro-230-inox-satinato.jpg';
+import fermavetro230Vista2 from './assets/vetro/prodotti/fermavetro-230-vista2.jpg';
+import fermavetro230Frontale from './assets/vetro/prodotti/fermavetro-230-frontale.jpg';
+import fermavetro220SchedaImg from './assets/vetro/schede/fermavetro-220-scheda.jpg';
+import fermavetro220Inox from './assets/vetro/prodotti/fermavetro-220-inox-satinato.jpg';
+import fermavetro220Esploso from './assets/vetro/prodotti/fermavetro-220-esploso.jpg';
+import fermavetro220Vista2 from './assets/vetro/prodotti/fermavetro-220-vista2.jpg';
+import fimetLogo from './assets/fimet-logo.png';
+import arizonaInox from './assets/vetro/prodotti/arizona-inox-satinato.jpg';
+import arizonaNero from './assets/vetro/prodotti/arizona-nero-opaco.jpg';
+import arizonaPvd from './assets/vetro/prodotti/arizona-pvd-giallo-lucido.jpg';
+import schArizona from './assets/vetro/schede/arizona-scheda.jpg';
+import arizonaInclinatoInox from './assets/vetro/prodotti/arizona-inclinato-inox-satinato.jpg';
+import schArizonaInclinato from './assets/vetro/schede/arizona-inclinato-scheda.jpg';
+import arkansasQInox from './assets/vetro/prodotti/arkansas-q-inox-satinato.jpg';
+import schArkansasQ from './assets/vetro/schede/arkansas-q-scheda.jpg';
+import californiaInox from './assets/vetro/prodotti/california-inox-satinato.jpg';
+import schCalifornia from './assets/vetro/schede/california-scheda.jpg';
+import coloradoInox from './assets/vetro/prodotti/colorado-inox-satinato.jpg';
+import coloradoNero from './assets/vetro/prodotti/colorado-nero-opaco.jpg';
+import schColorado from './assets/vetro/schede/colorado-scheda.jpg';
+import georgiaQInox from './assets/vetro/prodotti/georgia-q-inox-satinato.jpg';
+import georgiaQNero from './assets/vetro/prodotti/georgia-q-nero-opaco.jpg';
+import georgiaQPvd from './assets/vetro/prodotti/georgia-q-pvd-lucido.jpg';
+import schGeorgiaQ from './assets/vetro/schede/georgia-q-scheda.jpg';
+import cubaBicolore from './assets/vetro/prodotti/cuba-bicolore-inox.jpg';
+import schCuba from './assets/vetro/schede/cuba-scheda.jpg';
+import minnesotaInox from './assets/vetro/prodotti/minnesota-inox-satinato.jpg';
+import schMinnesota from './assets/vetro/schede/minnesota-scheda.jpg';
+import nevadaInox from './assets/vetro/prodotti/nevada-inox-satinato.jpg';
+import schNevada from './assets/vetro/schede/nevada-scheda.jpg';
+import nevadaQInox from './assets/vetro/prodotti/nevada-q-inox-satinato.jpg';
+import nevadaQNero from './assets/vetro/prodotti/nevada-q-nero-opaco.jpg';
+import schNevadaQ from './assets/vetro/schede/nevada-q-scheda.jpg';
+import oregonInox from './assets/vetro/prodotti/oregon-inox-satinato.jpg';
+import schOregon from './assets/vetro/schede/oregon-scheda.jpg';
+import texasInox from './assets/vetro/prodotti/texas-inox-satinato.jpg';
+import texasNero from './assets/vetro/prodotti/texas-nero-opaco.jpg';
+import schTexas from './assets/vetro/schede/texas-scheda.jpg';
+import compasLogo from './assets/vetro/compas-logo.svg';
+import ra462Foto from './assets/vetro/prodotti/ra462-foto.jpg';
+import ra462NeroFoto from './assets/vetro/prodotti/ra462-nero-foto.jpg';
+import ra462Render from './assets/vetro/prodotti/ra462-render.jpg';
+import ra462QuoteFronte from './assets/vetro/prodotti/ra462-quote-fronte.jpg';
+import ra462QuoteLato from './assets/vetro/prodotti/ra462-quote-lato.jpg';
+import schRa462 from './assets/vetro/schede/ra462-scheda.jpg';
+import tg1000Render from './assets/vetro/prodotti/tg1000-render.jpg';
+import tg1000Sezione from './assets/vetro/prodotti/tg1000-sezione.jpg';
+import tg1000Ambiente from './assets/vetro/prodotti/tg1000-ambiente.jpg';
+import schTg1000 from './assets/vetro/schede/tg1000-scheda.jpg';
+import tg1004Tappo from './assets/vetro/prodotti/tg1004-tappo.jpg';
+import schTg1004 from './assets/vetro/schede/tg1004-scheda.jpg';
+import tg409Chiave from './assets/vetro/prodotti/tg409-chiave.jpg';
+import tg409Uso from './assets/vetro/prodotti/tg409-uso.jpg';
+import tg311Render from './assets/vetro/prodotti/tg311-render.jpg';
+import tg311Sezione from './assets/vetro/prodotti/tg311-sezione.jpg';
+import tg311Foto from './assets/vetro/prodotti/tg311-foto.jpg';
+import tgs500Foto from './assets/vetro/prodotti/tgs500-foto.jpg';
+import tgs500Sezione from './assets/vetro/prodotti/tgs500-sezione.jpg';
+import tgs500Quote from './assets/vetro/prodotti/tgs500-quote.jpg';
+import tgs500Fori from './assets/vetro/prodotti/tgs500-fori.jpg';
+import schTgs500 from './assets/vetro/schede/tgs500-scheda.jpg';
+import tgs502Tappo from './assets/vetro/prodotti/tgs502-tappo.jpg';
+import schTgs502 from './assets/vetro/schede/tgs502-scheda.jpg';
+import schDist5 from './assets/vetro/schede/distanziale-052-5mm-scheda.jpg';
+import schDist10 from './assets/vetro/schede/distanziale-052-10mm-scheda.jpg';
+import schDist20 from './assets/vetro/schede/distanziale-052-20mm-scheda.jpg';
+import schDist30 from './assets/vetro/schede/distanziale-052-30mm-scheda.jpg';
+import schDist40 from './assets/vetro/schede/distanziale-052-40mm-scheda.jpg';
+import schDist50 from './assets/vetro/schede/distanziale-052-50mm-scheda.jpg';
+import schTenditore1000 from './assets/vetro/schede/tenditore-010-1000mm-scheda.jpg';
+import schTenditore830 from './assets/vetro/schede/tenditore-010-830mm-scheda.jpg';
+import schTenditore910 from './assets/vetro/schede/tenditore-010-910mm-scheda.jpg';
+import schTenditore1150 from './assets/vetro/schede/tenditore-010-1150mm-scheda.jpg';
+import schTenditore1300 from './assets/vetro/schede/tenditore-010-1300mm-scheda.jpg';
+import fissaggioMuro100Vista1 from './assets/vetro/prodotti/fissaggio-muro-100-vista1.jpg';
+import fissaggioMuro100Vista2 from './assets/vetro/prodotti/fissaggio-muro-100-vista2.jpg';
+import fissaggioMuro100Esploso from './assets/vetro/prodotti/fissaggio-muro-100-esploso.jpg';
+import schFissaggioMuro100 from './assets/vetro/schede/fissaggio-muro-100-scheda.jpg';
+import schLamieraU from './assets/vetro/schede/lamiera-u-1676-3000-scheda.jpg';
+import lamieraURender from './assets/vetro/prodotti/lamiera-u-1676-3000-render.jpg';
+import lamieraUSezione from './assets/vetro/prodotti/lamiera-u-1676-3000-sezione.jpg';
+import schMorsettoM032 from './assets/vetro/schede/morsetto-m032-scheda.jpg';
+import morsettoM032Vista1 from './assets/vetro/prodotti/morsetto-m032-vista1.jpg';
+import morsettoM032Vista2 from './assets/vetro/prodotti/morsetto-m032-vista2.jpg';
+import morsettoM032Sezione from './assets/vetro/prodotti/morsetto-m032-sezione.jpg';
+import morsettoM032Esploso from './assets/vetro/prodotti/morsetto-m032-esploso.jpg';
+import morsettoM032NeroVista1 from './assets/vetro/prodotti/morsetto-m032-nero-vista1.jpg';
+import morsettoM032NeroVista2 from './assets/vetro/prodotti/morsetto-m032-nero-vista2.jpg';
+import morsettoM032NeroSezione from './assets/vetro/prodotti/morsetto-m032-nero-sezione.jpg';
+import morsettoM032NeroEsploso from './assets/vetro/prodotti/morsetto-m032-nero-esploso.jpg';
+import schMorsettoM042 from './assets/vetro/schede/morsetto-m042-scheda.jpg';
+import morsettoM042Vista1 from './assets/vetro/prodotti/morsetto-m042-vista1.jpg';
+import morsettoM042Vista2 from './assets/vetro/prodotti/morsetto-m042-vista2.jpg';
+import morsettoM042Sezione from './assets/vetro/prodotti/morsetto-m042-sezione.jpg';
+import morsettoM042Esploso from './assets/vetro/prodotti/morsetto-m042-esploso.jpg';
+import morsettoM042NeroVista1 from './assets/vetro/prodotti/morsetto-m042-nero-vista1.jpg';
+import morsettoM042NeroVista2 from './assets/vetro/prodotti/morsetto-m042-nero-vista2.jpg';
+import morsettoM042NeroSezione from './assets/vetro/prodotti/morsetto-m042-nero-sezione.jpg';
+import morsettoM042NeroEsploso from './assets/vetro/prodotti/morsetto-m042-nero-esploso.jpg';
+import schSupportoTondoIn610 from './assets/vetro/schede/supporto-tondo-pavimento-in610-scheda.jpg';
+import supportoTondoIn610Vista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-vista1.jpg';
+import supportoTondoIn610Vista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-vista2.jpg';
+import supportoTondoIn610Esploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-esploso.jpg';
+import schSupportoQuadroIn610 from './assets/vetro/schede/supporto-quadro-pavimento-in610-scheda.jpg';
+import supportoQuadroIn610Vista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista1.jpg';
+import supportoQuadroIn610Vista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-vista2.jpg';
+import supportoQuadroIn610Esploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-esploso.jpg';
+import schSupportoTondoIn610015 from './assets/vetro/schede/supporto-tondo-pavimento-in610-015-scheda.jpg';
+import supportoTondoIn610015SatVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista1.jpg';
+import supportoTondoIn610015SatVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-vista2.jpg';
+import supportoTondoIn610015SatEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-sat-esploso.jpg';
+import supportoTondoIn610015LucVista1 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista1.jpg';
+import supportoTondoIn610015LucVista2 from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg';
+import supportoTondoIn610015LucEsploso from './assets/vetro/prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg';
+import schSupportoQuadroIn610020 from './assets/vetro/schede/supporto-quadro-pavimento-in610-020-scheda.jpg';
+import schMorsettoM032042 from './assets/vetro/schede/morsetto-m032-042-scheda.jpg';
+import schMorsettoM042042 from './assets/vetro/schede/morsetto-m042-042-scheda.jpg';
+import schMorsettoM062042 from './assets/vetro/schede/morsetto-m062-042-scheda.jpg';
+import morsettoM062042Vista1 from './assets/vetro/prodotti/morsetto-m062-042-vista1.jpg';
+import morsettoM062042Vista2 from './assets/vetro/prodotti/morsetto-m062-042-vista2.jpg';
+import morsettoM062042Sezione from './assets/vetro/prodotti/morsetto-m062-042-sezione.jpg';
+import morsettoM062042Esploso from './assets/vetro/prodotti/morsetto-m062-042-esploso.jpg';
+import morsettoM042042Vista1 from './assets/vetro/prodotti/morsetto-m042-042-vista1.jpg';
+import morsettoM042042Vista2 from './assets/vetro/prodotti/morsetto-m042-042-vista2.jpg';
+import morsettoM042042Sezione from './assets/vetro/prodotti/morsetto-m042-042-sezione.jpg';
+import morsettoM042042Esploso from './assets/vetro/prodotti/morsetto-m042-042-esploso.jpg';
+import morsettoM032042Vista1 from './assets/vetro/prodotti/morsetto-m032-042-vista1.jpg';
+import morsettoM032042Vista2 from './assets/vetro/prodotti/morsetto-m032-042-vista2.jpg';
+import morsettoM032042Sezione from './assets/vetro/prodotti/morsetto-m032-042-sezione.jpg';
+import morsettoM032042Esploso from './assets/vetro/prodotti/morsetto-m032-042-esploso.jpg';
+import schMorsettoM012 from './assets/vetro/schede/morsetto-m012-scheda.jpg';
+import morsettoM012Vista1 from './assets/vetro/prodotti/morsetto-m012-vista1.jpg';
+import morsettoM012Vista2 from './assets/vetro/prodotti/morsetto-m012-vista2.jpg';
+import morsettoM012Sezione from './assets/vetro/prodotti/morsetto-m012-sezione.jpg';
+import morsettoM012Esploso from './assets/vetro/prodotti/morsetto-m012-esploso.jpg';
+import schMorsettoM022 from './assets/vetro/schede/morsetto-m022-scheda.jpg';
+import morsettoM022Vista1 from './assets/vetro/prodotti/morsetto-m022-vista1.jpg';
+import morsettoM022Vista2 from './assets/vetro/prodotti/morsetto-m022-vista2.jpg';
+import morsettoM022Sezione from './assets/vetro/prodotti/morsetto-m022-sezione.jpg';
+import morsettoM022Esploso from './assets/vetro/prodotti/morsetto-m022-esploso.jpg';
+import schMorsettoM062 from './assets/vetro/schede/morsetto-m062-scheda.jpg';
+import schMorsettoM092 from './assets/vetro/schede/morsetto-m092-scheda.jpg';
+import morsettoM092Vista1 from './assets/vetro/prodotti/morsetto-m092-vista1.jpg';
+import morsettoM092Vista2 from './assets/vetro/prodotti/morsetto-m092-vista2.jpg';
+import morsettoM092Sezione from './assets/vetro/prodotti/morsetto-m092-sezione.jpg';
+import morsettoM092Esploso from './assets/vetro/prodotti/morsetto-m092-esploso.jpg';
+import schFs880 from './assets/vetro/schede/fs880-scheda.jpg';
+import fs880Render from './assets/vetro/prodotti/fs880-render.jpg';
+import fs880Ambiente from './assets/vetro/prodotti/fs880-ambiente.jpg';
+import fs880NeroRender from './assets/vetro/prodotti/fs880-nero-render.jpg';
+import meroniLogo from './assets/vetro/meroni-logo.png';
+import schFs890 from './assets/vetro/schede/fs890-scheda.jpg';
+import dormakabaLogo from './assets/vetro/dormakaba-logo.png';
+import bts75vRender from './assets/vetro/prodotti/bts75v-render.jpg';
+import bts75vMeccanismo from './assets/vetro/prodotti/bts75v-meccanismo.jpg';
+import bts75vScatola from './assets/vetro/prodotti/bts75v-scatola.jpg';
+import gfs020Foto from './assets/vetro/prodotti/gfs020-foto.jpg';
+import gfs020Misure from './assets/vetro/prodotti/gfs020-misure.jpg';
+import gfs010Foto from './assets/vetro/prodotti/gfs010-foto.jpg';
+import gfs010Misure from './assets/vetro/prodotti/gfs010-misure.jpg';
+import pilettaGfs010Foto from './assets/vetro/prodotti/piletta-gfs010-foto.jpg';
+import pilettaGfs010Misure from './assets/vetro/prodotti/piletta-gfs010-misure.jpg';
+import pilettaGfs117pFoto from './assets/vetro/prodotti/piletta-gfs117p-foto.jpg';
+import pilettaGfs117pMisure from './assets/vetro/prodotti/piletta-gfs117p-misure.jpg';
+import piastrinaAltaFoto from './assets/vetro/prodotti/piastrina-alta-foto.jpg';
+import piastrinaAltaMisure from './assets/vetro/prodotti/piastrina-alta-misure.jpg';
+import gfs060Foto from './assets/vetro/prodotti/gfs060-foto.jpg';
+import gfs060Misure from './assets/vetro/prodotti/gfs060-misure.jpg';
+import gfs040Foto from './assets/vetro/prodotti/gfs040-foto.jpg';
+import gfs040Misure from './assets/vetro/prodotti/gfs040-misure.jpg';
+import mab7305Render from './assets/vetro/prodotti/mab7305-render.jpg';
+import mab7305Cassetta from './assets/vetro/prodotti/mab7305-cassetta.jpg';
+import mab7305Meccanismo from './assets/vetro/prodotti/mab7305-meccanismo.jpg';
+import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
+import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
+import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
+import schGaha1st from './assets/vetro/schede/gaha1st-scheda.jpg';
+import gaha1stRender from './assets/vetro/prodotti/gaha1st-render.jpg';
+import gaha1stAmbiente from './assets/vetro/prodotti/gaha1st-ambiente.jpg';
+import gaha1stNeroRender from './assets/vetro/prodotti/gaha1st-nero-render.jpg';
+import schAirhinge from './assets/vetro/schede/airhinge-scheda.jpg';
+import airhingeNeroRender from './assets/vetro/prodotti/airhinge-nero-render.jpg';
+import airhingeNeroAmbiente from './assets/vetro/prodotti/airhinge-nero-ambiente.jpg';
+import airhingeArgentoAmbiente from './assets/vetro/prodotti/airhinge-argento-ambiente.jpg';
+import airhingeArgentoRender from './assets/vetro/prodotti/airhinge-argento-render.jpg';
+import airhandleArgentoRender from './assets/vetro/prodotti/airhandle-argento-render.jpg';
+import airhandleArgentoVetro from './assets/vetro/prodotti/airhandle-argento-vetro.jpg';
+import airhandleNeroRender from './assets/vetro/prodotti/airhandle-nero-render.jpg';
+import airhandleNeroVetro from './assets/vetro/prodotti/airhandle-nero-vetro.jpg';
+import schAirhandle from './assets/vetro/schede/airhandle-scheda.jpg';
+import morsettoM062Vista1 from './assets/vetro/prodotti/morsetto-m062-vista1.jpg';
+import morsettoM062Vista2 from './assets/vetro/prodotti/morsetto-m062-vista2.jpg';
+import morsettoM062Sezione from './assets/vetro/prodotti/morsetto-m062-sezione.jpg';
+import morsettoM062Esploso from './assets/vetro/prodotti/morsetto-m062-esploso.jpg';
+import supportoQuadroIn610020SatVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista1.jpg';
+import supportoQuadroIn610020SatVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-vista2.jpg';
+import supportoQuadroIn610020SatEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-sat-esploso.jpg';
+import supportoQuadroIn610020LucVista1 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-vista1.jpg';
+import supportoQuadroIn610020LucVista2 from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-vista2.jpg';
+import supportoQuadroIn610020LucEsploso from './assets/vetro/prodotti/supporto-quadro-pavimento-in610-020-luc-esploso.jpg';
+import tenditoreVista1 from './assets/vetro/prodotti/tenditore-010-vista1.jpg';
+import tenditoreVista2 from './assets/vetro/prodotti/tenditore-010-vista2.jpg';
+import tenditoreEsploso from './assets/vetro/prodotti/tenditore-010-esploso.jpg';
+import tenditoreAmbiente from './assets/vetro/prodotti/tenditore-010-ambiente.jpg';
+import tenditoreSchema from './assets/vetro/prodotti/tenditore-010-schema-dimensioni.jpg';
+import distanzialeVista1 from './assets/vetro/prodotti/distanziale-052-vista1.jpg';
+import distanzialeVista2 from './assets/vetro/prodotti/distanziale-052-vista2.jpg';
+import distanzialeVista3 from './assets/vetro/prodotti/distanziale-052-vista3.jpg';
+import tg203Profilo from './assets/vetro/prodotti/tg203-profilo.jpg';
+import schTg203 from './assets/vetro/schede/tg203-scheda.jpg';
+import tg205Tappo from './assets/vetro/prodotti/tg205-tappo.jpg';
+import schTg205 from './assets/vetro/schede/tg205-scheda.jpg';
+import tgs50Render from './assets/vetro/prodotti/tgs50-render.jpg';
+import tgs50Sezione from './assets/vetro/prodotti/tgs50-sezione.jpg';
+import tgs50Quote from './assets/vetro/prodotti/tgs50-quote.jpg';
+import schTgs50 from './assets/vetro/schede/tgs50-scheda.jpg';
+import tgs52Tappo from './assets/vetro/prodotti/tgs52-tappo.jpg';
+import schTgs52 from './assets/vetro/schede/tgs52-scheda.jpg';
+import tgs53Chiave from './assets/vetro/prodotti/tgs53-chiave.jpg';
+import tg200Render from './assets/vetro/prodotti/tg200-render.jpg';
+import tg200Sezione from './assets/vetro/prodotti/tg200-sezione.jpg';
+import tg200Fori from './assets/vetro/prodotti/tg200-fori.jpg';
+import schTg200 from './assets/vetro/schede/tg200-scheda.jpg';
+import tg202Tappo from './assets/vetro/prodotti/tg202-tappo.jpg';
+import tg202Quote from './assets/vetro/prodotti/tg202-quote.jpg';
+import schTg202 from './assets/vetro/schede/tg202-scheda.jpg';
+import dallagoLogo from './assets/vetro/dallago-logo.png';
+import morsettoPiccoloCromoLucido from './assets/vetro/prodotti/morsetto-piccolo-cromo-lucido.jpg';
+import schMorsettoPiccolo from './assets/vetro/schede/morsetto-piccolo-scheda.jpg';
+import morsettoGrandeCromoLucido from './assets/vetro/prodotti/morsetto-grande-cromo-lucido.jpg';
+import schMorsettoGrande from './assets/vetro/schede/morsetto-grande-scheda.jpg';
+import hoppeLogo from './assets/hoppe-logo.png';
+import parisArgentoOpaco from './assets/vetro/prodotti/paris-argento-opaco.jpg';
+import schParis from './assets/vetro/schede/paris-scheda.jpg';
+import parisNeroOpaco from './assets/vetro/prodotti/paris-nero-opaco.jpg';
+import schParisNero from './assets/vetro/schede/paris-nero-scheda.jpg';
+import incontroHcsSbaFoto from './assets/vetro/prodotti/incontro-hcs-sba-foto.jpg';
+import incontroHcsSbaQuote from './assets/vetro/prodotti/incontro-hcs-sba-quote.jpg';
+import gfsLogo from './assets/vetro/gfs-logo.png';
+import e07CromoLucido from './assets/vetro/prodotti/e07-cromo-lucido.jpg';
+import e07Quote from './assets/vetro/prodotti/e07-quote.jpg';
+import e07LavorazioneVetro from './assets/vetro/prodotti/e07-lavorazione-vetro.jpg';
+import ternoLogo from './assets/vetro/terno-scorrevoli-logo.png';
+import magic2VetroArgento from './assets/vetro/prodotti/magic2-vetro-argento.jpg';
+import magic2VetroAmbienteUfficio from './assets/vetro/prodotti/magic2-vetro-ambiente-ufficio.jpg';
+import magic2VetroAmbienteBoutique from './assets/vetro/prodotti/magic2-vetro-ambiente-boutique.jpg';
+import magic2FrameNeroAperta from './assets/vetro/prodotti/magic2-frame-nero-aperta.jpg';
+import magic2FrameNeroChiusa from './assets/vetro/prodotti/magic2-frame-nero-chiusa.jpg';
+import magic2FrameNero from './assets/vetro/prodotti/magic2-frame-nero.jpg';
+import schMagic2Frame from './assets/vetro/schede/magic2-frame-scheda.jpg';
+import universalAmbienteSoggiorno from './assets/vetro/prodotti/universal-ambiente-soggiorno.jpg';
+import universalAmbienteCabina from './assets/vetro/prodotti/universal-ambiente-cabina.jpg';
+import universalDettaglio from './assets/vetro/prodotti/universal-dettaglio.jpg';
+import schUniversal from './assets/vetro/schede/universal-scheda.jpg';
+import solovetroAmbienteUfficio from './assets/vetro/prodotti/solovetro-ambiente-ufficio.jpg';
+import solovetroDettaglio from './assets/vetro/prodotti/solovetro-dettaglio.jpg';
+import solovetroEsploso from './assets/vetro/prodotti/solovetro-esploso.jpg';
+import schSolovetro from './assets/vetro/schede/solovetro-scheda.jpg';
+import solovetroLightAmbienteCucina from './assets/vetro/prodotti/solovetro-light-ambiente-cucina.jpg';
+import solovetroLightDettaglio from './assets/vetro/prodotti/solovetro-light-dettaglio.jpg';
+import solovetroLightEsploso from './assets/vetro/prodotti/solovetro-light-esploso.jpg';
+import schSolovetroLight from './assets/vetro/schede/solovetro-light-scheda.jpg';
+import vetro40AmbientePorteLegno from './assets/vetro/prodotti/vetro40-ambiente-porte-legno.jpg';
+import vetro40Dettaglio from './assets/vetro/prodotti/vetro40-dettaglio.jpg';
+import vetro40Esploso from './assets/vetro/prodotti/vetro40-esploso.jpg';
+import schVetro40 from './assets/vetro/schede/vetro40-scheda.jpg';
+import vetro40dragAmbienteUfficio from './assets/vetro/prodotti/vetro40drag-ambiente-ufficio.jpg';
+import vetro40dragDettaglio from './assets/vetro/prodotti/vetro40drag-dettaglio.jpg';
+import vetro40dragEsploso from './assets/vetro/prodotti/vetro40drag-esploso.jpg';
+import schVetro40drag from './assets/vetro/schede/vetro40drag-scheda.jpg';
+import vetrofissoAmbienteUfficio from './assets/vetro/prodotti/vetrofisso-ambiente-ufficio.jpg';
+import vetrofissoDettaglio from './assets/vetro/prodotti/vetrofisso-dettaglio.jpg';
+import vetrofissoEsploso from './assets/vetro/prodotti/vetrofisso-esploso.jpg';
+import schVetrofisso from './assets/vetro/schede/vetrofisso-scheda.jpg';
+import gridAmbienteCabina from './assets/vetro/prodotti/grid-ambiente-cabina-armadio.jpg';
+import gridPortaUniversal from './assets/vetro/prodotti/grid-porta-universal.jpg';
+import gridComponenti from './assets/vetro/prodotti/grid-componenti.jpg';
+import schGrid from './assets/vetro/schede/grid-scheda.jpg';
+import clearAmbienteBagno from './assets/vetro/prodotti/clear-ambiente-bagno.jpg';
+import clearDettaglio from './assets/vetro/prodotti/clear-dettaglio.jpg';
+import clearEsploso from './assets/vetro/prodotti/clear-esploso.jpg';
+import schClear from './assets/vetro/schede/clear-scheda.jpg';
+import trafiloLogo from './assets/vetro/trafilo-logo.png';
+import guarnizionePalloncinoQuote from './assets/vetro/prodotti/guarnizione-palloncino-quote.jpg';
+import guarnizioneDoppiaPinnaQuote from './assets/vetro/prodotti/guarnizione-doppia-pinna-quote.jpg';
+import guarnizionePinnaScorrevoleQuote from './assets/vetro/prodotti/guarnizione-pinna-scorrevole-quote.jpg';
+import guarnizionePinnaBattenteQuote from './assets/vetro/prodotti/guarnizione-pinna-battente-quote.jpg';
+import guarnizioneCalamitataFrontaleQuote from './assets/vetro/prodotti/guarnizione-calamitata-frontale-quote.jpg';
+import guarnizioneCalamitata45Quote from './assets/vetro/prodotti/guarnizione-calamitata-45-quote.jpg';
+import guarnizioneCalamitata45InvQuote from './assets/vetro/prodotti/guarnizione-calamitata-45-inv-quote.jpg';
+import soudalLogo from './assets/vetro/soudal-logo.png';
+import silirubAcCartuccia from './assets/vetro/prodotti/silirub-ac-cartuccia.jpg';
+import schSilirubAc from './assets/vetro/schede/silirub-ac-scheda.jpg';
+import silirubN2Cartuccia from './assets/vetro/prodotti/silirub-n2-cartuccia.jpg';
+import schSilirubN2 from './assets/vetro/schede/silirub-n2-scheda.jpg';
+import schSoudasil400 from './assets/vetro/schede/soudasil400-scheda.jpg';
+import zucchiniLogo from './assets/vetro/zucchini-logo.png';
+import edilacrilCartuccia from './assets/vetro/prodotti/edilacril-cartuccia.jpg';
+import schEdilacril from './assets/vetro/schede/edilacril-scheda.jpg';
+import alcosilCartuccia from './assets/vetro/prodotti/alcosil-cartuccia.jpg';
+import schAlcosil from './assets/vetro/schede/alcosil-scheda.jpg';
+import msSuperCartuccia from './assets/vetro/prodotti/ms-super-cartuccia.jpg';
+import schMsSuper from './assets/vetro/schede/ms-super-scheda.jpg';
+import msSuperfastCartuccia from './assets/vetro/prodotti/ms-superfast-cartuccia.jpg';
+import schMsSuperfast from './assets/vetro/schede/ms-superfast-scheda.jpg';
+import msTechnoLightCartuccia from './assets/vetro/prodotti/ms-techno-light-cartuccia.jpg';
+import schMsTechnoLight from './assets/vetro/schede/ms-techno-light-scheda.jpg';
+import bostikLogo from './assets/vetro/bostik-logo.png';
+import polyMaxHighTackExpressCartuccia from './assets/vetro/prodotti/poly-max-high-tack-express-cartuccia.jpg';
+import schPolyMaxHighTackExpress from './assets/vetro/schede/poly-max-high-tack-express-scheda.jpg';
+import gbLogo from './assets/vetro/gb-logo.png';
+import shPro410Cartuccia from './assets/vetro/prodotti/sh-pro-410-cartuccia.jpg';
+import shPro300Cartuccia from './assets/vetro/prodotti/sh-pro-300-cartuccia.jpg';
+import schShProSuperHybrid from './assets/vetro/schede/sh-pro-super-hybrid-scheda.jpg';
+import fischerLogo from './assets/vetro/fischer-logo.png';
+import duopowerRender from './assets/vetro/prodotti/duopower-render.jpg';
+import duopowerSRender from './assets/vetro/prodotti/duopower-s-render.jpg';
+import schDuopower from './assets/vetro/schede/duopower-scheda.jpg';
+import duoxpandRender from './assets/vetro/prodotti/duoxpand-render.jpg';
+import duoxpandFusRender from './assets/vetro/prodotti/duoxpand-fus-render.jpg';
+import schDuoxpand from './assets/vetro/schede/duoxpand-scheda.jpg';
+import duotecRender from './assets/vetro/prodotti/duotec-render.jpg';
+import duotecInstall1 from './assets/vetro/prodotti/duotec-install-1.jpg';
+import duotecInstall2 from './assets/vetro/prodotti/duotec-install-2.jpg';
+import schDuotec from './assets/vetro/schede/duotec-scheda.jpg';
+import duobladeRender from './assets/vetro/prodotti/duoblade-render.jpg';
+import schDuoblade from './assets/vetro/schede/duoblade-scheda.jpg';
+import glNylonRender from './assets/vetro/prodotti/gl-nylon-render.jpg';
+import glNylonConViteRender from './assets/vetro/prodotti/gl-nylon-con-vite-render.jpg';
+import schGlNylon from './assets/vetro/schede/gl-nylon-scheda.jpg';
+import casaNylonGancioRender from './assets/vetro/prodotti/casa-nylon-gancio-render.jpg';
+import casaNylonViteRender from './assets/vetro/prodotti/casa-nylon-vite-render.jpg';
+import schCasaNylon from './assets/vetro/schede/casa-nylon-scheda.jpg';
+import gxlNylonRender from './assets/vetro/prodotti/gxl-nylon-render.jpg';
+import schGxlNylon from './assets/vetro/schede/gxl-nylon-scheda.jpg';
+import nastroSpecchiRotolo from './assets/vetro/prodotti/nastro-specchi-rotolo.jpg';
+import nastroSpecchiMontaggio from './assets/vetro/prodotti/nastro-specchi-montaggio.jpg';
+import polyMaxHighTackExpressBiadesivo from './assets/vetro/prodotti/poly-max-high-tack-express-biadesivo.jpg';
+import schPolyMaxHighTackExpressBiadesivo from './assets/vetro/schede/poly-max-high-tack-express-biadesivo-scheda.jpg';
+import fimet3904 from './assets/vetro/prodotti/fimet-3904.jpg';
+import schFimet3904 from './assets/vetro/schede/fimet-3904-scheda.jpg';
+import fimet3921 from './assets/vetro/prodotti/fimet-3921.jpg';
+import schFimet3921 from './assets/vetro/schede/fimet-3921-scheda.jpg';
+import fimetManiglioneArgento from './assets/vetro/prodotti/fimet-maniglione-argento.jpg';
+import fimetManiglioneNero from './assets/vetro/prodotti/fimet-maniglione-nero.jpg';
+import schFimetManiglione from './assets/vetro/schede/fimet-maniglione-adesivo-scheda.jpg';
+import fimet3931Argento from './assets/vetro/prodotti/fimet-3931-argento.jpg';
+import fimet3931Nero from './assets/vetro/prodotti/fimet-3931-nero.jpg';
+import schFimet3931 from './assets/vetro/schede/fimet-3931-scheda.jpg';
+import fimet3932Argento from './assets/vetro/prodotti/fimet-3932-argento.jpg';
+import fimet3932Nero from './assets/vetro/prodotti/fimet-3932-nero.jpg';
+import schFimet3932 from './assets/vetro/schede/fimet-3932-scheda.jpg';
+import fimet3933Argento from './assets/vetro/prodotti/fimet-3933-argento.jpg';
+import fimet3933Nero from './assets/vetro/prodotti/fimet-3933-nero.jpg';
+import schFimet3933 from './assets/vetro/schede/fimet-3933-scheda.jpg';
+import fimetBrasileInox from './assets/vetro/prodotti/fimet-brasile-852-inox.jpg';
+import fimetBrasileNero from './assets/vetro/prodotti/fimet-brasile-852-nero.jpg';
+import schFimetBrasile from './assets/vetro/schede/fimet-brasile-852-scheda.jpg';
+import fimetEquadorInoxSatinato from './assets/vetro/prodotti/fimet-equador-850-inox-satinato.jpg';
+import fimetEquadorInoxLucido from './assets/vetro/prodotti/fimet-equador-850-inox-lucido.jpg';
+import fimetEquadorNero from './assets/vetro/prodotti/fimet-equador-850-nero.jpg';
+import schFimetEquador from './assets/vetro/schede/fimet-equador-850-scheda.jpg';
+/* Kit di fissaggio per maniglioni: non esiste una scheda tecnica del singolo
+   articolo, solo la tavola del catalogo Fimet "Schede tecniche maniglioni" da
+   cui abbiamo ritagliato il disegno con le quote (vedi "immagini", non
+   "scheda"). La tavola intera e' una striscia molto larga e alla dimensione a
+   cui la galleria la mostra le quote non si leggono: dopo la vista d'insieme
+   mettiamo quindi i dettagli, ritagliati dalla stessa tavola. */
+import fimetFiss03 from './assets/vetro/prodotti/fimet-fiss-03-quote.jpg';
+import fimetFiss03Fori from './assets/vetro/prodotti/fimet-fiss-03-fori.jpg';
+import fimetFiss03Componenti from './assets/vetro/prodotti/fimet-fiss-03-componenti.jpg';
+import fimetFiss03Montaggio from './assets/vetro/prodotti/fimet-fiss-03-montaggio.jpg';
+import fimetFiss05m6 from './assets/vetro/prodotti/fimet-fiss-05m6-quote.jpg';
+import fimetFiss05m6Foro from './assets/vetro/prodotti/fimet-fiss-05m6-foro.jpg';
+import fimetFiss05m6Vite from './assets/vetro/prodotti/fimet-fiss-05m6-vite.jpg';
+import fimetFiss05m6Montaggio from './assets/vetro/prodotti/fimet-fiss-05m6-montaggio.jpg';
+import fimetFiss06 from './assets/vetro/prodotti/fimet-fiss-06-quote.jpg';
+import fimetFiss06Componenti from './assets/vetro/prodotti/fimet-fiss-06-componenti.jpg';
+import fimetFiss06Montaggio from './assets/vetro/prodotti/fimet-fiss-06-montaggio.jpg';
+import fimetFiss07 from './assets/vetro/prodotti/fimet-fiss-07-quote.jpg';
+import fimetFiss07Componenti from './assets/vetro/prodotti/fimet-fiss-07-componenti.jpg';
+import fimetFiss07Montaggio from './assets/vetro/prodotti/fimet-fiss-07-montaggio.jpg';
+import schMagic2Vetro from './assets/vetro/schede/magic2-vetro-scheda.jpg';
+
+/* Schede tecniche, istruzioni di montaggio e rapporti di prova: pubblicati
+   insieme al sito, cosi' arrivano dallo stesso dominio e come veri PDF. */
+import pdfAirhandleIstruzioni from './assets/vetro/airhandle-istruzioni.pdf';
+import pdfAirhandleSchedaTecnica from './assets/vetro/airhandle-scheda-tecnica.pdf';
+import pdfAirhingeSchedaTecnica from './assets/vetro/airhinge-scheda-tecnica.pdf';
+import pdfAlcosilSchedaTecnica from './assets/vetro/alcosil-scheda-tecnica.pdf';
+import pdfArizonaInclinatoSchedaTecnica from './assets/vetro/arizona-inclinato-scheda-tecnica.pdf';
+import pdfArizonaSchedaTecnica from './assets/vetro/arizona-scheda-tecnica.pdf';
+import pdfArkansasQSchedaTecnica from './assets/vetro/arkansas-q-scheda-tecnica.pdf';
+import pdfCaliforniaSchedaTecnica from './assets/vetro/california-scheda-tecnica.pdf';
+import pdfClearIstruzioniMontaggio from './assets/vetro/clear-istruzioni-montaggio.pdf';
+import pdfClearSchedaTecnica from './assets/vetro/clear-scheda-tecnica.pdf';
+import pdfColoradoSchedaTecnica from './assets/vetro/colorado-scheda-tecnica.pdf';
+import pdfCubaSchedaTecnica from './assets/vetro/cuba-scheda-tecnica.pdf';
+import pdfDistanziale05210mmSchedaTecnica from './assets/vetro/distanziale-052-10mm-scheda-tecnica.pdf';
+import pdfDistanziale05220mmSchedaTecnica from './assets/vetro/distanziale-052-20mm-scheda-tecnica.pdf';
+import pdfDistanziale05230mmSchedaTecnica from './assets/vetro/distanziale-052-30mm-scheda-tecnica.pdf';
+import pdfDistanziale05240mmSchedaTecnica from './assets/vetro/distanziale-052-40mm-scheda-tecnica.pdf';
+import pdfDistanziale05250mmSchedaTecnica from './assets/vetro/distanziale-052-50mm-scheda-tecnica.pdf';
+import pdfDistanziale0525mmSchedaTecnica from './assets/vetro/distanziale-052-5mm-scheda-tecnica.pdf';
+import pdfDuopowerSchedaTecnica from './assets/vetro/duopower-scheda-tecnica.pdf';
+import pdfDuoxpandSchedaTecnica from './assets/vetro/duoxpand-scheda-tecnica.pdf';
+import pdfDuotecSchedaTecnica from './assets/vetro/duotec-scheda-tecnica.pdf';
+import pdfDuobladeSchedaTecnica from './assets/vetro/duoblade-scheda-tecnica.pdf';
+import pdfGlNylonSchedaTecnica from './assets/vetro/gl-nylon-scheda-tecnica.pdf';
+import pdfCasaNylonSchedaTecnica from './assets/vetro/casa-nylon-scheda-tecnica.pdf';
+import pdfGxlNylonSchedaTecnica from './assets/vetro/gxl-nylon-scheda-tecnica.pdf';
+import pdfEdilacrilSchedaTecnica from './assets/vetro/edilacril-scheda-tecnica.pdf';
+import pdfFermavetro220SchedaTecnica from './assets/vetro/fermavetro-220-scheda-tecnica.pdf';
+import pdfFermavetro230SchedaTecnica from './assets/vetro/fermavetro-230-scheda-tecnica.pdf';
+import pdfFermavetro30SchedaTecnica from './assets/vetro/fermavetro-30-scheda-tecnica.pdf';
+import pdfFermavetroAsolaSchedaTecnica from './assets/vetro/fermavetro-asola-scheda-tecnica.pdf';
+import pdfFermavetroRegolabileSchedaTecnica from './assets/vetro/fermavetro-regolabile-scheda-tecnica.pdf';
+import pdfFimet3904SchedaTecnica from './assets/vetro/fimet-3904-scheda-tecnica.pdf';
+import pdfFimet3921SchedaTecnica from './assets/vetro/fimet-3921-scheda-tecnica.pdf';
+import pdfFimet3931SchedaTecnica from './assets/vetro/fimet-3931-scheda-tecnica.pdf';
+import pdfFimet3932SchedaTecnica from './assets/vetro/fimet-3932-scheda-tecnica.pdf';
+import pdfFimet3933SchedaTecnica from './assets/vetro/fimet-3933-scheda-tecnica.pdf';
+import pdfFimetBrasile852SchedaTecnica from './assets/vetro/fimet-brasile-852-scheda-tecnica.pdf';
+import pdfFimetEquador850SchedaTecnica from './assets/vetro/fimet-equador-850-scheda-tecnica.pdf';
+import pdfFimetManiglioneAdesivoSchedaTecnica from './assets/vetro/fimet-maniglione-adesivo-scheda-tecnica.pdf';
+import pdfFissaggioMuro100SchedaTecnica from './assets/vetro/fissaggio-muro-100-scheda-tecnica.pdf';
+import pdfFissaggioPuntualeSchedaTecnica from './assets/vetro/fissaggio-puntuale-scheda-tecnica.pdf';
+import pdfFs880SchedaTecnica from './assets/vetro/fs880-scheda-tecnica.pdf';
+import pdfFs890SchedaTecnica from './assets/vetro/fs890-scheda-tecnica.pdf';
+import pdfBts75vSchedaTecnica from './assets/vetro/bts75v-scheda-tecnica.pdf';
+import pdfMab7305Istruzioni from './assets/vetro/mab7305-istruzioni-installazione.pdf';
+import pdfGaha1stSchedaTecnica from './assets/vetro/gaha1st-scheda-tecnica.pdf';
+import pdfGeorgiaQSchedaTecnica from './assets/vetro/georgia-q-scheda-tecnica.pdf';
+import pdfGridIstruzioniMontaggio from './assets/vetro/grid-istruzioni-montaggio.pdf';
+import pdfGridSchedaTecnica from './assets/vetro/grid-scheda-tecnica.pdf';
+import pdfLamieraU16763000SchedaTecnica from './assets/vetro/lamiera-u-1676-3000-scheda-tecnica.pdf';
+import pdfMagic2FrameIstruzioniMontaggio from './assets/vetro/magic2-frame-istruzioni-montaggio.pdf';
+import pdfMagic2FrameSchedaTecnica from './assets/vetro/magic2-frame-scheda-tecnica.pdf';
+import pdfMagic2VetroIstruzioniMontaggio from './assets/vetro/magic2-vetro-istruzioni-montaggio.pdf';
+import pdfMagic2VetroSchedaTecnica from './assets/vetro/magic2-vetro-scheda-tecnica.pdf';
+import pdfMinnesotaSchedaTecnica from './assets/vetro/minnesota-scheda-tecnica.pdf';
+import pdfMorsettoGrandeSchedaTecnica from './assets/vetro/morsetto-grande-scheda-tecnica.pdf';
+import pdfMorsettoM012SchedaTecnica from './assets/vetro/morsetto-m012-scheda-tecnica.pdf';
+import pdfMorsettoM022SchedaTecnica from './assets/vetro/morsetto-m022-scheda-tecnica.pdf';
+import pdfMorsettoM032042SchedaTecnica from './assets/vetro/morsetto-m032-042-scheda-tecnica.pdf';
+import pdfMorsettoM032SchedaTecnica from './assets/vetro/morsetto-m032-scheda-tecnica.pdf';
+import pdfMorsettoM042042SchedaTecnica from './assets/vetro/morsetto-m042-042-scheda-tecnica.pdf';
+import pdfMorsettoM042SchedaTecnica from './assets/vetro/morsetto-m042-scheda-tecnica.pdf';
+import pdfMorsettoM062042SchedaTecnica from './assets/vetro/morsetto-m062-042-scheda-tecnica.pdf';
+import pdfMorsettoM062SchedaTecnica from './assets/vetro/morsetto-m062-scheda-tecnica.pdf';
+import pdfMorsettoM092SchedaTecnica from './assets/vetro/morsetto-m092-scheda-tecnica.pdf';
+import pdfMorsettoPiccoloSchedaTecnica from './assets/vetro/morsetto-piccolo-scheda-tecnica.pdf';
+import pdfMsSuperSchedaTecnica from './assets/vetro/ms-super-scheda-tecnica.pdf';
+import pdfMsSuperfastSchedaTecnica from './assets/vetro/ms-superfast-scheda-tecnica.pdf';
+import pdfMsTechnoLightSchedaTecnica from './assets/vetro/ms-techno-light-scheda-tecnica.pdf';
+import pdfNevadaQSchedaTecnica from './assets/vetro/nevada-q-scheda-tecnica.pdf';
+import pdfNevadaSchedaTecnica from './assets/vetro/nevada-scheda-tecnica.pdf';
+import pdfOregonSchedaTecnica from './assets/vetro/oregon-scheda-tecnica.pdf';
+import pdfParisNeroSchedaTecnica from './assets/vetro/paris-nero-scheda-tecnica.pdf';
+import pdfParisSchedaTecnica from './assets/vetro/paris-scheda-tecnica.pdf';
+import pdfPolyMaxHighTackExpressSchedaTecnica from './assets/vetro/poly-max-high-tack-express-scheda-tecnica.pdf';
+import pdfPolyMaxHighTackExpressBiadesivoSchedaTecnica from './assets/vetro/poly-max-high-tack-express-biadesivo-scheda-tecnica.pdf';
+import pdfRa462SchedaTecnica from './assets/vetro/ra462-scheda-tecnica.pdf';
+import pdfShProSuperHybridSchedaTecnica from './assets/vetro/sh-pro-super-hybrid-scheda-tecnica.pdf';
+import pdfSilirubAcSchedaTecnica from './assets/vetro/silirub-ac-scheda-tecnica.pdf';
+import pdfSilirubN2SchedaTecnica from './assets/vetro/silirub-n2-scheda-tecnica.pdf';
+import pdfSoudasil400SchedaTecnica from './assets/vetro/soudasil400-scheda-tecnica.pdf';
+import pdfSolovetroIstruzioniMontaggio from './assets/vetro/solovetro-istruzioni-montaggio.pdf';
+import pdfSolovetroLightIstruzioniMontaggio from './assets/vetro/solovetro-light-istruzioni-montaggio.pdf';
+import pdfSolovetroLightSchedaTecnica from './assets/vetro/solovetro-light-scheda-tecnica.pdf';
+import pdfSolovetroSchedaTecnica from './assets/vetro/solovetro-scheda-tecnica.pdf';
+import pdfSupportoQuadroPavimentoIn610020SchedaTecnica from './assets/vetro/supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf';
+import pdfSupportoQuadroPavimentoIn610SchedaTecnica from './assets/vetro/supporto-quadro-pavimento-in610-scheda-tecnica.pdf';
+import pdfSupportoTondoPavimentoIn610015SchedaTecnica from './assets/vetro/supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf';
+import pdfSupportoTondoPavimentoIn610SchedaTecnica from './assets/vetro/supporto-tondo-pavimento-in610-scheda-tecnica.pdf';
+import pdfTenditore0101000mmSchedaTecnica from './assets/vetro/tenditore-010-1000mm-scheda-tecnica.pdf';
+import pdfTenditore0101150mmSchedaTecnica from './assets/vetro/tenditore-010-1150mm-scheda-tecnica.pdf';
+import pdfTenditore0101300mmSchedaTecnica from './assets/vetro/tenditore-010-1300mm-scheda-tecnica.pdf';
+import pdfTenditore010830mmSchedaTecnica from './assets/vetro/tenditore-010-830mm-scheda-tecnica.pdf';
+import pdfTenditore010910mmSchedaTecnica from './assets/vetro/tenditore-010-910mm-scheda-tecnica.pdf';
+import pdfTexasSchedaTecnica from './assets/vetro/texas-scheda-tecnica.pdf';
+import pdfTg1000RapportoDiProva from './assets/vetro/tg-1000-rapporto-di-prova.pdf';
+import pdfTg1000SchedaTecnica from './assets/vetro/tg-1000-scheda-tecnica.pdf';
+import pdfTg200RapportoDiProva from './assets/vetro/tg-200-rapporto-di-prova.pdf';
+import pdfTg200SchedaTecnica from './assets/vetro/tg-200-scheda-tecnica.pdf';
+import pdfTgs50SchedaTecnica from './assets/vetro/tgs-50-scheda-tecnica.pdf';
+import pdfTgs500RapportoDiProva from './assets/vetro/tgs-500-rapporto-di-prova.pdf';
+import pdfTgs500SchedaTecnica from './assets/vetro/tgs-500-scheda-tecnica.pdf';
+import pdfUniversalSchedaTecnica from './assets/vetro/universal-scheda-tecnica.pdf';
+import pdfVetro40IstruzioniMontaggio from './assets/vetro/vetro40-istruzioni-montaggio.pdf';
+import pdfVetro40SchedaTecnica from './assets/vetro/vetro40-scheda-tecnica.pdf';
+import pdfVetro40dragIstruzioniMontaggio from './assets/vetro/vetro40drag-istruzioni-montaggio.pdf';
+import pdfVetro40dragSchedaTecnica from './assets/vetro/vetro40drag-scheda-tecnica.pdf';
+import pdfVetrofissoSchedaTecnica from './assets/vetro/vetrofisso-scheda-tecnica.pdf';
+
+/* Chiave dedicata (diversa da quella del Catalogo Generale) così i
+   preferiti dei due cataloghi non si mescolano: gli id prodotto si
+   ripetono da 1 in entrambi. Vale per tutti i prodotti, presenti e
+   futuri, dato che si basa solo sull'id. */
+const FAVORITI_KEY_VETRO = 'ferramenta_favorites_vetro';
+
+/* Catalogo Vetro: progetto a sé, con la stessa identità visiva del
+   Catalogo Generale (Catalogo.css) ma dati e routing propri. Le
+   categorie senza prodotti mostrano un placeholder "in preparazione"
+   finché non verranno caricati gli articoli. */
+const CATEGORIE_VETRO = [
+  { id: '01', nome: 'Parapetti e pensiline' },
+  { id: '02', nome: 'Soluzioni per porte scorrevoli' },
+  { id: '03', nome: 'Soluzioni per porte battenti' },
+  { id: '04', nome: 'Maniglie e maniglioni' },
+  { id: '05', nome: 'Soluzioni per pareti e partizioni' },
+  { id: '06', nome: 'Soluzioni per cabine doccia' },
+  { id: '07', nome: 'Soluzioni per vetrine' },
+  { id: '08', nome: "Complementi d'arredo" },
+  { id: '09', nome: 'Sistemi di fissaggio' },
+  { id: '10', nome: 'Accessori e utensili' },
+];
+
+// Sottocategorie con tab, per categoria. Le categorie assenti da questa
+// mappa non mostrano tab (vedi ALTRE_SOTTOCATEGORIE_VETRO più sotto).
+const SOTTOCATEGORIE_PER_CATEGORIA = {
+  '01': [
+    { id: 'balaustre', nome: 'Profili per balaustre' },
+    { id: 'puntuali', nome: 'Attacchi puntuali' },
+    { id: 'pensiline', nome: 'Pensiline' },
+    { id: 'morsetti', nome: 'Morsetti' },
+    { id: 'fermavetri', nome: 'Fermavetri' },
+  ],
+  '03': [
+    { id: 'chiudiporta', nome: 'Chiudiporta' },
+    { id: 'cerniere', nome: 'Cerniere' },
+    { id: 'serrature', nome: 'Serrature' },
+  ],
+  '04': [
+    { id: 'maniglie-scorrevoli', nome: 'Maniglie per porte scorrevoli' },
+    { id: 'maniglie-battenti', nome: 'Maniglie per porte battenti' },
+    { id: 'maniglioni', nome: 'Maniglioni' },
+  ],
+  '09': [
+    { id: 'siliconi-sigillanti', nome: 'Siliconi e sigillanti' },
+    { id: 'tasselli', nome: 'Tasselli' },
+    { id: 'nastri-biadesivi', nome: 'Nastri biadesivi' },
+  ],
+};
+// Etichette di sottocategoria fuori dalle categorie con tab (niente tab:
+// solo il testo mostrato sotto il nome prodotto).
+const ALTRE_SOTTOCATEGORIE_VETRO = [];
+const subName = (id) => (
+  Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
+  ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
+).nome || id;
+
+/* Le guarnizioni calamitate si vendono sempre a due a due e quale coppia serve
+   dipende da come chiudono le ante, non dall'articolo: la regola vale per tutte
+   e tre, quindi sta scritta qui una volta sola. */
+const ABBINAMENTO_CALAMITATE = [
+  { titolo: 'Come si abbinano', testo: 'Servono sempre due guarnizioni, una per anta. Se le ante chiudono in linea vanno due guarnizioni con la stessa polarizzazione; se chiudono ad angolo ne servono due con polarizzazione opposta.' },
+];
+
+const PRODOTTI_VETRO = [
+  {
+    id: 1, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro regolabile Ø52mm',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFermavetroRegolabileSchedaTecnica,
+    immagini: {
+      'Inox satinato': [fermavetroInox, fermavetroEsploso],
+      'Nero opaco': [fermavetroNero],
+      'Oro': [fermavetroOro],
+    },
+    varianti: [
+      { codice: 'IN109-250', finitura: 'Inox satinato' },
+      { codice: 'IN109-250-NE', finitura: 'Nero opaco' },
+      { codice: 'IN109-250-OL', finitura: 'Oro' },
+    ],
+  },
+  {
+    id: 2, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro regolabile con asola Ø52mm',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFermavetroAsolaSchedaTecnica,
+    immagini: {
+      'Inox satinato': [asolaInox, asolaInoxVista2, asolaInoxFrontale],
+      'Nero opaco': [asolaNero],
+      'Oro': [asolaOro],
+    },
+    varianti: [
+      { codice: 'IN109-255', finitura: 'Inox satinato' },
+      { codice: 'IN109-255-NE', finitura: 'Nero opaco' },
+      { codice: 'IN109-255-OL', finitura: 'Oro' },
+    ],
+  },
+  {
+    id: 5, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro Ø52mm',
+    descrizione: 'Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità e calotta Ø18mm, attacco diritto. Adatto a spessori vetro da 8 a 30mm (vite M10x40). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · calotta Ø18mm · vite M10x40 · spessore vetro 8-30mm · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFermavetro230SchedaTecnica,
+    immagini: {
+      'Inox satinato': [fermavetro230Inox, fermavetro230Vista2, fermavetro230Frontale],
+    },
+    varianti: [
+      { codice: 'IN109-230', finitura: 'Inox satinato' },
+    ],
+  },
+  {
+    id: 3, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Vite fermavetro Ø30mm',
+    descrizione: 'Attacco puntuale a vite per vetro con attacco diritto. Adatto a spessori vetro da 6 a 14mm (vite M8x45). Foro in vetro Ø15mm. Prodotto da Inoxdesign, disponibile in due versioni con la stessa finitura inox satinato: in acciaio inox AISI 304 oppure in zama.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    diametro: 'Ø30mm',
+    dimensioni: 'Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFermavetro30SchedaTecnica,
+    immagini: {
+      'Inox satinato': [fermavetro30Inox, fermavetro30Esploso, fermavetro30Vista2, fermavetro30Frontale],
+    },
+    varianti: [
+      { codice: 'IN109-010', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304' },
+      { codice: 'IN109-010-0F', finitura: 'Inox satinato', materiale: 'Zama' },
+    ],
+  },
+  {
+    id: 4, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Fissaggio puntuale Ø30mm',
+    descrizione: 'Fissaggio puntuale con filetto fisso M8x45 per vetro, testa Ø30mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 2 finiture: inox satinato e nero opaco.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø30mm',
+    dimensioni: 'Testa Ø30mm · calotta Ø13mm · altezza 6,3mm · filetto M8x45 fisso · foro Ø15mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFissaggioPuntualeSchedaTecnica,
+    immagini: {
+      'Inox satinato': [fissaggioInox, fissaggioEsploso, fissaggioInoxVista2, fissaggioInoxFrontale],
+      'Nero opaco': [fissaggioNero, fissaggioNeroVista2],
+    },
+    varianti: [
+      { codice: 'IN109-792', finitura: 'Inox satinato' },
+      { codice: 'IN109-792-NE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 6, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Calotta fermavetro Ø52mm',
+    descrizione: 'Calotta superiore per attacco puntuale, Ø52mm, con gommine e filetto interno M10, altezza 11mm. Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Calotta Ø52mm · altezza 11mm · filetto M10 · foro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFermavetro220SchedaTecnica,
+    immagini: {
+      'Inox satinato': [fermavetro220Inox, fermavetro220Esploso, fermavetro220Vista2],
+    },
+    varianti: [
+      { codice: 'IN109-220', finitura: 'Inox satinato' },
+    ],
+  },
+  {
+    id: 32, categoria: '01', sottocategoria: 'puntuali',
+    nome: 'Distanziale per vite fermavetro Ø52mm',
+    descrizione: 'Distanziale a rondella per attacchi puntuali a vite Ø52mm, da inserire fra vetro e supporto per ottenere l’interspazio desiderato. Foro centrale Ø10,5mm per vite M10. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato. Disponibile nelle lunghezze 5, 10, 20, 30, 40 e 50mm.',
+    materiale: 'Acciaio inox AISI 304',
+    diametro: 'Ø52mm',
+    dimensioni: 'Disco Ø52mm · foro Ø10,5mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: {
+      'IN109-239': pdfDistanziale0525mmSchedaTecnica,
+      'IN109-240': pdfDistanziale05210mmSchedaTecnica,
+      'IN109-241': pdfDistanziale05220mmSchedaTecnica,
+      'IN109-242': pdfDistanziale05230mmSchedaTecnica,
+      'IN109-243': pdfDistanziale05240mmSchedaTecnica,
+      'IN109-244': pdfDistanziale05250mmSchedaTecnica,
+    },
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [distanzialeVista1, distanzialeVista2, distanzialeVista3],
+    },
+    varianti: [
+      { codice: 'IN109-239', finitura: 'Inox satinato', lunghezza: 5 },
+      { codice: 'IN109-240', finitura: 'Inox satinato', lunghezza: 10 },
+      { codice: 'IN109-241', finitura: 'Inox satinato', lunghezza: 20 },
+      { codice: 'IN109-242', finitura: 'Inox satinato', lunghezza: 30 },
+      { codice: 'IN109-243', finitura: 'Inox satinato', lunghezza: 40 },
+      { codice: 'IN109-244', finitura: 'Inox satinato', lunghezza: 50 },
+    ],
+  },
+  {
+    id: 7, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arizona',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfArizonaSchedaTecnica,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arizonaInox],
+      'Nero opaco': [arizonaNero],
+      'PVD lucido': [arizonaPvd],
+    },
+    varianti: [
+      { codice: '800.20.500.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+      { codice: '800.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+      { codice: '800.30.1000.700.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1000, interasse: 700 },
+      { codice: '800.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+      { codice: '800.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+      { codice: '800.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '800.25.500.300.18', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 },
+    ],
+  },
+  {
+    id: 8, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arizona Inclinato',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfArizonaInclinatoSchedaTecnica,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arizonaInclinatoInox],
+    },
+    varianti: [
+      { codice: '810.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '810.30.800.600.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 800, interasse: 600 },
+      { codice: '810.30.1200.900.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1200, interasse: 900 },
+    ],
+  },
+  {
+    id: 9, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Arkansas Q',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Ø32mm · 382×350mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfArkansasQSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [arkansasQInox],
+    },
+    varianti: [
+      { codice: '816.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 10, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'California',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm, con una curva ampia che dona slancio alla porta. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Ø32mm · 575×500mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfCaliforniaSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [californiaInox],
+    },
+    varianti: [
+      { codice: '817.32.575.500.60', finitura: 'Acciaio inox satinato', lunghezza: 575, interasse: 500 },
+    ],
+  },
+  {
+    id: 11, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Colorado',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro 40×10 mm. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfColoradoSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [coloradoInox],
+      'Nero opaco': [coloradoNero],
+    },
+    varianti: [
+      { codice: '841S.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+      { codice: '841S.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+      { codice: '841S.1000.800.60', finitura: 'Acciaio inox satinato', lunghezza: 1000, interasse: 800 },
+      { codice: '841S.1200.900.60', finitura: 'Acciaio inox satinato', lunghezza: 1200, interasse: 900 },
+      { codice: '841S.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+      { codice: '841S.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 },
+    ],
+  },
+  {
+    id: 12, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Georgia Q',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 20×20 mm nelle misure più corte, 25×25 mm in quelle più lunghe. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfGeorgiaQSchedaTecnica,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [georgiaQInox],
+      'Nero opaco': [georgiaQNero],
+      'PVD lucido': [georgiaQPvd],
+    },
+    varianti: [
+      { codice: '802K.20.220.200.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.60', finitura: 'Acciaio inox satinato', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.625.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 625, interasse: 600 },
+      { codice: '802K.25.925.900.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 925, interasse: 900 },
+      { codice: '802K.20.220.200.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.61', finitura: 'Inox lucido', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.925.900.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 925, interasse: 900 },
+      { codice: '802K.20.220.200.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 220, interasse: 200 },
+      { codice: '802K.20.320.300.NO', finitura: 'Nero opaco', diametro: 20, lunghezza: 320, interasse: 300 },
+      { codice: '802K.25.625.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 625, interasse: 600 },
+      { codice: '802K.20.320.300.18', finitura: 'PVD lucido', diametro: 20, lunghezza: 320, interasse: 300 },
+    ],
+  },
+  {
+    id: 13, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Cuba',
+    descrizione: 'Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø25 mm, con una riga centrale a contrasto tra satinato e lucido. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfCubaSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Bicolore inox satinato / lucido': [cubaBicolore],
+    },
+    varianti: [
+      { codice: '849L.25.450.350.63', finitura: 'Bicolore inox satinato / lucido', lunghezza: 450, interasse: 350 },
+    ],
+  },
+  {
+    id: 14, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Minnesota',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfMinnesotaSchedaTecnica,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [minnesotaInox],
+    },
+    varianti: [
+      { codice: '839.25.275.250.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 275, interasse: 250 },
+      { codice: '839.32.382.350.60', finitura: 'Acciaio inox satinato', diametro: 32, lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 15, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Nevada',
+    descrizione: 'Maniglione con supporti a squadra e profilo tondo Ø32 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfNevadaSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [nevadaInox],
+    },
+    varianti: [
+      { codice: '838.32.382.350.60', finitura: 'Acciaio inox satinato', lunghezza: 382, interasse: 350 },
+    ],
+  },
+  {
+    id: 16, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Nevada Q',
+    descrizione: 'Maniglione con supporti a squadra e profilo quadro 25×25 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfNevadaQSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [nevadaQInox],
+      'Nero opaco': [nevadaQNero],
+    },
+    varianti: [
+      { codice: '838Q.25.375.350.60', finitura: 'Acciaio inox satinato', lunghezza: 375, interasse: 350 },
+      { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 },
+    ],
+  },
+  {
+    id: 17, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Oregon',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfOregonSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [oregonInox],
+    },
+    varianti: [
+      { codice: '841Z.500.300.60', finitura: 'Acciaio inox satinato', lunghezza: 500, interasse: 300 },
+      { codice: '841Z.600.400.60', finitura: 'Acciaio inox satinato', lunghezza: 600, interasse: 400 },
+      { codice: '841Z.800.600.60', finitura: 'Acciaio inox satinato', lunghezza: 800, interasse: 600 },
+      { codice: '841Z.500.300.NO', finitura: 'Nero opaco', lunghezza: 500, interasse: 300 },
+      { codice: '841Z.800.600.NO', finitura: 'Nero opaco', lunghezza: 800, interasse: 600 },
+    ],
+  },
+  {
+    id: 18, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Texas',
+    descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 25×25 mm nella maggior parte delle misure, 30×30 mm in quella più lunga. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.',
+    materiale: 'Acciaio inox AISI 304',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfTexasSchedaTecnica,
+    assi: [
+      { chiave: 'diametro', etichetta: 'Profilo', suffisso: ' mm' },
+      { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
+      { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Acciaio inox satinato': [texasInox],
+      'Nero opaco': [texasNero],
+    },
+    varianti: [
+      { codice: '831.25.500.300.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.600.400.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 600, interasse: 400 },
+      { codice: '831.25.700.500.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 700, interasse: 500 },
+      { codice: '831.25.800.600.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 800, interasse: 600 },
+      { codice: '831.25.1000.800.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1000, interasse: 800 },
+      { codice: '831.25.1200.1000.60', finitura: 'Acciaio inox satinato', diametro: 25, lunghezza: 1200, interasse: 1000 },
+      { codice: '831.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
+      { codice: '831.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.800.600.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 800, interasse: 600 },
+      { codice: '831.25.1000.700.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1000, interasse: 700 },
+      { codice: '831.25.1200.1000.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1200, interasse: 1000 },
+      { codice: '831.25.1500.1300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 1500, interasse: 1300 },
+      { codice: '831.25.500.300.61', finitura: 'Inox lucido', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.500.300.BO', finitura: 'Bianco opaco', diametro: 25, lunghezza: 500, interasse: 300 },
+      { codice: '831.25.500.300.02O', finitura: 'Oro satinato', diametro: 25, lunghezza: 500, interasse: 300 },
+    ],
+  },
+  {
+    id: 26, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra 8+8',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass TG 200R. Soluzione a pavimento e sopramuretto, con profilo di chiusura a scatto che copre il fissaggio a posa finita. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×118 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 200R), 24 fori in quella da 6000 mm (TG 201R). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8+8'],
+    dimensioni: 'Sezione 73×118 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg200SchedaTecnica,
+    // Rapporto di prova Istituto Giordano n. 351022: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: pdfTg200RapportoDiProva,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg200Render, tg200Sezione, tg200Fori],
+    },
+    varianti: [
+      { codice: 'TG 200R', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 201R', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [27],
+    facoltativi: [21, 28, 29],
+  },
+  {
+    id: 27, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TG 202',
+    descrizione: 'Tappo di chiusura laterale per i profili balaustra TG 200R e TG 201R, completo di viti. Se lo spazio laterale è poco e a fine posa non si riesce ad avvitarlo, va montato prima di fissare la barra, dopo aver inserito mezzaluna, guarnizione e piattelli. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Altezza 118 mm · larghezza 73 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg200SchedaTecnica,
+    immagini: {
+      'Argento': [tg202Tappo, tg202Quote],
+    },
+    varianti: [
+      { codice: 'TG 202', finitura: 'Argento' },
+    ],
+    facoltativi: [21],
+  },
+  {
+    id: 21, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo scarico acque TG 203 / TG 204',
+    descrizione: 'Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e aggiunge 15 mm alla quota totale. Compatibile sia con i profili TG 200R / TG 201R sia con i TG 1000 / TG 1001. Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    dimensioni: 'Altezza 15 mm · fori Ø14 mm · interasse 250 mm · 12 fori nella barra da 3000 mm, 24 in quella da 6000 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg1000SchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg203Profilo],
+    },
+    varianti: [
+      { codice: 'TG 203', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 204', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [22],
+  },
+  {
+    id: 22, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo per profilo scarico acque TG 205',
+    descrizione: 'Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg1000SchedaTecnica,
+    immagini: {
+      'Argento': [tg205Tappo],
+    },
+    varianti: [
+      { codice: 'TG 205', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 19, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra muretto 8+8',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8+8'],
+    dimensioni: 'Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg1000SchedaTecnica,
+    // Rapporto di prova Istituto Giordano n. 376073: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: pdfTg1000RapportoDiProva,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tg1000Render, tg1000Sezione, tg1000Ambiente],
+    },
+    varianti: [
+      { codice: 'TG 1000', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TG 1001', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [20],
+    facoltativi: [21, 28, 29],
+  },
+  {
+    id: 20, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TG 1004',
+    descrizione: 'Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTg1000SchedaTecnica,
+    immagini: {
+      'Argento': [tg1004Tappo],
+    },
+    varianti: [
+      { codice: 'TG 1004', finitura: 'Argento' },
+    ],
+    facoltativi: [21],
+  },
+  {
+    id: 28, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Chiave ergonomica TG 409',
+    descrizione: 'Chiave sagomata per stringere comodamente i piattelli esagonali di serraggio del vetro. Compatibile con tutti i supporti Total Glass ad eccezione delle serie TG 300 e TG 600.',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
+    immagini: {
+      'Argento': [tg409Chiave, tg409Uso],
+    },
+    varianti: [
+      { codice: 'TG 409', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 23, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo balaustra muretto 6+6',
+    descrizione: 'Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass Speedy TGS 50. Linea super compatta pensata per il fissaggio sopra muretto, dove la muratura esistente è già alta e il parapetto in vetro resta entro i 500 mm di altezza. Adatto a vetri stratificati e temperati da 6+1.52+6 mm (va bene anche il 5+1.52+5). Sezione 58×76 mm, con fori asolati 8,5×12 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 50), 24 fori in quella da 6000 mm (TGS 51). Profilo progettato per ancorante M8; la barra filettata non deve sporgere più di 12 mm. I profili vengono forniti completi di guarnizioni e accessori per il montaggio. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['6+6', '5+5'],
+    dimensioni: 'Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm (va bene anche 5+1.52+5) · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTgs50SchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tgs50Render, tgs50Sezione, tgs50Quote],
+    },
+    varianti: [
+      { codice: 'TGS 50', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TGS 51', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [24],
+    facoltativi: [25, 29],
+  },
+  {
+    id: 24, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Tappo laterale TGS 52',
+    descrizione: 'Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTgs50SchedaTecnica,
+    immagini: {
+      'Argento': [tgs52Tappo],
+    },
+    varianti: [
+      { codice: 'TGS 52', finitura: 'Argento' },
+    ],
+    facoltativi: [25],
+  },
+  {
+    id: 25, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Chiave ergonomica TGS 53',
+    descrizione: 'Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
+    immagini: {
+      'Argento': [tgs53Chiave],
+    },
+    varianti: [
+      { codice: 'TGS 53', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 29, categoria: '01', sottocategoria: 'balaustre',
+    nome: 'Profilo portaled TG 311',
+    descrizione: 'Piastrina per striscia LED, da inserire nel profilo di chiusura del parapetto per illuminare il bordo del vetro. Compatibile con tutti i profili balaustra Total Glass. Disponibile solo in barra da 3 m.',
+    dimensioni: 'Lunghezza barra 3 m',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    // Non è una scheda tecnica vera e propria: solo le immagini del prodotto.
+    immagini: {
+      'Argento': [tg311Render, tg311Sezione, tg311Foto],
+    },
+    varianti: [
+      { codice: 'TG 311', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 30, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Profilo pensilina 10+10',
+    descrizione: 'Profilo a muro per pensiline in vetro, serie Total Glass Speedy TGS 500. Solo per vetro stratificato e temperato 10+1.52+10, testato al carico neve e vento di zona alpina (165 kg/m²). Dotato di perni di sicurezza per la ritenuta del vetro e predisposto per l’illuminazione LED. Sezione 125×104 mm, con inclinazione di 1,5° che fa defluire l’acqua piovana e guarnizione impermeabilizzante contro le infiltrazioni fra muro e supporto. Fori Ø14 mm per il fissaggio a muro a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 500), 24 fori in quella da 6000 mm (TGS 501). Si fissa con barre filettate M12, lasciandole sporgere al massimo 22 mm. Disponibile in alluminio finitura argento.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['10+10'],
+    dimensioni: 'Sezione 125×104 mm · fori Ø14 mm · interasse 250 mm · vetro 10+1.52+10 mm · barra filettata M12, sporgenza max 22 mm · inclinazione 1,5° · sbalzo vetro max 1500 mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTgs500SchedaTecnica,
+    // Rapporto di prova Istituto Giordano n. 358697: documento di terzi,
+    // pubblicato come ci e' stato consegnato, senza la nostra filigrana.
+    rapporto: pdfTgs500RapportoDiProva,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza barra', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [tgs500Foto, tgs500Sezione, tgs500Quote, tgs500Fori],
+    },
+    varianti: [
+      { codice: 'TGS 500', finitura: 'Argento', lunghezza: 3000 },
+      { codice: 'TGS 501', finitura: 'Argento', lunghezza: 6000 },
+    ],
+    essenziali: [31],
+  },
+  {
+    id: 31, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Tappo per pensilina TGS 502',
+    descrizione: 'Tappo di chiusura laterale per i profili pensilina della serie Total Glass Speedy TGS 500, completo di guarnizione in gomma anti infiltrazione e viti. In alluminio finitura argento.',
+    materiale: 'Alluminio',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfTgs500SchedaTecnica,
+    immagini: {
+      'Argento': [tgs502Tappo],
+    },
+    varianti: [
+      { codice: 'TGS 502', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 33, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Tenditore a barra tonda Ø10mm per pensilina',
+    descrizione: 'Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Viene fornito completo di attacco a muro e attacco a vetro. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: {
+      'IN112-108': pdfTenditore010830mmSchedaTecnica,
+      'IN112-109': pdfTenditore010910mmSchedaTecnica,
+      'IN112-110': pdfTenditore0101000mmSchedaTecnica,
+      'IN112-111': pdfTenditore0101150mmSchedaTecnica,
+      'IN112-112': pdfTenditore0101300mmSchedaTecnica,
+    },
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [tenditoreVista1, tenditoreVista2, tenditoreEsploso, tenditoreAmbiente, tenditoreSchema],
+    },
+    varianti: [
+      { codice: 'IN112-108', finitura: 'Inox satinato', lunghezza: 830 },
+      { codice: 'IN112-109', finitura: 'Inox satinato', lunghezza: 910 },
+      { codice: 'IN112-110', finitura: 'Inox satinato', lunghezza: 1000 },
+      { codice: 'IN112-111', finitura: 'Inox satinato', lunghezza: 1150 },
+      { codice: 'IN112-112', finitura: 'Inox satinato', lunghezza: 1300 },
+    ],
+    facoltativi: [34, 35],
+  },
+  {
+    id: 34, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Fissaggio a muro Ø100mm per pensilina',
+    descrizione: 'Attacco a muro snodabile per tenditori di pensiline in vetro, piastra Ø100mm con foro Ø22mm per l’innesto della barra e regolazione per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra Ø100mm (interasse fori 74mm, fori Ø13mm) · innesto barra Ø22mm · spessore vetro 12-24mm · foro vetro Ø25mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfFissaggioMuro100SchedaTecnica,
+    immagini: {
+      'Inox satinato': [fissaggioMuro100Vista1, fissaggioMuro100Vista2, fissaggioMuro100Esploso],
+    },
+    varianti: [
+      { codice: 'IN112-120', finitura: 'Inox satinato' },
+    ],
+  },
+  {
+    id: 35, categoria: '01', sottocategoria: 'pensiline',
+    nome: 'Lamiera piegata a U per vetro 16.76-17.52mm',
+    descrizione: 'Profilo a U in lamiera piegata, per il contenimento del bordo del vetro nelle pensiline sostenute da tiranti. Adatto a vetri stratificati e temperati di spessore 16,76-17,52mm. Disponibile in barra da 3000mm, in acciaio inox AISI 304, finitura satinata.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Sezione 21×20mm · spessore lamiera 1,50mm · larghezza gola 18mm · lunghezza barra 3000mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfLamieraU16763000SchedaTecnica,
+    immagini: {
+      'Inox satinato': [lamieraURender, lamieraUSezione],
+    },
+    varianti: [
+      { codice: 'IN600-233', finitura: 'Inox satinato', lunghezza: 3000 },
+    ],
+  },
+  {
+    id: 49, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 01 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 45×45mm · profondità 27mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM012SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM012Vista1, morsettoM012Vista2, morsettoM012Sezione, morsettoM012Esploso],
+      'Finitura inox satinato': [morsettoM012Vista1, morsettoM012Vista2, morsettoM012Sezione, morsettoM012Esploso],
+    },
+    varianti: [
+      { codice: 'M012-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M012-0876', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M012-1000', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M012-1076', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M01F-0800', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8 },
+      { codice: 'M01F-0876', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
+      { codice: 'M01F-1000', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10 },
+      { codice: 'M01F-1076', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
+    ],
+  },
+  {
+    id: 48, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 02 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 63×48mm · profondità 28mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM022SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM022Vista1, morsettoM022Vista2, morsettoM022Sezione, morsettoM022Esploso],
+    },
+    varianti: [
+      { codice: 'M022-0800', finitura: 'Inox satinato', spessoreVetro: 8 },
+      { codice: 'M022-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M022-1000', finitura: 'Inox satinato', spessoreVetro: 10 },
+      { codice: 'M022-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+    ],
+  },
+  {
+    id: 36, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 03 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
+    // La "finitura inox satinato" dello zama e' un aspetto cromato diverso
+    // dall'inox satinato vero: finitura separata, non da confondere col colore.
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 45×45mm · profondità 26mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM032SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
+      'Finitura inox satinato': [morsettoM032Vista1, morsettoM032Vista2, morsettoM032Sezione, morsettoM032Esploso],
+      'Nero opaco': [morsettoM032NeroVista1, morsettoM032NeroVista2, morsettoM032NeroSezione, morsettoM032NeroEsploso],
+    },
+    varianti: [
+      { codice: 'M032-0800', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M032-0876', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M032-1000', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M032-1076', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M032-NE-0800', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8 },
+      { codice: 'M032-NE-0876', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 8.76 },
+      { codice: 'M032-NE-1000', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10 },
+      { codice: 'M032-NE-1076', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 10.76 },
+      { codice: 'M03F-0800', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8 },
+      { codice: 'M03F-0876', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 8.76 },
+      { codice: 'M03F-1000', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10 },
+      { codice: 'M03F-1076', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 10.76 },
+    ],
+  },
+  {
+    id: 50, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 03 con attacco per tubo Ø42,4mm',
+    descrizione: 'Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8', '8.76', '10', '10.76'],
+    dimensioni: 'Corpo 45×45mm · profondità 26mm · attacco tubo Ø42,4mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM032042SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM032042Vista1, morsettoM032042Vista2, morsettoM032042Sezione, morsettoM032042Esploso],
+    },
+    varianti: [
+      { codice: 'M032-042-0800', finitura: 'Inox satinato', spessoreVetro: 8 },
+      { codice: 'M032-042-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M032-042-1000', finitura: 'Inox satinato', spessoreVetro: 10 },
+      { codice: 'M032-042-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+    ],
+  },
+  {
+    id: 37, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 04 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.',
+    materiale: 'Acciaio inox AISI 304 o zama',
+    materiali: ['Acciaio inox AISI 304', 'Zama'],
+    spessoriVetro: ['13.52', '17.52'],
+    dimensioni: 'Corpo 65×37,5mm · profondità 55mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM042SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM042Vista1, morsettoM042Vista2, morsettoM042Sezione, morsettoM042Esploso],
+      'Finitura inox satinato': [morsettoM042Vista1, morsettoM042Vista2, morsettoM042Sezione, morsettoM042Esploso],
+      'Nero opaco': [morsettoM042NeroVista1, morsettoM042NeroVista2, morsettoM042NeroSezione, morsettoM042NeroEsploso],
+    },
+    varianti: [
+      { codice: 'M042-1352', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 13.52 },
+      { codice: 'M042-1752', finitura: 'Inox satinato', materiale: 'Acciaio inox AISI 304', spessoreVetro: 17.52 },
+      { codice: 'M042-NE-1352', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 13.52 },
+      { codice: 'M042-NE-1752', finitura: 'Nero opaco', materiale: 'Acciaio inox AISI 304', spessoreVetro: 17.52 },
+      { codice: 'M04F-1352', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 13.52 },
+      { codice: 'M04F-1752', finitura: 'Finitura inox satinato', materiale: 'Zama', spessoreVetro: 17.52 },
+    ],
+  },
+  {
+    id: 51, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 04 con attacco per tubo Ø42,4mm',
+    descrizione: 'Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['13.52', '17.52'],
+    dimensioni: 'Corpo 65×37,5mm · profondità 55mm · attacco tubo Ø42,4mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM042042SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM042042Vista1, morsettoM042042Vista2, morsettoM042042Sezione, morsettoM042042Esploso],
+    },
+    varianti: [
+      { codice: 'M042-042-1352', finitura: 'Inox satinato', spessoreVetro: 13.52 },
+      { codice: 'M042-042-1752', finitura: 'Inox satinato', spessoreVetro: 17.52 },
+    ],
+  },
+  {
+    id: 38, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto tondo a pavimento vetro 12-12,76mm',
+    descrizione: 'Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['12', '12.76'],
+    dimensioni: 'Altezza 160mm · base Ø100mm, altezza base 60,5mm · palo Ø50mm · fori base Ø7mm per viti Ø13mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfSupportoTondoPavimentoIn610SchedaTecnica,
+    immagini: {
+      'Inox lucido': [supportoTondoIn610Vista1, supportoTondoIn610Vista2, supportoTondoIn610Esploso],
+    },
+    varianti: [
+      { codice: 'IN610-005-04-L', finitura: 'Inox lucido' },
+    ],
+  },
+  {
+    id: 39, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto quadro a pavimento vetro 12-12,76mm',
+    descrizione: 'Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['12', '12.76'],
+    dimensioni: 'Altezza 64,7mm · palo 48,2×48,2mm · base 104×104mm (piastra 100×100mm) · fori Ø7mm per viti Ø14mm, interasse diagonale 76,5mm',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfSupportoQuadroPavimentoIn610SchedaTecnica,
+    immagini: {
+      'Inox lucido': [supportoQuadroIn610Vista1, supportoQuadroIn610Vista2, supportoQuadroIn610Esploso],
+    },
+    varianti: [
+      { codice: 'IN610-010-04-L', finitura: 'Inox lucido' },
+    ],
+  },
+  {
+    id: 40, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto tondo a pavimento vetro 16,76-17,52mm',
+    descrizione: 'Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Altezza 180mm · palo Ø44,4mm · base Ø105mm · foro vetro Ø15mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfSupportoTondoPavimentoIn610015SchedaTecnica,
+    immagini: {
+      'Inox satinato': [supportoTondoIn610015SatVista1, supportoTondoIn610015SatVista2, supportoTondoIn610015SatEsploso],
+      'Inox lucido': [supportoTondoIn610015LucVista1, supportoTondoIn610015LucVista2, supportoTondoIn610015LucEsploso],
+    },
+    varianti: [
+      { codice: 'IN610-015-04', finitura: 'Inox satinato' },
+      { codice: 'IN610-015-04-L', finitura: 'Inox lucido' },
+    ],
+  },
+  {
+    id: 41, categoria: '01', sottocategoria: 'fermavetri',
+    nome: 'Supporto quadro a pavimento vetro 16,76-17,52mm',
+    descrizione: 'Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.',
+    materiale: 'Acciaio inox AISI 316',
+    spessoriVetro: ['16.76', '17.52'],
+    dimensioni: 'Altezza 180mm · palo 48,5×48,5mm · base 108×108mm (piastra 100×100mm) · foro vetro Ø15mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfSupportoQuadroPavimentoIn610020SchedaTecnica,
+    immagini: {
+      'Inox satinato': [supportoQuadroIn610020SatVista1, supportoQuadroIn610020SatVista2, supportoQuadroIn610020SatEsploso],
+      'Inox lucido': [supportoQuadroIn610020LucVista1, supportoQuadroIn610020LucVista2, supportoQuadroIn610020LucEsploso],
+    },
+    varianti: [
+      { codice: 'IN610-020-04', finitura: 'Inox satinato' },
+      { codice: 'IN610-020-04-L', finitura: 'Inox lucido' },
+    ],
+  },
+  {
+    id: 42, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 06 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8.76', '10.76', '12.76'],
+    dimensioni: 'Corpo 52×52mm · profondità 32,5mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM062SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM062Vista1, morsettoM062Vista2, morsettoM062Sezione, morsettoM062Esploso],
+    },
+    varianti: [
+      { codice: 'M062-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M062-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+      { codice: 'M062-1276', finitura: 'Inox satinato', spessoreVetro: 12.76 },
+    ],
+  },
+  {
+    id: 52, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 06 con attacco per tubo Ø42,4mm',
+    descrizione: 'Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['8.76', '10.76', '12.76'],
+    dimensioni: 'Corpo 52×52mm · profondità 32,5mm · attacco tubo Ø42,4mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM062042SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM062042Vista1, morsettoM062042Vista2, morsettoM062042Sezione, morsettoM062042Esploso],
+    },
+    varianti: [
+      { codice: 'M062-042-0876', finitura: 'Inox satinato', spessoreVetro: 8.76 },
+      { codice: 'M062-042-1076', finitura: 'Inox satinato', spessoreVetro: 10.76 },
+      { codice: 'M062-042-1276', finitura: 'Inox satinato', spessoreVetro: 12.76 },
+    ],
+  },
+  {
+    id: 47, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto per vetro mod. 09 con attacco diritto',
+    descrizione: 'Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 20,76 e 21,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.',
+    materiale: 'Acciaio inox AISI 304',
+    spessoriVetro: ['20.76', '21.52'],
+    dimensioni: 'Corpo 70×60mm · profondità 44,5mm · vite M8',
+    fornitore: 'Inoxdesign', fornitoreLogo: inoxdesignLogo,
+    scheda: pdfMorsettoM092SchedaTecnica,
+    assi: [
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Inox satinato': [morsettoM092Vista1, morsettoM092Vista2, morsettoM092Sezione, morsettoM092Esploso],
+    },
+    varianti: [
+      { codice: 'M092-2076', finitura: 'Inox satinato', spessoreVetro: 20.76 },
+      { codice: 'M092-2152', finitura: 'Inox satinato', spessoreVetro: 21.52 },
+    ],
+  },
+  {
+    id: 53, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto piccolo per vetro',
+    // Spessore vetro compatibile ancora da confermare: aggiungerlo agli
+    // "assi" (come negli altri morsetti) quando arriva il dato.
+    descrizione: 'Morsetto piccolo per vetro, corpo 50×30mm e spessore 23mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 2 finiture: cromo lucido e nichel satinato.',
+    materiale: 'Zama',
+    dimensioni: 'Corpo 50×30mm · spessore 23mm',
+    fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
+    scheda: pdfMorsettoPiccoloSchedaTecnica,
+    immagini: {
+      'Cromo lucido': [morsettoPiccoloCromoLucido],
+    },
+    varianti: [
+      { codice: 'STIGLIMOP/CRL', finitura: 'Cromo lucido' },
+      { codice: 'STIGLIMOP/NIKSAT', finitura: 'Nichel satinato' },
+    ],
+  },
+  {
+    id: 54, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Morsetto grande per vetro',
+    // Spessore vetro compatibile ancora da confermare: aggiungerlo agli
+    // "assi" (come negli altri morsetti) quando arriva il dato.
+    descrizione: 'Morsetto grande per vetro, corpo 70×35mm e spessore 20mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 3 finiture: cromo lucido, cromo perla e nichel satinato.',
+    materiale: 'Zama',
+    dimensioni: 'Corpo 70×35mm · spessore 20mm',
+    fornitore: 'Torneria Dal Lago', fornitoreLogo: dallagoLogo,
+    scheda: pdfMorsettoGrandeSchedaTecnica,
+    immagini: {
+      'Cromo lucido': [morsettoGrandeCromoLucido],
+    },
+    varianti: [
+      { codice: 'STIGLIMORS/CRL', finitura: 'Cromo lucido' },
+      { codice: 'STIGLIMORS/CRPERL', finitura: 'Cromo perla' },
+      { codice: 'STIGLIMORS/NIKSAT', finitura: 'Nichel satinato' },
+    ],
+  },
+  {
+    id: 74, categoria: '01', sottocategoria: 'morsetti',
+    nome: 'Supporto a pinza RA 462',
+    descrizione: 'Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, disponibile nelle finiture argento e nero.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.76'],
+    dimensioni: 'Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm',
+    fornitore: 'Compas', fornitoreLogo: compasLogo,
+    scheda: pdfRa462SchedaTecnica,
+    immagini: {
+      'Argento': [ra462Foto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
+      'Nero opaco': [ra462NeroFoto, ra462Render, ra462QuoteFronte, ra462QuoteLato],
+    },
+    varianti: [
+      { codice: 'RA-462-X2', finitura: 'Argento' },
+      { codice: 'RA-462-NE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 55, categoria: '04', sottocategoria: 'maniglie-battenti',
+    nome: 'HCS Paris con chiave e nottolino',
+    descrizione: 'Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, disponibile in 2 finiture: alluminio aspetto argento opaco e resina nero intenso opaco.',
+    materiale: 'Alluminio o resina',
+    materiali: ['Alluminio', 'Resina'],
+    dimensioni: 'Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm',
+    fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
+    scheda: {
+      '2574008': pdfParisSchedaTecnica,
+      '783748': pdfParisNeroSchedaTecnica,
+    },
+    immagini: {
+      'Alluminio argento opaco': [parisArgentoOpaco],
+      'Nero opaco': [parisNeroOpaco],
+    },
+    varianti: [
+      { codice: '2574008', finitura: 'Alluminio argento opaco', materiale: 'Alluminio' },
+      { codice: '783748', finitura: 'Nero opaco', materiale: 'Resina' },
+    ],
+    essenziali: [56],
+  },
+  {
+    id: 56, categoria: '04', sottocategoria: 'maniglie-battenti',
+    nome: 'Incontro HCS-SB-A',
+    // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
+    // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
+    descrizione: 'Contropiastra (incontro) del sistema HCS in acciaio inox, per porte complanari, fissaggio con viti multiuso. Si abbina alla maniglia con serratura HCS Paris. Prodotta da HOPPE.',
+    materiale: 'Acciaio inox',
+    dimensioni: '70×38,5mm',
+    fornitore: 'HOPPE', fornitoreLogo: hoppeLogo,
+    immagini: {
+      'Acciaio inox': [incontroHcsSbaFoto, incontroHcsSbaQuote],
+    },
+    varianti: [
+      { codice: '658206', finitura: 'Acciaio inox' },
+    ],
+  },
+  {
+    id: 69, categoria: '04', sottocategoria: 'maniglie-battenti',
+    nome: 'Maniglia con serratura AirHandle L13',
+    // Della gamma AirDoor trattiamo solo la funzione L13 e solo la versione
+    // per porte in vetro: i codici delle altre funzioni (L11 passaggio, L12
+    // bagno) e della versione per porte in legno non sono elencati qui.
+    descrizione: 'Maniglia con serratura integrata per porte a battente in vetro, funzione L13: all’esterno si chiude a chiave, all’interno c’è un pomolo girevole per la modalità privacy. Fa parte della linea AirDoor e condivide design, forme e finiture con la cerniera AirHinge, così tutta la porta resta coordinata. Adatta a vetri da 8 a 12mm, si fissa con tiranti sfruttando le lavorazioni già presenti nel vetro. Sistema anti-panico integrato: dall’interno la leva sblocca sempre la serratura. Cilindro a lamelle con testa piatta e chiave coordinata alla finitura. Prodotta da Meroni in alluminio 100% riciclabile, disponibile in cromo opaco e nero opaco, sia nella versione a spingere che in quella a tirare.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '10', '12'],
+    dimensioni: 'Spessore vetro 8-12mm · albero 8mm ad espansione · rosetta quadra',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: pdfAirhandleSchedaTecnica,
+    istruzioni: pdfAirhandleIstruzioni,
+    // Un video per verso di apertura: il montaggio dello scrocco cambia.
+    video: [
+      { etichetta: 'a spingere', url: 'https://youtube.com/shorts/WTF9-g-a4ww' },
+      { etichetta: 'a tirare', url: 'https://youtube.com/shorts/weY1w8maktk' },
+    ],
+    caratteristiche: [
+      { titolo: 'Serratura integrata nella maniglia', testo: 'Il cilindro è dentro la maniglia stessa: non serve una serratura separata nel vetro, l’ingombro sulla porta resta minimo.' },
+      { titolo: 'Chiave fuori, privacy dentro', testo: 'La funzione L13 chiude a chiave dall’esterno e ha un pomolo girevole all’interno per la modalità privacy: pensata per ingressi e uffici.' },
+      { titolo: 'Sistema anti-panico', testo: 'Abbassando la leva della maniglia interna la serratura si sblocca sempre in automatico, anche quando è chiusa a chiave.' },
+      { titolo: 'A spingere o a tirare', testo: 'Due versioni a seconda del verso di apertura della porta: cambia il lato su cui va montato lo scrocco per il vetro.' },
+      { titolo: 'Abbinabile alla cerniera AirHinge', testo: 'Maniglia e cerniera sono della stessa linea AirDoor: stesso design essenziale, stesse finiture, stesso impatto visivo ridotto.' },
+      { titolo: 'Chiave in tinta', testo: 'Cilindro a lamelle con testa piatta e chiave coordinata alla finitura della maniglia.' },
+      { titolo: 'Alluminio riciclabile', testo: 'Realizzata interamente in alluminio 100% riciclabile.' },
+    ],
+    assi: [
+      { chiave: 'apertura', etichetta: 'Verso di apertura' },
+    ],
+    immagini: {
+      // Prima le foto sulla porta in vetro, che e' la versione che trattiamo;
+      // poi il render con la cerniera AirHinge accanto.
+      'Cromo opaco': [airhandleArgentoVetro, airhandleArgentoRender],
+      'Nero opaco': [airhandleNeroVetro, airhandleNeroRender],
+    },
+    varianti: [
+      { codice: 'L13NAGL', finitura: 'Cromo opaco', apertura: 'A spingere' },
+      { codice: 'L13NAGT', finitura: 'Cromo opaco', apertura: 'A tirare' },
+      { codice: 'L13NEGL', finitura: 'Nero opaco', apertura: 'A spingere' },
+      { codice: 'L13NEGT', finitura: 'Nero opaco', apertura: 'A tirare' },
+    ],
+    // La cerniera AirHinge non serve per montare la maniglia: è l'articolo
+    // della stessa linea AirDoor con cui si abbina esteticamente.
+    facoltativi: [46],
+  },
+  {
+    id: 57, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Maniglia a scomparsa per porta scorrevole',
+    // Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui
+    // abbiamo ricavato foto e quote (vedi "immagini" sotto, non "scheda").
+    descrizione: 'Maniglia a scomparsa per porta scorrevole in vetro, a incasso interno muro, in ottone. Adatta a spessori vetro 8-10mm. Prodotta da GFS, disponibile in 5 finiture: cromo lucido, cromo opaco, simil inox, oro lucido e nero opaco.',
+    materiale: 'Ottone',
+    dimensioni: 'Piastra 70×100mm · profondità 18mm · spessore vetro 8-10mm · lavorazione vetro 58×73mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    immagini: {
+      'Cromo lucido': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Cromo opaco': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Simil inox': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Oro lucido': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+      'Nero opaco': [e07CromoLucido, e07Quote, e07LavorazioneVetro],
+    },
+    varianti: [
+      { codice: 'E07M02715', finitura: 'Cromo lucido' },
+      { codice: 'E07M02716', finitura: 'Cromo opaco' },
+      { codice: 'E07M02720', finitura: 'Simil inox' },
+      { codice: 'E07M02713', finitura: 'Oro lucido' },
+      { codice: 'E07M027NE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 58, categoria: '02',
+    nome: 'Magic2 Vetro',
+    descrizione: 'Sistema scorrevole a scomparsa esterno muro per porte in vetro, pluribrevettato e 100% Made in Italy: lo scorrevole invisibile originale. Fermi ammortizzati ad aria con oltre 50mm di frenatura e sistema brevettato di regolazione micrometrica. Il sistema si fissa tramite borchie o fascia a vista ed è adatto a vetri monolitici o stratificati. Kit completo disponibile in due lunghezze, per porte fino a 80kg. Prodotto da Terno Scorrevoli in alluminio e acciaio, disponibile in 2 finiture: argento spazzolato e nero spazzolato.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['8', '10'],
+    dimensioni: 'Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm · luce inferiore 10mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfMagic2VetroSchedaTecnica,
+    istruzioni: pdfMagic2VetroIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Oltre 50mm di frenatura', testo: 'Fermi ammortizzati brevettati che garantiscono oltre 50mm di frenatura, mantenendo gli stessi ingombri della porta.' },
+      { titolo: 'Fermi con posizione regolabile', testo: 'Indipendenti dal distanziale: si possono spostare, se necessario, per regolare la posizione della porta.' },
+      { titolo: 'Ruote distanziali', testo: 'Posizionate alle estremità della porta, la proteggono da contatti con la parete in caso di muri con superfici irregolari.' },
+      { titolo: 'Sistema brevettato di regolazione', testo: 'Regolazione dell’altezza della porta dal pavimento e regolazione micrometrica di distanza e parallelismo dalla parete, per compensare eventuali irregolarità del muro. Tutte le regolazioni si effettuano dall’alto, senza sganciare la porta.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'Due elementi rotanti con leve di sicurezza ben visibili, per l’antisganciamento della porta senza bisogno di utensili.' },
+      { titolo: 'Guida inferiore silenziosa', testo: 'Rinforzata in zama, resistente e versatile, scorre in un profilo che riduce al minimo il rumore.' },
+      { titolo: 'Ruote inferiori brevettate', testo: 'Molleggio brevettato, diametro, cuscinetti e perni in acciaio maggiorati, rivestimento in gomma raddoppiato: più forza e scorrevolezza, senza lasciare tracce sulle superfici e senza deformarsi nel tempo.' },
+    ],
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza kit', suffisso: ' mm' },
+      { chiave: 'spessoreVetro', etichetta: 'Spessore vetro', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento spazzolato': [magic2VetroAmbienteUfficio, magic2VetroAmbienteBoutique, magic2VetroArgento],
+      'Nero spazzolato': [magic2VetroAmbienteUfficio, magic2VetroAmbienteBoutique, magic2VetroArgento],
+    },
+    varianti: [
+      { codice: 'K.0041.1.02', finitura: 'Argento spazzolato', lunghezza: 1100, spessoreVetro: 8 },
+      { codice: 'K.0041.2.02', finitura: 'Argento spazzolato', lunghezza: 1100, spessoreVetro: 10 },
+      { codice: 'K.0042.1.02', finitura: 'Argento spazzolato', lunghezza: 1800, spessoreVetro: 8 },
+      { codice: 'K.0042.2.02', finitura: 'Argento spazzolato', lunghezza: 1800, spessoreVetro: 10 },
+      { codice: 'K.0041.1.15', finitura: 'Nero spazzolato', lunghezza: 1100, spessoreVetro: 8 },
+      { codice: 'K.0041.2.15', finitura: 'Nero spazzolato', lunghezza: 1100, spessoreVetro: 10 },
+      { codice: 'K.0042.1.15', finitura: 'Nero spazzolato', lunghezza: 1800, spessoreVetro: 8 },
+      { codice: 'K.0042.2.15', finitura: 'Nero spazzolato', lunghezza: 1800, spessoreVetro: 10 },
+    ],
+  },
+  {
+    id: 59, categoria: '02',
+    nome: 'Magic2 Frame',
+    descrizione: 'Sistema scorrevole a scomparsa esterno muro con telaio in alluminio Universal, pluribrevettato e 100% Made in Italy: nessun binario, fermo o carrello visibile. Il telaio è adatto a pareti in mattoni pieni, forati, cemento e cartongesso (con ancoraggi specifici), e ospita vetri monolitici o stratificati con spessore da 5 a 8,5mm. Fermi ammortizzati Fluid con doppie molle di ritorno per una frenata fluida e silenziosa. Prodotto da Terno Scorrevoli in alluminio e acciaio.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['5', '8.5'],
+    dimensioni: 'Kit 1500×3000mm · peso porta max 80kg · spessore vetro 5-8,5mm · luce inferiore 10mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfMagic2FrameSchedaTecnica,
+    istruzioni: pdfMagic2FrameIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Ruote inferiori brevettate', testo: 'Scaricano completamente il peso della porta sul pavimento senza lasciare segni, anche dopo anni di utilizzo. Un paraurti integrato assorbe le irregolarità del pavimento, come le fughe delle piastrelle.' },
+      { titolo: 'Fermi ammortizzati Fluid', testo: 'L’ultima generazione di ammortizzatori a chiusura rallentata di Terno Scorrevoli, con doppie molle di ritorno, per una frenata sempre fluida e silenziosa.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'La guida superiore integra due elementi rotanti con leve di sicurezza ben visibili, per rimuovere la porta dopo l’installazione senza bisogno di utensili.' },
+      { titolo: 'Design essenziale e resistente', testo: 'Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione. I profili si tagliano a misura senza forature o fresature aggiuntive.' },
+      { titolo: 'Adatto a diverse pareti', testo: 'Mattoni pieni, mattoni forati, cemento e cartongesso, purché vengano usati gli ancoraggi specifici e l’installazione sia eseguita con cura.' },
+      { titolo: 'Certificato fino a 100.000 cicli', testo: 'Prestazioni testate nei laboratori Terno Scorrevoli (T-Lab) fino a 100.000 cicli di apertura della porta.' },
+      { titolo: 'Soluzioni per pavimenti in moquette', testo: 'Un profilo in alluminio e adesivo dedicato adatta il sistema anche ai pavimenti in moquette, garantendo la migliore scorrevolezza possibile.' },
+    ],
+    immagini: {
+      'Nero spazzolato': [magic2FrameNeroAperta, magic2FrameNeroChiusa, magic2FrameNero],
+    },
+    varianti: [
+      { codice: 'K.0461.1.3.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
+    id: 60, categoria: '02',
+    nome: 'Universal',
+    // Sistema molto modulare (telaio + binario Eclettica o Evolution + ante
+    // scorrevoli/fisse in vetro, legno o alluminio, in tante combinazioni):
+    // teniamo a magazzino un solo kit, scheda tecnica e brochure servono a
+    // mostrare il prodotto. Per configurazioni diverse si valuta caso per
+    // caso in base alle esigenze del cliente.
+    descrizione: 'Telaio in alluminio Universal per porte scorrevoli e pareti, in vetro, legno o alluminio: profili tubolari, giunti metallici e guarnizione biestrusa per la massima resistenza. Si abbina ai sistemi di scorrimento Eclettica Fluid ed Evolution Fluid, con installazione a parete, soffitto o controsoffitto. Un sistema molto versatile, che consente numerose configurazioni — anta singola, abbinata a elementi fissi, ante doppie — e diverse finiture: la combinazione esatta di telaio, binario, ante e accessori va valutata caso per caso in base alle tue esigenze. Contattaci per individuare gli articoli giusti per la tua porta: qui trovi la scheda tecnica completa e il kit che teniamo pronto a magazzino. Prodotto da Terno Scorrevoli in alluminio e acciaio.',
+    materiale: 'Alluminio e acciaio',
+    spessoriVetro: ['5', '8.5'],
+    dimensioni: 'Porta fino a 1500×3000mm (max) · peso max 80kg · vetro 5-8,5mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfUniversalSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Design essenziale e resistente', testo: 'Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione.' },
+      { titolo: 'Flessibilità nei materiali', testo: 'Permette di realizzare porte in vetro con telaio in alluminio e di integrarle con porte in legno a tutto spessore, per configurazioni miste.' },
+      { titolo: 'Configurazioni multiple', testo: 'Dall’anta singola scorrevole, alla porta abbinata a due o tre elementi fissi, alle ante doppie. Le configurazioni con più ante non hanno movimento sincronizzato.' },
+      { titolo: 'Si abbina a Eclettica ed Evolution', testo: 'Con Eclettica Fluid la porta si installa a parete, soffitto o controsoffitto con la copertura allineata alla maniglia. Con Evolution Fluid la porta si inserisce tra le due coperture, a scomparsa completa.' },
+      { titolo: 'Tante finiture disponibili', testo: 'Argento spazzolato, nero spazzolato, nichel spazzolato, grigio metallizzato e grafite.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra telaio, binario, ante e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Nero spazzolato': [universalAmbienteSoggiorno, universalAmbienteCabina, universalDettaglio],
+    },
+    varianti: [
+      { codice: 'K.0421.2.3.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
+    id: 75, categoria: '02',
+    nome: 'Solo Vetro',
+    descrizione: 'Sistema di scorrevoli invisibili per porte interamente in vetro: le pinze di scorrimento sono completamente nascoste all\'interno del profilo binario in alluminio, per una resa estetica pulita e senza elementi a vista sul vetro. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Disponibile in configurazione standard ad anta singola oppure Sync, con apertura simultanea sincronizzata per porte a due ante. Fissaggio a parete o a soffitto, portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a parete o soffitto',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfSolovetroSchedaTecnica,
+    istruzioni: pdfSolovetroIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, per una porta in vetro senza elementi di scorrimento a vista.' },
+      { titolo: 'Apertura singola o Sync sincronizzata', testo: 'Il sistema prevede la configurazione per anta singola oppure, con la versione Sync, per due ante con apertura simultanea e movimento sincronizzato.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati.' },
+      { titolo: 'Fermi ammortizzati inclusi', testo: 'Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa.' },
+      { titolo: 'Fissaggio a parete o a soffitto', testo: 'Il profilo binario si installa sia a parete che a soffitto, in base alle esigenze dell\'ambiente.' },
+      { titolo: 'Due finiture disponibili', testo: 'Argento anodizzato e argento spazzolato anodizzato.' },
+    ],
+    immagini: {
+      'Argento': [solovetroAmbienteUfficio, solovetroDettaglio, solovetroEsploso],
+    },
+    varianti: [
+      { codice: 'K.0272.5', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 76, categoria: '02',
+    nome: 'Solo Vetro Light',
+    descrizione: 'Sistema di scorrevoli invisibili per porte interamente in vetro, dedicato ai controsoffitti in cartongesso: le pinze di scorrimento sono completamente nascoste all\'interno del profilo binario in alluminio, integrabile a filo del controsoffitto. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm, in configurazione porta singola, singola con fisso, doppia o doppia con fisso. Sistema di antisganciamento e portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Fissaggio a soffitto pieno, a soffitto vuoto (controsoffitto) o a parete. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a soffitto (pieno o vuoto) o a parete',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfSolovetroLightSchedaTecnica,
+    istruzioni: pdfSolovetroLightIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Pinze completamente invisibili', testo: 'Le pinze di scorrimento sono integrate e nascoste all\'interno del profilo binario in alluminio, a filo del controsoffitto in cartongesso.' },
+      { titolo: 'Dedicato ai controsoffitti', testo: 'Pensato per l\'installazione su pareti e controsoffitti in cartongesso, con fissaggio a soffitto pieno, a soffitto vuoto o a parete.' },
+      { titolo: 'Sistema di antisganciamento', testo: 'Un sistema dedicato impedisce lo sganciamento accidentale dei carrelli dal binario durante lo scorrimento.' },
+      { titolo: 'Configurazioni multiple', testo: 'Porta singola, porta singola con elemento fisso, porta doppia e porta doppia con elemento fisso.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati.' },
+      { titolo: 'Fermi ammortizzati inclusi', testo: 'Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa.' },
+    ],
+    immagini: {
+      'Argento': [solovetroLightAmbienteCucina, solovetroLightDettaglio, solovetroLightEsploso],
+    },
+    varianti: [
+      { codice: 'K.0281.5', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 77, categoria: '02',
+    nome: 'Vetro 40',
+    // Sistema brevettato configurabile su moltissimi assi (lunghezza binario,
+    // tipo di pinza, fermi Fluid, spessore vetro, finitura, kit con/senza
+    // copertura...): troppe combinazioni per un codice fisso a catalogo,
+    // quindi niente varianti con SKU reali (richiesta esplicita del cliente).
+    // Descrizione, immagini e scheda tecnica completa bastano a presentare
+    // il prodotto; la configurazione esatta si valuta caso per caso.
+    descrizione: 'Sistema di scorrevoli brevettato per ante in vetro senza forature: la pinza alta 40mm serra il bordo del vetro senza bisogno di praticare fori sulla lastra. Disponibile con pinza standard (Clamp 200) o con pinza lunga per ante più ampie, ed è configurabile con fermi ammortizzati Fluid opzionali (portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm). Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Il binario in alluminio è disponibile in diverse lunghezze standard (da 600 a 1500mm), con o senza copertura, ed è estendibile con appositi kit per controtelai. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza, fermi e accessori va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Pinza alta 40mm senza forature vetro · portata 80-120kg per anta secondo pinza e fermi · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · binario da 600 a 1500mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfVetro40SchedaTecnica,
+    istruzioni: pdfVetro40IstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori: l\'anta resta un vetro pulito e integro.' },
+      { titolo: 'Due tipi di pinza', testo: 'Pinza standard Clamp 200 oppure pinza lunga (Long Clamp), per ante più ampie o più pesanti.' },
+      { titolo: 'Fermi ammortizzati Fluid opzionali', testo: 'Portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm, su cuscinetti a sfera, per una chiusura frenata e silenziosa.' },
+      { titolo: 'Blocco di sicurezza', testo: 'Il sistema di aggancio del carrello include un blocco di sicurezza che impedisce lo sganciamento accidentale dell\'anta dal binario.' },
+      { titolo: 'Binario configurabile', testo: 'Lunghezze standard da 600 a 1500mm, con o senza copertura, estendibile con kit dedicati per l\'installazione su controtelai.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza, fermi e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Argento spazzolato': [vetro40AmbientePorteLegno, vetro40Dettaglio, vetro40Esploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento spazzolato' },
+    ],
+  },
+  {
+    id: 78, categoria: '02',
+    nome: 'Vetro 40 Drag',
+    // Come Vetro 40: troppe combinazioni possibili (configurazione a piu' ante,
+    // spessore vetro, finitura) per un codice fisso a catalogo, quindi niente
+    // varianti con SKU reali (richiesta esplicita del cliente).
+    descrizione: 'Sistema di scorrevoli brevettato per porte in vetro a trascinamento manuale, con pinza ad altezza ridotta (solo 40mm) senza forature sulla lastra. La pinza è a tutta lunghezza e può essere tagliata a misura in cantiere. Il sistema integra i carrelli con tecnologia Fluid, per un movimento estremamente morbido in apertura e chiusura, ed è disponibile in configurazioni a più ante (fino a 4 ante, combinabili nelle configurazioni F-A-B-C). Adatto a vetri monolitici o stratificati, con spessore 8-8,7 o 10-10,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza e configurazione ante va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7'],
+    dimensioni: 'Pinza alta 40mm senza forature vetro, tagliabile a misura · portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfVetro40dragSchedaTecnica,
+    istruzioni: pdfVetro40dragIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Nessuna foratura sul vetro', testo: 'La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori.' },
+      { titolo: 'Pinza tagliabile a misura', testo: 'La pinza a tutta lunghezza si taglia a misura direttamente in cantiere, in base alla larghezza dell\'anta.' },
+      { titolo: 'Carrelli con tecnologia Fluid', testo: 'Il movimento risulta estremamente morbido, sia in apertura che in chiusura, su cuscinetti a sfera.' },
+      { titolo: 'Porte a trascinamento a più ante', testo: 'Configurazioni combinabili fino a 4 ante (F-A-B-C), per porte a trascinamento manuale con più elementi scorrevoli.' },
+      { titolo: 'Adatto a vetri monolitici e stratificati', testo: 'Compatibile con spessori vetro 8-8,7mm e 10-10,7mm.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra binario, pinza e configurazione ante, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta.' },
+    ],
+    immagini: {
+      'Argento spazzolato': [vetro40dragAmbienteUfficio, vetro40dragDettaglio, vetro40dragEsploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento spazzolato' },
+    ],
+  },
+  {
+    id: 80, categoria: '05',
+    nome: 'Grid',
+    // Sistema completamente su misura: non esiste un kit a catalogo, gli
+    // articoli vengono definiti da Terno sul progetto del cliente. Niente
+    // codici nelle varianti (richiesta esplicita del cliente).
+    descrizione: 'Sistema modulare di profili in alluminio per realizzare pareti e partizioni attrezzate: cabine armadio, uffici, spazi retail e zone giorno, con altezza fino a 3 metri. La struttura è composta da pali cremagliera, ai quali si agganciano mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l\'altezza, e da tratte con pannellatura in vetro o in legno, con angoli a L e a T per chiudere l\'ambiente su più lati. Nella stessa struttura si integrano la porta a battente Pivot, con apertura fino a 180°, e la porta scorrevole Universal. Il modulo standard attrezzabile è da 900mm, ma le tratte sono di misura variabile. È inoltre un sistema aperto: oltre ai moduli a catalogo se ne possono realizzare di propri, rispettando le specifiche costruttive dei manuali tecnici. Attenzione: Grid non è un kit a catalogo — il sistema, cioè l\'elenco degli articoli necessari, viene sviluppato su richiesta a partire dai disegni del cliente. Inviaci il progetto o le misure del tuo ambiente e prepariamo insieme la configurazione. Prodotto da Terno Scorrevoli in alluminio.',
+    materiale: 'Alluminio',
+    dimensioni: 'Altezza fino a 3 metri · modulo standard attrezzabile 900mm · tratte di misura variabile · pannellatura in vetro o legno · partenze a muro, angoli a L e a T, pali cremagliera e pali terminali',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfGridSchedaTecnica,
+    istruzioni: pdfGridIstruzioniMontaggio,
+    caratteristiche: [
+      { titolo: 'Sviluppato sui tuoi disegni', testo: 'Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell\'ambiente. Anche la finitura si sceglie in fase di progetto, tra quelle disponibili. Contattaci con il tuo progetto e prepariamo insieme la configurazione.' },
+      { titolo: 'Parete attrezzabile', testo: 'I pali cremagliera permettono di agganciare mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l\'altezza, e di riposizionarli anche in un secondo momento.' },
+      { titolo: 'Composizione modulare', testo: 'Partenze a muro, tratte fisse, angoli a L e a T, pali di giunzione accessoriabili e pali terminali: la parete si chiude su più lati seguendo la pianta dell\'ambiente, fino a 3 metri di altezza.' },
+      { titolo: 'Pannellature in vetro o in legno', testo: 'La struttura in alluminio si abbina a pannellature in vetro o in legno, a seconda delle esigenze del progetto: con il vetro l\'ambiente resta luminoso e si sfrutta più a lungo la luce naturale.' },
+      { titolo: 'Porte integrate nella struttura', testo: 'La stessa struttura ospita la porta a battente Pivot, con cerniera ad asse decentrato e apertura fino a 180°, e la porta scorrevole Universal, senza bisogno di telai aggiuntivi.' },
+      { titolo: 'Un sistema aperto', testo: 'Oltre ai moduli già a catalogo, progettisti e costruttori possono realizzare moduli propri rispettando le specifiche costruttive dei manuali tecnici.' },
+    ],
+    // La finitura non la dichiariamo: il sistema ne prevede diverse e la
+    // sceglie il cliente insieme al resto della configurazione. La chiave
+    // 'Unica' serve solo a tenere insieme la galleria, non viene mai mostrata.
+    senzaFinitura: true,
+    immagini: {
+      'Unica': [gridAmbienteCabina, gridPortaUniversal, gridComponenti],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Unica' },
+    ],
+  },
+  {
+    id: 79, categoria: '05',
+    nome: 'Vetro Fisso',
+    // Sistema di profili componibili con moltissime combinazioni (altezza
+    // profilo, spessore vetro, tipo di giunzione): troppe combinazioni per
+    // un codice fisso a catalogo, quindi niente varianti con SKU reali
+    // (richiesta esplicita del cliente).
+    descrizione: 'Sistema di profili e accessori in alluminio per la realizzazione di vetrate fisse e vani fissi, per pareti e partizioni in vetro. Disponibile in due altezze di profilo (27mm e 30mm), per vetri con spessore da 8-8,7 a 12-12,7mm. Comprende anche una linea di profili con adesivo per la giunzione diretta vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo, per spessori vetro da 10 a 12,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato. Il sistema è molto modulare: la combinazione esatta di profili e giunzioni va valutata caso per caso in base alla tua vetrata — contattaci per individuare gli articoli giusti per il tuo progetto.',
+    materiale: 'Alluminio',
+    spessoriVetro: ['8', '8.7', '10', '10.7', '12', '12.7'],
+    dimensioni: 'Profili fissavetro altezza 27 o 30mm · profili adesivi per vetro 10-12,7mm · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfVetrofissoSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Due altezze di profilo', testo: 'Profili fissavetro disponibili in altezza 27mm o 30mm, per vetri con spessore da 8-8,7 a 12-12,7mm.' },
+      { titolo: 'Giunzioni vetro su vetro', testo: 'Profili con adesivo per unire i pannelli direttamente vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo.' },
+      { titolo: 'Adatto a vetrate e compartimentazioni', testo: 'Pensato per realizzare pareti fisse in vetro e vani fissi in ambienti ufficio e open space.' },
+      { titolo: 'Un sistema su misura', testo: 'Vista la varietà di combinazioni possibili tra profili, altezze e giunzioni, scegliamo insieme gli articoli giusti in base alla tua vetrata: contattaci per il tuo progetto.' },
+    ],
+    immagini: {
+      'Argento': [vetrofissoAmbienteUfficio, vetrofissoDettaglio, vetrofissoEsploso],
+    },
+    varianti: [
+      { codice: 'Su misura', finitura: 'Argento' },
+    ],
+  },
+  {
+    id: 81, categoria: '06',
+    nome: 'Clear',
+    // Il catalogo Terno prevede anche il binario da 3000mm e vende il binario
+    // a parte (blister B.0412/B.0413): noi lo trattiamo come un kit unico con
+    // il binario da 2000mm, che e' l'unica versione che teniamo, nelle due
+    // finiture che ci ha confermato il cliente (brill .07 e nero .15).
+    descrizione: 'Sistema scorrevole studiato appositamente per i box doccia, con cuscinetti in acciaio inox che lo rendono estremamente resistente all\'umidità e all\'uso quotidiano. È un sistema molto versatile: permette la posa in nicchia (configurazione parete-parete), la posa in luce (vetro-vetro) e la posa ad angolo (parete-vetro). Adatto a vetri con spessore 8-8,7 o 10-10,7mm, con portata 40kg e larghezza anta fino a 1000mm. Lo forniamo come kit unico completo di binario da 2000mm, in 2 finiture: alluminio lucido (brill) e nero. Prodotto da Terno Scorrevoli in alluminio con cuscinetti in acciaio inox.',
+    materiale: 'Alluminio e acciaio inox',
+    spessoriVetro: ['8', '8.7', '10', '10.7'],
+    dimensioni: 'Binario 2000mm · portata 40kg per anta · larghezza anta max 1000mm · spessore vetro 8-8,7 / 10-10,7mm',
+    fornitore: 'Terno Scorrevoli', fornitoreLogo: ternoLogo,
+    scheda: pdfClearSchedaTecnica,
+    istruzioni: pdfClearIstruzioniMontaggio,
+    video: 'https://www.youtube.com/watch?v=9GCIVxI6tkI',
+    caratteristiche: [
+      { titolo: 'Nato per il box doccia', testo: 'I cuscinetti sono realizzati in acciaio inox: il sistema regge l\'umidità e l\'uso quotidiano del bagno senza perdere scorrevolezza.' },
+      { titolo: 'Tre configurazioni di posa', testo: 'Posa in nicchia (parete-parete), posa in luce (vetro-vetro) e posa ad angolo (parete-vetro), con lo stesso kit.' },
+      { titolo: 'Kit completo di binario', testo: 'Lo forniamo già completo del binario da 2000mm: un solo articolo, senza dover ordinare il binario a parte.' },
+      { titolo: 'Adatto a due spessori di vetro', testo: 'Compatibile con vetri da 8-8,7mm e da 10-10,7mm, con i profili di tenuta dedicati per ciascuno spessore.' },
+      { titolo: 'Portata 40kg', testo: 'Ogni anta può pesare fino a 40kg, con larghezza massima 1000mm.' },
+      { titolo: 'Video tutorial di montaggio', testo: 'Oltre alle istruzioni in PDF trovi il video ufficiale Terno Scorrevoli che mostra passo passo il montaggio del sistema.' },
+    ],
+    immagini: {
+      'Alluminio lucido': [clearAmbienteBagno, clearDettaglio, clearEsploso],
+      'Nero spazzolato': [clearAmbienteBagno, clearDettaglio, clearEsploso],
+    },
+    varianti: [
+      { codice: 'K.0411.4.07', finitura: 'Alluminio lucido' },
+      { codice: 'K.0411.4.15', finitura: 'Nero spazzolato' },
+    ],
+  },
+  {
+    id: 82, categoria: '06',
+    nome: 'Guarnizione a palloncino',
+    // Art. 401 della serie "400" di Tràfilo, per noi art. 401.2500.
+    // Le guarnizioni di questa serie non hanno il campo "scheda": la tavola del
+    // fornitore mette insieme gli art. 401-408 e le uniche misure che contano
+    // sono gia' nel disegno quotato che usiamo come immagine, quindi il tasto
+    // "Scheda tecnica" non compare proprio.
+    descrizione: 'Guarnizione a palloncino per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il palloncino tondo sotto fa da battuta e tenuta contro il piatto doccia o l\'anta a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm, palloncino Ø6,5mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · palloncino Ø6,5mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    immagini: {
+      'Trasparente': [guarnizionePalloncinoQuote],
+    },
+    varianti: [
+      { codice: '401.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 83, categoria: '06',
+    nome: 'Guarnizione doppia pinna',
+    // Art. 402 della stessa tavola serie "400": per noi art. 402.2500.
+    descrizione: 'Guarnizione a doppia pinna per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e sotto porta due pinne, una diritta da 12mm e una inclinata da 10mm, che fanno tenuta contro il piatto doccia o l\'anta a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinne da 12 e 10mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    immagini: {
+      'Trasparente': [guarnizioneDoppiaPinnaQuote],
+    },
+    varianti: [
+      { codice: '402.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 84, categoria: '06',
+    nome: 'Guarnizione pinna laterale per scorrevole',
+    // Art. 404 della stessa tavola serie "400": per noi art. 404.2500.
+    descrizione: 'Guarnizione a pinna laterale per box doccia scorrevoli, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna diritta, che sporge di lato, va a coprire la luce fra l\'anta scorrevole e il fisso a fianco. La pinna si taglia a misura da 5 a 30mm, in base alla sovrapposizione fra le ante. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinna da 5 a 30mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    immagini: {
+      'Trasparente': [guarnizionePinnaScorrevoleQuote],
+    },
+    varianti: [
+      { codice: '404.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 85, categoria: '06',
+    nome: 'Guarnizione pinna laterale per battente',
+    // Art. 405 della stessa tavola serie "400": per noi art. 405.2500.
+    descrizione: 'Guarnizione a pinna laterale per box doccia a battente, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna morbida e curva, lunga da 10 a 22mm, appoggia sull\'anta o sul fisso a fianco seguendo il movimento della porta. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · pinna da 10 a 22mm · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    immagini: {
+      'Trasparente': [guarnizionePinnaBattenteQuote],
+    },
+    varianti: [
+      { codice: '405.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 86, categoria: '06',
+    nome: 'Guarnizione calamitata frontale',
+    // Art. 411 della serie "400": per noi art. 411.2500.
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il magnete, annegato nella base piatta e frontale, tiene chiusa l\'anta contro quella a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete frontale · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
+    immagini: {
+      'Trasparente': [guarnizioneCalamitataFrontaleQuote],
+    },
+    varianti: [
+      { codice: '411.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 87, categoria: '06',
+    nome: 'Guarnizione calamitata a 45°',
+    // Art. 412 della serie "400": per noi art. 412.2500. Stessa guarnizione
+    // dell'art. 412.INV qui sotto, ma con la polarizzazione opposta.
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l\'anta contro quella a fianco. Il magnete è polarizzato N-S. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità N-S · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
+    immagini: {
+      'Trasparente': [guarnizioneCalamitata45Quote],
+    },
+    varianti: [
+      { codice: '412.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 88, categoria: '06',
+    nome: 'Guarnizione calamitata a 45° invertita',
+    // Art. 412.INV della serie "400": per noi art. 412.INV.2500. Identica
+    // all'art. 412, con la polarizzazione girata: e' la controparte da montare
+    // sull'altra anta quando la chiusura e' ad angolo.
+    descrizione: 'Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l\'anta contro quella a fianco. È identica alla guarnizione calamitata a 45°, ma con la polarizzazione girata: il magnete è polarizzato S-N. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.',
+    materiale: 'PVC coestruso',
+    spessoriVetro: ['6', '8'],
+    dimensioni: 'Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità S-N · spessore vetro 6-8mm',
+    fornitore: 'Tràfilo', fornitoreLogo: trafiloLogo,
+    caratteristiche: ABBINAMENTO_CALAMITATE,
+    immagini: {
+      'Trasparente': [guarnizioneCalamitata45InvQuote],
+    },
+    varianti: [
+      { codice: '412.INV.2500', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 89, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silicone acetico',
+    // Formato della cartuccia e codici articolo ce li ha dati il cliente: la
+    // scheda tecnica per colori e confezioni rimanda al catalogo Soudal.
+    descrizione: 'Silicone acetico monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai materiali da costruzione comuni. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. Buona resistenza ai raggi UV. Ha il tipico odore acetico e non è verniciabile; non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE, PVC e supporti bituminosi. In cartuccia da 280 ml, trasparente o bianco. Prodotto da Soudal.',
+    materiale: 'Silicone acetico (polisilossano)',
+    // Niente riquadro misure: il formato della cartuccia sta nella descrizione
+    // e le misure del giunto nella caratteristica "La regola del giunto".
+    fornitore: 'Soudal', fornitoreLogo: soudalLogo,
+    scheda: pdfSilirubAcSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Resta elastico', testo: 'Recupero elastico oltre il 90% e allungamento a rottura intorno all’800%: segue i movimenti del giunto invece di strapparsi. Deformazione massima ammessa ±25%.' },
+      { titolo: 'Pelle in 17 minuti', testo: 'Forma la pelle in circa 17 minuti e indurisce di circa 2mm ogni 24 ore. Tempi indicativi: cambiano con temperatura, umidità e tipo di supporto.' },
+      { titolo: 'La regola del giunto', testo: 'Larghezza minima 5mm e massima 10mm, profondità minima 5mm. Nei lavori di sigillatura la profondità va tenuta uguale alla larghezza.' },
+      { titolo: 'Attenzione alle vetrate isolanti', testo: 'Va evitato il contatto diretto con la sigillatura secondaria del vetrocamera e con la pellicola PVB dei vetri stratificati di sicurezza.' },
+      { titolo: 'Non verniciabile', testo: 'Le vernici non tengono sulla superficie: se il giunto va tinteggiato serve un sigillante di altro tipo.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, regge da -60 a +120°C.' },
+    ],
+    // La cartuccia è identica nei due colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Trasparente': [silirubAcCartuccia],
+      'Bianco': [silirubAcCartuccia],
+    },
+    varianti: [
+      { codice: '112215', finitura: 'Trasparente' },
+      { codice: '124103', finitura: 'Bianco' },
+    ],
+  },
+  {
+    id: 90, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silicone neutro',
+    // I sette colori in realta' sono due prodotti Soudal diversi (Silirub N2
+    // per trasparente/bianco/avorio 1013, Soudasil 400 per gli altri quattro):
+    // stesso silicone neutro, stessi dati tecnici, ma la scheda tecnica che si
+    // scarica varia con la finitura. Vedi la mappa "scheda" piu' sotto.
+    descrizione: 'Silicone neutro monocomponente per giunti, elastico anche dopo l\'indurimento: polimerizza con l\'umidità dell\'aria e aderisce ai principali materiali da costruzione, vetro compreso. Adatto ai giunti di collegamento in edilizia, alla posa e alla sigillatura dei vetri e alla sigillatura di porte e finestre. A differenza dei sigillanti acetici non ha l\'odore acetico e non rischia di intaccare i metalli. Buona resistenza ai raggi UV e all\'invecchiamento; non è verniciabile e non va usato su pietre naturali come marmo e granito, che macchia, né su PE, PP, PTFE e supporti bituminosi. In cartuccia da 300 ml, nei colori trasparente, bianco, avorio 1013, nero, alluminio, grigio metallizzato e testa di moro. Prodotto da Soudal.',
+    materiale: 'Silicone neutro (polisilossano)',
+    fornitore: 'Soudal', fornitoreLogo: soudalLogo,
+    scheda: {
+      'Trasparente': pdfSilirubN2SchedaTecnica, '135680': pdfSilirubN2SchedaTecnica,
+      'Bianco': pdfSilirubN2SchedaTecnica, '135679': pdfSilirubN2SchedaTecnica,
+      'Avorio 1013': pdfSilirubN2SchedaTecnica, '135676': pdfSilirubN2SchedaTecnica,
+      'Nero': pdfSoudasil400SchedaTecnica, '175060': pdfSoudasil400SchedaTecnica,
+      'Alluminio': pdfSoudasil400SchedaTecnica, '175059': pdfSoudasil400SchedaTecnica,
+      'Grigio metallizzato': pdfSoudasil400SchedaTecnica, '175055': pdfSoudasil400SchedaTecnica,
+      'Testa di moro': pdfSoudasil400SchedaTecnica, '175062': pdfSoudasil400SchedaTecnica,
+    },
+    caratteristiche: [
+      { titolo: 'Resta elastico', testo: 'Recupero elastico oltre l\'80% e allungamento a rottura oltre il 700%: segue i movimenti del giunto invece di strapparsi. Deformazione massima ammessa ±25%.' },
+      { titolo: 'Pelle in 7 minuti', testo: 'Forma la pelle in circa 7 minuti e indurisce di circa 2mm ogni 24 ore. Tempi indicativi: cambiano con temperatura, umidità e tipo di supporto.' },
+      { titolo: 'La regola del giunto', testo: 'Larghezza minima 5mm e massima 30mm, profondità minima 5mm. Nei lavori di sigillatura la larghezza del giunto va tenuta doppia della profondità.' },
+      { titolo: 'Non verniciabile', testo: 'Le vernici non tengono sulla superficie: se il giunto va tinteggiato serve un sigillante di altro tipo.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste almeno fra -40 e +180°C.' },
+    ],
+    // La cartuccia e' identica in tutti i colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Trasparente': [silirubN2Cartuccia],
+      'Bianco': [silirubN2Cartuccia],
+      'Avorio 1013': [silirubN2Cartuccia],
+      'Nero': [silirubN2Cartuccia],
+      'Alluminio': [silirubN2Cartuccia],
+      'Grigio metallizzato': [silirubN2Cartuccia],
+      'Testa di moro': [silirubN2Cartuccia],
+    },
+    varianti: [
+      { codice: '135680', finitura: 'Trasparente' },
+      { codice: '135679', finitura: 'Bianco' },
+      { codice: '135676', finitura: 'Avorio 1013' },
+      { codice: '175060', finitura: 'Nero' },
+      { codice: '175059', finitura: 'Alluminio' },
+      { codice: '175055', finitura: 'Grigio metallizzato' },
+      { codice: '175062', finitura: 'Testa di moro' },
+    ],
+  },
+  {
+    id: 92, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Silicone neutro per specchi',
+    // Alcosil di Fratelli Zucchini. Sta a parte dagli altri neutri perche'
+    // e' quello che si puo' usare dietro allo specchio: i siliconi acetici
+    // corrodono l'argentatura, e anche fra i neutri non tutti sono dati per
+    // quell'impiego. La scheda tecnica lo elenca esplicitamente.
+    descrizione: 'Sigillante siliconico neutro monocomponente ad alta velocità di reticolazione, indicato anche per il montaggio degli specchi. Basso modulo ed elevata capacità di assorbire le deformazioni, non cola, quindi va bene sia sui giunti orizzontali che verticali, e ha un ampio tempo aperto che lascia lisciare il cordolo con comodo. Adatto alla sigillatura delle superfici vetrate di finestre e facciate continue, ai giunti perimetrali di serramenti in metallo, legno e PVC rigido, alle pareti divisorie e pannellature, a lucernari e coperture in vetro, e agli ambienti chiusi dove serve un prodotto a basso odore. Aderisce a cemento, mattone, ceramica, porcellana, alluminio anodizzato, legno e molte materie plastiche. Non è verniciabile; non va usato come sigillante secondario del vetrocamera né come adesivo strutturale, è sconsigliato per gli acquari e per i giunti immersi di continuo nell\'acqua, e su marmo e pietra naturale va provato prima. In cartuccia da 310 ml, trasparente. Prodotto da Fratelli Zucchini.',
+    materiale: 'Silicone neutro alcossilico',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfAlcosilSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Si può usare sugli specchi', testo: 'La scheda tecnica lo indica per il montaggio degli specchi: è il motivo per cui lo teniamo a parte dagli altri neutri. Un silicone acetico, in quella posizione, attaccherebbe l\'argentatura.' },
+      { titolo: 'Indurisce in fretta', testo: 'Fuori polvere in 20 minuti, vulcanizzazione completa in 1-5 giorni secondo temperatura, umidità e sezione del cordolo. La lisciatura va fatta entro 10 minuti dall\'applicazione.' },
+      { titolo: 'Basso modulo, molto elastico', testo: 'Allungamento a rottura fino al 550% e modulo al 100% di 0,30 N/mm²: assorbe deformazioni ampie senza tirare sui bordi del giunto. Durezza 20 Shore A.' },
+      { titolo: 'La regola del giunto', testo: 'Profondità del sigillante fra 5 e 10mm, e sempre inferiore alla larghezza del giunto. Sul fondo va messo un profilo antiaderente come il Filtene.' },
+      { titolo: 'Certificato per le vetrate', testo: 'Conforme a EN 15651-1 per i giunti di facciata e EN 15651-2 per le vetrate, ISO 11600 classe 25 LM. Emissioni molto basse: EC 1 PLUS, Indoor Air Comfort Gold, Blue Angel.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +40°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Trasparente': [alcosilCartuccia],
+    },
+    varianti: [
+      { codice: '1006788', finitura: 'Trasparente' },
+    ],
+  },
+  {
+    id: 91, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante acrilico',
+    // Edilacril di Fratelli Zucchini. Il codice 1007530 e' il bianco in
+    // cartuccia da 310 ml: la scheda tecnica lo elenca fra le forme
+    // commerciali, insieme a grigio, marrone e ai sacchetti da 600 ml.
+    descrizione: 'Sigillante acrilico monocomponente in dispersione acquosa, plastoelastico: a differenza dei siliconi è verniciabile e si liscia a umido, quindi il giunto sparisce sotto la tinteggiatura. Adatto ai giunti interni ed esterni con movimenti di media entità: giunzioni tra pannelli in cartongesso, travi, rivestimenti in legno e muratura, giunti perimetrali di porte e finestre in legno, fessure tra battiscopa, gradini e muratura. Aderisce a cemento, intonaco, legno e molte superfici verniciate; una volta essiccato resiste alle intemperie, all\'acqua, ai raggi UV e all\'invecchiamento. Non va applicato con pioggia in arrivo e non è adatto ai giunti esposti di continuo all\'acqua, né a PE, PP, PMMA, PTFE, neoprene e giunti bituminosi. In cartuccia da 310 ml, bianco. Prodotto da Fratelli Zucchini.',
+    materiale: 'Resine acriliche in dispersione acquosa',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfEdilacrilSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Verniciabile', testo: 'Si copre con pitture murali e smalti, ed è la differenza che conta rispetto ai siliconi: sul giunto tinteggiato non resta la riga. Meglio comunque una prova preliminare.' },
+      { titolo: 'Si liscia a umido', testo: 'La pasta è tissotropica e non cola; il cordolo si rifinisce con un utensile bagnato e si pulisce con acqua finché è fresco. Da polimerizzato si toglie solo meccanicamente.' },
+      { titolo: 'La regola del giunto', testo: 'Dimensione massima 20×10mm. Sui giunti in movimento la sollecitazione in estensione non deve superare il 15%; sul fondo va messo un profilo antiaderente in polietilene espanso.' },
+      { titolo: 'Tempi', testo: 'Forma la pelle in 15-30 minuti, ma la polimerizzazione completa richiede da 1 a 4 settimane secondo temperatura, umidità e sezione del cordolo. Nelle prime 6 ore teme la pioggia.' },
+      { titolo: 'Emissioni molto basse', testo: 'Classificato EC 1 PLUS e conforme alla norma EN 15651-1 per i giunti di facciata, all\'interno e all\'esterno.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +50°C e, una volta indurito, resiste da -25 a +80°C.' },
+    ],
+    immagini: {
+      'Bianco': [edilacrilCartuccia],
+    },
+    varianti: [
+      { codice: '1007530', finitura: 'Bianco' },
+    ],
+  },
+  {
+    id: 93, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo strutturale',
+    // MS Super di Fratelli Zucchini. A differenza degli altri sigillanti qui
+    // dentro non e' solo un giunto: la scheda tecnica lo classifica anche
+    // come adesivo, con una resistenza al taglio che lo rende adatto agli
+    // incollaggi in carrozzeria e carpenteria metallica.
+    descrizione: 'Sigillante adesivo monocomponente neutro a rapida polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Elasticità e flessibilità permanenti, ottima adesione su una grande varietà di superfici ed elevata coesione: adatto a sigillature e giunzioni adesive elastiche dalle alte prestazioni, come carrozzeria e carpenteria metallica, sigillature tra lamiere saldate e sovrapposte, incollaggi elastici tra legno e metallo, assemblaggio di pannelli isolanti, incollaggi e sigillature su acciaio, alluminio, legno e materie plastiche esposti a vibrazioni, e sigillature metallo-vetro in cabine di verniciatura. Reazione neutra, senza odore, solventi né isocianati; sovraverniciabile subito dopo la formazione di pelle. Non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti; su marmi, graniti e arenarie va provato prima. In cartuccia da 290 ml, nei colori bianco, grigio e nero. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsSuperSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Anche adesivo strutturale', testo: 'Resistenza al taglio di 10-15 N/mm: oltre a sigillare, incolla con tenuta elevata lamiere, profili e pannelli, non solo giunti passanti.' },
+      { titolo: 'Pelle in 10 minuti', testo: 'Forma la pelle in circa 10 minuti e indurisce di 3-4mm ogni 24 ore: fra i più rapidi della gamma, pensato per i ritmi della carrozzeria.' },
+      { titolo: 'Sovraverniciabile subito', testo: 'Si può verniciare già 30 minuti dopo l\'applicazione, senza ritardare l\'indurimento del sigillante né alterare la vernice. Risultati migliori entro 6 ore dall\'applicazione.' },
+      { titolo: 'Resiste alle vibrazioni', testo: 'Elevata elasticità e coesione, pensate per incollaggi e sigillature soggetti a vibrazioni continue: autobus, furgoni, camper, caravan e imbarcazioni.' },
+      { titolo: 'Attenzione al rame e alla piscina', testo: 'Da evitare sul rame naturale e nei giunti a contatto continuo con l\'acqua di piscina; su marmo, graniti e arenarie va sempre fatta una prova preventiva.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +120°C.' },
+    ],
+    // La cartuccia e' identica nei tre colori: cambia solo il sigillante dentro.
+    immagini: {
+      'Bianco': [msSuperCartuccia],
+      'Grigio': [msSuperCartuccia],
+      'Nero': [msSuperCartuccia],
+    },
+    varianti: [
+      { codice: '1004113', finitura: 'Bianco' },
+      { codice: '1004112', finitura: 'Grigio' },
+      { codice: '1004124', finitura: 'Nero' },
+    ],
+  },
+  {
+    id: 94, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo strutturale rapido',
+    // MS Super Fast di Fratelli Zucchini: la versione rapida dell'MS Super,
+    // pensata per l'incollaggio sotto tensione immediata piu' che per la
+    // sigillatura. Noi lo teniamo solo bianco, anche se la scheda tecnica
+    // elenca il nero nella forma commerciale.
+    descrizione: 'Sigillante adesivo monocomponente neutro a rapidissima polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Elevata presa e forza iniziale fin dalle prime fasi dopo l\'applicazione: progettato per il fissaggio rapido in incollaggi sotto tensione immediata, con le parti movimentabili dopo poche ore. Eccellente adesione a vetro e alle lamiere usate in carrozzeria, acciaio galvanizzato, alluminio e PVC rigido; ottima resistenza all\'invecchiamento e ai raggi UV, verniciabile (da verificare la compatibilità). Adatto a incollaggi di nervature di rinforzo su pannelli di lamiera o vetroresina, profili metallici e vetroresina nell\'assemblaggio di container, camper e caravan, pannelli isolanti, sormonti tra lamiere dove non è possibile saldare, e profili a U su cristalli e lastre nell\'industria del freddo. Reazione neutra, senza odore, solventi né isocianati. Non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti. In cartuccia da 290 ml, bianco. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsSuperfastSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Presa fulminea', testo: 'Progettato per il fissaggio sotto tensione immediata: alta coesione già nelle prime fasi dopo l\'applicazione, con le parti incollate movimentabili dopo poche ore.' },
+      { titolo: 'Pelle in 7 minuti', testo: 'Forma la pelle in circa 7 minuti e indurisce di 4mm ogni 24 ore: rispetto all\'MS Super è la versione pensata per chi non può aspettare.' },
+      { titolo: 'Più adesivo che sigillante', testo: 'Resistenza al taglio di 18-20 N/mm, superiore a quella dell\'MS Super: qui la sigillatura è secondaria, il prodotto nasce per incollare.' },
+      { titolo: 'Si applica su un solo lato', testo: 'Va steso su una sola delle due superfici da incollare e le parti vanno accoppiate entro 5 minuti, con uno spessore finale di almeno 1-2mm.' },
+      { titolo: 'Serve la pistola giusta', testo: 'Con le pistole manuali o ad aria tradizionali l\'erogazione risulta difficoltosa: la scheda tecnica consiglia una pistola pneumatica a pistone telescopico o elettrica.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +120°C.' },
+    ],
+    immagini: {
+      'Bianco': [msSuperfastCartuccia],
+    },
+    varianti: [
+      { codice: '1004951', finitura: 'Bianco' },
+    ],
+  },
+  {
+    id: 95, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Sigillante adesivo cristallino',
+    // MS Techno Light di Fratelli Zucchini. Il cliente ci tiene a far
+    // risaltare che e' completamente cristallino, non solo "trasparente"
+    // come il PVC del Trasparente generico: per questo ha una finitura sua,
+    // "Cristallino", con una resa piu' limpida invece del velo delle altre.
+    descrizione: 'Sigillante monocomponente neutro a rapida polimerizzazione, indurente con l\'umidità ambientale, a base di MS Polymer. Trasparente cristallino anche in spessore, senza la velatura tipica dei sigillanti trasparenti: alta elasticità e coesione, aderisce a una grande varietà di superfici. L\'elevata forza coesiva ne consente l\'uso anche come adesivo per incollaggi pressoché invisibili, con buona capacità di riempimento. Adatto a incollaggi e sigillature di vetro, ceramica, porcellana, cristallo, alluminio, acciaio inox, ottone, legno, tessuti, vetroresina e molti altri materiali porosi da costruzione; non idoneo su PE, PP e Teflon. Pensato anche per le sigillature e gli incollaggi invisibili nell\'arredamento, per accoppiare elementi in vetro tra loro o al metallo nella produzione di tavoli, ante e decorazioni vitree, e per oggetti in cristallo, cornici e insegne. Verniciabile, senza solventi, isocianati né siliconi. Non idoneo per l\'esterno senza protezione dai raggi UV, che possono ingiallirlo in superficie; non va usato in immersione continua in acqua, su rame naturale, a contatto con alimenti o con materiali che rilasciano sostanze oleose o plastificanti. In cartuccia da 290 ml, trasparente cristallino. Prodotto da Fratelli Zucchini.',
+    materiale: 'MS Polymer (polimero silil-modificato)',
+    fornitore: 'Fratelli Zucchini', fornitoreLogo: zucchiniLogo,
+    scheda: pdfMsTechnoLightSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Cristallino, non solo trasparente', testo: 'Resta limpido anche in spessore, senza la velatura tipica di molti sigillanti trasparenti: pensato apposta per le sigillature e gli incollaggi a vista.' },
+      { titolo: 'Anche adesivo, quasi invisibile', testo: 'L\'elevata forza coesiva permette di usarlo per incollaggi poco visibili e con buona capacità di riempimento, non solo per sigillare i giunti.' },
+      { titolo: 'Pensato anche per l\'arredamento', testo: 'Accoppia elementi in vetro tra loro o al metallo per tavoli, ante, decorazioni vitree, cornici, insegne e oggetti in cristallo, oltre ai normali impieghi edili.' },
+      { titolo: 'Attenzione al sole', testo: 'Buona resistenza ai raggi UV solo in esposizione indiretta: all\'aperto e alla luce diretta può ingiallire in superficie, va sempre protetto.' },
+      { titolo: 'Non su PE, PP e Teflon', testo: 'Aderisce alla maggior parte dei materiali da costruzione ma non a queste plastiche; da evitare anche sul rame naturale.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +35°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Cristallino': [msTechnoLightCartuccia],
+    },
+    varianti: [
+      { codice: '1004440', finitura: 'Cristallino' },
+    ],
+  },
+  {
+    id: 96, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Adesivo e sigillante universale',
+    // Bostik Poly Max High Tack Express: primo prodotto di un fornitore
+    // nuovo per questa categoria (finora solo Soudal e Fratelli Zucchini).
+    // A base di polimero SMP come i sigillanti Zucchini, ma qui il cliente
+    // lo vuole soprattutto come colla universale ad alta presa iniziale,
+    // non come sigillante per giunti.
+    descrizione: 'Adesivo e sigillante universale monocomponente per costruzioni, a base di polimero SMP, con elevatissima forza di adesione iniziale e rapida costituzione della forza finale. Incolla, fissa, ripara e sigilla quasi tutti i materiali da costruzione su superfici lisce, porose e non porose, anche leggermente umide, senza bisogno di primer. Adatto a incollare vetro, pietra, pietra naturale, calcestruzzo, intonaco, materiali sintetici, legno, truciolato, metalli come ferro, alluminio, zinco, acciaio e acciaio inox, piastrelle ceramiche, sughero e specchi; a fissare e riparare battiscopa, dogati e perlinati, davanzali, soglie d\'ingresso, bordi di tetti, pannelli da costruzione, materiali isolanti, pannelli in gesso e cornici decorative; e a sigillare battiscopa in materiale sintetico, telai di finestre, gradini di scale, davanzali, soglie e pannelli in cartongesso, comprese le crepe su pareti e soffitti. Permanentemente elastico, resistente ai raggi UV, all\'acqua e alle intemperie, verniciabile previo test, privo di solventi e inodore. Non idoneo per PE, PP, PTFE e bitume; sulla plastica va sempre fatta una prova di adesione preliminare. In cartuccia da 440 g, bianco. Prodotto da Bostik.',
+    materiale: 'Polimero SMP',
+    fornitore: 'Bostik', fornitoreLogo: bostikLogo,
+    scheda: pdfPolyMaxHighTackExpressSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Presa fulminea', testo: 'Initial tack estremamente alto, già forte dopo appena 10 secondi: l\'effetto ventosa iniziale arriva a 100 N/cm² in soli 30 minuti dall\'applicazione.' },
+      { titolo: 'Colla e sigilla allo stesso tempo', testo: 'Nasce come adesivo universale ad alta presa, non solo come sigillante: pensato per incollare e fissare, oltre che per stuccare i giunti.' },
+      { titolo: 'Tiene anche sull\'umido', testo: 'Aderisce anche su superfici leggermente umide, senza bisogno di primer: non serve aspettare che siano perfettamente asciutte.' },
+      { titolo: 'Zero ritiro', testo: 'Adesività del 100%, senza fenomeni di ritiro o espansione: il volume applicato resta quello anche dopo l\'indurimento completo.' },
+      { titolo: 'Non su PE, PP, PTFE e bitume', testo: 'Da evitare su queste superfici; sulla plastica in generale va sempre fatta una prova preliminare, perché l\'adesione varia con il tipo di resina.' },
+      { titolo: 'Temperature', testo: 'Si applica fra +5 e +40°C e, una volta indurito, resiste da -40 a +100°C.' },
+    ],
+    immagini: {
+      'Bianco': [polyMaxHighTackExpressCartuccia],
+    },
+    varianti: [
+      { codice: '6316017', finitura: 'Bianco' },
+    ],
+  },
+  {
+    id: 97, categoria: '09', sottocategoria: 'siliconi-sigillanti',
+    nome: 'Ancorante chimico ibrido',
+    // SH-PRO Super Hybrid di G&B Fissaggi. Il cliente lo vuole comunque
+    // dentro "Siliconi e sigillanti", non in "Tasselli". Teniamo solo il
+    // grigio cemento, nei due formati da 410 e 300 ml: la scheda tecnica
+    // elenca anche il beige "ton pierre" e il kit bicomponente, che non
+    // trattiamo.
+    descrizione: 'Ancorante chimico monocomponente a base di resina ibrida senza stirene, per il fissaggio di barre filettate e ferri d\'armatura su calcestruzzo, anche non fessurato, e su murature piene e forate con l\'apposita bussola in plastica. Certificato ETA secondo le norme europee, sia per il calcestruzzo (EAD 330499-02-0601) sia per la muratura (EAD 330076-01-0604), utilizzabile anche su supporti bagnati o con i fori pieni d\'acqua. Tempo di lavorabilità e tempi di applicazione del carico variano con la temperatura del supporto, da 90 minuti a -5°C fino a pochi minuti sopra i 30°C; resiste a temperature di esercizio comprese fra -40°C e +80°C. Emissioni molto basse, classe A+ e conforme ai requisiti LEED. Si eroga con normale pistola per cartucce tramite miscelatore statico M17. In cartuccia da 410 ml (art. CC01) o da 300 ml (art. CC02), colore grigio cemento. Prodotto da G&B Fissaggi.',
+    materiale: 'Resina ibrida senza stirene',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfShProSuperHybridSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Doppia certificazione ETA', testo: 'ETA 25/1044 per il calcestruzzo non fessurato con barra filettata, ed ETA 25/1045 per muratura piena e forata con bussola in plastica: coprono la maggior parte dei fissaggi strutturali di cantiere.' },
+      { titolo: 'Anche su supporti bagnati', testo: 'Si usa su calcestruzzo asciutto, bagnato o con i fori pieni d\'acqua, oltre che su muratura bagnata: non serve aspettare che il supporto sia perfettamente asciutto.' },
+      { titolo: 'Tempi legati alla temperatura', testo: 'Tempo di lavorabilità e applicazione del carico variano molto con la temperatura del supporto: da 90 minuti a -5°C fino a soli 2 minuti sopra i 35°C.' },
+      { titolo: 'Senza stirene, emissioni bassissime', testo: 'Formulazione ibrida senza stirene, classe A+ per le emissioni di COV e conforme ai requisiti LEED: adatto anche ai fissaggi in ambienti abitati.' },
+      { titolo: 'Serve il miscelatore giusto', testo: 'Le cartucce monocomponente da 410 e 300 ml si erogano con normale pistola per cartucce e miscelatore statico M17, non compreso nella confezione.' },
+      { titolo: 'Temperature', testo: 'Si posa fra -5 e +39°C e, una volta indurito, resiste da -40°C fino a +80°C secondo la temperatura di esercizio.' },
+    ],
+    // La cartuccia cambia formato ma non colore: stesso grigio cemento nei
+    // due formati, con le rispettive foto.
+    assi: [
+      { chiave: 'formato', etichetta: 'Formato', suffisso: ' ml' },
+    ],
+    immagini: {
+      'Grigio cemento': [shPro410Cartuccia, shPro300Cartuccia],
+    },
+    varianti: [
+      { codice: 'CC01', finitura: 'Grigio cemento', formato: 410 },
+      { codice: 'CC02', finitura: 'Grigio cemento', formato: 300 },
+    ],
+  },
+  {
+    id: 108, categoria: '09', sottocategoria: 'nastri-biadesivi',
+    nome: 'Nastro biadesivo per specchi',
+    // Primo articolo della sottocategoria. Häfele fa quattro codici: le due
+    // larghezze 19 e 25mm, ognuna nello spessore 1 e 1,5mm. Noi teniamo solo
+    // quelli da 1,5mm (003.58.212 e 003.58.213); gli altri due, 003.58.210 e
+    // 003.58.211 da 1mm, non li trattiamo. Non esiste una scheda tecnica
+    // scaricabile: i dati vengono dalla pagina di catalogo del fornitore.
+    descrizione: 'Nastro biadesivo in schiuma acrilica per il fissaggio di specchi, profili per finestre in PVC ed elementi su piastrelle. Aderisce sia su fondi lisci sia su fondi ruvidi, attenua le vibrazioni e lavora anche come elemento di compensazione fra le due superfici. Resistente ai raggi UV, con temperatura di utilizzo da -40°C a +95°C; la stabilità finale si raggiunge dopo 24 ore. Adesivo in colla acrilica bianca: l\'azzurro del rotolo è solo la pellicola di protezione, che si toglie in posa, quindi il nastro montato resta completamente bianco. Le strisce vanno applicate solo in senso verticale. Rotolo singolo da 50 metri, spessore 1,5mm, nelle larghezze 19 e 25mm. Prodotto da Häfele.',
+    materiale: 'Schiuma acrilica con colla acrilica bianca',
+    dimensioni: 'Larghezza 19 e 25mm · spessore 1,5mm · rotolo da 50m',
+    fornitore: 'Häfele',
+    caratteristiche: [
+      { titolo: 'Si applica solo in verticale', testo: 'Le strisce vanno messe in senso verticale, mai orizzontale: il disegno di montaggio in galleria mostra la posa corretta e quella sbagliata.' },
+      { titolo: 'Montato è tutto bianco', testo: 'Sul rotolo si vede azzurro, ma quello è solo il film di protezione: una volta staccato resta la schiuma acrilica bianca, uguale su tutte e due le facce.' },
+      { titolo: 'Tiene anche sui fondi ruvidi', testo: 'Il millimetro e mezzo di schiuma acrilica compensa le irregolarità del supporto, quindi il nastro lavora sia su superfici lisce sia su fondi non perfettamente in piano.' },
+      { titolo: 'Attenua le vibrazioni', testo: 'Fa da elemento di compensazione fra specchio e parete: assorbe i movimenti invece di trasmetterli al vetro.' },
+      { titolo: 'Stabilità finale dopo 24 ore', testo: 'La presa è immediata, ma la tenuta arriva a pieno regime dopo un giorno: fino ad allora conviene non sollecitare il pezzo incollato.' },
+      { titolo: 'Resiste a UV e sbalzi di temperatura', testo: 'Resistente ai raggi UV, con temperatura di utilizzo da -40°C fino a +95°C.' },
+      { titolo: 'Quale larghezza scegliere', testo: 'Le due larghezze hanno lo stesso spessore da 1,5mm: il 25mm dà più superficie incollata a parità di striscia, il 19mm si nasconde meglio dietro i pezzi stretti.' },
+      { titolo: 'Rotolo da 50 metri', testo: 'Si vende al rotolo, un pezzo per confezione, con 50 metri di nastro.' },
+    ],
+    assi: [
+      { chiave: 'larghezza', etichetta: 'Larghezza' },
+    ],
+    immagini: {
+      'Bianco': [nastroSpecchiRotolo, nastroSpecchiMontaggio],
+    },
+    varianti: [
+      { codice: '003.58.212', finitura: 'Bianco', larghezza: '19mm' },
+      { codice: '003.58.213', finitura: 'Bianco', larghezza: '25mm' },
+    ],
+  },
+  {
+    id: 109, categoria: '09', sottocategoria: 'nastri-biadesivi',
+    nome: 'Nastro biadesivo universale',
+    // Poly Max High Tack Express in versione nastro: stesso nome
+    // commerciale dell'adesivo in cartuccia (id 96), ma e' un prodotto
+    // diverso, un biadesivo in schiuma PE. Un solo codice, il blister
+    // bianco da 1,5m, quindi niente assi.
+    descrizione: 'Nastro biadesivo universale in schiuma PE con adesivo in gomma sintetica, per montare oggetti senza forare. Presa immediata e resistenza finale dopo circa 24 ore, fino a 150kg per rotolo secondo la norma Afera 5012. Adatto al montaggio di oggetti lisci o leggermente ruvidi come rilevatori d\'incendio, appendiabiti, cornici, specchi, piccoli accessori da cucina e da bagno, targhette e numeri civici; aderisce su metallo, vetro, piastrelle, plastica rigida, legno, pietra e superfici verniciate. Utilizzabile sia all\'interno sia all\'esterno, con resistenza da -10 a +75°C una volta montato. Non adatto alle superfici delicate come le carte da parati, ai rivestimenti antiaderenti tipo PTFE e ai luoghi permanentemente umidi. Spessore 0,98mm, colore bianco, blister da 1,5 metri. Prodotto da Bostik.',
+    materiale: 'Schiuma PE con adesivo in gomma sintetica',
+    dimensioni: 'Spessore 0,98mm · rotolo da 1,5m',
+    fornitore: 'Bostik', fornitoreLogo: bostikLogo,
+    scheda: pdfPolyMaxHighTackExpressBiadesivoSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Fino a 150kg per rotolo', testo: 'Il dato è misurato secondo la norma Afera 5012 in condizioni ideali, con superfici piane e pulite: la tenuta reale dipende dal materiale e dalla planarità dell\'oggetto, e può calare nel tempo.' },
+      { titolo: 'Fissa senza forare', testo: 'Niente trapano e niente viti: utile su piastrelle, vetro e tutte le superfici che non si vogliono bucare.' },
+      { titolo: 'Come si applica', testo: 'Si stende il nastro su tutta la lunghezza dell\'oggetto premendo dieci secondi, poi si toglie la pellicola senza toccare l\'adesivo e si preme con forza altri dieci secondi. Più pressione si fa, più tiene.' },
+      { titolo: 'Si applica fra +15 e +30°C', testo: 'Fuori da questo intervallo l\'adesivo non fa la presa che dovrebbe. A montaggio fatto, invece, regge da -10 fino a +75°C, anche all\'aperto.' },
+      { titolo: 'Tiene di più sul liscio', testo: 'L\'adesione massima si ottiene su oggetti metallici piatti, di spessore inferiore a 10mm, applicati su superfici metalliche lisce. Entrambe le parti devono essere solide, asciutte e prive di polvere e grasso.' },
+      { titolo: 'Dove non usarlo', testo: 'Da evitare su carte da parati e altre superfici delicate, sui rivestimenti antiaderenti come il PTFE e negli ambienti permanentemente umidi. Sui materiali dubbi conviene provare prima su un campione.' },
+      { titolo: 'Resistenza finale dopo 24 ore', testo: 'Il nastro tiene subito, ma arriva a piena forza dopo circa un giorno. Gli eventuali residui si tolgono con acqua ragia.' },
+    ],
+    immagini: {
+      'Bianco': [polyMaxHighTackExpressBiadesivo],
+    },
+    varianti: [
+      { codice: '7007812', finitura: 'Bianco' },
+    ],
+  },
+  {
+    id: 98, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello bimateriale Duopower',
+    // DuoPower di fischer: primo prodotto della sottocategoria "Tasselli".
+    // Noi teniamo le tre misure senza vite (6x30, 8x40 e 10x50): il catalogo
+    // fischer elenca anche le versioni lunghe, quelle con vite inclusa
+    // (codici che finiscono per S) e quelle con gancio o occhiolo.
+    descrizione: 'Tassello universale bimateriale in nylon e TPE, per il fissaggio su quasi tutti i materiali da costruzione. I due materiali lavorano in modo diverso a seconda del supporto: nel pieno il tassello si espande, nel forato si piega, nel cartongesso si annoda, così una sola misura copre situazioni molto diverse. Adatto a calcestruzzo, mattone pieno e semipieno in laterizio o silicato di calcio, blocchi in calcestruzzo alleggerito, calcestruzzo cellulare, cartongesso e lastre in fibra di gesso, pietra naturale, pannelli truciolari e solai cavi. Il collare sottile impedisce al tassello di scivolare dentro al foro e le alette antirotazione ne evitano la rotazione durante l\'avvitamento. Va installato con viti da legno o truciolari (o a doppia filettatura): la vite deve essere lunga almeno quanto il tassello più lo spessore dell\'oggetto da fissare più il diametro della vite. Idoneo al montaggio passante e non passante. Nelle misure 6×30, 8×40 e 10×50, fornito senza vite. Prodotto da fischer.',
+    materiale: 'Nylon e TPE',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuopowerSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Forniti senza vite', testo: 'Le tre misure che teniamo sono le versioni senza vite: la vite va presa a parte, da legno o truciolare, nel diametro indicato per la misura scelta.' },
+      { titolo: 'Due materiali, tre modi di lavorare', testo: 'Nel supporto pieno si espande, nel forato si piega, nel cartongesso si annoda: è il motivo per cui tiene bene su materiali molto diversi fra loro.' },
+      { titolo: 'Si sente quando è a posto', testo: 'Il tassello dà un riscontro netto durante il serraggio: si percepisce con chiarezza il momento in cui il fissaggio è installato correttamente.' },
+      { titolo: 'Fori corti', testo: 'La lunghezza ridotta del tassello velocizza la posa e non richiede forature profonde: 40mm per il 6×30, 50mm per l\'8×40, 70mm per il 10×50.' },
+      { titolo: 'Che vite serve', testo: 'Viti da legno o truciolari Ø4-5mm per il 6×30, Ø4,5-6mm per l\'8×40 e Ø6-8mm per il 10×50. La distanza dal bordo deve essere almeno pari alla lunghezza del tassello.' },
+      { titolo: 'Anche su cartongesso', testo: 'Con lastra singola da 12,5mm regge fino a 0,15kN e con lastra doppia fino a 0,30kN, secondo la misura: utile per mensole, quadri e accessori bagno su parete leggera.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duopowerRender],
+    },
+    varianti: [
+      { codice: '537640', finitura: 'Grigio e rosso', misura: '6 × 30mm' },
+      { codice: '537641', finitura: 'Grigio e rosso', misura: '8 × 40mm' },
+      { codice: '537644', finitura: 'Grigio e rosso', misura: '10 × 50mm' },
+    ],
+  },
+  {
+    id: 99, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello bimateriale Duopower con vite',
+    // DuoPower S: stesso tassello del 98, ma con la vite gia' inclusa. Sta a
+    // parte perche' le misure non coincidono (qui c'e' anche il 6x50, che
+    // senza vite non teniamo) e perche' le profondita' di foratura cambiano
+    // fra le due versioni. La scheda tecnica invece e' la stessa.
+    descrizione: 'Tassello universale bimateriale in nylon e TPE fornito con la vite già inclusa, per il fissaggio su quasi tutti i materiali da costruzione. È lo stesso tassello della versione senza vite: i due materiali lavorano in modo diverso a seconda del supporto, espandendosi nel pieno, piegandosi nel forato e annodandosi nel cartongesso, così una sola misura copre situazioni molto diverse. Adatto a calcestruzzo, mattone pieno e semipieno in laterizio o silicato di calcio, blocchi in calcestruzzo alleggerito, calcestruzzo cellulare, cartongesso e lastre in fibra di gesso, pietra naturale, pannelli truciolari e solai cavi. Ogni misura arriva con la sua vite truciolare a impronta PZ2, già dimensionata sul tassello, e permette di fissare oggetti fino a 5mm di spessore. Il collare sottile impedisce al tassello di scivolare dentro al foro e le alette antirotazione ne evitano la rotazione durante l\'avvitamento. Idoneo al montaggio passante e non passante. Nelle misure 6×30, 6×50, 8×40 e 10×50. Prodotto da fischer.',
+    materiale: 'Nylon e TPE',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuopowerSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'A differenza della versione base, qui la vite è compresa nella confezione e arriva già della misura giusta per il tassello: non serve prenderla a parte.' },
+      { titolo: 'Quale vite trovi dentro', testo: 'Vite 4,5 × 40mm con il 6×30, 4,5 × 70mm con il 6×50, 5 × 50mm con l\'8×40 e 7 × 60mm con il 10×50. Tutte a impronta PZ2, per oggetti fino a 5mm di spessore.' },
+      { titolo: 'Due materiali, tre modi di lavorare', testo: 'Nel supporto pieno si espande, nel forato si piega, nel cartongesso si annoda: è il motivo per cui tiene bene su materiali molto diversi fra loro.' },
+      { titolo: 'Profondità di foratura', testo: 'Foro minimo 45mm per il 6×30, 60mm per il 6×50, 55mm per l\'8×40 e 65mm per il 10×50: qualche millimetro in più della versione senza vite, perché la vite fornita è più lunga.' },
+      { titolo: 'Il 6×50 tiene di più', testo: 'La versione lunga da 6×50 ha una profondità di ancoraggio maggiore: è quella da preferire sui materiali cavi, sul calcestruzzo cellulare e dove c\'è molto intonaco da attraversare.' },
+      { titolo: 'Anche su cartongesso', testo: 'Con la vite in dotazione regge fino a 0,12kN sul 6×30 e 0,15kN su 8×40 e 10×50 con lastra singola da 12,5mm: utile per mensole, quadri e accessori bagno su parete leggera.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duopowerSRender],
+    },
+    varianti: [
+      { codice: '537646', finitura: 'Grigio e rosso', misura: '6 × 30mm' },
+      { codice: '538255', finitura: 'Grigio e rosso', misura: '6 × 50mm' },
+      { codice: '537647', finitura: 'Grigio e rosso', misura: '8 × 40mm' },
+      { codice: '537648', finitura: 'Grigio e rosso', misura: '10 × 50mm' },
+    ],
+  },
+  {
+    id: 100, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato bimateriale Duoxpand T',
+    // DuoXpand-T di fischer, vite a testa svasata piana per il legno. Sta a
+    // parte dal DuoXpand FUS (id 101, vite esagonale flangiata per il
+    // metallo): stessa scheda tecnica, stesso tassello, cambia solo la vite
+    // e quindi l'impiego consigliato. Teniamo solo la versione in acciaio
+    // zincato, non quella in acciaio inox che la scheda elenca per alcune misure.
+    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa svasata piana e impronta Torx, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. La testa svasata piana affonda a filo nel materiale, il che rende questa versione "T" indicata soprattutto per fissare strutture in legno su muratura o calcestruzzo: serramenti e portoncini, pergole, tettoie e verande, sottostrutture per facciate e coperture. Per il fissaggio di strutture metalliche fischer propone invece la versione FUS, con vite a testa esagonale flangiata. Nelle misure 8×80mm e 8×100mm, con vite Torx T30, e 10×100mm e 10×120mm, con vite Torx T40; vite in acciaio zincato. Prodotto da fischer.',
+    materiale: 'Nylon e TPE, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuoxpandSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Come nel DuoPower S, la vite di sicurezza arriva premontata sul tassello: non va acquistata a parte e si adatta esattamente alla misura scelta.' },
+      { titolo: 'Espansione adattiva', testo: 'Le lamelle si aprono in modo diverso a seconda del materiale, distribuendo il carico senza spaccare i supporti cavi o porosi, e permettono di ancorare anche vicino ai bordi.' },
+      { titolo: 'Solo per installazioni passanti', testo: 'A differenza del DuoPower, il DuoXpand attraversa l\'oggetto da fissare e si ancora solo nel materiale di supporto dietro.' },
+      { titolo: 'Testa svasata, per il legno', testo: 'La vite a testa svasata piana affonda a filo ed è indicata per fissare strutture in legno su muratura o calcestruzzo. Per il metallo c\'è la versione FUS a testa esagonale flangiata.' },
+      { titolo: 'Certificato ETA per più materiali', testo: 'ETA-21/0324 copre calcestruzzo, laterizio, silicato di calcio, calcestruzzo alleggerito e cellulare, con un carico ammissibile dichiarato per ciascun materiale.' },
+      { titolo: 'Lo spessore dipende dalla profondità', testo: 'Aumentando la profondità di ancoraggio (hnom) diminuisce lo spessore fissabile: con l\'8×100 si arriva a 50mm con hnom 50mm, o a 30mm con hnom 70mm.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duoxpandRender],
+    },
+    varianti: [
+      { codice: '562149', finitura: 'Grigio e rosso', misura: '8 × 80mm' },
+      { codice: '562150', finitura: 'Grigio e rosso', misura: '8 × 100mm' },
+      { codice: '562156', finitura: 'Grigio e rosso', misura: '10 × 100mm' },
+      { codice: '562157', finitura: 'Grigio e rosso', misura: '10 × 120mm' },
+    ],
+  },
+  {
+    id: 101, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato bimateriale Duoxpand FUS',
+    // DuoXpand-FUS di fischer: stesso tassello e stessa scheda tecnica del
+    // Duoxpand T (id 100), ma con vite a testa esagonale flangiata invece
+    // che svasata, pensata per il metallo. Teniamo solo il diametro 10, in
+    // acciaio zincato.
+    descrizione: 'Tassello prolungato bimateriale con vite di sicurezza premontata a testa esagonale flangiata e ampio collarino, per il fissaggio passante su materiali da costruzione pieni e cavi. La geometria a lamelle permette un\'espansione adattiva: nei materiali pieni distribuisce il carico in modo uniforme, in quelli cavi e porosi le lamelle si espandono fra le creste del laterizio formando un sottosquadro, evitando fratture e consentendo l\'ancoraggio anche vicino ai bordi. Il corpo in nylon grigio garantisce resistenza ai carichi elevati, mentre la componente rossa assicura flessibilità ed espansione ottimale. Certificato ETA (ETA-21/0324) per usi multipli non strutturali su calcestruzzo ≥C12/15, mattone pieno in laterizio o silicato di calcio, blocchi pieni in calcestruzzo normale e alleggerito, mattone semipieno, blocco cavo in calcestruzzo alleggerito e calcestruzzo cellulare; adatto anche a pietra naturale compatta e pannelli pieni in gesso. La testa esagonale flangiata, con impronta Torx e chiave, e l\'ampio collarino che evita la corrosione da contatto rendono questa versione "FUS" indicata per fissare strutture metalliche: staffe, ringhiere, cancelli, inferriate e balaustre. Per il fissaggio di strutture in legno fischer propone invece la versione T, con vite a testa svasata piana. Nelle misure 10×100mm, 10×120mm, 10×140mm e 10×160mm, con vite Torx T40 e chiave SW13, in acciaio zincato. Prodotto da fischer.',
+    materiale: 'Nylon e TPE, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuoxpandSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'La vite di sicurezza arriva premontata sul tassello: non va acquistata a parte e si adatta esattamente alla misura scelta.' },
+      { titolo: 'Testa esagonale, per il metallo', testo: 'Testa esagonale flangiata con ampio collarino, che evita la corrosione da contatto: indicata per fissare staffe, ringhiere, cancelli e altre strutture metalliche. Per il legno c\'è la versione T a testa svasata.' },
+      { titolo: 'Doppia impronta', testo: 'Si avvita sia con inserto Torx T40 sia con chiave fissa o a bussola SW13, comoda quando serve più coppia di serraggio o non si ha un avvitatore a portata di mano.' },
+      { titolo: 'Espansione adattiva', testo: 'Le lamelle si aprono in modo diverso a seconda del materiale, distribuendo il carico senza spaccare i supporti cavi o porosi, e permettono di ancorare anche vicino ai bordi.' },
+      { titolo: 'Solo per installazioni passanti', testo: 'Come il Duoxpand T, attraversa l\'oggetto da fissare e si ancora solo nel materiale di supporto dietro: non va installato da solo nel muro per una vite successiva.' },
+      { titolo: 'Certificato ETA per più materiali', testo: 'ETA-21/0324 copre calcestruzzo, laterizio, silicato di calcio, calcestruzzo alleggerito e cellulare, con un carico ammissibile dichiarato per ciascun materiale.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duoxpandFusRender],
+    },
+    varianti: [
+      { codice: '562168', finitura: 'Grigio e rosso', misura: '10 × 100mm' },
+      { codice: '562169', finitura: 'Grigio e rosso', misura: '10 × 120mm' },
+      { codice: '562170', finitura: 'Grigio e rosso', misura: '10 × 140mm' },
+      { codice: '562171', finitura: 'Grigio e rosso', misura: '10 × 160mm' },
+    ],
+  },
+  {
+    id: 102, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Fissaggio basculante Duotec con vite',
+    // DuoTec 10 S di fischer, l'unica versione che teniamo: arriva con la
+    // vite gia' inclusa (a testa svasata piana, impronta PZ), a differenza
+    // della DuoTec 10 base che va comprata a parte dalla vite.
+    descrizione: 'Fissaggio basculante in nylon rinforzato con fibra di vetro, per pareti e pannelli cavi come cartongesso, fibra di gesso, pannelli in legno (OSB, truciolare, MDF), lamiere in acciaio e pannelli in plastica; utilizzabile anche come tassello a espansione tradizionale in materiali pieni come calcestruzzo e legno. L\'elemento ad ancora, rinforzato con componenti metalliche interne, ruota automaticamente dietro il pannello dopo l\'inserimento nel foro e si blocca avvitando la vite in dotazione, a testa svasata piana con impronta PZ. Il diametro del foro ridotto (10mm) e la lunghezza contenuta dell\'ancora permettono l\'installazione anche in intercapedini strette o isolate con lana minerale, e la bandella inferiore millimetrata funge da sonda per verificare la profondità della cavità prima di serrare. Il dispositivo di bloccaggio flessibile in acciaio inossidabile consente di svitare e riavvitare la vite più volte. Adatto a mobiletti, armadietti, ripiani, armadi, corrimano, quadri, specchi, lampadari, canaline elettriche e collari per tubi. Installazione non passante. Vite inclusa: testa svasata piana Ø5mm, lunga 50mm. Prodotto da fischer.',
+    materiale: 'Nylon rinforzato con fibra di vetro, vite in acciaio zincato',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuotecSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Arriva completo della sua vite a testa svasata piana, impronta PZ, Ø5×50mm: non va comprata a parte, a differenza della versione base senza vite.' },
+      { titolo: 'Si riavvita più volte', testo: 'Il dispositivo di bloccaggio flessibile in acciaio inossidabile permette di svitare e riavvitare la vite più volte, utile per smontare e rimontare l\'oggetto fissato.' },
+      { titolo: 'Foro piccolo, ancora corta', testo: 'Basta un foro da 10mm e l\'elemento ad ancora è lungo appena 39mm: entra anche in intercapedini strette o isolate con lana minerale.' },
+      { titolo: 'Funziona anche nei materiali pieni', testo: 'Oltre che nei pannelli cavi, si può usare come tassello a espansione tradizionale in calcestruzzo o legno pieno.' },
+      { titolo: 'La bandella fa anche da sonda', testo: 'La bandella inferiore millimetrata dell\'ancora permette di controllare a occhio la profondità della cavità prima di serrare la vite.' },
+      { titolo: 'Quanto regge', testo: 'Su cartongesso da 12,5mm regge da 0,20 a 0,36kN a seconda dell\'interasse tra i montanti; il carico massimo dichiarato arriva a 0,75kN su pannello OSB da 18mm.' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duotecRender, duotecInstall1, duotecInstall2],
+    },
+    varianti: [
+      { codice: '540178', finitura: 'Grigio e rosso' },
+    ],
+  },
+  {
+    id: 103, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello autoforante per cartongesso Duoblade con viti',
+    // DuoBlade S di fischer (art. 545678): la versione che arriva con le
+    // viti. La scheda elenca anche il DuoBlade "nudo" (art. 545677), da
+    // abbinare a viti proprie, che non teniamo. Le istruzioni di montaggio
+    // sono ricavate dalla sequenza di installazione della scheda tecnica.
+    descrizione: 'Tassello autoforante bimateriale in nylon e fibra di vetro per lastre in cartongesso, con punta metallica già preinstallata: non serve forare prima, si avvita direttamente sulla lastra. La punta autoforante e centrante attraversa anche i materiali rigidi e l\'elica rinforzata tira dentro il tassello fino a battuta, mentre le lamelle anti-rotazione lo tengono fermo quando si avvita la vite. All\'inserimento della vite la punta metallica viene espulsa e cade nel vuoto dietro la lastra. L\'impronta PZ2 è la stessa sul tassello e sulla vite, quindi si monta tutto senza cambiare inserto. Adatto a cartongesso in lastra singola e doppia, gessofibra e lastre di cemento alleggerito; pensato per rilevatori di fumo, specchi, impianti elettrici, lampade, quadri e accessori vari. Installazione non passante: dietro la lastra servono almeno 50mm di vuoto. Fornito con le viti a testa svasata piana da 4,5 × 40mm, per fissare oggetti fino a 12mm di spessore. Prodotto da fischer.',
+    materiale: 'Nylon e fibra di vetro, punta e viti in acciaio',
+    fornitore: 'fischer', fornitoreLogo: fischerLogo,
+    scheda: pdfDuobladeSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Viti già incluse', testo: 'La confezione comprende le viti a testa svasata piana da 4,5 × 40mm: la versione base del DuoBlade arriva senza, da abbinare a viti da legno, autofilettanti o truciolari da 4 a 5mm.' },
+      { titolo: 'Non serve forare prima', testo: 'La punta metallica è già montata sul tassello: si appoggia alla lastra e si avvita, senza trapano e senza punta da muro. È il motivo per cui è il più rapido da posare.' },
+      { titolo: 'Un solo inserto per tutto', testo: 'Impronta PZ2 sia sul tassello sia sulla vite: si monta senza cambiare inserto all\'avvitatore.' },
+      { titolo: 'La punta si sfila da sola', testo: 'Quando si avvita la vite, la punta metallica viene spinta fuori e cade nell\'intercapedine dietro la lastra: è il funzionamento previsto, non un pezzo che si rompe.' },
+      { titolo: 'Su gessofibra serve il preforo', testo: 'Il gessofibra è troppo duro perché la punta lo attraversi da sola: in quel caso va fatto prima un foro da 8mm.' },
+      { titolo: 'Quanto regge', testo: 'Da 0,10kN su cartongesso da 12,5mm fino a 0,20kN su lastra doppia e 0,34kN su gessofibra, con viti da 4 a 5mm.' },
+    ],
+    immagini: {
+      'Grigio e rosso': [duobladeRender],
+    },
+    varianti: [
+      { codice: '545678', finitura: 'Grigio e rosso' },
+    ],
+  },
+  {
+    id: 104, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello multiuso GL Nylon',
+    // GL Nylon di G&B Fissaggi, nelle scatole. Qui, a differenza del
+    // DuoPower, la versione con vite e quella senza coprono le stesse
+    // quattro misure e hanno gli stessi dati di foratura: stanno quindi
+    // sulla stessa scheda, con "Vite" come secondo asse. La scheda tecnica
+    // elenca anche le misure 5, 10, 12 e 14 e le versioni con gancio,
+    // occhiolo, testa larga e vite TE, che non teniamo.
+    descrizione: 'Tassello multiuso in nylon con corpo a quattro settori, per fissaggio sia passante sia non passante. I quattro settori si espandono in modo indipendente e si adattano al supporto, il che lo rende adatto tanto ai materiali pieni quanto a quelli forati. Uso specifico su calcestruzzo, pietra compatta, mattone pieno e mattone semipieno; si adatta anche a mattone forato, blocchi vuoti in calcestruzzo, cartongesso e calcestruzzo cellulare. Funziona sia con viti truciolari sia con viti metriche. Nelle misure 6×30mm e 8×40mm, più le versioni prolungate 6×45mm e 8×50mm che aumentano la profondità di ancoraggio e lo spessore fissabile. Ogni misura è disponibile sia da sola sia già abbinata alla sua vite truciolare a testa svasata piana con impronta a croce, zincata bianca. Corpo in poliammide grigio RAL 7035, viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfGlNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Con o senza vite', testo: 'Ogni misura si può prendere sfusa, se le viti le hai già, oppure nella versione che include la vite truciolare giusta: 4,5 × 40mm sul 6×30, 4,5 × 50mm sul 6×45, 5 × 50mm sull\'8×40 e 5 × 60mm sull\'8×50.' },
+      { titolo: 'Passante e non passante', testo: 'Si può inserire nel foro e poi avvitare, oppure attraversare l\'oggetto da fissare e forare tutto insieme: la scheda tecnica riporta le due modalità con le rispettive lunghezze minime della vite.' },
+      { titolo: 'Corpo a quattro settori', testo: 'I settori si aprono in modo indipendente e si adattano al materiale: tengono nel pieno come nel forato, dove si deformano invece di spaccare il supporto.' },
+      { titolo: 'Le versioni prolungate tengono di più', testo: 'Il 6×45 e l\'8×50 ancorano più in profondità e permettono di fissare spessori fino a 20mm invece di 10mm, a parità di diametro del foro.' },
+      { titolo: 'Che vite serve', testo: 'Se prendi la versione sfusa: viti da 4 a 5mm di diametro per il 6, da 4,5 a 6mm per l\'8. Vanno bene sia truciolari sia metriche.' },
+      { titolo: 'Quanto regge', testo: 'Carico raccomandato di circa 50kg su calcestruzzo e 27kg su mattone pieno per la misura 6, che salgono a 54kg e 36kg con la misura 8. Su mattone forato e cellulare i valori scendono: vedi la scheda tecnica.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+      { chiave: 'vite', etichetta: 'Vite' },
+    ],
+    immagini: {
+      'Grigio': [glNylonRender, glNylonConViteRender],
+    },
+    varianti: [
+      { codice: '65002', finitura: 'Grigio', misura: '6 × 30mm', vite: 'Senza vite' },
+      { codice: '65115', finitura: 'Grigio', misura: '6 × 45mm', vite: 'Senza vite' },
+      { codice: '65003', finitura: 'Grigio', misura: '8 × 40mm', vite: 'Senza vite' },
+      { codice: '65116', finitura: 'Grigio', misura: '8 × 50mm', vite: 'Senza vite' },
+      { codice: '65006', finitura: 'Grigio', misura: '6 × 30mm', vite: 'Con vite' },
+      { codice: '65119', finitura: 'Grigio', misura: '6 × 45mm', vite: 'Con vite' },
+      { codice: '65007', finitura: 'Grigio', misura: '8 × 40mm', vite: 'Con vite' },
+      { codice: '65120', finitura: 'Grigio', misura: '8 × 50mm', vite: 'Con vite' },
+    ],
+  },
+  {
+    id: 107, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello prolungato GX-L Nylon',
+    // GX-L Nylon con vite TPS TORX zincata bianca: le otto misure che
+    // teniamo sono tutte di questa famiglia, quindi stanno su una scheda
+    // sola. La scheda tecnica elenca anche le versioni con vite esagonale
+    // flangiata, testa larga, anti-intrusione VAST e quelle in inox A4,
+    // oltre alle misure lunghe fino a 260mm, che non trattiamo.
+    descrizione: 'Ancorante prolungato multifunzione in nylon con vite a testa svasata piana e impronta TORX, zincata bianca, per fissaggio passante su calcestruzzo e muratura. Il corpo lungo espande su tutta la profondità del foro e distribuisce il carico, il che lo rende adatto sia ai materiali pieni sia a quelli forati, dove si ancora dietro le pareti delle cavità. Uso certificato ETA su calcestruzzo, mattoni pieni, semipieni e forati; uso specifico su pietra compatta e blocchi forati in calcestruzzo; si adatta anche a cartongesso e calcestruzzo cellulare. Il foro si fa dello stesso diametro del tassello e il fissaggio si serra a coppia controllata: 8Nm per il Ø8 e 16,5Nm per il Ø10. Nelle misure Ø6 da 60mm, Ø8 da 80, 100 e 120mm e Ø10 da 80, 100, 120 e 140mm, con vite TORX T20, T30 o T40 secondo il diametro. Corpo in poliammide grigio RAL 7035. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfGxlNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già inclusa', testo: 'Ogni misura arriva con la sua vite a testa svasata piana e impronta TORX, zincata bianca: T20 sul Ø6, T30 sul Ø8 e T40 sul Ø10, sempre della lunghezza giusta per il tassello.' },
+      { titolo: 'Certificato ETA', testo: 'ETA-12/0261 per uso multiplo su calcestruzzo e muratura. Il Ø10 ha anche resistenza al fuoco dichiarata di 90 minuti. Fa eccezione il Ø6 da 60mm, che resta fuori dalla certificazione CE.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Il corpo lungo espande per tutta la profondità e si ancora dietro le pareti delle cavità: la scheda tecnica dichiara i carichi su mattone forato, a fori verticali e silico-calcareo, non solo sul pieno.' },
+      { titolo: 'Lo spessore fissabile cresce con la lunghezza', testo: 'A parità di diametro, la profondità di ancoraggio resta la stessa e ad allungarsi è la parte fuori dal muro: dai 10mm di spessore fissabile del Ø8 da 80mm si arriva ai 70mm del Ø10 da 140mm.' },
+      { titolo: 'Che foro fare', testo: 'Foro dello stesso diametro del tassello: 6mm profondo almeno 50mm, 8 e 10mm profondi almeno 80mm. Su mattone forato in laterizio va forato a rotazione, senza percussione.' },
+      { titolo: 'Quanto regge', testo: 'Carico raccomandato a trazione su calcestruzzo C16/20 di circa 79kg per il Ø8 e 119kg per il Ø10. Su mattone pieno in laterizio si scende a 43kg e 34kg: i valori completi per ogni supporto sono nella scheda tecnica.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [gxlNylonRender],
+    },
+    varianti: [
+      { codice: '97258', finitura: 'Grigio', misura: '6 × 60mm' },
+      { codice: '97005', finitura: 'Grigio', misura: '8 × 80mm' },
+      { codice: '97006', finitura: 'Grigio', misura: '8 × 100mm' },
+      { codice: '97007', finitura: 'Grigio', misura: '8 × 120mm' },
+      { codice: '97008', finitura: 'Grigio', misura: '10 × 80mm' },
+      { codice: '97009', finitura: 'Grigio', misura: '10 × 100mm' },
+      { codice: '97010', finitura: 'Grigio', misura: '10 × 120mm' },
+      { codice: '97011', finitura: 'Grigio', misura: '10 × 140mm' },
+    ],
+  },
+  {
+    id: 105, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello con gancio Casa Nylon',
+    // Casa Nylon con gancio corto. G&B mette tutta la famiglia su un'unica
+    // scheda tecnica, ma i vari accessori premontati sono prodotti diversi
+    // per funzione: questo appende, il "con vite" (id 106) fissa. Teniamo
+    // solo il gancio corto, non quello medio, lungo, gli occhioli o i
+    // paracolpi che la scheda elenca.
+    descrizione: 'Tassello in nylon con gancio a L in acciaio già premontato, per appendere direttamente a muro senza dover montare nulla: si fora, si inserisce il tassello e si avvita il gancio, che stringe le alette contro il supporto. La rondella incorporata nasconde il bordo del foro e distribuisce la pressione. Adatto a calcestruzzo, pietra compatta, mattone pieno, mattone forato e blocchi vuoti in calcestruzzo. Pensato per appendere quadri, specchi, lampade, mensole leggere e tutto quello che sta su un gancio. Nelle misure 9 × 40mm, con vite M4 e gancio da 8mm di apertura, e 12 × 45mm, con vite M5 e gancio da 8mm. Corpo in poliammide grigio RAL 7035, gancio e viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), gancio in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfCasaNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Gancio già montato', testo: 'Il gancio a L arriva premontato sul tassello con la sua rondella: non serve comprare nulla a parte e non c\'è niente da assemblare prima di posare.' },
+      { titolo: 'Rondella incorporata', testo: 'La rondella in nylon copre il bordo del foro e distribuisce la pressione sul supporto: il fissaggio resta pulito a vista anche se il foro non è perfetto.' },
+      { titolo: 'Il carico dipende dal gancio', testo: 'Carico raccomandato di 14kg sul 9 × 40mm e 27kg sul 12 × 45mm su calcestruzzo. Il limite è il piegamento del gancio, non la tenuta del tassello.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Le alette laterali si aprono contro le pareti della cavità: funziona su mattone forato e blocchi vuoti in calcestruzzo, oltre che nei materiali pieni.' },
+      { titolo: 'Che foro fare', testo: 'Punta da 9mm con profondità minima 50mm per la misura piccola, punta da 12mm e 55mm di profondità per quella grande.' },
+      { titolo: 'Se devi fissare, non appendere', testo: 'Per fissare un oggetto contro il muro invece che appenderlo c\'è la versione con vite TSC, stesso tassello ma con vite a testa svasata al posto del gancio.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [casaNylonGancioRender],
+    },
+    varianti: [
+      { codice: 'HTS01', finitura: 'Grigio', misura: '9 × 40mm' },
+      { codice: 'HTL01', finitura: 'Grigio', misura: '12 × 45mm' },
+    ],
+  },
+  {
+    id: 106, categoria: '09', sottocategoria: 'tasselli',
+    nome: 'Tassello con vite Casa Nylon',
+    // Casa Nylon con vite TSC e taglio combinato: stessa scheda tecnica del
+    // gancio (id 105), stesso tassello, ma qui l'accessorio premontato e'
+    // una vite a testa svasata, quindi serve a fissare invece che ad
+    // appendere. Teniamo solo le due misure corte.
+    descrizione: 'Tassello in nylon con vite a testa svasata già premontata, a taglio combinato (cacciavite piatto o a croce), per fissare a muro oggetti che appoggiano contro il supporto. Si fora, si inserisce il tassello e si avvita: le alette si aprono e bloccano il fissaggio, mentre la rondella incorporata distribuisce la pressione e nasconde il bordo del foro. Adatto a calcestruzzo, pietra compatta, mattone pieno, mattone forato e blocchi vuoti in calcestruzzo. Nelle misure 9 × 40mm, con vite M4 da 50mm, e 12 × 45mm, con vite M5 da 55mm. Corpo in poliammide grigio RAL 7035, viti in acciaio zincato. Prodotto da G&B Fissaggi.',
+    materiale: 'Nylon (poliammide), vite in acciaio zincato',
+    fornitore: 'G&B Fissaggi', fornitoreLogo: gbLogo,
+    scheda: pdfCasaNylonSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Vite già montata', testo: 'La vite a testa svasata arriva premontata sul tassello con la sua rondella: si posa tutto in un pezzo solo, senza accoppiare vite e tassello.' },
+      { titolo: 'Taglio combinato', testo: 'La testa accetta sia il cacciavite piatto sia quello a croce: si avvita con quello che si ha in mano.' },
+      { titolo: 'Regge più del gancio', testo: 'Carico raccomandato di 39kg sul 9 × 40mm e 50kg sul 12 × 45mm su calcestruzzo, contro i 14 e 27kg della versione con gancio: qui non c\'è un accessorio che si piega.' },
+      { titolo: 'Tiene anche nel forato', testo: 'Le alette laterali si aprono contro le pareti della cavità: funziona su mattone forato e blocchi vuoti in calcestruzzo, oltre che nei materiali pieni.' },
+      { titolo: 'Che foro fare', testo: 'Punta da 9mm con profondità minima 50mm per la misura piccola, punta da 12mm e 55mm di profondità per quella grande.' },
+      { titolo: 'Se devi appendere, non fissare', testo: 'Per appendere qualcosa invece che fissarla contro il muro c\'è la versione con gancio a L, stesso tassello ma con il gancio al posto della vite.' },
+    ],
+    assi: [
+      { chiave: 'misura', etichetta: 'Misura' },
+    ],
+    immagini: {
+      'Grigio': [casaNylonViteRender],
+    },
+    varianti: [
+      { codice: 'HTS07', finitura: 'Grigio', misura: '9 × 40mm' },
+      { codice: 'HTL07', finitura: 'Grigio', misura: '12 × 45mm' },
+    ],
+  },
+  {
+    id: 61, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Maniglia ad incasso tonda per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Maniglia a incasso tonda per porta scorrevole in vetro, in acciaio inox, finitura satinata. Foro nel vetro Ø40mm. Prodotta da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: 'Ø59mm · profondità 32mm · foro vetro Ø40mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimet3904SchedaTecnica,
+    immagini: {
+      'Acciaio inox satinato': [fimet3904],
+    },
+    varianti: [
+      { codice: '3904', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 62, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Maniglia ad incasso quadra per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Maniglia a incasso quadra per porta scorrevole in vetro, in acciaio inox, finitura satinata. Foro nel vetro Ø18mm. Prodotta da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: '52×52mm · profondità 30mm · foro vetro Ø18mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimet3921SchedaTecnica,
+    immagini: {
+      'Acciaio inox satinato': [fimet3921],
+    },
+    varianti: [
+      { codice: '3921', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 63, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Coppia maniglioni adesivi per porte in vetro',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Coppia di maniglioni per porte in vetro in alluminio, ad applicazione adesiva: si fissano direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido, profilo quadro 11×18mm. Disponibili in due lunghezze e nelle finiture argento e nero opaco. Prodotti da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: 'Sezione 11×18mm · lunghezze 300mm e 700mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimetManiglioneAdesivoSchedaTecnica,
+    assi: [
+      { chiave: 'lunghezza', etichetta: 'Lunghezza', suffisso: ' mm' },
+    ],
+    immagini: {
+      'Argento': [fimetManiglioneArgento],
+      'Nero opaco': [fimetManiglioneNero],
+    },
+    varianti: [
+      { codice: '805300128', finitura: 'Argento', lunghezza: 300 },
+      { codice: '805700128', finitura: 'Argento', lunghezza: 700 },
+      { codice: '805300NO', finitura: 'Nero opaco', lunghezza: 300 },
+      { codice: '805700NO', finitura: 'Nero opaco', lunghezza: 700 },
+    ],
+  },
+  {
+    id: 64, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva quadra per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso quadra per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: '58×58mm · altezza 9mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimet3931SchedaTecnica,
+    immagini: {
+      'Argento': [fimet3931Argento],
+      'Nero opaco': [fimet3931Nero],
+    },
+    varianti: [
+      { codice: '3931', finitura: 'Argento' },
+      { codice: '3931NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 65, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva rettangolare per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso rettangolare per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: '58×115mm · altezza 9mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimet3932SchedaTecnica,
+    immagini: {
+      'Argento': [fimet3932Argento],
+      'Nero opaco': [fimet3932Nero],
+    },
+    varianti: [
+      { codice: '3932', finitura: 'Argento' },
+      { codice: '3932NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 66, categoria: '04', sottocategoria: 'maniglie-scorrevoli',
+    nome: 'Nicchia adesiva tonda per porta scorrevole',
+    // Non esiste una scheda tecnica del singolo articolo: la scheda allegata
+    // e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet
+    // "Accessori per vetro" (sezione vetro), su richiesta del cliente.
+    descrizione: 'Nicchia a incasso tonda per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento, nero opaco e bianco opaco. Prodotta da Fimet.',
+    materiale: 'Alluminio',
+    dimensioni: 'Ø60mm · altezza 10mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimet3933SchedaTecnica,
+    immagini: {
+      'Argento': [fimet3933Argento],
+      'Nero opaco': [fimet3933Nero],
+    },
+    varianti: [
+      { codice: '3933', finitura: 'Argento' },
+      { codice: '3933NO', finitura: 'Nero opaco' },
+      { codice: '3933BO', finitura: 'Bianco opaco' },
+    ],
+  },
+  {
+    id: 67, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Brasile 852',
+    descrizione: 'Maniglione a doppia barra parallela per porte in vetro, sezione quadra 25×38mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60) e nero opaco RAL9005 (FNO). Prodotto da Fimet.',
+    materiale: 'Acciaio inox AISI304',
+    dimensioni: 'Sezione 25×38mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimetBrasile852SchedaTecnica,
+    immagini: {
+      'Acciaio inox satinato': [fimetBrasileInox],
+      'Nero opaco': [fimetBrasileNero],
+    },
+    varianti: [
+      { codice: '852.2538.1250.1000.60', finitura: 'Acciaio inox satinato' },
+      { codice: '852.2538.1250.1000.NO', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 68, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Equador 850',
+    descrizione: 'Maniglione a doppia barra parallela con serratura a chiave integrata, per porte in vetro, profilo tondo Ø35mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60), inox lucido (F61) e nero opaco RAL9005 (FNO). Prodotto da Fimet.',
+    materiale: 'Acciaio inox AISI304',
+    dimensioni: 'Ø35mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    scheda: pdfFimetEquador850SchedaTecnica,
+    immagini: {
+      'Acciaio inox satinato': [fimetEquadorInoxSatinato],
+      'Inox lucido': [fimetEquadorInoxLucido],
+      'Nero opaco': [fimetEquadorNero],
+    },
+    varianti: [
+      { codice: '850.35.1250.1000.60', finitura: 'Acciaio inox satinato' },
+      { codice: '850.35.1250.1000.61', finitura: 'Inox lucido' },
+      { codice: '850.35.1250.1000.NO', finitura: 'Nero opaco' },
+    ],
+  },
+  /* I quattro kit di fissaggio qui sotto vengono dalla tavola "Accessori di
+     montaggio" del catalogo Fimet. Tutte le quote sono quelle del disegno, che
+     e' allegato per intero nella galleria; materiale e finitura invece la
+     tavola non li riporta e ce li ha confermati il cliente: acciaio inox
+     satinato, come i maniglioni a cui i kit si abbinano. */
+  {
+    id: 70, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio passante FISS 03',
+    descrizione: 'Kit di fissaggio passante per maniglione singolo, per porte in legno, alluminio e vetro. La barra filettata attraversa l’anta da parte a parte e si avvita nel supporto del maniglione. Foro nell’anta Ø9mm su legno e alluminio, Ø13mm sul vetro: sulle porte in vetro si montano le bussole Ø12 H10 con foro 8,2mm, che isolano la barra dalla lastra. Il kit comprende le barre filettate M8×110 e M8×30, le molle, le bussole e i distanziali tondi Ø28mm da 8mm di spessore. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: 'Foro legno e alluminio Ø9mm · foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · barre filettate M8×110 e M8×30 · distanziali Ø28mm spessore 8mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Acciaio inox satinato': [fimetFiss03, fimetFiss03Fori, fimetFiss03Componenti, fimetFiss03Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 03', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 71, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio singolo M6 FISS 05M6',
+    descrizione: 'Kit di fissaggio singolo M6 per maniglioni su porte in vetro. La vite a testa tonda passa nel foro della lastra e si avvita nel supporto del maniglione. Foro nel vetro Ø13mm, con bussole Ø12 H10 e foro 8,2mm a protezione della lastra. Vite con testa Ø20mm da 3mm di spessore e gambo filettato M6 lungo 26mm. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: 'Foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · vite testa Ø20mm spessore 3mm · filetto M6 lunghezza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Acciaio inox satinato': [fimetFiss05m6, fimetFiss05m6Foro, fimetFiss05m6Vite, fimetFiss05m6Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 05M6', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 72, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio con rosetta tonda FISS 06',
+    descrizione: 'Kit di fissaggio singolo con rosetta tonda e piastrina, per maniglioni con supporto tondo diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta tonda Ø50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: 'Rosetta tonda Ø50mm · perno filettato M8 · sporgenza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Acciaio inox satinato': [fimetFiss06, fimetFiss06Componenti, fimetFiss06Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 06', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 73, categoria: '04', sottocategoria: 'maniglioni',
+    nome: 'Kit fissaggio con rosetta quadra FISS 07',
+    descrizione: 'Kit di fissaggio singolo con rosetta quadra e piastrina, per maniglioni con supporto quadro diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta quadra 50×50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.',
+    materiale: 'Acciaio inox',
+    dimensioni: 'Rosetta quadra 50×50mm · perno filettato M8 · sporgenza 26mm',
+    fornitore: 'Fimet', fornitoreLogo: fimetLogo,
+    immagini: {
+      'Acciaio inox satinato': [fimetFiss07, fimetFiss07Componenti, fimetFiss07Montaggio],
+    },
+    varianti: [
+      { codice: 'FISS 07', finitura: 'Acciaio inox satinato' },
+    ],
+  },
+  {
+    id: 43, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera chiudiporta a pavimento FS880',
+    descrizione: 'Chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa: stesse funzionalità dei chiudiporta a pavimento tradizionali, ma senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN3. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG880) e perno per cerniera (DAPF880).',
+    materiale: 'Acciaio',
+    dimensioni: 'Larghezza massima porta 850-950mm · spessore vetro 8-13mm · cerniera (carter incluso) 186,5×71×40mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: pdfFs880SchedaTecnica,
+    video: 'https://youtu.be/jVCjKIqBfeU?si=wtYLNMNyjwC0wejw',
+    immagini: {
+      'Acciaio satinato': [fs880Render, fs880Ambiente],
+      'Nero opaco': [fs880NeroRender],
+    },
+    varianti: [
+      { codice: 'DAFS880AS', finitura: 'Acciaio satinato' },
+      { codice: 'DAFS880NE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 44, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera chiudiporta a pavimento FS890',
+    descrizione: 'Versione maggiorata del chiudiporta FS880: chiudiporta idraulico a pavimento per porte in vetro, con sistema di chiusura integrato nella cerniera bassa, senza incassi nel pavimento né cassette da cementare. Conforme alla normativa EN 1154, forza fissa EN5. Velocità di chiusura e colpo finale regolabili, angolo di apertura max 150°, fermo porta a 90° (disponibile su richiesta anche senza fermo). Fornito completo di cerniera per alto (DAHG890) e perno per cerniera (DAPF880).',
+    materiale: 'Acciaio',
+    dimensioni: 'Larghezza massima porta 1100-1250mm · spessore vetro 10-15mm · cerniera (carter incluso) 197,5×80×45mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: pdfFs890SchedaTecnica,
+    immagini: {
+      'Acciaio satinato': [fs890Render, fs890Ambiente],
+    },
+    varianti: [
+      { codice: 'DAFS890AS', finitura: 'Acciaio satinato' },
+    ],
+  },
+  {
+    id: 118, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Chiudiporta a pavimento MAB 7305',
+    // Il nuovo 7305 di MAB, marchio del gruppo ASSA ABLOY. Stessa
+    // funzione del BTS 75 V ma forza fissa EN3 invece che regolabile.
+    // Il PDF allegato sono le istruzioni di installazione, non una
+    // scheda tecnica: sta quindi in "istruzioni" e la scheda resta
+    // assente. Il codice articolo viene da quelle istruzioni, che
+    // valgono per il 7300 e il 7305.
+    descrizione: 'Chiudiporta a pavimento con il corpo annegato nella soletta e a vista solo la piastra di copertura, per porte a battente e a ventola ad anta singola, destre, sinistre o a doppia azione. Regge ante fino a 120kg di peso e 950mm di larghezza, con forza di chiusura fissa EN3 secondo la norma EN 1154. La velocità di chiusura si regola fra 150° e 15° e il colpo finale fra 15° e 0°, con due valvole indipendenti e termodinamiche rivolte verso l\'alto. Ha il fermo di apertura a 90° e, oltre i 105°, la porta ruota libera fino a 180° restando ferma a qualsiasi angolo. La tecnologia Cam-Motion riduce lo sforzo di apertura. Corpo in ghisa, cassetta a murare zincata a caldo, piastra di copertura in acciaio inox lucido; ingombro 278×131×70mm, con 15mm di regolazione verticale dopo la posa. Prodotto da MAB, marchio del gruppo ASSA ABLOY.',
+    materiale: 'Corpo in ghisa, cassetta zincata a caldo, piastra in acciaio inox',
+    dimensioni: 'Corpo 278×131×70mm · regolazione verticale 15mm · larghezza anta max 950mm · peso anta max 120kg · forza di chiusura fissa EN3',
+    fornitore: 'MAB',
+    istruzioni: pdfMab7305Istruzioni,
+    caratteristiche: [
+      { titolo: 'Si apre con poca forza', testo: 'ASSA ABLOY dichiara il minimo sforzo di apertura grazie alla tecnologia Cam-Motion: conta negli ingressi molto usati, dove una porta dura si fa sentire a fine giornata.' },
+      { titolo: 'Forza fissa EN3', testo: 'A differenza del BTS 75 V, che si tara fra EN 1 ed EN 4, qui la forza è fissa EN3 secondo la EN 1154: va scelto sapendo che non si regola in opera.' },
+      { titolo: 'Fermo a 90°, poi effetto cerniera', testo: 'Tiene la porta aperta a 90°. Oltre i 105° il controllo idraulico lascia andare e l\'anta ruota libera fino a 180°, restando ferma dove la lasci come farebbe una cerniera.' },
+      { titolo: 'Chiusura e colpo finale separati', testo: 'Due valvole indipendenti: la velocità di chiusura si regola fra 150° e 15°, il colpo finale fra 15° e 0°. Sono termodinamiche, quindi la porta chiude allo stesso modo d\'estate e d\'inverno.' },
+      { titolo: 'Si allinea dopo la posa', testo: 'La regolazione verticale da 15mm permette di rimettere in quota l\'anta anche a lavoro finito, se il pavimento non è perfettamente in piano.' },
+      { titolo: 'Quanto regge', testo: 'Fino a 120kg di peso, come il BTS 75 V, ma su ante larghe al massimo 950mm invece di 1100mm: sulle porte larghe resta il BTS la scelta giusta.' },
+    ],
+    immagini: {
+      'Inox lucido': [mab7305Render, mab7305Cassetta, mab7305Meccanismo],
+    },
+    varianti: [
+      { codice: '7305', finitura: 'Inox lucido' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 110, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Chiudiporta a pavimento BTS 75 V',
+    // dormakaba BTS 75 V, primo articolo di questo fornitore in catalogo.
+    // L'opuscolo tecnico copre sia il BTS 80 sia il BTS 75 V: la scheda
+    // allegata e' quella, i dati qui sotto sono solo della colonna 75 V.
+    // Noi teniamo una sola esecuzione, quella con blocco costante a 90'.
+    descrizione: 'Chiudiporta a pavimento universale secondo EN 1154, con il corpo incassato nel pavimento e a vista solo la piastra di copertura: niente braccio né gruppo sopra la porta. Una sola esecuzione serve porte DIN a sinistra, DIN a destra e a doppia azione, perché il verso si imposta al montaggio, e va bene sia sulle porte interne sia su quelle per esterni. Regge porte fino a 120kg di peso e 1100mm di larghezza, con forza di chiusura regolabile in modo continuo nella gamma EN 1–4. La velocità di chiusura si registra tramite valvola su due campi indipendenti, da 175° a 15° e da 15° a 0°, così si può rallentare il solo tratto finale senza toccare il resto della corsa. L\'apertura ammortizzata meccanica entra in funzione da circa 70° e protegge muro e porta dalle aperture violente. Questa esecuzione monta il blocco costante a 90°, che tiene la porta ferma in apertura e che per contro ne esclude l\'impiego su porte tagliafuoco e tagliafumo. Corpo da 285×82×50mm, peso 3kg. Fornito completo di piastra di copertura e accessori. Prodotto da dormakaba.',
+    materiale: 'Acciaio',
+    dimensioni: 'Corpo 285×82×50mm · larghezza porta max 1100mm · peso porta max 120kg · forza di chiusura EN 1–4 · peso 3kg',
+    fornitore: 'dormakaba', fornitoreLogo: dormakabaLogo,
+    scheda: pdfBts75vSchedaTecnica,
+    caratteristiche: [
+      { titolo: 'Forza regolabile EN 1–4', testo: 'Non è a forza fissa: la chiusura si tara in modo continuo fra EN 1 ed EN 4, quindi lo stesso chiudiporta copre porte molto diverse e si regola in opera.' },
+      { titolo: 'Destra, sinistra e porte a vento', testo: 'L\'esecuzione è una sola e va bene per porte DIN a sinistra, DIN a destra e a vento: non serve ordinare la versione per il verso giusto.' },
+      { titolo: 'Due campi di velocità indipendenti', testo: 'La chiusura si regola separatamente da 175° a 15° e da 15° a 0°: si può rallentare solo l\'ultimo tratto, vicino alla battuta, lasciando più rapido il resto della corsa.' },
+      { titolo: 'Blocco costante a 90°', testo: 'Questa esecuzione tiene la porta aperta ferma a 90°. Il blocco costante però esclude l\'impiego su porte tagliafuoco e tagliafumo: lì serve la versione senza blocco.' },
+      { titolo: 'Apertura ammortizzata', testo: 'Da circa 70° di apertura interviene l\'ammortizzatore meccanico, che frena la porta e protegge il muro quando qualcuno la spalanca.' },
+      { titolo: 'Facilità in apertura dichiarata', testo: 'dormakaba dichiara la facilità in apertura secondo la DIN SPEC 1104: conta perché un chiudiporta va tarato abbastanza forte da richiudere la porta, ma non tanto da renderla faticosa da spingere.' },
+      { titolo: 'Sparisce nel pavimento', testo: 'Il corpo va annegato nella scatola a cementare e resta in vista solo la piastra di copertura, fissata al chiudiporta e non alla scatola.' },
+      { titolo: 'Distanza dal pavimento regolabile', testo: 'Gli assi d\'innesto sono sostituibili anche in un secondo momento, con prolunghe da 5 a 50mm: utile su porte con soglia, moquette o pavimenti rialzati.' },
+    ],
+    // Il chiudiporta sta sotto il pavimento e la finitura riguarda solo la
+    // piastra di copertura, che qui arriva gia' nel kit: non c'e' una scelta
+    // da offrire, quindi la colonna finitura resta nascosta.
+    senzaFinitura: true,
+    immagini: {
+      'Unica': [bts75vRender, bts75vMeccanismo, bts75vScatola],
+    },
+    varianti: [
+      { codice: '61801201', finitura: 'Unica' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 112, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera bassa per porta in vetro GFS 010',
+    // La meta' inferiore del sistema: si innesta sul perno del chiudiporta
+    // a pavimento e va in coppia con la cerniera alta GFS 020, per questo
+    // rimanda a entrambi. Niente scheda tecnica: quote e limiti vengono
+    // dalla pagina di catalogo GFS, il cui disegno quotato e' la seconda
+    // immagine. Il vetro si lavora diversamente dalla cerniera alta.
+    descrizione: 'Cerniera bassa per porte in vetro a battente: è il morsetto che si innesta sul perno del chiudiporta a pavimento, scarica a terra il peso dell\'anta e le trasmette il movimento di chiusura. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso da 160mm, i raggi R80 e R55 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Si innesta sul chiudiporta', testo: 'È il pezzo che fa da tramite fra l\'anta e il chiudiporta incassato nel pavimento: si infila sul perno del chiudiporta, che è poi quello che richiude la porta.' },
+      { titolo: 'Serve anche la cerniera alta', testo: 'Da sola non basta: in cima all\'anta va la cerniera alta, che tiene la porta in asse. Le due si ordinano insieme, le trovi collegate qui sotto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il vetro fra due ganasce e copre gli spessori più usati sulle porte in vetro temperato.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
+      { titolo: 'Il vetro va lavorato a disegno', testo: 'Servono lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio: la lavorazione è diversa da quella della cerniera alta.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs010Foto, gfs010Misure],
+    },
+    varianti: [
+      { codice: 'GFS01001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [118, 110, 111, 113, 114],
+  },
+  {
+    id: 111, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera alta per porta in vetro GFS 020',
+    // Il perno superiore che si abbina al chiudiporta a pavimento: sta
+    // qui e non fra le cerniere perche' e' l'altra meta' di quel sistema.
+    // Niente scheda tecnica: i dati e le quote vengono dalla pagina di
+    // catalogo GFS, il cui disegno quotato sta come seconda immagine.
+    // GFS la fa anche lucida, nero opaco e oro lucido: noi solo satinata.
+    descrizione: 'Cerniera alta per porte in vetro a battente, da abbinare a un chiudiporta a pavimento: sta in cima all\'anta e la tiene in asse sul perno superiore, mentre il peso e la chiusura li gestiscono la cerniera bassa e il chiudiporta incassato nel pavimento. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso, il raggio R70 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Lavora in coppia con la cerniera bassa', testo: 'Da sola non chiude niente: fa da perno superiore e tiene la porta in asse, mentre il peso e la chiusura li gestiscono la cerniera bassa e il chiudiporta a pavimento.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il vetro fra due ganasce e copre gli spessori più usati sulle porte in vetro temperato.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
+      { titolo: 'Il vetro va lavorato a disegno', testo: 'Non si monta su un vetro qualsiasi: servono lo scasso da 147mm, il raggio R70 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs020Foto, gfs020Misure],
+    },
+    varianti: [
+      { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [112, 115, 116, 117],
+  },
+  {
+    id: 113, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piletta a pavimento per cerniera GFS 010',
+    // L'alternativa al chiudiporta incassato: la porta gira e basta,
+    // niente richiusura. Si incassa nel pavimento e fa da perno alla
+    // cerniera bassa GFS 010. Niente scheda tecnica: quote e limiti
+    // vengono dalla pagina di catalogo, il cui disegno e' la seconda
+    // immagine. GFS la fa anche lucida, nero opaco e oro lucido.
+    descrizione: 'Piletta a pavimento che fa da perno alla cerniera bassa GFS 010, da usare quando la porta non monta un chiudiporta incassato: si annega nel pavimento e l\'anta ruota su di essa, ma non si richiude da sola. Acciaio inox AISI 304, con il piattello a vista da Ø51mm e il corpo incassato da Ø20mm, profondo 23mm. Per porte fino a 80kg di peso e 1100mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piattello Ø51mm · corpo incassato Ø20mm, profondità 23mm · peso porta max 80kg · larghezza porta max 1100mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Al posto del chiudiporta', testo: 'Si usa quando il chiudiporta incassato non si vuole o non serve: la porta gira sul perno della piletta, ma va richiusa a mano.' },
+      { titolo: 'Va sotto la cerniera bassa', testo: 'È il perno su cui si innesta la cerniera bassa GFS 010: le due si ordinano insieme, la trovi collegata qui sotto.' },
+      { titolo: 'Fino a 80kg e 1100mm', testo: 'Sono limiti più bassi di quelli della cerniera, che regge 100kg e 1200mm: con questa piletta è lei a fissare il tetto di peso e larghezza della porta.' },
+      { titolo: 'Incasso ridotto', testo: 'Nel pavimento serve una sede da Ø20mm profonda 23mm, molto meno di una scatola a cementare: si recupera anche dove il massetto è sottile.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [pilettaGfs010Foto, pilettaGfs010Misure],
+    },
+    varianti: [
+      { codice: 'E06H01002', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 114, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piletta a pavimento per forti portate GFS 117-P',
+    // La versione a piastra avvitata, per le ante pesanti: 150kg contro
+    // gli 80 della piletta tonda. Stessa funzione, stesso abbinamento
+    // con la cerniera bassa. Niente scheda tecnica: dati dalla pagina
+    // di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Piletta a pavimento con perno italiano per forti portate, da usare al posto del chiudiporta incassato quando l\'anta è pesante: la porta ruota sul perno e va richiusa a mano. Piastra in acciaio inox AISI 304 da 102×40mm con tre fori di fissaggio a vite, perno quadro di tipo italiano e boccola da Ø30mm sotto la piastra. Per porte fino a 150kg di peso e 1200mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra 102×40mm · perno quadro italiano · boccola Ø30mm · peso porta max 150kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Al posto del chiudiporta, sulle ante pesanti', testo: 'Come la piletta tonda serve a far girare la porta senza chiudiporta incassato, ma regge molto di più: 150kg contro 80. La porta comunque non si richiude da sola.' },
+      { titolo: 'Perno quadro italiano', testo: 'Monta il perno quadro di tipo italiano, quello su cui si innesta la cerniera bassa GFS 010: la trovi collegata qui sotto.' },
+      { titolo: 'Si avvita, non si incassa', testo: 'La piastra si fissa a vite sul pavimento con tre viti e sotto serve solo la sede per la boccola da Ø30mm: niente incasso profondo.' },
+      { titolo: 'Fino a 150kg e 1200mm', testo: 'È la soluzione per le ante più impegnative: qui il limite non lo pone più la piletta, ma la cerniera bassa, che si ferma a 100kg.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [pilettaGfs117pFoto, pilettaGfs117pMisure],
+    },
+    varianti: [
+      { codice: 'GFS11701810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [112],
+  },
+  {
+    id: 115, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piastrina alta con perno',
+    // La controparte in alto: il perno scende nella sede della cerniera
+    // alta GFS 020. Il catalogo non le da' un nome di modello, solo il
+    // prefisso d'articolo GFS101. Niente scheda tecnica: quote e limiti
+    // dalla pagina di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Piastrina alta con perno, la controparte superiore della cerniera alta: si avvita al telaio sopra la porta e il suo perno scende nella sede della cerniera, tenendo l\'anta in asse. Acciaio inox AISI 304, piastra da 105×27,5mm e spessore 2,5mm, con due fori di fissaggio a 13mm dai bordi e perno da Ø15mm che sporge 22,5mm sotto la piastra, per 25mm di ingombro totale. Per porte fino a 100kg di peso e 1200mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra 105×27,5mm, spessore 2,5mm · perno Ø15mm sporgente 22,5mm · interasse fori 79mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Va sopra la cerniera alta', testo: 'È il pezzo che si avvita al telaio sopra la porta: il perno scende nella sede della cerniera alta GFS 020 e tiene l\'anta in asse. La trovi collegata qui sotto.' },
+      { titolo: 'Si avvita e basta', testo: 'Due fori a 13mm dai bordi, a interasse 79mm: si fissa a vite sul telaio, senza fresature né incassi.' },
+      { titolo: 'Ingombro 25mm', testo: 'La piastra è spessa 2,5mm e il perno da Ø15mm sporge 22,5mm: in tutto 25mm sotto il telaio, la quota da tenere presente quando si calcola la luce sopra l\'anta.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina, quindi non è questa piastrina a restringere il campo di impiego.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [piastrinaAltaFoto, piastrinaAltaMisure],
+    },
+    varianti: [
+      { codice: 'GFS10101810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
+  },
+  {
+    id: 116, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Attacco a sopraluce GFS 060',
+    // Sostituisce la piastrina alta dove sopra la porta c'e' vetro e non
+    // muratura: si morsetta sul sopraluce e porta lui il perno per la
+    // cerniera alta. Niente scheda tecnica: quote e limiti dalla pagina
+    // di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Attacco a sopraluce per porte in vetro a battente: prende il posto della piastrina alta quando sopra la porta non c\'è muratura ma un sopraluce in vetro. Si morsetta sulla lastra fissa sopra la porta e porta con sé il perno su cui si innesta la cerniera alta, così l\'anta resta in asse senza fissare nulla al telaio o al soffitto. Acciaio inox AISI 304, corpo da 161×51mm e profondità 65mm, per vetri da 10 a 12mm. Per porte fino a 100kg di peso e 1200mm di larghezza. Il sopraluce va ordinato già lavorato: lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 sono quotati nel disegno che trovi come seconda immagine. Prodotto da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Corpo 161×51mm · profondità 65mm · spessore vetro 10-12mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Quando sopra c\'è il vetro', testo: 'È l\'alternativa alla piastrina alta: quella si avvita al telaio, questo si morsetta sul sopraluce in vetro. Il risultato è lo stesso, il perno per la cerniera alta.' },
+      { titolo: 'Porta il perno della cerniera alta', testo: 'La cerniera alta GFS 020 si innesta sul perno di questo attacco: la trovi collegata qui sotto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il sopraluce fra due ganasce e copre gli spessori più usati sulle vetrate temperate.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina: il campo di impiego non cambia rispetto alla piastrina.' },
+      { titolo: 'Il sopraluce va lavorato a disegno', testo: 'Servono lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs060Foto, gfs060Misure],
+    },
+    varianti: [
+      { codice: 'GFS06001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
+  },
+  {
+    id: 117, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Attacco a sopraluce e laterale GFS 040',
+    // Come il GFS 060 ma a L: morsetta anche il fisso di fianco alla
+    // porta, per le porte incassate in una vetrata. Niente scheda
+    // tecnica: dati dalla pagina di catalogo, disegno come seconda
+    // immagine. Il disegno del vetro qui copre due lastre, con il
+    // giunto da 2mm fra l'una e l'altra.
+    descrizione: 'Attacco a sopraluce e laterale per porte in vetro a battente: come il GFS 060 sostituisce la piastrina alta quando sopra la porta c\'è un sopraluce in vetro, ma ha la forma a L per morsettare anche il fisso laterale di fianco alla porta. Tiene quindi l\'angolo fra le due lastre e porta il perno su cui si innesta la cerniera alta. Acciaio inox AISI 304, braccio orizzontale da 218mm e braccio verticale da 106mm, larghi 51mm, per vetri da 10 a 12mm. Per porte fino a 100kg di peso e 1200mm di larghezza. I vetri vanno ordinati già lavorati: lo scasso da 162mm, i fori Ø20, i raggi R80 e R55 e il giunto da 2mm fra le due lastre sono quotati nel disegno che trovi come seconda immagine. Prodotto da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Braccio orizzontale 218mm · braccio verticale 106mm · larghezza 51mm · spessore vetro 10-12mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Tiene sopraluce e fisso laterale', testo: 'La forma a L morsetta due lastre insieme, quella sopra la porta e quella di fianco: serve dove la porta è incassata in una vetrata e non c\'è muratura su cui fissare da nessuna parte.' },
+      { titolo: 'Porta il perno della cerniera alta', testo: 'Come il GFS 060 e la piastrina alta, offre il perno su cui si innesta la cerniera alta GFS 020: la trovi collegata qui sotto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Lo stesso campo di spessori del GFS 060 e delle cerniere: vale per entrambe le lastre che stringe.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina: la forma a L non cambia la portata.' },
+      { titolo: 'Due lastre da lavorare a disegno', testo: 'Sopraluce e fisso laterale vanno sagomati e forati secondo il disegno in galleria, che riporta anche il giunto da 2mm fra l\'una e l\'altra: da passare al vetraio prima di ordinare.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs040Foto, gfs040Misure],
+    },
+    varianti: [
+      { codice: 'GFS04001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
+  },
+  {
+    id: 45, categoria: '03', sottocategoria: 'cerniere',
+    nome: 'Cerniera a braccio per porta in vetro Gliss',
+    descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
+    materiale: 'Alluminio',
+    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-46mm · distanza perno-vetro 22,5mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: pdfGaha1stSchedaTecnica,
+    immagini: {
+      'Cromo opaco': [gaha1stRender, gaha1stAmbiente],
+      'Nero opaco': [gaha1stNeroRender],
+    },
+    varianti: [
+      { codice: 'GAHA1ST6D', finitura: 'Cromo opaco' },
+      { codice: 'GAHA1STNE', finitura: 'Nero opaco' },
+    ],
+  },
+  {
+    id: 46, categoria: '03', sottocategoria: 'cerniere',
+    nome: 'Cerniera a braccio per porta in vetro AirHinge',
+    descrizione: 'Cerniera a muro per porte in vetro a battente, design abbinabile alla maniglia AirHandle. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
+    materiale: 'Alluminio',
+    dimensioni: 'Spessore vetro 8-12mm · larghezza porta max 90cm · peso porta: 2 cerniere fino a 50kg, 3 cerniere da 50 a 70kg · stipiti 30-42mm',
+    fornitore: 'Meroni', fornitoreLogo: meroniLogo,
+    scheda: pdfAirhingeSchedaTecnica,
+    immagini: {
+      'Cromo opaco': [airhingeArgentoRender, airhingeArgentoAmbiente],
+      'Nero opaco': [airhingeNeroRender, airhingeNeroAmbiente],
+    },
+    varianti: [
+      { codice: 'GAHA2ST6D', finitura: 'Cromo opaco' },
+      { codice: 'GAHA2STNE', finitura: 'Nero opaco' },
+    ],
+    // Stessa linea AirDoor: la maniglia con cui la cerniera si abbina.
+    facoltativi: [69],
+  },
+];
+const SCHEDA_IMG_VETRO = {
+  1: fermavetroSchedaImg, 2: asolaSchedaImg, 3: fermavetro30SchedaImg, 4: fissaggioSchedaImg, 5: fermavetro230SchedaImg, 6: fermavetro220SchedaImg,
+  7: schArizona, 8: schArizonaInclinato, 9: schArkansasQ, 10: schCalifornia, 11: schColorado, 12: schGeorgiaQ,
+  13: schCuba, 14: schMinnesota, 15: schNevada, 16: schNevadaQ, 17: schOregon, 18: schTexas,
+  19: schTg1000, 20: schTg1004, 21: schTg203, 22: schTg205,
+  23: schTgs50, 24: schTgs52,
+  26: schTg200, 27: schTg202, 30: schTgs500, 31: schTgs502,
+  32: { 'IN109-239': schDist5, 'IN109-240': schDist10, 'IN109-241': schDist20, 'IN109-242': schDist30, 'IN109-243': schDist40, 'IN109-244': schDist50 },
+  33: { 'IN112-108': schTenditore830, 'IN112-109': schTenditore910, 'IN112-110': schTenditore1000, 'IN112-111': schTenditore1150, 'IN112-112': schTenditore1300 },
+  34: schFissaggioMuro100,
+  35: schLamieraU,
+  74: schRa462,
+  36: schMorsettoM032,
+  37: schMorsettoM042,
+  38: schSupportoTondoIn610,
+  39: schSupportoQuadroIn610,
+  40: schSupportoTondoIn610015,
+  41: schSupportoQuadroIn610020,
+  42: schMorsettoM062,
+  47: schMorsettoM092,
+  53: schMorsettoPiccolo,
+  54: schMorsettoGrande,
+  55: { '2574008': schParis, '783748': schParisNero },
+  48: schMorsettoM022,
+  49: schMorsettoM012,
+  50: schMorsettoM032042,
+  51: schMorsettoM042042,
+  52: schMorsettoM062042,
+  43: schFs880,
+  44: schFs890,
+  45: schGaha1st,
+  46: schAirhinge, 69: schAirhandle,
+  58: schMagic2Vetro,
+  59: schMagic2Frame,
+  60: schUniversal,
+  75: schSolovetro,
+  76: schSolovetroLight,
+  77: schVetro40,
+  78: schVetro40drag,
+  79: schVetrofisso,
+  80: schGrid,
+  81: schClear,
+  61: schFimet3904,
+  62: schFimet3921,
+  63: schFimetManiglione,
+  64: schFimet3931,
+  65: schFimet3932,
+  66: schFimet3933,
+  67: schFimetBrasile,
+  68: schFimetEquador,
+  89: schSilirubAc,
+  90: {
+    'Trasparente': schSilirubN2, '135680': schSilirubN2,
+    'Bianco': schSilirubN2, '135679': schSilirubN2,
+    'Avorio 1013': schSilirubN2, '135676': schSilirubN2,
+    'Nero': schSoudasil400, '175060': schSoudasil400,
+    'Alluminio': schSoudasil400, '175059': schSoudasil400,
+    'Grigio metallizzato': schSoudasil400, '175055': schSoudasil400,
+    'Testa di moro': schSoudasil400, '175062': schSoudasil400,
+  },
+  91: schEdilacril,
+  92: schAlcosil,
+  93: schMsSuper,
+  94: schMsSuperfast,
+  95: schMsTechnoLight,
+  96: schPolyMaxHighTackExpress,
+  97: schShProSuperHybrid,
+  98: schDuopower,
+  99: schDuopower,
+  100: schDuoxpand,
+  101: schDuoxpand,
+  102: schDuotec,
+  103: schDuoblade,
+  104: schGlNylon,
+  105: schCasaNylon,
+  106: schCasaNylon,
+  107: schGxlNylon,
+  109: schPolyMaxHighTackExpressBiadesivo,
+  110: schBts75v,
+};
+
+/* Un articolo può esistere in materiali diversi a parità di finitura (es. la
+   stessa vite in acciaio inox o in zama): in quel caso `materiali` elenca le
+   opzioni per i filtri, mentre `materiale` resta la dicitura da mostrare. */
+const materialiDi = (p) => p.materiali || (p.materiale ? [p.materiale] : []);
+// La scheda (pdf e anteprima) può essere unica per il prodotto oppure diversa
+// per variante (es. un distanziale con una scheda tecnica per ogni lunghezza):
+// in quel caso è un oggetto { 'codice variante': valore }.
+const pickScheda = (val, key) => (val && typeof val === 'object')
+  ? (val[key] !== undefined ? val[key] : Object.values(val)[0])
+  : val;
+const openScheda = (id, key) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id, key } }));
+const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
+
+/* ---------- Ricerca in tutto il catalogo vetro ---------- */
+const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
+const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
+
+/* Termini che un cliente potrebbe usare al posto del nome con cui l'articolo
+   sta in catalogo, e che nemmeno la descrizione riporta: parole generiche
+   oppure il nome commerciale del produttore, per gli articoli che da noi si
+   chiamano in un altro modo. */
+const PAROLE_CHIAVE_VETRO = {
+  1: 'distanziatore',
+  2: 'distanziatore',
+  3: 'distanziatore',
+  4: 'distanziatore',
+  5: 'distanziatore',
+  6: 'distanziatore',
+  89: 'Silirub AC',
+  // Sotto al "Silicone neutro" ci sono due prodotti Soudal diversi: chi cerca
+  // l'uno o l'altro nome deve arrivare lo stesso alla nostra scheda.
+  90: 'Silirub N2 Soudasil 400',
+  91: 'Edilacril',
+  92: 'Alcosil',
+  93: 'MS Super',
+  94: 'MS Super Fast MS Superfast',
+  95: 'MS Techno Light',
+  96: 'Poly Max High Tack Express',
+  97: 'SH-PRO Super Hybrid ancorante chimico',
+  98: 'DuoPower Duo Power tassello universale',
+  99: 'DuoPower S Duo Power tassello universale con vite',
+  100: 'DuoXpand T Duo Xpand tassello prolungato',
+  101: 'DuoXpand FUS Duo Xpand tassello prolungato',
+  102: 'DuoTec Duo Tec fissaggio basculante',
+  103: 'DuoBlade Duo Blade tassello autoforante cartongesso',
+  104: 'GL Nylon tassello multiuso',
+  105: 'Casa Nylon gancio a L reggimensola',
+  106: 'Casa Nylon vite TSC taglio combinato',
+  107: 'GX-L Nylon GXL ancorante prolungato multifunzione',
+  108: 'nastro biadesivo doppio adesivo specchi specchio schiuma acrilica Hafele',
+  109: 'nastro biadesivo doppio adesivo Poly Max High Tack Express universale senza forare',
+  110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba DORMA porte a doppia azione a vento',
+  111: 'GFS 020 GFS020 cerniera alta superiore perno morsetto porta in vetro battente',
+  112: 'GFS 010 GFS010 cerniera bassa inferiore morsetto perno porta in vetro battente',
+  113: 'piletta a pavimento perno pivot per cerniera bassa GFS 010 senza chiudiporta',
+  114: 'GFS 117-P GFS117P piletta a pavimento perno italiano quadro forti portate porte pesanti',
+  115: 'piastrina alta piletta alta perno superiore pivot per cerniera alta GFS 020 telaio',
+  116: 'GFS 060 GFS060 attacco a sopraluce morsetto vetro fisso sopra la porta perno cerniera alta',
+  117: 'GFS 040 GFS040 attacco a sopraluce e laterale angolo a L fisso laterale vetrata perno cerniera alta',
+  118: 'MAB 7305 MAB7305 chiudiporta a pavimento Cam-Motion ASSA ABLOY fermo 90 gradi EN3',
+};
+
+const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
+  p,
+  testo: normalizzaTesto([
+    p.nome, p.fornitore, subName(p.sottocategoria), catName(p.categoria),
+    ...materialiDi(p),
+    p.descrizione || '', PAROLE_CHIAVE_VETRO[p.id] || '',
+    ...p.varianti.map(v => v.codice),
+    ...p.varianti.map(v => v.finitura)
+  ].join(' '))
+}));
+
+const cercaProdottiVetro = (testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
+  if (!parole.length) return [];
+  return INDICE_RICERCA_VETRO
+    .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
+    .map(({ p }) => p);
+};
+
+/* Su cosa lavora la barra di ricerca dentro una categoria: il nome con cui
+   l'articolo sta in catalogo, il fornitore e i termini alternativi qui sopra.
+   Gli accenti si ignorano, altrimenti "trafilo" non troverebbe Tràfilo. */
+const testoCercabile = (p) => senzaAccenti(
+  [p.nome, p.fornitore, PAROLE_CHIAVE_VETRO[p.id] || ''].join(' ')
+);
+
+const codiciTrovati = (p, testo) => {
+  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  const cod = [...new Set(p.varianti.map(v => v.codice))];
+  return cod.filter(c => parole.some(w => senzaAccenti(c).includes(w)));
+};
+
+const primaImmagine = (p) => {
+  const arr = Object.values(p.immagini || {})[0];
+  return Array.isArray(arr) ? arr[0] : arr;
+};
+
+const FINISHES_VETRO = {
+  'Inox satinato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
+  'Nero opaco': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
+  'Oro': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Acciaio inox satinato': 'linear-gradient(135deg,#dfe2e5,#aeb4b9 45%,#c9ced2 58%,#9ea4a9)',
+  'Inox lucido': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
+  'PVD lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Bianco opaco': 'linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)',
+  'Oro satinato': 'linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)',
+  'Bicolore inox satinato / lucido': 'linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)',
+  'Argento': 'linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)',
+  'Finitura inox satinato': 'linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)',
+  'Acciaio satinato': 'linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)',
+  'Cromo opaco': 'linear-gradient(135deg,#e3e6e8,#a9afb4 42%,#cfd4d7 56%,#8d949a 74%,#dfe3e5)',
+  'Cromo lucido': 'linear-gradient(135deg,#ffffff,#c9ced2 30%,#6f777e 50%,#d4d8db 68%,#ffffff)',
+  'Cromo perla': 'linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)',
+  'Nichel satinato': 'linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)',
+  'Alluminio argento opaco': 'linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)',
+  // Alluminio anodizzato lucido: la finitura che Terno chiama "Brill" (suffisso 07).
+  'Alluminio lucido': 'linear-gradient(135deg,#fbfcfd,#d2d7da 30%,#8b9298 50%,#dadee0 68%,#fafbfc)',
+  // PVC trasparente: appena velato, con il riflesso del vetro.
+  'Trasparente': 'linear-gradient(135deg,#ffffff,#eef5f6 34%,#d9e7e9 55%,#f2f8f9 76%,#ffffff)',
+  // Cristallino: piu' luminoso e contrastato del "Trasparente" velato qui
+  // sopra, per far vedere a colpo d'occhio che questo sigillante non vela
+  // per niente, resta limpido come il vetro.
+  'Cristallino': 'linear-gradient(135deg,#ffffff,#f7fdff 18%,#c9eef5 34%,#ffffff 48%,#eafbfd 62%,#a9e4ee 78%,#ffffff)',
+  // Il bianco dei sigillanti: opaco e pieno, senza il riflesso delle vernici.
+  'Bianco': 'linear-gradient(135deg,#ffffff,#f4f4f1 55%,#e8e8e3)',
+  'Avorio 1013': 'linear-gradient(135deg,#f5f1de,#e7e0bf 55%,#f0eace)',
+  // Nero e alluminio "da sigillante": pasta opaca, non una finitura metallica.
+  'Nero': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
+  'Alluminio': 'linear-gradient(135deg,#c9cbcd,#9a9ca0 55%,#c2c4c6)',
+  'Grigio': 'linear-gradient(135deg,#b7b9bb,#8a8c8e 55%,#b0b2b4)',
+  // Il grigio cemento degli ancoranti chimici: piu' caldo e opaco del
+  // "Grigio" dei sigillanti, come la resina indurita.
+  'Grigio cemento': 'linear-gradient(135deg,#c7c3ba,#9a958a 55%,#c0bbb0)',
+  // I tasselli bimateriale: nylon grigio e TPE rosso, divisi a meta'.
+  'Grigio e rosso': 'linear-gradient(120deg,#d7d9db 0%,#a9adb1 46%,#d42b20 54%,#9e1a12 100%)',
+  'Grigio metallizzato': 'linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)',
+  'Testa di moro': 'linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)',
+  'Oro lucido': 'linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)',
+  'Simil inox': 'linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)',
+  'Argento spazzolato': 'linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)',
+  'Nero spazzolato': 'linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)',
+};
+const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
+const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
+const Ghost = () => (
+  <svg className="ghost" viewBox="0 0 120 90" aria-hidden="true">
+    <circle cx="30" cy="45" r="17" />
+    <path d="M30 45 C48 45 60 40 96 41 C104 41 104 49 96 49 C60 50 48 45 30 45 Z" />
+  </svg>
+);
+
+/* ---------- Hash routing (indipendente dal Catalogo Generale) ---------- */
+function parseHash() {
+  const h = window.location.hash.replace(/^#\/?/, '');
+  if (!h) return { view: 'cover' };
+  if (h === 'indice') return { view: 'indice' };
+  const mp = h.match(/^prodotto\/(\d+)$/);
+  if (mp) return { view: 'prodotto', id: Number(mp[1]) };
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z-]+))?$/);
+  if (m && CATEGORIE_VETRO.some(c => c.id === m[1])) return { view: 'categoria', cat: m[1], sub: m[2] || null };
+  return { view: 'cover' };
+}
+const go = (path) => { window.location.hash = path; };
+
+/* ---------- Copertina ---------- */
+function Cover() {
+  return (
+    <div className="cover">
+      <div className="cover-top">
+        <img className="clogo" src={logoCover} alt="Ferramenta Stigliano — dal 1869" />
+        <h1 className="catgen">Catalogo Vetro</h1>
+        <p className="tagline">Ferramenta e accessori per il settore del vetro. Una selezione dedicata, dal 1869.</p>
+        <button className="enter" onClick={() => go('/indice')}>
+          Sfoglia il catalogo <ArrowRight size={18} />
+        </button>
+      </div>
+      <div className="cover-foot">Ferramenta <b>Stigliano</b> · Napoli · dal 1869</div>
+    </div>
+  );
+}
+
+/* ---------- Indice ---------- */
+function Indice() {
+  const count = (id) => PRODOTTI_VETRO.filter(p => p.categoria === id).length;
+  const [q, setQ] = useState('');
+  const testo = q.trim();
+  const risultati = useMemo(() => cercaProdottiVetro(testo), [testo]);
+
+  return (
+    <>
+      <div className="topbar">
+        <div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/')} />
+          <span className="section">Catalogo Vetro · Indice</span>
+        </div>
+      </div>
+      <div className="shell">
+        <div className="index-head">
+          <h1>Categorie prodotto</h1>
+          <hr className="rule" />
+        </div>
+
+        <div className="idx-search">
+          <label className="search big">
+            <Search size={18} />
+            <input type="text" value={q} onChange={e => setQ(e.target.value)}
+              placeholder="Cerca un articolo per nome, codice o finitura…"
+              autoComplete="off" aria-label="Cerca in tutto il catalogo" />
+            {testo && (
+              <button type="button" className="search-clear" onClick={() => setQ('')}
+                aria-label="Cancella la ricerca">×</button>
+            )}
+          </label>
+        </div>
+
+        {!testo ? (
+          <div className="idx-list">
+            {CATEGORIE_VETRO.map(c => {
+              const n = count(c.id);
+              return (
+                <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
+                  <span className="idx-num">{c.id}</span>
+                  <span className="idx-name">{c.nome}</span>
+                  <span className="idx-dots" />
+                  <span className="idx-meta">
+                    {n > 0
+                      ? <span className="idx-badge">{n} {n === 1 ? 'prodotto' : 'prodotti'}</span>
+                      : <span className="idx-soon">in arrivo</span>}
+                    <ChevronRight className="idx-arrow" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ) : risultati.length > 0 ? (
+          <>
+            <p className="res-count">
+              <b>{risultati.length}</b> {risultati.length === 1 ? 'articolo trovato' : 'articoli trovati'}
+            </p>
+            <div className="res-list">
+              {risultati.map(p => {
+                const img = primaImmagine(p);
+                const codici = codiciTrovati(p, testo);
+                return (
+                  <button className="res-row" key={p.id} onClick={() => go(`/prodotto/${p.id}`)}>
+                    <span className="res-thumb">
+                      {img ? <img src={img} alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
+                    </span>
+                    <span className="res-body">
+                      <span className="res-name">{p.nome}</span>
+                      <span className="res-meta">{subName(p.sottocategoria)}</span>
+                      {codici.length > 0 && (
+                        <span className="res-codes">
+                          {codici.slice(0, 3).join(' · ')}
+                          {codici.length > 3 && ` +${codici.length - 3}`}
+                        </span>
+                      )}
+                    </span>
+                    <ChevronRight className="res-arrow" />
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="res-empty">
+            <h2>Nessun articolo trovato</h2>
+            <p>Nessun risultato per “{testo}”. Prova con il nome del modello, un codice o una finitura.</p>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+/* ---------- Pagina categoria ---------- */
+function CategoryPage({ cat, subParam }) {
+  const info = CATEGORIE_VETRO.find(c => c.id === cat) || CATEGORIE_VETRO[0];
+  const sottocategorie = SOTTOCATEGORIE_PER_CATEGORIA[cat];
+  const hasSubs = !!sottocategorie;
+  const sub = hasSubs
+    ? (subParam && sottocategorie.some(s => s.id === subParam) ? subParam : sottocategorie[0].id)
+    : null;
+  const setSub = (id) => go('/cat/' + cat + '/' + id);
+  const catProducts = PRODOTTI_VETRO.filter(p => p.categoria === cat);
+  const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
+
+  return (
+    <>
+      <div className="topbar">
+        <div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <span className="section">{info.nome}</span>
+        </div>
+      </div>
+      <div className="shell">
+        <div className="crumbs">
+          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <span className="crumb-sep">/</span>
+          <span className="crumb-now">Categoria {info.id}</span>
+        </div>
+        <div className="intro">
+          <div className="num">{info.id}</div>
+          <h1>{info.nome}</h1>
+          <hr className="rule" />
+        </div>
+        {hasSubs && (
+          <div className="subbar" role="tablist" aria-label="Sottocategorie">
+            {sottocategorie.map(s => {
+              const n = catProducts.filter(p => p.sottocategoria === s.id).length;
+              return (
+                <button key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
+                  role="tab" aria-selected={s.id === sub} onClick={() => setSub(s.id)}>
+                  {s.nome}
+                  {n > 0 && <span className="subcount">{n}</span>}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {catProducts.length === 0 ? (
+        <div className="shell">
+          <div className="prep">
+            <span className="badge">Sezione {info.id}</span>
+            <h2>Sezione in preparazione</h2>
+            <p>Stiamo caricando gli articoli di questa categoria. Torna presto per sfogliarli.</p>
+            <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+          </div>
+        </div>
+      ) : subProducts.length > 0 ? (
+        <ProductCatalog products={subProducts} />
+      ) : (
+        <div className="shell">
+          <div className="prep">
+            <span className="badge">{subName(sub)}</span>
+            <h2>Sottocategoria in preparazione</h2>
+            <p>Non ci sono ancora articoli in questa sottocategoria. Presto aggiungeremo nuovi prodotti.</p>
+          </div>
+        </div>
+      )}
+      <Footer />
+    </>
+  );
+}
+
+/* ---------- Catalogo prodotti (griglia + ricerca + filtri) ---------- */
+function ProductCatalog({ products }) {
+  const [q, setQ] = useState('');
+  const [mat, setMat] = useState([]);
+  const [fin, setFin] = useState([]);
+  const [prod, setProd] = useState([]);
+  const [diam, setDiam] = useState([]);
+  const [lung, setLung] = useState([]);
+  const [inter, setInter] = useState([]);
+  const [vetro, setVetro] = useState([]);
+  const [favOnly, setFavOnly] = useState(false);
+  const [fOpen, setFOpen] = useState(false);
+  const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
+  const [favorites, setFavorites] = useState(() => {
+    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
+  useEffect(() => {
+    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
+  }, [favorites]);
+  const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+
+  // Vista a griglia sul cellulare (1 o 2 colonne): la scelta resta ricordata.
+  const [mobileView, setMobileView] = useState(() => {
+    try { return localStorage.getItem('ferramenta_vetro_mobile_view') || 'list'; }
+    catch { return 'list'; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem('ferramenta_vetro_mobile_view', mobileView); } catch {}
+  }, [mobileView]);
+
+  const mats = useMemo(() => [...new Set(products.flatMap(materialiDi))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  // I prodotti senza finitura (senzaFinitura: la sceglie il cliente, non la
+  // dichiariamo noi) restano fuori sia dall'elenco delle finiture sia dal filtro.
+  const fins = useMemo(() => [...new Set(products.filter(p => !p.senzaFinitura).flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
+  const diams = useMemo(() => [...new Set(products.map(p => p.diametro).filter(Boolean))]
+    .sort((a, b) => parseFloat(a) - parseFloat(b)), [products]);
+  const lunghezze = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.lunghezza).filter(v => v != null)))]
+    .sort((a, b) => a - b), [products]);
+  const interassi = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.interasse).filter(v => v != null)))]
+    .sort((a, b) => a - b), [products]);
+  const vetri = useMemo(() => [...new Set(products.flatMap(p => p.spessoriVetro || []))]
+    .sort((a, b) => a.localeCompare(b, 'it', { numeric: true })), [products]);
+
+  // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
+  const match = (p, salta) => {
+    const t = senzaAccenti(q.trim());
+    const okQ = !t || testoCercabile(p).includes(t) || p.varianti.some(v => senzaAccenti(v.codice).includes(t));
+    const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
+    const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
+    const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
+    const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
+    const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
+    const okI = salta === 'inter' || !inter.length || p.varianti.some(v => inter.includes(v.interasse));
+    const okV = salta === 'vetro' || !vetro.length || (p.spessoriVetro || []).some(v => vetro.includes(v));
+    const okFav = !favOnly || favorites.includes(p.id);
+    return okQ && okM && okF && okP && okD && okL && okI && okV && okFav;
+  };
+  const filtered = products.filter(p => match(p, null));
+  const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + vetro.length + (favOnly ? 1 : 0);
+  const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setLung([]); setInter([]); setVetro([]); setFavOnly(false); };
+
+  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
+    const aperto = drop === campo;
+    const riass = scelte.length === 0 ? tutti
+      : scelte.length === 1 ? (label ? label(scelte[0]) : scelte[0])
+      : scelte.length + ' ' + plurale;
+    return (
+      <div className="fld">
+        <span className="fld-k">{etichetta}</span>
+        <button type="button" className={`fdrop-btn${aperto ? ' open' : ''}${scelte.length ? ' has' : ''}`}
+          aria-expanded={aperto} onClick={() => setDrop(d => d === campo ? null : campo)}>
+          <span className="fdrop-v">{riass}</span>
+          <ChevronDown className="fdrop-chev" size={15} />
+        </button>
+        <div className={`fdrop-menu${aperto ? ' open' : ''}`}>
+          <div className="fdrop-inner">
+            <div className="fdrop-list">
+              {opzioni.map(o => {
+                const on = scelte.includes(o);
+                const off = !on && !disponibile(campo, p => test(p, o));
+                return (
+                  <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
+                    <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
+                    <span className="fbox" aria-hidden="true" />
+                    <span className="ftxt">{label ? label(o) : o}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <div className="toolbar-wrap">
+        <div className="shell">
+          <div className="filterbar">
+            <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
+              onClick={() => { setFOpen(o => !o); setDrop(null); }}>
+              <SlidersHorizontal size={16} />
+              <span>Filtra prodotti</span>
+              {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
+              <ChevronDown className="fchev" size={16} />
+            </button>
+            <label className="search">
+              <Search size={16} />
+              <input type="text" value={q} onChange={e => setQ(e.target.value)}
+                placeholder="Cerca per nome o codice…" autoComplete="off" aria-label="Cerca" />
+            </label>
+            <span className="count">
+              <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+            </span>
+            <div className="mobile-view-toggle" role="group" aria-label="Visualizzazione">
+              <button type="button" className={mobileView === 'list' ? 'active' : ''}
+                aria-pressed={mobileView === 'list'} aria-label="Vista a elenco"
+                onClick={() => setMobileView('list')}>
+                <List size={16} />
+              </button>
+              <button type="button" className={mobileView === 'grid2' ? 'active' : ''}
+                aria-pressed={mobileView === 'grid2'} aria-label="Vista a griglia doppia"
+                onClick={() => setMobileView('grid2')}>
+                <LayoutGrid size={16} />
+              </button>
+            </div>
+          </div>
+
+          <div className={`filter-panel${fOpen ? ' open' : ''}`}>
+            <div className="filter-inner">
+              <div className="filter-grid">
+                <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
+                  test={(p, o) => materialiDi(p).includes(o)} tutti="Tutti i materiali" plurale="materiali" />
+                <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
+                  test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
+                <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
+                  test={(p, o) => !p.senzaFinitura && p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
+                {diams.length > 1 && (
+                  <Gruppo etichetta="Diametro" campo="diam" opzioni={diams} scelte={diam} set={setDiam}
+                    test={(p, o) => p.diametro === o} tutti="Tutti i diametri" plurale="diametri" />
+                )}
+                {lunghezze.length > 1 && (
+                  <Gruppo etichetta="Lunghezza" campo="lung" opzioni={lunghezze} scelte={lung} set={setLung}
+                    test={(p, o) => p.varianti.some(v => v.lunghezza === o)} tutti="Tutte le lunghezze" plurale="lunghezze"
+                    label={(o) => o + ' mm'} />
+                )}
+                {interassi.length > 1 && (
+                  <Gruppo etichetta="Interasse" campo="inter" opzioni={interassi} scelte={inter} set={setInter}
+                    test={(p, o) => p.varianti.some(v => v.interasse === o)} tutti="Tutti gli interassi" plurale="interassi"
+                    label={(o) => o + ' mm'} />
+                )}
+                {vetri.length > 1 && (
+                  <Gruppo etichetta="Spessore vetro" campo="vetro" opzioni={vetri} scelte={vetro} set={setVetro}
+                    test={(p, o) => (p.spessoriVetro || []).includes(o)} tutti="Tutti gli spessori" plurale="spessori" />
+                )}
+              </div>
+              <div className="filter-actions">
+                <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}
+                  onClick={() => setFavOnly(v => !v)}>
+                  <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Solo preferiti
+                </button>
+                {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="shell">
+        <div className={`gallery${mobileView === 'grid2' ? ' compact-2col' : ''}`}>
+          {filtered.map((p, idx) => (
+            <ProductCard key={p.id} product={p} idx={idx}
+              isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
+          ))}
+
+          {filtered.length === 0 && (
+            <div className="empty">
+              <p className="big">Nessun risultato</p>
+              <p>Nessun prodotto corrisponde ai filtri selezionati.</p>
+              <button className="reset" onClick={resetAll}>Azzera filtri</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ---------- Scheda prodotto (card griglia) ---------- */
+function ProductCard({ product: p, idx, isFav, onFav }) {
+  const images = p.immagini || {};
+  const ufins = [...new Set(p.varianti.map(v => v.finitura))];
+  const firstWithImg = p.varianti.find(v => images[v.finitura]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : p.varianti[0].finitura);
+  const [open, setOpen] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
+  const gallery = images[selFin] || [];
+  const selImg = gallery[imgIdx] || gallery[0];
+  // Cambiando finitura si riparte dalla prima foto della nuova galleria.
+  useEffect(() => { setImgIdx(0); }, [selFin]);
+  const prevImg = e => { e.stopPropagation(); setImgIdx(i => (i - 1 + gallery.length) % gallery.length); };
+  const nextImg = e => { e.stopPropagation(); setImgIdx(i => (i + 1) % gallery.length); };
+  const touchX = React.useRef(null);
+  const onTouchStart = e => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = e => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) (dx < 0 ? nextImg : prevImg)(e);
+    touchX.current = null;
+  };
+  // Con una sola finitura non c'e' niente da scegliere: il selettore sparisce.
+  const sceltaFin = ufins.length > 1;
+  // Prodotti su misura in cui la finitura la sceglie il cliente: non ne
+  // dichiariamo nessuna, quindi pastiglia e colonna finitura spariscono.
+  const senzaFin = !!p.senzaFinitura;
+  // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
+  const colMat = p.varianti.some(v => v.materiale);
+  // Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse): qui, nella
+  // card, la tabella si limita a mostrare le colonne — la scelta della misura resta
+  // nella pagina prodotto completa.
+  const assi = p.assi;
+
+  return (
+    <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
+      <div className="media">
+        <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+          aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
+          <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
+        </button>
+        <div className="media-body clickable" onClick={() => go('/prodotto/' + p.id)} role="link"
+          tabIndex={0} onKeyDown={e => { if (e.key === 'Enter') go('/prodotto/' + p.id); }}
+          aria-label={`Apri la scheda di ${p.nome}`}
+          onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
+          onTouchEnd={gallery.length > 1 ? onTouchEnd : undefined}>
+          {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
+            : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
+        </div>
+        {gallery.length > 1 && (
+          <>
+            <button className="media-nav prev" aria-label="Foto precedente" onClick={prevImg}>
+              <ChevronLeft size={18} />
+            </button>
+            <button className="media-nav next" aria-label="Foto successiva" onClick={nextImg}>
+              <ChevronRight size={18} />
+            </button>
+            <div className="media-dots">
+              {gallery.map((_, i) => (
+                <button key={i} className={`media-dot${i === imgIdx ? ' active' : ''}`}
+                  aria-label={`Foto ${i + 1}`} aria-pressed={i === imgIdx}
+                  onClick={e => { e.stopPropagation(); setImgIdx(i); }} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <div className="cbody">
+        <div className="name-row">
+          <h2 className="name clickable" onClick={() => go('/prodotto/' + p.id)}>{p.nome}</h2>
+        </div>
+        <div className="submeta">
+          <p className="sub">{subName(p.sottocategoria)}</p>
+          {p.materiale && <div className="matrow"><span className="lab">Materiale</span><span className="val">{p.materiale}</span></div>}
+        </div>
+        {p.scheda !== undefined && (
+          p.scheda
+            ? <button className="scheda" onClick={() => openScheda(p.id, selFin)}><Download size={15} /> Scheda tecnica</button>
+            : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
+        )}
+        {senzaFin ? null : sceltaFin ? (
+          <div className="finishes">
+            <div className="fbtns">
+              {ufins.map((f, i) => (
+                <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                  onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                  <Chip finitura={f} />
+                </button>
+              ))}
+            </div>
+            <span className="fhint">Scegli la finitura</span>
+          </div>
+        ) : (
+          <div className="finishes">
+            <span className="chips"><Chip finitura={selFin} /></span>
+            <span className="fcount">{selFin}</span>
+          </div>
+        )}
+        <button className="detail-cta" onClick={() => go('/prodotto/' + p.id)}>
+          Scheda completa
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+        </button>
+        <button className="expand" aria-expanded={open} onClick={() => setOpen(o => !o)}>
+          <span>Varianti disponibili ({p.varianti.length})</span>
+          <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </button>
+        <div className={`variants-wrap${open ? ' open' : ''}`}>
+          <div className="variants-inner">
+            <table className="variants">
+              <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
+                {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
+              </tr></thead>
+              <tbody>
+                {p.varianti.map((v, i) => (
+                  <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
+                    onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
+                    <td className="code">{v.codice}</td>
+                    {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
+                    {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
+                    {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function SezioneTendina({ title, badge, aperta = false, children }) {
+  const [open, setOpen] = useState(aperta);
+  return (
+    <section className="rel-section">
+      <button type="button" className={`rel-head rel-toggle${open ? ' open' : ''}`}
+        aria-expanded={open} onClick={() => setOpen(o => !o)}>
+        <h2>{title}</h2>
+        {badge != null && <span className="rel-badge-n">{badge}</span>}
+        <ChevronDown className="rel-chev" size={18} />
+      </button>
+      <div className={`rel-wrap${open ? ' open' : ''}`}>
+        <div className="rel-inner">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+/* Articoli collegati: quelli indispensabili per montare il pezzo
+   ("essenziali") e quelli che possono servire ma non sono obbligatori
+   ("facoltativi"). Entrambe le sezioni compaiono solo se il prodotto ne
+   elenca almeno uno, così le schede senza collegamenti restano pulite. */
+function RelatedCard({ p }) {
+  const img = (p.immagini && (p.immagini[Object.keys(p.immagini)[0]] || [])[0]) || null;
+  return (
+    <button className="rel-card" onClick={() => go('/prodotto/' + p.id)}>
+      <div className="rel-media">
+        {img ? <img src={img} alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
+      </div>
+      <div className="rel-body">
+        <span className="rel-name">{p.nome}</span>
+        <span className="rel-forn">{p.varianti.map(v => v.codice).join(' · ')}</span>
+      </div>
+      <ChevronRight size={16} className="rel-arrow" />
+    </button>
+  );
+}
+
+function RelatedRow({ title, ids, nota }) {
+  const items = (ids || []).map(id => PRODOTTI_VETRO.find(p => p.id === id)).filter(Boolean);
+  if (!items.length) return null;
+  return (
+    <SezioneTendina title={title} badge={items.length}>
+      {nota && <p className="rel-testo">{nota}</p>}
+      <div className="rel-grid">{items.map(p => <RelatedCard key={p.id} p={p} />)}</div>
+    </SezioneTendina>
+  );
+}
+
+/* ---------- Pagina prodotto ---------- */
+function ProductDetail({ id }) {
+  const p = PRODOTTI_VETRO.find(x => x.id === id);
+  const info = CATEGORIE_VETRO.find(c => c.id === (p && p.categoria)) || CATEGORIE_VETRO[0];
+  const images = (p && p.immagini) || {};
+  const firstWithImg = p && p.varianti.find(v => images[v.finitura]);
+  const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
+  const [imgIdx, setImgIdx] = useState(0);
+  useEffect(() => { setImgIdx(0); }, [selFin]);
+  const [favorites, setFavorites] = useState(() => {
+    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
+  useEffect(() => {
+    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
+  }, [favorites]);
+
+  /* ---- Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse) ----
+     Ogni asse mostra tutte le misure della finitura scelta; dopo un clic, gli
+     altri assi lasciano selezionabili solo le misure compatibili con quella. */
+  const assi = p && p.assi;
+  const [mis, setMis] = useState(() => {
+    if (!assi || !p || !p.varianti.length) return null;
+    const v0 = p.varianti[0], o = {};
+    assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    return o;
+  });
+  const [ultimoAsse, setUltimoAsse] = useState(null);
+
+  const perFinitura = (v) => v.finitura === selFin;
+  const opzioniAsse = (k) => [...new Set((p ? p.varianti : []).filter(perFinitura).map(v => v[k]))]
+    .sort((a, b) => (typeof a === 'number' ? a - b : String(a).localeCompare(String(b), 'it', { numeric: true })));
+  const misuraDisponibile = (k, val) => p.varianti.some(v =>
+    perFinitura(v) && v[k] === val &&
+    (!ultimoAsse || ultimoAsse === k || v[ultimoAsse] === mis[ultimoAsse]));
+  const scegliMisura = (k, val) => {
+    const cand = p.varianti.filter(v => perFinitura(v) && v[k] === val);
+    if (!cand.length) return;
+    let best = cand[0], punti = -1;
+    cand.forEach(v => {
+      const s = assi.reduce((acc, a) => acc + (a.chiave !== k && v[a.chiave] === mis[a.chiave] ? 1 : 0), 0);
+      if (s > punti) { punti = s; best = v; }
+    });
+    const o = {}; assi.forEach(a => { o[a.chiave] = best[a.chiave]; });
+    setMis(o); setUltimoAsse(k);
+  };
+  // cambiando finitura, riporta le misure su una combinazione esistente
+  useEffect(() => {
+    if (!assi || !mis || !p) return;
+    const valida = p.varianti.some(v => perFinitura(v) && assi.every(a => v[a.chiave] === mis[a.chiave]));
+    if (valida) return;
+    const v0 = p.varianti.find(perFinitura);
+    if (!v0) return;
+    const o = {}; assi.forEach(a => { o[a.chiave] = v0[a.chiave]; });
+    setMis(o); setUltimoAsse(null);
+  }, [selFin]);
+
+  if (!p) {
+    return (
+      <>
+        <div className="topbar"><div className="shell">
+          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <span className="section">Prodotto</span>
+        </div></div>
+        <div className="shell"><div className="prep">
+          <span className="badge">Prodotto</span>
+          <h2>Prodotto non trovato</h2>
+          <p>La scheda richiesta non è disponibile.</p>
+          <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+        </div></div>
+        <Footer />
+      </>
+    );
+  }
+
+  const ufins = [...new Set(p.varianti.map(v => v.finitura))];
+  const gallery = images[selFin] || [];
+  const selImg = gallery[imgIdx] || gallery[0];
+  const sceltaFin = ufins.length > 1;
+  const senzaFin = !!p.senzaFinitura;
+  const colMat = p.varianti.some(v => v.materiale);
+  // Codice della variante attualmente selezionata: serve per aprire la scheda
+  // giusta quando ogni misura ha la propria (es. un distanziale venduto in
+  // piu' lunghezze, ciascuna con la sua scheda tecnica).
+  const varianteAttiva = assi
+    ? p.varianti.find(v => perFinitura(v) && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
+    : p.varianti.find(perFinitura);
+  const codiceAttivo = (varianteAttiva || p.varianti[0]).codice;
+  const isFav = favorites.includes(p.id);
+  const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
+
+  return (
+    <>
+      <div className="topbar"><div className="shell">
+        <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+        <span className="section">{info.nome}</span>
+      </div></div>
+
+      <div className="shell">
+        <div className="crumbs">
+          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <span className="crumb-sep">/</span>
+          <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>Categoria {p.categoria}</button>
+          <span className="crumb-sep">/</span>
+          <span className="crumb-now">{p.nome}</span>
+        </div>
+
+        <div className="pdp">
+          <div className="pdp-media">
+            <div className="media">
+              <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
+                aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={toggleFav}>
+                <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
+              </button>
+              <div className="media-body">
+                {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} />
+                  : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
+              </div>
+              {!senzaFin && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
+            </div>
+            {gallery.length > 1 && (
+              <div className="pdp-thumbs">
+                {gallery.map((img, i) => (
+                  <button key={i} className={`pdp-thumb${i === imgIdx ? ' active' : ''}`}
+                    onClick={() => setImgIdx(i)} aria-label={`Foto ${i + 1}`} aria-pressed={i === imgIdx}>
+                    <img src={img} alt={`${p.nome} — vista ${i + 1}`} />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="pdp-info">
+            <div className="name-row">
+              <h1 className="pdp-name">{p.nome}</h1>
+            </div>
+            <p className="pdp-sub">{subName(p.sottocategoria)}</p>
+            <hr className="rule" />
+            <div className="pdp-specs">
+              {p.materiale && <div className="pdp-spec"><span className="k">Materiale</span><span className="v">{p.materiale}</span></div>}
+              {p.dimensioni && <div className="pdp-spec"><span className="k">Misure</span><span className="v">{p.dimensioni}</span></div>}
+              <div className="pdp-spec">
+                <span className="k">Fornitore</span>
+                <span className="v">
+                  {p.fornitoreLogo
+                    ? <span className="forn-logo"><img src={p.fornitoreLogo} alt={p.fornitore} /></span>
+                    : p.fornitore}
+                </span>
+              </div>
+            </div>
+
+            {!senzaFin && <div className="finishes pdp-finishes">
+              <span className="fhint">{sceltaFin ? 'Scegli la finitura' : 'Finitura'}</span>
+              <div className="fbtns">
+                {sceltaFin ? ufins.map((f, i) => (
+                  <button key={i} className={`fbtn${f === selFin ? ' active' : ''}`}
+                    onClick={() => setSelFin(f)} title={f} aria-label={f} aria-pressed={f === selFin}>
+                    <Chip finitura={f} />
+                  </button>
+                )) : (
+                  <span className="fin-cell"><Chip finitura={selFin} />{selFin}</span>
+                )}
+              </div>
+            </div>}
+
+            {assi && mis && assi.map(a => (
+              <div className="finishes pdp-finishes" key={a.chiave}>
+                <span className="fhint">{a.etichetta}</span>
+                <div className="fbtns">
+                  {opzioniAsse(a.chiave).map(val => {
+                    const on = mis[a.chiave] === val;
+                    const off = !on && !misuraDisponibile(a.chiave, val);
+                    return (
+                      <button key={String(val)} className={`vbtn${on ? ' active' : ''}${off ? ' off' : ''}`}
+                        aria-pressed={on} onClick={() => scegliMisura(a.chiave, val)}
+                        title={off ? 'Non abbinabile alla misura scelta: clicca per partire da questa' : undefined}>
+                        {val}{a.suffisso || ''}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+
+            <div className="pdp-docs">
+              {/* Niente scheda tecnica (undefined) per gli articoli che non ne hanno una,
+                  come le chiavi ergonomiche: qui il tasto non compare proprio. */}
+              {p.scheda !== undefined && (
+                p.scheda
+                  ? <button className="scheda" onClick={() => openScheda(p.id, codiceAttivo)}><Download size={15} /> Scheda tecnica</button>
+                  : <button className="scheda disabled" disabled title="Scheda tecnica in arrivo"><Download size={15} /> Scheda tecnica <em>in arrivo</em></button>
+              )}
+              {/* Il rapporto di prova esiste solo per gli articoli certificati:
+                  dove manca del tutto non mostriamo nulla. */}
+              {p.rapporto !== undefined && (
+                p.rapporto
+                  ? <a className="scheda" href={p.rapporto} target="_blank" rel="noopener">
+                      <Download size={15} /> Rapporto di prova
+                    </a>
+                  : <button className="scheda disabled" disabled title="Rapporto di prova in arrivo">
+                      <Download size={15} /> Rapporto di prova <em>in arrivo</em>
+                    </button>
+              )}
+              {/* Video tutorial di montaggio: presente solo per gli articoli che
+                  ne hanno uno. Puo' essere un solo link oppure piu' video con
+                  etichetta, quando il montaggio cambia da versione a versione. */}
+              {p.video && (Array.isArray(p.video) ? p.video : [{ url: p.video }]).map((v, i) => (
+                <a className="scheda" key={i} href={v.url} target="_blank" rel="noopener">
+                  <PlayCircle size={15} /> {v.etichetta ? `Video montaggio · ${v.etichetta}` : 'Video tutorial montaggio'}
+                </a>
+              ))}
+              {/* Istruzioni di montaggio in PDF: un documento a parte dalla scheda
+                  tecnica, presente solo per gli articoli che ce l'hanno. */}
+              {p.istruzioni && (
+                <a className="scheda" href={p.istruzioni} target="_blank" rel="noopener">
+                  <Download size={15} /> Istruzioni di montaggio
+                </a>
+              )}
+            </div>
+
+            <div className="pdp-variants">
+              <h3>Varianti disponibili ({p.varianti.length})</h3>
+              <div className="variants-scroll">
+              <table className="variants">
+                <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
+                  {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
+                </tr></thead>
+                <tbody>
+                  {p.varianti.map((v, i) => {
+                    const active = assi
+                      ? (v.finitura === selFin && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
+                      : sceltaFin && v.finitura === selFin;
+                    const scegliRiga = () => {
+                      if (assi) {
+                        setSelFin(v.finitura);
+                        const o = {}; assi.forEach(a => { o[a.chiave] = v[a.chiave]; });
+                        setMis(o); setUltimoAsse(null);
+                      } else if (sceltaFin) {
+                        setSelFin(v.finitura);
+                      }
+                    };
+                    return (
+                    <tr key={i} className={`${(sceltaFin || assi) ? 'vrow' : ''}${active ? ' active' : ''}`}
+                      onClick={(sceltaFin || assi) ? scegliRiga : undefined}>
+                      <td className="code">{v.codice}</td>
+                      {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
+                      {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
+                      {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
+                    </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {p.descrizione && (
+          <SezioneTendina title="Descrizione" aperta>
+            <p className="rel-testo">{p.descrizione}</p>
+          </SezioneTendina>
+        )}
+        {p.caratteristiche && p.caratteristiche.length > 0 && (
+          <SezioneTendina title="Caratteristiche">
+            <dl className="carat-list">
+              {p.caratteristiche.map((c, i) => (
+                <div className="carat-item" key={i}>
+                  <dt className="carat-title">{c.titolo}</dt>
+                  <dd className="carat-text">{c.testo}</dd>
+                </div>
+              ))}
+            </dl>
+          </SezioneTendina>
+        )}
+        <RelatedRow title="Articoli essenziali" ids={p.essenziali}
+          nota="Servono per completare il montaggio di questo articolo e si ordinano a parte." />
+        <RelatedRow title="Articoli facoltativi" ids={p.facoltativi}
+          nota="Non sono obbligatori: si aggiungono solo se servono all'installazione." />
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+/* Visualizzatore scheda tecnica in pagina (immagine a schermo intero) */
+function SchedaViewer() {
+  const [item, setItem] = useState(null);
+  useEffect(() => {
+    const onOpen = (e) => {
+      const { id, key } = e.detail || {};
+      const p = PRODOTTI_VETRO.find(x => x.id === id);
+      const src = pickScheda(SCHEDA_IMG_VETRO[id], key);
+      if (!p || !src) return;
+      // Prodotti con una scheda per variante (es. il distanziale, una per
+      // lunghezza): titolo e nome del file dicono quale si sta guardando,
+      // altrimenti le schede scaricate sono tutte uguali e non si distinguono.
+      const perVariante = p.scheda && typeof p.scheda === 'object' && p.scheda[key] !== undefined;
+      setItem({ src, title: p.nome, ver: perVariante ? key : null, pdf: pickScheda(p.scheda, key) });
+      document.body.style.overflow = 'hidden';
+    };
+    const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
+    window.addEventListener('open-scheda-vetro', onOpen);
+    window.addEventListener('keydown', onKey);
+    return () => { window.removeEventListener('open-scheda-vetro', onOpen); window.removeEventListener('keydown', onKey); };
+  }, []);
+  if (!item) return null;
+  const close = () => { setItem(null); document.body.style.overflow = ''; };
+  return (
+    <div className="sheet-ov" onClick={close}>
+      <div className="sheet-bar" onClick={e => e.stopPropagation()}>
+        <span className="sheet-title">Scheda tecnica · {item.title}{item.ver ? ' · ' + item.ver : ''}</span>
+        <span className="sheet-actions">
+          {/* Niente attributo download: così il PDF si apre nel visualizzatore
+              del browser (su iPhone a tutta pagina, con salva e condividi a
+              portata di mano) invece di finire dritto fra i file scaricati. */}
+          {item.pdf && <a className="sheet-dl" href={item.pdf} target="_blank" rel="noopener">Scarica PDF</a>}
+          <button className="sheet-x" onClick={close} aria-label="Chiudi">✕</button>
+        </span>
+      </div>
+      <div className="sheet-scroll" onClick={e => e.stopPropagation()}>
+        <img src={item.src} alt={`Scheda tecnica ${item.title}`} />
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div className="shell">
+        <span>Catalogo Vetro Ferramenta <b>Stigliano</b> · <span className="est">dal 1869</span></span>
+      </div>
+    </footer>
+  );
+}
+
+export default function CatalogoVetro() {
+  const [route, setRoute] = useState(parseHash());
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    const onHash = () => { setRoute(parseHash()); window.scrollTo(0, 0); };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  return (
+    <div className="cat">
+      {route.view === 'cover' && <Cover />}
+      {route.view === 'indice' && <Indice />}
+      {route.view === 'categoria' && <CategoryPage cat={route.cat} subParam={route.sub} />}
+      {route.view === 'prodotto' && <ProductDetail key={route.id} id={route.id} />}
+      <SchedaViewer />
+    </div>
+  );
+}

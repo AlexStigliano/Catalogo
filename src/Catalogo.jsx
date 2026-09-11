@@ -932,7 +932,7 @@ function parseHash() {
   if (h === 'indice') return { view: 'indice' };
   const mp = h.match(/^prodotto\/(\d+)$/);
   if (mp) return { view: 'prodotto', id: Number(mp[1]) };
-  const m = h.match(/^cat\/(\d{2})(?:\/([a-z]+))?$/);
+  const m = h.match(/^cat\/(\d{2})(?:\/([a-z-]+))?$/);
   if (m) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
@@ -1014,6 +1014,13 @@ const cercaProdotti = (testo) => {
     .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
     .map(({ p }) => p);
 };
+
+/* Su cosa lavora la barra di ricerca dentro una categoria: il nome
+   dell'articolo, il fornitore e le parole chiave qui sopra. Gli accenti si
+   ignorano, cosi' il fornitore si trova anche scrivendolo senza. */
+const testoCercabile = (p) => senzaAccenti(
+  [p.nome, p.fornitore, PAROLE_CHIAVE[p.id] || ''].join(' ')
+);
 
 /* Codici che contengono una delle parole cercate: se cerchi un codice,
    ti mostra subito quale variante corrisponde. */
@@ -1220,8 +1227,8 @@ function ProductCatalog({ products }) {
   // `salta` esclude un filtro dal calcolo: serve per sapere quali opzioni di
   // quel filtro darebbero ancora risultati (le altre vengono disabilitate).
   const match = (p, salta) => {
-    const t = q.trim().toLowerCase();
-    const okQ = !t || p.nome.toLowerCase().includes(t) || p.varianti.some(v => v.codice.toLowerCase().includes(t));
+    const t = senzaAccenti(q.trim());
+    const okQ = !t || testoCercabile(p).includes(t) || p.varianti.some(v => senzaAccenti(v.codice).includes(t));
     const okM = salta === 'mat' || !mat.length || mat.includes(p.materiale);
     const okF = salta === 'fin' || !fin.length || p.varianti.some(v => fin.includes(v.finitura));
     const okR = salta === 'ros' || !ros.length || ros.includes(p.rosetta);
@@ -1591,6 +1598,7 @@ function ProductDetail({ id }) {
 
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
+              <div className="variants-scroll">
               <table className="variants">
                 <thead><tr><th>Codice articolo</th><th>Finitura</th>
                   {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : (haVer && <th>Versione</th>)}
@@ -1622,6 +1630,7 @@ function ProductDetail({ id }) {
                   })}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
