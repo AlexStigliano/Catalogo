@@ -199,6 +199,9 @@ import gfs060Foto from './assets/vetro/prodotti/gfs060-foto.jpg';
 import gfs060Misure from './assets/vetro/prodotti/gfs060-misure.jpg';
 import gfs040Foto from './assets/vetro/prodotti/gfs040-foto.jpg';
 import gfs040Misure from './assets/vetro/prodotti/gfs040-misure.jpg';
+import mab7305Render from './assets/vetro/prodotti/mab7305-render.jpg';
+import mab7305Cassetta from './assets/vetro/prodotti/mab7305-cassetta.jpg';
+import mab7305Meccanismo from './assets/vetro/prodotti/mab7305-meccanismo.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -456,6 +459,7 @@ import pdfFissaggioPuntualeSchedaTecnica from './assets/vetro/fissaggio-puntuale
 import pdfFs880SchedaTecnica from './assets/vetro/fs880-scheda-tecnica.pdf';
 import pdfFs890SchedaTecnica from './assets/vetro/fs890-scheda-tecnica.pdf';
 import pdfBts75vSchedaTecnica from './assets/vetro/bts75v-scheda-tecnica.pdf';
+import pdfMab7305Istruzioni from './assets/vetro/mab7305-istruzioni-installazione.pdf';
 import pdfGaha1stSchedaTecnica from './assets/vetro/gaha1st-scheda-tecnica.pdf';
 import pdfGeorgiaQSchedaTecnica from './assets/vetro/georgia-q-scheda-tecnica.pdf';
 import pdfGridIstruzioniMontaggio from './assets/vetro/grid-istruzioni-montaggio.pdf';
@@ -3049,6 +3053,36 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 118, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Chiudiporta a pavimento MAB 7305',
+    // Il nuovo 7305 di MAB, marchio del gruppo ASSA ABLOY. Stessa
+    // funzione del BTS 75 V ma forza fissa EN3 invece che regolabile.
+    // Il PDF allegato sono le istruzioni di installazione, non una
+    // scheda tecnica: sta quindi in "istruzioni" e la scheda resta
+    // assente. Il codice articolo viene da quelle istruzioni, che
+    // valgono per il 7300 e il 7305.
+    descrizione: 'Chiudiporta a pavimento con il corpo annegato nella soletta e a vista solo la piastra di copertura, per porte a battente e a ventola ad anta singola, destre, sinistre o a doppia azione. Regge ante fino a 120kg di peso e 950mm di larghezza, con forza di chiusura fissa EN3 secondo la norma EN 1154. La velocità di chiusura si regola fra 150° e 15° e il colpo finale fra 15° e 0°, con due valvole indipendenti e termodinamiche rivolte verso l\'alto. Ha il fermo di apertura a 90° e, oltre i 105°, la porta ruota libera fino a 180° restando ferma a qualsiasi angolo. La tecnologia Cam-Motion riduce lo sforzo di apertura. Corpo in ghisa, cassetta a murare zincata a caldo, piastra di copertura in acciaio inox lucido; ingombro 278×131×70mm, con 15mm di regolazione verticale dopo la posa. Prodotto da MAB, marchio del gruppo ASSA ABLOY.',
+    materiale: 'Corpo in ghisa, cassetta zincata a caldo, piastra in acciaio inox',
+    dimensioni: 'Corpo 278×131×70mm · regolazione verticale 15mm · larghezza anta max 950mm · peso anta max 120kg · forza di chiusura fissa EN3',
+    fornitore: 'MAB',
+    istruzioni: pdfMab7305Istruzioni,
+    caratteristiche: [
+      { titolo: 'Si apre con poca forza', testo: 'ASSA ABLOY dichiara il minimo sforzo di apertura grazie alla tecnologia Cam-Motion: conta negli ingressi molto usati, dove una porta dura si fa sentire a fine giornata.' },
+      { titolo: 'Forza fissa EN3', testo: 'A differenza del BTS 75 V, che si tara fra EN 1 ed EN 4, qui la forza è fissa EN3 secondo la EN 1154: va scelto sapendo che non si regola in opera.' },
+      { titolo: 'Fermo a 90°, poi effetto cerniera', testo: 'Tiene la porta aperta a 90°. Oltre i 105° il controllo idraulico lascia andare e l\'anta ruota libera fino a 180°, restando ferma dove la lasci come farebbe una cerniera.' },
+      { titolo: 'Chiusura e colpo finale separati', testo: 'Due valvole indipendenti: la velocità di chiusura si regola fra 150° e 15°, il colpo finale fra 15° e 0°. Sono termodinamiche, quindi la porta chiude allo stesso modo d\'estate e d\'inverno.' },
+      { titolo: 'Si allinea dopo la posa', testo: 'La regolazione verticale da 15mm permette di rimettere in quota l\'anta anche a lavoro finito, se il pavimento non è perfettamente in piano.' },
+      { titolo: 'Quanto regge', testo: 'Fino a 120kg di peso, come il BTS 75 V, ma su ante larghe al massimo 950mm invece di 1100mm: sulle porte larghe resta il BTS la scelta giusta.' },
+    ],
+    immagini: {
+      'Inox lucido': [mab7305Render, mab7305Cassetta, mab7305Meccanismo],
+    },
+    varianti: [
+      { codice: '7305', finitura: 'Inox lucido' },
+    ],
+    facoltativi: [112],
+  },
+  {
     id: 110, categoria: '03', sottocategoria: 'chiudiporta',
     nome: 'Chiudiporta a pavimento BTS 75 V',
     // dormakaba BTS 75 V, primo articolo di questo fornitore in catalogo.
@@ -3108,7 +3142,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'GFS01001810', finitura: 'Acciaio satinato' },
     ],
-    facoltativi: [110, 111, 113, 114],
+    facoltativi: [118, 110, 111, 113, 114],
   },
   {
     id: 111, categoria: '03', sottocategoria: 'chiudiporta',
@@ -3449,6 +3483,7 @@ const PAROLE_CHIAVE_VETRO = {
   115: 'piastrina alta piletta alta perno superiore pivot per cerniera alta GFS 020 telaio',
   116: 'GFS 060 GFS060 attacco a sopraluce morsetto vetro fisso sopra la porta perno cerniera alta',
   117: 'GFS 040 GFS040 attacco a sopraluce e laterale angolo a L fisso laterale vetrata perno cerniera alta',
+  118: 'MAB 7305 MAB7305 chiudiporta a pavimento Cam-Motion ASSA ABLOY fermo 90 gradi EN3',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
