@@ -3039,7 +3039,7 @@ const PRODOTTI_VETRO = [
     // L'opuscolo tecnico copre sia il BTS 80 sia il BTS 75 V: la scheda
     // allegata e' quella, i dati qui sotto sono solo della colonna 75 V.
     // Noi teniamo una sola esecuzione, quella con blocco costante a 90'.
-    descrizione: 'Chiudiporta a pavimento universale secondo EN 1154, con il corpo incassato nel pavimento e a vista solo la piastra di copertura: niente braccio né gruppo sopra la porta. Una sola esecuzione serve porte DIN a sinistra, DIN a destra e a vento, perché il verso si imposta al montaggio. Regge porte fino a 120kg di peso e 1100mm di larghezza, con forza di chiusura regolabile in modo continuo nella gamma EN 1–4. La velocità di chiusura si registra tramite valvola su due campi indipendenti, da 175° a 15° e da 15° a 0°, così si può rallentare il solo tratto finale senza toccare il resto della corsa. L\'apertura ammortizzata meccanica entra in funzione da circa 70° e protegge muro e porta dalle aperture violente. Questa esecuzione monta il blocco costante a 90°, che tiene la porta ferma in apertura e che per contro ne esclude l\'impiego su porte tagliafuoco e tagliafumo. Corpo da 285×82×50mm, peso 3kg. Fornito completo di piastra di copertura e accessori. Prodotto da dormakaba.',
+    descrizione: 'Chiudiporta a pavimento universale secondo EN 1154, con il corpo incassato nel pavimento e a vista solo la piastra di copertura: niente braccio né gruppo sopra la porta. Una sola esecuzione serve porte DIN a sinistra, DIN a destra e a doppia azione, perché il verso si imposta al montaggio, e va bene sia sulle porte interne sia su quelle per esterni. Regge porte fino a 120kg di peso e 1100mm di larghezza, con forza di chiusura regolabile in modo continuo nella gamma EN 1–4. La velocità di chiusura si registra tramite valvola su due campi indipendenti, da 175° a 15° e da 15° a 0°, così si può rallentare il solo tratto finale senza toccare il resto della corsa. L\'apertura ammortizzata meccanica entra in funzione da circa 70° e protegge muro e porta dalle aperture violente. Questa esecuzione monta il blocco costante a 90°, che tiene la porta ferma in apertura e che per contro ne esclude l\'impiego su porte tagliafuoco e tagliafumo. Corpo da 285×82×50mm, peso 3kg. Fornito completo di piastra di copertura e accessori. Prodotto da dormakaba.',
     materiale: 'Acciaio',
     dimensioni: 'Corpo 285×82×50mm · larghezza porta max 1100mm · peso porta max 120kg · forza di chiusura EN 1–4 · peso 3kg',
     fornitore: 'dormakaba', fornitoreLogo: dormakabaLogo,
@@ -3050,6 +3050,7 @@ const PRODOTTI_VETRO = [
       { titolo: 'Due campi di velocità indipendenti', testo: 'La chiusura si regola separatamente da 175° a 15° e da 15° a 0°: si può rallentare solo l\'ultimo tratto, vicino alla battuta, lasciando più rapido il resto della corsa.' },
       { titolo: 'Blocco costante a 90°', testo: 'Questa esecuzione tiene la porta aperta ferma a 90°. Il blocco costante però esclude l\'impiego su porte tagliafuoco e tagliafumo: lì serve la versione senza blocco.' },
       { titolo: 'Apertura ammortizzata', testo: 'Da circa 70° di apertura interviene l\'ammortizzatore meccanico, che frena la porta e protegge il muro quando qualcuno la spalanca.' },
+      { titolo: 'Facilità in apertura dichiarata', testo: 'dormakaba dichiara la facilità in apertura secondo la DIN SPEC 1104: conta perché un chiudiporta va tarato abbastanza forte da richiudere la porta, ma non tanto da renderla faticosa da spingere.' },
       { titolo: 'Sparisce nel pavimento', testo: 'Il corpo va annegato nella scatola a cementare e resta in vista solo la piastra di copertura, fissata al chiudiporta e non alla scatola.' },
       { titolo: 'Distanza dal pavimento regolabile', testo: 'Gli assi d\'innesto sono sostituibili anche in un secondo momento, con prolunghe da 5 a 50mm: utile su porte con soglia, moquette o pavimenti rialzati.' },
     ],
@@ -3234,7 +3235,7 @@ const PAROLE_CHIAVE_VETRO = {
   107: 'GX-L Nylon GXL ancorante prolungato multifunzione',
   108: 'nastro biadesivo doppio adesivo specchi specchio schiuma acrilica Hafele',
   109: 'nastro biadesivo doppio adesivo Poly Max High Tack Express universale senza forare',
-  110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba',
+  110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba DORMA porte a doppia azione a vento',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
