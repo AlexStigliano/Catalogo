@@ -185,6 +185,8 @@ import dormakabaLogo from './assets/vetro/dormakaba-logo.png';
 import bts75vRender from './assets/vetro/prodotti/bts75v-render.jpg';
 import bts75vMeccanismo from './assets/vetro/prodotti/bts75v-meccanismo.jpg';
 import bts75vScatola from './assets/vetro/prodotti/bts75v-scatola.jpg';
+import gfs020Foto from './assets/vetro/prodotti/gfs020-foto.jpg';
+import gfs020Misure from './assets/vetro/prodotti/gfs020-misure.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -3068,6 +3070,33 @@ const PRODOTTI_VETRO = [
     ],
   },
   {
+    id: 111, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Cerniera alta per porta in vetro GFS 020',
+    // Il perno superiore che si abbina al chiudiporta a pavimento: sta
+    // qui e non fra le cerniere perche' e' l'altra meta' di quel sistema.
+    // Niente scheda tecnica: i dati e le quote vengono dalla pagina di
+    // catalogo GFS, il cui disegno quotato sta come seconda immagine.
+    // GFS la fa anche lucida, nero opaco e oro lucido: noi solo satinata.
+    descrizione: 'Cerniera alta per porte in vetro a battente, da abbinare a un chiudiporta a pavimento: sta in cima allo stipite, regge la porta sul perno e la tiene in asse, mentre la chiusura la comanda il chiudiporta incassato sotto. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso, il raggio R70 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. La teniamo nella sola finitura satinata, art. GFS02001810. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Lavora in coppia col chiudiporta', testo: 'Da sola non chiude niente: fa da perno superiore e regge il peso della porta, mentre a richiuderla ci pensa il chiudiporta a pavimento, per esempio il BTS 75 V qui accanto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il vetro fra due ganasce e copre gli spessori più usati sulle porte in vetro temperato.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
+      { titolo: 'Il vetro va lavorato a disegno', testo: 'Non si monta su un vetro qualsiasi: servono lo scasso da 147mm, il raggio R70 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+      { titolo: 'Noi solo satinata', testo: 'Il catalogo GFS la elenca anche lucida, nero opaco e oro lucido. Noi teniamo la satinata, art. GFS02001810.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs020Foto, gfs020Misure],
+    },
+    varianti: [
+      { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
+    ],
+  },
+  {
     id: 45, categoria: '03', sottocategoria: 'cerniere',
     nome: 'Cerniera a braccio per porta in vetro Gliss',
     descrizione: 'Cerniera a muro per porte in vetro a battente, rotazione 180°, design abbinabile alla gamma di pomoli e maniglie Gliss. Adatta a vetri da 8 a 12mm, larghezza porta max 90cm. Con porta fino a 50kg servono 2 cerniere, da 50 a 70kg ne servono 3. Regolazione finale di montaggio con bussole eccentriche da 3mm, per stipiti da 30 a 46mm. Distanza perno-vetro 22,5mm. Prodotto da Meroni in alluminio, disponibile nelle finiture cromo opaco e nero.',
@@ -3238,6 +3267,7 @@ const PAROLE_CHIAVE_VETRO = {
   108: 'nastro biadesivo doppio adesivo specchi specchio schiuma acrilica Hafele',
   109: 'nastro biadesivo doppio adesivo Poly Max High Tack Express universale senza forare',
   110: 'BTS 75 V BTS75V chiudiporta a pavimento incassato scatola a cementare fermo blocco 90 gradi dormakaba DORMA porte a doppia azione a vento',
+  111: 'GFS 020 GFS020 cerniera alta superiore perno morsetto porta in vetro battente',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
