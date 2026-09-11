@@ -3068,6 +3068,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: '61801201', finitura: 'Unica' },
     ],
+    facoltativi: [111],
   },
   {
     id: 111, categoria: '03', sottocategoria: 'chiudiporta',
@@ -3082,7 +3083,7 @@ const PRODOTTI_VETRO = [
     dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
     fornitore: 'GFS', fornitoreLogo: gfsLogo,
     caratteristiche: [
-      { titolo: 'Lavora in coppia col chiudiporta', testo: 'Da sola non chiude niente: fa da perno superiore e regge il peso della porta, mentre a richiuderla ci pensa il chiudiporta a pavimento, per esempio il BTS 75 V qui accanto.' },
+      { titolo: 'Lavora in coppia col chiudiporta', testo: 'Da sola non chiude niente: fa da perno superiore e regge il peso della porta, mentre a richiuderla ci pensa il chiudiporta a pavimento, per esempio il BTS 75 V.' },
       { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il vetro fra due ganasce e copre gli spessori più usati sulle porte in vetro temperato.' },
       { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
       { titolo: 'Il vetro va lavorato a disegno', testo: 'Non si monta su un vetro qualsiasi: servono lo scasso da 147mm, il raggio R70 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
@@ -3095,6 +3096,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
     ],
+    facoltativi: [110],
   },
   {
     id: 45, categoria: '03', sottocategoria: 'cerniere',
