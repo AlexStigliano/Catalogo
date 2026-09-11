@@ -3080,7 +3080,7 @@ const PRODOTTI_VETRO = [
     // rimanda a entrambi. Niente scheda tecnica: quote e limiti vengono
     // dalla pagina di catalogo GFS, il cui disegno quotato e' la seconda
     // immagine. Il vetro si lavora diversamente dalla cerniera alta.
-    descrizione: 'Cerniera bassa per porte in vetro a battente: è il morsetto che si innesta sul perno del chiudiporta a pavimento, scarica a terra il peso dell\'anta e le trasmette il movimento di chiusura. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso da 160mm, i raggi R80 e R55 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. La teniamo nella sola finitura satinata, art. GFS01001810. Prodotta da GFS.',
+    descrizione: 'Cerniera bassa per porte in vetro a battente: è il morsetto che si innesta sul perno del chiudiporta a pavimento, scarica a terra il peso dell\'anta e le trasmette il movimento di chiusura. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso da 160mm, i raggi R80 e R55 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. Prodotta da GFS.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
     fornitore: 'GFS', fornitoreLogo: gfsLogo,
@@ -3091,7 +3091,6 @@ const PRODOTTI_VETRO = [
       { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
       { titolo: 'Il vetro va lavorato a disegno', testo: 'Servono lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio: la lavorazione è diversa da quella della cerniera alta.' },
       { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
-      { titolo: 'Noi solo satinata', testo: 'Il catalogo GFS la elenca anche lucida, nero opaco e oro lucido. Noi teniamo la satinata, art. GFS01001810.' },
     ],
     immagini: {
       'Acciaio satinato': [gfs010Foto, gfs010Misure],
@@ -3109,7 +3108,7 @@ const PRODOTTI_VETRO = [
     // Niente scheda tecnica: i dati e le quote vengono dalla pagina di
     // catalogo GFS, il cui disegno quotato sta come seconda immagine.
     // GFS la fa anche lucida, nero opaco e oro lucido: noi solo satinata.
-    descrizione: 'Cerniera alta per porte in vetro a battente, da abbinare a un chiudiporta a pavimento: sta in cima all\'anta e la tiene in asse sul perno superiore, mentre il peso e la chiusura li gestiscono la cerniera bassa e il chiudiporta incassato nel pavimento. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso, il raggio R70 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. La teniamo nella sola finitura satinata, art. GFS02001810. Prodotta da GFS.',
+    descrizione: 'Cerniera alta per porte in vetro a battente, da abbinare a un chiudiporta a pavimento: sta in cima all\'anta e la tiene in asse sul perno superiore, mentre il peso e la chiusura li gestiscono la cerniera bassa e il chiudiporta incassato nel pavimento. Morsetto in acciaio inox AISI 304 da 163×52mm, che stringe il vetro su entrambe le facce con 11mm di spessore per lato. Adatta a vetri da 10 a 12mm, per porte fino a 100kg di peso e 1200mm di larghezza, con perno da Ø20mm. Il vetro va ordinato già lavorato: lo scasso, il raggio R70 e il foro per il perno sono quotati nel disegno che trovi come seconda immagine. Prodotta da GFS.',
     materiale: 'Acciaio inox AISI 304',
     dimensioni: 'Cerniera 163×52mm · 11mm di spessore per lato oltre al vetro · spessore vetro 10-12mm · perno Ø20mm · peso porta max 100kg · larghezza porta max 1200mm',
     fornitore: 'GFS', fornitoreLogo: gfsLogo,
@@ -3119,7 +3118,6 @@ const PRODOTTI_VETRO = [
       { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono i limiti dichiarati da GFS per il peso e la larghezza della porta. Il chiudiporta a pavimento va scelto di conseguenza, perché ha limiti suoi.' },
       { titolo: 'Il vetro va lavorato a disegno', testo: 'Non si monta su un vetro qualsiasi: servono lo scasso da 147mm, il raggio R70 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
       { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
-      { titolo: 'Noi solo satinata', testo: 'Il catalogo GFS la elenca anche lucida, nero opaco e oro lucido. Noi teniamo la satinata, art. GFS02001810.' },
     ],
     immagini: {
       'Acciaio satinato': [gfs020Foto, gfs020Misure],
