@@ -195,6 +195,10 @@ import pilettaGfs117pFoto from './assets/vetro/prodotti/piletta-gfs117p-foto.jpg
 import pilettaGfs117pMisure from './assets/vetro/prodotti/piletta-gfs117p-misure.jpg';
 import piastrinaAltaFoto from './assets/vetro/prodotti/piastrina-alta-foto.jpg';
 import piastrinaAltaMisure from './assets/vetro/prodotti/piastrina-alta-misure.jpg';
+import gfs060Foto from './assets/vetro/prodotti/gfs060-foto.jpg';
+import gfs060Misure from './assets/vetro/prodotti/gfs060-misure.jpg';
+import gfs040Foto from './assets/vetro/prodotti/gfs040-foto.jpg';
+import gfs040Misure from './assets/vetro/prodotti/gfs040-misure.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -3131,7 +3135,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
     ],
-    facoltativi: [112, 115],
+    facoltativi: [112, 115, 116, 117],
   },
   {
     id: 113, categoria: '03', sottocategoria: 'chiudiporta',
@@ -3209,6 +3213,61 @@ const PRODOTTI_VETRO = [
     },
     varianti: [
       { codice: 'GFS10101810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
+  },
+  {
+    id: 116, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Attacco a sopraluce GFS 060',
+    // Sostituisce la piastrina alta dove sopra la porta c'e' vetro e non
+    // muratura: si morsetta sul sopraluce e porta lui il perno per la
+    // cerniera alta. Niente scheda tecnica: quote e limiti dalla pagina
+    // di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Attacco a sopraluce per porte in vetro a battente: prende il posto della piastrina alta quando sopra la porta non c\'è muratura ma un sopraluce in vetro. Si morsetta sulla lastra fissa sopra la porta e porta con sé il perno su cui si innesta la cerniera alta, così l\'anta resta in asse senza fissare nulla al telaio o al soffitto. Acciaio inox AISI 304, corpo da 161×51mm e profondità 65mm, per vetri da 10 a 12mm. Per porte fino a 100kg di peso e 1200mm di larghezza. Il sopraluce va ordinato già lavorato: lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 sono quotati nel disegno che trovi come seconda immagine. Prodotto da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Corpo 161×51mm · profondità 65mm · spessore vetro 10-12mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Quando sopra c\'è il vetro', testo: 'È l\'alternativa alla piastrina alta: quella si avvita al telaio, questo si morsetta sul sopraluce in vetro. Il risultato è lo stesso, il perno per la cerniera alta.' },
+      { titolo: 'Porta il perno della cerniera alta', testo: 'La cerniera alta GFS 020 si innesta sul perno di questo attacco: la trovi collegata qui sotto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Il morsetto stringe il sopraluce fra due ganasce e copre gli spessori più usati sulle vetrate temperate.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina: il campo di impiego non cambia rispetto alla piastrina.' },
+      { titolo: 'Il sopraluce va lavorato a disegno', testo: 'Servono lo scasso da 160mm, i raggi R80 e R55 e il foro Ø20 per il perno. Le quote complete sono nel disegno in galleria, da passare al vetraio.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs060Foto, gfs060Misure],
+    },
+    varianti: [
+      { codice: 'GFS06001810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
+  },
+  {
+    id: 117, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Attacco a sopraluce e laterale GFS 040',
+    // Come il GFS 060 ma a L: morsetta anche il fisso di fianco alla
+    // porta, per le porte incassate in una vetrata. Niente scheda
+    // tecnica: dati dalla pagina di catalogo, disegno come seconda
+    // immagine. Il disegno del vetro qui copre due lastre, con il
+    // giunto da 2mm fra l'una e l'altra.
+    descrizione: 'Attacco a sopraluce e laterale per porte in vetro a battente: come il GFS 060 sostituisce la piastrina alta quando sopra la porta c\'è un sopraluce in vetro, ma ha la forma a L per morsettare anche il fisso laterale di fianco alla porta. Tiene quindi l\'angolo fra le due lastre e porta il perno su cui si innesta la cerniera alta. Acciaio inox AISI 304, braccio orizzontale da 218mm e braccio verticale da 106mm, larghi 51mm, per vetri da 10 a 12mm. Per porte fino a 100kg di peso e 1200mm di larghezza. I vetri vanno ordinati già lavorati: lo scasso da 162mm, i fori Ø20, i raggi R80 e R55 e il giunto da 2mm fra le due lastre sono quotati nel disegno che trovi come seconda immagine. Prodotto da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Braccio orizzontale 218mm · braccio verticale 106mm · larghezza 51mm · spessore vetro 10-12mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Tiene sopraluce e fisso laterale', testo: 'La forma a L morsetta due lastre insieme, quella sopra la porta e quella di fianco: serve dove la porta è incassata in una vetrata e non c\'è muratura su cui fissare da nessuna parte.' },
+      { titolo: 'Porta il perno della cerniera alta', testo: 'Come il GFS 060 e la piastrina alta, offre il perno su cui si innesta la cerniera alta GFS 020: la trovi collegata qui sotto.' },
+      { titolo: 'Per vetri da 10 a 12mm', testo: 'Lo stesso campo di spessori del GFS 060 e delle cerniere: vale per entrambe le lastre che stringe.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina: la forma a L non cambia la portata.' },
+      { titolo: 'Due lastre da lavorare a disegno', testo: 'Sopraluce e fisso laterale vanno sagomati e forati secondo il disegno in galleria, che riporta anche il giunto da 2mm fra l\'una e l\'altra: da passare al vetraio prima di ordinare.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [gfs040Foto, gfs040Misure],
+    },
+    varianti: [
+      { codice: 'GFS04001810', finitura: 'Acciaio satinato' },
     ],
     facoltativi: [111],
   },
@@ -3388,6 +3447,8 @@ const PAROLE_CHIAVE_VETRO = {
   113: 'piletta a pavimento perno pivot per cerniera bassa GFS 010 senza chiudiporta',
   114: 'GFS 117-P GFS117P piletta a pavimento perno italiano quadro forti portate porte pesanti',
   115: 'piastrina alta piletta alta perno superiore pivot per cerniera alta GFS 020 telaio',
+  116: 'GFS 060 GFS060 attacco a sopraluce morsetto vetro fisso sopra la porta perno cerniera alta',
+  117: 'GFS 040 GFS040 attacco a sopraluce e laterale angolo a L fisso laterale vetrata perno cerniera alta',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
