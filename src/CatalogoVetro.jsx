@@ -193,6 +193,8 @@ import pilettaGfs010Foto from './assets/vetro/prodotti/piletta-gfs010-foto.jpg';
 import pilettaGfs010Misure from './assets/vetro/prodotti/piletta-gfs010-misure.jpg';
 import pilettaGfs117pFoto from './assets/vetro/prodotti/piletta-gfs117p-foto.jpg';
 import pilettaGfs117pMisure from './assets/vetro/prodotti/piletta-gfs117p-misure.jpg';
+import piastrinaAltaFoto from './assets/vetro/prodotti/piastrina-alta-foto.jpg';
+import piastrinaAltaMisure from './assets/vetro/prodotti/piastrina-alta-misure.jpg';
 import schBts75v from './assets/vetro/schede/bts75v-scheda.jpg';
 import fs890Render from './assets/vetro/prodotti/fs890-render.jpg';
 import fs890Ambiente from './assets/vetro/prodotti/fs890-ambiente.jpg';
@@ -3129,7 +3131,7 @@ const PRODOTTI_VETRO = [
     varianti: [
       { codice: 'GFS02001810', finitura: 'Acciaio satinato' },
     ],
-    facoltativi: [112],
+    facoltativi: [112, 115],
   },
   {
     id: 113, categoria: '03', sottocategoria: 'chiudiporta',
@@ -3183,6 +3185,32 @@ const PRODOTTI_VETRO = [
       { codice: 'GFS11701810', finitura: 'Acciaio satinato' },
     ],
     facoltativi: [112],
+  },
+  {
+    id: 115, categoria: '03', sottocategoria: 'chiudiporta',
+    nome: 'Piastrina alta con perno',
+    // La controparte in alto: il perno scende nella sede della cerniera
+    // alta GFS 020. Il catalogo non le da' un nome di modello, solo il
+    // prefisso d'articolo GFS101. Niente scheda tecnica: quote e limiti
+    // dalla pagina di catalogo, disegno quotato come seconda immagine.
+    descrizione: 'Piastrina alta con perno, la controparte superiore della cerniera alta: si avvita al telaio sopra la porta e il suo perno scende nella sede della cerniera, tenendo l\'anta in asse. Acciaio inox AISI 304, piastra da 105×27,5mm e spessore 2,5mm, con due fori di fissaggio a 13mm dai bordi e perno da Ø15mm che sporge 22,5mm sotto la piastra, per 25mm di ingombro totale. Per porte fino a 100kg di peso e 1200mm di larghezza. Le quote complete sono nel disegno che trovi come seconda immagine. Prodotta da GFS.',
+    materiale: 'Acciaio inox AISI 304',
+    dimensioni: 'Piastra 105×27,5mm, spessore 2,5mm · perno Ø15mm sporgente 22,5mm · interasse fori 79mm · peso porta max 100kg · larghezza porta max 1200mm',
+    fornitore: 'GFS', fornitoreLogo: gfsLogo,
+    caratteristiche: [
+      { titolo: 'Va sopra la cerniera alta', testo: 'È il pezzo che si avvita al telaio sopra la porta: il perno scende nella sede della cerniera alta GFS 020 e tiene l\'anta in asse. La trovi collegata qui sotto.' },
+      { titolo: 'Si avvita e basta', testo: 'Due fori a 13mm dai bordi, a interasse 79mm: si fissa a vite sul telaio, senza fresature né incassi.' },
+      { titolo: 'Ingombro 25mm', testo: 'La piastra è spessa 2,5mm e il perno da Ø15mm sporge 22,5mm: in tutto 25mm sotto il telaio, la quota da tenere presente quando si calcola la luce sopra l\'anta.' },
+      { titolo: 'Fino a 100kg e 1200mm', testo: 'Sono gli stessi limiti della cerniera alta a cui si abbina, quindi non è questa piastrina a restringere il campo di impiego.' },
+      { titolo: 'Acciaio inox AISI 304', testo: 'Lo stesso acciaio della ferramenta a vista per porte in vetro: regge bene anche dove c\'è umidità.' },
+    ],
+    immagini: {
+      'Acciaio satinato': [piastrinaAltaFoto, piastrinaAltaMisure],
+    },
+    varianti: [
+      { codice: 'GFS10101810', finitura: 'Acciaio satinato' },
+    ],
+    facoltativi: [111],
   },
   {
     id: 45, categoria: '03', sottocategoria: 'cerniere',
@@ -3359,6 +3387,7 @@ const PAROLE_CHIAVE_VETRO = {
   112: 'GFS 010 GFS010 cerniera bassa inferiore morsetto perno porta in vetro battente',
   113: 'piletta a pavimento perno pivot per cerniera bassa GFS 010 senza chiudiporta',
   114: 'GFS 117-P GFS117P piletta a pavimento perno italiano quadro forti portate porte pesanti',
+  115: 'piastrina alta piletta alta perno superiore pivot per cerniera alta GFS 020 telaio',
 };
 
 const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
