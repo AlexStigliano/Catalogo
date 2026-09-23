@@ -3497,20 +3497,22 @@ const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
   ].join(' '))
 }));
 
-const cercaProdottiVetro = (testo) => {
-  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
-  if (!parole.length) return [];
-  return INDICE_RICERCA_VETRO
-    .filter(({ testo: hay }) => parole.every(w => hay.includes(w)))
-    .map(({ p }) => p);
+/* Un'unica regola di ricerca per la barra dell'indice e per quella dentro le
+   categorie: ogni parola cercata deve comparire nel testo del prodotto, in
+   qualsiasi ordine. Gli accenti si ignorano, altrimenti "trafilo" non
+   troverebbe Tràfilo. */
+const parolePerRicerca = (testo) => senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
+const TESTO_RICERCA_PER_ID = new Map(INDICE_RICERCA_VETRO.map(({ p, testo }) => [p.id, testo]));
+const corrispondeRicerca = (p, parole) => {
+  const testo = TESTO_RICERCA_PER_ID.get(p.id) || '';
+  return parole.every(w => testo.includes(w));
 };
 
-/* Su cosa lavora la barra di ricerca dentro una categoria: il nome con cui
-   l'articolo sta in catalogo, il fornitore e i termini alternativi qui sopra.
-   Gli accenti si ignorano, altrimenti "trafilo" non troverebbe Tràfilo. */
-const testoCercabile = (p) => senzaAccenti(
-  [p.nome, p.fornitore, PAROLE_CHIAVE_VETRO[p.id] || ''].join(' ')
-);
+const cercaProdottiVetro = (testo) => {
+  const parole = parolePerRicerca(testo);
+  if (!parole.length) return [];
+  return PRODOTTI_VETRO.filter(p => corrispondeRicerca(p, parole));
+};
 
 const codiciTrovati = (p, testo) => {
   const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
@@ -3887,9 +3889,9 @@ function ProductCatalog({ products }) {
     .sort((a, b) => a.localeCompare(b, 'it', { numeric: true })), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
+  const parole = useMemo(() => parolePerRicerca(q), [q]);
   const match = (p, salta) => {
-    const t = senzaAccenti(q.trim());
-    const okQ = !t || testoCercabile(p).includes(t) || p.varianti.some(v => senzaAccenti(v.codice).includes(t));
+    const okQ = !parole.length || corrispondeRicerca(p, parole);
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
