@@ -3,7 +3,7 @@ import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, S
 import './Catalogo.css';
 import {
   CATEGORIE_VETRO, SOTTOCATEGORIE_PER_CATEGORIA, ALTRE_SOTTOCATEGORIE_VETRO,
-  PRODOTTI_VETRO, SCHEDA_IMG_VETRO, PAROLE_CHIAVE_VETRO, FINISHES_VETRO,
+  PRODOTTI_VETRO, SCHEDA_IMG_VETRO, PAROLE_CHIAVE_VETRO, FINISHES_VETRO, FILTRI_VETRO,
 } from './datiVetro.js';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
@@ -167,17 +167,20 @@ function parseHash() {
   return { view: 'cover' };
 }
 const leggiQuery = () => new URLSearchParams(window.location.hash.split('?')[1] || '');
-// Ricerca e filtri della lista prodotti, letti dall'indirizzo. Lunghezza e
-// interasse sono numeri nei dati, quindi vanno riconvertiti.
-const filtriDa = (qs) => {
-  const numeri = (k) => qs.getAll(k).map(Number).filter(n => !Number.isNaN(n));
-  return {
-    q: qs.get('q') || '',
-    mat: qs.getAll('materiale'), prod: qs.getAll('produttore'), fin: qs.getAll('finitura'),
-    diam: qs.getAll('diametro'), lung: numeri('lunghezza'), inter: numeri('interasse'),
-    vetro: qs.getAll('vetro'), favOnly: qs.get('preferiti') === '1',
-  };
-};
+// Ricerca e filtri della lista prodotti, letti dall'indirizzo. I filtri di
+// misura usano come nome la loro chiave (es. ?lunghezza=500) e i valori
+// restano testo: il confronto con i dati avviene come testo.
+const filtriDa = (qs) => ({
+  q: qs.get('q') || '',
+  mat: qs.getAll('materiale'), prod: qs.getAll('produttore'), fin: qs.getAll('finitura'),
+  misure: Object.fromEntries(FILTRI_VETRO.map(f => [f.chiave, qs.getAll(f.chiave)]).filter(([, v]) => v.length)),
+  favOnly: qs.get('preferiti') === '1',
+});
+/* Valori di un filtro di misura per un prodotto: il campo del prodotto (un
+   valore o una lista, es. diametro o spessoriVetro) piu' quello di ogni
+   variante (es. lunghezza e interasse dei maniglioni). */
+const valoriFiltro = (p, chiave) => [p[chiave], ...p.varianti.map(v => v[chiave])]
+  .flat().filter(v => v != null && v !== '');
 // replaceState e non un nuovo hash: aggiorna l'indirizzo senza aggiungere un
 // passo alla cronologia, altrimenti ogni lettera digitata andrebbe annullata
 // con un "Indietro".
@@ -398,10 +401,7 @@ function ProductCatalog({ products }) {
   const [mat, setMat] = useState(iniziali.mat);
   const [fin, setFin] = useState(iniziali.fin);
   const [prod, setProd] = useState(iniziali.prod);
-  const [diam, setDiam] = useState(iniziali.diam);
-  const [lung, setLung] = useState(iniziali.lung);
-  const [inter, setInter] = useState(iniziali.inter);
-  const [vetro, setVetro] = useState(iniziali.vetro);
+  const [misure, setMisure] = useState(iniziali.misure); // { chiave: [valori scelti] }
   const [favOnly, setFavOnly] = useState(iniziali.favOnly);
   useEffect(() => {
     const qs = new URLSearchParams();
@@ -409,13 +409,10 @@ function ProductCatalog({ products }) {
     mat.forEach(v => qs.append('materiale', v));
     prod.forEach(v => qs.append('produttore', v));
     fin.forEach(v => qs.append('finitura', v));
-    diam.forEach(v => qs.append('diametro', v));
-    lung.forEach(v => qs.append('lunghezza', v));
-    inter.forEach(v => qs.append('interasse', v));
-    vetro.forEach(v => qs.append('vetro', v));
+    FILTRI_VETRO.forEach(f => (misure[f.chiave] || []).forEach(v => qs.append(f.chiave, v)));
     if (favOnly) qs.set('preferiti', '1');
     scriviQuery(qs);
-  }, [q, mat, fin, prod, diam, lung, inter, vetro, favOnly]);
+  }, [q, mat, fin, prod, misure, favOnly]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const [favorites, setFavorites] = useState(() => {
@@ -441,14 +438,18 @@ function ProductCatalog({ products }) {
   // dichiariamo noi) restano fuori sia dall'elenco delle finiture sia dal filtro.
   const fins = useMemo(() => [...new Set(products.filter(p => !p.senzaFinitura).flatMap(p => p.varianti.map(v => v.finitura)))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
   const prods = useMemo(() => [...new Set(products.map(p => p.fornitore))].sort((a, b) => a.localeCompare(b, 'it')), [products]);
-  const diams = useMemo(() => [...new Set(products.map(p => p.diametro).filter(Boolean))]
-    .sort((a, b) => parseFloat(a) - parseFloat(b)), [products]);
-  const lunghezze = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.lunghezza).filter(v => v != null)))]
-    .sort((a, b) => a - b), [products]);
-  const interassi = useMemo(() => [...new Set(products.flatMap(p => p.varianti.map(v => v.interasse).filter(v => v != null)))]
-    .sort((a, b) => a - b), [products]);
-  const vetri = useMemo(() => [...new Set(products.flatMap(p => p.spessoriVetro || []))]
-    .sort((a, b) => a.localeCompare(b, 'it', { numeric: true })), [products]);
+  /* Filtri di misura: quelli elencati in catalogo.json ("filtri"), ciascuno
+     con i valori che hanno i prodotti di questa lista. Compare solo se c'e'
+     almeno una scelta da fare, cioe' due valori diversi. */
+  const filtriMisura = useMemo(() => FILTRI_VETRO.map(f => {
+    const valori = new Map(); // testo -> valore com'e' nei dati
+    for (const p of products) for (const v of valoriFiltro(p, f.chiave)) valori.set(String(v), v);
+    const ordinati = [...valori.values()].sort((a, b) => (typeof a === 'number' && typeof b === 'number')
+      ? a - b : String(a).localeCompare(String(b), 'it', { numeric: true }));
+    // Il suffisso (es. " mm") va solo sui numeri: "Ø52mm" o "6 × 30mm" sono gia' completi.
+    const etichette = Object.fromEntries(ordinati.map(v => [String(v), typeof v === 'number' ? v + (f.suffisso || '') : String(v)]));
+    return { ...f, opzioni: ordinati.map(String), etichette };
+  }).filter(f => f.opzioni.length > 1), [products]);
 
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const parole = useMemo(() => parolePerRicerca(q), [q]);
@@ -457,20 +458,22 @@ function ProductCatalog({ products }) {
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
-    const okD = salta === 'diam' || !diam.length || diam.includes(p.diametro);
-    const okL = salta === 'lung' || !lung.length || p.varianti.some(v => lung.includes(v.lunghezza));
-    const okI = salta === 'inter' || !inter.length || p.varianti.some(v => inter.includes(v.interasse));
-    const okV = salta === 'vetro' || !vetro.length || (p.spessoriVetro || []).some(v => vetro.includes(v));
+    const okMisure = FILTRI_VETRO.every(f => {
+      const scelte = misure[f.chiave] || [];
+      return salta === f.chiave || !scelte.length || valoriFiltro(p, f.chiave).some(v => scelte.includes(String(v)));
+    });
     const okFav = !favOnly || favorites.includes(p.id);
-    return okQ && okM && okF && okP && okD && okL && okI && okV && okFav;
+    return okQ && okM && okF && okP && okMisure && okFav;
   };
   // Con una ricerca in corso i prodotti vanno in ordine di pertinenza.
   const trovati = products.filter(p => match(p, null));
   const filtered = parole.length ? perPertinenza(trovati, parole) : trovati;
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
-  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + vetro.length + (favOnly ? 1 : 0);
+  const numeroMisure = Object.values(misure).reduce((n, v) => n + v.length, 0);
+  const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + numeroMisure + (favOnly ? 1 : 0);
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
-  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setDiam([]); setLung([]); setInter([]); setVetro([]); setFavOnly(false); };
+  const setMisura = (chiave) => (agg) => setMisure(m => ({ ...m, [chiave]: agg(m[chiave] || []) }));
+  const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setMisure({}); setFavOnly(false); };
 
   const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
     const aperto = drop === campo;
@@ -549,24 +552,12 @@ function ProductCatalog({ products }) {
                   test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
                 <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
                   test={(p, o) => !p.senzaFinitura && p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
-                {diams.length > 1 && (
-                  <Gruppo etichetta="Diametro" campo="diam" opzioni={diams} scelte={diam} set={setDiam}
-                    test={(p, o) => p.diametro === o} tutti="Tutti i diametri" plurale="diametri" />
-                )}
-                {lunghezze.length > 1 && (
-                  <Gruppo etichetta="Lunghezza" campo="lung" opzioni={lunghezze} scelte={lung} set={setLung}
-                    test={(p, o) => p.varianti.some(v => v.lunghezza === o)} tutti="Tutte le lunghezze" plurale="lunghezze"
-                    label={(o) => o + ' mm'} />
-                )}
-                {interassi.length > 1 && (
-                  <Gruppo etichetta="Interasse" campo="inter" opzioni={interassi} scelte={inter} set={setInter}
-                    test={(p, o) => p.varianti.some(v => v.interasse === o)} tutti="Tutti gli interassi" plurale="interassi"
-                    label={(o) => o + ' mm'} />
-                )}
-                {vetri.length > 1 && (
-                  <Gruppo etichetta="Spessore vetro" campo="vetro" opzioni={vetri} scelte={vetro} set={setVetro}
-                    test={(p, o) => (p.spessoriVetro || []).includes(o)} tutti="Tutti gli spessori" plurale="spessori" />
-                )}
+                {filtriMisura.map(f => (
+                  <Gruppo key={f.chiave} etichetta={f.etichetta} campo={f.chiave} opzioni={f.opzioni}
+                    scelte={misure[f.chiave] || []} set={setMisura(f.chiave)}
+                    test={(p, o) => valoriFiltro(p, f.chiave).some(v => String(v) === o)}
+                    tutti={f.tutti} plurale={f.plurale} label={(o) => f.etichette[o]} />
+                ))}
               </div>
               <div className="filter-actions">
                 <button className={`fav-toggle${favOnly ? ' on' : ''}`} aria-pressed={favOnly}

@@ -32,7 +32,8 @@ const CAMPI_PRODOTTO = new Set([
   'scheda', 'anteprimaScheda', 'istruzioni', 'rapporto', 'video', 'immagini',
   'caratteristiche', 'assi', 'varianti', 'essenziali', 'facoltativi', 'senzaFinitura',
 ]);
-const CAMPI_CATALOGO = ['categorie', 'sottocategorie', 'altreSottocategorie', 'fornitori', 'finiture', 'noteFiniture'];
+const CAMPI_CATALOGO = ['categorie', 'sottocategorie', 'altreSottocategorie', 'filtri', 'fornitori', 'finiture', 'noteFiniture'];
+const CAMPI_FILTRO = ['chiave', 'etichetta', 'tutti', 'plurale', 'suffisso'];
 
 // Diciture usate al posto del codice articolo per i sistemi su misura:
 // ammesse, ma segnalate perche' per un gestionale non sono codici.
@@ -203,6 +204,21 @@ async function controlla({ catalogo, perFile }) {
   }
   for (const f of Object.keys(fornitori)) {
     if (!fornitoriUsati.has(f)) avvisi.push(['fornitore elencato ma senza prodotti', f]);
+  }
+
+  // Filtri di misura: ognuno legge un campo del prodotto o delle varianti.
+  const chiaviFiltri = new Set();
+  for (const f of catalogo.filtri || []) {
+    const dove = `filtro ${JSON.stringify(f.chiave || f.etichetta || f)}`;
+    for (const c of Object.keys(f)) if (!CAMPI_FILTRO.includes(c)) errori.push(['campo sconosciuto in un filtro', `${dove}: "${c}"`]);
+    for (const c of ['chiave', 'etichetta', 'tutti', 'plurale']) {
+      if (typeof f[c] !== 'string' || !f[c]) errori.push(['filtro incompleto', `${dove}: manca "${c}"`]);
+    }
+    if (chiaviFiltri.has(f.chiave)) errori.push(['filtro ripetuto', dove]);
+    chiaviFiltri.add(f.chiave);
+    if (f.chiave && !P.some(p => p[f.chiave] != null || (p.varianti || []).some(v => v[f.chiave] != null))) {
+      avvisi.push(['filtro che nessun prodotto usa, non compare mai', dove]);
+    }
   }
 
   // Un file dimenticato nella cartella non rompe niente, ma finisce comunque

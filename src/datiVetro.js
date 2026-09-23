@@ -15,6 +15,8 @@ export const CATEGORIE_VETRO = catalogo.categorie;
 export const SOTTOCATEGORIE_PER_CATEGORIA = catalogo.sottocategorie;
 export const ALTRE_SOTTOCATEGORIE_VETRO = catalogo.altreSottocategorie;
 export const FINISHES_VETRO = catalogo.finiture;
+// I filtri di misura della lista prodotti, nell'ordine in cui compaiono.
+export const FILTRI_VETRO = catalogo.filtri;
 
 // Il logo arriva dall'elenco dei fornitori, non dal singolo prodotto.
 export const PRODOTTI_VETRO = prodotti.map(({ paroleChiave, anteprimaScheda, ...p }) => {
