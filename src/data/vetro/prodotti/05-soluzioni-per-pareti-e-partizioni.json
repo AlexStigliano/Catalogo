@@ -1,0 +1,106 @@
+[
+  {
+    "id": 80,
+    "categoria": "05",
+    "nome": "Grid",
+    "note": [
+      "Sistema completamente su misura: non esiste un kit a catalogo, gli",
+      "articoli vengono definiti da Terno sul progetto del cliente. Niente",
+      "codici nelle varianti (richiesta esplicita del cliente).",
+      "",
+      "La finitura non la dichiariamo: il sistema ne prevede diverse e la",
+      "sceglie il cliente insieme al resto della configurazione. La chiave",
+      "'Unica' serve solo a tenere insieme la galleria, non viene mai mostrata."
+    ],
+    "descrizione": "Sistema modulare di profili in alluminio per realizzare pareti e partizioni attrezzate: cabine armadio, uffici, spazi retail e zone giorno, con altezza fino a 3 metri. La struttura è composta da pali cremagliera, ai quali si agganciano mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l'altezza, e da tratte con pannellatura in vetro o in legno, con angoli a L e a T per chiudere l'ambiente su più lati. Nella stessa struttura si integrano la porta a battente Pivot, con apertura fino a 180°, e la porta scorrevole Universal. Il modulo standard attrezzabile è da 900mm, ma le tratte sono di misura variabile. È inoltre un sistema aperto: oltre ai moduli a catalogo se ne possono realizzare di propri, rispettando le specifiche costruttive dei manuali tecnici. Attenzione: Grid non è un kit a catalogo — il sistema, cioè l'elenco degli articoli necessari, viene sviluppato su richiesta a partire dai disegni del cliente. Inviaci il progetto o le misure del tuo ambiente e prepariamo insieme la configurazione. Prodotto da Terno Scorrevoli in alluminio.",
+    "materiale": "Alluminio",
+    "dimensioni": "Altezza fino a 3 metri · modulo standard attrezzabile 900mm · tratte di misura variabile · pannellatura in vetro o legno · partenze a muro, angoli a L e a T, pali cremagliera e pali terminali",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "grid-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/grid-scheda.jpg",
+    "istruzioni": "grid-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Sviluppato sui tuoi disegni",
+        "testo": "Grid non è un kit a catalogo: gli articoli necessari vengono definiti caso per caso, su richiesta, a partire dai disegni o dalle misure dell'ambiente. Anche la finitura si sceglie in fase di progetto, tra quelle disponibili. Contattaci con il tuo progetto e prepariamo insieme la configurazione."
+      },
+      {
+        "titolo": "Parete attrezzabile",
+        "testo": "I pali cremagliera permettono di agganciare mensole, ripiani, aste appendiabiti, porta pantaloni, porta scarpe, porta cravatte e cassettiere lungo tutta l'altezza, e di riposizionarli anche in un secondo momento."
+      },
+      {
+        "titolo": "Composizione modulare",
+        "testo": "Partenze a muro, tratte fisse, angoli a L e a T, pali di giunzione accessoriabili e pali terminali: la parete si chiude su più lati seguendo la pianta dell'ambiente, fino a 3 metri di altezza."
+      },
+      {
+        "titolo": "Pannellature in vetro o in legno",
+        "testo": "La struttura in alluminio si abbina a pannellature in vetro o in legno, a seconda delle esigenze del progetto: con il vetro l'ambiente resta luminoso e si sfrutta più a lungo la luce naturale."
+      },
+      {
+        "titolo": "Porte integrate nella struttura",
+        "testo": "La stessa struttura ospita la porta a battente Pivot, con cerniera ad asse decentrato e apertura fino a 180°, e la porta scorrevole Universal, senza bisogno di telai aggiuntivi."
+      },
+      {
+        "titolo": "Un sistema aperto",
+        "testo": "Oltre ai moduli già a catalogo, progettisti e costruttori possono realizzare moduli propri rispettando le specifiche costruttive dei manuali tecnici."
+      }
+    ],
+    "senzaFinitura": true,
+    "immagini": {
+      "Unica": [
+        "prodotti/grid-ambiente-cabina-armadio.jpg",
+        "prodotti/grid-porta-universal.jpg",
+        "prodotti/grid-componenti.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "Su misura", "finitura": "Unica" }
+    ]
+  },
+  {
+    "id": 79,
+    "categoria": "05",
+    "nome": "Vetro Fisso",
+    "note": [
+      "Sistema di profili componibili con moltissime combinazioni (altezza",
+      "profilo, spessore vetro, tipo di giunzione): troppe combinazioni per",
+      "un codice fisso a catalogo, quindi niente varianti con SKU reali",
+      "(richiesta esplicita del cliente)."
+    ],
+    "descrizione": "Sistema di profili e accessori in alluminio per la realizzazione di vetrate fisse e vani fissi, per pareti e partizioni in vetro. Disponibile in due altezze di profilo (27mm e 30mm), per vetri con spessore da 8-8,7 a 12-12,7mm. Comprende anche una linea di profili con adesivo per la giunzione diretta vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo, per spessori vetro da 10 a 12,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato. Il sistema è molto modulare: la combinazione esatta di profili e giunzioni va valutata caso per caso in base alla tua vetrata — contattaci per individuare gli articoli giusti per il tuo progetto.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.7", "10", "10.7", "12", "12.7"],
+    "dimensioni": "Profili fissavetro altezza 27 o 30mm · profili adesivi per vetro 10-12,7mm · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "vetrofisso-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/vetrofisso-scheda.jpg",
+    "caratteristiche": [
+      {
+        "titolo": "Due altezze di profilo",
+        "testo": "Profili fissavetro disponibili in altezza 27mm o 30mm, per vetri con spessore da 8-8,7 a 12-12,7mm."
+      },
+      {
+        "titolo": "Giunzioni vetro su vetro",
+        "testo": "Profili con adesivo per unire i pannelli direttamente vetro su vetro, senza telaio in alluminio a vista: giunti lineari, a T e ad angolo."
+      },
+      {
+        "titolo": "Adatto a vetrate e compartimentazioni",
+        "testo": "Pensato per realizzare pareti fisse in vetro e vani fissi in ambienti ufficio e open space."
+      },
+      {
+        "titolo": "Un sistema su misura",
+        "testo": "Vista la varietà di combinazioni possibili tra profili, altezze e giunzioni, scegliamo insieme gli articoli giusti in base alla tua vetrata: contattaci per il tuo progetto."
+      }
+    ],
+    "immagini": {
+      "Argento": [
+        "prodotti/vetrofisso-ambiente-ufficio.jpg",
+        "prodotti/vetrofisso-dettaglio.jpg",
+        "prodotti/vetrofisso-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "Su misura", "finitura": "Argento" }
+    ]
+  }
+]

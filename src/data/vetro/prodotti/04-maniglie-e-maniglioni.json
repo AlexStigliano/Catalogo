@@ -1,0 +1,950 @@
+[
+  {
+    "id": 7,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Arizona",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "arizona-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/arizona-scheda.jpg",
+    "assi": [
+      { "chiave": "diametro", "etichetta": "Diametro", "suffisso": " mm" },
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/arizona-inox-satinato.jpg"],
+      "Nero opaco": ["prodotti/arizona-nero-opaco.jpg"],
+      "PVD lucido": ["prodotti/arizona-pvd-giallo-lucido.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "800.20.500.300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 20,
+        "lunghezza": 500,
+        "interasse": 300
+      },
+      {
+        "codice": "800.25.500.300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 500,
+        "interasse": 300
+      },
+      {
+        "codice": "800.25.700.500.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 700,
+        "interasse": 500
+      },
+      {
+        "codice": "800.30.800.600.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 800,
+        "interasse": 600
+      },
+      {
+        "codice": "800.30.1000.700.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 1000,
+        "interasse": 700
+      },
+      {
+        "codice": "800.30.1200.900.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 1200,
+        "interasse": 900
+      },
+      {
+        "codice": "800.30.1500.1300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 1500,
+        "interasse": 1300
+      },
+      { "codice": "800.25.500.300.NO", "finitura": "Nero opaco", "diametro": 25, "lunghezza": 500, "interasse": 300 },
+      { "codice": "800.25.500.300.18", "finitura": "PVD lucido", "diametro": 25, "lunghezza": 500, "interasse": 300 }
+    ]
+  },
+  {
+    "id": 8,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Arizona Inclinato",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "arizona-inclinato-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/arizona-inclinato-scheda.jpg",
+    "assi": [
+      { "chiave": "diametro", "etichetta": "Diametro", "suffisso": " mm" },
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/arizona-inclinato-inox-satinato.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "810.25.500.300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 500,
+        "interasse": 300
+      },
+      {
+        "codice": "810.30.800.600.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 800,
+        "interasse": 600
+      },
+      {
+        "codice": "810.30.1200.900.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 1200,
+        "interasse": 900
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Arkansas Q",
+    "descrizione": "Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.",
+    "materiale": "Acciaio inox AISI 304",
+    "dimensioni": "Ø32mm · 382×350mm",
+    "fornitore": "Fimet",
+    "scheda": "arkansas-q-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/arkansas-q-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/arkansas-q-inox-satinato.jpg"]
+    },
+    "varianti": [
+      { "codice": "816.32.382.350.60", "finitura": "Acciaio inox satinato", "lunghezza": 382, "interasse": 350 }
+    ]
+  },
+  {
+    "id": 10,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "California",
+    "descrizione": "Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø32 mm, con una curva ampia che dona slancio alla porta. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.",
+    "materiale": "Acciaio inox AISI 304",
+    "dimensioni": "Ø32mm · 575×500mm",
+    "fornitore": "Fimet",
+    "scheda": "california-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/california-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/california-inox-satinato.jpg"]
+    },
+    "varianti": [
+      { "codice": "817.32.575.500.60", "finitura": "Acciaio inox satinato", "lunghezza": 575, "interasse": 500 }
+    ]
+  },
+  {
+    "id": 11,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Colorado",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro 40×10 mm. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "colorado-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/colorado-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/colorado-inox-satinato.jpg"],
+      "Nero opaco": ["prodotti/colorado-nero-opaco.jpg"]
+    },
+    "varianti": [
+      { "codice": "841S.500.300.60", "finitura": "Acciaio inox satinato", "lunghezza": 500, "interasse": 300 },
+      { "codice": "841S.800.600.60", "finitura": "Acciaio inox satinato", "lunghezza": 800, "interasse": 600 },
+      { "codice": "841S.1000.800.60", "finitura": "Acciaio inox satinato", "lunghezza": 1000, "interasse": 800 },
+      { "codice": "841S.1200.900.60", "finitura": "Acciaio inox satinato", "lunghezza": 1200, "interasse": 900 },
+      { "codice": "841S.500.300.NO", "finitura": "Nero opaco", "lunghezza": 500, "interasse": 300 },
+      { "codice": "841S.800.600.NO", "finitura": "Nero opaco", "lunghezza": 800, "interasse": 600 }
+    ]
+  },
+  {
+    "id": 12,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Georgia Q",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 20×20 mm nelle misure più corte, 25×25 mm in quelle più lunghe. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "georgia-q-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/georgia-q-scheda.jpg",
+    "assi": [
+      { "chiave": "diametro", "etichetta": "Profilo", "suffisso": " mm" },
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/georgia-q-inox-satinato.jpg"],
+      "Nero opaco": ["prodotti/georgia-q-nero-opaco.jpg"],
+      "PVD lucido": ["prodotti/georgia-q-pvd-lucido.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "802K.20.220.200.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 20,
+        "lunghezza": 220,
+        "interasse": 200
+      },
+      {
+        "codice": "802K.20.320.300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 20,
+        "lunghezza": 320,
+        "interasse": 300
+      },
+      {
+        "codice": "802K.25.625.600.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 625,
+        "interasse": 600
+      },
+      {
+        "codice": "802K.25.925.900.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 925,
+        "interasse": 900
+      },
+      {
+        "codice": "802K.20.220.200.61",
+        "finitura": "Inox lucido",
+        "diametro": 20,
+        "lunghezza": 220,
+        "interasse": 200
+      },
+      {
+        "codice": "802K.20.320.300.61",
+        "finitura": "Inox lucido",
+        "diametro": 20,
+        "lunghezza": 320,
+        "interasse": 300
+      },
+      {
+        "codice": "802K.25.925.900.61",
+        "finitura": "Inox lucido",
+        "diametro": 25,
+        "lunghezza": 925,
+        "interasse": 900
+      },
+      { "codice": "802K.20.220.200.NO", "finitura": "Nero opaco", "diametro": 20, "lunghezza": 220, "interasse": 200 },
+      { "codice": "802K.20.320.300.NO", "finitura": "Nero opaco", "diametro": 20, "lunghezza": 320, "interasse": 300 },
+      { "codice": "802K.25.625.600.NO", "finitura": "Nero opaco", "diametro": 25, "lunghezza": 625, "interasse": 600 },
+      { "codice": "802K.20.320.300.18", "finitura": "PVD lucido", "diametro": 20, "lunghezza": 320, "interasse": 300 }
+    ]
+  },
+  {
+    "id": 13,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Cuba",
+    "descrizione": "Maniglione ad arco in acciaio inox AISI 304, profilo tondo Ø25 mm, con una riga centrale a contrasto tra satinato e lucido. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "cuba-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/cuba-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Bicolore inox satinato / lucido": ["prodotti/cuba-bicolore-inox.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "849L.25.450.350.63",
+        "finitura": "Bicolore inox satinato / lucido",
+        "lunghezza": 450,
+        "interasse": 350
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Minnesota",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo tondo. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "minnesota-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/minnesota-scheda.jpg",
+    "assi": [
+      { "chiave": "diametro", "etichetta": "Diametro", "suffisso": " mm" },
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/minnesota-inox-satinato.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "839.25.275.250.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 275,
+        "interasse": 250
+      },
+      {
+        "codice": "839.32.382.350.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 32,
+        "lunghezza": 382,
+        "interasse": 350
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Nevada",
+    "descrizione": "Maniglione con supporti a squadra e profilo tondo Ø32 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "nevada-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/nevada-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/nevada-inox-satinato.jpg"]
+    },
+    "varianti": [
+      { "codice": "838.32.382.350.60", "finitura": "Acciaio inox satinato", "lunghezza": 382, "interasse": 350 }
+    ]
+  },
+  {
+    "id": 16,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Nevada Q",
+    "descrizione": "Maniglione con supporti a squadra e profilo quadro 25×25 mm, in acciaio inox AISI 304. La finitura è protetta da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "nevada-q-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/nevada-q-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/nevada-q-inox-satinato.jpg"],
+      "Nero opaco": ["prodotti/nevada-q-nero-opaco.jpg"]
+    },
+    "varianti": [
+      { "codice": "838Q.25.375.350.60", "finitura": "Acciaio inox satinato", "lunghezza": 375, "interasse": 350 },
+      { "codice": "838Q.25.375.350.NO", "finitura": "Nero opaco", "lunghezza": 375, "interasse": 350 }
+    ]
+  },
+  {
+    "id": 17,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Oregon",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "oregon-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/oregon-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/oregon-inox-satinato.jpg"]
+    },
+    "varianti": [
+      { "codice": "841Z.500.300.60", "finitura": "Acciaio inox satinato", "lunghezza": 500, "interasse": 300 },
+      { "codice": "841Z.600.400.60", "finitura": "Acciaio inox satinato", "lunghezza": 600, "interasse": 400 },
+      { "codice": "841Z.800.600.60", "finitura": "Acciaio inox satinato", "lunghezza": 800, "interasse": 600 },
+      { "codice": "841Z.500.300.NO", "finitura": "Nero opaco", "lunghezza": 500, "interasse": 300 },
+      { "codice": "841Z.800.600.NO", "finitura": "Nero opaco", "lunghezza": 800, "interasse": 600 }
+    ]
+  },
+  {
+    "id": 18,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Texas",
+    "descrizione": "Maniglione tubolare per porte in acciaio inox AISI 304, con supporti diritti e profilo quadro: 25×25 mm nella maggior parte delle misure, 30×30 mm in quella più lunga. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.",
+    "materiale": "Acciaio inox AISI 304",
+    "fornitore": "Fimet",
+    "scheda": "texas-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/texas-scheda.jpg",
+    "assi": [
+      { "chiave": "diametro", "etichetta": "Profilo", "suffisso": " mm" },
+      { "chiave": "lunghezza", "etichetta": "Lunghezza totale", "suffisso": " mm" },
+      { "chiave": "interasse", "etichetta": "Interasse", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/texas-inox-satinato.jpg"],
+      "Nero opaco": ["prodotti/texas-nero-opaco.jpg"]
+    },
+    "varianti": [
+      {
+        "codice": "831.25.500.300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 500,
+        "interasse": 300
+      },
+      {
+        "codice": "831.25.600.400.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 600,
+        "interasse": 400
+      },
+      {
+        "codice": "831.25.700.500.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 700,
+        "interasse": 500
+      },
+      {
+        "codice": "831.25.800.600.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 800,
+        "interasse": 600
+      },
+      {
+        "codice": "831.25.1000.800.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 1000,
+        "interasse": 800
+      },
+      {
+        "codice": "831.25.1200.1000.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 25,
+        "lunghezza": 1200,
+        "interasse": 1000
+      },
+      {
+        "codice": "831.30.1500.1300.60",
+        "finitura": "Acciaio inox satinato",
+        "diametro": 30,
+        "lunghezza": 1500,
+        "interasse": 1300
+      },
+      { "codice": "831.25.500.300.NO", "finitura": "Nero opaco", "diametro": 25, "lunghezza": 500, "interasse": 300 },
+      { "codice": "831.25.800.600.NO", "finitura": "Nero opaco", "diametro": 25, "lunghezza": 800, "interasse": 600 },
+      {
+        "codice": "831.25.1000.700.NO",
+        "finitura": "Nero opaco",
+        "diametro": 25,
+        "lunghezza": 1000,
+        "interasse": 700
+      },
+      {
+        "codice": "831.25.1200.1000.NO",
+        "finitura": "Nero opaco",
+        "diametro": 25,
+        "lunghezza": 1200,
+        "interasse": 1000
+      },
+      {
+        "codice": "831.25.1500.1300.NO",
+        "finitura": "Nero opaco",
+        "diametro": 25,
+        "lunghezza": 1500,
+        "interasse": 1300
+      },
+      { "codice": "831.25.500.300.61", "finitura": "Inox lucido", "diametro": 25, "lunghezza": 500, "interasse": 300 },
+      {
+        "codice": "831.25.500.300.BO",
+        "finitura": "Bianco opaco",
+        "diametro": 25,
+        "lunghezza": 500,
+        "interasse": 300
+      },
+      {
+        "codice": "831.25.500.300.02O",
+        "finitura": "Oro satinato",
+        "diametro": 25,
+        "lunghezza": 500,
+        "interasse": 300
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "categoria": "04",
+    "sottocategoria": "maniglie-battenti",
+    "nome": "HCS Paris con chiave e nottolino",
+    "descrizione": "Maniglia con serratura integrata HCS (Hoppe Compact System) per porte battenti in cristallo e pareti divisorie, spessore porta 8-10mm: un sistema compatto che unisce l’azionamento della porta alla funzione della serratura, con cilindro/chiave e chiusura con nottolino girevole. Adattatore in alluminio con sottocostruzione in resina, corpo interno in alluminio pressofuso, canotto in alluminio con filetto, scrocco in resina rinforzata con fibra di vetro (silenzioso). Contropiastra non inclusa. Richiede una preparazione del pannello. Prodotta da HOPPE in Germania, disponibile in 2 finiture: alluminio aspetto argento opaco e resina nero intenso opaco.",
+    "materiale": "Alluminio o resina",
+    "materiali": ["Alluminio", "Resina"],
+    "dimensioni": "Rosetta Ø62mm · larghezza 190mm · spessore porta 8-10mm",
+    "fornitore": "HOPPE",
+    "scheda": { "783748": "paris-nero-scheda-tecnica.pdf", "2574008": "paris-scheda-tecnica.pdf" },
+    "anteprimaScheda": { "783748": "schede/paris-nero-scheda.jpg", "2574008": "schede/paris-scheda.jpg" },
+    "immagini": {
+      "Alluminio argento opaco": ["prodotti/paris-argento-opaco.jpg"],
+      "Nero opaco": ["prodotti/paris-nero-opaco.jpg"]
+    },
+    "varianti": [
+      { "codice": "2574008", "finitura": "Alluminio argento opaco", "materiale": "Alluminio" },
+      { "codice": "783748", "finitura": "Nero opaco", "materiale": "Resina" }
+    ],
+    "essenziali": [56]
+  },
+  {
+    "id": 56,
+    "categoria": "04",
+    "sottocategoria": "maniglie-battenti",
+    "nome": "Incontro HCS-SB-A",
+    "note": [
+      "Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui",
+      "abbiamo ricavato foto e quote (vedi \"immagini\" sotto, non \"scheda\")."
+    ],
+    "descrizione": "Contropiastra (incontro) del sistema HCS in acciaio inox, per porte complanari, fissaggio con viti multiuso. Si abbina alla maniglia con serratura HCS Paris. Prodotta da HOPPE.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "70×38,5mm",
+    "fornitore": "HOPPE",
+    "immagini": {
+      "Acciaio inox": ["prodotti/incontro-hcs-sba-foto.jpg", "prodotti/incontro-hcs-sba-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "658206", "finitura": "Acciaio inox" }
+    ]
+  },
+  {
+    "id": 69,
+    "categoria": "04",
+    "sottocategoria": "maniglie-battenti",
+    "nome": "Maniglia con serratura AirHandle L13",
+    "note": [
+      "Della gamma AirDoor trattiamo solo la funzione L13 e solo la versione",
+      "per porte in vetro: i codici delle altre funzioni (L11 passaggio, L12",
+      "bagno) e della versione per porte in legno non sono elencati qui.",
+      "",
+      "Un video per verso di apertura: il montaggio dello scrocco cambia.",
+      "",
+      "Prima le foto sulla porta in vetro, che e' la versione che trattiamo;",
+      "poi il render con la cerniera AirHinge accanto.",
+      "",
+      "La cerniera AirHinge non serve per montare la maniglia: è l'articolo",
+      "della stessa linea AirDoor con cui si abbina esteticamente."
+    ],
+    "descrizione": "Maniglia con serratura integrata per porte a battente in vetro, funzione L13: all’esterno si chiude a chiave, all’interno c’è un pomolo girevole per la modalità privacy. Fa parte della linea AirDoor e condivide design, forme e finiture con la cerniera AirHinge, così tutta la porta resta coordinata. Adatta a vetri da 8 a 12mm, si fissa con tiranti sfruttando le lavorazioni già presenti nel vetro. Sistema anti-panico integrato: dall’interno la leva sblocca sempre la serratura. Cilindro a lamelle con testa piatta e chiave coordinata alla finitura. Prodotta da Meroni in alluminio 100% riciclabile, disponibile in cromo opaco e nero opaco, sia nella versione a spingere che in quella a tirare.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "10", "12"],
+    "dimensioni": "Spessore vetro 8-12mm · albero 8mm ad espansione · rosetta quadra",
+    "fornitore": "Meroni",
+    "scheda": "airhandle-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/airhandle-scheda.jpg",
+    "istruzioni": "airhandle-istruzioni.pdf",
+    "video": [
+      { "etichetta": "a spingere", "url": "https://youtube.com/shorts/WTF9-g-a4ww" },
+      { "etichetta": "a tirare", "url": "https://youtube.com/shorts/weY1w8maktk" }
+    ],
+    "caratteristiche": [
+      {
+        "titolo": "Serratura integrata nella maniglia",
+        "testo": "Il cilindro è dentro la maniglia stessa: non serve una serratura separata nel vetro, l’ingombro sulla porta resta minimo."
+      },
+      {
+        "titolo": "Chiave fuori, privacy dentro",
+        "testo": "La funzione L13 chiude a chiave dall’esterno e ha un pomolo girevole all’interno per la modalità privacy: pensata per ingressi e uffici."
+      },
+      {
+        "titolo": "Sistema anti-panico",
+        "testo": "Abbassando la leva della maniglia interna la serratura si sblocca sempre in automatico, anche quando è chiusa a chiave."
+      },
+      {
+        "titolo": "A spingere o a tirare",
+        "testo": "Due versioni a seconda del verso di apertura della porta: cambia il lato su cui va montato lo scrocco per il vetro."
+      },
+      {
+        "titolo": "Abbinabile alla cerniera AirHinge",
+        "testo": "Maniglia e cerniera sono della stessa linea AirDoor: stesso design essenziale, stesse finiture, stesso impatto visivo ridotto."
+      },
+      {
+        "titolo": "Chiave in tinta",
+        "testo": "Cilindro a lamelle con testa piatta e chiave coordinata alla finitura della maniglia."
+      },
+      { "titolo": "Alluminio riciclabile", "testo": "Realizzata interamente in alluminio 100% riciclabile." }
+    ],
+    "assi": [
+      { "chiave": "apertura", "etichetta": "Verso di apertura" }
+    ],
+    "immagini": {
+      "Cromo opaco": ["prodotti/airhandle-argento-vetro.jpg", "prodotti/airhandle-argento-render.jpg"],
+      "Nero opaco": ["prodotti/airhandle-nero-vetro.jpg", "prodotti/airhandle-nero-render.jpg"]
+    },
+    "varianti": [
+      { "codice": "L13NAGL", "finitura": "Cromo opaco", "apertura": "A spingere" },
+      { "codice": "L13NAGT", "finitura": "Cromo opaco", "apertura": "A tirare" },
+      { "codice": "L13NEGL", "finitura": "Nero opaco", "apertura": "A spingere" },
+      { "codice": "L13NEGT", "finitura": "Nero opaco", "apertura": "A tirare" }
+    ],
+    "facoltativi": [46]
+  },
+  {
+    "id": 57,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Maniglia a scomparsa per porta scorrevole",
+    "note": [
+      "Niente scheda tecnica: non disponibile, solo la pagina di catalogo da cui",
+      "abbiamo ricavato foto e quote (vedi \"immagini\" sotto, non \"scheda\")."
+    ],
+    "descrizione": "Maniglia a scomparsa per porta scorrevole in vetro, a incasso interno muro, in ottone. Adatta a spessori vetro 8-10mm. Prodotta da GFS, disponibile in 5 finiture: cromo lucido, cromo opaco, simil inox, oro lucido e nero opaco.",
+    "materiale": "Ottone",
+    "dimensioni": "Piastra 70×100mm · profondità 18mm · spessore vetro 8-10mm · lavorazione vetro 58×73mm",
+    "fornitore": "GFS",
+    "immagini": {
+      "Cromo lucido": ["prodotti/e07-cromo-lucido.jpg", "prodotti/e07-quote.jpg", "prodotti/e07-lavorazione-vetro.jpg"],
+      "Cromo opaco": ["prodotti/e07-cromo-lucido.jpg", "prodotti/e07-quote.jpg", "prodotti/e07-lavorazione-vetro.jpg"],
+      "Simil inox": ["prodotti/e07-cromo-lucido.jpg", "prodotti/e07-quote.jpg", "prodotti/e07-lavorazione-vetro.jpg"],
+      "Oro lucido": ["prodotti/e07-cromo-lucido.jpg", "prodotti/e07-quote.jpg", "prodotti/e07-lavorazione-vetro.jpg"],
+      "Nero opaco": ["prodotti/e07-cromo-lucido.jpg", "prodotti/e07-quote.jpg", "prodotti/e07-lavorazione-vetro.jpg"]
+    },
+    "varianti": [
+      { "codice": "E07M02715", "finitura": "Cromo lucido" },
+      { "codice": "E07M02716", "finitura": "Cromo opaco" },
+      { "codice": "E07M02720", "finitura": "Simil inox" },
+      { "codice": "E07M02713", "finitura": "Oro lucido" },
+      { "codice": "E07M027NE", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 61,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Maniglia ad incasso tonda per porta scorrevole",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Maniglia a incasso tonda per porta scorrevole in vetro, in acciaio inox, finitura satinata. Foro nel vetro Ø40mm. Prodotta da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "Ø59mm · profondità 32mm · foro vetro Ø40mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-3904-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-3904-scheda.jpg",
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/fimet-3904.jpg"]
+    },
+    "varianti": [
+      { "codice": "3904", "finitura": "Acciaio inox satinato" }
+    ]
+  },
+  {
+    "id": 62,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Maniglia ad incasso quadra per porta scorrevole",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Maniglia a incasso quadra per porta scorrevole in vetro, in acciaio inox, finitura satinata. Foro nel vetro Ø18mm. Prodotta da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "52×52mm · profondità 30mm · foro vetro Ø18mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-3921-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-3921-scheda.jpg",
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/fimet-3921.jpg"]
+    },
+    "varianti": [
+      { "codice": "3921", "finitura": "Acciaio inox satinato" }
+    ]
+  },
+  {
+    "id": 63,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Coppia maniglioni adesivi per porte in vetro",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Coppia di maniglioni per porte in vetro in alluminio, ad applicazione adesiva: si fissano direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido, profilo quadro 11×18mm. Disponibili in due lunghezze e nelle finiture argento e nero opaco. Prodotti da Fimet.",
+    "materiale": "Alluminio",
+    "dimensioni": "Sezione 11×18mm · lunghezze 300mm e 700mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-maniglione-adesivo-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-maniglione-adesivo-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": ["prodotti/fimet-maniglione-argento.jpg"],
+      "Nero opaco": ["prodotti/fimet-maniglione-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "805300128", "finitura": "Argento", "lunghezza": 300 },
+      { "codice": "805700128", "finitura": "Argento", "lunghezza": 700 },
+      { "codice": "805300NO", "finitura": "Nero opaco", "lunghezza": 300 },
+      { "codice": "805700NO", "finitura": "Nero opaco", "lunghezza": 700 }
+    ]
+  },
+  {
+    "id": 64,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Nicchia adesiva quadra per porta scorrevole",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Nicchia a incasso quadra per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.",
+    "materiale": "Alluminio",
+    "dimensioni": "58×58mm · altezza 9mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-3931-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-3931-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/fimet-3931-argento.jpg"],
+      "Nero opaco": ["prodotti/fimet-3931-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "3931", "finitura": "Argento" },
+      { "codice": "3931NO", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 65,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Nicchia adesiva rettangolare per porta scorrevole",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Nicchia a incasso rettangolare per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento e nero opaco. Prodotta da Fimet.",
+    "materiale": "Alluminio",
+    "dimensioni": "58×115mm · altezza 9mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-3932-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-3932-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/fimet-3932-argento.jpg"],
+      "Nero opaco": ["prodotti/fimet-3932-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "3932", "finitura": "Argento" },
+      { "codice": "3932NO", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 66,
+    "categoria": "04",
+    "sottocategoria": "maniglie-scorrevoli",
+    "nome": "Nicchia adesiva tonda per porta scorrevole",
+    "note": [
+      "Non esiste una scheda tecnica del singolo articolo: la scheda allegata",
+      "e' stata ricostruita da noi con le misure ricavate dal catalogo Fimet",
+      "\"Accessori per vetro\" (sezione vetro), su richiesta del cliente."
+    ],
+    "descrizione": "Nicchia a incasso tonda per porta scorrevole in vetro, in alluminio, ad applicazione adesiva: si fissa direttamente sul vetro con biadesivo 3M, senza dover forare la lastra. Montaggio rapido. Disponibile in finitura argento, nero opaco e bianco opaco. Prodotta da Fimet.",
+    "materiale": "Alluminio",
+    "dimensioni": "Ø60mm · altezza 10mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-3933-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-3933-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/fimet-3933-argento.jpg"],
+      "Nero opaco": ["prodotti/fimet-3933-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "3933", "finitura": "Argento" },
+      { "codice": "3933NO", "finitura": "Nero opaco" },
+      { "codice": "3933BO", "finitura": "Bianco opaco" }
+    ]
+  },
+  {
+    "id": 67,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Brasile 852",
+    "descrizione": "Maniglione a doppia barra parallela per porte in vetro, sezione quadra 25×38mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60) e nero opaco RAL9005 (FNO). Prodotto da Fimet.",
+    "materiale": "Acciaio inox AISI304",
+    "dimensioni": "Sezione 25×38mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-brasile-852-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-brasile-852-scheda.jpg",
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/fimet-brasile-852-inox.jpg"],
+      "Nero opaco": ["prodotti/fimet-brasile-852-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "852.2538.1250.1000.60", "finitura": "Acciaio inox satinato" },
+      { "codice": "852.2538.1250.1000.NO", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 68,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Equador 850",
+    "descrizione": "Maniglione a doppia barra parallela con serratura a chiave integrata, per porte in vetro, profilo tondo Ø35mm, in acciaio inox AISI304. Foro nel vetro Ø16mm, perno con uscita 28mm, per lastre di spessore 8/12mm. Fornito completo di pozzetto a molla 60×22mm. Disponibile nelle finiture inox satinato (F60), inox lucido (F61) e nero opaco RAL9005 (FNO). Prodotto da Fimet.",
+    "materiale": "Acciaio inox AISI304",
+    "dimensioni": "Ø35mm · lunghezza 1250mm · interasse 1000mm · foro vetro Ø16mm",
+    "fornitore": "Fimet",
+    "scheda": "fimet-equador-850-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fimet-equador-850-scheda.jpg",
+    "immagini": {
+      "Acciaio inox satinato": ["prodotti/fimet-equador-850-inox-satinato.jpg"],
+      "Inox lucido": ["prodotti/fimet-equador-850-inox-lucido.jpg"],
+      "Nero opaco": ["prodotti/fimet-equador-850-nero.jpg"]
+    },
+    "varianti": [
+      { "codice": "850.35.1250.1000.60", "finitura": "Acciaio inox satinato" },
+      { "codice": "850.35.1250.1000.61", "finitura": "Inox lucido" },
+      { "codice": "850.35.1250.1000.NO", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 70,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Kit fissaggio passante FISS 03",
+    "note": [
+      "I quattro kit di fissaggio qui sotto vengono dalla tavola \"Accessori di",
+      "montaggio\" del catalogo Fimet. Tutte le quote sono quelle del disegno, che",
+      "e' allegato per intero nella galleria; materiale e finitura invece la",
+      "tavola non li riporta e ce li ha confermati il cliente: acciaio inox",
+      "satinato, come i maniglioni a cui i kit si abbinano."
+    ],
+    "descrizione": "Kit di fissaggio passante per maniglione singolo, per porte in legno, alluminio e vetro. La barra filettata attraversa l’anta da parte a parte e si avvita nel supporto del maniglione. Foro nell’anta Ø9mm su legno e alluminio, Ø13mm sul vetro: sulle porte in vetro si montano le bussole Ø12 H10 con foro 8,2mm, che isolano la barra dalla lastra. Il kit comprende le barre filettate M8×110 e M8×30, le molle, le bussole e i distanziali tondi Ø28mm da 8mm di spessore. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "Foro legno e alluminio Ø9mm · foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · barre filettate M8×110 e M8×30 · distanziali Ø28mm spessore 8mm",
+    "fornitore": "Fimet",
+    "immagini": {
+      "Acciaio inox satinato": [
+        "prodotti/fimet-fiss-03-quote.jpg",
+        "prodotti/fimet-fiss-03-fori.jpg",
+        "prodotti/fimet-fiss-03-componenti.jpg",
+        "prodotti/fimet-fiss-03-montaggio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "FISS 03", "finitura": "Acciaio inox satinato" }
+    ]
+  },
+  {
+    "id": 71,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Kit fissaggio singolo M6 FISS 05M6",
+    "note": [
+      "I quattro kit di fissaggio qui sotto vengono dalla tavola \"Accessori di",
+      "montaggio\" del catalogo Fimet. Tutte le quote sono quelle del disegno, che",
+      "e' allegato per intero nella galleria; materiale e finitura invece la",
+      "tavola non li riporta e ce li ha confermati il cliente: acciaio inox",
+      "satinato, come i maniglioni a cui i kit si abbinano."
+    ],
+    "descrizione": "Kit di fissaggio singolo M6 per maniglioni su porte in vetro. La vite a testa tonda passa nel foro della lastra e si avvita nel supporto del maniglione. Foro nel vetro Ø13mm, con bussole Ø12 H10 e foro 8,2mm a protezione della lastra. Vite con testa Ø20mm da 3mm di spessore e gambo filettato M6 lungo 26mm. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "Foro vetro Ø13mm · bussole Ø12 H10 con foro 8,2mm · vite testa Ø20mm spessore 3mm · filetto M6 lunghezza 26mm",
+    "fornitore": "Fimet",
+    "immagini": {
+      "Acciaio inox satinato": [
+        "prodotti/fimet-fiss-05m6-quote.jpg",
+        "prodotti/fimet-fiss-05m6-foro.jpg",
+        "prodotti/fimet-fiss-05m6-vite.jpg",
+        "prodotti/fimet-fiss-05m6-montaggio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "FISS 05M6", "finitura": "Acciaio inox satinato" }
+    ]
+  },
+  {
+    "id": 72,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Kit fissaggio con rosetta tonda FISS 06",
+    "note": [
+      "I quattro kit di fissaggio qui sotto vengono dalla tavola \"Accessori di",
+      "montaggio\" del catalogo Fimet. Tutte le quote sono quelle del disegno, che",
+      "e' allegato per intero nella galleria; materiale e finitura invece la",
+      "tavola non li riporta e ce li ha confermati il cliente: acciaio inox",
+      "satinato, come i maniglioni a cui i kit si abbinano."
+    ],
+    "descrizione": "Kit di fissaggio singolo con rosetta tonda e piastrina, per maniglioni con supporto tondo diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta tonda Ø50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "Rosetta tonda Ø50mm · perno filettato M8 · sporgenza 26mm",
+    "fornitore": "Fimet",
+    "immagini": {
+      "Acciaio inox satinato": [
+        "prodotti/fimet-fiss-06-quote.jpg",
+        "prodotti/fimet-fiss-06-componenti.jpg",
+        "prodotti/fimet-fiss-06-montaggio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "FISS 06", "finitura": "Acciaio inox satinato" }
+    ]
+  },
+  {
+    "id": 73,
+    "categoria": "04",
+    "sottocategoria": "maniglioni",
+    "nome": "Kit fissaggio con rosetta quadra FISS 07",
+    "note": [
+      "I quattro kit di fissaggio qui sotto vengono dalla tavola \"Accessori di",
+      "montaggio\" del catalogo Fimet. Tutte le quote sono quelle del disegno, che",
+      "e' allegato per intero nella galleria; materiale e finitura invece la",
+      "tavola non li riporta e ce li ha confermati il cliente: acciaio inox",
+      "satinato, come i maniglioni a cui i kit si abbinano."
+    ],
+    "descrizione": "Kit di fissaggio singolo con rosetta quadra e piastrina, per maniglioni con supporto quadro diritto. La piastrina si fissa con viti sull’anta e porta il perno filettato M8 su cui si avvita il supporto del maniglione; la rosetta quadra 50×50mm copre poi il fissaggio a montaggio finito. Perno M8 con sporgenza 26mm. Nel disegno di montaggio l’applicazione è su porta in legno. In acciaio inox satinato, come i maniglioni a cui si abbina. Prodotto da Fimet.",
+    "materiale": "Acciaio inox",
+    "dimensioni": "Rosetta quadra 50×50mm · perno filettato M8 · sporgenza 26mm",
+    "fornitore": "Fimet",
+    "immagini": {
+      "Acciaio inox satinato": [
+        "prodotti/fimet-fiss-07-quote.jpg",
+        "prodotti/fimet-fiss-07-componenti.jpg",
+        "prodotti/fimet-fiss-07-montaggio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "FISS 07", "finitura": "Acciaio inox satinato" }
+    ]
+  }
+]

@@ -1,0 +1,1125 @@
+[
+  {
+    "id": 1,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Vite fermavetro regolabile Ø52mm",
+    "descrizione": "Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 35 a 55mm (vite M10x130). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø52mm",
+    "dimensioni": "Disco Ø52mm · vite M10x130 · spessore vetro 8-30mm · foro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fermavetro-regolabile-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fermavetro-regolabile-scheda.jpg",
+    "immagini": {
+      "Inox satinato": ["prodotti/fermavetro-regolabile-inox-satinato.jpg", "prodotti/fermavetro-regolabile-esploso.jpg"],
+      "Nero opaco": ["prodotti/fermavetro-regolabile-nero-opaco.jpg"],
+      "Oro": ["prodotti/fermavetro-regolabile-oro.jpg"]
+    },
+    "varianti": [
+      { "codice": "IN109-250", "finitura": "Inox satinato" },
+      { "codice": "IN109-250-NE", "finitura": "Nero opaco" },
+      { "codice": "IN109-250-OL", "finitura": "Oro" }
+    ]
+  },
+  {
+    "id": 2,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Vite fermavetro regolabile con asola Ø52mm",
+    "descrizione": "Attacco puntuale a vite per vetro Ø52mm con asola e supporto regolabile in profondità, attacco diritto. Adatto a spessori vetro da 8 a 30mm, con lunghezza totale regolabile da 36 a 45mm (vite M5). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 3 finiture: inox satinato, nero opaco e oro.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø52mm",
+    "dimensioni": "Disco Ø52mm · asola 20,5×10,5mm · vite M5 · spessore vetro 8-30mm · foro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fermavetro-asola-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fermavetro-asola-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fermavetro-asola-inox-satinato.jpg",
+        "prodotti/fermavetro-asola-inox-satinato-vista2.jpg",
+        "prodotti/fermavetro-asola-inox-satinato-frontale.jpg"
+      ],
+      "Nero opaco": ["prodotti/fermavetro-asola-nero-opaco.jpg"],
+      "Oro": ["prodotti/fermavetro-asola-oro.jpg"]
+    },
+    "varianti": [
+      { "codice": "IN109-255", "finitura": "Inox satinato" },
+      { "codice": "IN109-255-NE", "finitura": "Nero opaco" },
+      { "codice": "IN109-255-OL", "finitura": "Oro" }
+    ]
+  },
+  {
+    "id": 5,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Vite fermavetro Ø52mm",
+    "descrizione": "Attacco puntuale a vite per vetro Ø52mm con supporto regolabile in profondità e calotta Ø18mm, attacco diritto. Adatto a spessori vetro da 8 a 30mm (vite M10x40). Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø52mm",
+    "dimensioni": "Disco Ø52mm · calotta Ø18mm · vite M10x40 · spessore vetro 8-30mm · foro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fermavetro-230-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fermavetro-230-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fermavetro-230-inox-satinato.jpg",
+        "prodotti/fermavetro-230-vista2.jpg",
+        "prodotti/fermavetro-230-frontale.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN109-230", "finitura": "Inox satinato" }
+    ]
+  },
+  {
+    "id": 3,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Vite fermavetro Ø30mm",
+    "descrizione": "Attacco puntuale a vite per vetro con attacco diritto. Adatto a spessori vetro da 6 a 14mm (vite M8x45). Foro in vetro Ø15mm. Prodotto da Inoxdesign, disponibile in due versioni con la stessa finitura inox satinato: in acciaio inox AISI 304 oppure in zama.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304 o zama",
+    "materiali": ["Acciaio inox AISI 304", "Zama"],
+    "diametro": "Ø30mm",
+    "dimensioni": "Disco Ø30mm · testa Ø13mm · altezza 15mm · vite M8x45 · spessore vetro 6-14mm · foro Ø15mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fermavetro-30-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fermavetro-30-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fermavetro-30-inox-satinato.jpg",
+        "prodotti/fermavetro-30-esploso.jpg",
+        "prodotti/fermavetro-30-vista2.jpg",
+        "prodotti/fermavetro-30-frontale.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN109-010", "finitura": "Inox satinato", "materiale": "Acciaio inox AISI 304" },
+      { "codice": "IN109-010-0F", "finitura": "Inox satinato", "materiale": "Zama" }
+    ]
+  },
+  {
+    "id": 4,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Fissaggio puntuale Ø30mm",
+    "descrizione": "Fissaggio puntuale con filetto fisso M8x45 per vetro, testa Ø30mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 304. Disponibile in 2 finiture: inox satinato e nero opaco.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø30mm",
+    "dimensioni": "Testa Ø30mm · calotta Ø13mm · altezza 6,3mm · filetto M8x45 fisso · foro Ø15mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fissaggio-puntuale-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fissaggio-puntuale-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fissaggio-puntuale-inox-satinato.jpg",
+        "prodotti/fissaggio-puntuale-esploso.jpg",
+        "prodotti/fissaggio-puntuale-inox-satinato-vista2.jpg",
+        "prodotti/fissaggio-puntuale-inox-satinato-frontale.jpg"
+      ],
+      "Nero opaco": ["prodotti/fissaggio-puntuale-nero-opaco.jpg", "prodotti/fissaggio-puntuale-nero-opaco-vista2.jpg"]
+    },
+    "varianti": [
+      { "codice": "IN109-792", "finitura": "Inox satinato" },
+      { "codice": "IN109-792-NE", "finitura": "Nero opaco" }
+    ]
+  },
+  {
+    "id": 6,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Calotta fermavetro Ø52mm",
+    "descrizione": "Calotta superiore per attacco puntuale, Ø52mm, con gommine e filetto interno M10, altezza 11mm. Foro in vetro Ø25mm. Prodotto da Inoxdesign in acciaio inox AISI 304.",
+    "paroleChiave": "distanziatore",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø52mm",
+    "dimensioni": "Calotta Ø52mm · altezza 11mm · filetto M10 · foro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fermavetro-220-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fermavetro-220-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fermavetro-220-inox-satinato.jpg",
+        "prodotti/fermavetro-220-esploso.jpg",
+        "prodotti/fermavetro-220-vista2.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN109-220", "finitura": "Inox satinato" }
+    ]
+  },
+  {
+    "id": 32,
+    "categoria": "01",
+    "sottocategoria": "puntuali",
+    "nome": "Distanziale per vite fermavetro Ø52mm",
+    "descrizione": "Distanziale a rondella per attacchi puntuali a vite Ø52mm, da inserire fra vetro e supporto per ottenere l’interspazio desiderato. Foro centrale Ø10,5mm per vite M10. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato. Disponibile nelle lunghezze 5, 10, 20, 30, 40 e 50mm.",
+    "materiale": "Acciaio inox AISI 304",
+    "diametro": "Ø52mm",
+    "dimensioni": "Disco Ø52mm · foro Ø10,5mm",
+    "fornitore": "Inoxdesign",
+    "scheda": {
+      "IN109-239": "distanziale-052-5mm-scheda-tecnica.pdf",
+      "IN109-240": "distanziale-052-10mm-scheda-tecnica.pdf",
+      "IN109-241": "distanziale-052-20mm-scheda-tecnica.pdf",
+      "IN109-242": "distanziale-052-30mm-scheda-tecnica.pdf",
+      "IN109-243": "distanziale-052-40mm-scheda-tecnica.pdf",
+      "IN109-244": "distanziale-052-50mm-scheda-tecnica.pdf"
+    },
+    "anteprimaScheda": {
+      "IN109-239": "schede/distanziale-052-5mm-scheda.jpg",
+      "IN109-240": "schede/distanziale-052-10mm-scheda.jpg",
+      "IN109-241": "schede/distanziale-052-20mm-scheda.jpg",
+      "IN109-242": "schede/distanziale-052-30mm-scheda.jpg",
+      "IN109-243": "schede/distanziale-052-40mm-scheda.jpg",
+      "IN109-244": "schede/distanziale-052-50mm-scheda.jpg"
+    },
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/distanziale-052-vista1.jpg",
+        "prodotti/distanziale-052-vista2.jpg",
+        "prodotti/distanziale-052-vista3.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN109-239", "finitura": "Inox satinato", "lunghezza": 5 },
+      { "codice": "IN109-240", "finitura": "Inox satinato", "lunghezza": 10 },
+      { "codice": "IN109-241", "finitura": "Inox satinato", "lunghezza": 20 },
+      { "codice": "IN109-242", "finitura": "Inox satinato", "lunghezza": 30 },
+      { "codice": "IN109-243", "finitura": "Inox satinato", "lunghezza": 40 },
+      { "codice": "IN109-244", "finitura": "Inox satinato", "lunghezza": 50 }
+    ]
+  },
+  {
+    "id": 26,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Profilo balaustra 8+8",
+    "note": [
+      "Rapporto di prova Istituto Giordano n. 351022: documento di terzi,",
+      "pubblicato come ci e' stato consegnato, senza la nostra filigrana."
+    ],
+    "descrizione": "Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass TG 200R. Soluzione a pavimento e sopramuretto, con profilo di chiusura a scatto che copre il fissaggio a posa finita. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×118 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 200R), 24 fori in quella da 6000 mm (TG 201R). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8+8"],
+    "dimensioni": "Sezione 73×118 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm",
+    "fornitore": "Compas",
+    "scheda": "tg-200-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg200-scheda.jpg",
+    "rapporto": "tg-200-rapporto-di-prova.pdf",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza barra", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": ["prodotti/tg200-render.jpg", "prodotti/tg200-sezione.jpg", "prodotti/tg200-fori.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 200R", "finitura": "Argento", "lunghezza": 3000 },
+      { "codice": "TG 201R", "finitura": "Argento", "lunghezza": 6000 }
+    ],
+    "essenziali": [27],
+    "facoltativi": [21, 28, 29]
+  },
+  {
+    "id": 27,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Tappo laterale TG 202",
+    "descrizione": "Tappo di chiusura laterale per i profili balaustra TG 200R e TG 201R, completo di viti. Se lo spazio laterale è poco e a fine posa non si riesce ad avvitarlo, va montato prima di fissare la barra, dopo aver inserito mezzaluna, guarnizione e piattelli. In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "dimensioni": "Altezza 118 mm · larghezza 73 mm",
+    "fornitore": "Compas",
+    "scheda": "tg-200-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg202-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/tg202-tappo.jpg", "prodotti/tg202-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 202", "finitura": "Argento" }
+    ],
+    "facoltativi": [21]
+  },
+  {
+    "id": 21,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Profilo scarico acque TG 203 / TG 204",
+    "descrizione": "Profilo di scarico acque da abbinare ai supporti a pavimento della serie Total Glass: si posa sotto il supporto e aggiunge 15 mm alla quota totale. Compatibile sia con i profili TG 200R / TG 201R sia con i TG 1000 / TG 1001. Le barre arrivano già forate e predisposte per il fissaggio, con fori Ø14 mm a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 203), 24 fori in quella da 6000 mm (TG 204). In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "dimensioni": "Altezza 15 mm · fori Ø14 mm · interasse 250 mm · 12 fori nella barra da 3000 mm, 24 in quella da 6000 mm",
+    "fornitore": "Compas",
+    "scheda": "tg-1000-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg203-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza barra", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": ["prodotti/tg203-profilo.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 203", "finitura": "Argento", "lunghezza": 3000 },
+      { "codice": "TG 204", "finitura": "Argento", "lunghezza": 6000 }
+    ],
+    "essenziali": [22]
+  },
+  {
+    "id": 22,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Tappo per profilo scarico acque TG 205",
+    "descrizione": "Tappo di chiusura per i profili scarico acque TG 203 e TG 204, completo di viti. Va montato prima della posa del profilo scarico acque. In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "fornitore": "Compas",
+    "scheda": "tg-1000-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg205-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/tg205-tappo.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 205", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 19,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Profilo balaustra muretto 8+8",
+    "note": [
+      "Rapporto di prova Istituto Giordano n. 376073: documento di terzi,",
+      "pubblicato come ci e' stato consegnato, senza la nostra filigrana."
+    ],
+    "descrizione": "Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass. Adatto a vetri stratificati e temperati da 17,52 mm (8+1.52+8). Sezione 73×82 mm, con fori asolati 13×16 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TG 1000), 24 fori in quella da 6000 mm (TG 1001). I profili vengono forniti completi di guarnizioni e accessori per il montaggio. In fase di posa la barra filettata non deve sporgere più di 18 mm dal filo pavimentazione, altrimenti interferisce con i profili da inserire nel supporto. Disponibile in alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8+8"],
+    "dimensioni": "Sezione 73×82 mm · fori asolati 13×16 mm · interasse 250 mm · vetro 17,52 mm (8+1.52+8) · sporgenza max barra filettata 18 mm",
+    "fornitore": "Compas",
+    "scheda": "tg-1000-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg1000-scheda.jpg",
+    "rapporto": "tg-1000-rapporto-di-prova.pdf",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza barra", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": ["prodotti/tg1000-render.jpg", "prodotti/tg1000-sezione.jpg", "prodotti/tg1000-ambiente.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 1000", "finitura": "Argento", "lunghezza": 3000 },
+      { "codice": "TG 1001", "finitura": "Argento", "lunghezza": 6000 }
+    ],
+    "essenziali": [20],
+    "facoltativi": [21, 28, 29]
+  },
+  {
+    "id": 20,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Tappo laterale TG 1004",
+    "descrizione": "Tappo di chiusura laterale per i supporti a pavimento della serie Total Glass. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "fornitore": "Compas",
+    "scheda": "tg-1000-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tg1004-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/tg1004-tappo.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 1004", "finitura": "Argento" }
+    ],
+    "facoltativi": [21]
+  },
+  {
+    "id": 28,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Chiave ergonomica TG 409",
+    "note": ["Non è una scheda tecnica vera e propria: solo le immagini del prodotto."],
+    "descrizione": "Chiave sagomata per stringere comodamente i piattelli esagonali di serraggio del vetro. Compatibile con tutti i supporti Total Glass ad eccezione delle serie TG 300 e TG 600.",
+    "fornitore": "Compas",
+    "immagini": {
+      "Argento": ["prodotti/tg409-chiave.jpg", "prodotti/tg409-uso.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 409", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 23,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Profilo balaustra muretto 6+6",
+    "descrizione": "Supporto di fissaggio a pavimento in barra intera per parapetti in vetro, serie Total Glass Speedy TGS 50. Linea super compatta pensata per il fissaggio sopra muretto, dove la muratura esistente è già alta e il parapetto in vetro resta entro i 500 mm di altezza. Adatto a vetri stratificati e temperati da 6+1.52+6 mm (va bene anche il 5+1.52+5). Sezione 58×76 mm, con fori asolati 8,5×12 mm già predisposti a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 50), 24 fori in quella da 6000 mm (TGS 51). Profilo progettato per ancorante M8; la barra filettata non deve sporgere più di 12 mm. I profili vengono forniti completi di guarnizioni e accessori per il montaggio. Disponibile in alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["6+6", "5+5"],
+    "dimensioni": "Sezione 58×76 mm · fori asolati 8,5×12 mm · interasse 250 mm · vetro 6+1.52+6 mm (va bene anche 5+1.52+5) · ancorante M8 · sporgenza max barra filettata 12 mm · altezza max parapetto 500 mm",
+    "fornitore": "Compas",
+    "scheda": "tgs-50-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tgs50-scheda.jpg",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza barra", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": ["prodotti/tgs50-render.jpg", "prodotti/tgs50-sezione.jpg", "prodotti/tgs50-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "TGS 50", "finitura": "Argento", "lunghezza": 3000 },
+      { "codice": "TGS 51", "finitura": "Argento", "lunghezza": 6000 }
+    ],
+    "essenziali": [24],
+    "facoltativi": [25, 29]
+  },
+  {
+    "id": 24,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Tappo laterale TGS 52",
+    "descrizione": "Tappo di chiusura laterale per i profili balaustra sopra muretto della serie Total Glass Speedy TGS 50. Va montato a fine posa per chiudere le testate della barra, completo di viti. In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "fornitore": "Compas",
+    "scheda": "tgs-50-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tgs52-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/tgs52-tappo.jpg"]
+    },
+    "varianti": [
+      { "codice": "TGS 52", "finitura": "Argento" }
+    ],
+    "facoltativi": [25]
+  },
+  {
+    "id": 25,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Chiave ergonomica TGS 53",
+    "note": ["Non è una scheda tecnica vera e propria: solo le immagini del prodotto."],
+    "descrizione": "Chiave sagomata per stringere comodamente i piattelli di serraggio del vetro nei profili balaustra della serie Total Glass Speedy TGS 50. La forma piegata permette di lavorare anche con il vetro già in posizione. Attenzione: i piattelli vanno serrati moderatamente.",
+    "fornitore": "Compas",
+    "immagini": {
+      "Argento": ["prodotti/tgs53-chiave.jpg"]
+    },
+    "varianti": [
+      { "codice": "TGS 53", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 29,
+    "categoria": "01",
+    "sottocategoria": "balaustre",
+    "nome": "Profilo portaled TG 311",
+    "note": ["Non è una scheda tecnica vera e propria: solo le immagini del prodotto."],
+    "descrizione": "Piastrina per striscia LED, da inserire nel profilo di chiusura del parapetto per illuminare il bordo del vetro. Compatibile con tutti i profili balaustra Total Glass. Disponibile solo in barra da 3 m.",
+    "dimensioni": "Lunghezza barra 3 m",
+    "fornitore": "Compas",
+    "immagini": {
+      "Argento": ["prodotti/tg311-render.jpg", "prodotti/tg311-sezione.jpg", "prodotti/tg311-foto.jpg"]
+    },
+    "varianti": [
+      { "codice": "TG 311", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 30,
+    "categoria": "01",
+    "sottocategoria": "pensiline",
+    "nome": "Profilo pensilina 10+10",
+    "note": [
+      "Rapporto di prova Istituto Giordano n. 358697: documento di terzi,",
+      "pubblicato come ci e' stato consegnato, senza la nostra filigrana."
+    ],
+    "descrizione": "Profilo a muro per pensiline in vetro, serie Total Glass Speedy TGS 500. Solo per vetro stratificato e temperato 10+1.52+10, testato al carico neve e vento di zona alpina (165 kg/m²). Dotato di perni di sicurezza per la ritenuta del vetro e predisposto per l’illuminazione LED. Sezione 125×104 mm, con inclinazione di 1,5° che fa defluire l’acqua piovana e guarnizione impermeabilizzante contro le infiltrazioni fra muro e supporto. Fori Ø14 mm per il fissaggio a muro a interasse 250 mm: 12 fori nella barra da 3000 mm (TGS 500), 24 fori in quella da 6000 mm (TGS 501). Si fissa con barre filettate M12, lasciandole sporgere al massimo 22 mm. Disponibile in alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["10+10"],
+    "dimensioni": "Sezione 125×104 mm · fori Ø14 mm · interasse 250 mm · vetro 10+1.52+10 mm · barra filettata M12, sporgenza max 22 mm · inclinazione 1,5° · sbalzo vetro max 1500 mm",
+    "fornitore": "Compas",
+    "scheda": "tgs-500-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tgs500-scheda.jpg",
+    "rapporto": "tgs-500-rapporto-di-prova.pdf",
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza barra", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento": [
+        "prodotti/tgs500-foto.jpg",
+        "prodotti/tgs500-sezione.jpg",
+        "prodotti/tgs500-quote.jpg",
+        "prodotti/tgs500-fori.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "TGS 500", "finitura": "Argento", "lunghezza": 3000 },
+      { "codice": "TGS 501", "finitura": "Argento", "lunghezza": 6000 }
+    ],
+    "essenziali": [31]
+  },
+  {
+    "id": 31,
+    "categoria": "01",
+    "sottocategoria": "pensiline",
+    "nome": "Tappo per pensilina TGS 502",
+    "descrizione": "Tappo di chiusura laterale per i profili pensilina della serie Total Glass Speedy TGS 500, completo di guarnizione in gomma anti infiltrazione e viti. In alluminio finitura argento.",
+    "materiale": "Alluminio",
+    "fornitore": "Compas",
+    "scheda": "tgs-500-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/tgs502-scheda.jpg",
+    "immagini": {
+      "Argento": ["prodotti/tgs502-tappo.jpg"]
+    },
+    "varianti": [
+      { "codice": "TGS 502", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 33,
+    "categoria": "01",
+    "sottocategoria": "pensiline",
+    "nome": "Tenditore a barra tonda Ø10mm per pensilina",
+    "descrizione": "Tenditore regolabile con barra tonda Ø10mm, per il sostegno di pensiline in vetro. Attacco a muro con piastra Ø100mm (interasse fori 74mm, fori Ø13mm) snodabile, attacco al vetro con calotta Ø52mm regolabile per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Viene fornito completo di attacco a muro e attacco a vetro. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "dimensioni": "Tondino Ø10mm · piastra a muro Ø100mm · calotta vetro Ø52mm · spessore vetro 12-24mm · foro vetro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": {
+      "IN112-108": "tenditore-010-830mm-scheda-tecnica.pdf",
+      "IN112-109": "tenditore-010-910mm-scheda-tecnica.pdf",
+      "IN112-110": "tenditore-010-1000mm-scheda-tecnica.pdf",
+      "IN112-111": "tenditore-010-1150mm-scheda-tecnica.pdf",
+      "IN112-112": "tenditore-010-1300mm-scheda-tecnica.pdf"
+    },
+    "anteprimaScheda": {
+      "IN112-108": "schede/tenditore-010-830mm-scheda.jpg",
+      "IN112-109": "schede/tenditore-010-910mm-scheda.jpg",
+      "IN112-110": "schede/tenditore-010-1000mm-scheda.jpg",
+      "IN112-111": "schede/tenditore-010-1150mm-scheda.jpg",
+      "IN112-112": "schede/tenditore-010-1300mm-scheda.jpg"
+    },
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/tenditore-010-vista1.jpg",
+        "prodotti/tenditore-010-vista2.jpg",
+        "prodotti/tenditore-010-esploso.jpg",
+        "prodotti/tenditore-010-ambiente.jpg",
+        "prodotti/tenditore-010-schema-dimensioni.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN112-108", "finitura": "Inox satinato", "lunghezza": 830 },
+      { "codice": "IN112-109", "finitura": "Inox satinato", "lunghezza": 910 },
+      { "codice": "IN112-110", "finitura": "Inox satinato", "lunghezza": 1000 },
+      { "codice": "IN112-111", "finitura": "Inox satinato", "lunghezza": 1150 },
+      { "codice": "IN112-112", "finitura": "Inox satinato", "lunghezza": 1300 }
+    ],
+    "facoltativi": [34, 35]
+  },
+  {
+    "id": 34,
+    "categoria": "01",
+    "sottocategoria": "pensiline",
+    "nome": "Fissaggio a muro Ø100mm per pensilina",
+    "descrizione": "Attacco a muro snodabile per tenditori di pensiline in vetro, piastra Ø100mm con foro Ø22mm per l’innesto della barra e regolazione per spessori vetro da 12 a 24mm. Foro in vetro Ø25mm. Disponibile in acciaio inox AISI 304, finitura inox satinato; su richiesta è disponibile anche in AISI 316 satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "dimensioni": "Piastra Ø100mm (interasse fori 74mm, fori Ø13mm) · innesto barra Ø22mm · spessore vetro 12-24mm · foro vetro Ø25mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "fissaggio-muro-100-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/fissaggio-muro-100-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/fissaggio-muro-100-vista1.jpg",
+        "prodotti/fissaggio-muro-100-vista2.jpg",
+        "prodotti/fissaggio-muro-100-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN112-120", "finitura": "Inox satinato" }
+    ]
+  },
+  {
+    "id": 35,
+    "categoria": "01",
+    "sottocategoria": "pensiline",
+    "nome": "Lamiera piegata a U per vetro 16.76-17.52mm",
+    "descrizione": "Profilo a U in lamiera piegata, per il contenimento del bordo del vetro nelle pensiline sostenute da tiranti. Adatto a vetri stratificati e temperati di spessore 16,76-17,52mm. Disponibile in barra da 3000mm, in acciaio inox AISI 304, finitura satinata.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["16.76", "17.52"],
+    "dimensioni": "Sezione 21×20mm · spessore lamiera 1,50mm · larghezza gola 18mm · lunghezza barra 3000mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "lamiera-u-1676-3000-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/lamiera-u-1676-3000-scheda.jpg",
+    "immagini": {
+      "Inox satinato": ["prodotti/lamiera-u-1676-3000-render.jpg", "prodotti/lamiera-u-1676-3000-sezione.jpg"]
+    },
+    "varianti": [
+      { "codice": "IN600-233", "finitura": "Inox satinato", "lunghezza": 3000 }
+    ]
+  },
+  {
+    "id": 49,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 01 con attacco diritto",
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.",
+    "materiale": "Acciaio inox AISI 304 o zama",
+    "materiali": ["Acciaio inox AISI 304", "Zama"],
+    "spessoriVetro": ["8", "8.76", "10", "10.76"],
+    "dimensioni": "Corpo 45×45mm · profondità 27mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m012-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m012-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m012-vista1.jpg",
+        "prodotti/morsetto-m012-vista2.jpg",
+        "prodotti/morsetto-m012-sezione.jpg",
+        "prodotti/morsetto-m012-esploso.jpg"
+      ],
+      "Finitura inox satinato": [
+        "prodotti/morsetto-m012-vista1.jpg",
+        "prodotti/morsetto-m012-vista2.jpg",
+        "prodotti/morsetto-m012-sezione.jpg",
+        "prodotti/morsetto-m012-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M012-0800", "finitura": "Inox satinato", "materiale": "Acciaio inox AISI 304", "spessoreVetro": 8 },
+      {
+        "codice": "M012-0876",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 8.76
+      },
+      {
+        "codice": "M012-1000",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10
+      },
+      {
+        "codice": "M012-1076",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10.76
+      },
+      { "codice": "M01F-0800", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 8 },
+      { "codice": "M01F-0876", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 8.76 },
+      { "codice": "M01F-1000", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 10 },
+      { "codice": "M01F-1076", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 10.76 }
+    ]
+  },
+  {
+    "id": 48,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 02 con attacco diritto",
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["8", "8.76", "10", "10.76"],
+    "dimensioni": "Corpo 63×48mm · profondità 28mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m022-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m022-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m022-vista1.jpg",
+        "prodotti/morsetto-m022-vista2.jpg",
+        "prodotti/morsetto-m022-sezione.jpg",
+        "prodotti/morsetto-m022-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M022-0800", "finitura": "Inox satinato", "spessoreVetro": 8 },
+      { "codice": "M022-0876", "finitura": "Inox satinato", "spessoreVetro": 8.76 },
+      { "codice": "M022-1000", "finitura": "Inox satinato", "spessoreVetro": 10 },
+      { "codice": "M022-1076", "finitura": "Inox satinato", "spessoreVetro": 10.76 }
+    ]
+  },
+  {
+    "id": 36,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 03 con attacco diritto",
+    "note": [
+      "La \"finitura inox satinato\" dello zama e' un aspetto cromato diverso",
+      "dall'inox satinato vero: finitura separata, non da confondere col colore."
+    ],
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.",
+    "materiale": "Acciaio inox AISI 304 o zama",
+    "materiali": ["Acciaio inox AISI 304", "Zama"],
+    "spessoriVetro": ["8", "8.76", "10", "10.76"],
+    "dimensioni": "Corpo 45×45mm · profondità 26mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m032-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m032-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m032-vista1.jpg",
+        "prodotti/morsetto-m032-vista2.jpg",
+        "prodotti/morsetto-m032-sezione.jpg",
+        "prodotti/morsetto-m032-esploso.jpg"
+      ],
+      "Finitura inox satinato": [
+        "prodotti/morsetto-m032-vista1.jpg",
+        "prodotti/morsetto-m032-vista2.jpg",
+        "prodotti/morsetto-m032-sezione.jpg",
+        "prodotti/morsetto-m032-esploso.jpg"
+      ],
+      "Nero opaco": [
+        "prodotti/morsetto-m032-nero-vista1.jpg",
+        "prodotti/morsetto-m032-nero-vista2.jpg",
+        "prodotti/morsetto-m032-nero-sezione.jpg",
+        "prodotti/morsetto-m032-nero-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M032-0800", "finitura": "Inox satinato", "materiale": "Acciaio inox AISI 304", "spessoreVetro": 8 },
+      {
+        "codice": "M032-0876",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 8.76
+      },
+      {
+        "codice": "M032-1000",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10
+      },
+      {
+        "codice": "M032-1076",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10.76
+      },
+      { "codice": "M032-NE-0800", "finitura": "Nero opaco", "materiale": "Acciaio inox AISI 304", "spessoreVetro": 8 },
+      {
+        "codice": "M032-NE-0876",
+        "finitura": "Nero opaco",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 8.76
+      },
+      {
+        "codice": "M032-NE-1000",
+        "finitura": "Nero opaco",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10
+      },
+      {
+        "codice": "M032-NE-1076",
+        "finitura": "Nero opaco",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 10.76
+      },
+      { "codice": "M03F-0800", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 8 },
+      { "codice": "M03F-0876", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 8.76 },
+      { "codice": "M03F-1000", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 10 },
+      { "codice": "M03F-1076", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 10.76 }
+    ]
+  },
+  {
+    "id": 50,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 03 con attacco per tubo Ø42,4mm",
+    "descrizione": "Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 8, 8,76, 10 e 10,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["8", "8.76", "10", "10.76"],
+    "dimensioni": "Corpo 45×45mm · profondità 26mm · attacco tubo Ø42,4mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m032-042-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m032-042-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m032-042-vista1.jpg",
+        "prodotti/morsetto-m032-042-vista2.jpg",
+        "prodotti/morsetto-m032-042-sezione.jpg",
+        "prodotti/morsetto-m032-042-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M032-042-0800", "finitura": "Inox satinato", "spessoreVetro": 8 },
+      { "codice": "M032-042-0876", "finitura": "Inox satinato", "spessoreVetro": 8.76 },
+      { "codice": "M032-042-1000", "finitura": "Inox satinato", "spessoreVetro": 10 },
+      { "codice": "M032-042-1076", "finitura": "Inox satinato", "spessoreVetro": 10.76 }
+    ]
+  },
+  {
+    "id": 37,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 04 con attacco diritto",
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, nelle finiture inox satinato e nero opaco; disponibile anche in zama, finitura inox satinato. Su ordinazione è disponibile anche in altre finiture.",
+    "materiale": "Acciaio inox AISI 304 o zama",
+    "materiali": ["Acciaio inox AISI 304", "Zama"],
+    "spessoriVetro": ["13.52", "17.52"],
+    "dimensioni": "Corpo 65×37,5mm · profondità 55mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m042-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m042-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m042-vista1.jpg",
+        "prodotti/morsetto-m042-vista2.jpg",
+        "prodotti/morsetto-m042-sezione.jpg",
+        "prodotti/morsetto-m042-esploso.jpg"
+      ],
+      "Finitura inox satinato": [
+        "prodotti/morsetto-m042-vista1.jpg",
+        "prodotti/morsetto-m042-vista2.jpg",
+        "prodotti/morsetto-m042-sezione.jpg",
+        "prodotti/morsetto-m042-esploso.jpg"
+      ],
+      "Nero opaco": [
+        "prodotti/morsetto-m042-nero-vista1.jpg",
+        "prodotti/morsetto-m042-nero-vista2.jpg",
+        "prodotti/morsetto-m042-nero-sezione.jpg",
+        "prodotti/morsetto-m042-nero-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      {
+        "codice": "M042-1352",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 13.52
+      },
+      {
+        "codice": "M042-1752",
+        "finitura": "Inox satinato",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 17.52
+      },
+      {
+        "codice": "M042-NE-1352",
+        "finitura": "Nero opaco",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 13.52
+      },
+      {
+        "codice": "M042-NE-1752",
+        "finitura": "Nero opaco",
+        "materiale": "Acciaio inox AISI 304",
+        "spessoreVetro": 17.52
+      },
+      { "codice": "M04F-1352", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 13.52 },
+      { "codice": "M04F-1752", "finitura": "Finitura inox satinato", "materiale": "Zama", "spessoreVetro": 17.52 }
+    ]
+  },
+  {
+    "id": 51,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 04 con attacco per tubo Ø42,4mm",
+    "descrizione": "Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 13,52 e 17,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["13.52", "17.52"],
+    "dimensioni": "Corpo 65×37,5mm · profondità 55mm · attacco tubo Ø42,4mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m042-042-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m042-042-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m042-042-vista1.jpg",
+        "prodotti/morsetto-m042-042-vista2.jpg",
+        "prodotti/morsetto-m042-042-sezione.jpg",
+        "prodotti/morsetto-m042-042-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M042-042-1352", "finitura": "Inox satinato", "spessoreVetro": 13.52 },
+      { "codice": "M042-042-1752", "finitura": "Inox satinato", "spessoreVetro": 17.52 }
+    ]
+  },
+  {
+    "id": 38,
+    "categoria": "01",
+    "sottocategoria": "fermavetri",
+    "nome": "Supporto tondo a pavimento vetro 12-12,76mm",
+    "descrizione": "Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.",
+    "materiale": "Acciaio inox AISI 316",
+    "spessoriVetro": ["12", "12.76"],
+    "dimensioni": "Altezza 160mm · base Ø100mm, altezza base 60,5mm · palo Ø50mm · fori base Ø7mm per viti Ø13mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "supporto-tondo-pavimento-in610-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/supporto-tondo-pavimento-in610-scheda.jpg",
+    "immagini": {
+      "Inox lucido": [
+        "prodotti/supporto-tondo-pavimento-in610-vista1.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-vista2.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN610-005-04-L", "finitura": "Inox lucido" }
+    ]
+  },
+  {
+    "id": 39,
+    "categoria": "01",
+    "sottocategoria": "fermavetri",
+    "nome": "Supporto quadro a pavimento vetro 12-12,76mm",
+    "descrizione": "Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 12 a 12,76mm. Prodotto da Inoxdesign in acciaio inox AISI 316, finitura lucida.",
+    "materiale": "Acciaio inox AISI 316",
+    "spessoriVetro": ["12", "12.76"],
+    "dimensioni": "Altezza 64,7mm · palo 48,2×48,2mm · base 104×104mm (piastra 100×100mm) · fori Ø7mm per viti Ø14mm, interasse diagonale 76,5mm",
+    "fornitore": "Inoxdesign",
+    "scheda": "supporto-quadro-pavimento-in610-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/supporto-quadro-pavimento-in610-scheda.jpg",
+    "immagini": {
+      "Inox lucido": [
+        "prodotti/supporto-quadro-pavimento-in610-vista1.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-vista2.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN610-010-04-L", "finitura": "Inox lucido" }
+    ]
+  },
+  {
+    "id": 40,
+    "categoria": "01",
+    "sottocategoria": "fermavetri",
+    "nome": "Supporto tondo a pavimento vetro 16,76-17,52mm",
+    "descrizione": "Supporto puntuale tondo a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.",
+    "materiale": "Acciaio inox AISI 316",
+    "spessoriVetro": ["16.76", "17.52"],
+    "dimensioni": "Altezza 180mm · palo Ø44,4mm · base Ø105mm · foro vetro Ø15mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "supporto-tondo-pavimento-in610-015-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/supporto-tondo-pavimento-in610-015-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/supporto-tondo-pavimento-in610-015-sat-vista1.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-015-sat-vista2.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-015-sat-esploso.jpg"
+      ],
+      "Inox lucido": [
+        "prodotti/supporto-tondo-pavimento-in610-015-luc-vista1.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-015-luc-vista2.jpg",
+        "prodotti/supporto-tondo-pavimento-in610-015-luc-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN610-015-04", "finitura": "Inox satinato" },
+      { "codice": "IN610-015-04-L", "finitura": "Inox lucido" }
+    ]
+  },
+  {
+    "id": 41,
+    "categoria": "01",
+    "sottocategoria": "fermavetri",
+    "nome": "Supporto quadro a pavimento vetro 16,76-17,52mm",
+    "descrizione": "Supporto puntuale quadro a pavimento per vetro, con rosetta di copertura, per pannelli divisori. Adatto a spessori vetro da 16,76 a 17,52mm. Foro in vetro Ø15mm. Prodotto da Inoxdesign in acciaio inox AISI 316, disponibile nelle finiture satinato e lucido.",
+    "materiale": "Acciaio inox AISI 316",
+    "spessoriVetro": ["16.76", "17.52"],
+    "dimensioni": "Altezza 180mm · palo 48,5×48,5mm · base 108×108mm (piastra 100×100mm) · foro vetro Ø15mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "supporto-quadro-pavimento-in610-020-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/supporto-quadro-pavimento-in610-020-scheda.jpg",
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/supporto-quadro-pavimento-in610-020-sat-vista1.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-020-sat-vista2.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-020-sat-esploso.jpg"
+      ],
+      "Inox lucido": [
+        "prodotti/supporto-quadro-pavimento-in610-020-luc-vista1.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-020-luc-vista2.jpg",
+        "prodotti/supporto-quadro-pavimento-in610-020-luc-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "IN610-020-04", "finitura": "Inox satinato" },
+      { "codice": "IN610-020-04-L", "finitura": "Inox lucido" }
+    ]
+  },
+  {
+    "id": 42,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 06 con attacco diritto",
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["8.76", "10.76", "12.76"],
+    "dimensioni": "Corpo 52×52mm · profondità 32,5mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m062-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m062-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m062-vista1.jpg",
+        "prodotti/morsetto-m062-vista2.jpg",
+        "prodotti/morsetto-m062-sezione.jpg",
+        "prodotti/morsetto-m062-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M062-0876", "finitura": "Inox satinato", "spessoreVetro": 8.76 },
+      { "codice": "M062-1076", "finitura": "Inox satinato", "spessoreVetro": 10.76 },
+      { "codice": "M062-1276", "finitura": "Inox satinato", "spessoreVetro": 12.76 }
+    ]
+  },
+  {
+    "id": 52,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 06 con attacco per tubo Ø42,4mm",
+    "descrizione": "Morsetto per vetro con attacco per tubo Ø42,4mm, fissaggio a vite M8. Disponibile per spessori vetro 8,76, 10,76 e 12,76mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["8.76", "10.76", "12.76"],
+    "dimensioni": "Corpo 52×52mm · profondità 32,5mm · attacco tubo Ø42,4mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m062-042-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m062-042-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m062-042-vista1.jpg",
+        "prodotti/morsetto-m062-042-vista2.jpg",
+        "prodotti/morsetto-m062-042-sezione.jpg",
+        "prodotti/morsetto-m062-042-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M062-042-0876", "finitura": "Inox satinato", "spessoreVetro": 8.76 },
+      { "codice": "M062-042-1076", "finitura": "Inox satinato", "spessoreVetro": 10.76 },
+      { "codice": "M062-042-1276", "finitura": "Inox satinato", "spessoreVetro": 12.76 }
+    ]
+  },
+  {
+    "id": 47,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto per vetro mod. 09 con attacco diritto",
+    "descrizione": "Morsetto per vetro con attacco diritto, fissaggio a vite M8. Disponibile per spessori vetro 20,76 e 21,52mm; su ordinazione è disponibile anche per altri spessori di vetro. Prodotto da Inoxdesign in acciaio inox AISI 304, finitura inox satinato.",
+    "materiale": "Acciaio inox AISI 304",
+    "spessoriVetro": ["20.76", "21.52"],
+    "dimensioni": "Corpo 70×60mm · profondità 44,5mm · vite M8",
+    "fornitore": "Inoxdesign",
+    "scheda": "morsetto-m092-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-m092-scheda.jpg",
+    "assi": [
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Inox satinato": [
+        "prodotti/morsetto-m092-vista1.jpg",
+        "prodotti/morsetto-m092-vista2.jpg",
+        "prodotti/morsetto-m092-sezione.jpg",
+        "prodotti/morsetto-m092-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "M092-2076", "finitura": "Inox satinato", "spessoreVetro": 20.76 },
+      { "codice": "M092-2152", "finitura": "Inox satinato", "spessoreVetro": 21.52 }
+    ]
+  },
+  {
+    "id": 53,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto piccolo per vetro",
+    "note": [
+      "Spessore vetro compatibile ancora da confermare: aggiungerlo agli",
+      "\"assi\" (come negli altri morsetti) quando arriva il dato."
+    ],
+    "descrizione": "Morsetto piccolo per vetro, corpo 50×30mm e spessore 23mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 2 finiture: cromo lucido e nichel satinato.",
+    "materiale": "Zama",
+    "dimensioni": "Corpo 50×30mm · spessore 23mm",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "morsetto-piccolo-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-piccolo-scheda.jpg",
+    "immagini": {
+      "Cromo lucido": ["prodotti/morsetto-piccolo-cromo-lucido.jpg"]
+    },
+    "varianti": [
+      { "codice": "STIGLIMOP/CRL", "finitura": "Cromo lucido" },
+      { "codice": "STIGLIMOP/NIKSAT", "finitura": "Nichel satinato" }
+    ]
+  },
+  {
+    "id": 54,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Morsetto grande per vetro",
+    "note": [
+      "Spessore vetro compatibile ancora da confermare: aggiungerlo agli",
+      "\"assi\" (come negli altri morsetti) quando arriva il dato."
+    ],
+    "descrizione": "Morsetto grande per vetro, corpo 70×35mm e spessore 20mm. Completo di n° 4 guarnizioni in PVC. Prodotto da Torneria Dal Lago in zama, disponibile in 3 finiture: cromo lucido, cromo perla e nichel satinato.",
+    "materiale": "Zama",
+    "dimensioni": "Corpo 70×35mm · spessore 20mm",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "morsetto-grande-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/morsetto-grande-scheda.jpg",
+    "immagini": {
+      "Cromo lucido": ["prodotti/morsetto-grande-cromo-lucido.jpg"]
+    },
+    "varianti": [
+      { "codice": "STIGLIMORS/CRL", "finitura": "Cromo lucido" },
+      { "codice": "STIGLIMORS/CRPERL", "finitura": "Cromo perla" },
+      { "codice": "STIGLIMORS/NIKSAT", "finitura": "Nichel satinato" }
+    ]
+  },
+  {
+    "id": 74,
+    "categoria": "01",
+    "sottocategoria": "morsetti",
+    "nome": "Supporto a pinza RA 462",
+    "descrizione": "Supporto a pinza per vetro stratificato o pannello in alluminio estruso, corpo 70mm. Completo di n. 2 viti T.C. M6x14 e n. 2 viti T.S.C. M5x16 in acciaio inox, con guarnizione in giprene nero per spessore vetro 8-8,76mm. Per spessori 10-10,76mm si abbina all’accessorio RA 768; per il montaggio con le pinze in verticale si usa l’innesto RA 481. Esiste anche nella versione a pinza ridotta da 50mm, RA 892. Prodotto da Compas in alluminio, disponibile nelle finiture argento e nero.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.76"],
+    "dimensioni": "Corpo 70×60mm · profondità 29mm · interasse viti 35mm · spessore vetro 8-8,76mm",
+    "fornitore": "Compas",
+    "scheda": "ra462-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/ra462-scheda.jpg",
+    "immagini": {
+      "Argento": [
+        "prodotti/ra462-foto.jpg",
+        "prodotti/ra462-render.jpg",
+        "prodotti/ra462-quote-fronte.jpg",
+        "prodotti/ra462-quote-lato.jpg"
+      ],
+      "Nero opaco": [
+        "prodotti/ra462-nero-foto.jpg",
+        "prodotti/ra462-render.jpg",
+        "prodotti/ra462-quote-fronte.jpg",
+        "prodotti/ra462-quote-lato.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "RA-462-X2", "finitura": "Argento" },
+      { "codice": "RA-462-NE", "finitura": "Nero opaco" }
+    ]
+  }
+]
