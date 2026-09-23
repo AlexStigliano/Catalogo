@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Si pubblica solo da main: i branch di lavoro ci arrivano tramite pull
+  # request. Con piu' branch che pubblicano sullo stesso sito vince l'ultimo
+  # push, e uno rimasto indietro rimetterebbe online una versione superata.
   push:
-    branches: [main, claude/hardware-product-catalog-9tpjzm]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
