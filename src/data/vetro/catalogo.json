@@ -29,6 +29,11 @@
       { "id": "maniglie-battenti", "nome": "Maniglie per porte battenti" },
       { "id": "maniglioni", "nome": "Maniglioni" }
     ],
+    "06": [
+      { "id": "kit", "nome": "Kit" },
+      { "id": "cerniere", "nome": "Cerniere" },
+      { "id": "guarnizioni", "nome": "Guarnizioni" }
+    ],
     "09": [
       { "id": "siliconi-sigillanti", "nome": "Siliconi e sigillanti" },
       { "id": "tasselli", "nome": "Tasselli" },
