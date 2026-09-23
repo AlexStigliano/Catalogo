@@ -143,5 +143,12 @@ segnala come avviso.
 
 Li legge il plugin `scripts/vite-plugin-dati-vetro.mjs`, sia in sviluppo sia
 nella build: trasforma i nomi dei file negli indirizzi pubblicati e toglie
-le note. Poi `src/datiVetro.js` li passa all'interfaccia. In sviluppo
+le note.
+
+Le foto dei prodotti si mettono in `prodotti/` in JPG, alla risoluzione
+migliore che si ha. Nella build diventano WebP a 640 e 1280 px di larghezza
+(mai ingrandite) e il browser scarica quella adatta allo schermo: sul sito
+l'originale non viene pubblicato. Le conversioni restano in
+`node_modules/.cache/dati-vetro-foto`, così le build successive rifanno solo
+le foto nuove o cambiate. In sviluppo si vede la foto originale. Poi `src/datiVetro.js` li passa all'interfaccia. In sviluppo
 (`npm run dev`) la pagina si aggiorna da sola quando si salva un JSON.

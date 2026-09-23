@@ -78,6 +78,12 @@ const primaImmagine = (p) => {
 
 const finBg = (f) => FINISHES_VETRO[f] || 'linear-gradient(135deg,#c8c8c8,#9a9a9a)';
 const Chip = ({ finitura }) => <span className="chip" style={{ background: finBg(finitura) }} title={finitura} />;
+// Foto di prodotto: dalla build arriva { src, srcSet } con le versioni WebP
+// a 640 e 1280 px, in sviluppo solo { src }. "sizes" dice al browser quanto
+// sara' larga la foto sullo schermo, cosi' scarica la misura giusta.
+const Foto = ({ foto, sizes, ...resto }) => (
+  <img src={foto.src} srcSet={foto.srcSet} sizes={foto.srcSet ? sizes : undefined} {...resto} />
+);
 const Ghost = () => (
   <svg className="ghost" viewBox="0 0 120 90" aria-hidden="true">
     <circle cx="30" cy="45" r="17" />
@@ -215,7 +221,7 @@ function Indice() {
                 return (
                   <button className="res-row" key={p.id} onClick={() => go(`/prodotto/${p.id}`)}>
                     <span className="res-thumb">
-                      {img ? <img src={img} alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
+                      {img ? <Foto foto={img} sizes="60px" alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
                     </span>
                     <span className="res-body">
                       <span className="res-name">{p.nome}</span>
@@ -513,7 +519,7 @@ function ProductCatalog({ products }) {
       <div className="shell">
         <div className={`gallery${mobileView === 'grid2' ? ' compact-2col' : ''}`}>
           {filtered.map((p, idx) => (
-            <ProductCard key={p.id} product={p} idx={idx}
+            <ProductCard key={p.id} product={p} idx={idx} compatta={mobileView === 'grid2'}
               isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
           ))}
 
@@ -531,7 +537,7 @@ function ProductCatalog({ products }) {
 }
 
 /* ---------- Scheda prodotto (card griglia) ---------- */
-function ProductCard({ product: p, idx, isFav, onFav }) {
+function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
   const images = p.immagini || {};
   const ufins = [...new Set(p.varianti.map(v => v.finitura))];
   const firstWithImg = p.varianti.find(v => images[v.finitura]);
@@ -576,7 +582,8 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           aria-label={`Apri la scheda di ${p.nome}`}
           onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
           onTouchEnd={gallery.length > 1 ? onTouchEnd : undefined}>
-          {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} loading="lazy" />
+          {selImg ? <Foto foto={selImg} sizes={compatta ? '(max-width: 640px) 50vw, 400px' : '(max-width: 640px) 100vw, 400px'}
+              alt={`${p.nome} — ${selFin}`} loading="lazy" />
             : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
         </div>
         {gallery.length > 1 && (
@@ -687,7 +694,7 @@ function RelatedCard({ p }) {
   return (
     <button className="rel-card" onClick={() => go('/prodotto/' + p.id)}>
       <div className="rel-media">
-        {img ? <img src={img} alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
+        {img ? <Foto foto={img} sizes="80px" alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
       </div>
       <div className="rel-body">
         <span className="rel-name">{p.nome}</span>
@@ -824,7 +831,7 @@ function ProductDetail({ id }) {
                 <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
               </button>
               <div className="media-body">
-                {selImg ? <img src={selImg} alt={`${p.nome} — ${selFin}`} />
+                {selImg ? <Foto foto={selImg} sizes="(max-width: 760px) 100vw, 600px" alt={`${p.nome} — ${selFin}`} />
                   : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
               </div>
               {!senzaFin && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
@@ -834,7 +841,7 @@ function ProductDetail({ id }) {
                 {gallery.map((img, i) => (
                   <button key={i} className={`pdp-thumb${i === imgIdx ? ' active' : ''}`}
                     onClick={() => setImgIdx(i)} aria-label={`Foto ${i + 1}`} aria-pressed={i === imgIdx}>
-                    <img src={img} alt={`${p.nome} — vista ${i + 1}`} />
+                    <Foto foto={img} sizes="64px" alt={`${p.nome} — vista ${i + 1}`} />
                   </button>
                 ))}
               </div>
