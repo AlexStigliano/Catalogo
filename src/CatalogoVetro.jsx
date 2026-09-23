@@ -33,42 +33,104 @@ const openScheda = (id, key) => window.dispatchEvent(new CustomEvent('open-sched
 const catName = (id) => (CATEGORIE_VETRO.find(c => c.id === id) || {}).nome || id;
 
 /* ---------- Ricerca in tutto il catalogo vetro ---------- */
+/* Un'unica regola per la barra dell'indice e per quella dentro le categorie.
+   Ogni parola cercata deve trovare corrispondenza nel prodotto, in qualsiasi
+   ordine; gli accenti si ignorano ("trafilo" trova Tràfilo).
+   - Nel testo una parola cercata vale se e' l'inizio di una parola del
+     prodotto: "mani" trova "maniglia", ma "vite" non trova "evitare" e
+     "oro" non trova "poroso".
+   - Nei codici articolo basta un pezzo qualsiasi, da 3 caratteri in su,
+     ignorando trattini e spazi: "109-239" trova IN109-239.
+   I risultati sono in ordine di pertinenza: prima il codice esatto, poi
+   il nome, le parole chiave (con fornitore, materiali e finiture), la
+   sottocategoria e per ultima la descrizione. A parita', l'ordine del
+   catalogo. */
 const senzaAccenti = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-const radice = (w) => (w.length > 3 && /[aeiou]$/.test(w)) ? w.slice(0, -1) : w;
-const normalizzaTesto = (s) => senzaAccenti(s).split(/\s+/).filter(Boolean).map(radice).join(' ');
-
-const INDICE_RICERCA_VETRO = PRODOTTI_VETRO.map(p => ({
-  p,
-  testo: normalizzaTesto([
-    p.nome, p.fornitore, subName(p.sottocategoria), catName(p.categoria),
-    ...materialiDi(p),
-    p.descrizione || '', PAROLE_CHIAVE_VETRO[p.id] || '',
-    ...p.varianti.map(v => v.codice),
-    ...p.varianti.map(v => v.finitura)
-  ].join(' '))
-}));
-
-/* Un'unica regola di ricerca per la barra dell'indice e per quella dentro le
-   categorie: ogni parola cercata deve comparire nel testo del prodotto, in
-   qualsiasi ordine. Gli accenti si ignorano, altrimenti "trafilo" non
-   troverebbe Tràfilo. */
-const parolePerRicerca = (testo) => senzaAccenti(testo).split(/\s+/).filter(Boolean).map(radice);
-const TESTO_RICERCA_PER_ID = new Map(INDICE_RICERCA_VETRO.map(({ p, testo }) => [p.id, testo]));
-const corrispondeRicerca = (p, parole) => {
-  const testo = TESTO_RICERCA_PER_ID.get(p.id) || '';
-  return parole.every(w => testo.includes(w));
+const soloLettereCifre = (s) => senzaAccenti(s).replace(/[^a-z0-9]/g, '');
+// Radice italiana semplice: toglie le vocali finali (specchio/specchi,
+// maniglia/maniglie) e l'h di -chi/-ghi (bianco/bianchi, lungo/lunghi).
+const radice = (w) => {
+  if (w.length <= 3 || !/^[a-z]+$/.test(w)) return w;
+  const r = w.replace(/[aeiou]+$/, '').replace(/([cg])h$/, '$1');
+  return r.length >= 3 ? r : w;
 };
+// Parole spezzate sugli spazi, senza la punteggiatura attaccata ai bordi.
+// Chi ha punteggiatura interna (8+8, TG-200) vale intera e anche a pezzi.
+// La ø resta una lettera: "ø52" non deve diventare "52".
+const bordi = (w) => w.replace(/^[^a-z0-9ø]+|[^a-z0-9ø]+$/g, '');
+const paroleDi = (s) => senzaAccenti(s || '').split(/\s+/).map(bordi).filter(Boolean)
+  .flatMap(w => /[^a-z0-9ø]/.test(w) ? [w, ...w.split(/[^a-z0-9ø]+/).filter(Boolean)] : [w])
+  .map(radice);
+
+const INDICE_RICERCA_VETRO = new Map(PRODOTTI_VETRO.map(p => [p.id, {
+  codici: [...new Set(p.varianti.map(v => soloLettereCifre(v.codice)))],
+  campi: [
+    { peso: 100, parole: paroleDi(p.nome) },
+    { peso: 60, parole: paroleDi([PAROLE_CHIAVE_VETRO[p.id], p.fornitore, ...materialiDi(p), ...p.varianti.map(v => v.finitura)].join(' ')) },
+    { peso: 40, parole: paroleDi(subName(p.sottocategoria) + ' ' + catName(p.categoria)) },
+    { peso: 10, parole: paroleDi(p.descrizione) },
+  ],
+}]));
+
+// Le parole cercate, ognuna pronta sia per i codici sia per il testo.
+const parolePerRicerca = (testo) => senzaAccenti(testo).split(/\s+/).filter(Boolean)
+  .map(t => ({ codice: soloLettereCifre(t), parola: radice(bordi(t)) }))
+  .filter(t => t.codice || t.parola);
+
+const codiceCorrisponde = (codice, t) => t.codice.length >= 3 ? codice.includes(t.codice) : codice.startsWith(t.codice);
+const puntiCodice = (ind, t) => {
+  if (!t.codice) return 0;
+  if (ind.codici.includes(t.codice)) return 1000;
+  return ind.codici.some(c => codiceCorrisponde(c, t)) ? 400 : 0;
+};
+// Il campo piu' importante in cui la parola compare; intera vale un po' di
+// piu' che come inizio di parola.
+const puntiTesto = (ind, t) => {
+  if (!t.parola) return 0;
+  let migliore = 0;
+  for (const c of ind.campi) {
+    if (c.parole.includes(t.parola)) migliore = Math.max(migliore, c.peso * 1.2);
+    else if (c.parole.some(x => x.startsWith(t.parola))) migliore = Math.max(migliore, c.peso);
+  }
+  return migliore;
+};
+// Le parole cercate una dopo l'altra, come frase ("doppia azione").
+const inSequenza = (lista, parole) => parole.length > 1
+  && lista.some((_, i) => parole.every((w, k) => (lista[i + k] || '').startsWith(w)));
+
+// 0 = il prodotto non corrisponde; piu' alto = piu' pertinente.
+const punteggioRicerca = (p, parole) => {
+  const ind = INDICE_RICERCA_VETRO.get(p.id);
+  if (!ind) return 0;
+  let totale = 0;
+  for (const t of parole) {
+    const punti = Math.max(puntiCodice(ind, t), puntiTesto(ind, t));
+    if (!punti) return 0;
+    totale += punti;
+  }
+  const frase = parole.map(t => t.parola).filter(Boolean);
+  if (inSequenza(ind.campi[0].parole, frase)) totale += 200;
+  else if (inSequenza(ind.campi[3].parole, frase)) totale += 30;
+  return totale;
+};
+
+// Ordina per pertinenza; a parita' resta l'ordine di partenza (del catalogo).
+const perPertinenza = (prodotti, parole) => prodotti
+  .map((p, i) => ({ p, i, punti: punteggioRicerca(p, parole) }))
+  .filter(x => x.punti > 0)
+  .sort((a, b) => b.punti - a.punti || a.i - b.i)
+  .map(x => x.p);
 
 const cercaProdottiVetro = (testo) => {
   const parole = parolePerRicerca(testo);
-  if (!parole.length) return [];
-  return PRODOTTI_VETRO.filter(p => corrispondeRicerca(p, parole));
+  return parole.length ? perPertinenza(PRODOTTI_VETRO, parole) : [];
 };
 
+// I codici articolo che corrispondono alla ricerca, mostrati sotto il nome.
 const codiciTrovati = (p, testo) => {
-  const parole = senzaAccenti(testo).split(/\s+/).filter(Boolean);
+  const parole = parolePerRicerca(testo).filter(t => t.codice);
   const cod = [...new Set(p.varianti.map(v => v.codice))];
-  return cod.filter(c => parole.some(w => senzaAccenti(c).includes(w)));
+  return cod.filter(c => parole.some(t => codiceCorrisponde(soloLettereCifre(c), t)));
 };
 
 const primaImmagine = (p) => {
@@ -391,7 +453,7 @@ function ProductCatalog({ products }) {
   // Dentro lo stesso filtro le scelte sono in OR, tra filtri diversi in AND.
   const parole = useMemo(() => parolePerRicerca(q), [q]);
   const match = (p, salta) => {
-    const okQ = !parole.length || corrispondeRicerca(p, parole);
+    const okQ = !parole.length || punteggioRicerca(p, parole) > 0;
     const okM = salta === 'mat' || !mat.length || materialiDi(p).some(m => mat.includes(m));
     const okF = salta === 'fin' || !fin.length || (!p.senzaFinitura && p.varianti.some(v => fin.includes(v.finitura)));
     const okP = salta === 'prod' || !prod.length || prod.includes(p.fornitore);
@@ -402,7 +464,9 @@ function ProductCatalog({ products }) {
     const okFav = !favOnly || favorites.includes(p.id);
     return okQ && okM && okF && okP && okD && okL && okI && okV && okFav;
   };
-  const filtered = products.filter(p => match(p, null));
+  // Con una ricerca in corso i prodotti vanno in ordine di pertinenza.
+  const trovati = products.filter(p => match(p, null));
+  const filtered = parole.length ? perPertinenza(trovati, parole) : trovati;
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
   const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + diam.length + lung.length + inter.length + vetro.length + (favOnly ? 1 : 0);
   const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
