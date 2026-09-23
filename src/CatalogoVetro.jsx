@@ -4501,7 +4501,18 @@ function ProductDetail({ id }) {
 /* Visualizzatore scheda tecnica in pagina (immagine a schermo intero) */
 function SchedaViewer() {
   const [item, setItem] = useState(null);
+  // Chiusura da ✕, clic fuori o Esc: si toglie il passo aggiunto in apertura
+  // e la chiusura vera arriva con popstate. Se quel passo non c'e', si chiude
+  // e basta.
+  const chiudiVisore = () => {
+    if (window.history.state && window.history.state.schedaAperta) window.history.back();
+    else { setItem(null); document.body.style.overflow = ''; }
+  };
   useEffect(() => {
+    const chiudi = () => { setItem(null); document.body.style.overflow = ''; };
+    // Dopo un ricaricamento col visore aperto lo stato di cronologia resta,
+    // ma il visore no: lo si azzera per non far chiudere niente a vuoto.
+    if (window.history.state && window.history.state.schedaAperta) window.history.replaceState(null, '');
     const onOpen = (e) => {
       const { id, key } = e.detail || {};
       const p = PRODOTTI_VETRO.find(x => x.id === id);
@@ -4513,14 +4524,23 @@ function SchedaViewer() {
       const perVariante = p.scheda && typeof p.scheda === 'object' && p.scheda[key] !== undefined;
       setItem({ src, title: p.nome, ver: perVariante ? key : null, pdf: pickScheda(p.scheda, key) });
       document.body.style.overflow = 'hidden';
+      // Un passo in cronologia con lo stesso indirizzo: il tasto Indietro del
+      // telefono chiude il visore invece di cambiare pagina.
+      window.history.pushState({ schedaAperta: true }, '');
     };
-    const onKey = (e) => { if (e.key === 'Escape') { setItem(null); document.body.style.overflow = ''; } };
+    const onPop = () => chiudi();
+    const onKey = (e) => { if (e.key === 'Escape') chiudiVisore(); };
     window.addEventListener('open-scheda-vetro', onOpen);
+    window.addEventListener('popstate', onPop);
     window.addEventListener('keydown', onKey);
-    return () => { window.removeEventListener('open-scheda-vetro', onOpen); window.removeEventListener('keydown', onKey); };
+    return () => {
+      window.removeEventListener('open-scheda-vetro', onOpen);
+      window.removeEventListener('popstate', onPop);
+      window.removeEventListener('keydown', onKey);
+    };
   }, []);
   if (!item) return null;
-  const close = () => { setItem(null); document.body.style.overflow = ''; };
+  const close = chiudiVisore;
   return (
     <div className="sheet-ov" onClick={close}>
       <div className="sheet-bar" onClick={e => e.stopPropagation()}>
