@@ -1,0 +1,109 @@
+{
+  "categorie": [
+    { "id": "01", "nome": "Parapetti e pensiline" },
+    { "id": "02", "nome": "Soluzioni per porte scorrevoli" },
+    { "id": "03", "nome": "Soluzioni per porte battenti" },
+    { "id": "04", "nome": "Maniglie e maniglioni" },
+    { "id": "05", "nome": "Soluzioni per pareti e partizioni" },
+    { "id": "06", "nome": "Soluzioni per cabine doccia" },
+    { "id": "07", "nome": "Soluzioni per vetrine" },
+    { "id": "08", "nome": "Complementi d'arredo" },
+    { "id": "09", "nome": "Sistemi di fissaggio" },
+    { "id": "10", "nome": "Accessori e utensili" }
+  ],
+  "sottocategorie": {
+    "01": [
+      { "id": "balaustre", "nome": "Profili per balaustre" },
+      { "id": "puntuali", "nome": "Attacchi puntuali" },
+      { "id": "pensiline", "nome": "Pensiline" },
+      { "id": "morsetti", "nome": "Morsetti" },
+      { "id": "fermavetri", "nome": "Fermavetri" }
+    ],
+    "03": [
+      { "id": "chiudiporta", "nome": "Chiudiporta" },
+      { "id": "cerniere", "nome": "Cerniere" },
+      { "id": "serrature", "nome": "Serrature" }
+    ],
+    "04": [
+      { "id": "maniglie-scorrevoli", "nome": "Maniglie per porte scorrevoli" },
+      { "id": "maniglie-battenti", "nome": "Maniglie per porte battenti" },
+      { "id": "maniglioni", "nome": "Maniglioni" }
+    ],
+    "09": [
+      { "id": "siliconi-sigillanti", "nome": "Siliconi e sigillanti" },
+      { "id": "tasselli", "nome": "Tasselli" },
+      { "id": "nastri-biadesivi", "nome": "Nastri biadesivi" }
+    ]
+  },
+  "altreSottocategorie": [],
+  "fornitori": {
+    "Bostik": "bostik-logo.png",
+    "Compas": "compas-logo.svg",
+    "dormakaba": "dormakaba-logo.png",
+    "Fimet": "../fimet-logo.png",
+    "fischer": "fischer-logo.png",
+    "Fratelli Zucchini": "zucchini-logo.png",
+    "G&B Fissaggi": "gb-logo.png",
+    "GFS": "gfs-logo.png",
+    "Häfele": null,
+    "HOPPE": "../hoppe-logo.png",
+    "Inoxdesign": "inoxdesign-logo.png",
+    "MAB": null,
+    "Meroni": "meroni-logo.png",
+    "Soudal": "soudal-logo.png",
+    "Terno Scorrevoli": "terno-scorrevoli-logo.png",
+    "Torneria Dal Lago": "dallago-logo.png",
+    "Tràfilo": "trafilo-logo.png"
+  },
+  "finiture": {
+    "Inox satinato": "linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)",
+    "Nero opaco": "linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)",
+    "Oro": "linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)",
+    "Acciaio inox satinato": "linear-gradient(135deg,#dfe2e5,#aeb4b9 45%,#c9ced2 58%,#9ea4a9)",
+    "Inox lucido": "linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)",
+    "PVD lucido": "linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)",
+    "Bianco opaco": "linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)",
+    "Oro satinato": "linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)",
+    "Bicolore inox satinato / lucido": "linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)",
+    "Argento": "linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)",
+    "Finitura inox satinato": "linear-gradient(135deg,#eef1f2,#c9cfd3 38%,#f3f5f6 52%,#a8afb4 70%,#e2e6e8)",
+    "Acciaio satinato": "linear-gradient(135deg,#e9edf0,#b9c1c6 40%,#dde2e5 54%,#9aa2a7 72%,#e6eaed)",
+    "Cromo opaco": "linear-gradient(135deg,#e3e6e8,#a9afb4 42%,#cfd4d7 56%,#8d949a 74%,#dfe3e5)",
+    "Cromo lucido": "linear-gradient(135deg,#ffffff,#c9ced2 30%,#6f777e 50%,#d4d8db 68%,#ffffff)",
+    "Cromo perla": "linear-gradient(135deg,#f7f5f2,#dcd9d4 40%,#eeece8 55%,#c9c6c0 72%,#f5f3f0)",
+    "Nichel satinato": "linear-gradient(135deg,#e8e2d6,#b9b0a0 42%,#d6cfc1 55%,#a39a89 74%,#e3ddd0)",
+    "Alluminio argento opaco": "linear-gradient(135deg,#dcdedf,#aab0b3 42%,#c7cbcd 55%,#94999c 74%,#d7d9da)",
+    "Alluminio lucido": "linear-gradient(135deg,#fbfcfd,#d2d7da 30%,#8b9298 50%,#dadee0 68%,#fafbfc)",
+    "Trasparente": "linear-gradient(135deg,#ffffff,#eef5f6 34%,#d9e7e9 55%,#f2f8f9 76%,#ffffff)",
+    "Cristallino": "linear-gradient(135deg,#ffffff,#f7fdff 18%,#c9eef5 34%,#ffffff 48%,#eafbfd 62%,#a9e4ee 78%,#ffffff)",
+    "Bianco": "linear-gradient(135deg,#ffffff,#f4f4f1 55%,#e8e8e3)",
+    "Avorio 1013": "linear-gradient(135deg,#f5f1de,#e7e0bf 55%,#f0eace)",
+    "Nero": "linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)",
+    "Alluminio": "linear-gradient(135deg,#c9cbcd,#9a9ca0 55%,#c2c4c6)",
+    "Grigio": "linear-gradient(135deg,#b7b9bb,#8a8c8e 55%,#b0b2b4)",
+    "Grigio cemento": "linear-gradient(135deg,#c7c3ba,#9a958a 55%,#c0bbb0)",
+    "Grigio e rosso": "linear-gradient(120deg,#d7d9db 0%,#a9adb1 46%,#d42b20 54%,#9e1a12 100%)",
+    "Grigio metallizzato": "linear-gradient(135deg,#d8dadc,#a3a6a9 40%,#6e7174 60%,#c7cacd 80%,#e4e6e8)",
+    "Testa di moro": "linear-gradient(135deg,#5c4130,#3a281c 55%,#4f3826)",
+    "Oro lucido": "linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)",
+    "Simil inox": "linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)",
+    "Argento spazzolato": "linear-gradient(135deg,#e6e9ec,#b7bdc2 42%,#d3d8db 55%,#a7adb2)",
+    "Nero spazzolato": "linear-gradient(135deg,#3d3d40,#232325 60%,#2f2f31)"
+  },
+  "noteFiniture": {
+    "Alluminio lucido": ["Alluminio anodizzato lucido: la finitura che Terno chiama \"Brill\" (suffisso 07)."],
+    "Trasparente": ["PVC trasparente: appena velato, con il riflesso del vetro."],
+    "Cristallino": [
+      "Cristallino: piu' luminoso e contrastato del \"Trasparente\" velato qui",
+      "sopra, per far vedere a colpo d'occhio che questo sigillante non vela",
+      "per niente, resta limpido come il vetro."
+    ],
+    "Bianco": ["Il bianco dei sigillanti: opaco e pieno, senza il riflesso delle vernici."],
+    "Nero": ["Nero e alluminio \"da sigillante\": pasta opaca, non una finitura metallica."],
+    "Grigio cemento": [
+      "Il grigio cemento degli ancoranti chimici: piu' caldo e opaco del",
+      "\"Grigio\" dei sigillanti, come la resina indurita."
+    ],
+    "Grigio e rosso": ["I tasselli bimateriale: nylon grigio e TPE rosso, divisi a meta'."]
+  }
+}

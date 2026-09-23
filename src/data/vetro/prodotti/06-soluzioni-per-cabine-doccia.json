@@ -1,0 +1,217 @@
+[
+  {
+    "id": 81,
+    "categoria": "06",
+    "nome": "Clear",
+    "note": [
+      "Il catalogo Terno prevede anche il binario da 3000mm e vende il binario",
+      "a parte (blister B.0412/B.0413): noi lo trattiamo come un kit unico con",
+      "il binario da 2000mm, che e' l'unica versione che teniamo, nelle due",
+      "finiture che ci ha confermato il cliente (brill .07 e nero .15)."
+    ],
+    "descrizione": "Sistema scorrevole studiato appositamente per i box doccia, con cuscinetti in acciaio inox che lo rendono estremamente resistente all'umidità e all'uso quotidiano. È un sistema molto versatile: permette la posa in nicchia (configurazione parete-parete), la posa in luce (vetro-vetro) e la posa ad angolo (parete-vetro). Adatto a vetri con spessore 8-8,7 o 10-10,7mm, con portata 40kg e larghezza anta fino a 1000mm. Lo forniamo come kit unico completo di binario da 2000mm, in 2 finiture: alluminio lucido (brill) e nero. Prodotto da Terno Scorrevoli in alluminio con cuscinetti in acciaio inox.",
+    "materiale": "Alluminio e acciaio inox",
+    "spessoriVetro": ["8", "8.7", "10", "10.7"],
+    "dimensioni": "Binario 2000mm · portata 40kg per anta · larghezza anta max 1000mm · spessore vetro 8-8,7 / 10-10,7mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "clear-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/clear-scheda.jpg",
+    "istruzioni": "clear-istruzioni-montaggio.pdf",
+    "video": "https://www.youtube.com/watch?v=9GCIVxI6tkI",
+    "caratteristiche": [
+      {
+        "titolo": "Nato per il box doccia",
+        "testo": "I cuscinetti sono realizzati in acciaio inox: il sistema regge l'umidità e l'uso quotidiano del bagno senza perdere scorrevolezza."
+      },
+      {
+        "titolo": "Tre configurazioni di posa",
+        "testo": "Posa in nicchia (parete-parete), posa in luce (vetro-vetro) e posa ad angolo (parete-vetro), con lo stesso kit."
+      },
+      {
+        "titolo": "Kit completo di binario",
+        "testo": "Lo forniamo già completo del binario da 2000mm: un solo articolo, senza dover ordinare il binario a parte."
+      },
+      {
+        "titolo": "Adatto a due spessori di vetro",
+        "testo": "Compatibile con vetri da 8-8,7mm e da 10-10,7mm, con i profili di tenuta dedicati per ciascuno spessore."
+      },
+      { "titolo": "Portata 40kg", "testo": "Ogni anta può pesare fino a 40kg, con larghezza massima 1000mm." },
+      {
+        "titolo": "Video tutorial di montaggio",
+        "testo": "Oltre alle istruzioni in PDF trovi il video ufficiale Terno Scorrevoli che mostra passo passo il montaggio del sistema."
+      }
+    ],
+    "immagini": {
+      "Alluminio lucido": ["prodotti/clear-ambiente-bagno.jpg", "prodotti/clear-dettaglio.jpg", "prodotti/clear-esploso.jpg"],
+      "Nero spazzolato": ["prodotti/clear-ambiente-bagno.jpg", "prodotti/clear-dettaglio.jpg", "prodotti/clear-esploso.jpg"]
+    },
+    "varianti": [
+      { "codice": "K.0411.4.07", "finitura": "Alluminio lucido" },
+      { "codice": "K.0411.4.15", "finitura": "Nero spazzolato" }
+    ]
+  },
+  {
+    "id": 82,
+    "categoria": "06",
+    "nome": "Guarnizione a palloncino",
+    "note": [
+      "Art. 401 della serie \"400\" di Tràfilo, per noi art. 401.2500.",
+      "Le guarnizioni di questa serie non hanno il campo \"scheda\": la tavola del",
+      "fornitore mette insieme gli art. 401-408 e le uniche misure che contano",
+      "sono gia' nel disegno quotato che usiamo come immagine, quindi il tasto",
+      "\"Scheda tecnica\" non compare proprio."
+    ],
+    "descrizione": "Guarnizione a palloncino per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il palloncino tondo sotto fa da battuta e tenuta contro il piatto doccia o l'anta a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm, palloncino Ø6,5mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · palloncino Ø6,5mm · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-palloncino-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "401.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 83,
+    "categoria": "06",
+    "nome": "Guarnizione doppia pinna",
+    "note": ["Art. 402 della stessa tavola serie \"400\": per noi art. 402.2500."],
+    "descrizione": "Guarnizione a doppia pinna per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e sotto porta due pinne, una diritta da 12mm e una inclinata da 10mm, che fanno tenuta contro il piatto doccia o l'anta a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · pinne da 12 e 10mm · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-doppia-pinna-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "402.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 84,
+    "categoria": "06",
+    "nome": "Guarnizione pinna laterale per scorrevole",
+    "note": ["Art. 404 della stessa tavola serie \"400\": per noi art. 404.2500."],
+    "descrizione": "Guarnizione a pinna laterale per box doccia scorrevoli, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna diritta, che sporge di lato, va a coprire la luce fra l'anta scorrevole e il fisso a fianco. La pinna si taglia a misura da 5 a 30mm, in base alla sovrapposizione fra le ante. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · pinna da 5 a 30mm · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-pinna-scorrevole-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "404.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 85,
+    "categoria": "06",
+    "nome": "Guarnizione pinna laterale per battente",
+    "note": ["Art. 405 della stessa tavola serie \"400\": per noi art. 405.2500."],
+    "descrizione": "Guarnizione a pinna laterale per box doccia a battente, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e la pinna morbida e curva, lunga da 10 a 22mm, appoggia sull'anta o sul fisso a fianco seguendo il movimento della porta. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · pinna da 10 a 22mm · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-pinna-battente-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "405.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 86,
+    "categoria": "06",
+    "nome": "Guarnizione calamitata frontale",
+    "note": [
+      "Art. 411 della serie \"400\": per noi art. 411.2500.",
+      "",
+      "Le guarnizioni calamitate si vendono sempre a due a due e quale coppia serve",
+      "dipende da come chiudono le ante, non dall'articolo: la caratteristica",
+      "\"Come si abbinano\" e' la stessa per tutte e tre."
+    ],
+    "descrizione": "Guarnizione calamitata per box doccia, in PVC coestruso: il profilo si innesta a scatto sul bordo del vetro e il magnete, annegato nella base piatta e frontale, tiene chiusa l'anta contro quella a fianco. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · magnete frontale · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "caratteristiche": [
+      {
+        "titolo": "Come si abbinano",
+        "testo": "Servono sempre due guarnizioni, una per anta. Se le ante chiudono in linea vanno due guarnizioni con la stessa polarizzazione; se chiudono ad angolo ne servono due con polarizzazione opposta."
+      }
+    ],
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-calamitata-frontale-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "411.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 87,
+    "categoria": "06",
+    "nome": "Guarnizione calamitata a 45°",
+    "note": [
+      "Art. 412 della serie \"400\": per noi art. 412.2500. Stessa guarnizione",
+      "dell'art. 412.INV qui sotto, ma con la polarizzazione opposta.",
+      "",
+      "Le guarnizioni calamitate si vendono sempre a due a due e quale coppia serve",
+      "dipende da come chiudono le ante, non dall'articolo: la caratteristica",
+      "\"Come si abbinano\" e' la stessa per tutte e tre."
+    ],
+    "descrizione": "Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l'anta contro quella a fianco. Il magnete è polarizzato N-S. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità N-S · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "caratteristiche": [
+      {
+        "titolo": "Come si abbinano",
+        "testo": "Servono sempre due guarnizioni, una per anta. Se le ante chiudono in linea vanno due guarnizioni con la stessa polarizzazione; se chiudono ad angolo ne servono due con polarizzazione opposta."
+      }
+    ],
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-calamitata-45-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "412.2500", "finitura": "Trasparente" }
+    ]
+  },
+  {
+    "id": 88,
+    "categoria": "06",
+    "nome": "Guarnizione calamitata a 45° invertita",
+    "note": [
+      "Art. 412.INV della serie \"400\": per noi art. 412.INV.2500. Identica",
+      "all'art. 412, con la polarizzazione girata: e' la controparte da montare",
+      "sull'altra anta quando la chiusura e' ad angolo.",
+      "",
+      "Le guarnizioni calamitate si vendono sempre a due a due e quale coppia serve",
+      "dipende da come chiudono le ante, non dall'articolo: la caratteristica",
+      "\"Come si abbinano\" e' la stessa per tutte e tre."
+    ],
+    "descrizione": "Guarnizione calamitata per box doccia, in PVC coestruso, con la base del magnete inclinata a 45°: il profilo si innesta a scatto sul bordo del vetro e il magnete tiene chiusa l'anta contro quella a fianco. È identica alla guarnizione calamitata a 45°, ma con la polarizzazione girata: il magnete è polarizzato S-N. Adatta a vetro da 6 a 8 mm di spessore. Profilo alto 13mm. La forniamo trasparente, in aste da 2500mm da tagliare a misura. Prodotta da Tràfilo, serie 400.",
+    "materiale": "PVC coestruso",
+    "spessoriVetro": ["6", "8"],
+    "dimensioni": "Asta da 2500mm · profilo alto 13mm · magnete inclinato a 45°, polarità S-N · spessore vetro 6-8mm",
+    "fornitore": "Tràfilo",
+    "caratteristiche": [
+      {
+        "titolo": "Come si abbinano",
+        "testo": "Servono sempre due guarnizioni, una per anta. Se le ante chiudono in linea vanno due guarnizioni con la stessa polarizzazione; se chiudono ad angolo ne servono due con polarizzazione opposta."
+      }
+    ],
+    "immagini": {
+      "Trasparente": ["prodotti/guarnizione-calamitata-45-inv-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "412.INV.2500", "finitura": "Trasparente" }
+    ]
+  }
+]

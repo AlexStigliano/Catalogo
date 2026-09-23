@@ -1,0 +1,385 @@
+[
+  {
+    "id": 58,
+    "categoria": "02",
+    "nome": "Magic2 Vetro",
+    "descrizione": "Sistema scorrevole a scomparsa esterno muro per porte in vetro, pluribrevettato e 100% Made in Italy: lo scorrevole invisibile originale. Fermi ammortizzati ad aria con oltre 50mm di frenatura e sistema brevettato di regolazione micrometrica. Il sistema si fissa tramite borchie o fascia a vista ed è adatto a vetri monolitici o stratificati. Kit completo disponibile in due lunghezze, per porte fino a 80kg. Prodotto da Terno Scorrevoli in alluminio e acciaio, disponibile in 2 finiture: argento spazzolato e nero spazzolato.",
+    "materiale": "Alluminio e acciaio",
+    "spessoriVetro": ["8", "10"],
+    "dimensioni": "Kit 1100 o 1800mm · peso porta max 80kg · spessore vetro 8-10mm · luce inferiore 10mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "magic2-vetro-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/magic2-vetro-scheda.jpg",
+    "istruzioni": "magic2-vetro-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Oltre 50mm di frenatura",
+        "testo": "Fermi ammortizzati brevettati che garantiscono oltre 50mm di frenatura, mantenendo gli stessi ingombri della porta."
+      },
+      {
+        "titolo": "Fermi con posizione regolabile",
+        "testo": "Indipendenti dal distanziale: si possono spostare, se necessario, per regolare la posizione della porta."
+      },
+      {
+        "titolo": "Ruote distanziali",
+        "testo": "Posizionate alle estremità della porta, la proteggono da contatti con la parete in caso di muri con superfici irregolari."
+      },
+      {
+        "titolo": "Sistema brevettato di regolazione",
+        "testo": "Regolazione dell’altezza della porta dal pavimento e regolazione micrometrica di distanza e parallelismo dalla parete, per compensare eventuali irregolarità del muro. Tutte le regolazioni si effettuano dall’alto, senza sganciare la porta."
+      },
+      {
+        "titolo": "Sistema di antisganciamento",
+        "testo": "Due elementi rotanti con leve di sicurezza ben visibili, per l’antisganciamento della porta senza bisogno di utensili."
+      },
+      {
+        "titolo": "Guida inferiore silenziosa",
+        "testo": "Rinforzata in zama, resistente e versatile, scorre in un profilo che riduce al minimo il rumore."
+      },
+      {
+        "titolo": "Ruote inferiori brevettate",
+        "testo": "Molleggio brevettato, diametro, cuscinetti e perni in acciaio maggiorati, rivestimento in gomma raddoppiato: più forza e scorrevolezza, senza lasciare tracce sulle superfici e senza deformarsi nel tempo."
+      }
+    ],
+    "assi": [
+      { "chiave": "lunghezza", "etichetta": "Lunghezza kit", "suffisso": " mm" },
+      { "chiave": "spessoreVetro", "etichetta": "Spessore vetro", "suffisso": " mm" }
+    ],
+    "immagini": {
+      "Argento spazzolato": [
+        "prodotti/magic2-vetro-ambiente-ufficio.jpg",
+        "prodotti/magic2-vetro-ambiente-boutique.jpg",
+        "prodotti/magic2-vetro-argento.jpg"
+      ],
+      "Nero spazzolato": [
+        "prodotti/magic2-vetro-ambiente-ufficio.jpg",
+        "prodotti/magic2-vetro-ambiente-boutique.jpg",
+        "prodotti/magic2-vetro-argento.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "K.0041.1.02", "finitura": "Argento spazzolato", "lunghezza": 1100, "spessoreVetro": 8 },
+      { "codice": "K.0041.2.02", "finitura": "Argento spazzolato", "lunghezza": 1100, "spessoreVetro": 10 },
+      { "codice": "K.0042.1.02", "finitura": "Argento spazzolato", "lunghezza": 1800, "spessoreVetro": 8 },
+      { "codice": "K.0042.2.02", "finitura": "Argento spazzolato", "lunghezza": 1800, "spessoreVetro": 10 },
+      { "codice": "K.0041.1.15", "finitura": "Nero spazzolato", "lunghezza": 1100, "spessoreVetro": 8 },
+      { "codice": "K.0041.2.15", "finitura": "Nero spazzolato", "lunghezza": 1100, "spessoreVetro": 10 },
+      { "codice": "K.0042.1.15", "finitura": "Nero spazzolato", "lunghezza": 1800, "spessoreVetro": 8 },
+      { "codice": "K.0042.2.15", "finitura": "Nero spazzolato", "lunghezza": 1800, "spessoreVetro": 10 }
+    ]
+  },
+  {
+    "id": 59,
+    "categoria": "02",
+    "nome": "Magic2 Frame",
+    "descrizione": "Sistema scorrevole a scomparsa esterno muro con telaio in alluminio Universal, pluribrevettato e 100% Made in Italy: nessun binario, fermo o carrello visibile. Il telaio è adatto a pareti in mattoni pieni, forati, cemento e cartongesso (con ancoraggi specifici), e ospita vetri monolitici o stratificati con spessore da 5 a 8,5mm. Fermi ammortizzati Fluid con doppie molle di ritorno per una frenata fluida e silenziosa. Prodotto da Terno Scorrevoli in alluminio e acciaio.",
+    "materiale": "Alluminio e acciaio",
+    "spessoriVetro": ["5", "8.5"],
+    "dimensioni": "Kit 1500×3000mm · peso porta max 80kg · spessore vetro 5-8,5mm · luce inferiore 10mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "magic2-frame-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/magic2-frame-scheda.jpg",
+    "istruzioni": "magic2-frame-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Ruote inferiori brevettate",
+        "testo": "Scaricano completamente il peso della porta sul pavimento senza lasciare segni, anche dopo anni di utilizzo. Un paraurti integrato assorbe le irregolarità del pavimento, come le fughe delle piastrelle."
+      },
+      {
+        "titolo": "Fermi ammortizzati Fluid",
+        "testo": "L’ultima generazione di ammortizzatori a chiusura rallentata di Terno Scorrevoli, con doppie molle di ritorno, per una frenata sempre fluida e silenziosa."
+      },
+      {
+        "titolo": "Sistema di antisganciamento",
+        "testo": "La guida superiore integra due elementi rotanti con leve di sicurezza ben visibili, per rimuovere la porta dopo l’installazione senza bisogno di utensili."
+      },
+      {
+        "titolo": "Design essenziale e resistente",
+        "testo": "Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione. I profili si tagliano a misura senza forature o fresature aggiuntive."
+      },
+      {
+        "titolo": "Adatto a diverse pareti",
+        "testo": "Mattoni pieni, mattoni forati, cemento e cartongesso, purché vengano usati gli ancoraggi specifici e l’installazione sia eseguita con cura."
+      },
+      {
+        "titolo": "Certificato fino a 100.000 cicli",
+        "testo": "Prestazioni testate nei laboratori Terno Scorrevoli (T-Lab) fino a 100.000 cicli di apertura della porta."
+      },
+      {
+        "titolo": "Soluzioni per pavimenti in moquette",
+        "testo": "Un profilo in alluminio e adesivo dedicato adatta il sistema anche ai pavimenti in moquette, garantendo la migliore scorrevolezza possibile."
+      }
+    ],
+    "immagini": {
+      "Nero spazzolato": [
+        "prodotti/magic2-frame-nero-aperta.jpg",
+        "prodotti/magic2-frame-nero-chiusa.jpg",
+        "prodotti/magic2-frame-nero.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "K.0461.1.3.15", "finitura": "Nero spazzolato" }
+    ]
+  },
+  {
+    "id": 60,
+    "categoria": "02",
+    "nome": "Universal",
+    "note": [
+      "Sistema molto modulare (telaio + binario Eclettica o Evolution + ante",
+      "scorrevoli/fisse in vetro, legno o alluminio, in tante combinazioni):",
+      "teniamo a magazzino un solo kit, scheda tecnica e brochure servono a",
+      "mostrare il prodotto. Per configurazioni diverse si valuta caso per",
+      "caso in base alle esigenze del cliente."
+    ],
+    "descrizione": "Telaio in alluminio Universal per porte scorrevoli e pareti, in vetro, legno o alluminio: profili tubolari, giunti metallici e guarnizione biestrusa per la massima resistenza. Si abbina ai sistemi di scorrimento Eclettica Fluid ed Evolution Fluid, con installazione a parete, soffitto o controsoffitto. Un sistema molto versatile, che consente numerose configurazioni — anta singola, abbinata a elementi fissi, ante doppie — e diverse finiture: la combinazione esatta di telaio, binario, ante e accessori va valutata caso per caso in base alle tue esigenze. Contattaci per individuare gli articoli giusti per la tua porta: qui trovi la scheda tecnica completa e il kit che teniamo pronto a magazzino. Prodotto da Terno Scorrevoli in alluminio e acciaio.",
+    "materiale": "Alluminio e acciaio",
+    "spessoriVetro": ["5", "8.5"],
+    "dimensioni": "Porta fino a 1500×3000mm (max) · peso max 80kg · vetro 5-8,5mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "universal-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/universal-scheda.jpg",
+    "caratteristiche": [
+      {
+        "titolo": "Design essenziale e resistente",
+        "testo": "Profili tubolari, giunti metallici e guarnizione biestrusa: il peso del vetro è sostenuto da montanti e traverse, dimezzando la pressione."
+      },
+      {
+        "titolo": "Flessibilità nei materiali",
+        "testo": "Permette di realizzare porte in vetro con telaio in alluminio e di integrarle con porte in legno a tutto spessore, per configurazioni miste."
+      },
+      {
+        "titolo": "Configurazioni multiple",
+        "testo": "Dall’anta singola scorrevole, alla porta abbinata a due o tre elementi fissi, alle ante doppie. Le configurazioni con più ante non hanno movimento sincronizzato."
+      },
+      {
+        "titolo": "Si abbina a Eclettica ed Evolution",
+        "testo": "Con Eclettica Fluid la porta si installa a parete, soffitto o controsoffitto con la copertura allineata alla maniglia. Con Evolution Fluid la porta si inserisce tra le due coperture, a scomparsa completa."
+      },
+      {
+        "titolo": "Tante finiture disponibili",
+        "testo": "Argento spazzolato, nero spazzolato, nichel spazzolato, grigio metallizzato e grafite."
+      },
+      {
+        "titolo": "Un sistema su misura",
+        "testo": "Vista la varietà di combinazioni possibili tra telaio, binario, ante e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta."
+      }
+    ],
+    "immagini": {
+      "Nero spazzolato": [
+        "prodotti/universal-ambiente-soggiorno.jpg",
+        "prodotti/universal-ambiente-cabina.jpg",
+        "prodotti/universal-dettaglio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "K.0421.2.3.15", "finitura": "Nero spazzolato" }
+    ]
+  },
+  {
+    "id": 75,
+    "categoria": "02",
+    "nome": "Solo Vetro",
+    "descrizione": "Sistema di scorrevoli invisibili per porte interamente in vetro: le pinze di scorrimento sono completamente nascoste all'interno del profilo binario in alluminio, per una resa estetica pulita e senza elementi a vista sul vetro. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Disponibile in configurazione standard ad anta singola oppure Sync, con apertura simultanea sincronizzata per porte a due ante. Fissaggio a parete o a soffitto, portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Prodotto da Terno Scorrevoli in alluminio, in 2 finiture: argento anodizzato e argento spazzolato anodizzato.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.7", "10", "10.7", "12", "12.7"],
+    "dimensioni": "Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a parete o soffitto",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "solovetro-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/solovetro-scheda.jpg",
+    "istruzioni": "solovetro-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Pinze completamente invisibili",
+        "testo": "Le pinze di scorrimento sono integrate e nascoste all'interno del profilo binario in alluminio, per una porta in vetro senza elementi di scorrimento a vista."
+      },
+      {
+        "titolo": "Apertura singola o Sync sincronizzata",
+        "testo": "Il sistema prevede la configurazione per anta singola oppure, con la versione Sync, per due ante con apertura simultanea e movimento sincronizzato."
+      },
+      {
+        "titolo": "Adatto a vetri monolitici e stratificati",
+        "testo": "Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati."
+      },
+      {
+        "titolo": "Fermi ammortizzati inclusi",
+        "testo": "Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa."
+      },
+      {
+        "titolo": "Fissaggio a parete o a soffitto",
+        "testo": "Il profilo binario si installa sia a parete che a soffitto, in base alle esigenze dell'ambiente."
+      },
+      { "titolo": "Due finiture disponibili", "testo": "Argento anodizzato e argento spazzolato anodizzato." }
+    ],
+    "immagini": {
+      "Argento": [
+        "prodotti/solovetro-ambiente-ufficio.jpg",
+        "prodotti/solovetro-dettaglio.jpg",
+        "prodotti/solovetro-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "K.0272.5", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 76,
+    "categoria": "02",
+    "nome": "Solo Vetro Light",
+    "descrizione": "Sistema di scorrevoli invisibili per porte interamente in vetro, dedicato ai controsoffitti in cartongesso: le pinze di scorrimento sono completamente nascoste all'interno del profilo binario in alluminio, integrabile a filo del controsoffitto. Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm, in configurazione porta singola, singola con fisso, doppia o doppia con fisso. Sistema di antisganciamento e portata 80kg per anta, completo di n. 2 fermi ammortizzati per ogni kit. Fissaggio a soffitto pieno, a soffitto vuoto (controsoffitto) o a parete. Prodotto da Terno Scorrevoli in alluminio, finitura argento anodizzato.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.7", "10", "10.7", "12", "12.7"],
+    "dimensioni": "Portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · fissaggio a soffitto (pieno o vuoto) o a parete",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "solovetro-light-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/solovetro-light-scheda.jpg",
+    "istruzioni": "solovetro-light-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Pinze completamente invisibili",
+        "testo": "Le pinze di scorrimento sono integrate e nascoste all'interno del profilo binario in alluminio, a filo del controsoffitto in cartongesso."
+      },
+      {
+        "titolo": "Dedicato ai controsoffitti",
+        "testo": "Pensato per l'installazione su pareti e controsoffitti in cartongesso, con fissaggio a soffitto pieno, a soffitto vuoto o a parete."
+      },
+      {
+        "titolo": "Sistema di antisganciamento",
+        "testo": "Un sistema dedicato impedisce lo sganciamento accidentale dei carrelli dal binario durante lo scorrimento."
+      },
+      {
+        "titolo": "Configurazioni multiple",
+        "testo": "Porta singola, porta singola con elemento fisso, porta doppia e porta doppia con elemento fisso."
+      },
+      {
+        "titolo": "Adatto a vetri monolitici e stratificati",
+        "testo": "Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm, sia monolitici che stratificati."
+      },
+      {
+        "titolo": "Fermi ammortizzati inclusi",
+        "testo": "Ogni kit è completo di n. 2 fermi ammortizzati per una chiusura frenata e silenziosa."
+      }
+    ],
+    "immagini": {
+      "Argento": [
+        "prodotti/solovetro-light-ambiente-cucina.jpg",
+        "prodotti/solovetro-light-dettaglio.jpg",
+        "prodotti/solovetro-light-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "K.0281.5", "finitura": "Argento" }
+    ]
+  },
+  {
+    "id": 77,
+    "categoria": "02",
+    "nome": "Vetro 40",
+    "note": [
+      "Sistema brevettato configurabile su moltissimi assi (lunghezza binario,",
+      "tipo di pinza, fermi Fluid, spessore vetro, finitura, kit con/senza",
+      "copertura...): troppe combinazioni per un codice fisso a catalogo,",
+      "quindi niente varianti con SKU reali (richiesta esplicita del cliente).",
+      "Descrizione, immagini e scheda tecnica completa bastano a presentare",
+      "il prodotto; la configurazione esatta si valuta caso per caso."
+    ],
+    "descrizione": "Sistema di scorrevoli brevettato per ante in vetro senza forature: la pinza alta 40mm serra il bordo del vetro senza bisogno di praticare fori sulla lastra. Disponibile con pinza standard (Clamp 200) o con pinza lunga per ante più ampie, ed è configurabile con fermi ammortizzati Fluid opzionali (portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm). Adatto a vetri monolitici o stratificati, con spessore 8-8,7, 10-10,7 o 12-12,7mm. Il binario in alluminio è disponibile in diverse lunghezze standard (da 600 a 1500mm), con o senza copertura, ed è estendibile con appositi kit per controtelai. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza, fermi e accessori va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.7", "10", "10.7", "12", "12.7"],
+    "dimensioni": "Pinza alta 40mm senza forature vetro · portata 80-120kg per anta secondo pinza e fermi · spessore vetro 8-8,7 / 10-10,7 / 12-12,7mm · binario da 600 a 1500mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "vetro40-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/vetro40-scheda.jpg",
+    "istruzioni": "vetro40-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Nessuna foratura sul vetro",
+        "testo": "La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori: l'anta resta un vetro pulito e integro."
+      },
+      {
+        "titolo": "Due tipi di pinza",
+        "testo": "Pinza standard Clamp 200 oppure pinza lunga (Long Clamp), per ante più ampie o più pesanti."
+      },
+      {
+        "titolo": "Fermi ammortizzati Fluid opzionali",
+        "testo": "Portata 80kg con corsa 70mm, oppure 120kg con corsa 50mm, su cuscinetti a sfera, per una chiusura frenata e silenziosa."
+      },
+      {
+        "titolo": "Blocco di sicurezza",
+        "testo": "Il sistema di aggancio del carrello include un blocco di sicurezza che impedisce lo sganciamento accidentale dell'anta dal binario."
+      },
+      {
+        "titolo": "Binario configurabile",
+        "testo": "Lunghezze standard da 600 a 1500mm, con o senza copertura, estendibile con kit dedicati per l'installazione su controtelai."
+      },
+      {
+        "titolo": "Adatto a vetri monolitici e stratificati",
+        "testo": "Compatibile con spessori vetro 8-8,7mm, 10-10,7mm e 12-12,7mm."
+      },
+      {
+        "titolo": "Un sistema su misura",
+        "testo": "Vista la varietà di combinazioni possibili tra binario, pinza, fermi e accessori, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta."
+      }
+    ],
+    "immagini": {
+      "Argento spazzolato": ["prodotti/vetro40-ambiente-porte-legno.jpg", "prodotti/vetro40-dettaglio.jpg", "prodotti/vetro40-esploso.jpg"]
+    },
+    "varianti": [
+      { "codice": "Su misura", "finitura": "Argento spazzolato" }
+    ]
+  },
+  {
+    "id": 78,
+    "categoria": "02",
+    "nome": "Vetro 40 Drag",
+    "note": [
+      "Come Vetro 40: troppe combinazioni possibili (configurazione a piu' ante,",
+      "spessore vetro, finitura) per un codice fisso a catalogo, quindi niente",
+      "varianti con SKU reali (richiesta esplicita del cliente)."
+    ],
+    "descrizione": "Sistema di scorrevoli brevettato per porte in vetro a trascinamento manuale, con pinza ad altezza ridotta (solo 40mm) senza forature sulla lastra. La pinza è a tutta lunghezza e può essere tagliata a misura in cantiere. Il sistema integra i carrelli con tecnologia Fluid, per un movimento estremamente morbido in apertura e chiusura, ed è disponibile in configurazioni a più ante (fino a 4 ante, combinabili nelle configurazioni F-A-B-C). Adatto a vetri monolitici o stratificati, con spessore 8-8,7 o 10-10,7mm. Prodotto da Terno Scorrevoli in alluminio, finitura argento spazzolato anodizzato. Il sistema è molto modulare: la combinazione esatta di binario, pinza e configurazione ante va valutata caso per caso in base alle tue esigenze — contattaci per individuare gli articoli giusti per la tua porta.",
+    "materiale": "Alluminio",
+    "spessoriVetro": ["8", "8.7", "10", "10.7"],
+    "dimensioni": "Pinza alta 40mm senza forature vetro, tagliabile a misura · portata 80kg per anta · spessore vetro 8-8,7 / 10-10,7mm",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "vetro40drag-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/vetro40drag-scheda.jpg",
+    "istruzioni": "vetro40drag-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "Nessuna foratura sul vetro",
+        "testo": "La pinza brevettata, alta 40mm, serra il bordo della lastra senza bisogno di praticare fori."
+      },
+      {
+        "titolo": "Pinza tagliabile a misura",
+        "testo": "La pinza a tutta lunghezza si taglia a misura direttamente in cantiere, in base alla larghezza dell'anta."
+      },
+      {
+        "titolo": "Carrelli con tecnologia Fluid",
+        "testo": "Il movimento risulta estremamente morbido, sia in apertura che in chiusura, su cuscinetti a sfera."
+      },
+      {
+        "titolo": "Porte a trascinamento a più ante",
+        "testo": "Configurazioni combinabili fino a 4 ante (F-A-B-C), per porte a trascinamento manuale con più elementi scorrevoli."
+      },
+      {
+        "titolo": "Adatto a vetri monolitici e stratificati",
+        "testo": "Compatibile con spessori vetro 8-8,7mm e 10-10,7mm."
+      },
+      {
+        "titolo": "Un sistema su misura",
+        "testo": "Vista la varietà di combinazioni possibili tra binario, pinza e configurazione ante, scegliamo insieme gli articoli giusti in base alle tue esigenze: contattaci per la tua porta."
+      }
+    ],
+    "immagini": {
+      "Argento spazzolato": [
+        "prodotti/vetro40drag-ambiente-ufficio.jpg",
+        "prodotti/vetro40drag-dettaglio.jpg",
+        "prodotti/vetro40drag-esploso.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "Su misura", "finitura": "Argento spazzolato" }
+    ]
+  }
+]
