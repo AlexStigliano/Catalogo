@@ -36,6 +36,14 @@
     ]
   },
   "altreSottocategorie": [],
+  "filtri": [
+    { "chiave": "diametro", "etichetta": "Diametro", "tutti": "Tutti i diametri", "plurale": "diametri", "suffisso": " mm" },
+    { "chiave": "lunghezza", "etichetta": "Lunghezza", "tutti": "Tutte le lunghezze", "plurale": "lunghezze", "suffisso": " mm" },
+    { "chiave": "interasse", "etichetta": "Interasse", "tutti": "Tutti gli interassi", "plurale": "interassi", "suffisso": " mm" },
+    { "chiave": "misura", "etichetta": "Misura", "tutti": "Tutte le misure", "plurale": "misure" },
+    { "chiave": "larghezza", "etichetta": "Larghezza", "tutti": "Tutte le larghezze", "plurale": "larghezze" },
+    { "chiave": "spessoriVetro", "etichetta": "Spessore vetro", "tutti": "Tutti gli spessori", "plurale": "spessori" }
+  ],
   "fornitori": {
     "Bostik": "bostik-logo.png",
     "Compas": "compas-logo.svg",

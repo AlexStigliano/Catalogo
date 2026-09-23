@@ -131,6 +131,17 @@ segnala come avviso.
 - **`altreSottocategorie`**: etichette di sottocategoria per le categorie
   senza tab: niente tab, solo il testo sotto il nome del prodotto. Stesso
   formato: `{ "id": "...", "nome": "..." }`.
+- **`filtri`**: i filtri di misura del pannello "Filtra prodotti",
+  nell'ordine in cui compaiono (Materiale, Produttore e Finitura ci sono
+  sempre e non stanno qui). Ogni filtro legge il campo `chiave` del
+  prodotto (un valore o una lista, come `diametro` o `spessoriVetro`) e
+  delle varianti (come `lunghezza` o `misura`), e compare in una lista solo
+  se i suoi prodotti hanno almeno due valori diversi. `etichetta` è il nome
+  del filtro, `tutti` il testo quando non si è scelto niente, `plurale`
+  quello per "3 lunghezze"; `suffisso` (es. `" mm"`) si aggiunge ai valori
+  numerici. Non tutte le misure vanno filtrate (la vite dei tasselli, il
+  formato dei sigillanti no): quando un prodotto nuovo porta una misura
+  nuova, si decide se aggiungerla qui.
 - **`fornitori`**: nome → logo. `null` se il logo non c'è ancora (avviso).
 - **`finiture`**: nome → colore della pastiglia (un colore CSS, di solito
   un `linear-gradient`). Il nome deve essere identico a quello usato in
