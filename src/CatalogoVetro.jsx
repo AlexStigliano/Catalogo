@@ -3614,11 +3614,9 @@ const scriviQuery = (qs) => {
 };
 
 /* Posizione di scroll di ogni schermata, per ritrovarla con Indietro e Avanti.
-   Aprendo un link invece si parte sempre dall'alto: go() lo segnala qui, e
-   ultimaDaLink ricorda com'e' arrivata la schermata corrente. */
+   Aprendo un link invece si parte sempre dall'alto: go() lo segnala qui. */
 const scrollMem = {};
 let daLink = false;
-let ultimaDaLink = false;
 const go = (path) => {
   if (window.location.hash !== '#' + path) daLink = true;
   window.location.hash = path;
@@ -3798,7 +3796,11 @@ function CategoryPage({ cat, subParam }) {
           </div>
         </div>
       ) : subProducts.length > 0 ? (
-        <ProductCatalog products={subProducts} />
+        <ProductCatalog
+          // La chiave ricrea la lista a ogni sottocategoria: ricerca e filtri
+          // ripartono da quelli dell'indirizzo, cioe' puliti aprendo una
+          // sottocategoria e ritrovati tornando indietro.
+          key={cat + '/' + sub} products={subProducts} />
       ) : (
         <div className="shell">
           <div className="prep">
@@ -3827,21 +3829,7 @@ function ProductCatalog({ products }) {
   const [inter, setInter] = useState(iniziali.inter);
   const [vetro, setVetro] = useState(iniziali.vetro);
   const [favOnly, setFavOnly] = useState(iniziali.favOnly);
-  // Passando da una sottocategoria all'altra la lista non viene ricreata
-  // (products cambia, lo stato resta). Cliccando una sottocategoria i filtri
-  // restano quelli di prima, come e' sempre stato; con Indietro e Avanti
-  // invece valgono quelli scritti nell'indirizzo di arrivo.
-  const prodottiPrima = React.useRef(products);
   useEffect(() => {
-    if (prodottiPrima.current !== products) {
-      prodottiPrima.current = products;
-      if (!ultimaDaLink) {
-        const f = filtriDa(leggiQuery());
-        setQ(f.q); setMat(f.mat); setFin(f.fin); setProd(f.prod); setDiam(f.diam);
-        setLung(f.lung); setInter(f.inter); setVetro(f.vetro); setFavOnly(f.favOnly);
-        return;
-      }
-    }
     const qs = new URLSearchParams();
     if (q) qs.set('q', q);
     mat.forEach(v => qs.append('materiale', v));
@@ -3853,7 +3841,7 @@ function ProductCatalog({ products }) {
     vetro.forEach(v => qs.append('vetro', v));
     if (favOnly) qs.set('preferiti', '1');
     scriviQuery(qs);
-  }, [q, mat, fin, prod, diam, lung, inter, vetro, favOnly, products]);
+  }, [q, mat, fin, prod, diam, lung, inter, vetro, favOnly]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const [favorites, setFavorites] = useState(() => {
@@ -4581,10 +4569,9 @@ export default function CatalogoVetro() {
       // Qui la pagina e' ancora quella che si sta lasciando: se ne salva la
       // posizione con l'indirizzo completo, filtri compresi.
       scrollMem[new URL(e.oldURL).hash] = window.scrollY;
-      ultimaDaLink = daLink;
+      const salvato = daLink ? undefined : scrollMem[window.location.hash];
       daLink = false;
       setRoute(parseHash());
-      const salvato = ultimaDaLink ? undefined : scrollMem[window.location.hash];
       if (salvato != null) {
         // Due frame: il primo monta la nuova pagina, il secondo la impagina.
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, salvato)));
