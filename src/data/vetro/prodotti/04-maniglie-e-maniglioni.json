@@ -616,6 +616,76 @@
     "facoltativi": [46]
   },
   {
+    "id": 119,
+    "categoria": "04",
+    "sottocategoria": "maniglie-battenti",
+    "nome": "Pomolo con serratura Forma F13",
+    "note": [
+      "Il pomolo Forma F13 di Meroni nella versione per porte in vetro, con lo",
+      "scrocco FGLA: e' un articolo unico, un codice solo. Meroni lo fa in cinque",
+      "finiture (NA, NE, US15, US26, US26D): noi teniamo solo NA, verniciato argento.",
+      "",
+      "Come scheda tecnica c'e' quella dello scrocco FGLA, che e' la parte che",
+      "distingue la versione per vetro. Foto e quote vengono dalla pagina Meroni",
+      "del pomolo F13 e da quella scheda. Le versioni per porte in legno (scrocco",
+      "NTB) e con profili in alluminio (FGLR) non le trattiamo.",
+      "",
+      "La piastra controbordo FGL1 (id 120) e' l'articolo collegato."
+    ],
+    "descrizione": "Pomolo con serratura Forma di Meroni in funzione F13, per porte a battente in vetro: all’interno il pomolo ha un bottone per bloccare la porta, all’esterno si blocca e si sblocca con la chiave. È la funzione pensata per le porte degli uffici. Lo scrocco antiscasso FGLA permette di montarlo direttamente sul vetro, senza profili, su vetri da 10 a 12mm con un foro Ø46mm. Linea pulita e design italiano. Prodotto da Meroni in finitura verniciato argento.",
+    "paroleChiave": "pomello PremiApri FGLA scrocco ufficio",
+    "spessoriVetro": ["10", "12"],
+    "dimensioni": "Vetro 10-12mm · foro Ø46mm, centro a 69mm dal bordo · pomoli 58mm per lato",
+    "fornitore": "Meroni",
+    "scheda": "forma-f13-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/forma-f13-scheda.jpg",
+    "caratteristiche": [
+      {
+        "titolo": "Bottone dentro, chiave fuori",
+        "testo": "Dall’interno la porta si blocca premendo il bottone del pomolo; dall’esterno si blocca e si sblocca con la chiave. È la funzione F13, pensata per le porte degli uffici."
+      },
+      {
+        "titolo": "Direttamente sul vetro",
+        "testo": "Con lo scrocco antiscasso FGLA il pomolo si monta sul vetro senza profili in alluminio: basta un foro Ø46mm su vetri da 10 a 12mm."
+      },
+      {
+        "titolo": "Tutti i versi di apertura",
+        "testo": "La scheda tecnica riporta il montaggio per le porte che aprono verso l’interno e verso l’esterno, sia a destra sia a sinistra."
+      }
+    ],
+    "immagini": {
+      "Argento": [
+        "prodotti/forma-f13-vetro.jpg",
+        "prodotti/forma-f13-argento.jpg",
+        "prodotti/forma-f13-quote.jpg",
+        "prodotti/forma-f13-montaggio.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "F13NASC", "finitura": "Argento" }
+    ],
+    "facoltativi": [120]
+  },
+  {
+    "id": 120,
+    "categoria": "04",
+    "sottocategoria": "maniglie-battenti",
+    "nome": "Piastra controbordo per porte in vetro FGL1",
+    "note": [
+      "Niente scheda tecnica: Meroni ne ha una (FGL1.pdf) ma non ci e' arrivata.",
+      "La foto viene dalla pagina Meroni del pomolo F13, fra gli accessori."
+    ],
+    "descrizione": "Piastra controbordo di Meroni per porte in vetro: è la controparte dello scrocco FGLA del pomolo Forma F13 e si monta sul vetro. Prodotta da Meroni in finitura verniciato argento.",
+    "fornitore": "Meroni",
+    "immagini": {
+      "Argento": ["prodotti/fgl1-foto.jpg"]
+    },
+    "varianti": [
+      { "codice": "FGL1NA", "finitura": "Argento" }
+    ],
+    "facoltativi": [119]
+  },
+  {
     "id": 57,
     "categoria": "04",
     "sottocategoria": "maniglie-scorrevoli",
