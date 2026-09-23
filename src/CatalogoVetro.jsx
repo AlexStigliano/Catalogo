@@ -3578,8 +3578,10 @@ const Ghost = () => (
 );
 
 /* ---------- Hash routing (indipendente dal Catalogo Generale) ---------- */
+// Dopo il "?" l'indirizzo porta ricerca e filtri (es. #/cat/04/maniglioni?q=oregon):
+// non cambiano la pagina, servono a ritrovarli tornando indietro.
 function parseHash() {
-  const h = window.location.hash.replace(/^#\/?/, '');
+  const h = window.location.hash.replace(/^#\/?/, '').split('?')[0];
   if (!h) return { view: 'cover' };
   if (h === 'indice') return { view: 'indice' };
   const mp = h.match(/^prodotto\/(\d+)$/);
@@ -3588,7 +3590,37 @@ function parseHash() {
   if (m && CATEGORIE_VETRO.some(c => c.id === m[1])) return { view: 'categoria', cat: m[1], sub: m[2] || null };
   return { view: 'cover' };
 }
-const go = (path) => { window.location.hash = path; };
+const leggiQuery = () => new URLSearchParams(window.location.hash.split('?')[1] || '');
+// Ricerca e filtri della lista prodotti, letti dall'indirizzo. Lunghezza e
+// interasse sono numeri nei dati, quindi vanno riconvertiti.
+const filtriDa = (qs) => {
+  const numeri = (k) => qs.getAll(k).map(Number).filter(n => !Number.isNaN(n));
+  return {
+    q: qs.get('q') || '',
+    mat: qs.getAll('materiale'), prod: qs.getAll('produttore'), fin: qs.getAll('finitura'),
+    diam: qs.getAll('diametro'), lung: numeri('lunghezza'), inter: numeri('interasse'),
+    vetro: qs.getAll('vetro'), favOnly: qs.get('preferiti') === '1',
+  };
+};
+// replaceState e non un nuovo hash: aggiorna l'indirizzo senza aggiungere un
+// passo alla cronologia, altrimenti ogni lettera digitata andrebbe annullata
+// con un "Indietro".
+const scriviQuery = (qs) => {
+  const s = qs.toString();
+  const nuovo = window.location.hash.split('?')[0] + (s ? '?' + s : '');
+  if (nuovo !== window.location.hash) window.history.replaceState(window.history.state, '', nuovo);
+};
+
+/* Posizione di scroll di ogni schermata, per ritrovarla con Indietro e Avanti.
+   Aprendo un link invece si parte sempre dall'alto: go() lo segnala qui, e
+   ultimaDaLink ricorda com'e' arrivata la schermata corrente. */
+const scrollMem = {};
+let daLink = false;
+let ultimaDaLink = false;
+const go = (path) => {
+  if (window.location.hash !== '#' + path) daLink = true;
+  window.location.hash = path;
+};
 
 /* ---------- Copertina ---------- */
 function Cover() {
@@ -3610,7 +3642,12 @@ function Cover() {
 /* ---------- Indice ---------- */
 function Indice() {
   const count = (id) => PRODOTTI_VETRO.filter(p => p.categoria === id).length;
-  const [q, setQ] = useState('');
+  const [q, setQ] = useState(() => leggiQuery().get('q') || '');
+  useEffect(() => {
+    const qs = new URLSearchParams();
+    if (q) qs.set('q', q);
+    scriviQuery(qs);
+  }, [q]);
   const testo = q.trim();
   const risultati = useMemo(() => cercaProdottiVetro(testo), [testo]);
 
@@ -3776,15 +3813,45 @@ function CategoryPage({ cat, subParam }) {
 
 /* ---------- Catalogo prodotti (griglia + ricerca + filtri) ---------- */
 function ProductCatalog({ products }) {
-  const [q, setQ] = useState('');
-  const [mat, setMat] = useState([]);
-  const [fin, setFin] = useState([]);
-  const [prod, setProd] = useState([]);
-  const [diam, setDiam] = useState([]);
-  const [lung, setLung] = useState([]);
-  const [inter, setInter] = useState([]);
-  const [vetro, setVetro] = useState([]);
-  const [favOnly, setFavOnly] = useState(false);
+  // Ricerca e filtri partono da quelli scritti nell'indirizzo, cosi' tornando
+  // indietro da una scheda prodotto si ritrovano come li si era lasciati.
+  const [iniziali] = useState(() => filtriDa(leggiQuery()));
+  const [q, setQ] = useState(iniziali.q);
+  const [mat, setMat] = useState(iniziali.mat);
+  const [fin, setFin] = useState(iniziali.fin);
+  const [prod, setProd] = useState(iniziali.prod);
+  const [diam, setDiam] = useState(iniziali.diam);
+  const [lung, setLung] = useState(iniziali.lung);
+  const [inter, setInter] = useState(iniziali.inter);
+  const [vetro, setVetro] = useState(iniziali.vetro);
+  const [favOnly, setFavOnly] = useState(iniziali.favOnly);
+  // Passando da una sottocategoria all'altra la lista non viene ricreata
+  // (products cambia, lo stato resta). Cliccando una sottocategoria i filtri
+  // restano quelli di prima, come e' sempre stato; con Indietro e Avanti
+  // invece valgono quelli scritti nell'indirizzo di arrivo.
+  const prodottiPrima = React.useRef(products);
+  useEffect(() => {
+    if (prodottiPrima.current !== products) {
+      prodottiPrima.current = products;
+      if (!ultimaDaLink) {
+        const f = filtriDa(leggiQuery());
+        setQ(f.q); setMat(f.mat); setFin(f.fin); setProd(f.prod); setDiam(f.diam);
+        setLung(f.lung); setInter(f.inter); setVetro(f.vetro); setFavOnly(f.favOnly);
+        return;
+      }
+    }
+    const qs = new URLSearchParams();
+    if (q) qs.set('q', q);
+    mat.forEach(v => qs.append('materiale', v));
+    prod.forEach(v => qs.append('produttore', v));
+    fin.forEach(v => qs.append('finitura', v));
+    diam.forEach(v => qs.append('diametro', v));
+    lung.forEach(v => qs.append('lunghezza', v));
+    inter.forEach(v => qs.append('interasse', v));
+    vetro.forEach(v => qs.append('vetro', v));
+    if (favOnly) qs.set('preferiti', '1');
+    scriviQuery(qs);
+  }, [q, mat, fin, prod, diam, lung, inter, vetro, favOnly, products]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const [favorites, setFavorites] = useState(() => {
@@ -4488,7 +4555,21 @@ export default function CatalogoVetro() {
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
-    const onHash = () => { setRoute(parseHash()); window.scrollTo(0, 0); };
+    const onHash = (e) => {
+      // Qui la pagina e' ancora quella che si sta lasciando: se ne salva la
+      // posizione con l'indirizzo completo, filtri compresi.
+      scrollMem[new URL(e.oldURL).hash] = window.scrollY;
+      ultimaDaLink = daLink;
+      daLink = false;
+      setRoute(parseHash());
+      const salvato = ultimaDaLink ? undefined : scrollMem[window.location.hash];
+      if (salvato != null) {
+        // Due frame: il primo monta la nuova pagina, il secondo la impagina.
+        requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, salvato)));
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
