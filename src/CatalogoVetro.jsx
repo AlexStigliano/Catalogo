@@ -1128,8 +1128,26 @@ function Footer() {
   );
 }
 
+/* Titolo della scheda del browser per ogni schermata: resta nella
+   cronologia e nei preferiti, e con piu' schede aperte si distinguono. */
+const TITOLO_BASE = 'Catalogo Vetro — Ferramenta Stigliano';
+function titoloDi(route) {
+  if (route.view === 'indice') return 'Indice · ' + TITOLO_BASE;
+  if (route.view === 'categoria') {
+    const tab = SOTTOCATEGORIE_PER_CATEGORIA[route.cat];
+    const sub = tab && (tab.find(s => s.id === route.sub) || tab[0]);
+    return (sub ? sub.nome : catName(route.cat)) + ' · ' + TITOLO_BASE;
+  }
+  if (route.view === 'prodotto') {
+    const p = PRODOTTI_VETRO.find(x => x.id === route.id);
+    if (p) return p.nome + ' · ' + TITOLO_BASE;
+  }
+  return TITOLO_BASE;
+}
+
 export default function CatalogoVetro() {
   const [route, setRoute] = useState(parseHash());
+  useEffect(() => { document.title = titoloDi(route); }, [route]);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
