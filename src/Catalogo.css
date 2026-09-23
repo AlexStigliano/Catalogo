@@ -262,6 +262,17 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .empty p { margin: 0 0 1.4rem; }
 .cat .reset { padding: 0.6rem 1.4rem; border: none; border-radius: 6px; background: var(--orange); color: #fff; font-size: 13px; font-weight: 800; cursor: pointer; transition: background 0.15s; }
 .cat .reset:hover { background: var(--orange-dark); }
+/* "Mostra altri" sotto una lista lunga: la griglia chiude con 3.5rem di
+   spazio, qui lo si riprende per restare attaccati all'ultima riga. */
+.cat .mostra-altri { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin: -2rem 0 3.5rem; }
+.cat .mostra-altri p { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+.cat .mostra-altri button { padding: 0.75rem 1.8rem; border: 1px solid var(--navy); border-radius: 6px; background: var(--paper); color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: background 0.15s, color 0.15s; }
+.cat .mostra-altri button:hover { background: var(--navy); color: #fff; }
+@media (prefers-color-scheme: dark) { .cat .mostra-altri button { border-color: var(--blue); color: #cdd8f0; } .cat .mostra-altri button:hover { background: var(--blue); color: #fff; } }
+:root[data-theme="dark"] .cat .mostra-altri button { border-color: var(--blue); color: #cdd8f0; }
+:root[data-theme="dark"] .cat .mostra-altri button:hover { background: var(--blue); color: #fff; }
+:root[data-theme="light"] .cat .mostra-altri button { border-color: var(--navy); color: var(--navy); }
+:root[data-theme="light"] .cat .mostra-altri button:hover { background: var(--navy); color: #fff; }
 
 .cat footer { background: var(--navy); color: #b9c4de; margin-top: 2rem; }
 .cat footer .shell { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 1.6rem clamp(1rem, 4vw, 2.5rem); font-size: 12px; }

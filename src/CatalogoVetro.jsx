@@ -171,11 +171,16 @@ const leggiQuery = () => new URLSearchParams(window.location.hash.split('?')[1] 
 // misura usano come nome la loro chiave (es. ?lunghezza=500) e i valori
 // restano testo: il confronto con i dati avviene come testo.
 const filtriDa = (qs) => ({
+  mostra: Math.max(PASSO_LISTA, Number(qs.get('mostra')) || 0),
   q: qs.get('q') || '',
   mat: qs.getAll('materiale'), prod: qs.getAll('produttore'), fin: qs.getAll('finitura'),
   misure: Object.fromEntries(FILTRI_VETRO.map(f => [f.chiave, qs.getAll(f.chiave)]).filter(([, v]) => v.length)),
   favOnly: qs.get('preferiti') === '1',
 });
+/* Prodotti mostrati per volta nella lista: gli altri arrivano con "Mostra
+   altri". Quanti se ne sono mostrati finisce nell'indirizzo (?mostra=48),
+   cosi' tornando indietro da una scheda si ritrovano, con la posizione. */
+const PASSO_LISTA = 24;
 /* Valori di un filtro di misura per un prodotto: il campo del prodotto (un
    valore o una lista, es. diametro o spessoriVetro) piu' quello di ogni
    variante (es. lunghezza e interasse dei maniglioni). */
@@ -403,6 +408,12 @@ function ProductCatalog({ products }) {
   const [prod, setProd] = useState(iniziali.prod);
   const [misure, setMisure] = useState(iniziali.misure); // { chiave: [valori scelti] }
   const [favOnly, setFavOnly] = useState(iniziali.favOnly);
+  // Cambiando ricerca o filtri si riparte dal primo blocco: il numero di
+  // prodotti mostrati vale solo per la combinazione in cui e' stato scelto.
+  const firma = JSON.stringify([q, mat, fin, prod, misure, favOnly]);
+  const [blocchi, setBlocchi] = useState(() => ({ quanti: iniziali.mostra, firma }));
+  if (blocchi.firma !== firma) setBlocchi({ quanti: PASSO_LISTA, firma });
+  const visibili = blocchi.firma === firma ? blocchi.quanti : PASSO_LISTA;
   useEffect(() => {
     const qs = new URLSearchParams();
     if (q) qs.set('q', q);
@@ -411,8 +422,9 @@ function ProductCatalog({ products }) {
     fin.forEach(v => qs.append('finitura', v));
     FILTRI_VETRO.forEach(f => (misure[f.chiave] || []).forEach(v => qs.append(f.chiave, v)));
     if (favOnly) qs.set('preferiti', '1');
+    if (visibili > PASSO_LISTA) qs.set('mostra', visibili);
     scriviQuery(qs);
-  }, [q, mat, fin, prod, misure, favOnly]);
+  }, [q, mat, fin, prod, misure, favOnly, visibili]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const [favorites, setFavorites] = useState(() => {
@@ -573,8 +585,8 @@ function ProductCatalog({ products }) {
 
       <div className="shell">
         <div className={`gallery${mobileView === 'grid2' ? ' compact-2col' : ''}`}>
-          {filtered.map((p, idx) => (
-            <ProductCard key={p.id} product={p} idx={idx} compatta={mobileView === 'grid2'}
+          {filtered.slice(0, visibili).map((p, idx) => (
+            <ProductCard key={p.id} product={p} idx={idx % PASSO_LISTA} compatta={mobileView === 'grid2'}
               isFav={favorites.includes(p.id)} onFav={() => toggleFav(p.id)} />
           ))}
 
@@ -586,6 +598,14 @@ function ProductCatalog({ products }) {
             </div>
           )}
         </div>
+        {filtered.length > visibili && (
+          <div className="mostra-altri">
+            <p>{visibili} di {filtered.length} prodotti</p>
+            <button type="button" onClick={() => setBlocchi({ quanti: visibili + PASSO_LISTA, firma })}>
+              Mostra altri {Math.min(PASSO_LISTA, filtered.length - visibili)}
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
@@ -598,6 +618,10 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
   const firstWithImg = p.varianti.find(v => images[v.finitura]);
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : p.varianti[0].finitura);
   const [open, setOpen] = useState(false);
+  // La tabella delle varianti si crea alla prima apertura e poi resta, cosi'
+  // anche la chiusura si anima: da chiusa, in una lista lunga, sono decine
+  // di elementi per prodotto che nessuno guarda.
+  const [tabella, setTabella] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
   const gallery = images[selFin] || [];
   const selImg = gallery[imgIdx] || gallery[0];
@@ -694,13 +718,13 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
           Scheda completa
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
         </button>
-        <button className="expand" aria-expanded={open} onClick={() => setOpen(o => !o)}>
+        <button className="expand" aria-expanded={open} onClick={() => { setTabella(true); setOpen(o => !o); }}>
           <span>Varianti disponibili ({p.varianti.length})</span>
           <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
         <div className={`variants-wrap${open ? ' open' : ''}`}>
           <div className="variants-inner">
-            <table className="variants">
+            {tabella && <table className="variants">
               <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
                 {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
               </tr></thead>
@@ -715,7 +739,7 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table>}
           </div>
         </div>
       </div>
