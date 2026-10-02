@@ -34,6 +34,9 @@
       { "id": "cerniere", "nome": "Cerniere" },
       { "id": "guarnizioni", "nome": "Guarnizioni" }
     ],
+    "08": [
+      { "id": "reggimensola", "nome": "Reggimensola" }
+    ],
     "09": [
       { "id": "siliconi-sigillanti", "nome": "Siliconi e sigillanti" },
       { "id": "tasselli", "nome": "Tasselli" },
@@ -56,6 +59,7 @@
     "Fimet": "../fimet-logo.png",
     "fischer": "fischer-logo.png",
     "Fratelli Zucchini": "zucchini-logo.png",
+    "Giesse Tech": "giesse-logo.png",
     "G&B Fissaggi": "gb-logo.png",
     "GFS": "gfs-logo.png",
     "Häfele": null,
@@ -76,6 +80,7 @@
     "Inox lucido": "linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)",
     "PVD lucido": "linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)",
     "Bianco opaco": "linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)",
+    "Oro opaco": "linear-gradient(135deg,#e2c27a,#bf9c4e 48%,#d6b86f 60%,#ad8b43)",
     "Oro satinato": "linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)",
     "Bicolore inox satinato / lucido": "linear-gradient(90deg,#dfe2e5 0%,#aeb4b9 49%,#7f878e 51%,#f1f3f5 100%)",
     "Argento": "linear-gradient(135deg,#f0f2f3,#c4c9cd 40%,#dfe3e6 56%,#b0b6bb)",
