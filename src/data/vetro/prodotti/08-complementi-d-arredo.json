@@ -1,0 +1,119 @@
+[
+  {
+    "id": 121,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggimensola Duna Piccola",
+    "note": [
+      "Dal listino Cibelli 2026, marchio Giesse Tech. I codici sono l'articolo",
+      "seguito dalla sigla della finitura (AL alluminio, BI bianco, NE nero, OS oro",
+      "opaco, CL cromo lucido, OL oro lucido, NS nichel satinato): ce li ha dati il",
+      "cliente, il listino riporta invece codici per confezione che non usiamo.",
+      "L'\"ottone lucido\" del listino e' per noi \"Oro lucido\".",
+      "",
+      "Il listino ha una sola foto, in alluminio: la usiamo per tutte le finiture.",
+      "",
+      "Duna Piccola e Duna Media hanno la stessa foto nel listino."
+    ],
+    "descrizione": "Reggimensola Duna in zama, misura piccola, per mensole da 4 a 18mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero, oro opaco, cromo lucido e oro lucido.",
+    "paroleChiave": "supporto mensola staffa",
+    "materiale": "Zama",
+    "dimensioni": "Regolazione da 4 a 18mm di spessore mensola",
+    "fornitore": "Giesse Tech",
+    "immagini": {
+      "Alluminio": ["prodotti/giesse-duna.jpg"],
+      "Bianco": ["prodotti/giesse-duna.jpg"],
+      "Nero": ["prodotti/giesse-duna.jpg"],
+      "Oro opaco": ["prodotti/giesse-duna.jpg"],
+      "Cromo lucido": ["prodotti/giesse-duna.jpg"],
+      "Oro lucido": ["prodotti/giesse-duna.jpg"]
+    },
+    "varianti": [
+      { "codice": "AZ92AL", "finitura": "Alluminio" },
+      { "codice": "AZ92BI", "finitura": "Bianco" },
+      { "codice": "AZ92NE", "finitura": "Nero" },
+      { "codice": "AZ92OS", "finitura": "Oro opaco" },
+      { "codice": "AZ92CL", "finitura": "Cromo lucido" },
+      { "codice": "AZ92OL", "finitura": "Oro lucido" }
+    ]
+  },
+  {
+    "id": 122,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggimensola Duna Media",
+    "note": [
+      "Dal listino Cibelli 2026, marchio Giesse Tech. I codici sono l'articolo",
+      "seguito dalla sigla della finitura (AL alluminio, BI bianco, NE nero, OS oro",
+      "opaco, CL cromo lucido, OL oro lucido, NS nichel satinato): ce li ha dati il",
+      "cliente, il listino riporta invece codici per confezione che non usiamo.",
+      "L'\"ottone lucido\" del listino e' per noi \"Oro lucido\".",
+      "",
+      "Il listino ha una sola foto, in alluminio: la usiamo per tutte le finiture.",
+      "",
+      "Duna Piccola e Duna Media hanno la stessa foto nel listino."
+    ],
+    "descrizione": "Reggimensola Duna in zama, misura media, per mensole da 6 a 36mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero, oro opaco, cromo lucido e oro lucido.",
+    "paroleChiave": "supporto mensola staffa",
+    "materiale": "Zama",
+    "dimensioni": "Regolazione da 6 a 36mm di spessore mensola",
+    "fornitore": "Giesse Tech",
+    "immagini": {
+      "Alluminio": ["prodotti/giesse-duna.jpg"],
+      "Bianco": ["prodotti/giesse-duna.jpg"],
+      "Nero": ["prodotti/giesse-duna.jpg"],
+      "Oro opaco": ["prodotti/giesse-duna.jpg"],
+      "Cromo lucido": ["prodotti/giesse-duna.jpg"],
+      "Oro lucido": ["prodotti/giesse-duna.jpg"]
+    },
+    "varianti": [
+      { "codice": "AZ76AL", "finitura": "Alluminio" },
+      { "codice": "AZ76BI", "finitura": "Bianco" },
+      { "codice": "AZ76NE", "finitura": "Nero" },
+      { "codice": "AZ76OS", "finitura": "Oro opaco" },
+      { "codice": "AZ76CL", "finitura": "Cromo lucido" },
+      { "codice": "AZ76OL", "finitura": "Oro lucido" }
+    ]
+  },
+  {
+    "id": 123,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggivetro",
+    "note": [
+      "Dal listino Cibelli 2026, marchio Giesse Tech. I codici sono l'articolo",
+      "seguito dalla sigla della finitura (AL alluminio, BI bianco, NE nero, OS oro",
+      "opaco, CL cromo lucido, OL oro lucido, NS nichel satinato): ce li ha dati il",
+      "cliente, il listino riporta invece codici per confezione che non usiamo.",
+      "L'\"ottone lucido\" del listino e' per noi \"Oro lucido\".",
+      "",
+      "Il listino ha una sola foto, in alluminio: la usiamo per tutte le finiture.",
+      "",
+      "Nel listino sta fra i \"Reggivetro e distanziali\": il cliente lo vuole",
+      "nella sottocategoria Reggimensola."
+    ],
+    "descrizione": "Reggivetro in zama per mensole in vetro da 4 a 10mm di spessore: il vetro si infila nella sede e si blocca con il grano. Prodotto da Giesse Tech, disponibile in 7 finiture: alluminio, cromo lucido, oro lucido, bianco, nero, oro opaco e nichel satinato.",
+    "paroleChiave": "supporto mensola vetro reggimensola",
+    "materiale": "Zama",
+    "dimensioni": "Spessore vetro da 4 a 10mm",
+    "fornitore": "Giesse Tech",
+    "immagini": {
+      "Alluminio": ["prodotti/giesse-reggivetro.jpg"],
+      "Cromo lucido": ["prodotti/giesse-reggivetro.jpg"],
+      "Oro lucido": ["prodotti/giesse-reggivetro.jpg"],
+      "Bianco": ["prodotti/giesse-reggivetro.jpg"],
+      "Nero": ["prodotti/giesse-reggivetro.jpg"],
+      "Oro opaco": ["prodotti/giesse-reggivetro.jpg"],
+      "Nichel satinato": ["prodotti/giesse-reggivetro.jpg"]
+    },
+    "varianti": [
+      { "codice": "AZ80AL", "finitura": "Alluminio" },
+      { "codice": "AZ80CL", "finitura": "Cromo lucido" },
+      { "codice": "AZ80OL", "finitura": "Oro lucido" },
+      { "codice": "AZ80BI", "finitura": "Bianco" },
+      { "codice": "AZ80NE", "finitura": "Nero" },
+      { "codice": "AZ80OS", "finitura": "Oro opaco" },
+      { "codice": "AZ80NS", "finitura": "Nichel satinato" }
+    ]
+  }
+]
