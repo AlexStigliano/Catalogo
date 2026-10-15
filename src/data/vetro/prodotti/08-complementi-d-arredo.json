@@ -16,7 +16,7 @@
       "Nel listino sta fra i \"Reggivetro e distanziali\": il cliente lo vuole",
       "nella sottocategoria Reggimensola."
     ],
-    "descrizione": "Reggivetro in zama per mensole in vetro da 4 a 10mm di spessore: il vetro si infila nella sede e si blocca con il grano. Prodotto da Giesse Tech, disponibile in 7 finiture: alluminio, cromo lucido, oro lucido, bianco, nero, oro opaco e nichel satinato.",
+    "descrizione": "Reggivetro in zama per mensole in vetro da 4 a 10mm di spessore: il vetro si infila nella sede e si blocca con il grano. Prodotto da Giesse Tech, disponibile in 7 finiture: alluminio, cromo lucido, oro lucido, bianco, nero opaco, oro opaco e nichel satinato.",
     "paroleChiave": "supporto mensola vetro reggimensola",
     "materiale": "Zama",
     "dimensioni": "Spessore vetro da 4 a 10mm",
@@ -26,7 +26,7 @@
       "Cromo lucido": ["prodotti/giesse-reggivetro.jpg"],
       "Oro lucido": ["prodotti/giesse-reggivetro.jpg"],
       "Bianco": ["prodotti/giesse-reggivetro.jpg"],
-      "Nero": ["prodotti/giesse-reggivetro.jpg"],
+      "Nero opaco": ["prodotti/giesse-reggivetro.jpg"],
       "Oro opaco": ["prodotti/giesse-reggivetro.jpg"],
       "Nichel satinato": ["prodotti/giesse-reggivetro.jpg"]
     },
@@ -35,7 +35,7 @@
       { "codice": "AZ80CL", "finitura": "Cromo lucido" },
       { "codice": "AZ80OL", "finitura": "Oro lucido" },
       { "codice": "AZ80BI", "finitura": "Bianco" },
-      { "codice": "AZ80NE", "finitura": "Nero" },
+      { "codice": "AZ80NE", "finitura": "Nero opaco" },
       { "codice": "AZ80OS", "finitura": "Oro opaco" },
       { "codice": "AZ80NS", "finitura": "Nichel satinato" }
     ]
@@ -56,7 +56,7 @@
       "",
       "Duna Piccola e Duna Media hanno la stessa foto nel listino."
     ],
-    "descrizione": "Reggimensola Duna in zama, misura piccola, per mensole da 4 a 18mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero, oro opaco, cromo lucido e oro lucido.",
+    "descrizione": "Reggimensola Duna in zama, misura piccola, per mensole da 4 a 18mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero opaco, oro opaco, cromo lucido e oro lucido.",
     "paroleChiave": "supporto mensola staffa",
     "materiale": "Zama",
     "dimensioni": "Regolazione da 4 a 18mm di spessore mensola",
@@ -64,7 +64,7 @@
     "immagini": {
       "Alluminio": ["prodotti/giesse-duna.jpg"],
       "Bianco": ["prodotti/giesse-duna.jpg"],
-      "Nero": ["prodotti/giesse-duna.jpg"],
+      "Nero opaco": ["prodotti/giesse-duna.jpg"],
       "Oro opaco": ["prodotti/giesse-duna.jpg"],
       "Cromo lucido": ["prodotti/giesse-duna.jpg"],
       "Oro lucido": ["prodotti/giesse-duna.jpg"]
@@ -72,7 +72,7 @@
     "varianti": [
       { "codice": "AZ92AL", "finitura": "Alluminio" },
       { "codice": "AZ92BI", "finitura": "Bianco" },
-      { "codice": "AZ92NE", "finitura": "Nero" },
+      { "codice": "AZ92NE", "finitura": "Nero opaco" },
       { "codice": "AZ92OS", "finitura": "Oro opaco" },
       { "codice": "AZ92CL", "finitura": "Cromo lucido" },
       { "codice": "AZ92OL", "finitura": "Oro lucido" }
@@ -94,7 +94,7 @@
       "",
       "Duna Piccola e Duna Media hanno la stessa foto nel listino."
     ],
-    "descrizione": "Reggimensola Duna in zama, misura media, per mensole da 6 a 36mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero, oro opaco, cromo lucido e oro lucido.",
+    "descrizione": "Reggimensola Duna in zama, misura media, per mensole da 6 a 36mm di spessore: la mensola si appoggia sulla base e il cappello superiore si regola fino a stringerla. Prodotto da Giesse Tech, disponibile in 6 finiture: alluminio, bianco, nero opaco, oro opaco, cromo lucido e oro lucido.",
     "paroleChiave": "supporto mensola staffa",
     "materiale": "Zama",
     "dimensioni": "Regolazione da 6 a 36mm di spessore mensola",
@@ -102,7 +102,7 @@
     "immagini": {
       "Alluminio": ["prodotti/giesse-duna.jpg"],
       "Bianco": ["prodotti/giesse-duna.jpg"],
-      "Nero": ["prodotti/giesse-duna.jpg"],
+      "Nero opaco": ["prodotti/giesse-duna.jpg"],
       "Oro opaco": ["prodotti/giesse-duna.jpg"],
       "Cromo lucido": ["prodotti/giesse-duna.jpg"],
       "Oro lucido": ["prodotti/giesse-duna.jpg"]
@@ -110,7 +110,7 @@
     "varianti": [
       { "codice": "AZ76AL", "finitura": "Alluminio" },
       { "codice": "AZ76BI", "finitura": "Bianco" },
-      { "codice": "AZ76NE", "finitura": "Nero" },
+      { "codice": "AZ76NE", "finitura": "Nero opaco" },
       { "codice": "AZ76OS", "finitura": "Oro opaco" },
       { "codice": "AZ76CL", "finitura": "Cromo lucido" },
       { "codice": "AZ76OL", "finitura": "Oro lucido" }
@@ -122,25 +122,25 @@
     "sottocategoria": "reggimensola",
     "nome": "Reggimensola RM06",
     "note": [
-      "Dalla pagina Mital del prodotto. Mital la fa anche in Econichel (RM06 ECNH),",
-      "che non trattiamo. Il \"Cromo\" di Mital e' per noi \"Cromo lucido\".",
+      "Dalla pagina Mital del prodotto e dalla scheda tecnica (pag. 154 del",
+      "catalogo Mital). Mital la fa anche in Econichel (RM06 ECNH), che non",
+      "trattiamo. Il \"Cromo\" di Mital e' per noi \"Cromo lucido\".",
       "",
       "EAN: RM06 CR 8015323008246, RM06 NHST 8015323008369, RM06 NROP 8015323020385.",
       "",
-      "Per ora c'e' solo la foto in cromo, usata per tutte le finiture: le foto",
-      "in nero opaco e nichel satinato e la scheda tecnica PDF non erano nella",
-      "pagina salvata (mital.com e' bloccato dalla rete di lavoro). Il logo Mital",
-      "va preso dalla scheda tecnica quando arriva."
+      "Misure dalla scheda: L 20, H 22, D 30, S 6/10 (spessore mensola da 6 a 10mm)."
     ],
     "descrizione": "Reggimensola RM06 in zama pressofusa per mensole da 6 a 10mm di spessore, fornita con vite e tassello. Design Studio Mital. Prodotta da Mital, disponibile in 3 finiture: cromo lucido, nero opaco e nichel satinato.",
     "paroleChiave": "supporto mensola staffa",
     "materiale": "Zama",
-    "dimensioni": "Spessore mensola 6-10mm · vite e tassello inclusi",
+    "dimensioni": "L 20 × H 22 × D 30mm · spessore mensola 6-10mm · vite e tassello inclusi",
     "fornitore": "Mital",
+    "scheda": "mital-rm06-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/mital-rm06-scheda.jpg",
     "immagini": {
       "Cromo lucido": ["prodotti/mital-rm06-cromo.jpg"],
-      "Nero opaco": ["prodotti/mital-rm06-cromo.jpg"],
-      "Nichel satinato": ["prodotti/mital-rm06-cromo.jpg"]
+      "Nero opaco": ["prodotti/mital-rm06-nero-opaco.jpg"],
+      "Nichel satinato": ["prodotti/mital-rm06-nichel-satinato.jpg"]
     },
     "varianti": [
       { "codice": "RM06 CR", "finitura": "Cromo lucido" },
