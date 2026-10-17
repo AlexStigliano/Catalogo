@@ -128,7 +128,10 @@
       "",
       "EAN: RM06 CR 8015323008246, RM06 NHST 8015323008369, RM06 NROP 8015323020385.",
       "",
-      "Misure dalla scheda: L 20, H 22, D 30, S 6/10 (spessore mensola da 6 a 10mm)."
+      "Misure dalla scheda: L 20, H 22, D 30, S 6/10 (spessore mensola da 6 a 10mm).",
+      "",
+      "La foto ambientata viene dalla pagina 2 della scheda Mital: sta nella",
+      "galleria, e la scheda tecnica pubblicata ha solo la prima pagina."
     ],
     "descrizione": "Reggimensola RM06 in zama pressofusa per mensole da 6 a 10mm di spessore, fornita con vite e tassello. Design Studio Mital. Prodotta da Mital, disponibile in 3 finiture: cromo lucido, nero opaco e nichel satinato.",
     "paroleChiave": "supporto mensola staffa",
@@ -138,9 +141,9 @@
     "scheda": "mital-rm06-scheda-tecnica.pdf",
     "anteprimaScheda": "schede/mital-rm06-scheda.jpg",
     "immagini": {
-      "Cromo lucido": ["prodotti/mital-rm06-cromo.jpg"],
-      "Nero opaco": ["prodotti/mital-rm06-nero-opaco.jpg"],
-      "Nichel satinato": ["prodotti/mital-rm06-nichel-satinato.jpg"]
+      "Cromo lucido": ["prodotti/mital-rm06-cromo.jpg", "prodotti/mital-rm06-ambiente.jpg"],
+      "Nero opaco": ["prodotti/mital-rm06-nero-opaco.jpg", "prodotti/mital-rm06-ambiente.jpg"],
+      "Nichel satinato": ["prodotti/mital-rm06-nichel-satinato.jpg", "prodotti/mital-rm06-ambiente.jpg"]
     },
     "varianti": [
       { "codice": "RM06 CR", "finitura": "Cromo lucido" },
