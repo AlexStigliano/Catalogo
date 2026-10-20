@@ -200,28 +200,31 @@
     "nome": "Reggipiano passante 254",
     "note": [
       "Dalla scheda Torneria Dal Lago \"Reggipiani PASSANTE\", articolo 254. Dal Lago",
-      "lo fa con plastica nera, bianca o trasparente: noi teniamo solo la",
-      "trasparente, in ottone ottonato (254OL) e ottone nichelato (254NIK).",
+      "lo fa con plastica nera, bianca o trasparente. Noi teniamo l'ottone ottonato",
+      "(254OL) e l'ottone nichelato (254NIK) con plastica trasparente, e il nero",
+      "(254NE) con plastica nera.",
       "L'ottonato e' per noi \"Oro lucido\", come la sigla OL dei Giesse; il",
       "nichelato e' \"Nichel lucido\".",
       "",
-      "Le foto con plastica trasparente sono del cliente, scattate in negozio:",
-      "sfondo uniformato a bianco, ombra del pezzo lasciata. Poi il disegno quotato."
+      "Le foto sono del cliente, scattate in negozio: sfondo uniformato a bianco,",
+      "ombra del pezzo lasciata. Poi il disegno quotato."
     ],
-    "descrizione": "Reggipiano passante in ottone con anello in plastica trasparente: lungo 18mm, diametro 12mm. Prodotto da Torneria Dal Lago, disponibile in ottone ottonato e ottone nichelato.",
+    "descrizione": "Reggipiano passante in ottone con anello in plastica: lungo 18mm, diametro 12mm. Prodotto da Torneria Dal Lago, disponibile in ottone ottonato e ottone nichelato con plastica trasparente, e in nero con plastica nera.",
     "paroleChiave": "reggimensola reggipiani supporto mensola",
     "materiale": "Ottone",
-    "dimensioni": "Lunghezza 18mm · diametro 12mm · plastica trasparente",
+    "dimensioni": "Lunghezza 18mm · diametro 12mm · plastica trasparente (nera nella versione nero opaco)",
     "fornitore": "Torneria Dal Lago",
     "scheda": "dallago-254-scheda-tecnica.pdf",
     "anteprimaScheda": "schede/dallago-254-scheda.jpg",
     "immagini": {
       "Oro lucido": ["prodotti/dallago-254-ottonato.jpg", "prodotti/dallago-254-quote.jpg"],
-      "Nichel lucido": ["prodotti/dallago-254-nichelato.jpg", "prodotti/dallago-254-quote.jpg"]
+      "Nichel lucido": ["prodotti/dallago-254-nichelato.jpg", "prodotti/dallago-254-quote.jpg"],
+      "Nero opaco": ["prodotti/dallago-254-nero.jpg", "prodotti/dallago-254-quote.jpg"]
     },
     "varianti": [
       { "codice": "254OL", "finitura": "Oro lucido" },
-      { "codice": "254NIK", "finitura": "Nichel lucido" }
+      { "codice": "254NIK", "finitura": "Nichel lucido" },
+      { "codice": "254NE", "finitura": "Nero opaco" }
     ]
   }
 ]
