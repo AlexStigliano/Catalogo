@@ -81,6 +81,7 @@
     "Inox lucido": "linear-gradient(135deg,#f6f8f9,#c3c9ce 32%,#7f878e 50%,#c9ced2 68%,#f1f3f5)",
     "PVD lucido": "linear-gradient(135deg,#ffe9a3,#e6b83f 30%,#a9791d 50%,#e9c05a 68%,#ffefb0)",
     "Bianco opaco": "linear-gradient(135deg,#fdfdfb,#e7e6e0 60%,#f2f1ec)",
+    "Nichel lucido": "linear-gradient(135deg,#ffffff,#d9d4c9 30%,#8a857b 50%,#ded9cf 68%,#ffffff)",
     "Antracite": "linear-gradient(135deg,#5b5e62,#3b3d40 55%,#4c4f52)",
     "Oro opaco": "linear-gradient(135deg,#e2c27a,#bf9c4e 48%,#d6b86f 60%,#ad8b43)",
     "Oro satinato": "linear-gradient(135deg,#ecca77,#c39a3c 48%,#dcbb63 60%,#b78e35)",

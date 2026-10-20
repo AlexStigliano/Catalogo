@@ -192,5 +192,37 @@
       { "codice": "RM30 BCR", "finitura": "Cromo lucido", "versione": "B · mensola 8-25mm" },
       { "codice": "RM30 BNHST", "finitura": "Nichel satinato", "versione": "B · mensola 8-25mm" }
     ]
+  },
+  {
+    "id": 126,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggipiano passante 254",
+    "note": [
+      "Dalla scheda Torneria Dal Lago \"Reggipiani PASSANTE\", articolo 254. Dal Lago",
+      "lo fa con plastica nera, bianca o trasparente: noi teniamo solo la",
+      "trasparente, in ottone ottonato (254OL) e ottone nichelato (254NIK).",
+      "L'ottonato e' per noi \"Oro lucido\", come la sigla OL dei Giesse; il",
+      "nichelato e' \"Nichel lucido\".",
+      "",
+      "Per ora l'unica immagine e' il disegno quotato: la foto della scheda ha la",
+      "plastica nera, che non trattiamo. La foto con plastica trasparente arrivera'",
+      "dal cliente."
+    ],
+    "descrizione": "Reggipiano passante in ottone con anello in plastica trasparente: lungo 18mm, diametro 12mm. Prodotto da Torneria Dal Lago, disponibile in ottone ottonato e ottone nichelato.",
+    "paroleChiave": "reggimensola reggipiani supporto mensola",
+    "materiale": "Ottone",
+    "dimensioni": "Lunghezza 18mm · diametro 12mm · plastica trasparente",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "dallago-254-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/dallago-254-scheda.jpg",
+    "immagini": {
+      "Oro lucido": ["prodotti/dallago-254-quote.jpg"],
+      "Nichel lucido": ["prodotti/dallago-254-quote.jpg"]
+    },
+    "varianti": [
+      { "codice": "254OL", "finitura": "Oro lucido" },
+      { "codice": "254NIK", "finitura": "Nichel lucido" }
+    ]
   }
 ]
