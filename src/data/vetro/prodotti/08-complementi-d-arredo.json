@@ -150,5 +150,47 @@
       { "codice": "RM06 NROP", "finitura": "Nero opaco" },
       { "codice": "RM06 NHST", "finitura": "Nichel satinato" }
     ]
+  },
+  {
+    "id": 125,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggimensola RM30",
+    "note": [
+      "Dalla pagina Mital del prodotto e dalla scheda tecnica (pag. 146-147 del",
+      "catalogo Mital). Due misure: A per mensole da 10 a 30mm, B per mensole da",
+      "8 a 25mm, ciascuna in antracite, cromo e nichel satinato. Il \"Cromo\" di",
+      "Mital e' per noi \"Cromo lucido\".",
+      "",
+      "EAN: RM30 AANTR 8015323056353, RM30 ACR 8015323016159, RM30 ANHST",
+      "8015323016227, RM30 BANTR 8015323056360, RM30 BCR 8015323016210,",
+      "RM30 BNHST 8015323016234.",
+      "",
+      "La foto ambientata viene dalla pagina 2 della scheda Mital: sta nella",
+      "galleria, e la scheda tecnica pubblicata ha solo la prima pagina."
+    ],
+    "descrizione": "Reggimensola RM30 in zama pressofusa, design Marco Parcianello, in due misure: RM30A per mensole da 10 a 30mm di spessore e RM30B per mensole da 8 a 25mm. Fornita con viti e tasselli. Prodotta da Mital, disponibile in 3 finiture: antracite, cromo lucido e nichel satinato.",
+    "paroleChiave": "supporto mensola staffa Parcianello",
+    "materiale": "Zama",
+    "dimensioni": "RM30A: L 29 × H 71 × D 230mm, mensola 10-30mm · RM30B: L 25 × H 54 × D 147mm, mensola 8-25mm · viti e tasselli inclusi",
+    "fornitore": "Mital",
+    "scheda": "mital-rm30-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/mital-rm30-scheda.jpg",
+    "immagini": {
+      "Antracite": ["prodotti/mital-rm30-antracite.jpg", "prodotti/mital-rm30-ambiente.jpg"],
+      "Cromo lucido": ["prodotti/mital-rm30-cromo.jpg", "prodotti/mital-rm30-ambiente.jpg"],
+      "Nichel satinato": ["prodotti/mital-rm30-nichel-satinato.jpg", "prodotti/mital-rm30-ambiente.jpg"]
+    },
+    "assi": [
+      { "chiave": "versione", "etichetta": "Misura" }
+    ],
+    "varianti": [
+      { "codice": "RM30 AANTR", "finitura": "Antracite", "versione": "A · mensola 10-30mm" },
+      { "codice": "RM30 ACR", "finitura": "Cromo lucido", "versione": "A · mensola 10-30mm" },
+      { "codice": "RM30 ANHST", "finitura": "Nichel satinato", "versione": "A · mensola 10-30mm" },
+      { "codice": "RM30 BANTR", "finitura": "Antracite", "versione": "B · mensola 8-25mm" },
+      { "codice": "RM30 BCR", "finitura": "Cromo lucido", "versione": "B · mensola 8-25mm" },
+      { "codice": "RM30 BNHST", "finitura": "Nichel satinato", "versione": "B · mensola 8-25mm" }
+    ]
   }
 ]
