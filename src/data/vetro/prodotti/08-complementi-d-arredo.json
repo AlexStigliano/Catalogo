@@ -394,5 +394,33 @@
     "varianti": [
       { "codice": "STIGLI280", "finitura": "Trasparente" }
     ]
+  },
+  {
+    "id": 133,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggipiano cubetto 25x25 3 vie 281",
+    "note": [
+      "Dalla scheda e dalla pagina Torneria Dal Lago \"Reggipiani CUBETTO 25X25 3",
+      "VIE\", articolo 281-3: cubetto 25x25 in plex, 3 vie, M6, interasse 15. Il",
+      "codice STIGLI281 segue quelli degli altri cubetti; solo viti nichelate (la",
+      "foto Dal Lago e' in bianco e nero, come per il 279).",
+      "",
+      "Foto dalla pagina Dal Lago, con lo sfondo grigio portato a bianco. Il",
+      "disegno della scheda non ha quote."
+    ],
+    "descrizione": "Reggipiano a cubetto in plexiglass trasparente da 25×25mm, a tre vie, con tre fori filettati M6 su tre facce ad angolo retto (interasse 15mm) e tre viti M6 nichelate a testa zigrinata. Prodotto da Torneria Dal Lago.",
+    "paroleChiave": "reggimensola reggipiani supporto mensola plex cubo angolo",
+    "materiale": "Plexiglass",
+    "dimensioni": "Cubetto 25×25mm · 3 fori filettati M6 ad angolo retto, interasse 15mm · viti M6 nichelate",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "dallago-281-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/dallago-281-scheda.jpg",
+    "immagini": {
+      "Trasparente": ["prodotti/dallago-281-foto.jpg", "prodotti/dallago-281-disegno.jpg"]
+    },
+    "varianti": [
+      { "codice": "STIGLI281", "finitura": "Trasparente" }
+    ]
   }
 ]
