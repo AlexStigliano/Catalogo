@@ -284,5 +284,32 @@
     "varianti": [
       { "codice": "STIGLI275", "finitura": "Trasparente" }
     ]
+  },
+  {
+    "id": 129,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggipiano cubetto 20x20 2 vie 276",
+    "note": [
+      "Dalla scheda e dalla pagina Torneria Dal Lago \"Reggipiani CUBETTO 20X20 2",
+      "VIE\", articolo 276-2: cubetto 20x20 in plex, 2 vie, M6, interasse 10. Il",
+      "codice STIGLI276 e' quello del cliente; lo teniamo solo con le viti nichelate.",
+      "",
+      "Foto dalla pagina Dal Lago, con lo sfondo grigio portato a bianco. Il",
+      "disegno della scheda non ha quote."
+    ],
+    "descrizione": "Reggipiano a cubetto in plexiglass trasparente da 20×20mm, a due vie, con due fori filettati M6 ad angolo retto (interasse 10mm) e due viti M6 nichelate a testa zigrinata. Prodotto da Torneria Dal Lago.",
+    "paroleChiave": "reggimensola reggipiani supporto mensola plex cubo angolo",
+    "materiale": "Plexiglass",
+    "dimensioni": "Cubetto 20×20mm · 2 fori filettati M6 ad angolo retto, interasse 10mm · viti M6 nichelate",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "dallago-276-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/dallago-276-scheda.jpg",
+    "immagini": {
+      "Trasparente": ["prodotti/dallago-276-foto.jpg", "prodotti/dallago-276-disegno.jpg"]
+    },
+    "varianti": [
+      { "codice": "STIGLI276", "finitura": "Trasparente" }
+    ]
   }
 ]
