@@ -239,8 +239,8 @@
       "trasparente, in ottone ottonato (253OL) e ottone nichelato (253NIK); la",
       "versione nera del 254 qui non c'e'. Finiture chiamate come per il 254.",
       "",
-      "Per ora l'unica immagine e' il disegno quotato: la foto della scheda ha la",
-      "plastica nera, che non trattiamo."
+      "Le foto sono del cliente, scattate in negozio con la vite accanto: sfondo",
+      "uniformato a bianco, ombra del pezzo lasciata. Poi il disegno quotato."
     ],
     "descrizione": "Reggipiano in ottone con anello in plastica trasparente e vite M6 a testa zigrinata: lungo 18mm, diametro 12mm. Prodotto da Torneria Dal Lago, disponibile in ottone ottonato e ottone nichelato.",
     "paroleChiave": "reggimensola reggipiani supporto mensola",
@@ -250,8 +250,8 @@
     "scheda": "dallago-253-scheda-tecnica.pdf",
     "anteprimaScheda": "schede/dallago-253-scheda.jpg",
     "immagini": {
-      "Oro lucido": ["prodotti/dallago-253-quote.jpg"],
-      "Nichel lucido": ["prodotti/dallago-253-quote.jpg"]
+      "Oro lucido": ["prodotti/dallago-253-ottonato.jpg", "prodotti/dallago-253-quote.jpg"],
+      "Nichel lucido": ["prodotti/dallago-253-nichelato.jpg", "prodotti/dallago-253-quote.jpg"]
     },
     "varianti": [
       { "codice": "253OL", "finitura": "Oro lucido" },
