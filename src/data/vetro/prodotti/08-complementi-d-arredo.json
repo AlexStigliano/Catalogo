@@ -257,5 +257,32 @@
       { "codice": "253OL", "finitura": "Oro lucido" },
       { "codice": "253NIK", "finitura": "Nichel lucido" }
     ]
+  },
+  {
+    "id": 128,
+    "categoria": "08",
+    "sottocategoria": "reggimensola",
+    "nome": "Reggipiano cubetto 20x20 1 via 275",
+    "note": [
+      "Dalla scheda e dalla pagina Torneria Dal Lago \"Reggipiani CUBETTO 20X20 1",
+      "VIA\", articolo 275-1: cubetto 20x20 in plex, 1 via, M6 centrato. Il codice",
+      "STIGLI275 e' quello del cliente; lo teniamo solo con la vite nichelata.",
+      "",
+      "Foto dalla pagina Dal Lago, con lo sfondo grigio portato a bianco. Il",
+      "disegno della scheda non ha quote."
+    ],
+    "descrizione": "Reggipiano a cubetto in plexiglass trasparente da 20×20mm, a una via, con foro filettato M6 centrato e vite M6 nichelata a testa zigrinata. Prodotto da Torneria Dal Lago.",
+    "paroleChiave": "reggimensola reggipiani supporto mensola plex cubo",
+    "materiale": "Plexiglass",
+    "dimensioni": "Cubetto 20×20mm · foro filettato M6 centrato · vite M6 nichelata",
+    "fornitore": "Torneria Dal Lago",
+    "scheda": "dallago-275-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/dallago-275-scheda.jpg",
+    "immagini": {
+      "Trasparente": ["prodotti/dallago-275-foto.jpg", "prodotti/dallago-275-disegno.jpg"]
+    },
+    "varianti": [
+      { "codice": "STIGLI275", "finitura": "Trasparente" }
+    ]
   }
 ]
