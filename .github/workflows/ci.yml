@@ -14,4 +14,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Le foto e le anteprime gia' convertite in WebP: senza, ogni build le
+      # rifa' tutte da capo. Va dopo "npm ci", che svuota node_modules.
+      - name: Conversioni delle foto gia' fatte
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/dati-vetro-foto
+          key: foto-vetro-${{ hashFiles('src/assets/vetro/prodotti/**', 'src/assets/vetro/schede/**', 'scripts/vite-plugin-dati-vetro.mjs') }}
+          restore-keys: foto-vetro-
       - run: npm run build
+      # La prova nel browser del sito appena costruito (scripts/prova-sito.mjs).
+      - name: Browser per la prova del sito
+        run: npx playwright install --with-deps --only-shell chromium
+      - run: npm test
