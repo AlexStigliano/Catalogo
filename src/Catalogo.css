@@ -47,10 +47,20 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
+/* "clip" taglia cio' che sborda di lato senza creare un contenitore di
+   scorrimento: con "hidden" testata e barra dei filtri (position: sticky)
+   non restavano fisse. "hidden" resta come ripiego per i browser vecchi. */
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; overflow-x: clip; overscroll-behavior-x: none; }
 body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 
-.cat { font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; width: 100%; max-width: 100%; overflow-x: hidden; }
+/* --testata: altezza della testata blu (logo + margini), per agganciarle
+   sotto cio' che resta fisso mentre si scorre. */
+.cat { --testata: calc(56px + 1.2rem); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; width: 100%; max-width: 100%; overflow-x: hidden; overflow-x: clip; }
+@media (max-width: 600px) { .cat { --testata: calc(40px + 1.2rem); } }
+/* Link che prendono il posto di un pulsante: stesso aspetto, ma si possono
+   aprire in un'altra scheda o copiare. :where() non aggiunge peso, cosi'
+   vincono le regole della classe (colore, sottolineatura al passaggio). */
+.cat :where(a.lk) { color: inherit; text-decoration: none; line-height: normal; }
 @media (prefers-reduced-motion: reduce) { .cat *, .cat *::before, .cat *::after { animation: none !important; transition-duration: 0.01ms !important; } }
 .cat ::selection { background: var(--orange); color: #fff; }
 .cat button, .cat input, .cat select { font-family: inherit; color: inherit; }
@@ -82,7 +92,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .stat .k { display: block; margin-top: 0.35rem; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
 
 /* Toolbar */
-.cat .toolbar-wrap { position: sticky; top: 68px; z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
+.cat .toolbar-wrap { position: sticky; top: calc(var(--testata) - 1px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
 .cat .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0.8rem 0; }
 .cat .search { position: relative; flex: 1 1 240px; min-width: 190px; }
 .cat .search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); stroke: var(--ink-soft); pointer-events: none; }
@@ -119,6 +129,9 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .filter-panel.open { grid-template-rows: 1fr; }
 .cat .filter-inner { overflow: hidden; }
 .cat .filter-panel.open .filter-inner { padding-bottom: 1rem; }
+/* La barra resta fissa: il pannello aperto scorre al suo interno invece di
+   finire sotto il bordo dello schermo. */
+.cat .filter-panel.open .filter-inner { max-height: calc(100vh - var(--testata) - 4.6rem); max-height: calc(100dvh - var(--testata) - 4.6rem); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .cat .filter-inner .search { display: block; flex: none; width: 100%; margin-bottom: 0.8rem; }
 .cat .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.7rem; }
 .cat .fld { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
@@ -162,6 +175,28 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .filter-clear { background: none; border: none; color: var(--orange-dark); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; }
 .cat .filter-clear:hover { text-decoration: underline; }
 
+/* Su telefono la barra sta su una riga sola (filtri, ricerca, vista), perche'
+   resta fissa mentre si scorre: il numero di prodotti passa sopra la lista
+   e nel pannello compare il tasto che lo richiude. */
+.cat .filter-trigger .corto, .cat .count-lista, .cat .filter-done { display: none; }
+@media (max-width: 640px) {
+  .cat .filterbar { flex-wrap: nowrap; gap: 0.5rem; padding: 0.55rem 0; }
+  .cat .filterbar .search { flex: 1 1 auto; min-width: 0; }
+  /* 16px: sotto questa misura iPhone ingrandisce la pagina quando si scrive. */
+  .cat .search input, .cat .search.big input { font-size: 16px; }
+  .cat .filterbar .search input { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .cat .filter-trigger { flex: none; padding: 0.6rem 0.75rem; gap: 0.4rem; }
+  .cat .filter-trigger .lungo, .cat .filter-trigger .fchev { display: none; }
+  .cat .filter-trigger .corto { display: inline; }
+  .cat .filterbar .count { display: none; }
+  .cat .count-lista { display: block; margin: 0.9rem 0 -0.6rem; font-size: 12.5px; color: var(--ink-soft); }
+  .cat .count-lista b { color: var(--header-name); font-weight: 800; }
+  .cat .filter-done { display: inline-flex; margin-left: auto; padding: 0.6rem 1rem; border: none; border-radius: 6px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 800; cursor: pointer; }
+}
+@media (max-width: 640px) and (prefers-color-scheme: dark) { .cat .filter-done { background: var(--blue); } }
+@media (max-width: 640px) { :root[data-theme="dark"] .cat .filter-done { background: var(--blue); } :root[data-theme="light"] .cat .filter-done { background: var(--navy); } }
+@media (max-width: 379px) { .cat .filter-trigger .corto { display: none; } }
+
 /* Catalogo Vetro: scheda tecnica e rapporto di prova affiancati */
 .cat .pdp-docs { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .cat .pdp-docs .scheda { align-self: flex-start; }
@@ -199,6 +234,9 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .sheet-x:hover { background: rgba(255,255,255,0.15); }
 .cat .sheet-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; align-items: flex-start; justify-content: center; padding: clamp(0.6rem, 3vw, 2rem); }
 .cat .sheet-scroll img { width: 100%; max-width: 900px; height: auto; background: #fff; border-radius: 6px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+/* Catalogo Vetro: la scheda arriva in fette, una sotto l'altra senza stacchi. */
+.cat .sheet-pagine { width: 100%; max-width: 900px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+.cat .sheet-pagine img { display: block; max-width: none; border-radius: 0; box-shadow: none; }
 
 /* Pulsante Indietro */
 .cat .crumb-back { display: inline-flex; align-items: center; gap: 0.25rem; background: var(--navy); border: none; cursor: pointer; color: #fff; font-weight: 700; padding: 0.35rem 0.8rem 0.35rem 0.55rem; font-size: 13px; border-radius: 100px; transition: background 0.15s; }
@@ -243,18 +281,34 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .variants-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.4,0,0.2,1); }
 .cat .variants-wrap.open { grid-template-rows: 1fr; }
 .cat .variants-inner { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+/* Tabella che puo' scorrere di lato: finche' restano colonne nascoste a
+   destra, il bordo sfuma e sotto compare l'avviso. */
+.cat .scorri-lato { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+.cat .scorri-lato::after { content: ""; position: absolute; top: 0.7rem; right: 0; bottom: 0; width: 34px; pointer-events: none; opacity: 0; transition: opacity 0.2s; background: linear-gradient(to right, transparent, var(--paper)); }
+.cat .scorri-lato.altro::after { opacity: 1; }
+.cat .scorri-lato.scorre { padding-bottom: 1.5rem; }
+/* Nelle card la tabella si richiude: da chiusa l'avviso non deve tenerla aperta. */
+.cat .variants-wrap:not(.open) .scorri-lato.scorre { padding-bottom: 0; }
+.cat .scorri-lato.scorre::before { content: "Scorri di lato per vedere tutte le colonne  →"; position: absolute; left: 0; bottom: 0; font-size: 11px; font-weight: 700; color: var(--ink-soft); }
 .cat .variants-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.cat table.variants { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 12px; margin-top: 0.7rem; border-radius: 6px; overflow: hidden; }
+.cat table.variants { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 0.7rem; border-radius: 6px; overflow: hidden; }
 .cat table.variants thead th { background: var(--navy); color: #fff; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0.6rem; text-align: left; }
 .cat table.variants thead th:last-child { text-align: right; }
 /* Tabella a una sola colonna (prodotti su misura senza finitura): l'intestazione
    resta allineata a sinistra come la cella sotto. */
 .cat table.variants thead th:only-child { text-align: left; }
+@media (max-width: 640px) {
+  .cat table.variants thead th, .cat table.variants tbody td { padding-left: 0.45rem; padding-right: 0.45rem; }
+  .cat table.variants .fin-cell { gap: 0.4rem; }
+  /* Le intestazioni lunghe ("Lunghezza totale") vanno a capo: spesso basta
+     questo a far stare la tabella nello schermo. */
+  .cat table.variants thead th.ver { white-space: normal; }
+}
 .cat table.variants tbody td { padding: 0.5rem 0.6rem; }
 .cat table.variants tbody tr:nth-child(odd) { background: var(--panel); }
 .cat .code { font-weight: 800; color: var(--ink); white-space: nowrap; }
 .cat .fin-cell { display: flex; align-items: center; gap: 0.5rem; }
-.cat .fin-cell .chip { width: 14px; height: 14px; margin: 0; border: none; box-shadow: 0 0 0 1px var(--line); }
+.cat .fin-cell .chip { flex: none; width: 14px; height: 14px; margin: 0; border: none; box-shadow: 0 0 0 1px var(--line); }
 .cat .ver { text-align: right; color: var(--ink-soft); white-space: nowrap; }
 
 .cat .empty { grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--ink-soft); }
@@ -400,7 +454,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .prep .badge { display: inline-block; background: var(--panel); color: var(--header-name); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 100px; margin-bottom: 1rem; }
 .cat .prep h2 { font-weight: 800; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--header-name); margin: 0 0 0.6rem; }
 .cat .prep p { margin: 0 auto 1.6rem; max-width: 44ch; }
-.cat .prep .back { padding: 0.65rem 1.5rem; border: none; border-radius: 6px; background: var(--orange); color: #fff; font-weight: 800; font-size: 13px; cursor: pointer; }
+.cat .prep .back { display: inline-block; padding: 0.65rem 1.5rem; border: none; border-radius: 6px; background: var(--orange); color: #fff; font-weight: 800; font-size: 13px; cursor: pointer; }
 .cat .prep .back:hover { background: var(--orange-dark); }
 
 /* ===== Selezione finitura → immagine ===== */
@@ -478,7 +532,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 
 /* ---------- Pagina prodotto (PDP) ---------- */
 .cat .pdp { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: 1.6rem; align-items: start; }
-.cat .pdp-media { position: sticky; top: 1.2rem; }
+.cat .pdp-media { position: sticky; top: calc(var(--testata) + 1.2rem); }
 .cat .pdp-media .media { border: 1px solid var(--line); border-radius: 12px; aspect-ratio: 4/3; }
 /* Miniature per prodotti con più foto (es. vista montata + esploso) */
 .cat .pdp-thumbs { display: flex; gap: 0.6rem; margin-top: 0.7rem; }

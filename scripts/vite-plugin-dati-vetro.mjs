@@ -10,7 +10,10 @@
      1280 px di larghezza (mai ingrandite): ogni foto arriva come
      { src, srcSet } e il browser scarica la misura adatta allo schermo.
      In sviluppo resta la foto originale, { src }, per non aspettare la
-     conversione a ogni avvio.
+     conversione a ogni avvio;
+   - le anteprime delle schede tecniche (anteprimaScheda) diventano WebP
+     allo stesso modo, tagliate in fette: sono immagini anche di decine di
+     pagine, e cosi' il visore scarica solo le fette che si guardano.
 
    Senza plugin i nomi andrebbero risolti nel browser, con una tabella di
    corrispondenza che duplica ogni percorso e appesantisce ogni visita. */
@@ -26,7 +29,7 @@ const ID_RISOLTO = '\0' + ID;
 
 // Campi di un prodotto che contengono nomi di file: un nome solo, una lista
 // di nomi (immagini, per finitura) o un oggetto { variante: nome }.
-const CAMPI_FILE = ['scheda', 'anteprimaScheda', 'istruzioni', 'rapporto'];
+const CAMPI_FILE = ['scheda', 'istruzioni', 'rapporto'];
 
 // Larghezze delle foto convertite e qualita' WebP. 640 basta per le card e
 // le miniature, 1280 per la foto grande della pagina prodotto anche sugli
@@ -50,6 +53,45 @@ async function convertiFoto(assoluto, cartellaCache) {
     writeFileSync(cache, webp);
     return { larghezza: l, dati: webp };
   }));
+}
+
+// Anteprime delle schede tecniche. Nel visore sono larghe al massimo 900 px:
+// si pubblicano a 900 e, per gli schermi ad alta densita', fino a 1800 (mai
+// ingrandite; se le due misure sono vicine resta solo la piu' grande). La
+// qualita' e' un po' piu' alta delle foto perche' sono pagine di testo.
+// Ogni fetta e' alta al massimo 4096 px dell'originale: WebP non va oltre
+// i 16383 px e le schede piu' lunghe superano i 28000.
+const LARGHEZZE_ANTEPRIMA = [900, 1800];
+const QUALITA_ANTEPRIMA = 82;
+const ALTEZZA_FETTA = 4096;
+
+async function convertiAnteprima(assoluto, cartellaCache) {
+  const dati = await readFile(assoluto);
+  const impronta = createHash('sha1').update(dati).digest('hex').slice(0, 16);
+  const { width, height } = await sharp(dati).metadata();
+  let larghezze = [...new Set(LARGHEZZE_ANTEPRIMA.map(l => Math.min(l, width)))];
+  if (larghezze.length > 1 && larghezze[1] / larghezze[0] < 1.3) larghezze = [larghezze[1]];
+  // L'immagine si apre una volta sola, e solo se manca qualche fetta:
+  // decodificare da capo un JPEG di 28000 px per ogni fetta costa secondi.
+  let aperta = null;
+  const apri = async () => (aperta ||= await sharp(dati).removeAlpha().raw().toBuffer({ resolveWithObject: true }));
+  const fette = [];
+  for (let alto = 0; alto < height; alto += ALTEZZA_FETTA) {
+    const h = Math.min(ALTEZZA_FETTA, height - alto);
+    const versioni = [];
+    for (const l of larghezze) {
+      const cache = join(cartellaCache, `${impronta}-f${alto}-${l}-q${QUALITA_ANTEPRIMA}.webp`);
+      if (!existsSync(cache)) {
+        const { data, info } = await apri();
+        writeFileSync(cache, await sharp(data, { raw: { width: info.width, height: info.height, channels: info.channels } })
+          .extract({ left: 0, top: alto, width, height: h })
+          .resize({ width: l }).webp({ quality: QUALITA_ANTEPRIMA, effort: 4, smartSubsample: true }).toBuffer());
+      }
+      versioni.push({ larghezza: l, dati: readFileSync(cache) });
+    }
+    fette.push({ w: width, h, versioni });
+  }
+  return fette;
 }
 
 export default function datiVetro({ radice }) {
@@ -93,13 +135,23 @@ export default function datiVetro({ radice }) {
       if (!foto.has(assoluto)) foto.set(assoluto, `__foto_${foto.size}__`);
       return foto.get(assoluto);
     };
-    const campoFile = (v, dove) => (v && typeof v === 'object')
-      ? Object.fromEntries(Object.entries(v).map(([k, n]) => [k, file(n, dove)]))
-      : (v ? file(v, dove) : v);
+    // Le anteprime delle schede: come le foto, ma il valore e' la lista
+    // delle fette, [{ src, srcSet, w, h }].
+    const anteprime = new Map();
+    const fileAnteprima = (nome, dove) => {
+      file(nome, dove, true);
+      const assoluto = assolutoDi(nome);
+      if (!anteprime.has(assoluto)) anteprime.set(assoluto, `__ante_${anteprime.size}__`);
+      return anteprime.get(assoluto);
+    };
+    const campo = (v, dove, uno) => (v && typeof v === 'object')
+      ? Object.fromEntries(Object.entries(v).map(([k, n]) => [k, uno(n, dove)]))
+      : (v ? uno(v, dove) : v);
 
     const prodottiSito = prodotti.map(({ note, ...p }) => {
       const dove = `prodotto #${p.id} ${p.nome}`;
-      for (const c of CAMPI_FILE) if (c in p) p[c] = campoFile(p[c], dove);
+      for (const c of CAMPI_FILE) if (c in p) p[c] = campo(p[c], dove, file);
+      if ('anteprimaScheda' in p) p.anteprimaScheda = campo(p.anteprimaScheda, dove, fileAnteprima);
       if (p.immagini) {
         p.immagini = Object.fromEntries(Object.entries(p.immagini).map(([fin, nomi]) => [fin, nomi.map(n => fileFoto(n, dove))]));
       }
@@ -112,6 +164,7 @@ export default function datiVetro({ radice }) {
     // In sviluppo la foto resta l'originale. Nella build le versioni WebP
     // vengono pubblicate come file a parte e l'originale non serve piu'.
     let righeFoto = [];
+    const righeAnteprime = [];
     if (build) {
       mkdirSync(cartellaCache, { recursive: true });
       // Il nome del file pubblicato lo decidiamo qui, con l'impronta del
@@ -138,15 +191,28 @@ export default function datiVetro({ radice }) {
           righeFoto[i + j] = `const ${segnaposto} = ${JSON.stringify(valore)};`;
         }));
       }
+      // Le anteprime a gruppi di 4: le piu' lunghe sono immagini enormi.
+      const tutteAnteprime = [...anteprime];
+      for (let i = 0; i < tutteAnteprime.length; i += 4) {
+        await Promise.all(tutteAnteprime.slice(i, i + 4).map(async ([assoluto, segnaposto], j) => {
+          const nome = basename(assoluto, extname(assoluto));
+          const fette = (await convertiAnteprima(assoluto, cartellaCache)).map((f, k) => {
+            const versioni = f.versioni.map(v => ({ ...v, url: indirizzo(`${nome}-${k + 1}`, v) }));
+            return { src: versioni[versioni.length - 1].url, srcSet: versioni.map(v => `${v.url} ${v.larghezza}w`).join(', '), w: f.w, h: f.h };
+          });
+          righeAnteprime[i + j] = `const ${segnaposto} = ${JSON.stringify(fette)};`;
+        }));
+      }
     } else {
       for (const [assoluto, segnaposto] of foto) righeFoto.push(`const ${segnaposto} = { src: ${imp.get(assoluto)} };`);
+      for (const [assoluto, segnaposto] of anteprime) righeAnteprime.push(`const ${segnaposto} = [{ src: ${imp.get(assoluto)} }];`);
     }
     // Nella build le foto originali non vanno importate, o finirebbero
     // comunque pubblicate.
-    const importate = build ? [...imp].filter(([assoluto]) => !foto.has(assoluto) || altriUsi.has(assoluto)) : [...imp];
+    const importate = build ? [...imp].filter(([assoluto]) => !(foto.has(assoluto) || anteprime.has(assoluto)) || altriUsi.has(assoluto)) : [...imp];
     const righe = importate.map(([assoluto, segnaposto]) => `import ${segnaposto} from ${JSON.stringify(assoluto)};`);
-    righe.push(...righeFoto);
-    const conImport = (valore) => JSON.stringify(valore).replace(/"(__(?:file|foto)_\d+__)"/g, '$1');
+    righe.push(...righeFoto, ...righeAnteprime);
+    const conImport = (valore) => JSON.stringify(valore).replace(/"(__(?:file|foto|ante)_\d+__)"/g, '$1');
     return `${righe.join('\n')}\nexport const catalogo = ${conImport(catalogoSito)};\nexport const prodotti = ${conImport(prodottiSito)};\n`;
   }
 

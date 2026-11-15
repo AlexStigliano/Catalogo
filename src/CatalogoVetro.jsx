@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid, PlayCircle } from 'lucide-react';
 import './Catalogo.css';
+import ScorriLato from './ScorriLato.jsx';
 import {
   CATEGORIE_VETRO, SOTTOCATEGORIE_PER_CATEGORIA, ALTRE_SOTTOCATEGORIE_VETRO,
   PRODOTTI_VETRO, SCHEDA_IMG_VETRO, PAROLE_CHIAVE_VETRO, FINISHES_VETRO, FILTRI_VETRO,
@@ -26,7 +27,8 @@ const materialiDi = (p) => p.materiali || (p.materiale ? [p.materiale] : []);
 // La scheda (pdf e anteprima) può essere unica per il prodotto oppure diversa
 // per variante (es. un distanziale con una scheda tecnica per ogni lunghezza):
 // in quel caso è un oggetto { 'codice variante': valore }.
-const pickScheda = (val, key) => (val && typeof val === 'object')
+// L'anteprima arriva come lista di fette (vedi SchedaViewer), non una mappa.
+const pickScheda = (val, key) => (val && typeof val === 'object' && !Array.isArray(val))
   ? (val[key] !== undefined ? val[key] : Object.values(val)[0])
   : val;
 const openScheda = (id, key) => window.dispatchEvent(new CustomEvent('open-scheda-vetro', { detail: { id, key } }));
@@ -102,6 +104,10 @@ const inSequenza = (lista, parole) => parole.length > 1
 const punteggioRicerca = (p, parole) => {
   const ind = INDICE_RICERCA_VETRO.get(p.id);
   if (!ind) return 0;
+  // Un codice con gli spazi scritto per intero ("TGS 50", "RM06 CR") arriva
+  // qui spezzato in piu' parole: riunite, sono il codice esatto, e quel
+  // prodotto viene prima di chi lo contiene soltanto (TGS 502).
+  if (parole.length > 1 && ind.codici.includes(parole.map(t => t.codice).join(''))) return 1000 * (parole.length + 1);
   let totale = 0;
   for (const t of parole) {
     const punti = Math.max(puntiCodice(ind, t), puntiTesto(ind, t));
@@ -204,6 +210,38 @@ const go = (path) => {
   window.location.hash = path;
 };
 
+/* Link vero verso un'altra schermata: si puo' aprire in un'altra scheda,
+   copiare tenendo premuto o condividere. Il clic normale passa da go(),
+   che fa ripartire la pagina dall'alto; con Ctrl, Cmd o il tasto centrale
+   decide il browser. */
+const Vai = ({ a, className, onClick, children, ...resto }) => (
+  <a href={'#' + a} className={className ? 'lk ' + className : 'lk'} {...resto}
+    onClick={e => {
+      if (onClick) onClick(e);
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      go(a);
+    }}>{children}</a>
+);
+const LogoTestata = ({ a }) => (
+  <Vai a={a} aria-label={a === '/' ? 'Ferramenta Stigliano: torna alla copertina' : 'Ferramenta Stigliano: torna all’indice'}>
+    <img className="logo" src={logo} alt="Ferramenta Stigliano" />
+  </Vai>
+);
+
+// Vero sotto i 640 px di larghezza, dove la barra dei filtri sta su una riga.
+const SCHERMO_STRETTO = '(max-width: 640px)';
+function useSchermoStretto() {
+  const [stretto, setStretto] = useState(() => window.matchMedia(SCHERMO_STRETTO).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(SCHERMO_STRETTO);
+    const cambia = () => setStretto(mq.matches);
+    mq.addEventListener('change', cambia);
+    return () => mq.removeEventListener('change', cambia);
+  }, []);
+  return stretto;
+}
+
 /* ---------- Copertina ---------- */
 function Cover() {
   return (
@@ -212,9 +250,9 @@ function Cover() {
         <img className="clogo" src={logoCover} alt="Ferramenta Stigliano — dal 1869" />
         <h1 className="catgen">Catalogo Vetro</h1>
         <p className="tagline">Ferramenta e accessori per il settore del vetro. Una selezione dedicata, dal 1869.</p>
-        <button className="enter" onClick={() => go('/indice')}>
+        <Vai className="enter" a="/indice">
           Sfoglia il catalogo <ArrowRight size={18} />
-        </button>
+        </Vai>
       </div>
       <div className="cover-foot">Ferramenta <b>Stigliano</b> · Napoli · dal 1869</div>
     </div>
@@ -237,7 +275,7 @@ function Indice() {
     <>
       <div className="topbar">
         <div className="shell">
-          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/')} />
+          <LogoTestata a="/" />
           <span className="section">Catalogo Vetro · Indice</span>
         </div>
       </div>
@@ -265,7 +303,7 @@ function Indice() {
             {CATEGORIE_VETRO.map(c => {
               const n = count(c.id);
               return (
-                <button className="idx-row" key={c.id} onClick={() => go(`/cat/${c.id}`)}>
+                <Vai className="idx-row" key={c.id} a={`/cat/${c.id}`}>
                   <span className="idx-num">{c.id}</span>
                   <span className="idx-name">{c.nome}</span>
                   <span className="idx-dots" />
@@ -275,7 +313,7 @@ function Indice() {
                       : <span className="idx-soon">in arrivo</span>}
                     <ChevronRight className="idx-arrow" />
                   </span>
-                </button>
+                </Vai>
               );
             })}
           </div>
@@ -289,7 +327,7 @@ function Indice() {
                 const img = primaImmagine(p);
                 const codici = codiciTrovati(p, testo);
                 return (
-                  <button className="res-row" key={p.id} onClick={() => go(`/prodotto/${p.id}`)}>
+                  <Vai className="res-row" key={p.id} a={`/prodotto/${p.id}`}>
                     <span className="res-thumb">
                       {img ? <Foto foto={img} sizes="60px" alt="" loading="lazy" /> : <span className="res-noimg">—</span>}
                     </span>
@@ -304,7 +342,7 @@ function Indice() {
                       )}
                     </span>
                     <ChevronRight className="res-arrow" />
-                  </button>
+                  </Vai>
                 );
               })}
             </div>
@@ -329,7 +367,6 @@ function CategoryPage({ cat, subParam }) {
   const sub = hasSubs
     ? (subParam && sottocategorie.some(s => s.id === subParam) ? subParam : sottocategorie[0].id)
     : null;
-  const setSub = (id) => go('/cat/' + cat + '/' + id);
   const catProducts = PRODOTTI_VETRO.filter(p => p.categoria === cat);
   const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
 
@@ -337,13 +374,13 @@ function CategoryPage({ cat, subParam }) {
     <>
       <div className="topbar">
         <div className="shell">
-          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <LogoTestata a="/indice" />
           <span className="section">{info.nome}</span>
         </div>
       </div>
       <div className="shell">
         <div className="crumbs">
-          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <Vai className="crumb-link" a="/indice"><ChevronLeft size={14} /> Indice</Vai>
           <span className="crumb-sep">/</span>
           <span className="crumb-now">Categoria {info.id}</span>
         </div>
@@ -353,18 +390,18 @@ function CategoryPage({ cat, subParam }) {
           <hr className="rule" />
         </div>
         {hasSubs && (
-          <div className="subbar" role="tablist" aria-label="Sottocategorie">
+          <nav className="subbar" aria-label="Sottocategorie">
             {sottocategorie.map(s => {
               const n = catProducts.filter(p => p.sottocategoria === s.id).length;
               return (
-                <button key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
-                  role="tab" aria-selected={s.id === sub} onClick={() => setSub(s.id)}>
+                <Vai key={s.id} className={`subchip${s.id === sub ? ' active' : ''}`}
+                  a={'/cat/' + cat + '/' + s.id} aria-current={s.id === sub ? 'page' : undefined}>
                   {s.nome}
                   {n > 0 && <span className="subcount">{n}</span>}
-                </button>
+                </Vai>
               );
             })}
-          </div>
+          </nav>
         )}
       </div>
 
@@ -374,7 +411,7 @@ function CategoryPage({ cat, subParam }) {
             <span className="badge">Sezione {info.id}</span>
             <h2>Sezione in preparazione</h2>
             <p>Stiamo caricando gli articoli di questa categoria. Torna presto per sfogliarli.</p>
-            <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+            <Vai className="back" a="/indice">Torna all’indice</Vai>
           </div>
         </div>
       ) : subProducts.length > 0 ? (
@@ -394,6 +431,45 @@ function CategoryPage({ cat, subParam }) {
       )}
       <Footer />
     </>
+  );
+}
+
+/* Una tendina dei filtri, a selezione multipla. Sta fuori da ProductCatalog:
+   definita li' dentro sarebbe un componente nuovo a ogni ridisegno, e React
+   la ricreerebbe da capo (il fuoco della tastiera si perdeva dopo ogni
+   spunta e l'apertura non si animava). */
+function Gruppo({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale, drop, setDrop, disponibile }) {
+  const aperto = drop === campo;
+  const riass = scelte.length === 0 ? tutti
+    : scelte.length === 1 ? (label ? label(scelte[0]) : scelte[0])
+    : scelte.length + ' ' + plurale;
+  const cambia = (v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
+  return (
+    <div className="fld">
+      <span className="fld-k">{etichetta}</span>
+      <button type="button" className={`fdrop-btn${aperto ? ' open' : ''}${scelte.length ? ' has' : ''}`}
+        aria-expanded={aperto} onClick={() => setDrop(d => d === campo ? null : campo)}>
+        <span className="fdrop-v">{riass}</span>
+        <ChevronDown className="fdrop-chev" size={15} />
+      </button>
+      <div className={`fdrop-menu${aperto ? ' open' : ''}`}>
+        <div className="fdrop-inner">
+          <div className="fdrop-list">
+            {opzioni.map(o => {
+              const on = scelte.includes(o);
+              const off = !on && !disponibile(campo, p => test(p, o));
+              return (
+                <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
+                  <input type="checkbox" checked={on} disabled={off} tabIndex={aperto ? 0 : -1} onChange={() => cambia(o)} />
+                  <span className="fbox" aria-hidden="true" />
+                  <span className="ftxt">{label ? label(o) : o}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -427,6 +503,7 @@ function ProductCatalog({ products }) {
   }, [q, mat, fin, prod, misure, favOnly, visibili]);
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
+  const stretto = useSchermoStretto();
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
     catch { return []; }
@@ -483,43 +560,11 @@ function ProductCatalog({ products }) {
   const disponibile = (campo, test) => products.some(p => match(p, campo) && test(p));
   const numeroMisure = Object.values(misure).reduce((n, v) => n + v.length, 0);
   const activeCount = (q.trim() ? 1 : 0) + mat.length + fin.length + prod.length + numeroMisure + (favOnly ? 1 : 0);
-  const toggleVal = (set, v) => set(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
   const setMisura = (chiave) => (agg) => setMisure(m => ({ ...m, [chiave]: agg(m[chiave] || []) }));
   const resetAll = () => { setQ(''); setMat([]); setFin([]); setProd([]); setMisure({}); setFavOnly(false); };
 
-  const Gruppo = ({ etichetta, campo, opzioni, scelte, set, test, label, tutti, plurale }) => {
-    const aperto = drop === campo;
-    const riass = scelte.length === 0 ? tutti
-      : scelte.length === 1 ? (label ? label(scelte[0]) : scelte[0])
-      : scelte.length + ' ' + plurale;
-    return (
-      <div className="fld">
-        <span className="fld-k">{etichetta}</span>
-        <button type="button" className={`fdrop-btn${aperto ? ' open' : ''}${scelte.length ? ' has' : ''}`}
-          aria-expanded={aperto} onClick={() => setDrop(d => d === campo ? null : campo)}>
-          <span className="fdrop-v">{riass}</span>
-          <ChevronDown className="fdrop-chev" size={15} />
-        </button>
-        <div className={`fdrop-menu${aperto ? ' open' : ''}`}>
-          <div className="fdrop-inner">
-            <div className="fdrop-list">
-              {opzioni.map(o => {
-                const on = scelte.includes(o);
-                const off = !on && !disponibile(campo, p => test(p, o));
-                return (
-                  <label key={o} className={`fopt${on ? ' on' : ''}${off ? ' off' : ''}`}>
-                    <input type="checkbox" checked={on} disabled={off} onChange={() => toggleVal(set, o)} />
-                    <span className="fbox" aria-hidden="true" />
-                    <span className="ftxt">{label ? label(o) : o}</span>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // Cio' che ogni tendina dei filtri deve sapere della lista.
+  const tendina = { drop, setDrop, disponibile };
 
   return (
     <>
@@ -527,16 +572,18 @@ function ProductCatalog({ products }) {
         <div className="shell">
           <div className="filterbar">
             <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
-              onClick={() => { setFOpen(o => !o); setDrop(null); }}>
+              aria-label="Filtra prodotti" onClick={() => { setFOpen(o => !o); setDrop(null); }}>
               <SlidersHorizontal size={16} />
-              <span>Filtra prodotti</span>
+              <span className="lungo">Filtra prodotti</span>
+              <span className="corto">Filtri</span>
               {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
               <ChevronDown className="fchev" size={16} />
             </button>
             <label className="search">
               <Search size={16} />
               <input type="text" value={q} onChange={e => setQ(e.target.value)}
-                placeholder="Cerca per nome o codice…" autoComplete="off" aria-label="Cerca" />
+                placeholder={stretto ? 'Nome o codice…' : 'Cerca per nome o codice…'}
+                autoComplete="off" aria-label="Cerca per nome o codice" />
             </label>
             <span className="count">
               <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
@@ -558,14 +605,14 @@ function ProductCatalog({ products }) {
           <div className={`filter-panel${fOpen ? ' open' : ''}`}>
             <div className="filter-inner">
               <div className="filter-grid">
-                <Gruppo etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
+                <Gruppo {...tendina} etichetta="Materiale" campo="mat" opzioni={mats} scelte={mat} set={setMat}
                   test={(p, o) => materialiDi(p).includes(o)} tutti="Tutti i materiali" plurale="materiali" />
-                <Gruppo etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
+                <Gruppo {...tendina} etichetta="Produttore" campo="prod" opzioni={prods} scelte={prod} set={setProd}
                   test={(p, o) => p.fornitore === o} tutti="Tutti i produttori" plurale="produttori" />
-                <Gruppo etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
+                <Gruppo {...tendina} etichetta="Finitura" campo="fin" opzioni={fins} scelte={fin} set={setFin}
                   test={(p, o) => !p.senzaFinitura && p.varianti.some(v => v.finitura === o)} tutti="Tutte le finiture" plurale="finiture" />
                 {filtriMisura.map(f => (
-                  <Gruppo key={f.chiave} etichetta={f.etichetta} campo={f.chiave} opzioni={f.opzioni}
+                  <Gruppo {...tendina} key={f.chiave} etichetta={f.etichetta} campo={f.chiave} opzioni={f.opzioni}
                     scelte={misure[f.chiave] || []} set={setMisura(f.chiave)}
                     test={(p, o) => valoriFiltro(p, f.chiave).some(v => String(v) === o)}
                     tutti={f.tutti} plurale={f.plurale} label={(o) => f.etichette[o]} />
@@ -577,6 +624,9 @@ function ProductCatalog({ products }) {
                   <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Solo preferiti
                 </button>
                 {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
+                <button type="button" className="filter-done" onClick={() => { setFOpen(false); setDrop(null); }}>
+                  Mostra {filtered.length} {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+                </button>
               </div>
             </div>
           </div>
@@ -584,6 +634,9 @@ function ProductCatalog({ products }) {
       </div>
 
       <div className="shell">
+        <p className="count-lista">
+          <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+        </p>
         <div className={`gallery${mobileView === 'grid2' ? ' compact-2col' : ''}`}>
           {filtered.slice(0, visibili).map((p, idx) => (
             <ProductCard key={p.id} product={p} idx={idx % PASSO_LISTA} compatta={mobileView === 'grid2'}
@@ -656,15 +709,14 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
           aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
           <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
         </button>
-        <div className="media-body clickable" onClick={() => go('/prodotto/' + p.id)} role="link"
-          tabIndex={0} onKeyDown={e => { if (e.key === 'Enter') go('/prodotto/' + p.id); }}
+        <Vai className="media-body clickable" a={'/prodotto/' + p.id}
           aria-label={`Apri la scheda di ${p.nome}`}
           onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
           onTouchEnd={gallery.length > 1 ? onTouchEnd : undefined}>
           {selImg ? <Foto foto={selImg} sizes={compatta ? '(max-width: 640px) 50vw, 400px' : '(max-width: 640px) 100vw, 400px'}
               alt={`${p.nome} — ${selFin}`} loading="lazy" />
             : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
-        </div>
+        </Vai>
         {gallery.length > 1 && (
           <>
             <button className="media-nav prev" aria-label="Foto precedente" onClick={prevImg}>
@@ -685,7 +737,7 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
       </div>
       <div className="cbody">
         <div className="name-row">
-          <h2 className="name clickable" onClick={() => go('/prodotto/' + p.id)}>{p.nome}</h2>
+          <h2 className="name clickable"><Vai a={'/prodotto/' + p.id}>{p.nome}</Vai></h2>
         </div>
         <div className="submeta">
           <p className="sub">{subName(p.sottocategoria)}</p>
@@ -714,16 +766,16 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
             <span className="fcount">{selFin}</span>
           </div>
         )}
-        <button className="detail-cta" onClick={() => go('/prodotto/' + p.id)}>
+        <Vai className="detail-cta" a={'/prodotto/' + p.id}>
           Scheda completa
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-        </button>
+        </Vai>
         <button className="expand" aria-expanded={open} onClick={() => { setTabella(true); setOpen(o => !o); }}>
           <span>Varianti disponibili ({p.varianti.length})</span>
           <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
         <div className={`variants-wrap${open ? ' open' : ''}`}>
-          <div className="variants-inner">
+          <ScorriLato className="variants-inner">
             {tabella && <table className="variants">
               <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
                 {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
@@ -740,7 +792,7 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
                 ))}
               </tbody>
             </table>}
-          </div>
+          </ScorriLato>
         </div>
       </div>
     </article>
@@ -771,7 +823,7 @@ function SezioneTendina({ title, badge, aperta = false, children }) {
 function RelatedCard({ p }) {
   const img = (p.immagini && (p.immagini[Object.keys(p.immagini)[0]] || [])[0]) || null;
   return (
-    <button className="rel-card" onClick={() => go('/prodotto/' + p.id)}>
+    <Vai className="rel-card" a={'/prodotto/' + p.id}>
       <div className="rel-media">
         {img ? <Foto foto={img} sizes="80px" alt={p.nome} loading="lazy" /> : <div className="noimg"><Ghost /></div>}
       </div>
@@ -780,7 +832,7 @@ function RelatedCard({ p }) {
         <span className="rel-forn">{p.varianti.map(v => v.codice).join(' · ')}</span>
       </div>
       <ChevronRight size={16} className="rel-arrow" />
-    </button>
+    </Vai>
   );
 }
 
@@ -856,14 +908,14 @@ function ProductDetail({ id }) {
     return (
       <>
         <div className="topbar"><div className="shell">
-          <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+          <LogoTestata a="/indice" />
           <span className="section">Prodotto</span>
         </div></div>
         <div className="shell"><div className="prep">
           <span className="badge">Prodotto</span>
           <h2>Prodotto non trovato</h2>
           <p>La scheda richiesta non è disponibile.</p>
-          <button className="back" onClick={() => go('/indice')}>Torna all’indice</button>
+          <Vai className="back" a="/indice">Torna all’indice</Vai>
         </div></div>
         <Footer />
       </>
@@ -889,15 +941,15 @@ function ProductDetail({ id }) {
   return (
     <>
       <div className="topbar"><div className="shell">
-        <img className="logo" src={logo} alt="Ferramenta Stigliano" onClick={() => go('/indice')} />
+        <LogoTestata a="/indice" />
         <span className="section">{info.nome}</span>
       </div></div>
 
       <div className="shell">
         <div className="crumbs">
-          <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
+          <Vai className="crumb-link" a="/indice"><ChevronLeft size={14} /> Indice</Vai>
           <span className="crumb-sep">/</span>
-          <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>Categoria {p.categoria}</button>
+          <Vai className="crumb-link" a={'/cat/' + p.categoria}>Categoria {p.categoria}</Vai>
           <span className="crumb-sep">/</span>
           <span className="crumb-now">{p.nome}</span>
         </div>
@@ -1017,7 +1069,7 @@ function ProductDetail({ id }) {
 
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
-              <div className="variants-scroll">
+              <ScorriLato className="variants-scroll">
               <table className="variants">
                 <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
                   {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
@@ -1048,7 +1100,7 @@ function ProductDetail({ id }) {
                   })}
                 </tbody>
               </table>
-              </div>
+              </ScorriLato>
             </div>
           </div>
         </div>
@@ -1098,13 +1150,15 @@ function SchedaViewer() {
     const onOpen = (e) => {
       const { id, key } = e.detail || {};
       const p = PRODOTTI_VETRO.find(x => x.id === id);
-      const src = pickScheda(SCHEDA_IMG_VETRO[id], key);
-      if (!p || !src) return;
+      // L'anteprima e' tagliata in fette, una sotto l'altra: le schede lunghe
+      // hanno decine di pagine e cosi' si scaricano solo quelle che si guardano.
+      const fette = pickScheda(SCHEDA_IMG_VETRO[id], key);
+      if (!p || !fette) return;
       // Prodotti con una scheda per variante (es. il distanziale, una per
       // lunghezza): titolo e nome del file dicono quale si sta guardando,
       // altrimenti le schede scaricate sono tutte uguali e non si distinguono.
       const perVariante = p.scheda && typeof p.scheda === 'object' && p.scheda[key] !== undefined;
-      setItem({ src, title: p.nome, ver: perVariante ? key : null, pdf: pickScheda(p.scheda, key) });
+      setItem({ fette, title: p.nome, ver: perVariante ? key : null, pdf: pickScheda(p.scheda, key) });
       document.body.style.overflow = 'hidden';
       // Un passo in cronologia con lo stesso indirizzo: il tasto Indietro del
       // telefono chiude il visore invece di cambiare pagina.
@@ -1136,7 +1190,13 @@ function SchedaViewer() {
         </span>
       </div>
       <div className="sheet-scroll" onClick={e => e.stopPropagation()}>
-        <img src={item.src} alt={`Scheda tecnica ${item.title}`} />
+        <div className="sheet-pagine">
+          {item.fette.map((f, i) => (
+            <Foto key={i} foto={f} sizes="(max-width: 900px) 100vw, 900px" width={f.w} height={f.h}
+              loading={i ? 'lazy' : undefined}
+              alt={i ? '' : `Scheda tecnica ${item.title}`} />
+          ))}
+        </div>
       </div>
     </div>
   );

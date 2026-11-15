@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Heart, Search, ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, SlidersHorizontal } from 'lucide-react';
 import './Catalogo.css';
+import ScorriLato from './ScorriLato.jsx';
 import logo from './assets/logo-stigliano.png';
 import logoCover from './assets/logo-stigliano-cover.png';
 import fimetLogo from './assets/fimet-logo.png';
@@ -573,7 +574,7 @@ const PRODUCTS = [
     { codice: '800.30.1500.1300.60', finitura: 'Acciaio inox satinato', diametro: 30, lunghezza: 1500, interasse: 1300 },
     { codice: '800.25.500.300.NO', finitura: 'Nero opaco', diametro: 25, lunghezza: 500, interasse: 300 },
     { codice: '800.25.500.300.18', finitura: 'PVD lucido', diametro: 25, lunghezza: 500, interasse: 300 } ] },
-  { id: 33, categoria: '01', nome: 'Arizona Inclinato', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arizonaInclinatoScheda,
+  { id: 33, categoria: '01', nome: 'Arizona Inclinato', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo tondo: rispetto alla versione a supporti diritti, l’impugnatura risulta più ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: arizonaInclinatoScheda,
     assi: [
       { chiave: 'diametro', etichetta: 'Diametro', suffisso: ' mm' },
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
@@ -680,7 +681,7 @@ const PRODUCTS = [
     }, varianti: [
     { codice: '838Q.25.375.350.60', finitura: 'Acciaio inox satinato', lunghezza: 375, interasse: 350 },
     { codice: '838Q.25.375.350.NO', finitura: 'Nero opaco', lunghezza: 375, interasse: 350 } ] },
-  { id: 42, categoria: '01', nome: 'Oregon', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta piu’ ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: oregonScheda,
+  { id: 42, categoria: '01', nome: 'Oregon', descrizione: 'Maniglione tubolare per porte in acciaio inox AISI 304, con supporti inclinati e profilo quadro 40×10 mm: rispetto alla versione a supporti diritti, l’impugnatura risulta più ergonomica in fase di apertura. Le finiture sono protette da una verniciatura a polvere certificata resistente ai raggi UV, quindi regge bene anche sulle porte esposte. Viene fornito con il kit di fissaggio completo: bussole, guarnizioni, grani, viti autofilettanti e tronconi filettati. Fimet progetta e produce in Italia, a Casto in provincia di Brescia. Puoi scegliere la misura indifferentemente per lunghezza totale o per interasse: selezionando una delle due, restano disponibili solo le combinazioni compatibili.', materiale: 'Acciaio inox AISI 304', sottocategoria: 'maniglioni', fornitore: 'Fimet', fornitoreLogo: fimetLogo, scheda: oregonScheda,
     assi: [
       { chiave: 'lunghezza', etichetta: 'Lunghezza totale', suffisso: ' mm' },
       { chiave: 'interasse', etichetta: 'Interasse', suffisso: ' mm' }
@@ -892,7 +893,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
           <svg className="chev" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
         <div className={`variants-wrap${open ? ' open' : ''}`}>
-          <div className="variants-inner">
+          <ScorriLato className="variants-inner">
             <table className="variants">
               <thead>
                 <tr><th>Codice articolo</th><th>Finitura</th>
@@ -918,7 +919,7 @@ function ProductCard({ product: p, idx, isFav, onFav }) {
                 })}
               </tbody>
             </table>
-          </div>
+          </ScorriLato>
         </div>
       </div>
     </article>
@@ -1289,9 +1290,10 @@ function ProductCatalog({ products }) {
         <div className="shell">
           <div className="filterbar">
             <button className={`filter-trigger${fOpen ? ' open' : ''}`} aria-expanded={fOpen}
-              onClick={() => { setFOpen(o => !o); setDrop(null); }}>
+              aria-label="Filtra prodotti" onClick={() => { setFOpen(o => !o); setDrop(null); }}>
               <SlidersHorizontal size={16} />
-              <span>Filtra prodotti</span>
+              <span className="lungo">Filtra prodotti</span>
+              <span className="corto">Filtri</span>
               {activeCount > 0 && <span className="filter-badge">{activeCount}</span>}
               <ChevronDown className="fchev" size={16} />
             </button>
@@ -1325,6 +1327,9 @@ function ProductCatalog({ products }) {
                   <Heart size={15} fill={favOnly ? 'currentColor' : 'none'} /> Solo preferiti
                 </button>
                 {activeCount > 0 && <button className="filter-clear" onClick={resetAll}>Azzera filtri</button>}
+                <button type="button" className="filter-done" onClick={() => { setFOpen(false); setDrop(null); }}>
+                  Mostra {filtered.length} {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+                </button>
               </div>
             </div>
           </div>
@@ -1332,6 +1337,9 @@ function ProductCatalog({ products }) {
       </div>
 
       <div className="shell">
+        <p className="count-lista">
+          <b>{filtered.length}</b> {filtered.length === 1 ? 'prodotto' : 'prodotti'}
+        </p>
         <div className="gallery">
           {filtered.map((p, idx) => (
             <ProductCard key={p.id} product={p} idx={idx}
@@ -1598,7 +1606,7 @@ function ProductDetail({ id }) {
 
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
-              <div className="variants-scroll">
+              <ScorriLato className="variants-scroll">
               <table className="variants">
                 <thead><tr><th>Codice articolo</th><th>Finitura</th>
                   {assi ? assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>) : (haVer && <th>Versione</th>)}
@@ -1630,7 +1638,7 @@ function ProductDetail({ id }) {
                   })}
                 </tbody>
               </table>
-              </div>
+              </ScorriLato>
             </div>
           </div>
         </div>

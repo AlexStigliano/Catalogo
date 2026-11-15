@@ -22,6 +22,9 @@ src/Catalogo.jsx              Catalogo Generale: interfaccia e dati insieme
 src/Catalogo.css              stile, comune ai due cataloghi
 scripts/controlla-dati.mjs    controllo dei dati, prima di ogni build
 scripts/vite-plugin-dati-vetro.mjs   porta i dati JSON nel sito, converte le foto
+scripts/prova-sito.mjs        prova nel browser del sito costruito (npm test)
+scripts/filigrana.mjs, sbianca-foto.mjs, formatta-dati.mjs
+                              strumenti per preparare foto, schede e dati
 public/                       icone, manifest, immagine di anteprima dei link
 ```
 
@@ -34,6 +37,7 @@ npm install        la prima volta
 npm run dev        sito in sviluppo: http://localhost:5173/vetro.html
 npm run check      solo il controllo dei dati
 npm run build      controllo dei dati + sito pronto in dist/
+npm test           prova nel browser il sito costruito in dist/
 ```
 
 In sviluppo la pagina si aggiorna da sola a ogni modifica, anche dei file
@@ -58,6 +62,10 @@ La guida completa, con tutti i campi, è in
    **avvisi** vengono solo elencati.
 5. `npm run dev` per vederlo, poi pubblica (sotto).
 
+Per preparare foto e schede (sfondo bianco, filigrana, anteprima della
+scheda) ci sono gli strumenti in `scripts/`: sono descritti nella stessa
+guida, alla voce "Strumenti".
+
 Se il prodotto porta una misura nuova (per esempio la larghezza di un
 nastro), va deciso se aggiungerla ai filtri: l'elenco è in
 `src/data/vetro/catalogo.json`, alla voce `filtri`.
@@ -74,5 +82,6 @@ ricostruisce il sito e lo mette online in un paio di minuti.
 
 Le modifiche si fanno su un branch di lavoro e arrivano in `main` con una
 pull request. Su ogni pull request gira la CI (`.github/workflows/ci.yml`),
-che esegue `npm run build`, quindi anche il controllo dei dati: se è rossa,
-qualcosa va corretto prima di unire.
+che esegue `npm run build`, quindi anche il controllo dei dati, e poi
+`npm test`, che prova il sito in un browser: se è rossa, qualcosa va
+corretto prima di unire.

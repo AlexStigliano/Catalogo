@@ -38,6 +38,7 @@ niente commenti. Per le spiegazioni c'è il campo `note` (vedi sotto).
    L'id finisce nell'indirizzo della pagina (`#/prodotto/118`) e nei
    preferiti dei clienti, quindi non si cambia e non si riusa.
 4. `npm run check`, poi `npm run dev` per vederlo.
+5. Prima di pubblicare: `npm run build && npm test` (vedi "Strumenti").
 
 Un prodotto minimo:
 
@@ -161,5 +162,47 @@ migliore che si ha. Nella build diventano WebP a 640 e 1280 px di larghezza
 (mai ingrandite) e il browser scarica quella adatta allo schermo: sul sito
 l'originale non viene pubblicato. Le conversioni restano in
 `node_modules/.cache/dati-vetro-foto`, così le build successive rifanno solo
-le foto nuove o cambiate. In sviluppo si vede la foto originale. Poi `src/datiVetro.js` li passa all'interfaccia. In sviluppo
+le foto nuove o cambiate. In sviluppo si vede la foto originale.
+
+Le anteprime delle schede tecniche (`schede/`) fanno la stessa strada:
+nella build diventano WebP e vengono tagliate in fette, perché le schede di
+molte pagine sono immagini lunghissime. Il visore mostra le fette una sotto
+l'altra e scarica solo quelle che si guardano.
+
+Poi `src/datiVetro.js` li passa all'interfaccia. In sviluppo
 (`npm run dev`) la pagina si aggiorna da sola quando si salva un JSON.
+
+
+## Strumenti
+
+Stanno in `scripts/` e si lanciano con `node` dalla cartella del progetto,
+dopo `npm ci`.
+
+| Comando | A che cosa serve |
+|---|---|
+| `npm run check` | Controlla i dati (vedi in cima). Parte da solo prima di ogni build. |
+| `node scripts/formatta-dati.mjs` | Controlla che i file dei prodotti siano nel formato solito; con `--scrivi` li sistema. Chi aggiunge prodotti da uno script usa la sua funzione `formatta()`. |
+| `node scripts/sbianca-foto.mjs foto.jpg x0,y0,x1,y1 uscita.jpg` | Per le foto fatte al telefono o con lo sfondo grigio: porta lo sfondo a bianco e ritaglia in 4:3 attorno al pezzo, a 1000×750. Il riquadro è quello che contiene il pezzo, in pixel della foto originale. |
+| `node scripts/filigrana.mjs foto ingresso uscita.jpg` | Mette la filigrana Ferramenta Stigliano su una foto di prodotto. Con `disegno` al posto di `foto`, la versione più leggera per disegni e quote. |
+| `node scripts/filigrana.mjs pdf scheda.pdf uscita.pdf --anteprima uscita.jpg` | Filigrana su ogni pagina della scheda tecnica e, con `--anteprima`, l'immagine per il visore (va in `schede/`). `--pagine 1-2` tiene solo quelle pagine. Per l'anteprima serve `pdftoppm` (pacchetto poppler-utils). |
+| `npm test` | Prova il sito costruito in un browser vero: vedi sotto. |
+
+Il giro completo per una foto nuova: `sbianca-foto` (se lo sfondo non è
+bianco), poi `filigrana foto`, e il risultato in `src/assets/vetro/prodotti/`.
+Tutte le immagini pubblicate hanno la filigrana: i valori sono in testa a
+`scripts/filigrana.mjs` e non vanno cambiati, o nel catalogo ci sarebbero
+filigrane diverse.
+
+### La prova del sito
+
+`npm test` (`scripts/prova-sito.mjs`) apre con Chromium il sito costruito da
+`npm run build` e controlla che i dati si vedano davvero: ogni categoria con
+i suoi prodotti nell'ordine giusto, ogni pagina prodotto con i suoi codici,
+la ricerca di ogni codice articolo, nessuna foto rotta, nessun errore.
+Ripete anche i difetti già corretti una volta (la testata che non restava
+fissa, la pagina che sborda sul telefono), su tutti e due i cataloghi.
+
+Le attese le prende da questi file: aggiungendo un prodotto non c'è niente
+da aggiornare. Gira a ogni pull request, dopo la build; se non passa, la
+pull request resta rossa. La prima volta sul proprio computer serve il
+browser: `npx playwright install chromium`.
