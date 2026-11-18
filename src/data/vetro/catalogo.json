@@ -20,6 +20,7 @@
       { "id": "fermavetri", "nome": "Fermavetri" }
     ],
     "03": [
+      { "id": "kit-porte", "nome": "Kit per porte" },
       { "id": "chiudiporta", "nome": "Chiudiporta" },
       { "id": "cerniere", "nome": "Cerniere" },
       { "id": "serrature", "nome": "Serrature" }
