@@ -1139,6 +1139,15 @@ function CategoryPage({ cat, subParam }) {
     ? subParam : SOTTOCATEGORIE[0].id;
   const setSub = (id) => go('/cat/' + cat + '/' + id);
   const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
+  // Sul telefono le tab scorrono di lato: quella scelta va portata in vista,
+  // centrata, anche se e' l'ultima. Solo in orizzontale: la pagina non si muove.
+  const barra = React.useRef(null);
+  useEffect(() => {
+    const b = barra.current, t = b && b.querySelector('.active');
+    if (!t || b.scrollWidth <= b.clientWidth) return;
+    const rb = b.getBoundingClientRect(), rt = t.getBoundingClientRect();
+    b.scrollLeft += (rt.left + rt.width / 2) - (rb.left + rb.width / 2);
+  }, [sub]);
 
   return (
     <>
@@ -1149,18 +1158,20 @@ function CategoryPage({ cat, subParam }) {
         </div>
       </div>
       <div className="shell">
-        <div className="crumbs">
+        <nav className="crumbs" aria-label="Percorso">
           <button className="crumb-link" onClick={() => go('/indice')}><ChevronLeft size={14} /> Indice</button>
-          <span className="crumb-sep">/</span>
-          <span className="crumb-now">Categoria {info.id}</span>
-        </div>
+          <span className="crumb-ultimo">
+            <span className="crumb-sep">/</span>
+            <span className="crumb-now" aria-current="page">{info.nome}</span>
+          </span>
+        </nav>
         <div className="intro">
           <div className="num">{info.id}</div>
           <h1>{info.nome}</h1>
           <hr className="rule" />
         </div>
         {hasSubs && (
-          <div className="subbar" role="tablist" aria-label="Sottocategorie">
+          <div className="subbar" role="tablist" aria-label="Sottocategorie" ref={barra}>
             {SOTTOCATEGORIE.map(s => {
               const n = catProducts.filter(p => p.sottocategoria === s.id).length;
               return (
@@ -1512,15 +1523,25 @@ function ProductDetail({ id }) {
       </div></div>
 
       <div className="shell">
-        <div className="crumbs">
+        {/* Le maniglie (categoria 01) hanno le tab: la sottocategoria riporta
+            alla tab del prodotto, non alla prima della categoria. */}
+        <nav className="crumbs" aria-label="Percorso">
           <button className="crumb-back" onClick={goBack}><ChevronLeft size={15} /> Indietro</button>
           <span className="crumb-sep">/</span>
           <button className="crumb-link" onClick={() => go('/indice')}>Indice</button>
           <span className="crumb-sep">/</span>
-          <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>Categoria {p.categoria}</button>
-          <span className="crumb-sep">/</span>
-          <span className="crumb-now">{p.nome}</span>
-        </div>
+          <button className="crumb-link" onClick={() => go('/cat/' + p.categoria)}>{info.nome}</button>
+          {p.categoria === '01' && p.sottocategoria && (
+            <>
+              <span className="crumb-sep">/</span>
+              <button className="crumb-link" onClick={() => go(`/cat/01/${p.sottocategoria}`)}>{subName(p.sottocategoria)}</button>
+            </>
+          )}
+          <span className="crumb-ultimo">
+            <span className="crumb-sep">/</span>
+            <span className="crumb-now" aria-current="page">{p.nome}</span>
+          </span>
+        </nav>
 
         <div className="pdp">
           <div className="pdp-media">

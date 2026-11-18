@@ -196,7 +196,57 @@ for (const [nome, indirizzo, lista] of [['Catalogo Vetro', VETRO, `#/cat/${prima
   }
 }
 
-/* ---------- 3. Catalogo Vetro: tastiera nei filtri, tabella su telefono ---------- */
+/* ---------- 3. Briciole di pane, spazio sul telefono, tema scuro ---------- */
+{
+  const { p, vai, chiudi } = await apri(COMPUTER);
+  // Categoria: il nome, non "Categoria 04".
+  await vai(`${VETRO}#/cat/${primaLista.id}`);
+  verifica(await p.locator('.crumbs .crumb-now').textContent() === primaLista.nome, `briciole della categoria ${primaLista.id}: c'e' il nome della categoria`);
+  // Prodotto in una categoria con le tab: la sottocategoria porta alla sua tab.
+  const conTab = prodotti.find(x => (catalogo.sottocategorie[x.categoria] || []).some(s => s.id === x.sottocategoria)
+    && catalogo.sottocategorie[x.categoria][0].id !== x.sottocategoria);
+  if (conTab) {
+    await vai(`${VETRO}#/prodotto/${conTab.id}`);
+    const link = await p.$$eval('.crumbs a', aa => aa.map(a => a.getAttribute('href')));
+    verifica(uguali(link, ['#/indice', `#/cat/${conTab.categoria}`, `#/cat/${conTab.categoria}/${conTab.sottocategoria}`]),
+      `briciole del prodotto #${conTab.id}: indice, categoria e la sua sottocategoria`, link.join(' '));
+  }
+  await chiudi();
+}
+for (const [nome, indirizzo, lista] of [['Catalogo Vetro', VETRO, `#/cat/${primaLista.id}`], ['Catalogo Generale', GENERALE, '#/cat/01']]) {
+  // Sul telefono il primo prodotto deve vedersi senza scorrere.
+  const { p, vai, chiudi } = await apri(TELEFONO);
+  await vai(indirizzo + lista);
+  const alto = await p.$eval('.gallery .card', c => c.getBoundingClientRect().top);
+  verifica(alto <= 360, `${nome}, telefono: il primo prodotto comincia entro 360px dall'alto`, `${Math.round(alto)}px`);
+  await vai(indirizzo + '#/indice');
+  const righe = await p.$$eval('.idx-row', rr => rr.filter(r => r.getBoundingClientRect().bottom <= window.innerHeight).length);
+  verifica(righe >= 8, `${nome}, telefono: l'indice mostra almeno 8 categorie senza scorrere`, `${righe}`);
+  await chiudi();
+}
+{
+  // Tema scuro: le linee blu e il contorno delle pastiglie devono staccarsi
+  // dal fondo (contrasto almeno 3:1, la soglia per gli elementi grafici).
+  const { p, vai, chiudi } = await apri({ ...TELEFONO, colorScheme: 'dark' });
+  const nero = prodotti.find(x => x.varianti.some(v => /^Nero/.test(v.finitura)) && x.varianti.length > 1);
+  await vai(`${VETRO}#/prodotto/${nero ? nero.id : prodotti[0].id}`);
+  const c = await p.evaluate(() => {
+    const rgb = (s) => (s.match(/\d+(\.\d+)?/g) || []).slice(0, 3).map(Number);
+    const lum = ([r, g, b]) => [r, g, b].map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+    const contrasto = (a, b) => { const [x, y] = [lum(rgb(a)), lum(rgb(b))].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+    const fondo = getComputedStyle(document.body).backgroundColor;
+    const anello = getComputedStyle(document.querySelector('.pdp-variants .fin-cell .chip')).boxShadow;
+    return {
+      linea: contrasto(getComputedStyle(document.querySelector('.pdp-info .rule')).backgroundColor, fondo),
+      titoli: contrasto(getComputedStyle(document.querySelector('.rel-toggle')).borderBottomColor, fondo),
+      pastiglia: contrasto(anello.match(/rgba?\([^)]*\)/)[0], fondo),
+    };
+  });
+  for (const [cosa, v] of Object.entries(c)) verifica(v >= 3, `tema scuro: ${cosa} con contrasto almeno 3:1 sul fondo`, v.toFixed(2));
+  await chiudi();
+}
+
+/* ---------- 4. Catalogo Vetro: tastiera nei filtri, tabella su telefono ---------- */
 {
   const { p, vai, chiudi } = await apri(COMPUTER);
   await vai(`${VETRO}#/cat/${primaLista.id}`);

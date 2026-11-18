@@ -270,6 +270,7 @@ function Indice() {
   }, [q]);
   const testo = q.trim();
   const risultati = useMemo(() => cercaProdottiVetro(testo), [testo]);
+  const stretto = useSchermoStretto();
 
   return (
     <>
@@ -289,7 +290,7 @@ function Indice() {
           <label className="search big">
             <Search size={18} />
             <input type="text" value={q} onChange={e => setQ(e.target.value)}
-              placeholder="Cerca un articolo per nome, codice o finitura…"
+              placeholder={stretto ? 'Nome, codice o finitura…' : 'Cerca un articolo per nome, codice o finitura…'}
               autoComplete="off" aria-label="Cerca in tutto il catalogo" />
             {testo && (
               <button type="button" className="search-clear" onClick={() => setQ('')}
@@ -369,6 +370,15 @@ function CategoryPage({ cat, subParam }) {
     : null;
   const catProducts = PRODOTTI_VETRO.filter(p => p.categoria === cat);
   const subProducts = hasSubs ? catProducts.filter(p => p.sottocategoria === sub) : catProducts;
+  // Sul telefono le tab scorrono di lato: quella scelta va portata in vista,
+  // centrata, anche se e' l'ultima. Solo in orizzontale: la pagina non si muove.
+  const barra = React.useRef(null);
+  useEffect(() => {
+    const b = barra.current, t = b && b.querySelector('.active');
+    if (!t || b.scrollWidth <= b.clientWidth) return;
+    const rb = b.getBoundingClientRect(), rt = t.getBoundingClientRect();
+    b.scrollLeft += (rt.left + rt.width / 2) - (rb.left + rb.width / 2);
+  }, [sub]);
 
   return (
     <>
@@ -379,18 +389,20 @@ function CategoryPage({ cat, subParam }) {
         </div>
       </div>
       <div className="shell">
-        <div className="crumbs">
+        <nav className="crumbs" aria-label="Percorso">
           <Vai className="crumb-link" a="/indice"><ChevronLeft size={14} /> Indice</Vai>
-          <span className="crumb-sep">/</span>
-          <span className="crumb-now">Categoria {info.id}</span>
-        </div>
+          <span className="crumb-ultimo">
+            <span className="crumb-sep">/</span>
+            <span className="crumb-now" aria-current="page">{info.nome}</span>
+          </span>
+        </nav>
         <div className="intro">
           <div className="num">{info.id}</div>
           <h1>{info.nome}</h1>
           <hr className="rule" />
         </div>
         {hasSubs && (
-          <nav className="subbar" aria-label="Sottocategorie">
+          <nav className="subbar" aria-label="Sottocategorie" ref={barra}>
             {sottocategorie.map(s => {
               const n = catProducts.filter(p => p.sottocategoria === s.id).length;
               return (
@@ -946,13 +958,24 @@ function ProductDetail({ id }) {
       </div></div>
 
       <div className="shell">
-        <div className="crumbs">
+        {/* Indice / categoria / sottocategoria (se la categoria ha le tab) /
+            prodotto: la sottocategoria riporta alla tab del prodotto, non
+            alla prima della categoria. */}
+        <nav className="crumbs" aria-label="Percorso">
           <Vai className="crumb-link" a="/indice"><ChevronLeft size={14} /> Indice</Vai>
           <span className="crumb-sep">/</span>
-          <Vai className="crumb-link" a={'/cat/' + p.categoria}>Categoria {p.categoria}</Vai>
-          <span className="crumb-sep">/</span>
-          <span className="crumb-now">{p.nome}</span>
-        </div>
+          <Vai className="crumb-link" a={'/cat/' + p.categoria}>{info.nome}</Vai>
+          {(SOTTOCATEGORIE_PER_CATEGORIA[p.categoria] || []).some(s => s.id === p.sottocategoria) && (
+            <>
+              <span className="crumb-sep">/</span>
+              <Vai className="crumb-link" a={`/cat/${p.categoria}/${p.sottocategoria}`}>{subName(p.sottocategoria)}</Vai>
+            </>
+          )}
+          <span className="crumb-ultimo">
+            <span className="crumb-sep">/</span>
+            <span className="crumb-now" aria-current="page">{p.nome}</span>
+          </span>
+        </nav>
 
         <div className="pdp">
           <div className="pdp-media">
