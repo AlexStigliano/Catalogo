@@ -178,7 +178,7 @@ async function controlla({ catalogo, perFile }) {
     if (!p.senzaFinitura) {
       for (const f of finitureProdotto) {
         if (!finiture[f]) avvisi.push(['finitura senza colore, mostra una pastiglia grigia', `${nome(p)}: "${f}"`]);
-        if (!chiaviFoto.includes(f)) avvisi.push(['finitura senza foto, mostra "Immagine non disponibile"', `${nome(p)}: "${f}"`]);
+        if (!chiaviFoto.includes(f)) avvisi.push(['finitura senza foto, mostra quella di un\'altra finitura', `${nome(p)}: "${f}"`]);
       }
       for (const k of chiaviFoto) {
         if (!finitureProdotto.includes(k)) avvisi.push(['foto di una finitura che nessuna variante usa', `${nome(p)}: "${k}"`]);
