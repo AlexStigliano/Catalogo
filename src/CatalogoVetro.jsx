@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid, PlayCircle } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronLeft, ChevronDown, Download, Search, SlidersHorizontal, Heart, List, LayoutGrid, PlayCircle, ZoomIn } from 'lucide-react';
 import './Catalogo.css';
 import ScorriLato from './ScorriLato.jsx';
 import {
@@ -859,6 +859,171 @@ function RelatedRow({ title, ids, nota }) {
   );
 }
 
+/* ---------- Foto ingrandita (pagina prodotto) ----------
+   A tutto schermo, con le foto della finitura scelta. Sul telefono si passa
+   da una foto all'altra scorrendo col dito e si ingrandisce col doppio tocco
+   o pizzicando; sul computer con le frecce (anche da tastiera), il doppio
+   clic o la rotellina. Ingrandita, la foto si sposta trascinandola. Come il
+   visore delle schede, aggiunge un passo alla cronologia: il tasto Indietro
+   del telefono la chiude invece di cambiare pagina. */
+const SCALA_MAX = 4, SCALA_DOPPIO_TOCCO = 2.5;
+function Ingrandimento({ foto, indice, titolo, onCambia, onChiudi }) {
+  const n = foto.length;
+  const area = React.useRef(null);
+  // s = scala, x e y = spostamento in px dal centro. "muove" toglie la
+  // transizione mentre il dito e' sullo schermo.
+  const [vista, setVista] = useState({ s: 1, x: 0, y: 0, muove: false });
+  const tocchi = React.useRef(new Map());
+  const gesto = React.useRef(null);
+  const ultimoTocco = React.useRef({ t: 0, x: 0, y: 0 });
+
+  const chiudi = () => {
+    if (window.history.state && window.history.state.zoomAperto) window.history.back();
+    else onChiudi();
+  };
+  const vai = (d) => { if (n > 1) onCambia((indice + d + n) % n); };
+
+  useEffect(() => {
+    // In sviluppo React monta due volte: il passo si aggiunge una sola.
+    if (!(window.history.state && window.history.state.zoomAperto)) window.history.pushState({ zoomAperto: true }, '');
+    const onPop = () => onChiudi();
+    window.addEventListener('popstate', onPop);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('popstate', onPop); document.body.style.overflow = ''; };
+  }, []);
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') chiudi();
+      else if (e.key === 'ArrowRight') vai(1);
+      else if (e.key === 'ArrowLeft') vai(-1);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+  // Cambiando foto si riparte non ingranditi.
+  useEffect(() => { setVista({ s: 1, x: 0, y: 0, muove: false }); }, [indice]);
+
+  // Punto dello schermo -> coordinate rispetto al centro dell'area.
+  const centro = (cx, cy) => { const r = area.current.getBoundingClientRect(); return [cx - r.left - r.width / 2, cy - r.top - r.height / 2, r]; };
+  // Ingrandita, la foto si sposta solo finche' ne resta fuori una parte: i
+  // suoi bordi non si staccano dai bordi dello schermo.
+  const limita = (s, x, y, r) => {
+    const img = area.current.querySelector('img');
+    const iw = img ? img.offsetWidth : r.width, ih = img ? img.offsetHeight : r.height;
+    const mx = Math.max(0, (s * iw - r.width) / 2), my = Math.max(0, (s * ih - r.height) / 2);
+    return { s, x: Math.max(-mx, Math.min(mx, x)), y: Math.max(-my, Math.min(my, y)) };
+  };
+  // Nuova scala tenendo fermo sotto il dito il punto (px, py).
+  const scalaVerso = (v, s, px, py, r) => {
+    s = Math.max(1, Math.min(SCALA_MAX, s));
+    const ux = (px - v.x) / v.s, uy = (py - v.y) / v.s;
+    return limita(s, px - s * ux, py - s * uy, r);
+  };
+
+  const giu = (e) => {
+    try { area.current.setPointerCapture(e.pointerId); } catch { /* puntatore gia' sparito */ }
+    tocchi.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const pt = [...tocchi.current.values()];
+    if (pt.length === 2) {
+      const [mx, my] = centro((pt[0].x + pt[1].x) / 2, (pt[0].y + pt[1].y) / 2);
+      gesto.current = { tipo: 'pizzico', d0: Math.hypot(pt[0].x - pt[1].x, pt[0].y - pt[1].y), v0: vista, m0: [mx, my] };
+    } else if (pt.length === 1) {
+      gesto.current = { tipo: 'trascina', x0: e.clientX, y0: e.clientY, t0: Date.now(), v0: vista, mosso: false, suFoto: e.target.tagName === 'IMG' };
+    }
+  };
+  const muovi = (e) => {
+    if (!tocchi.current.has(e.pointerId)) return;
+    tocchi.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const g = gesto.current;
+    if (!g) return;
+    if (g.tipo === 'pizzico') {
+      const pt = [...tocchi.current.values()];
+      if (pt.length < 2) return;
+      const [mx, my, r] = centro((pt[0].x + pt[1].x) / 2, (pt[0].y + pt[1].y) / 2);
+      const d = Math.hypot(pt[0].x - pt[1].x, pt[0].y - pt[1].y);
+      const v = scalaVerso(g.v0, g.v0.s * d / g.d0, g.m0[0], g.m0[1], r);
+      setVista({ ...limita(v.s, v.x + mx - g.m0[0], v.y + my - g.m0[1], r), muove: true });
+      return;
+    }
+    const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+    if (Math.hypot(dx, dy) > 8) g.mosso = true;
+    if (!g.mosso) return;
+    const [, , r] = centro(0, 0);
+    // Ingrandita la foto si sposta; altrimenti segue il dito di lato, per
+    // far capire che scorrendo si passa alla prossima.
+    if (g.v0.s > 1) setVista({ ...limita(g.v0.s, g.v0.x + dx, g.v0.y + dy, r), muove: true });
+    else if (n > 1) setVista({ s: 1, x: dx, y: 0, muove: true });
+  };
+  const su = (e) => {
+    if (!tocchi.current.has(e.pointerId)) return;
+    tocchi.current.delete(e.pointerId);
+    const g = gesto.current;
+    if (g && g.tipo === 'pizzico') {
+      // Resta un dito: da li' riparte un trascinamento.
+      const resto = [...tocchi.current.values()][0];
+      gesto.current = resto ? { tipo: 'trascina', x0: resto.x, y0: resto.y, t0: Date.now(), v0: vista, mosso: true } : null;
+      setVista(v => ({ ...v, muove: false }));
+      return;
+    }
+    gesto.current = null;
+    if (!g) return;
+    const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+    if (g.mosso) {
+      if (g.v0.s === 1 && n > 1 && Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { vai(dx < 0 ? 1 : -1); return; }
+      setVista(v => (v.s === 1 ? { s: 1, x: 0, y: 0, muove: false } : { ...v, muove: false }));
+      return;
+    }
+    // Un tocco: il secondo entro 300 ms ingrandisce o torna indietro.
+    const ora = Date.now(), prima = ultimoTocco.current;
+    if (ora - prima.t < 300 && Math.hypot(e.clientX - prima.x, e.clientY - prima.y) < 30) {
+      ultimoTocco.current = { t: 0, x: 0, y: 0 };
+      const [px, py, r] = centro(e.clientX, e.clientY);
+      setVista(v => ({ ...(v.s > 1 ? { s: 1, x: 0, y: 0 } : scalaVerso(v, SCALA_DOPPIO_TOCCO, px, py, r)), muove: false }));
+      return;
+    }
+    ultimoTocco.current = { t: ora, x: e.clientX, y: e.clientY };
+    // Un tocco sul fondo, fuori dalla foto e non ingranditi, chiude.
+    if (!g.suFoto && vista.s === 1) chiudi();
+  };
+  const rotella = (e) => {
+    const [px, py, r] = centro(e.clientX, e.clientY);
+    setVista(v => ({ ...scalaVerso(v, v.s * Math.exp(-e.deltaY * 0.0015), px, py, r), muove: false }));
+  };
+
+  const f = foto[indice];
+  return (
+    <div className="zoom-ov" role="dialog" aria-modal="true" aria-label={`Foto ingrandita: ${titolo}`}>
+      <div className="zoom-bar">
+        <span className="zoom-title">{titolo}</span>
+        <span className="zoom-actions">
+          {n > 1 && <span className="zoom-count">{indice + 1} / {n}</span>}
+          <button type="button" className="sheet-x" onClick={chiudi} aria-label="Chiudi" autoFocus>✕</button>
+        </span>
+      </div>
+      <div ref={area} className={`zoom-area${vista.s > 1 ? ' zoomato' : ''}`}
+        onPointerDown={giu} onPointerMove={muovi} onPointerUp={su} onPointerCancel={su} onWheel={rotella}>
+        <Foto key={indice} foto={f} sizes="100vw" alt={`${titolo} — foto ${indice + 1}`} draggable={false}
+          style={{ transform: `translate(${vista.x}px, ${vista.y}px) scale(${vista.s})`, transition: vista.muove ? 'none' : undefined }} />
+        {n > 1 && (
+          <>
+            <button type="button" className="zoom-nav prev" aria-label="Foto precedente" onPointerDown={e => e.stopPropagation()} onClick={() => vai(-1)}>
+              <ChevronLeft size={22} />
+            </button>
+            <button type="button" className="zoom-nav next" aria-label="Foto successiva" onPointerDown={e => e.stopPropagation()} onClick={() => vai(1)}>
+              <ChevronRight size={22} />
+            </button>
+          </>
+        )}
+      </div>
+      {/* Due versioni dell'aiuto: dito (telefono) e mouse; il CSS mostra quella giusta. */}
+      <p className="zoom-hint" aria-hidden="true">
+        <span className="dito">{vista.s > 1 ? 'Trascina per spostare · doppio tocco per tornare' : (n > 1 ? 'Scorri per cambiare foto · ' : '') + 'doppio tocco o pizzica per ingrandire'}</span>
+        <span className="mouse">{vista.s > 1 ? 'Trascina per spostare · doppio clic per tornare' : 'Rotellina o doppio clic per ingrandire' + (n > 1 ? ' · frecce per cambiare foto' : '')}</span>
+      </p>
+    </div>
+  );
+}
+
 /* ---------- Pagina prodotto ---------- */
 function ProductDetail({ id }) {
   const p = PRODOTTI_VETRO.find(x => x.id === id);
@@ -868,6 +1033,11 @@ function ProductDetail({ id }) {
   const [selFin, setSelFin] = useState(firstWithImg ? firstWithImg.finitura : (p && p.varianti[0] && p.varianti[0].finitura));
   const [imgIdx, setImgIdx] = useState(0);
   useEffect(() => { setImgIdx(0); }, [selFin]);
+  const [zoom, setZoom] = useState(false);
+  // Scorrendo col dito sulla foto si cambia foto, come nelle card; il tocco
+  // che segue uno scorrimento non deve aprire l'ingrandimento.
+  const touchX = React.useRef(null);
+  const scorso = React.useRef(false);
   const [favorites, setFavorites] = useState(() => {
     try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
     catch { return []; }
@@ -984,10 +1154,22 @@ function ProductDetail({ id }) {
                 aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={toggleFav}>
                 <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
               </button>
-              <div className="media-body">
-                {selImg ? <Foto foto={selImg} sizes="(max-width: 760px) 100vw, 600px" alt={`${p.nome} — ${selFin}`} />
-                  : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
-              </div>
+              {selImg ? (
+                <button type="button" className="media-body zoomabile" aria-label="Ingrandisci la foto"
+                  onClick={() => { if (scorso.current) { scorso.current = false; return; } setZoom(true); }}
+                  onTouchStart={e => { touchX.current = e.touches[0].clientX; scorso.current = false; }}
+                  onTouchEnd={e => {
+                    if (touchX.current == null || gallery.length < 2) return;
+                    const dx = e.changedTouches[0].clientX - touchX.current;
+                    touchX.current = null;
+                    if (Math.abs(dx) > 40) { scorso.current = true; setImgIdx(i => (i + (dx < 0 ? 1 : -1) + gallery.length) % gallery.length); }
+                  }}>
+                  <Foto foto={selImg} sizes="(max-width: 760px) 100vw, 600px" alt={`${p.nome} — ${selFin}`} />
+                  <span className="zoom-icona" aria-hidden="true"><ZoomIn size={16} /></span>
+                </button>
+              ) : (
+                <div className="media-body"><div className="noimg"><Ghost /><small>Immagine non disponibile</small></div></div>
+              )}
               {!senzaFin && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
             </div>
             {gallery.length > 1 && (
@@ -1145,6 +1327,11 @@ function ProductDetail({ id }) {
             </dl>
           </SezioneTendina>
         )}
+        {zoom && selImg && (
+          <Ingrandimento foto={gallery} indice={Math.min(imgIdx, gallery.length - 1)}
+            titolo={senzaFin ? p.nome : `${p.nome} — ${selFin}`}
+            onCambia={setImgIdx} onChiudi={() => setZoom(false)} />
+        )}
         <RelatedRow title="Articoli essenziali" ids={p.essenziali}
           nota="Servono per completare il montaggio di questo articolo e si ordinano a parte." />
         <RelatedRow title="Articoli facoltativi" ids={p.facoltativi}
@@ -1169,7 +1356,7 @@ function SchedaViewer() {
     const chiudi = () => { setItem(null); document.body.style.overflow = ''; };
     // Dopo un ricaricamento col visore aperto lo stato di cronologia resta,
     // ma il visore no: lo si azzera per non far chiudere niente a vuoto.
-    if (window.history.state && window.history.state.schedaAperta) window.history.replaceState(null, '');
+    if (window.history.state && (window.history.state.schedaAperta || window.history.state.zoomAperto)) window.history.replaceState(null, '');
     const onOpen = (e) => {
       const { id, key } = e.detail || {};
       const p = PRODOTTI_VETRO.find(x => x.id === id);

@@ -257,6 +257,31 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
 .cat .sheet-pagine { width: 100%; max-width: 900px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
 .cat .sheet-pagine img { display: block; max-width: none; border-radius: 0; box-shadow: none; }
 
+/* Catalogo Vetro: foto della pagina prodotto, si tocca per ingrandirla */
+.cat .media-body.zoomabile { border: 0; padding: 0; margin: 0; background: none; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+.cat .zoom-icona { position: absolute; right: 10px; bottom: 10px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.9); border: 1px solid var(--tile-edge); color: #2a2a2a; pointer-events: none; transition: transform 0.15s; }
+.cat .media-body.zoomabile:hover .zoom-icona { transform: scale(1.08); }
+
+/* Foto ingrandita a tutto schermo */
+.cat .zoom-ov { position: fixed; inset: 0; z-index: 210; background: #0b0f19; display: flex; flex-direction: column; animation: sheetin 0.2s ease both; }
+.cat .zoom-bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem clamp(0.8rem, 3vw, 1.4rem); color: #fff; }
+.cat .zoom-title { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cat .zoom-actions { display: inline-flex; align-items: center; gap: 0.8rem; flex: none; }
+.cat .zoom-count { font-size: 12.5px; font-weight: 700; color: #c9cfdc; font-variant-numeric: tabular-nums; }
+.cat .zoom-area { flex: 1; min-height: 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 0 clamp(0px, 5vw, 4.5rem); touch-action: none; user-select: none; -webkit-user-select: none; }
+.cat .zoom-area img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 4px; transform-origin: center; transition: transform 0.25s cubic-bezier(0.2,0.7,0.2,1); cursor: zoom-in; -webkit-user-drag: none; }
+.cat .zoom-area.zoomato img { cursor: grab; }
+.cat .zoom-area.zoomato img:active { cursor: grabbing; }
+.cat .zoom-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3); color: #fff; cursor: pointer; transition: background 0.15s; }
+.cat .zoom-nav:hover { background: rgba(255,255,255,0.26); }
+.cat .zoom-nav.prev { left: clamp(6px, 1.5vw, 1.2rem); }
+.cat .zoom-nav.next { right: clamp(6px, 1.5vw, 1.2rem); }
+/* Sul telefono si scorre col dito: le frecce coprirebbero la foto. */
+@media (hover: none) and (max-width: 760px) { .cat .zoom-nav { display: none; } }
+.cat .zoom-hint { flex: none; margin: 0; padding: 0.7rem 1rem calc(0.8rem + env(safe-area-inset-bottom)); text-align: center; font-size: 12px; color: #aab2c4; }
+.cat .zoom-hint .mouse { display: none; }
+@media (hover: hover) and (pointer: fine) { .cat .zoom-hint .dito { display: none; } .cat .zoom-hint .mouse { display: inline; } }
+
 /* Pulsante Indietro */
 .cat .crumb-back { display: inline-flex; align-items: center; gap: 0.25rem; background: var(--accent-fill); border: none; cursor: pointer; color: #fff; font-weight: 700; padding: 0.35rem 0.8rem 0.35rem 0.55rem; font-size: 13px; border-radius: 100px; transition: background 0.15s; }
 .cat .crumb-back:hover { background: var(--navy-deep); }
