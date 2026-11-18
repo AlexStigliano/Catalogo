@@ -1,5 +1,77 @@
 [
   {
+    "id": 134,
+    "categoria": "03",
+    "sottocategoria": "kit-porte",
+    "nome": "Pivot",
+    "note": [
+      "Dalla brochure Terno Scorrevoli \"Pivot System\" (ver. 03/2023) e dalle istruzioni",
+      "di montaggio MOD. PIVOT 7002.07127 rev. 02. La brochure e' la scheda tecnica.",
+      "",
+      "Niente codici, per scelta del cliente: il kit si definisce su richiesta. A",
+      "catalogo Terno: kit per telaio in alluminio con incontro magnetico",
+      "(K.0491.01) o con predisposizione AGB (K.0491.02), 7 misure x 6 finiture;",
+      "kit solo cerniere per legno K.0492.04.00.14 (nero); kit stipite a tirare",
+      "F.0511.01 e a spingere F.0512.01 (8 misure); cover C.0490.01.01/02/03.",
+      "Finiture: .00 grezzo, .02 argento spazzolato, .15 nero spazzolato, .28 metal",
+      "grey, .30 grafite, .39 bianco RAL 9002 (.14 nero solo per le cerniere legno).",
+      "",
+      "Foto: le due ambientate sono della brochure (pag. 3 e 6-7), cerniera e cover",
+      "ritagliate dalle pagine 9 e 13. Brochure e istruzioni alleggerite con",
+      "scripts/comprimi-pdf.py prima della filigrana."
+    ],
+    "descrizione": "Sistema a cerniera per porte battenti: una coppia di cerniere con asse decentrato, regolabili su tre assi, con gusci per le maniglie e attacchi in zama. Si monta sul telaio in alluminio Universal con vetri da 6 a 8mm, su porte in legno oppure sui pali del sistema di pareti attrezzate GRiD. Lo stesso kit permette la soluzione a tirare, con apertura fino a 180°, e quella a spingere, fino a 90°, con apertura a destra o a sinistra. Si completa con lo stipite telescopico, che si aggancia senza viti a muri da 100 a 150mm di spessore e recupera i fuori piombo, ma funziona anche con gli stipiti tradizionali. Per la chiusura c'è l'incontro magnetico, oppure la predisposizione per la serratura AGB con le cover per maniglia, chiave Patent o cilindro europeo. Il kit si sceglie in base al tipo di porta, alla misura (da 700×2100 a 1000×3000mm) e alla finitura: contattaci e lo definiamo insieme. Prodotto da Terno Scorrevoli.",
+    "paroleChiave": "porta battente cerniera cerniere bilico stipite telescopico kit universal grid",
+    "materiale": "Alluminio e zama",
+    "dimensioni": "Porta fino a 1000×3000mm · portata max 80kg · vetro 6-8mm sul telaio Universal · stipite telescopico per muri da 100 a 150mm · apertura fino a 180° (a tirare) o 90° (a spingere)",
+    "fornitore": "Terno Scorrevoli",
+    "scheda": "pivot-scheda-tecnica.pdf",
+    "anteprimaScheda": "schede/pivot-scheda.jpg",
+    "istruzioni": "pivot-istruzioni-montaggio.pdf",
+    "caratteristiche": [
+      {
+        "titolo": "A tirare o a spingere",
+        "testo": "Con lo stesso kit: a tirare la porta si apre fino a 180°, a spingere fino a 90°. L'apertura può essere a destra o a sinistra."
+      },
+      {
+        "titolo": "Cerniere regolabili su tre assi",
+        "testo": "Altezza, allineamento frontale al telaio e inclinazione laterale, per avere la stessa fuga tra porta e stipite su tre lati. Sul telaio Universal non servono altre lavorazioni: la cerniera è alta solo 38mm e si adatta al traverso."
+      },
+      {
+        "titolo": "Stipite telescopico senza viti",
+        "testo": "Si aggancia con un sistema brevettato a muri da 100 a 150mm di spessore. Gli snap di regolazione, indipendenti tra loro, recuperano il fuori piombo dei muri esistenti. Il Pivot funziona anche con gli stipiti tradizionali."
+      },
+      {
+        "titolo": "Tre tipi di maniglia",
+        "testo": "Con il telaio Universal o con il GRiD si sceglie la cover: per maniglia con incontro magnetico, per serratura con chiave Patent o con foro per cilindro europeo."
+      },
+      {
+        "titolo": "Incontro magnetico regolabile",
+        "testo": "Una piastra magnetica nel profilo della porta e un supporto nel profilo del telaio, a 105cm da terra: regolandolo si cambia la tenuta della porta."
+      },
+      {
+        "titolo": "Completamente reversibile",
+        "testo": "Togliendo le cover si smonta ogni singolo pezzo del sistema. I profili si tagliano a misura del vano con un taglio a 90°."
+      },
+      {
+        "titolo": "Sei finiture",
+        "testo": "Grezzo, argento spazzolato, nero spazzolato, metal grey, grafite e bianco RAL 9002. Il kit di sole cerniere per porte in legno è nero."
+      }
+    ],
+    "immagini": {
+      "Unica": [
+        "prodotti/pivot-ambiente-mansarda.jpg",
+        "prodotti/pivot-ambiente-grid.jpg",
+        "prodotti/pivot-cerniera-regolazioni.jpg",
+        "prodotti/pivot-cover-maniglie.jpg"
+      ]
+    },
+    "varianti": [
+      { "codice": "Su richiesta", "finitura": "Unica" }
+    ],
+    "senzaFinitura": true
+  },
+  {
     "id": 43,
     "categoria": "03",
     "sottocategoria": "chiudiporta",

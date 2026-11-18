@@ -37,7 +37,7 @@ const CAMPI_FILTRO = ['chiave', 'etichetta', 'tutti', 'plurale', 'suffisso'];
 
 // Diciture usate al posto del codice articolo per i sistemi su misura:
 // ammesse, ma segnalate perche' per un gestionale non sono codici.
-const SEGNAPOSTO = new Set(['su misura']);
+const SEGNAPOSTO = new Set(['su misura', 'su richiesta']);
 const eSegnaposto = (codice) => SEGNAPOSTO.has(String(codice).trim().toLowerCase());
 
 async function leggiJson(file) {

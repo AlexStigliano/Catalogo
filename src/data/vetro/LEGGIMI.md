@@ -119,8 +119,9 @@ tecnica: `istruzioni` e `rapporto` sono sempre un file solo.
 ### Codici segnaposto
 
 I sistemi su misura (Vetro 40, Grid...) non hanno un codice fisso: nella
-variante si scrive `"codice": "Su misura"`. È ammesso, ma il controllo lo
-segnala come avviso.
+variante si scrive `"codice": "Su misura"`. Per i kit che si definiscono con
+il cliente, senza codici sul sito (il Pivot), si scrive `"Su richiesta"`.
+Sono ammessi, ma il controllo li segnala come avviso.
 
 
 ## catalogo.json

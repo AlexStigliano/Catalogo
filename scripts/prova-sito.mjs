@@ -149,7 +149,7 @@ console.log(`Catalogo Vetro: ${prodotti.length} prodotti in ${catalogo.categorie
   await vai(VETRO + '#/indice');
   for (const x of prodotti) {
     const codice = x.varianti[0].codice;
-    if (prodotti.some(y => y !== x && y.varianti.some(v => v.codice === codice))) continue; // "Su misura"
+    if (/^su (misura|richiesta)$/i.test(codice)) continue; // segnaposto, non un codice
     await p.fill('.idx-search input', codice);
     await p.waitForFunction((c) => document.querySelector('.idx-search input').value === c && (document.querySelector('.res-row') || document.querySelector('.res-empty')), codice);
     const primo = await p.locator('.res-row .res-name').first().textContent().catch(() => '(nessun risultato)');
