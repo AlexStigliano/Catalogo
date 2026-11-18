@@ -139,6 +139,17 @@ const codiciTrovati = (p, testo) => {
   return cod.filter(c => parole.some(t => codiceCorrisponde(soloLettereCifre(c), t)));
 };
 
+/* Le foto di una finitura. Se quella finitura non ne ha ancora, si mostrano
+   quelle della prima finitura che le ha, e "di" dice quale: sotto la foto
+   compare "foto in finitura ...", cosi' il colore non trae in inganno. */
+const fotoDi = (p, finitura) => {
+  const imm = p.immagini || {};
+  if (imm[finitura] && imm[finitura].length) return { foto: imm[finitura], di: null };
+  const altra = p.varianti.map(v => v.finitura).find(f => imm[f] && imm[f].length)
+    || Object.keys(imm).find(f => imm[f] && imm[f].length);
+  return altra ? { foto: imm[altra], di: altra } : { foto: [], di: null };
+};
+
 const primaImmagine = (p) => {
   const arr = Object.values(p.immagini || {})[0];
   return Array.isArray(arr) ? arr[0] : arr;
@@ -688,7 +699,7 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
   // di elementi per prodotto che nessuno guarda.
   const [tabella, setTabella] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
-  const gallery = images[selFin] || [];
+  const { foto: gallery, di: fotoAltra } = fotoDi(p, selFin);
   const selImg = gallery[imgIdx] || gallery[0];
   // Cambiando finitura si riparte dalla prima foto della nuova galleria.
   useEffect(() => { setImgIdx(0); }, [selFin]);
@@ -726,9 +737,10 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
           onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
           onTouchEnd={gallery.length > 1 ? onTouchEnd : undefined}>
           {selImg ? <Foto foto={selImg} sizes={compatta ? '(max-width: 640px) 50vw, 400px' : '(max-width: 640px) 100vw, 400px'}
-              alt={`${p.nome} — ${selFin}`} loading="lazy" />
+              alt={`${p.nome} — ${fotoAltra || selFin}`} loading="lazy" />
             : <div className="noimg"><Ghost /><small>Immagine non disponibile</small></div>}
         </Vai>
+        {fotoAltra && <div className="foto-altra">Foto in finitura {fotoAltra}</div>}
         {gallery.length > 1 && (
           <>
             <button className="media-nav prev" aria-label="Foto precedente" onClick={prevImg}>
@@ -1105,7 +1117,7 @@ function ProductDetail({ id }) {
   }
 
   const ufins = [...new Set(p.varianti.map(v => v.finitura))];
-  const gallery = images[selFin] || [];
+  const { foto: gallery, di: fotoAltra } = fotoDi(p, selFin);
   const selImg = gallery[imgIdx] || gallery[0];
   const sceltaFin = ufins.length > 1;
   const senzaFin = !!p.senzaFinitura;
@@ -1164,13 +1176,17 @@ function ProductDetail({ id }) {
                     touchX.current = null;
                     if (Math.abs(dx) > 40) { scorso.current = true; setImgIdx(i => (i + (dx < 0 ? 1 : -1) + gallery.length) % gallery.length); }
                   }}>
-                  <Foto foto={selImg} sizes="(max-width: 760px) 100vw, 600px" alt={`${p.nome} — ${selFin}`} />
+                  <Foto foto={selImg} sizes="(max-width: 760px) 100vw, 600px" alt={`${p.nome} — ${fotoAltra || selFin}`} />
                   <span className="zoom-icona" aria-hidden="true"><ZoomIn size={16} /></span>
                 </button>
               ) : (
                 <div className="media-body"><div className="noimg"><Ghost /><small>Immagine non disponibile</small></div></div>
               )}
-              {!senzaFin && <div className="media-cap"><Chip finitura={selFin} /><span>{selFin}</span></div>}
+              {!senzaFin && (
+                <div className="media-cap"><Chip finitura={selFin} />
+                  <span>{selFin}{fotoAltra && <small>foto in finitura {fotoAltra}</small>}</span>
+                </div>
+              )}
             </div>
             {gallery.length > 1 && (
               <div className="pdp-thumbs">
@@ -1329,7 +1345,7 @@ function ProductDetail({ id }) {
         )}
         {zoom && selImg && (
           <Ingrandimento foto={gallery} indice={Math.min(imgIdx, gallery.length - 1)}
-            titolo={senzaFin ? p.nome : `${p.nome} — ${selFin}`}
+            titolo={senzaFin ? p.nome : fotoAltra ? `${p.nome} — foto in finitura ${fotoAltra}` : `${p.nome} — ${selFin}`}
             onCambia={setImgIdx} onChiudi={() => setZoom(false)} />
         )}
         <RelatedRow title="Articoli essenziali" ids={p.essenziali}

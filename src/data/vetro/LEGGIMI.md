@@ -93,7 +93,7 @@ scritto male, che l'interfaccia ignorerebbe senza dire niente.
 | `istruzioni` | PDF delle istruzioni di montaggio. |
 | `rapporto` | PDF del rapporto di prova, per gli articoli certificati. `null` = tasto "*in arrivo*". |
 | `video` | Link al video di montaggio, oppure più video con etichetta: `[{ "etichetta": "a spingere", "url": "https://..." }]`. |
-| `immagini` | Foto per finitura: `{ "Nero opaco": ["prodotti/a.jpg", "prodotti/b.jpg"] }`. Nell'elenco dei prodotti si vede la prima foto della prima finitura. Per ogni finitura delle varianti ci vuole una voce, altrimenti si vede "Immagine non disponibile". |
+| `immagini` | Foto per finitura: `{ "Nero opaco": ["prodotti/a.jpg", "prodotti/b.jpg"] }`. Nell'elenco dei prodotti si vede la prima foto della prima finitura. Per ogni finitura delle varianti ci vuole una voce: se manca, si vedono le foto di un'altra finitura con la scritta "foto in finitura ...", e il controllo lo segnala come avviso. |
 | `caratteristiche` | Riquadri della pagina prodotto: `[{ "titolo": "...", "testo": "..." }]`. |
 | `varianti` | Gli articoli veri, uno per codice: `{ "codice": "...", "finitura": "..." }` più le misure (vedi `assi`). Il codice non si può ripetere in prodotti diversi. |
 | `assi` | Le misure che distinguono le varianti, con i selettori e le colonne della tabella: `[{ "chiave": "lunghezza", "etichetta": "Lunghezza", "suffisso": " mm" }]`. Ogni variante deve avere un valore per ogni `chiave`. |

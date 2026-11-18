@@ -276,6 +276,31 @@ for (const [nome, indirizzo, lista] of [['Catalogo Vetro', VETRO, `#/cat/${prima
   await chiudi();
 }
 
+{
+  // Finitura senza foto: si vede quella di un'altra finitura, con la scritta.
+  const senza = prodotti.find(x => !x.senzaFinitura && x.varianti.some(v => !(x.immagini || {})[v.finitura]));
+  if (senza) {
+    const fin = senza.varianti.find(v => !senza.immagini[v.finitura]).finitura;
+    const { p, vai, chiudi } = await apri(COMPUTER);
+    await vai(`${VETRO}#/prodotto/${senza.id}`);
+    await p.click(`.pdp-finishes .fbtn[aria-label="${fin}"]`);
+    await p.waitForLoadState('networkidle');
+    verifica(await p.locator('.pdp-media .noimg').count() === 0 && await p.$eval('.pdp-media .media-body img', i => i.complete && i.naturalWidth > 0),
+      `finitura senza foto (#${senza.id} ${fin}): si vede la foto di un'altra finitura`);
+    verifica(/^foto in finitura /.test(await p.locator('.media-cap small').textContent().catch(() => '')), `finitura senza foto (#${senza.id} ${fin}): sotto c'e' "foto in finitura ..."`);
+    await chiudi();
+  }
+  // Ogni fornitore che ha un logo lo mostra nella pagina dei suoi prodotti.
+  const { p, vai, chiudi } = await apri(COMPUTER);
+  for (const [forn, logo] of Object.entries(catalogo.fornitori)) {
+    const x = prodotti.find(y => y.fornitore === forn);
+    if (!x || !logo) continue;
+    await vai(`${VETRO}#/prodotto/${x.id}`);
+    verifica(await p.$eval('.forn-logo img', i => i.complete && i.naturalWidth > 0).catch(() => false), `logo di ${forn} nella pagina di #${x.id}`);
+  }
+  await chiudi();
+}
+
 /* ---------- 4. Catalogo Vetro: tastiera nei filtri, tabella su telefono ---------- */
 {
   const { p, vai, chiudi } = await apri(COMPUTER);
