@@ -296,8 +296,35 @@ for (const [nome, indirizzo, lista] of [['Catalogo Vetro', VETRO, `#/cat/${prima
     const x = prodotti.find(y => y.fornitore === forn);
     if (!x || !logo) continue;
     await vai(`${VETRO}#/prodotto/${x.id}`);
-    verifica(await p.$eval('.forn-logo img', i => i.complete && i.naturalWidth > 0).catch(() => false), `logo di ${forn} nella pagina di #${x.id}`);
+    // Cambia solo l'indirizzo dopo il #: il logo nuovo puo' arrivare un attimo dopo.
+    const visto = await p.waitForFunction(() => { const i = document.querySelector('.forn-logo img'); return i && i.complete && i.naturalWidth > 0; }, null, { timeout: 5000 })
+      .then(() => true, () => false);
+    verifica(visto, `logo di ${forn} nella pagina di #${x.id}`);
   }
+  await chiudi();
+}
+
+{
+  // Tabella delle varianti nella card (si apre col pulsante) e nella pagina
+  // prodotto (un clic su una riga sceglie finitura e misure). Preferiti: il
+  // cuore resta acceso tornando sulla pagina.
+  const conAssi = prodotti.find(x => x.assi && x.varianti.length > 2 && new Set(x.varianti.map(v => v.finitura)).size > 1);
+  const { p, vai, chiudi } = await apri(COMPUTER);
+  await vai(`${VETRO}#/cat/${conAssi.categoria}` + ((catalogo.sottocategorie[conAssi.categoria] || []).length ? '/' + conAssi.sottocategoria : ''));
+  while (await p.locator('.mostra-altri button').count()) await p.click('.mostra-altri button');
+  const card = p.locator('.card', { has: p.locator(`a.detail-cta[href="#/prodotto/${conAssi.id}"]`) });
+  await card.locator('.expand').click();
+  const codiciCard = await card.locator('td.code').allTextContents();
+  verifica(uguali(codiciCard, conAssi.varianti.map(v => v.codice)), `card di #${conAssi.id}: la tabella delle varianti ha tutti i codici`);
+  await vai(`${VETRO}#/prodotto/${conAssi.id}`);
+  const ultima = conAssi.varianti[conAssi.varianti.length - 1];
+  await p.locator('.pdp-variants tr', { hasText: ultima.codice }).click();
+  verifica(await p.locator('.pdp-variants tr.active td.code').textContent() === ultima.codice, `pagina di #${conAssi.id}: un clic su una riga la sceglie`);
+  verifica(await p.locator('.pdp-finishes .fbtn.active').getAttribute('aria-label') === ultima.finitura, `pagina di #${conAssi.id}: e sceglie la sua finitura`);
+  await p.click('.pdp-media .fav');
+  await vai(`${VETRO}#/indice`);
+  await vai(`${VETRO}#/prodotto/${conAssi.id}`);
+  verifica(await p.locator('.pdp-media .fav').getAttribute('aria-pressed') === 'true', 'preferiti: il cuore resta acceso tornando sulla pagina');
   await chiudi();
 }
 

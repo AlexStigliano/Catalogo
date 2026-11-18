@@ -185,6 +185,7 @@ dopo `npm ci`.
 | `node scripts/sbianca-foto.mjs foto.jpg x0,y0,x1,y1 uscita.jpg` | Per le foto fatte al telefono o con lo sfondo grigio: porta lo sfondo a bianco e ritaglia in 4:3 attorno al pezzo, a 1000×750. Il riquadro è quello che contiene il pezzo, in pixel della foto originale. |
 | `node scripts/filigrana.mjs foto ingresso uscita.jpg` | Mette la filigrana Ferramenta Stigliano su una foto di prodotto. Con `disegno` al posto di `foto`, la versione più leggera per disegni e quote. |
 | `node scripts/filigrana.mjs pdf scheda.pdf uscita.pdf --anteprima uscita.jpg` | Filigrana su ogni pagina della scheda tecnica e, con `--anteprima`, l'immagine per il visore (va in `schede/`). `--pagine 1-2` tiene solo quelle pagine. Per l'anteprima serve `pdftoppm` (pacchetto poppler-utils). |
+| `python3 scripts/comprimi-pdf.py scheda.pdf leggera.pdf` | Alleggerisce un PDF senza cambiarne l'aspetto: toglie i metadati nascosti e ricomprime le foto troppo pesanti, poi confronta ogni pagina con l'originale. Da usare sui PDF dei fornitori prima della filigrana. Serve Python con `pip install pymupdf pillow`. |
 | `npm test` | Prova il sito costruito in un browser vero: vedi sotto. |
 
 Il giro completo per una foto nuova: `sbianca-foto` (se lo sfondo non è

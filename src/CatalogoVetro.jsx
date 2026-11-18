@@ -15,6 +15,27 @@ import logoCover from './assets/logo-stigliano-cover.png';
    futuri, dato che si basa solo sull'id. */
 const FAVORITI_KEY_VETRO = 'ferramenta_favorites_vetro';
 
+/* I preferiti, salvati nel browser: li usano la lista dei prodotti e la
+   pagina prodotto. Se il browser non li lascia salvare (navigazione privata,
+   dati del sito bloccati) restano validi finche' la pagina e' aperta. */
+function usePreferiti() {
+  const [preferiti, setPreferiti] = useState(() => {
+    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
+    catch { return []; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(preferiti)); } catch { /* vedi sopra */ }
+  }, [preferiti]);
+  const cambia = (id) => setPreferiti(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  return [preferiti, cambia];
+}
+const Cuore = ({ on, onClick, size }) => (
+  <button className={`fav${on ? ' on' : ''}`} aria-pressed={on}
+    aria-label={on ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onClick}>
+    <Heart size={size} fill={on ? 'currentColor' : 'none'} />
+  </button>
+);
+
 const subName = (id) => (
   Object.values(SOTTOCATEGORIE_PER_CATEGORIA).flat().find(s => s.id === id) ||
   ALTRE_SOTTOCATEGORIE_VETRO.find(s => s.id === id) || {}
@@ -527,14 +548,7 @@ function ProductCatalog({ products }) {
   const [fOpen, setFOpen] = useState(false);
   const [drop, setDrop] = useState(null); // quale tendina è aperta (una alla volta)
   const stretto = useSchermoStretto();
-  const [favorites, setFavorites] = useState(() => {
-    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
-    catch { return []; }
-  });
-  useEffect(() => {
-    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
-  }, [favorites]);
-  const toggleFav = (id) => setFavorites(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  const [favorites, toggleFav] = usePreferiti();
 
   // Vista a griglia sul cellulare (1 o 2 colonne): la scelta resta ricordata.
   const [mobileView, setMobileView] = useState(() => {
@@ -718,20 +732,11 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
   // Prodotti su misura in cui la finitura la sceglie il cliente: non ne
   // dichiariamo nessuna, quindi pastiglia e colonna finitura spariscono.
   const senzaFin = !!p.senzaFinitura;
-  // Varianti che differiscono per materiale (stessa finitura): serve la colonna.
-  const colMat = p.varianti.some(v => v.materiale);
-  // Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse): qui, nella
-  // card, la tabella si limita a mostrare le colonne — la scelta della misura resta
-  // nella pagina prodotto completa.
-  const assi = p.assi;
 
   return (
     <article className="card" style={{ animationDelay: `${Math.min(idx * 45, 400)}ms` }}>
       <div className="media">
-        <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
-          aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={onFav}>
-          <Heart size={16} fill={isFav ? 'currentColor' : 'none'} />
-        </button>
+        <Cuore on={isFav} onClick={onFav} size={16} />
         <Vai className="media-body clickable" a={'/prodotto/' + p.id}
           aria-label={`Apri la scheda di ${p.nome}`}
           onTouchStart={gallery.length > 1 ? onTouchStart : undefined}
@@ -800,26 +805,41 @@ function ProductCard({ product: p, idx, compatta, isFav, onFav }) {
         </button>
         <div className={`variants-wrap${open ? ' open' : ''}`}>
           <ScorriLato className="variants-inner">
-            {tabella && <table className="variants">
-              <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
-                {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
-              </tr></thead>
-              <tbody>
-                {p.varianti.map((v, i) => (
-                  <tr key={i} className={`${sceltaFin ? 'vrow' : ''}${sceltaFin && v.finitura === selFin ? ' active' : ''}`}
-                    onClick={sceltaFin ? () => setSelFin(v.finitura) : undefined}>
-                    <td className="code">{v.codice}</td>
-                    {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
-                    {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
-                    {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
-                  </tr>
-                ))}
-              </tbody>
-            </table>}
+            {/* Nella card le misure sono solo colonne: si scelgono nella pagina prodotto. */}
+            {tabella && <TabellaVarianti p={p} attiva={v => sceltaFin && v.finitura === selFin}
+              scegli={sceltaFin ? v => setSelFin(v.finitura) : null} />}
           </ScorriLato>
         </div>
       </div>
     </article>
+  );
+}
+
+/* La tabella delle varianti, nella card e nella pagina prodotto: codice,
+   finitura (se il prodotto ne dichiara una), materiale (se cambia da
+   variante a variante) e le misure. attiva(v) dice quale riga evidenziare;
+   scegli(v), se c'e', che cosa fa il clic su una riga. */
+function TabellaVarianti({ p, attiva, scegli }) {
+  const senzaFin = !!p.senzaFinitura;
+  const colMat = p.varianti.some(v => v.materiale);
+  const assi = p.assi;
+  return (
+    <table className="variants">
+      <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
+        {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
+      </tr></thead>
+      <tbody>
+        {p.varianti.map((v, i) => (
+          <tr key={i} className={`${scegli ? 'vrow' : ''}${attiva(v) ? ' active' : ''}`}
+            onClick={scegli ? () => scegli(v) : undefined}>
+            <td className="code">{v.codice}</td>
+            {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
+            {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
+            {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
@@ -1050,13 +1070,7 @@ function ProductDetail({ id }) {
   // che segue uno scorrimento non deve aprire l'ingrandimento.
   const touchX = React.useRef(null);
   const scorso = React.useRef(false);
-  const [favorites, setFavorites] = useState(() => {
-    try { const s = localStorage.getItem(FAVORITI_KEY_VETRO); return s ? JSON.parse(s) : []; }
-    catch { return []; }
-  });
-  useEffect(() => {
-    localStorage.setItem(FAVORITI_KEY_VETRO, JSON.stringify(favorites));
-  }, [favorites]);
+  const [favorites, toggleFav] = usePreferiti();
 
   /* ---- Misure a piu' assi (es. maniglioni: diametro, lunghezza, interasse) ----
      Ogni asse mostra tutte le misure della finitura scelta; dopo un clic, gli
@@ -1121,7 +1135,6 @@ function ProductDetail({ id }) {
   const selImg = gallery[imgIdx] || gallery[0];
   const sceltaFin = ufins.length > 1;
   const senzaFin = !!p.senzaFinitura;
-  const colMat = p.varianti.some(v => v.materiale);
   // Codice della variante attualmente selezionata: serve per aprire la scheda
   // giusta quando ogni misura ha la propria (es. un distanziale venduto in
   // piu' lunghezze, ciascuna con la sua scheda tecnica).
@@ -1130,7 +1143,6 @@ function ProductDetail({ id }) {
     : p.varianti.find(perFinitura);
   const codiceAttivo = (varianteAttiva || p.varianti[0]).codice;
   const isFav = favorites.includes(p.id);
-  const toggleFav = () => setFavorites(prev => prev.includes(p.id) ? prev.filter(x => x !== p.id) : [...prev, p.id]);
 
   return (
     <>
@@ -1162,10 +1174,7 @@ function ProductDetail({ id }) {
         <div className="pdp">
           <div className="pdp-media">
             <div className="media">
-              <button className={`fav${isFav ? ' on' : ''}`} aria-pressed={isFav}
-                aria-label={isFav ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'} onClick={toggleFav}>
-                <Heart size={17} fill={isFav ? 'currentColor' : 'none'} />
-              </button>
+              <Cuore on={isFav} onClick={() => toggleFav(p.id)} size={17} />
               {selImg ? (
                 <button type="button" className="media-body zoomabile" aria-label="Ingrandisci la foto"
                   onClick={() => { if (scorso.current) { scorso.current = false; return; } setZoom(true); }}
@@ -1291,36 +1300,16 @@ function ProductDetail({ id }) {
             <div className="pdp-variants">
               <h3>Varianti disponibili ({p.varianti.length})</h3>
               <ScorriLato className="variants-scroll">
-              <table className="variants">
-                <thead><tr><th>Codice articolo</th>{!senzaFin && <th>Finitura</th>}{colMat && <th>Materiale</th>}
-                  {assi && assi.map(a => <th key={a.chiave} className="ver">{a.etichetta}</th>)}
-                </tr></thead>
-                <tbody>
-                  {p.varianti.map((v, i) => {
-                    const active = assi
-                      ? (v.finitura === selFin && mis && assi.every(a => v[a.chiave] === mis[a.chiave]))
-                      : sceltaFin && v.finitura === selFin;
-                    const scegliRiga = () => {
-                      if (assi) {
-                        setSelFin(v.finitura);
-                        const o = {}; assi.forEach(a => { o[a.chiave] = v[a.chiave]; });
-                        setMis(o); setUltimoAsse(null);
-                      } else if (sceltaFin) {
-                        setSelFin(v.finitura);
-                      }
-                    };
-                    return (
-                    <tr key={i} className={`${(sceltaFin || assi) ? 'vrow' : ''}${active ? ' active' : ''}`}
-                      onClick={(sceltaFin || assi) ? scegliRiga : undefined}>
-                      <td className="code">{v.codice}</td>
-                      {!senzaFin && <td><span className="fin-cell"><Chip finitura={v.finitura} />{v.finitura}</span></td>}
-                      {colMat && <td className="ver">{v.materiale || p.materiale}</td>}
-                      {assi && assi.map(a => <td key={a.chiave} className="ver">{v[a.chiave]}{a.suffisso || ''}</td>)}
-                    </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              {/* Qui la riga sceglie anche le misure: finitura e misure di quella variante. */}
+              <TabellaVarianti p={p}
+                attiva={v => assi
+                  ? v.finitura === selFin && mis && assi.every(a => v[a.chiave] === mis[a.chiave])
+                  : sceltaFin && v.finitura === selFin}
+                scegli={assi ? v => {
+                  setSelFin(v.finitura);
+                  const o = {}; assi.forEach(a => { o[a.chiave] = v[a.chiave]; });
+                  setMis(o); setUltimoAsse(null);
+                } : sceltaFin ? v => setSelFin(v.finitura) : null} />
               </ScorriLato>
             </div>
           </div>
