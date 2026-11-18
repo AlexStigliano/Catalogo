@@ -246,6 +246,36 @@ for (const [nome, indirizzo, lista] of [['Catalogo Vetro', VETRO, `#/cat/${prima
   await chiudi();
 }
 
+{
+  // Foto ingrandita: si apre toccando la foto, cambia con le frecce, si
+  // ingrandisce col doppio clic, si chiude con Esc e con Indietro.
+  const piuFoto = prodotti.find(x => (Object.values(x.immagini || {})[0] || []).length >= 2);
+  const n = Object.values(piuFoto.immagini)[0].length;
+  const { p, vai, problemi, chiudi } = await apri(COMPUTER);
+  await vai(`${VETRO}#/prodotto/${piuFoto.id}`);
+  await p.click('.media-body.zoomabile');
+  await p.waitForSelector('.zoom-ov img');
+  await p.waitForLoadState('networkidle');
+  verifica(await p.$eval('.zoom-ov img', i => i.complete && i.naturalWidth > 0), `foto ingrandita (#${piuFoto.id}): si apre e la foto si vede`);
+  verifica(await p.locator('.zoom-count').textContent() === `1 / ${n}`, 'foto ingrandita: conta le foto');
+  await p.keyboard.press('ArrowRight');
+  verifica(await p.locator('.zoom-count').textContent() === `2 / ${n}`, 'foto ingrandita: la freccia destra passa alla foto dopo');
+  await p.dblclick('.zoom-ov img');
+  await p.waitForTimeout(300);
+  verifica(await p.$eval('.zoom-ov img', i => /scale\(2\.5\)/.test(i.style.transform)), 'foto ingrandita: il doppio clic ingrandisce');
+  await p.keyboard.press('Escape');
+  await p.waitForTimeout(200);
+  verifica(await p.locator('.zoom-ov').count() === 0, 'foto ingrandita: Esc la chiude');
+  verifica(await p.locator('.pdp-thumb.active').getAttribute('aria-label') === 'Foto 2', 'foto ingrandita: chiusa, la pagina resta sulla foto vista per ultima');
+  await p.click('.media-body.zoomabile');
+  await p.waitForSelector('.zoom-ov');
+  await p.goBack();
+  await p.waitForTimeout(200);
+  verifica(await p.locator('.zoom-ov').count() === 0 && p.url().endsWith(`#/prodotto/${piuFoto.id}`), 'foto ingrandita: Indietro la chiude e si resta sulla pagina del prodotto');
+  verifica(!problemi.length, 'foto ingrandita: nessun errore', [...new Set(problemi)].join(' | '));
+  await chiudi();
+}
+
 /* ---------- 4. Catalogo Vetro: tastiera nei filtri, tabella su telefono ---------- */
 {
   const { p, vai, chiudi } = await apri(COMPUTER);
